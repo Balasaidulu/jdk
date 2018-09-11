@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://xmlns.oracle.com/communications/accountmanagement/rest"
+    xmlns:am="http://xmlns.oracle.com/communications/accountmanagement/rest"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <xs:complexType name="UriLinkType">
+        <xs:annotation>
+            <xs:documentation>Specified the Structure for the links that will allow AM UI to navigate to related entities.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="rel" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Specifies the current resource and the linked one specified in the href.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="href" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Specifies the current resource and the linked one specified in the href.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="LinkListType">
+        <xsd:annotation><xsd:documentation>Links associated with a resource for account RESTful web services. </xsd:documentation></xsd:annotation>
+        <xs:sequence>
+            <xs:element name="link" type="am:UriLinkType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CustomAttributeType">
+        <xsd:annotation><xsd:documentation>Custom attribute definition for any resource </xsd:documentation></xsd:annotation>
+        <xs:sequence>
+            <xs:element name="name" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Name of the attribute added for Business user customization.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="value" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Value of the attribute added for Business user customization</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CustomAttributeList">
+        <xsd:annotation><xsd:documentation>List of custom attributes </xsd:documentation></xsd:annotation>
+        <xs:sequence>
+            <xs:element name="attribute" type="am:CustomAttributeType" minOccurs="0"
+                maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ErrorType">
+        <xsd:annotation><xsd:documentation>Error definition returned by the account web service. </xsd:documentation></xsd:annotation>
+        <xs:sequence>
+            <xs:element name="code" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Error code generated for a web service request</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="description" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Error description for a web service request</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="resourceRef" type="am:UriLinkType" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ErrorList">
+        <xsd:annotation><xsd:documentation>List of errors that will be associated with a response. </xsd:documentation></xsd:annotation>
+        <xs:sequence>
+            <xs:element name="error" type="am:ErrorType" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>List of errors generated for a web service. </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AccountDetailsType">
+        <xsd:annotation><xsd:documentation>Attributes associated with the account resource that are available Out of the Box. </xsd:documentation></xsd:annotation>
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Unique ID for the Account </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Name for the account - May not be unique </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="number" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Unique alpha numeric value associated with account - if not provided at creation generate UUID </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="status" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Account status. e.g. but not limited to: Active, Inactive, Credit Hold, Suspended, In Collection, and Closed  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="type" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Type of account e.g. but not limited to Business, Residential, Government, and Partner  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="class" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Classification of the account e.g. but not limited Legal Entity, Site  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="currency" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Primary currency for this account.</xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="secondaryCurrency" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Secondary currency for this account. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="customerValue" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Value or rating of the customer who owns this account e.g. but not limited to High, Medium, Low </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="customerStanding" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Customer Standing </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="organization" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Organization to which this account belongs. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="priceList" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Pricelist associated with this account </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="parentAccount" type="am:AccountType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Parent account of this account, if this account is the parent, then this field is null. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="childAccounts" type="am:AccountType" minOccurs="0"
+                maxOccurs="unbounded">
+                <xsd:annotation><xsd:documentation>Child accounts assoicated with this account. this field may be null if the account has no children.</xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="primaryAddress" type="am:AddressType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Primary address associated with this account. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="primaryBillingProfile" type="am:BillingProfileType" minOccurs="0"
+                maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Primary billing profile associated with this account. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="primaryContact" type="am:ContactType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Primary contact associated with this account.  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="custom" type="am:CustomAttributeType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Fields for the end customer to use for customization. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="links" type="am:UriLinkType" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation><xsd:documentation>Links associated with this resource. </xsd:documentation></xsd:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AddressDetailsType">
+        <xsd:annotation><xsd:documentation>Attributes associated with the address resource that are available Out of the Box. </xsd:documentation></xsd:annotation>
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Unique ID for the Address  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="lineOne" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>First Street line for an address.  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="lineTwo" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Second Street line for an address.  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="lineThree" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Third Street line for an address.  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="lineFour" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Fourth Street line for an address.  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="city" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>City name for an address.  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="state" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>State associated with an address.  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="province" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Province associated with an address  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="county" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>County name for an address. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="country" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Country for an address. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="postalCode" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Postal Code for an address.  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="premise" type="am:PremiseType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Premise associated with this address.  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="custom" type="am:CustomAttributeType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Fields for the end customer to use for customization. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="links" type="am:UriLinkType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AccountLookupDetailsType">
+        <xsd:annotation><xsd:documentation>List of Values that can be added for the account module </xsd:documentation></xsd:annotation>
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Unique ID for the Account Lookup.  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="type" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>The Type of LOV. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Name for the List of Values. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="value" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Value added for for the List of Values. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="translatableValue" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Translatable data for the List of Values </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="language" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Language of the translatable data. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="startDate" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Effective start date for a LOV </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="endDate" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Effective end date for a LOV </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="links" type="am:UriLinkType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="BillingProfileDetailsType">
+        <xsd:annotation><xsd:documentation>Attributes associated with the Billing Profile resource that are available Out of the Box. </xsd:documentation></xsd:annotation>
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Unique ID for the Billing Profile.  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Name for the Billing Profile - May not be unique in the DB but will be uniue for an account </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="isPrimary" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Is this the primary billing profile for an account </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="account" type="am:AccountType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Account associated with this billing profile. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="billType" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Type of bill create e.g. but not limited to Detail, Summary </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="billFrequency" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Frequency at which a bill is created for this billing profile e.g. Monthly, Quarterly etc </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="billDayOfMonth" type="xs:integer" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Day of the month on which a bill is created for this billing profile. One of: 1st to 31st </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="billAddress" type="am:AddressType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Address to which a bill should be sent to. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="billMedia" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>The media in which a bill will be created e.g. email, CD, paper </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="billCurrency" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Currency in which a bill is generated for this billing profile, e.g. USD </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="language" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Language in which the bill is created. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="collections" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Indicator to identify if it is collections. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="collectionExempt" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Flag to identify if this billing profile is exempt from going to collections.  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="type" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Billing profile type e.g. pre-paid post paid etc. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="contact" type="am:ContactType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Contact associated with this billing profile. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="paymentMethod" type="am:PaymentMethodDetailsType" minOccurs="0"
+                maxOccurs="unbounded">
+                <xsd:annotation><xsd:documentation>Payment methods associated with this billing profile. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="custom" type="am:CustomAttributeType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Fields for the end customer to use for customization. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="links" type="am:UriLinkType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ContactDetailsType">
+        <xsd:annotation><xsd:documentation>Attributes associated with the Contact resource that are available Out of the Box. </xsd:documentation></xsd:annotation>
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Unique ID for Contact.  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="isPrimary" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Flag identifying if this is the primary contact for an account. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="salutation" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Salutation for the contact.  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="firstName" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>First name of the contact </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="middleName" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Middle name of the contact </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="lastName" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Last name of the contact </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="account" type="am:AccountType" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation><xsd:documentation>All the accounts that this contact is associated with. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="jobTitle" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Job title for the contact </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="email" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Email address of the contact </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="cellPhone" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Cell phone number of the contact </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="workPhone" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Work phone number of the contact </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="homePhone" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>FHome phone number of the contact </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="address" type="am:AddressType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Address associated with the contact </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="custom" type="am:CustomAttributeType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Fields for the end customer to use for customization. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="links" type="am:UriLinkType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PaymentMethodDetailsType">
+        <xsd:annotation><xsd:documentation>Attributes associated with the Payment Method resource that are available Out of the Box. </xsd:documentation></xsd:annotation>
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Unique ID for Payment Methods.  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="paymentMethod" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Payment method for a billing profile.  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="isPrimary" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Is this the primary payment method </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="billingProfile" type="am:BillingProfileType" minOccurs="0"
+                maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Billing profile associated with this payment method. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="links" type="am:UriLinkType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PremiseDetailsType">
+        <xsd:annotation><xsd:documentation>Attributes associated with the Premise resource that are available Out of the Box. </xsd:documentation></xsd:annotation>
+        <xs:sequence>
+            <xs:element name="latitude" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Latitude for a premise.  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="longitude" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Longitude for a premise.  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="altitude" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Altitude for a premise.  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="address" type="am:AddressType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>The address associated with this premise.  </xsd:documentation></xsd:annotation>
+            </xs:element>            
+            <xs:element name="utmEasting" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>UTM Easting for this premise.  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="utmNorthing" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>UTM Northing for this premise.  </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="links" type="am:UriLinkType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AccountType">
+        <xsd:annotation><xsd:documentation>AccountType returns a reference to an account or the account resource based on what was requested. </xsd:documentation></xsd:annotation>
+        <xs:choice>
+            <xs:element name="accountRef" type="am:UriLinkType"/>
+            <xs:element name="accountDetails" type="am:AccountDetailsType"/>
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="AddressType">
+        <xsd:annotation><xsd:documentation>AddressType returns a reference to an address or the address resource based on what was requested. </xsd:documentation></xsd:annotation>
+        <xs:choice>
+            <xs:element name="addressRef" type="am:UriLinkType"/>
+            <xs:element name="addressDetails" type="am:AddressDetailsType"/>
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="BillingProfileType">
+        <xsd:annotation><xsd:documentation>BillingProfile Type returns a reference to a billing profile or the billing profile resource based on what was requested. </xsd:documentation></xsd:annotation>
+        <xs:choice>
+            <xs:element name="billingProfileRef" type="am:UriLinkType"/>
+            <xs:element name="billingProfileDetails" type="am:BillingProfileDetailsType"/>
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="ContactType">
+        <xsd:annotation><xsd:documentation>ContactType returns a reference to an contact or the contact resource based on what was requested. </xsd:documentation></xsd:annotation>
+        <xs:choice>
+            <xs:element name="contactRef" type="am:UriLinkType"/>
+            <xs:element name="contactDetails" type="am:ContactDetailsType"/>
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="PremiseType">
+        <xsd:annotation><xsd:documentation>PremiseType returns a reference to an premise or the premise resource based on what was requested. </xsd:documentation></xsd:annotation>
+        <xs:choice>
+            <xs:element name="premiseRef" type="am:UriLinkType"/>
+            <xs:element name="premiseDetails" type="am:PremiseDetailsType"/>
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="AccountResponseType">
+        <xsd:annotation><xsd:documentation>Response sent back for a request for an account(s). </xsd:documentation></xsd:annotation>
+        <xs:sequence>
+            <xs:element name="items" type="am:AccountDetailsType" minOccurs="0"
+                maxOccurs="unbounded">
+                <xsd:annotation><xsd:documentation>Accounts that are part of the response. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="offset" type="xs:integer" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>The offset from which the account data has to be returned. This value will be used for batch query requests. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="limit" type="xs:integer" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>the maximum number of account resources that should be returned in this response. This value will be used for batch query requests. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="totalResults" type="xs:integer" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Total count of account resources that satisfy the request query. This value will be used for batch query requests. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="count" type="xs:integer" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Number of account resources that are returned in this batch. This value will be used for batch query requests. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="hasMore" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Flag indicating if there are more reources, to be returned for a query. This value will be used for batch query requests. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="errors" type="am:ErrorList">
+                <xsd:annotation><xsd:documentation>Any errors associated with this request. </xsd:documentation></xsd:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AddressResponseType">
+        <xsd:annotation><xsd:documentation>Response sent back for a request for an address(es). </xsd:documentation></xsd:annotation>
+        <xs:sequence>
+            <xs:element name="items" type="am:AddressDetailsType" minOccurs="0"
+                maxOccurs="unbounded">
+                <xsd:annotation><xsd:documentation>Addresses that are part of the response. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="offset" type="xs:integer" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>The offset from which the address data has to be returned. This value will be used for batch query requests. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="limit" type="xs:integer" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>the maximum number of address resources that should be returned in this response. This value will be used for batch query requests. </xsd:documentation></xsd:annotation> 
+            </xs:element>
+            <xs:element name="totalResults" type="xs:integer" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Total count of address resources that satisfy the request query. This value will be used for batch query requests. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="count" type="xs:integer" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Number of address resources that are returned in this batch. This value will be used for batch query requests. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="hasMore" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation><xsd:documentation>Flag indicating if there are more reources, to be returned for a query. This value will be used for batch query requests. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="errors" type="am:ErrorList">
+                <xsd:annotation><xsd:documentation>Any errors associated with this request. </xsd:documentation></xsd:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AccountLookupResponseType">
+        <xsd:annotation><xsd:documentation>Response sent back for a request for account lookup(s). </xsd:documentation></xsd:annotation>
+        <xs:sequence>
+            <xs:element name="accountLookupType" type="am:AccountLookupDetailsType" minOccurs="0"
+                maxOccurs="unbounded">
+                <xsd:annotation><xsd:documentation>Array of Account lookup type. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="errors" type="am:ErrorList">
+                <xsd:annotation><xsd:documentation>Any errors associated with this request. </xsd:documentation></xsd:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="BillingProfileResponseType">
+        <xsd:annotation><xsd:documentation>Response sent back for a request for billing profile(s). </xsd:documentation></xsd:annotation>
+        <xs:sequence>
+            <xs:element name="billingProfileType" type="am:BillingProfileDetailsType" minOccurs="0"
+                maxOccurs="unbounded">
+                <xsd:annotation><xsd:documentation>Array of Billing Profile type. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="errors" type="am:ErrorList">
+                <xsd:annotation><xsd:documentation>Any errors associated with this request. </xsd:documentation></xsd:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ContactResponseType">
+        <xsd:annotation><xsd:documentation>Response sent back for a request for contact(s). </xsd:documentation></xsd:annotation>
+        <xs:sequence>
+            <xs:element name="contactType" type="am:ContactDetailsType" minOccurs="0"
+                maxOccurs="unbounded">
+                <xsd:annotation><xsd:documentation>Array of Contact type. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="errors" type="am:ErrorList">
+                <xsd:annotation><xsd:documentation>Any errors associated with this request. </xsd:documentation></xsd:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PaymentMethodResponseType">
+        <xsd:annotation><xsd:documentation>Response sent back for a request for an payment method(s). </xsd:documentation></xsd:annotation>
+        <xs:sequence>
+            <xs:element name="paymentMethodType" type="am:PaymentMethodDetailsType" minOccurs="0"
+                maxOccurs="unbounded">
+                <xsd:annotation><xsd:documentation>Array of payment method type. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="errors" type="am:ErrorList">
+                <xsd:annotation><xsd:documentation>Any errors associated with this request. </xsd:documentation></xsd:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PremiseResponseType">
+        <xsd:annotation><xsd:documentation>Response sent back for a request for an premise(s). </xsd:documentation></xsd:annotation>
+        <xs:sequence>
+            <xs:element name="premiseType" type="am:PremiseDetailsType" minOccurs="0"
+                maxOccurs="unbounded">
+                <xsd:annotation><xsd:documentation>Array of premise type. </xsd:documentation></xsd:annotation>
+            </xs:element>
+            <xs:element name="errors" type="am:ErrorList">
+                <xsd:annotation><xsd:documentation>Any errors associated with this request. </xsd:documentation></xsd:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="accountResponse" type="am:AccountResponseType"/>
+    <xs:element name="addressResponse" type="am:AddressResponseType"/>
+    <xs:element name="billingProfileResponse" type="am:BillingProfileResponseType"/>
+    <xs:element name="contactResponse" type="am:ContactResponseType"/>
+    <xs:element name="paymentMethodResponse" type="am:PaymentMethodResponseType"/>
+    <xs:element name="premiseResponse" type="am:PremiseResponseType"/>
+</xs:schema>

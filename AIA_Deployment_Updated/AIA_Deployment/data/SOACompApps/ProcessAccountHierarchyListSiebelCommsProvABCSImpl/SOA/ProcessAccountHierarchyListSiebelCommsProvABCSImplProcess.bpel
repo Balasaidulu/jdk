@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: 
+  Author:  
+  Purpose: 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:aia="http://www.oracle.com/XSL/Transform/java/oracle.apps.aia.core.xpath.AIAFunctions" xmlns:aiaeh="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:custhierebmabcs="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/ProcessAccountHierarchyListSiebelCommsProvABCSImpl/V1" xmlns:custhierebmebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2" xmlns:ehdr="http://www.oracle.com/XSL/Transform/java/oracle.tip.esb.server.headers.ESBHeaderFunctions" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ns1="http://xmlns.oracle.com/AIASessionPoolManager" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:orcl="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:siebelws="http://siebel.com/webservices" xmlns:tns="http://siebel.com/CustomUI" xmlns:ui="http://xmlns.oracle.com/soa/designer/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:xacml="urn:oasis:names:tc:xacml:2.0:context:schema:cd:04" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ProcessAccountHierarchyListSiebelCommsProvABCSImplProcess" targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/ProcessAccountHierarchyListSiebelCommsProvABCSImpl/V1" xml:id="id_1">
+    <bpelx:annotation>
+        <bpelx:analysis>
+            <bpelx:property name="wsdlFile">
+                <![CDATA[oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/Siebel/V1/ProviderABCS/ProcessAccountHierarchyListSiebelCommsProvABCSImpl.wsdl]]>
+            </bpelx:property>
+        </bpelx:analysis>
+    </bpelx:annotation>
+    <partnerLinks xml:id="id_2">
+        <partnerLink myRole="ProcessAccountHierarchyListSiebelCommsProvABCSImplProvider" name="ProcessAccountHierarchyListSiebelCommsProvABCSImpl" partnerLinkType="custhierebmabcs:ProcessAccountHierarchyListSiebelCommsProvABCSImpl" xml:id="id_3"/>
+        <partnerLink name="SWI_spcAccount_spcHierarchy" partnerLinkType="tns:SWI_spcAccount_spcHierarchy" partnerRole="SWI_spcAccount_spcHierarchy_Role" xml:id="id_4"/>
+        <partnerLink myRole="AIAAsyncErrorHandlingBPELProcessRequester" name="AIAAsyncErrorHandlingBPELProcess" partnerLinkType="aiaeh:AIAAsyncErrorHandlingBPELProcess" partnerRole="AIAAsyncErrorHandlingBPELProcessProvider" xml:id="id_5"/>
+        <partnerLink name="AIASessionPoolManager" partnerLinkType="ns1:AIASessionPoolManager" partnerRole="AIASessionPoolManager" xml:id="id_6"/>
+    </partnerLinks>
+    <variables xml:id="id_7">
+        <variable messageType="custhierebmabcs:ProcessAccountHierarchyListReqMsg" name="ProcessAccountHierarchyListReqMsg" xml:id="id_8"/>
+        <variable messageType="custhierebmabcs:ProcessAccountHierarchyListRespMsg" name="ProcessAccountHierarchyListRespMsg" xml:id="id_9"/>
+        <variable messageType="tns:SWIAccountHierarchyGetAccountHierarchy_Input" name="ProcessAccountHierarchyListAppReqMsg" xml:id="id_10"/>
+        <variable messageType="tns:SWIAccountHierarchyGetAccountHierarchy_Output" name="ProcessAccountHierarchyListAppRespMsg" xml:id="id_11"/>
+        <variable messageType="custhierebmabcs:ProcessAccountHierarchyListReqMsg" name="TempProcessAccountList" xml:id="id_12"/>
+        <variable messageType="bpelx:RuntimeFaultMessage" name="SystemFaultVar" xml:id="id_13"/>
+        <variable messageType="aiaeh:AIAAsyncErrorHandlingBPELProcessRequestMessage" name="AIAAsyncErrorHandlingBPELProcessRequestMessage" xml:id="id_14"/>
+        <variable messageType="bpelx:RuntimeFaultMessage" name="SystemFaultMsg" xml:id="id_15"/>
+        <variable name="SystemID" type="xsd:string" xml:id="id_16"/>
+        <variable element="corecom:Sender" name="Sender" xml:id="id_17"/>
+        <variable name="Title" type="xsd:string" xml:id="id_18"/>
+        <variable element="corecom:EBMHeader" name="EBM_HEADER" xml:id="id_19"/>
+        <variable name="InstanceID" type="xsd:string" xml:id="id_20"/>
+        <variable name="ServiceName" type="xsd:string" xml:id="id_21"/>
+        <variable name="TraceLogEnabled" type="xsd:boolean" xml:id="id_22"/>
+        <variable name="strSessionToken" type="xsd:string" xml:id="id_23"/>
+        <variable element="siebelws:WSHeader" name="Variable_HdrReq" xml:id="id_24"/>
+        <variable element="siebelws:SessionToken" name="Variable_ResponseSessionToken" xml:id="id_25"/>
+        <variable messageType="ns1:ReleaseAIASessionPoolManagerRequest" name="ReleaseSessionInvoke_Release_InputVariable" xml:id="id_26"/>
+        <variable messageType="ns1:ReleaseAIASessionPoolManagerResponse" name="ReleaseSessionInvoke_Release_OutputVariable" xml:id="id_27"/>
+    </variables>
+    <faultHandlers xml:id="id_28">
+        <catch faultName="bpelx:remoteFault" faultVariable="SystemFaultVar" xml:id="id_29">
+            <sequence name="Sequence_RemoteFault" xml:id="id_30">
+                 <switch name="ReleaseSessionSwitchRemoteFault" xml:id="id_31">
+                    <case condition="string-length(bpws:getVariableData('strSessionToken'))&gt;0" xml:id="id_32">
+                        <sequence name="Sequence2" xml:id="id_33">
+                            <assign name="AssignReleaseSession_InputRF" xml:id="id_34">
+                                <copy xml:id="id_35">
+                                    <from variable="strSessionToken" xml:id="id_36"/>
+                                    <to part="payload" query="/ns1:ReleaseAIASessionPoolManagerRequest/ns1:UpdatedSessionToken" variable="ReleaseSessionInvoke_Release_InputVariable" xml:id="id_37"/>
+                                </copy>
+                                <copy xml:id="id_38">
+                                    <from variable="InstanceID" xml:id="id_39"/>
+                                    <to part="payload" query="/ns1:ReleaseAIASessionPoolManagerRequest/ns1:InstanceId" variable="ReleaseSessionInvoke_Release_InputVariable" xml:id="id_40"/>
+                                </copy>
+                                <copy xml:id="id_41">
+                                    <from variable="SystemID" xml:id="id_42"/>
+                                    <to part="payload" query="/ns1:ReleaseAIASessionPoolManagerRequest/ns1:HostId" variable="ReleaseSessionInvoke_Release_InputVariable" xml:id="id_43"/>
+                                </copy>
+                                <copy xml:id="id_44">
+                                    <from part="summary" variable="SystemFaultVar" xml:id="id_45"/>
+                                    <to part="payload" query="/ns1:ReleaseAIASessionPoolManagerRequest/ns1:ErrorCode" variable="ReleaseSessionInvoke_Release_InputVariable" xml:id="id_46"/>
+                                </copy>
+                            </assign>
+                            <invoke bpelx:invokeAsDetail="no" inputVariable="ReleaseSessionInvoke_Release_InputVariable" name="ReleaseSessionRFInvoke" operation="Release" outputVariable="ReleaseSessionInvoke_Release_OutputVariable" partnerLink="AIASessionPoolManager" portType="ns1:AIASessionPoolManager" xml:id="id_47"/>
+                        </sequence>
+                    </case>
+                    <otherwise xml:id="id_48">
+                        <empty name="Do_Nothing" xml:id="id_301"/>
+                    </otherwise>
+                </switch>
+                <bpelx:exec language="java" name="TraceLog_BeginRemoteFaultCatch" version="1.3" xml:id="id_49">
+                    <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled   = (java.lang.Boolean)getVariableData("TraceLogEnabled");
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " Entering Error Hanlder Remote Fault Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+                </bpelx:exec>
+                <throw faultName="bpelx:remoteFault" faultVariable="SystemFaultVar" name="ReThrow_RemoteFault" xml:id="id_50"/>
+                <bpelx:exec language="java" name="TraceLog_EndRemoteFaultCatch" version="1.3" xml:id="id_51">
+                    <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled   = (java.lang.Boolean)getVariableData("TraceLogEnabled");
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " Exiting Error Hanlder Remote Fault Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+                </bpelx:exec>
+            </sequence>
+        </catch>
+        <catch faultName="bpelx:bindingFault" faultVariable="SystemFaultVar" xml:id="id_52">
+            <sequence name="Sequence_BindingFault" xml:id="id_53">
+                 <switch name="ReleaseSessionSwitchBindingFault" xml:id="id_54">
+                    <case condition="string-length(bpws:getVariableData('strSessionToken'))&gt;0" xml:id="id_55">
+                        <sequence name="ReleseSessionBindingFaultSequence" xml:id="id_56">
+                            <assign name="AssignReleaseSession_InputBindF" xml:id="id_57">
+                                <copy xml:id="id_58">
+                                    <from variable="strSessionToken" xml:id="id_59"/>
+                                    <to part="payload" query="/ns1:ReleaseAIASessionPoolManagerRequest/ns1:UpdatedSessionToken" variable="ReleaseSessionInvoke_Release_InputVariable" xml:id="id_60"/>
+                                </copy>
+                                <copy xml:id="id_61">
+                                    <from variable="InstanceID" xml:id="id_62"/>
+                                    <to part="payload" query="/ns1:ReleaseAIASessionPoolManagerRequest/ns1:InstanceId" variable="ReleaseSessionInvoke_Release_InputVariable" xml:id="id_63"/>
+                                </copy>
+                                <copy xml:id="id_64">
+                                    <from variable="SystemID" xml:id="id_65"/>
+                                    <to part="payload" query="/ns1:ReleaseAIASessionPoolManagerRequest/ns1:HostId" variable="ReleaseSessionInvoke_Release_InputVariable" xml:id="id_66"/>
+                                </copy>
+                            </assign>
+                            <invoke bpelx:invokeAsDetail="no" inputVariable="ReleaseSessionInvoke_Release_InputVariable" name="ReleaseSessionBindFInvoke" operation="Release" outputVariable="ReleaseSessionInvoke_Release_OutputVariable" partnerLink="AIASessionPoolManager" portType="ns1:AIASessionPoolManager" xml:id="id_67"/>
+                        </sequence>
+                    </case>
+                    <otherwise xml:id="id_68">
+                        <empty name="Do_" xml:id="id_302"/>
+                    </otherwise>
+                </switch>
+                <bpelx:exec language="java" name="TraceLog_BeginBindingFaultCatch" version="1.3" xml:id="id_69">
+                    <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled   = (java.lang.Boolean)getVariableData("TraceLogEnabled");
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " Entering Error Hanlder Binding Fault Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+                </bpelx:exec>
+                <throw faultName="bpelx:bindingFault" faultVariable="SystemFaultVar" name="ReThrow_BindingFault" xml:id="id_70"/>
+                <bpelx:exec language="java" name="TraceLog_EndBindingFaultCatch" version="1.3" xml:id="id_71">
+                    <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled   = (java.lang.Boolean)getVariableData("TraceLogEnabled");
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " Exiting Error Hanlder Binding Fault Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+                </bpelx:exec>
+            </sequence>
+        </catch>
+        <catch faultName="bpelx:subLanguageExecutionFault" faultVariable="SystemFaultVar" xml:id="id_72">
+            <sequence name="Sequence_SubLanguageExecutionFault" xml:id="id_73">
+                 <switch name="ReleaseSessionSwitchSubLanguageExecFault" xml:id="id_74">
+                    <case condition="string-length(bpws:getVariableData('strSessionToken'))&gt;0" xml:id="id_75">
+                        <sequence name="SubLanguageExecReleaseSessionSeq" xml:id="id_76">
+                            <assign name="AssignReleaseSession_InputSubLanguageExecF" xml:id="id_77">
+                                <copy xml:id="id_78">
+                                    <from variable="strSessionToken" xml:id="id_79"/>
+                                    <to part="payload" query="/ns1:ReleaseAIASessionPoolManagerRequest/ns1:UpdatedSessionToken" variable="ReleaseSessionInvoke_Release_InputVariable" xml:id="id_80"/>
+                                </copy>
+                                <copy xml:id="id_81">
+                                    <from variable="InstanceID" xml:id="id_82"/>
+                                    <to part="payload" query="/ns1:ReleaseAIASessionPoolManagerRequest/ns1:InstanceId" variable="ReleaseSessionInvoke_Release_InputVariable" xml:id="id_83"/>
+                                </copy>
+                                <copy xml:id="id_84">
+                                    <from variable="SystemID" xml:id="id_85"/>
+                                    <to part="payload" query="/ns1:ReleaseAIASessionPoolManagerRequest/ns1:HostId" variable="ReleaseSessionInvoke_Release_InputVariable" xml:id="id_86"/>
+                                </copy>
+                            </assign>
+                            <invoke bpelx:invokeAsDetail="no" inputVariable="ReleaseSessionInvoke_Release_InputVariable" name="ReleaseSessionSubLanguageExecFInvoke" operation="Release" outputVariable="ReleaseSessionInvoke_Release_OutputVariable" partnerLink="AIASessionPoolManager" portType="ns1:AIASessionPoolManager" xml:id="id_87"/>
+                        </sequence>
+                    </case>
+                    <otherwise xml:id="id_88">
+                        <empty name="Do_Nothing" xml:id="id_303"/>
+                    </otherwise>
+                </switch>
+                <bpelx:exec language="java" name="TraceLog_BeginSubLanguageExecutionFaultCatch" version="1.3" xml:id="id_89">
+                    <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled   = (java.lang.Boolean)getVariableData("TraceLogEnabled");
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " Entering Error Hanlder SubLanguageExecution Fault Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+                </bpelx:exec>
+                <assign name="Assign_AIAAsyncErrorHandlingBPELProcessRequestMessage" xml:id="id_90">
+                    <copy xml:id="id_91">
+                        <from expression="ora:processXSLT('Transformations/EBM_to_Fault.xsl',bpws:getVariableData('EBM_HEADER'))" xml:id="id_92"/>
+                        <to part="FaultMessage" query="/corecom:Fault" variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" xml:id="id_93"/>
+                    </copy>
+                    <copy xml:id="id_94">
+                        <from part="code" variable="SystemFaultVar" xml:id="id_95"/>
+                        <to part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:FaultMessage/corecom:Code" variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" xml:id="id_96"/>
+                    </copy>
+                    <copy xml:id="id_97">
+                        <from part="summary" variable="SystemFaultVar" xml:id="id_98"/>
+                        <to part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:FaultMessage/corecom:Text" variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" xml:id="id_99"/>
+                    </copy>
+                    <copy xml:id="id_100">
+                        <from expression="xp20:current-dateTime()" xml:id="id_101"/>
+                        <to part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:ReportingDateTime" variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" xml:id="id_102"/>
+                    </copy>
+                    <copy xml:id="id_103">
+                        <from expression="ora:getProcessId()" xml:id="id_104"/>
+                        <to part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:ID" variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" xml:id="id_105"/>
+                    </copy>
+                    <copy xml:id="id_106">
+                        <from expression="'BPEL'" xml:id="id_107"/>
+                        <to part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:ImplementationCode" variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" xml:id="id_108"/>
+                    </copy>
+                    <copy xml:id="id_109">
+                        <from expression="ora:getInstanceId()" xml:id="id_110"/>
+                        <to part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:InstanceID" variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" xml:id="id_111"/>
+                    </copy>
+                    <copy xml:id="id_112">
+                        <from expression="ora:getECID()" xml:id="id_113"/>
+                        <to part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:ExecutionContextID" variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" xml:id="id_114"/>
+                    </copy>
+                </assign>
+                <invoke inputVariable="AIAAsyncErrorHandlingBPELProcessRequestMessage" name="Invoke_AIAAsyncErrorHandlingBPELProcess" operation="initiate" partnerLink="AIAAsyncErrorHandlingBPELProcess" portType="aiaeh:AIAAsyncErrorHandlingBPELProcess" xml:id="id_115"/>
+                <throw faultName="bpelx:subLanguageExecutionFault" faultVariable="SystemFaultVar" name="Rethrow_subLanguageExecutionFault" xml:id="id_116"/>
+                <bpelx:exec language="java" name="TraceLog_EndSubLanguageExecutionFaultCatch" version="1.3" xml:id="id_117">
+                    <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled   = (java.lang.Boolean)getVariableData("TraceLogEnabled");
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " Exiting Error Hanlder SubLanguageExecution Fault Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+                </bpelx:exec>
+            </sequence>
+        </catch>
+        <catchAll xml:id="id_118">
+            <sequence name="Sequence_CatchAll" xml:id="id_119">
+                <switch name="ReleaseSessionSwitchCAFault" xml:id="id_120">
+                    <case condition="string-length(bpws:getVariableData('strSessionToken'))&gt;0" xml:id="id_121">
+                        <sequence name="CAReleaseSessionSeq" xml:id="id_122">
+                            <assign name="AssignReleaseSession_InputCAF" xml:id="id_123">
+                                <copy xml:id="id_124">
+                                    <from variable="strSessionToken" xml:id="id_125"/>
+                                    <to part="payload" query="/ns1:ReleaseAIASessionPoolManagerRequest/ns1:UpdatedSessionToken" variable="ReleaseSessionInvoke_Release_InputVariable" xml:id="id_126"/>
+                                </copy>
+                                <copy xml:id="id_127">
+                                    <from variable="InstanceID" xml:id="id_128"/>
+                                    <to part="payload" query="/ns1:ReleaseAIASessionPoolManagerRequest/ns1:InstanceId" variable="ReleaseSessionInvoke_Release_InputVariable" xml:id="id_129"/>
+                                </copy>
+                                <copy xml:id="id_130">
+                                    <from variable="SystemID" xml:id="id_131"/>
+                                    <to part="payload" query="/ns1:ReleaseAIASessionPoolManagerRequest/ns1:HostId" variable="ReleaseSessionInvoke_Release_InputVariable" xml:id="id_132"/>
+                                </copy>
+                            </assign>
+                            <invoke bpelx:invokeAsDetail="no" inputVariable="ReleaseSessionInvoke_Release_InputVariable" name="ReleaseSessionCAFInvoke" operation="Release" outputVariable="ReleaseSessionInvoke_Release_OutputVariable" partnerLink="AIASessionPoolManager" portType="ns1:AIASessionPoolManager" xml:id="id_133"/>
+                        </sequence>
+                    </case>
+                    <otherwise xml:id="id_134">
+                        <empty name="Do_Nothing" xml:id="id_304"/>
+                    </otherwise>
+                </switch>
+                <bpelx:exec language="java" name="TraceLog_BeginCatchAll" version="1.3" xml:id="id_135">
+                    <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled   = (java.lang.Boolean)getVariableData("TraceLogEnabled");
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " Entering Error Hanlder Catch All Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+                </bpelx:exec>
+                <assign name="Assign_AIAAsyncErrorHandlingBPELProcessRequestMessage" xml:id="id_136">
+                    <copy xml:id="id_137">
+                        <from expression="ora:processXSLT('Transformations/EBM_to_Fault.xsl',bpws:getVariableData('EBM_HEADER'))" xml:id="id_138"/>
+                        <to part="FaultMessage" query="/corecom:Fault" variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" xml:id="id_139"/>
+                    </copy>
+                    <copy xml:id="id_140">
+                        <from expression="ora:getFaultAsString()" xml:id="id_141"/>
+                        <to part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:FaultMessage/corecom:Text" variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" xml:id="id_142"/>
+                    </copy>
+                    <copy xml:id="id_143">
+                        <from expression="xp20:current-dateTime()" xml:id="id_144"/>
+                        <to part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:ReportingDateTime" variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" xml:id="id_145"/>
+                    </copy>
+                    <copy xml:id="id_146">
+                        <from expression="ora:getProcessId()" xml:id="id_147"/>
+                        <to part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:ID" variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" xml:id="id_148"/>
+                    </copy>
+                    <copy xml:id="id_149">
+                        <from expression="'BPEL'" xml:id="id_150"/>
+                        <to part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:ImplementationCode" variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" xml:id="id_151"/>
+                    </copy>
+                    <copy xml:id="id_152">
+                        <from expression="ora:getInstanceId()" xml:id="id_153"/>
+                        <to part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:InstanceID" variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" xml:id="id_154"/>
+                    </copy>
+                    <copy xml:id="id_155">
+                        <from expression="ora:getECID()" xml:id="id_156"/>
+                        <to part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:ExecutionContextID" variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" xml:id="id_157"/>
+                    </copy>
+                </assign>
+                <invoke inputVariable="AIAAsyncErrorHandlingBPELProcessRequestMessage" name="Invoke_AIAAsyncErrorHandlingBPELProcess" operation="initiate" partnerLink="AIAAsyncErrorHandlingBPELProcess" portType="aiaeh:AIAAsyncErrorHandlingBPELProcess" xml:id="id_158"/>
+                <throw faultName="custhierebmabcs:Fault" faultVariable="AIAAsyncErrorHandlingBPELProcessRequestMessage" name="Throw_Fault" xml:id="id_159"/>
+                <bpelx:exec language="java" name="TraceLog_EndCatchAll" version="1.3" xml:id="id_160">
+                    <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled   = (java.lang.Boolean)getVariableData("TraceLogEnabled");
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " Exiting Error Hanlder Catch All Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+                </bpelx:exec>
+            </sequence>
+        </catchAll>
+    </faultHandlers>
+    <sequence name="main" xml:id="id_161">
+        <receive createInstance="yes" name="ReceiveAccountHierarchyList" operation="ProcessAccountHierarchyList" partnerLink="ProcessAccountHierarchyListSiebelCommsProvABCSImpl" portType="custhierebmabcs:ProcessAccountHierarchyListSiebelCommsProvABCSImpl" variable="ProcessAccountHierarchyListReqMsg" xml:id="id_162"/>
+        <assign name="GetTitle" xml:id="id_163">
+            <copy xml:id="id_164">
+                <from expression="'Process AccountHierarchyList'" xml:id="id_165"/>
+                <to variable="Title" xml:id="id_166"/>
+            </copy>
+            <copy xml:id="id_167">
+                <from expression="ora:getInstanceId()" xml:id="id_168"/>
+                <to variable="InstanceID" xml:id="id_169"/>
+            </copy>
+            <copy xml:id="id_170">
+                <from expression="ora:getProcessId()" xml:id="id_171"/>
+                <to variable="ServiceName" xml:id="id_172"/>
+            </copy>
+        </assign>
+		 <assign name="Assign_EBM_HEADER" xml:id="id_173">
+            <copy xml:id="id_174">
+                <from part="ProcessAccountHierarchyListEBM" query="/custhierebmebo:ProcessBillingAccountListEBM/corecom:EBMHeader" variable="ProcessAccountHierarchyListReqMsg" xml:id="id_175"/>
+                <to variable="EBM_HEADER" xml:id="id_176"/>
+            </copy>
+        </assign>
+        <bpelx:exec language="java" name="Assign_Title" version="1.5" xml:id="id_177">
+            <![CDATA[/*Write your java code below e.g.   
+	System.out.println("Hello, World");  
+*/  
+java.lang.String ordernumber=null;                       
+oracle.xml.parser.v2.XMLElement ordernumberelement= (oracle.xml.parser.v2.XMLElement)getVariableData("ProcessAccountHierarchyListReqMsg","ProcessAccountHierarchyListEBM","/custhierebmebo:ProcessBillingAccountListEBM/corecom:EBMHeader/corecom:BusinessScope[1]/corecom:ID");     
+ordernumber=ordernumberelement.getText();           
+setFlowInstanceTitle(ordernumber);]]>
+        </bpelx:exec>
+        <scope name="SWI_spcAccount_spcHierarchy" xml:id="id_178">
+            <sequence name="SWI_spcAccount_spcHierarchy" xml:id="id_179">
+                <assign name="GetTargetSystemID" xml:id="id_180">
+                    <copy xml:id="id_181">
+                        <from expression="ora:processXSLT('Transformations/AddTargetSystemID.xsl',bpws:getVariableData('ProcessAccountHierarchyListReqMsg','ProcessAccountHierarchyListEBM'))" xml:id="id_182"/>
+                        <to part="ProcessAccountHierarchyListEBM" variable="ProcessAccountHierarchyListReqMsg" xml:id="id_183"/>
+                    </copy>
+                    <copy xml:id="id_184">
+                        <from part="ProcessAccountHierarchyListEBM" query="/custhierebmebo:ProcessBillingAccountListEBM/corecom:EBMHeader/corecom:Target/corecom:ID" variable="ProcessAccountHierarchyListReqMsg" xml:id="id_185"/>
+                        <to variable="SystemID" xml:id="id_186"/>
+                    </copy>
+                </assign>
+                <scope name="SetDynamicPartnerlinkScope" xml:id="id_187">
+                    <variables xml:id="id_188">
+                        <variable name="TargetEndpointLocation" type="xsd:string" xml:id="id_189"/>
+                        <variable element="wsa:EndpointReference" name="EndpointReference" xml:id="id_190"/>
+                        <variable name="ServiceName" type="xsd:string" xml:id="id_191"/>
+                        <variable name="PartnerLinkName" type="xsd:string" xml:id="id_192"/>
+                        <variable name="EBMMsgBpelVariableName" type="xsd:string" xml:id="id_193"/>
+                        <variable name="EBMMsgPartName" type="xsd:string" xml:id="id_194"/>
+                    </variables>
+                    <sequence name="SetDynamicPartnerlinkSequence" xml:id="id_195">
+                        <assign name="AssignDynamicPartnerlinkVariables" xml:id="id_196">
+                            <copy xml:id="id_197">
+                                <from expression="'{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/ProcessAccountHierarchyListSiebelCommsProvABCSImpl/V1}ProcessAccountHierarchyListSiebelCommsProvABCSImpl'" xml:id="id_198"/>
+                                <to variable="ServiceName" xml:id="id_199"/>
+                            </copy>
+                            <copy xml:id="id_200">
+                                <from expression="'SWI_spcAccount_spcHierarchy'" xml:id="id_201"/>
+                                <to variable="PartnerLinkName" xml:id="id_202"/>
+                            </copy>
+                            <copy xml:id="id_203">
+                                <from expression="'ProcessAccountHierarchyListReqMsg'" xml:id="id_204"/>
+                                <to variable="EBMMsgBpelVariableName" xml:id="id_205"/>
+                            </copy>
+                            <copy xml:id="id_206">
+                                <from expression="'ProcessAccountHierarchyListEBM'" xml:id="id_207"/>
+                                <to variable="EBMMsgPartName" xml:id="id_208"/>
+                            </copy>
+                        </assign>
+                        <bpelx:exec language="java" name="GetTargetEndpointLocation" version="1.5" xml:id="id_209">
+                            <![CDATA[/*----------------------------------------------------------------- 
+		This code snippet will derive the dynamic endpoint URI for a partnerlink. 
+		-----------------------------------------------------------------*/ 
+
+		java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");   
+		java.lang.String partnerLinkName = (java.lang.String)getVariableData("PartnerLinkName");  
+		java.lang.String cavsEndpointPropertyName = "Routing."+partnerLinkName+".CAVS.EndpointURI"; 
+		java.lang.String ebmMsgBpelVariableName = (java.lang.String)getVariableData("EBMMsgBpelVariableName"); 
+		java.lang.String ebmMsgPartName = (java.lang.String)getVariableData("EBMMsgPartName"); 
+		java.lang.String systemIdBpelVariableName = "SystemID"; 
+		java.lang.String targetEndpointLocationBpelVariableName = "TargetEndpointLocation"; 
+		java.lang.String routeToCavsPropertyName = "Routing."+partnerLinkName+".RouteToCAVS"; 
+		java.lang.String defaultSystemIdPropertyName = "Default.SystemID"; 
+		java.lang.String targetEndpointLocation = null;                
+		java.lang.String targetID = null; 
+		boolean addAudits = false; 
+
+		if (addAudits) addAuditTrailEntry("Partnerlink = " + partnerLinkName); 
+
+		// check configuration for CAVS routing flag 
+		try {          
+		boolean routeToCAVS = java.lang.Boolean.parseBoolean(oracle.apps.aia.core.config.Configuration.getServiceProperty(serviceName, routeToCavsPropertyName)); 
+		if (addAudits) addAuditTrailEntry("RouteToCAVS = " + routeToCAVS); 
+		if (routeToCAVS) { 
+		targetEndpointLocation = oracle.apps.aia.core.config.Configuration.getServiceProperty(serviceName, cavsEndpointPropertyName);          
+		if (addAudits) addAuditTrailEntry("Endpoint = '" + targetEndpointLocation + "' selected from configuration property " + cavsEndpointPropertyName);             
+		} 
+		}       
+		catch (oracle.apps.aia.core.config.PropertyNotFoundException e) { 
+		if (addAudits) addAuditTrailEntry("Configuration property " + cavsEndpointPropertyName + " not found!"); 
+		}             
+		  
+		if (targetEndpointLocation==null || targetEndpointLocation=="") {             
+
+		// check bpel variable for already retrieved target system Id 
+		try { 
+		targetID = (java.lang.String)getVariableData(systemIdBpelVariableName); 
+		if (addAudits && targetID!=null) addAuditTrailEntry("Using previously stored Target System ID = '" + targetID + "'"); 
+		} 
+		catch (com.oracle.bpel.client.BPELFault e) { 
+		} 
+
+		if (targetID==null || targetID=="") { 
+		// try to get Target system ID from EBM Header             
+		try {             
+		    oracle.xml.parser.v2.XMLElement targetIdElement = (oracle.xml.parser.v2.XMLElement)getVariableData(ebmMsgBpelVariableName, ebmMsgPartName, "/" + "*" + "/corecom:EBMHeader[1]/corecom:Target/corecom:ID[text()!='']"); 
+		    targetID = targetIdElement.getText();            
+		    if (addAudits) addAuditTrailEntry("Target System ID = '" + targetID + "', selected from EBM header");             
+		}      
+		catch (com.oracle.bpel.client.BPELFault e) {              
+		    if (addAudits) addAuditTrailEntry("Unable to retrieve Target System ID from message header");             
+		} 
+		try { 
+		    if (targetID!=null && targetID!="") setVariableData(systemIdBpelVariableName, targetID); 
+		} 
+		catch (com.oracle.bpel.client.BPELFault e) { 
+		} 
+		}
+
+		if (targetID==null || targetID=="") {  
+		// try to get Target system ID from configuration             
+		try {  
+		    targetID = oracle.apps.aia.core.config.Configuration.getServiceProperty(serviceName, defaultSystemIdPropertyName); 
+		    if (addAudits) addAuditTrailEntry("Target System ID = '" + targetID + "', selected from configuration property " + defaultSystemIdPropertyName); 
+		}  
+		catch (oracle.apps.aia.core.config.PropertyNotFoundException e) {             
+		    if (addAudits) addAuditTrailEntry("Configuration property " + defaultSystemIdPropertyName + " not found!");             
+		}  
+		try { 
+		    if (targetID!=null && targetID!="") setVariableData(systemIdBpelVariableName, targetID); 
+		} 
+		catch (com.oracle.bpel.client.BPELFault e) { 
+		} 
+		}  
+
+		if (targetID!=null || targetID!="") {             
+		// try to get EndpointLocation from Configuration 
+		java.lang.String endpointPropertyName = "Routing."+partnerLinkName+"."+targetID+".EndpointURI"; 
+		try {              
+		    targetEndpointLocation = oracle.apps.aia.core.config.Configuration.getServiceProperty(serviceName, endpointPropertyName);               
+		    if (addAudits) addAuditTrailEntry("Endpoint = '" + targetEndpointLocation + "' selected from configuration property " + endpointPropertyName);             
+		}      
+		catch (oracle.apps.aia.core.config.PropertyNotFoundException e) {             
+		    if (addAudits) addAuditTrailEntry("Configuration property " + endpointPropertyName + " not found!");              
+		}             
+		}             
+		}      
+
+		try {       
+		setVariableData(targetEndpointLocationBpelVariableName, targetEndpointLocation);             
+		} 
+		catch (com.oracle.bpel.client.BPELFault e) { 
+		}]]>
+                        </bpelx:exec>
+                        <switch name="Switch_SetEndpoint" xml:id="id_210">
+                            <case condition="string-length(bpws:getVariableData('TargetEndpointLocation'))&gt;0" xml:id="id_211">
+                                <assign name="AssignPartnerlinkEndpointReference" xml:id="id_212">
+                                    <copy xml:id="id_213">
+                                        <from xml:id="id_214">
+			    <wsa:EndpointReference xml:id="id_215">
+				<wsa:Address xml:id="id_216"/>
+			    </wsa:EndpointReference>
+			</from>
+                                        <to variable="EndpointReference" xml:id="id_217"/>
+                                    </copy>
+                                    <copy xml:id="id_218">
+                                        <from variable="TargetEndpointLocation" xml:id="id_219"/>
+                                        <to query="/wsa:EndpointReference/wsa:Address" variable="EndpointReference" xml:id="id_220"/>
+                                    </copy>
+                                    <copy xml:id="id_221">
+                                        <from variable="EndpointReference" xml:id="id_222"/>
+                                        <to partnerLink="SWI_spcAccount_spcHierarchy" xml:id="id_223"/>
+                                    </copy>
+                                </assign>
+                            </case>
+                            <otherwise xml:id="id_224">
+                                <empty name="Empty_NoSetEndpoint" xml:id="id_225"/>
+                            </otherwise>
+                        </switch>
+                    </sequence>
+                </scope>
+                <scope name="ScopePreXformExtension" ui:customizable="true" variableAccessSerializable="no" xml:id="id_294">
+                    <empty name="PreXformExtension" xml:id="id_293"/>
+                </scope>
+                <assign name="XformProcessBillingAccountListEBM_To_SWIAccountInput" xml:id="id_226">
+                    <bpelx:annotation xml:id="id_227">
+                        <bpelx:pattern xml:id="id_228">transformation</bpelx:pattern>
+                    </bpelx:annotation>
+                    <copy xml:id="id_229">
+                        <from expression="ora:doXSLTransformForDoc('Transformations/XformProcessBillingAccountListEBM_To_SWIAccountInput.xsl', $ProcessAccountHierarchyListReqMsg.ProcessAccountHierarchyListEBM)" xml:id="id_230"/>
+                        <to part="SWIAccountHierarchyGetAccountHierarchy_Input" variable="ProcessAccountHierarchyListAppReqMsg" xml:id="id_231"/>
+                    </copy>
+                </assign>
+                <scope name="GetSessionScope" xml:id="id_232">
+                    <bpelx:annotation xml:id="id_233">
+                        <bpelx:general xml:id="id_234">
+                            <bpelx:property name="userLabel" xml:id="id_235">
+                                <![CDATA[Scope_Siebel_GetSession]]>
+                            </bpelx:property>
+                        </bpelx:general>
+                    </bpelx:annotation>
+                    <variables xml:id="id_236">
+                        <variable messageType="ns1:GetAIASessionPoolManagerGetRequest" name="InvokeGetSession_Get_InputVariable" xml:id="id_237"/>
+                        <variable messageType="ns1:GetAIASessionPoolManagerResponse" name="InvokeGetSession_Get_OutputVariable" xml:id="id_238"/>
+                    </variables>
+                    <sequence name="Sequence_Siebel_GetSession" xml:id="id_239">
+                        <assign name="AssignGetSessionInput" xml:id="id_240">
+                            <copy xml:id="id_241">
+                                <from variable="SystemID" xml:id="id_242"/>
+                                <to part="payload" query="/ns1:GetAIASessionPoolManagerGetRequest/ns1:HostId" variable="InvokeGetSession_Get_InputVariable" xml:id="id_243"/>
+                            </copy>
+                            <copy xml:id="id_244">
+                                <from variable="InstanceID" xml:id="id_245"/>
+                                <to part="payload" query="/ns1:GetAIASessionPoolManagerGetRequest/ns1:InstanceId" variable="InvokeGetSession_Get_InputVariable" xml:id="id_246"/>
+                            </copy>
+                        </assign>
+                        <invoke bpelx:inputHeaderVariable="Variable_HdrReq" bpelx:invokeAsDetail="no" bpelx:outputHeaderVariable="Variable_ResponseSessionToken" inputVariable="InvokeGetSession_Get_InputVariable" name="InvokeGetSession" operation="Get" outputVariable="InvokeGetSession_Get_OutputVariable" partnerLink="AIASessionPoolManager" portType="ns1:AIASessionPoolManager" xml:id="id_247"/>
+                        <assign name="AssignGetSessionOutput" xml:id="id_248">
+                            <copy xml:id="id_249">
+                                <from part="payload" query="/ns1:GetAIASessionPoolManagerResponse/ns1:SessionToken" variable="InvokeGetSession_Get_OutputVariable" xml:id="id_250"/>
+                                <to variable="strSessionToken" xml:id="id_251"/>
+                            </copy>
+                            <copy xml:id="id_252">
+                                <from expression="&quot;Stateless&quot;" xml:id="id_253"/>
+                                <to query="/siebelws:WSHeader/siebelws:SessionType" variable="Variable_HdrReq" xml:id="id_254"/>
+                            </copy>
+                            <copy xml:id="id_255">
+                                <from variable="strSessionToken" xml:id="id_256"/>
+                                <to query="/siebelws:WSHeader/siebelws:SessionToken" variable="Variable_HdrReq" xml:id="id_257"/>
+                            </copy>
+                        </assign>
+                    </sequence>
+                </scope>
+                <scope name="ScopePreInvokeExtension" ui:customizable="true" variableAccessSerializable="no" xml:id="id_296">
+                    <empty name="PreInvokeExtension" xml:id="id_295"/>
+                </scope>
+                <invoke bpelx:inputHeaderVariable="Variable_HdrReq" bpelx:invokeAsDetail="no" bpelx:outputHeaderVariable="Variable_ResponseSessionToken" inputVariable="ProcessAccountHierarchyListAppReqMsg" name="InvokeAccountHierarchyList" operation="SWIAccountHierarchyGetAccountHierarchy" outputVariable="ProcessAccountHierarchyListAppRespMsg" partnerLink="SWI_spcAccount_spcHierarchy" portType="tns:SWI_spcAccount_spcHierarchy" xml:id="id_258"/>
+                <scope name="ScopePostInvokeExtension" ui:customizable="true" variableAccessSerializable="no" xml:id="id_298">
+                    <empty name="PostInvokeExtension" xml:id="id_297"/>
+                </scope>
+                <scope name="ReleaseSessionScope" variableAccessSerializable="no" xml:id="id_259">
+                    <sequence name="Sequence1" xml:id="id_260">
+                        <assign name="AssignReleaseSessionTokenInput" xml:id="id_261">
+                            <copy xml:id="id_262">
+                                <from query="/siebelws:SessionToken" variable="Variable_ResponseSessionToken" xml:id="id_263"/>
+                                <to variable="strSessionToken" xml:id="id_264"/>
+                            </copy>
+                            <copy xml:id="id_265">
+                                <from variable="InstanceID" xml:id="id_266"/>
+                                <to part="payload" query="/ns1:ReleaseAIASessionPoolManagerRequest/ns1:InstanceId" variable="ReleaseSessionInvoke_Release_InputVariable" xml:id="id_267"/>
+                            </copy>
+                            <copy xml:id="id_268">
+                                <from variable="strSessionToken" xml:id="id_269"/>
+                                <to part="payload" query="/ns1:ReleaseAIASessionPoolManagerRequest/ns1:UpdatedSessionToken" variable="ReleaseSessionInvoke_Release_InputVariable" xml:id="id_270"/>
+                            </copy>
+                            <copy xml:id="id_271">
+                                <from variable="SystemID" xml:id="id_272"/>
+                                <to part="payload" query="/ns1:ReleaseAIASessionPoolManagerRequest/ns1:HostId" variable="ReleaseSessionInvoke_Release_InputVariable" xml:id="id_273"/>
+                            </copy>
+                        </assign>
+                        <invoke bpelx:invokeAsDetail="no" inputVariable="ReleaseSessionInvoke_Release_InputVariable" name="ReleaseSessionInvoke" operation="Release" outputVariable="ReleaseSessionInvoke_Release_OutputVariable" partnerLink="AIASessionPoolManager" portType="ns1:AIASessionPoolManager" xml:id="id_274"/>
+                        <assign name="ClearSessionToken" xml:id="id_275">
+                            <copy xml:id="id_276">
+                                <from expression="''" xml:id="id_277"/>
+                                <to variable="strSessionToken" xml:id="id_278"/>
+                            </copy>
+                        </assign>
+                    </sequence>
+                </scope>
+            </sequence>
+        </scope>
+        <assign name="XformSWIAccountHierarchy_To_ProcessBillingAccountListEBM" xml:id="id_279">
+            <bpelx:annotation xml:id="id_280">
+                <bpelx:pattern xml:id="id_281">transformation</bpelx:pattern>
+            </bpelx:annotation>
+            <copy xml:id="id_282">
+                <from expression="ora:doXSLTransformForDoc('Transformations/XformSWIAccountHierarchy_To_ProcessBillingAccountListEBM.xsl', $ProcessAccountHierarchyListAppRespMsg.SWIAccountHierarchyGetAccountHierarchy_Output, 'ProcessAccountHierarchyListReqMsg.ProcessAccountHierarchyListEBM', $ProcessAccountHierarchyListReqMsg.ProcessAccountHierarchyListEBM)" xml:id="id_283"/>
+                <to part="ProcessAccountHierarchyListEBM" variable="TempProcessAccountList" xml:id="id_284"/>
+            </copy>
+        </assign>
+        <scope name="ScopePostXformExtension" ui:customizable="true" variableAccessSerializable="no" xml:id="id_300">
+            <empty name="PostXformExtension" xml:id="id_299"/>
+        </scope>
+        <assign name="SequenceProcessAccountList" xml:id="id_285">
+            <bpelx:annotation xml:id="id_286">
+                <bpelx:pattern xml:id="id_287">transformation</bpelx:pattern>
+            </bpelx:annotation>
+            <copy xml:id="id_288">
+                <from expression="ora:doXSLTransformForDoc('Transformations/SequenceProcessAccountListEBM.xsl', $TempProcessAccountList.ProcessAccountHierarchyListEBM)" xml:id="id_289"/>
+                <to part="ProcessAccountHierarchyListResponseEBM" variable="ProcessAccountHierarchyListRespMsg" xml:id="id_290"/>
+            </copy>
+        </assign>
+        <reply name="replyAccountHierarchyList" operation="ProcessAccountHierarchyList" partnerLink="ProcessAccountHierarchyListSiebelCommsProvABCSImpl" portType="custhierebmabcs:ProcessAccountHierarchyListSiebelCommsProvABCSImpl" variable="ProcessAccountHierarchyListRespMsg" xml:id="id_291"/>
+        <bpelx:exec language="java" name="TraceLog_AfterreplyAccountHierarchyList" version="1.3" xml:id="id_292">
+            <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled;  
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+tracelogenabled = oracle.apps.aia.core.eh.logging.AIALogger.isTraceLoggingEnabled("INFO","{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/ProcessAccountHierarchyListSiebelCommsProvABCSImpl/V1}ProcessAccountHierarchyListSiebelCommsProvABCSImpl");                                                                                  
+setVariableData("TraceLogEnabled", tracelogenabled);        
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " After AccountHierarchyList Service reply Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+        </bpelx:exec>
+    </sequence>
+</process>

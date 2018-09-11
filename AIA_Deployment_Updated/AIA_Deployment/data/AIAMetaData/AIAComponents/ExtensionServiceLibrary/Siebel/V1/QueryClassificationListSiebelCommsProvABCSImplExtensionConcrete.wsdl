@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:sblISSclass="http://www.siebel.com/xml/SWIAdminISSClassDefinitionIO" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:commsclassificationlistebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Classification/V1" xmlns:commsclassificationlistext="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryClassificationListSiebelCommsProvABCSImplExtension/V1" xmlns:sblasi="http://siebel.com/asi/" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="QueryClassificationListSiebelCommsProvABCSImplExtension" targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryClassificationListSiebelCommsProvABCSImplExtension/V1">
+   <documentation>
+      <svcdoc:Service>
+         <svcdoc:Description>This service contains intercepting operations that
+                             would be used by the participating application</svcdoc:Description>
+         <svcdoc:ServiceType>ProviderABCSExtension</svcdoc:ServiceType>
+         <svcdoc:DisplayName>QueryClassificationListSiebelCommsProvABCSImpl Provider ABCS Extension
+                          Implementation Interface</svcdoc:DisplayName>
+			<svcdoc:ServiceObjectName>QueryClassificationList</svcdoc:ServiceObjectName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:Version>1.0</svcdoc:Version>
+			<svcdoc:ImplementationTechnology><!-- PLACEHOLDER--></svcdoc:ImplementationTechnology>
+			<svcdoc:ProductFamily>CRM</svcdoc:ProductFamily>
+			<svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+			<svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+      </svcdoc:Service>
+   </documentation>
+   <types>
+      <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/QueryClassificationListSiebelCommsProvABCSImplExtension/V1" elementFormDefault="qualified">
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Classification/V1" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/Classification/V1/ClassificationEBM.xsd" />
+         <xsd:import namespace="http://www.siebel.com/xml/SWIAdminISSClassDefinitionIO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWIAdminISSClassDefinitionIO.xsd" />
+	 <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd" />
+      </xsd:schema>
+   </types>
+   <message name="PreXformEBMtoABMClassificationListMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreXformEBMtoABMABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QueryClassificationListEBM" element="commsclassificationlistebo:QueryClassificationListEBM" />
+   </message>
+  <message name="PostXformABMtoEBMClassificationListMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostXformEBMtoABMABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+	<part name="QueryClassificationListEBM" element="commsclassificationlistebo:QueryClassificationListResponseEBM" />
+   </message>
+	<message name="PreInvokeABSQueryListOfSwiAdminIssClassDefinitionReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="ProductClassQueryByExample_Input" element="sblasi:ProductClassQueryByExample_Input" />
+   </message>
+
+	<message name="PostInvokeABSQueryListOfSwiAdminIssClassDefinitionReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="ProductClassQueryByExample_Output" element="sblasi:ProductClassQueryByExample_Output" />
+	</message>
+   
+   <message name="FaultMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used for propagating Error
+                                Context and Error Message</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="AIAFault" element="corecom:Fault" />
+   </message>
+   <portType name="QueryClassificationListSiebelCommsProvABCSImplExtensionService">
+      <documentation>
+         <svcdoc:Interface>
+            <svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+            <svcdoc:DisplayName>ProcessSalesOrderSiebelProvABCSImplV2ExtensionService</svcdoc:DisplayName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         </svcdoc:Interface>
+      </documentation>
+      <operation name="PreXformEBMtoABMClassificationListEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformEBMtoABM an ListOfSWIOrderIO object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformEBMtoABMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsclassificationlistext:PreXformEBMtoABMClassificationListMsg" />
+         <output message="commsclassificationlistext:PreXformEBMtoABMClassificationListMsg" />
+         <fault name="fault" message="commsclassificationlistext:FaultMessage" />
+      </operation>
+	<operation name="PostXformABMtoEBMClassificationListEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformEBMtoABM an ListOfSWIOrderIO object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformEBMtoABMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsclassificationlistext:PostXformABMtoEBMClassificationListMsg" />
+         <output message="commsclassificationlistext:PostXformABMtoEBMClassificationListMsg" />
+         <fault name="fault" message="commsclassificationlistext:FaultMessage" />
+      </operation>
+	 <operation name="PreInvokeABSListOfSwiAdminIssClassDefinitionABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ProcessSalesOrderEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsclassificationlistext:PreInvokeABSQueryListOfSwiAdminIssClassDefinitionReqMsg" />
+         <output message="commsclassificationlistext:PreInvokeABSQueryListOfSwiAdminIssClassDefinitionReqMsg" />
+         <fault name="fault" message="commsclassificationlistext:FaultMessage" />
+      </operation>
+	<operation name="PostInvokeABSListOfSwiAdminIssClassDefinitionABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ProcessSalesOrderEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsclassificationlistext:PostInvokeABSQueryListOfSwiAdminIssClassDefinitionReqMsg" />
+         <output message="commsclassificationlistext:PostInvokeABSQueryListOfSwiAdminIssClassDefinitionReqMsg" />
+         <fault name="fault" message="commsclassificationlistext:FaultMessage" />
+      </operation>
+   </portType>
+     <binding name="QueryClassificationListSiebelCommsProvABCSImplExtensionServiceBinding" type="commsclassificationlistext:QueryClassificationListSiebelCommsProvABCSImplExtensionService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="PreXformEBMtoABMClassificationListEBM">
+            <soap:operation style="document" soapAction="PreXformEBMtoABMClassificationListEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+        <operation name="PostXformABMtoEBMClassificationListEBM">
+            <soap:operation style="document" soapAction="PostXformABMtoEBMClassificationListEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		 <operation name="PreInvokeABSListOfSwiAdminIssClassDefinitionABM">
+            <soap:operation style="document" soapAction="PreInvokeABSListOfSwiAdminIssClassDefinitionABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		 <operation name="PostInvokeABSListOfSwiAdminIssClassDefinitionABM">
+            <soap:operation style="document" soapAction="PostInvokeABSListOfSwiAdminIssClassDefinitionABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+	
+    </binding>  
+   <service name="QueryClassificationListSiebelCommsProvABCSImplExtension">
+        <port name="QueryClassificationListSiebelCommsProvABCSImplExtensionServicePort" binding="commsclassificationlistext:QueryClassificationListSiebelCommsProvABCSImplExtensionServiceBinding">
+            <soap:address location="http://${fp.server.soaserverhostname}:${fp.server.soaserverport}/MirrorServlet/mirror" />
+        </port>
+   </service>
+   
+   
+   <plnk:partnerLinkType name="QueryClassificationListSiebelCommsProvABCSImplExtensionService">
+      <plnk:role name="QueryClassificationListSiebelCommsProvABCSImplExtensionServiceProvider">
+         <plnk:portType name="commsclassificationlistext:QueryClassificationListSiebelCommsProvABCSImplExtensionService"/>
+      </plnk:role>
+   </plnk:partnerLinkType>
+</definitions>

@@ -1,0 +1,15 @@
+<definitions
+     name="properties"
+     targetNamespace="http://xmlns.oracle.com/EnterpriseFlows/Core/InterfaceSalesOrderToFulfillmentEBF/V1/correlationset"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+     xmlns:pns2="http://schemas.oracle.com/bpel/extension"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:pns1="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+    >
+    <bpws:property name="InterfaceSalesOrderToCustomerReq_EBMID" type="pns1:IdentifierType"/>
+    <bpws:property name="UpdateSalesOrderReq_EBMID" type="pns1:IdentifierType"/>
+    <bpws:property name="CreateSalesOrder_EBMID" type="pns1:IdentifierType"/>
+    <bpws:property name="SyncSalesOrderList_EBMID" type="pns1:IdentifierType"/>
+</definitions>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="SyncMultiSchemaChangeBRMRequesterImpl"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/SyncMultiSchemaChangeBRMRequesterImpl/V1"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:brmcollabo="http://www.portal.com/schemas/CRMSync"
+             xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" 
+             xmlns:client="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/SyncMultiSchemaChangeBRMRequesterImpl/V1"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+             
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	TYPE DEFINITION - List of services participating in this BPEL process
+	The default output of the BPEL designer uses strings as input and 
+	output to the BPEL Process. But you can define or import any XML 
+	Schema type and use them as part of the message types.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->   
+	<wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+  <wsdl:types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://www.portal.com/schemas/CRMSync" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/AccountInfoChange.xsd" />
+      <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+		</schema>
+	</wsdl:types>
+  <wsdl:message name="FaultMessage">
+    <wsdl:part name="Fault" element="corecom:Fault"/>
+  </wsdl:message>
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	MESSAGE TYPE DEFINITION - Definition of the message types used as 
+	part of the port type defintions
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->      
+	<wsdl:message name="SyncMultiSchemaChangeBRMRequesterImplRequestMessage">
+		<wsdl:part name="payload" element="brmcollabo:AccountInfoChange"/>
+	</wsdl:message>
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PORT TYPE DEFINITION - A port type groups a set of operations into
+	a logical service unit.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+	<!-- portType implemented by the SyncMultiSchemaChangeBRMRequesterImpl BPEL process -->
+	<wsdl:portType name="SyncMultiSchemaChangeBRMRequesterImpl">
+		<wsdl:operation name="process">
+			<wsdl:input  message="client:SyncMultiSchemaChangeBRMRequesterImplRequestMessage" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PARTNER LINK TYPE DEFINITION
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --> 
+	<plnk:partnerLinkType name="SyncMultiSchemaChangeBRMRequesterImpl">
+		<plnk:role name="SyncMultiSchemaChangeBRMRequesterImplProvider">
+			<plnk:portType name="client:SyncMultiSchemaChangeBRMRequesterImpl"/>
+		</plnk:role>
+	</plnk:partnerLinkType>
+</wsdl:definitions>

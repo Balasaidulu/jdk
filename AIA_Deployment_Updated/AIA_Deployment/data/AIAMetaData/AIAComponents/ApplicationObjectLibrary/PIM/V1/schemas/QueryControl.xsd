@@ -1,0 +1,20 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/svc"
+     xmlns="http://xmlns.oracle.com/svc" xmlns:sdoJava="commonj.sdo/java" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="QueryControl" sdoJava:package="oracle.svc" sdoJava:instanceClass="oracle.svc.QueryControl">
+        <xsd:annotation>
+            <xsd:documentation>Defines the control switches to be used when retriving data by a service.
+@see DataSourceService#getDataList</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="DataObject">
+                <xsd:sequence>
+                    <xsd:element name="RetrieveAllTranslations" type="xsd:boolean" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ControlProperties" type="DataObject" minOccurs="0" nillable="true"/>
+                    <xsd:element name="FetchOnly" type="xsd:boolean" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="queryControl" type="QueryControl" nillable="true"/>
+</xsd:schema>

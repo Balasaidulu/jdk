@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="updateMetaData" default="updateMDSData" basedir=".">
+        <property environment="env" />
+	<property name="soa.home" value="${env.SOA_HOME}" />
+	<property name="domain.location" value="${env.DOMAIN_LOCATION}" />
+
+	<!-- Updates to apps/AIAMetaData location in MDS -->
+        <target name="updateMDSData">
+           <ant antfile="${soa.home}/aiafp/Install/AID/AIAInstallDriver.xml" target="Install" inheritall="false">
+		      <property name="DeploymentPlan" value="${domain.location}/soa/aia/MDSUtils/UpdateMetaDataDP.xml" />
+                      <property name="PropertiesFile" value="${domain.location}/soa/aia/bin/AIAInstallProperties.xml" />
+	       </ant>
+        </target>
+
+</project>

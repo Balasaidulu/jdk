@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+    
+     targetNamespace="http://siebel.com/OrderManagement/Order/Details"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+     xmlns:xsdLocal2="http://siebel.com/OrderManagement/Order/Details/Data/Data"
+     xmlns:tns="http://siebel.com/OrderManagement/Order/Details"
+     xmlns:xsdLocal3="http://siebel.com/OrderManagement/Order/Details/Data/Id"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:xsdLocal1="http://siebel.com/OrderManagement/Order/Details/Data/Query"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    >
+    <types>
+        <xsd:schema elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="http://siebel.com/OrderManagement/Order/Details"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://siebel.com/OrderManagement/Order/Details/Data/Id" schemaLocation="../schemas/OrderDetailId.xsd"/>
+            <xsd:import namespace="http://siebel.com/OrderManagement/Order/Details/Data/Data" schemaLocation="../schemas/OrderDetailData.xsd"/>
+            <xsd:import namespace="http://siebel.com/OrderManagement/Order/Details/Data/Query"
+                 schemaLocation="../schemas/OrderDetailQuery.xsd"/>
+            <xsd:element name="OrderDetailQueryPage_Input">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="NamedSearchSpec" minOccurs="0" type="xsd:string"/>
+                        <xsd:element ref="xsdLocal1:ListOfOrderDetail" minOccurs="0"/>
+                        <xsd:element name="ExecutionMode" minOccurs="0" type="xsd:string"/>
+                        <xsd:element name="LOVLanguageMode" type="xsd:string"/>
+                        <xsd:element name="ViewMode" minOccurs="0" type="xsd:string"/>
+                        <xsd:element name="PickListName" minOccurs="0" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="OrderDetailQueryPage_Output">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element ref="xsdLocal2:ListOfOrderDetail"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="OrderDetailUpdate_Input">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element ref="xsdLocal2:ListOfOrderDetail"/>
+                        <xsd:element name="ExecutionMode" minOccurs="0" type="xsd:string"/>
+                        <xsd:element name="LOVLanguageMode" type="xsd:string"/>
+                        <xsd:element name="ViewMode" minOccurs="0" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="OrderDetailUpdate_Output">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element ref="xsdLocal3:ListOfOrderDetail"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </types>
+    <message name="OrderDetailQueryPage_Input">
+        <part name="OrderDetailQueryPage_Input" element="tns:OrderDetailQueryPage_Input"/>
+    </message>
+    <message name="OrderDetailQueryPage_Output">
+        <part name="OrderDetailQueryPage_Output" element="tns:OrderDetailQueryPage_Output"/>
+    </message>
+    <message name="OrderDetailUpdate_Input">
+        <part name="OrderDetailUpdate_Input" element="tns:OrderDetailUpdate_Input"/>
+    </message>
+    <message name="OrderDetailUpdate_Output">
+        <part name="OrderDetailUpdate_Output" element="tns:OrderDetailUpdate_Output"/>
+    </message>
+    <portType name="OrderDetailUDSPort">
+        <operation name="OrderDetailQueryPage">
+            <input message="tns:OrderDetailQueryPage_Input"/>
+            <output message="tns:OrderDetailQueryPage_Output"/>
+        </operation>
+        <operation name="OrderDetailUpdate">
+            <input message="tns:OrderDetailUpdate_Input"/>
+            <output message="tns:OrderDetailUpdate_Output"/>
+        </operation>
+    </portType>
+    <binding name="OrderDetailUDSPort" type="tns:OrderDetailUDSPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="OrderDetailQueryPage">
+            <soap:operation soapAction="document/http://siebel.com/OrderManagement/Order/Details:OrderDetailQueryPage"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="OrderDetailUpdate">
+            <soap:operation soapAction="document/http://siebel.com/OrderManagement/Order/Details:OrderDetailUpdate"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="OrderDetailWebService">
+        <port name="OrderDetailUDSPort" binding="tns:OrderDetailUDSPort">
+            <soap:address location="http://set.at.runtime"/>
+        </port>
+    </service>
+</definitions>

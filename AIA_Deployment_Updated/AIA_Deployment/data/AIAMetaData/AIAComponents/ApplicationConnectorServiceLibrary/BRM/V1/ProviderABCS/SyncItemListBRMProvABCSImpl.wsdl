@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="SyncItemListBRMProvABCSImpl"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Core/SyncItemListBRMProvABCSImpl/V1"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:coreitemebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Item/V2"
+             xmlns:coreitemabcs="http://xmlns.oracle.com/ABCSImpl/BRM/Core/SyncItemListBRMProvABCSImpl/V1"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service contains operations that would be
+                                used by the participating application to
+                                interact with the external systems</svcdoc:Description>
+            <svcdoc:ServiceType>RequesterABCSImpl</svcdoc:ServiceType>
+            <svcdoc:DisplayName>SyncItemListBRMProvABCSImpl Provider ABCS
+                                Implementation Interface</svcdoc:DisplayName>
+            <svcdoc:ServiceObjectName>SyncItemList</svcdoc:ServiceObjectName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology/>
+            <svcdoc:ProductFamily>BRM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>BRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>PFA</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension"
+            location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Item/V2"
+                    schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/Item/V2/ItemEBM.xsd"/>
+            <import namespace="http://schemas.oracle.com/service/bpel/common"
+                    schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </schema>
+    </types>
+    <message name="SyncItemListReqMsg">
+        <part name="SyncItemList" element="coreitemebo:SyncItemListEBM"/>
+    </message>
+    <portType name="SyncItemListBRMProvABCSImplService">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This interface contains operations that can
+                                    act upon the object</svcdoc:Description>
+                <svcdoc:DisplayName>Sync ItemList BRM Requestor ABCS
+                                    Implementation</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="SyncItemList">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Sync an
+                                        ItemList object</svcdoc:Description>
+                    <svcdoc:MEP>AsyncReqResp</svcdoc:MEP>
+                    <svcdoc:DisplayName>SyncItemList</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="coreitemabcs:SyncItemListReqMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="SyncItemListBRMProvABCSImpl">
+        <plnk:role name="SyncItemListBRMProvABCSImplProvider">
+            <plnk:portType name="coreitemabcs:SyncItemListBRMProvABCSImplService"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

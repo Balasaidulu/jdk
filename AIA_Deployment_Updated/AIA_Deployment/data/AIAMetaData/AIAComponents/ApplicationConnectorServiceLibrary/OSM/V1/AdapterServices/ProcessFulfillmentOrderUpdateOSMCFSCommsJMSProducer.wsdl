@@ -1,0 +1,51 @@
+<definitions name="ProcessFulfillmentOrderUpdateOSMCFSCommsJMSProducer"
+             targetNamespace="http://xmlns.oracle.com/ProcessFulfillmentOrderUpdateOSMCFSCommsJMSProducer"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:ns1="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/FulfillmentOrder/V1"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:ns2="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+             xmlns:client="http://xmlns.oracle.com/ProcessFulfillmentOrderUpdateOSMCFSCommsJMSProducer">
+    <import namespace="http://schemas.oracle.com/bpel/extension"
+            location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/ProcessFulfillmentOrderUpdateOSMCFSCommsJMSProducer"
+                    schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/OSM/V1/ProcessFulfillmentOrderUpdateOSMCFSCommsJMSProducer.xsd"/>
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/FulfillmentOrder/V1"
+                    schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/FulfillmentOrder/V1/FulfillmentOrderEBM.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+                        schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="ProcessFulfillmentOrderUpdateOSMCFSCommsJMSProducerResponseMessage">
+        <part name="payload"
+              element="client:ProcessFulfillmentOrderUpdateOSMCFSCommsJMSProducerProcessResponse"/>
+    </message>
+    <message name="ProcessFulfillmentOrderUpdateOSMCFSCommsJMSProducerRequestMessage">
+        <part name="payload" element="ns1:ProcessFulfillmentOrderUpdateEBM"/>
+    </message>
+    <message name="AIAFault_MsgType">
+        <part name="AIAFault_Msg" element="ns2:Fault"/>
+    </message>
+    <portType name="ProcessFulfillmentOrderUpdateOSMCFSCommsJMSProducerCallback">
+        <operation name="onResult">
+            <input message="client:ProcessFulfillmentOrderUpdateOSMCFSCommsJMSProducerResponseMessage"/>
+        </operation>
+    </portType>
+    <portType name="ProcessFulfillmentOrderUpdateOSMCFSCommsJMSProducer">
+        <operation name="initiate">
+            <input message="client:ProcessFulfillmentOrderUpdateOSMCFSCommsJMSProducerRequestMessage"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="ProcessFulfillmentOrderUpdateOSMCFSCommsJMSProducer">
+        <plnk:role name="ProcessFulfillmentOrderUpdateOSMCFSCommsJMSProducerProvider">
+            <plnk:portType name="client:ProcessFulfillmentOrderUpdateOSMCFSCommsJMSProducer"/>
+        </plnk:role>
+        <plnk:role name="ProcessFulfillmentOrderUpdateOSMCFSCommsJMSProducerRequester">
+            <plnk:portType name="client:ProcessFulfillmentOrderUpdateOSMCFSCommsJMSProducerCallback"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>
+

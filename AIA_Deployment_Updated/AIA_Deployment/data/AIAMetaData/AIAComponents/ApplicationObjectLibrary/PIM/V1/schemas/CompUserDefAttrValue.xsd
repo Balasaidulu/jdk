@@ -1,0 +1,25 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/itemcatalog/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/itemcatalog/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="CompUserDefAttrValue" sdoJava:package="oracle.apps.ego.itemcatalog.service"
+         sdoJava:instanceClass="oracle.apps.ego.itemcatalog.service.CompUserDefAttrValue">
+        <xsd:annotation>
+            <xsd:documentation>Service data object of the user defined attribute value for a given component under the given attribute group</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="Name" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="CharValue" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="NumberValue" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="UomValue" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DateValue" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DatetimeValue" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="TranslatedCharValue" type="xsd:string" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="compUserDefAttrValue" type="CompUserDefAttrValue" nillable="true"/>
+</xsd:schema>

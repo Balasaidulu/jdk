@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?><definitions
+ xmlns="http://schemas.xmlsoap.org/wsdl/"
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+ xmlns:xsdLocal1="http://www.siebel.com/xml/SWIISSPriceListItemIO"
+ targetNamespace="http://siebel.com/asi/"
+ xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:tns="http://siebel.com/asi/"
+><types
+><xsd:schema
+ elementFormDefault="qualified"
+ attributeFormDefault="unqualified"
+ targetNamespace="http://siebel.com/asi/"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+><xsd:import
+ namespace="http://www.siebel.com/xml/SWIISSPriceListItemIO" schemaLocation = "../schemas/SWIISSPriceListItemIO.xsd"
+></xsd:import
+><xsd:element
+ name="SWIPriceListItemInsert_Input"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ ref="xsdLocal1:ListOfIssPriceListItemIntegrationObject"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+><xsd:element
+ name="SWIPriceListItemInsert_Output"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ ref="xsdLocal1:ListOfIssPriceListItemIntegrationObject"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+><xsd:element
+ name="SWIPriceListItemUpdate_Input"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ ref="xsdLocal1:ListOfIssPriceListItemIntegrationObject"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+><xsd:element
+ name="SWIPriceListItemUpdate_Output"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ ref="xsdLocal1:ListOfIssPriceListItemIntegrationObject"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+><xsd:element
+ name="SWIPriceListItemUpsert_Input"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ ref="xsdLocal1:ListOfIssPriceListItemIntegrationObject"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+><xsd:element
+ name="SWIPriceListItemUpsert_Output"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ ref="xsdLocal1:ListOfIssPriceListItemIntegrationObject"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+><xsd:element
+ name="SWIPriceListItemDelete_Input"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ ref="xsdLocal1:ListOfIssPriceListItemIntegrationObject"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+><xsd:element
+ name="SWIPriceListItemDelete_Output"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ ref="xsdLocal1:ListOfIssPriceListItemIntegrationObject"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+></xsd:schema
+></types
+><message
+ name="SWIPriceListItemInsert_Input"
+><part
+ name="SWIPriceListItemInsert_Input"
+ element="tns:SWIPriceListItemInsert_Input"
+></part
+></message
+><message
+ name="SWIPriceListItemInsert_Output"
+><part
+ name="SWIPriceListItemInsert_Output"
+ element="tns:SWIPriceListItemInsert_Output"
+></part
+></message
+><message
+ name="SWIPriceListItemUpdate_Input"
+><part
+ name="SWIPriceListItemUpdate_Input"
+ element="tns:SWIPriceListItemUpdate_Input"
+></part
+></message
+><message
+ name="SWIPriceListItemUpdate_Output"
+><part
+ name="SWIPriceListItemUpdate_Output"
+ element="tns:SWIPriceListItemUpdate_Output"
+></part
+></message
+><message
+ name="SWIPriceListItemUpsert_Input"
+><part
+ name="SWIPriceListItemUpsert_Input"
+ element="tns:SWIPriceListItemUpsert_Input"
+></part
+></message
+><message
+ name="SWIPriceListItemUpsert_Output"
+><part
+ name="SWIPriceListItemUpsert_Output"
+ element="tns:SWIPriceListItemUpsert_Output"
+></part
+></message
+><message
+ name="SWIPriceListItemDelete_Input"
+><part
+ name="SWIPriceListItemDelete_Input"
+ element="tns:SWIPriceListItemDelete_Input"
+></part
+></message
+><message
+ name="SWIPriceListItemDelete_Output"
+><part
+ name="SWIPriceListItemDelete_Output"
+ element="tns:SWIPriceListItemDelete_Output"
+></part
+></message
+><portType
+ name="SWIPriceListItem"
+><operation
+ name="SWIPriceListItemInsert"
+><input
+ message="tns:SWIPriceListItemInsert_Input"
+></input
+><output
+ message="tns:SWIPriceListItemInsert_Output"
+></output
+></operation
+><operation
+ name="SWIPriceListItemUpdate"
+><input
+ message="tns:SWIPriceListItemUpdate_Input"
+></input
+><output
+ message="tns:SWIPriceListItemUpdate_Output"
+></output
+></operation
+><operation
+ name="SWIPriceListItemUpsert"
+><input
+ message="tns:SWIPriceListItemUpsert_Input"
+></input
+><output
+ message="tns:SWIPriceListItemUpsert_Output"
+></output
+></operation
+><operation
+ name="SWIPriceListItemDelete"
+><input
+ message="tns:SWIPriceListItemDelete_Input"
+></input
+><output
+ message="tns:SWIPriceListItemDelete_Output"
+></output
+></operation
+></portType
+><binding
+ name="SWIPriceListItem"
+ type="tns:SWIPriceListItem"
+><soap:binding
+ transport="http://schemas.xmlsoap.org/soap/http"
+ style="document"
+></soap:binding
+><operation
+ name="SWIPriceListItemInsert"
+><soap:operation
+ soapAction="document/http://siebel.com/asi/:SWIPriceListItemInsert"
+></soap:operation
+><input
+><soap:body
+ use="literal"
+></soap:body
+></input
+><output
+><soap:body
+ use="literal"
+></soap:body
+></output
+></operation
+><operation
+ name="SWIPriceListItemUpdate"
+><soap:operation
+ soapAction="document/http://siebel.com/asi/:SWIPriceListItemUpdate"
+></soap:operation
+><input
+><soap:body
+ use="literal"
+></soap:body
+></input
+><output
+><soap:body
+ use="literal"
+></soap:body
+></output
+></operation
+><operation
+ name="SWIPriceListItemUpsert"
+><soap:operation
+ soapAction="document/http://siebel.com/asi/:SWIPriceListItemUpsert"
+></soap:operation
+><input
+><soap:body
+ use="literal"
+></soap:body
+></input
+><output
+><soap:body
+ use="literal"
+></soap:body
+></output
+></operation
+><operation
+ name="SWIPriceListItemDelete"
+><soap:operation
+ soapAction="document/http://siebel.com/asi/:SWIPriceListItemDelete"
+></soap:operation
+><input
+><soap:body
+ use="literal"
+></soap:body
+></input
+><output
+><soap:body
+ use="literal"
+></soap:body
+></output
+></operation
+></binding
+><service
+ name="SWIISSPriceListItemIO"
+><port
+ binding="tns:SWIPriceListItem"
+ name="SWIPriceListItem"
+><soap:address
+ location="http://set.at.runtime"
+></soap:address
+></port
+></service
+></definitions
+>

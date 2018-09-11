@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:brmAbo="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" xmlns:brm="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:coreInstPrdListebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/InstalledProduct/V2" xmlns:coreInstPrdListext="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryInstalledProductListBRMCommsProvABCSImplExtension/V1" xmlns:bpelcom="http://schemas.oracle.com/service/bpel/common" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="QueryInstalledProductListBRMCommsProvABCSImplExtension" xmlns:tns="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryInstalledProductListBRMCommsProvABCSImplExtension/V1" targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryInstalledProductListBRMCommsProvABCSImplExtension/V1">
+   <documentation>
+      <svcdoc:Service>
+         <svcdoc:Description>This service contains intercepting operations that
+                             would be used by the participating application</svcdoc:Description>
+         <svcdoc:ServiceType>ABCSExtension</svcdoc:ServiceType>
+         <svcdoc:DisplayName>QueryInstalledProductListBRMCommsProvABCSImpl/V1 Provider ABCS Extension
+                          Implementation Interface</svcdoc:DisplayName>
+			<svcdoc:ServiceObjectName>QueryInstalledProductList</svcdoc:ServiceObjectName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:Version>1.0</svcdoc:Version>
+			<svcdoc:ImplementationTechnology><!-- PLACEHOLDER--></svcdoc:ImplementationTechnology>
+			<svcdoc:ProductFamily>BRM</svcdoc:ProductFamily>
+			<svcdoc:ProductPillar>BRM</svcdoc:ProductPillar>
+			<svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+      </svcdoc:Service>
+   </documentation>
+   <types>
+      <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Core/QueryInstalledProductListBRMCommsProvABCSImplExtension/V1" elementFormDefault="qualified">
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/InstalledProduct/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/InstalledProduct/V2/InstalledProductEBM.xsd" />
+         <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_SEARCH.xsd" />
+         <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_READ_FLDS.xsd" />
+         
+         <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGS.xsd" />         
+	 <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd" />
+         <xsd:import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd" />
+      </xsd:schema>
+   </types>
+   <message name="PreXformEBMtoABMInstalledProductListMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreXformEBMtoABMEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QueryInstalledProductListEBM" element="coreInstPrdListebo:QueryInstalledProductListEBM" />
+   </message>
+  <message name="PostXformABMtoEBMInstalledProductListRespMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostXformABMtoEBMEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+	<part name="QueryInstalledProductListResponseEBM" element="coreInstPrdListebo:QueryInstalledProductListResponseEBM" />
+   </message>
+   
+	<message name="PreInvokeABSQueryPCM_OP_SEARCHReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeABSABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_SEARCH_inputFlist" element="brm:PCM_OP_SEARCH_inputFlist" />
+   </message>
+	<message name="PreInvokeABSQueryPCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGSReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeABSABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGS_inputFlist" element="brm:PCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGS_inputFlist" />
+   </message>
+	<message name="PreInvokeABSQueryPCM_OP_READ_FLDSReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeABSABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_READ_FLDS_inputFlist" element="brm:PCM_OP_READ_FLDS_inputFlist" />
+   </message>   
+
+	<message name="PostInvokeABSQueryPCM_OP_SEARCHReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostInvokeABSABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_SEARCH_outputFlist" element="brm:PCM_OP_SEARCH_outputFlist" />
+	</message>
+	<message name="PostInvokeABSQueryPCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGSReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostInvokeABSABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGS_outputFlist" element="brm:PCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGS_outputFlist" />
+	</message>
+	<message name="PostInvokeABSQueryPCM_OP_READ_FLDSReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostInvokeABSABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_READ_FLDS_outputFlist" element="brm:PCM_OP_READ_FLDS_outputFlist" />
+	</message>	
+   <message name="FaultMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used for propagating Error
+                                Context and Error Message</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="AIAFault" element="corecom:Fault" />
+   </message>
+   <portType name="QueryInstalledProductListBRMCommsProvABCSImplExtensionService">
+      <documentation>
+         <svcdoc:Interface>
+            <svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+            <svcdoc:DisplayName>ProcessSalesOrderSiebelProvABCSImplV2ExtensionService</svcdoc:DisplayName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         </svcdoc:Interface>
+      </documentation>
+      <operation name="PreXformEBMtoABMInstalledProductListEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformEBMtoABM an InstalledProduct object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformEBMtoABMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="coreInstPrdListext:PreXformEBMtoABMInstalledProductListMsg" />
+         <output message="coreInstPrdListext:PreXformEBMtoABMInstalledProductListMsg" />
+         <fault name="fault" message="coreInstPrdListext:FaultMessage" />
+      </operation>
+	<operation name="PostXformABMtoEBMInstalledProductListEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostXformABMtoEBM an InstalledProduct object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PostXformABMtoEBMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="coreInstPrdListext:PostXformABMtoEBMInstalledProductListRespMsg" />
+         <output message="coreInstPrdListext:PostXformABMtoEBMInstalledProductListRespMsg" />
+         <fault name="fault" message="coreInstPrdListext:FaultMessage" />
+      </operation>
+	 <operation name="PreInvokeABSPCM_OP_SEARCHABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an PCM_OP_SEARCH object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="coreInstPrdListext:PreInvokeABSQueryPCM_OP_SEARCHReqMsg" />
+         <output message="coreInstPrdListext:PreInvokeABSQueryPCM_OP_SEARCHReqMsg" />
+         <fault name="fault" message="coreInstPrdListext:FaultMessage" />
+      </operation>
+	 <operation name="PreInvokeABSPCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGSABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an PCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGS object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="coreInstPrdListext:PreInvokeABSQueryPCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGSReqMsg" />
+         <output message="coreInstPrdListext:PreInvokeABSQueryPCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGSReqMsg" />
+         <fault name="fault" message="coreInstPrdListext:FaultMessage" />
+      </operation>
+	 <operation name="PreInvokeABSPCM_OP_READ_FLDSABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an PCM_OP_READ_FLDS object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="coreInstPrdListext:PreInvokeABSQueryPCM_OP_READ_FLDSReqMsg" />
+         <output message="coreInstPrdListext:PreInvokeABSQueryPCM_OP_READ_FLDSReqMsg" />
+         <fault name="fault" message="coreInstPrdListext:FaultMessage" />
+      </operation>	  
+	<operation name="PostInvokeABSPCM_OP_SEARCHABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostInvokeEBS an PCM_OP_SEARCH object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PostInvokeABSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="coreInstPrdListext:PostInvokeABSQueryPCM_OP_SEARCHReqMsg" />
+         <output message="coreInstPrdListext:PostInvokeABSQueryPCM_OP_SEARCHReqMsg" />
+         <fault name="fault" message="coreInstPrdListext:FaultMessage" />
+      </operation>
+	<operation name="PostInvokeABSPCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGSABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostInvokeEBS an PCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGS object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PostInvokeABSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="coreInstPrdListext:PostInvokeABSQueryPCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGSReqMsg" />
+         <output message="coreInstPrdListext:PostInvokeABSQueryPCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGSReqMsg" />
+         <fault name="fault" message="coreInstPrdListext:FaultMessage" />
+      </operation>
+	<operation name="PostInvokeABSPCM_OP_READ_FLDSABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostInvokeEBS an PCM_OP_READ_FLDS object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PostInvokeABSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="coreInstPrdListext:PostInvokeABSQueryPCM_OP_READ_FLDSReqMsg" />
+         <output message="coreInstPrdListext:PostInvokeABSQueryPCM_OP_READ_FLDSReqMsg" />
+         <fault name="fault" message="coreInstPrdListext:FaultMessage" />
+      </operation>	  
+   </portType>
+    
+	 <binding name="QueryInstalledProductListBRMCommsProvABCSImplExtensionServiceBinding" type="tns:QueryInstalledProductListBRMCommsProvABCSImplExtensionService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="PreXformEBMtoABMInstalledProductListEBM">
+            <soap:operation style="document" soapAction="PreXformEBMtoABMInstalledProductListEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		<operation name="PostXformABMtoEBMInstalledProductListEBM">
+				   	
+            <soap:operation style="document" soapAction="PostXformABMtoEBMInstalledProductListEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+        <operation name="PreInvokeABSPCM_OP_SEARCHABM">
+            <soap:operation style="document" soapAction="PreInvokeABSPCM_OP_SEARCHABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+	    <operation name="PostInvokeABSPCM_OP_SEARCHABM">
+		
+            <soap:operation style="document" soapAction="PostInvokeABSPCM_OP_SEARCHABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		
+        <operation name="PreInvokeABSPCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGSABM">
+            <soap:operation style="document" soapAction="PreInvokeABSPCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGSABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		<operation name="PostInvokeABSPCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGSABM">
+            <soap:operation style="document" soapAction="PostInvokeABSPCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGSABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+        <operation name="PreInvokeABSPCM_OP_READ_FLDSABM">
+            <soap:operation style="document" soapAction="PreInvokeABSPCM_OP_READ_FLDSABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+	    <operation name="PostInvokeABSPCM_OP_READ_FLDSABM">
+		<soap:operation style="document" soapAction="PostInvokeABSPCM_OP_READ_FLDSABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+    </binding>
+   <service name="QueryInstalledProductListBRMCommsProvABCSImplExtension">
+        <port name="QueryInstalledProductListBRMCommsProvABCSImplExtensionServicePort" binding="tns:QueryInstalledProductListBRMCommsProvABCSImplExtensionServiceBinding">
+            <soap:address location="http://${fp.server.soaserverhostname}:${fp.server.soaserverport}/MirrorServlet/mirror" />
+        </port>
+   </service>
+  
+   
+   <plnk:partnerLinkType name="QueryInstalledProductListBRMCommsProvABCSImplExtensionService">
+      <plnk:role name="QueryInstalledProductListBRMCommsProvABCSImplExtensionServiceProvider">
+         <plnk:portType name="coreInstPrdListext:QueryInstalledProductListBRMCommsProvABCSImplExtensionService" />
+      </plnk:role>
+   </plnk:partnerLinkType>
+</definitions>

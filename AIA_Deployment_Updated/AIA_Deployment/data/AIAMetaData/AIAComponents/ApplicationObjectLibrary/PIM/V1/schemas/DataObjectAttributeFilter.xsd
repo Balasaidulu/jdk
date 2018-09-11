@@ -1,0 +1,18 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/svc"
+     xmlns="http://xmlns.oracle.com/svc" xmlns:sdoJava="commonj.sdo/java" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="DataObjectAttributeFilter" sdoJava:package="oracle.svc" sdoJava:instanceClass="oracle.svc.DataObjectImpl">
+        <xsd:annotation>
+            <xsd:documentation>The Data Object Attributes filter.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="DataObject">
+                <xsd:sequence>
+                    <xsd:element name="DataSourceName" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DataObjectQualifiedName" type="xsd:string" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="dataObjectAttributeFilter" type="DataObjectAttributeFilter" nillable="true"/>
+</xsd:schema>

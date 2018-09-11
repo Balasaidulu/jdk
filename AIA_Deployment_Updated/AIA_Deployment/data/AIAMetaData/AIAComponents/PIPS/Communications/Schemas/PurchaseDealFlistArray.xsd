@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.example.org"
+            xmlns:brm="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes"
+            targetNamespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/array"
+            elementFormDefault="qualified">
+  <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_SUBSCRIPTION_PURCHASE_DEAL.xsd"/>
+  <xsd:element name="PurchaseDealArray">
+	  <xsd:complexType>
+		<xsd:sequence>
+		  <xsd:element name="item">
+			<xsd:complexType>
+				<xsd:sequence>
+					<xsd:element name="InstalledProductId" type="xsd:string"/>
+					<xsd:element name="LineProdType" type="xsd:string"/>
+					<xsd:element ref="brm:PCM_OP_SUBSCRIPTION_PURCHASE_DEAL_inputFlist" minOccurs="1" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:complexType>    
+		  </xsd:element>
+		</xsd:sequence>
+	  </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

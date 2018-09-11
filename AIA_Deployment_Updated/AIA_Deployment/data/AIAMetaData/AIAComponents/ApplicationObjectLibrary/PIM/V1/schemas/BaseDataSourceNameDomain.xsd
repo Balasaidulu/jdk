@@ -1,0 +1,17 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/svc"
+     xmlns="http://xmlns.oracle.com/svc" xmlns:sdoJava="commonj.sdo/java" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="BaseDataSourceNameDomain" sdoJava:package="oracle.svc" sdoJava:instanceClass="oracle.svc.DataObjectImpl">
+        <xsd:annotation>
+            <xsd:documentation>The Base Datasource Name domain returns the top level data sources defined on the Service</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="DataObject">
+                <xsd:sequence>
+                    <xsd:element name="DataSourceName" type="xsd:string" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="baseDataSourceNameDomain" type="BaseDataSourceNameDomain" nillable="true"/>
+</xsd:schema>

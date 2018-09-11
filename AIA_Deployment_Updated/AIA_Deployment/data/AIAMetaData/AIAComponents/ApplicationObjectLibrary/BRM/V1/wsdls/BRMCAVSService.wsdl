@@ -1,0 +1,1982 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:brm="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes"
+             xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+             xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BRMCAVSService"
+             targetNamespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes">
+  <types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes">
+      <include schemaLocation="../schemas/PCM_OP_CUST_UPDATE_SERVICES.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_CUST_CREATE_PROFILE.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_CUST_COMMIT_CUSTOMER.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_CUST_SET_STATUS.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_CUST_UPDATE_CUSTOMER.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_CUST_MODIFY_PROFILE.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_CUST_DELETE_PAYINFO.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_CUST_MODIFY_CUSTOMER.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_CUST_DELETE_ACCT.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_CUST_DELETE_PROFILE.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_CUSTCARE_MOVE_ACCT.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_BILL_GROUP_MOVE_MEMBER.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_BILL_MAKE_BILL_NOW.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_BILL_GROUP_GET_PARENT.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_BILL_DEBIT.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_SEARCH.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_READ_OBJ.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_READ_FLDS.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_SUBSCRIPTION_TRANSFER_SUBSCRIPTION.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_SUBSCRIPTION_PURCHASE_DEAL.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_SUBSCRIPTION_CHANGE_DEAL.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_SUBSCRIPTION_SET_PRODINFO.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_SUBSCRIPTION_CANCEL_PRODUCT.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_SUBSCRIPTION_CANCEL_DISCOUNT.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_SUBSCRIPTION_SET_DISCOUNTINFO.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGS.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_SUBSCRIPTION_SET_BUNDLE.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_SUBSCRIPTION_CANCEL_SUBSCRIPTION.xsd"/>
+	  <include schemaLocation="../schemas/PCM_OP_SUBSCRIPTION_SHARING_GROUP_CREATE.xsd"/>
+	  <include schemaLocation="../schemas/PCM_OP_SUBSCRIPTION_SHARING_GROUP_MODIFY.xsd"/>
+	  <include schemaLocation="../schemas/PCM_OP_SUBSCRIPTION_SHARING_GROUP_DELETE.xsd"/>
+	  <include schemaLocation="../schemas/PCM_OP_SUBSCRIPTION_SHARING_GROUP_SET_PARENT.xsd"/>
+	  <include schemaLocation="../schemas/PCM_OP_SUBSCRIPTION_ORDERED_BALGRP.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_TRANS_OPEN.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_TRANS_COMMIT.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_TRANS_ABORT.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_PYMT_COLLECT.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_PRICE_COMMIT_PRODUCT.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_PRICE_SET_PRICE_LIST.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_PRICE_COMMIT_DISCOUNT.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_PRICE_GET_PRICE_LIST.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_COLLECTIONS_SET_ACTION_STATUS.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_BAL_GET_BALANCES.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVC.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_BAL_GET_ACCT_BILLINFO.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_BAL_GET_BAL_GRP_AND_SVC.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_AR_GET_ACCT_BILLS.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_AR_GET_ACCT_BAL_SUMMARY.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_AR_BILL_ADJUSTMENT.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_AR_GET_ACTION_ITEMS.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_AR_ITEM_ADJUSTMENT.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_AR_GET_BAL_SUMMARY.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_AR_ACCOUNT_ADJUSTMENT.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_AR_EVENT_ADJUSTMENT.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_AR_RESOURCE_AGGREGATION.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_AR_GET_BILLS.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_AR_GET_BILL_ITEMS.xsd"/>
+      <include schemaLocation="../schemas/PCM_OP_AR_GET_ACCT_ACTION_ITEMS.xsd"/>
+	<include schemaLocation="../schemas/PCM_OP_INV_VIEW_INVOICE.xsd"/>
+	<include schemaLocation="../schemas/PCM_OP_SUBSCRIPTION_SERVICE_BALGRP_TRANSFER.xsd"/>
+	<!-- Legal Group Changes Start -->
+	<include schemaLocation="../schemas/PCM_OP_COLLECTIONS_ADD_ACTION.xsd"/>
+       <include schemaLocation="../schemas/PCM_OP_COLLECTIONS_ASSIGN_AGENT.xsd"/>
+       <include schemaLocation="../schemas/PCM_OP_COLLECTIONS_EXEMPT_BILLINFO.xsd"/>
+	<include schemaLocation="../schemas/PCM_OP_COLLECTIONS_GET_SCENARIO_DETAIL.xsd"/>
+	<include schemaLocation="../schemas/PCM_OP_COLLECTIONS_GROUP_ADD_MEMBER.xsd"/>
+	<include schemaLocation="../schemas/PCM_OP_COLLECTIONS_GROUP_CREATE.xsd"/>
+	<include schemaLocation="../schemas/PCM_OP_COLLECTIONS_GROUP_DELETE.xsd"/>
+	<include schemaLocation="../schemas/PCM_OP_COLLECTIONS_GROUP_DELETE_MEMBER.xsd"/>
+       <include schemaLocation="../schemas/PCM_OP_COLLECTIONS_GROUP_GET_BILLINFO.xsd"/>
+	<include schemaLocation="../schemas/PCM_OP_COLLECTIONS_GROUP_MODIFY.xsd"/>
+       <include schemaLocation="../schemas/PCM_OP_COLLECTIONS_GROUP_SET_PARENT.xsd"/>
+	<include schemaLocation="../schemas/PCM_OP_COLLECTIONS_INVOKE_PROMISE_TO_PAY.xsd"/>
+       <include schemaLocation="../schemas/PCM_OP_COLLECTIONS_REPLACE_SCENARIO.xsd"/>
+       <include schemaLocation="../schemas/PCM_OP_COLLECTIONS_REVOKE_PROMISE_TO_PAY.xsd"/>
+	<include schemaLocation="../schemas/PCM_OP_COLLECTIONS_UPDATE_ACTION_PAYMENT_DETAILS.xsd"/> 
+     <!-- Legal Group Changes End -->
+    </schema>
+  </types>
+  <message name="PCM_OP_AR_GET_ACCT_BILLS_inmsg">
+    <part element="brm:PCM_OP_AR_GET_ACCT_BILLS_inputFlist"
+          name="PCM_OP_AR_GET_ACCT_BILLS_inputFlist"/>
+  </message>
+  <message name="PCM_OP_AR_GET_ACCT_BILLS_outmsg">
+    <part element="brm:PCM_OP_AR_GET_ACCT_BILLS_outputFlist"
+          name="PCM_OP_AR_GET_ACCT_BILLS_outputFlist"/>
+  </message>
+  <message name="PCM_OP_AR_GET_ACCT_BAL_SUMMARY_inmsg">
+    <part element="brm:PCM_OP_AR_GET_ACCT_BAL_SUMMARY_inputFlist"
+          name="PCM_OP_AR_GET_ACCT_BAL_SUMMARY_inputFlist"/>
+  </message>
+  <message name="PCM_OP_AR_GET_ACCT_BAL_SUMMARY_outmsg">
+    <part element="brm:PCM_OP_AR_GET_ACCT_BAL_SUMMARY_outputFlist"
+          name="PCM_OP_AR_GET_ACCT_BAL_SUMMARY_outputFlist"/>
+  </message>
+  <message name="PCM_OP_AR_BILL_ADJUSTMENT_inmsg">
+    <part element="brm:PCM_OP_AR_BILL_ADJUSTMENT_inputFlist"
+          name="PCM_OP_AR_BILL_ADJUSTMENT_inputFlist"/>
+  </message>
+  <message name="PCM_OP_AR_BILL_ADJUSTMENT_outmsg">
+    <part element="brm:PCM_OP_AR_BILL_ADJUSTMENT_outputFlist"
+          name="PCM_OP_AR_BILL_ADJUSTMENT_outputFlist"/>
+  </message>
+  <message name="PCM_OP_AR_GET_ACTION_ITEMS_inmsg">
+    <part element="brm:PCM_OP_AR_GET_ACTION_ITEMS_inputFlist"
+          name="PCM_OP_AR_GET_ACTION_ITEMS_inputFlist"/>
+  </message>
+  <message name="PCM_OP_AR_GET_ACTION_ITEMS_outmsg">
+    <part element="brm:PCM_OP_AR_GET_ACTION_ITEMS_outputFlist"
+          name="PCM_OP_AR_GET_ACTION_ITEMS_outputFlist"/>
+  </message>
+  <message name="PCM_OP_AR_ITEM_ADJUSTMENT_inmsg">
+    <part element="brm:PCM_OP_AR_ITEM_ADJUSTMENT_inputFlist"
+          name="PCM_OP_AR_ITEM_ADJUSTMENT_inputFlist"/>
+  </message>
+  <message name="PCM_OP_AR_ITEM_ADJUSTMENT_outmsg">
+    <part element="brm:PCM_OP_AR_ITEM_ADJUSTMENT_outputFlist"
+          name="PCM_OP_AR_ITEM_ADJUSTMENT_outputFlist"/>
+  </message>
+  <message name="PCM_OP_AR_GET_BAL_SUMMARY_inmsg">
+    <part element="brm:PCM_OP_AR_GET_BAL_SUMMARY_inputFlist"
+          name="PCM_OP_AR_GET_BAL_SUMMARY_inputFlist"/>
+  </message>
+  <message name="PCM_OP_AR_GET_BAL_SUMMARY_outmsg">
+    <part element="brm:PCM_OP_AR_GET_BAL_SUMMARY_outputFlist"
+          name="PCM_OP_AR_GET_BAL_SUMMARY_outputFlist"/>
+  </message>
+  <message name="PCM_OP_AR_ACCOUNT_ADJUSTMENT_inmsg">
+    <part element="brm:PCM_OP_AR_ACCOUNT_ADJUSTMENT_inputFlist"
+          name="PCM_OP_AR_ACCOUNT_ADJUSTMENT_inputFlist"/>
+  </message>
+  <message name="PCM_OP_AR_ACCOUNT_ADJUSTMENT_outmsg">
+    <part element="brm:PCM_OP_AR_ACCOUNT_ADJUSTMENT_outputFlist"
+          name="PCM_OP_AR_ACCOUNT_ADJUSTMENT_outputFlist"/>
+  </message>
+  <message name="PCM_OP_AR_EVENT_ADJUSTMENT_inmsg">
+    <part element="brm:PCM_OP_AR_EVENT_ADJUSTMENT_inputFlist"
+          name="PCM_OP_AR_EVENT_ADJUSTMENT_inputFlist"/>
+  </message>
+  <message name="PCM_OP_AR_EVENT_ADJUSTMENT_outmsg">
+    <part element="brm:PCM_OP_AR_EVENT_ADJUSTMENT_outputFlist"
+          name="PCM_OP_AR_EVENT_ADJUSTMENT_outputFlist"/>
+  </message>
+  <message name="PCM_OP_AR_RESOURCE_AGGREGATION_inmsg">
+    <part element="brm:PCM_OP_AR_RESOURCE_AGGREGATION_inputFlist"
+          name="PCM_OP_AR_RESOURCE_AGGREGATION_inputFlist"/>
+  </message>
+  <message name="PCM_OP_AR_RESOURCE_AGGREGATION_outmsg">
+    <part element="brm:PCM_OP_AR_RESOURCE_AGGREGATION_outputFlist"
+          name="PCM_OP_AR_RESOURCE_AGGREGATION_outputFlist"/>
+  </message>
+  <message name="PCM_OP_AR_GET_BILLS_inmsg">
+    <part element="brm:PCM_OP_AR_GET_BILLS_inputFlist"
+          name="PCM_OP_AR_GET_BILLS_inputFlist"/>
+  </message>
+  <message name="PCM_OP_AR_GET_BILLS_outmsg">
+    <part element="brm:PCM_OP_AR_GET_BILLS_outputFlist"
+          name="PCM_OP_AR_GET_BILLS_outputFlist"/>
+  </message>
+  <message name="PCM_OP_AR_GET_BILL_ITEMS_inmsg">
+    <part element="brm:PCM_OP_AR_GET_BILL_ITEMS_inputFlist"
+          name="PCM_OP_AR_GET_BILL_ITEMS_inputFlist"/>
+  </message>
+  <message name="PCM_OP_AR_GET_BILL_ITEMS_outmsg">
+    <part element="brm:PCM_OP_AR_GET_BILL_ITEMS_outputFlist"
+          name="PCM_OP_AR_GET_BILL_ITEMS_outputFlist"/>
+  </message>
+  <message name="PCM_OP_AR_GET_ACCT_ACTION_ITEMS_inmsg">
+    <part element="brm:PCM_OP_AR_GET_ACCT_ACTION_ITEMS_inputFlist"
+          name="PCM_OP_AR_GET_ACCT_ACTION_ITEMS_inputFlist"/>
+  </message>
+  <message name="PCM_OP_AR_GET_ACCT_ACTION_ITEMS_outmsg">
+    <part element="brm:PCM_OP_AR_GET_ACCT_ACTION_ITEMS_outputFlist"
+          name="PCM_OP_AR_GET_ACCT_ACTION_ITEMS_outputFlist"/>
+  </message>
+  <message name="PCM_OP_BAL_GET_BALANCES_inmsg">
+    <part element="brm:PCM_OP_BAL_GET_BALANCES_inputFlist"
+          name="PCM_OP_BAL_GET_BALANCES_inputFlist"/>
+  </message>
+  <message name="PCM_OP_BAL_GET_BALANCES_outmsg">
+    <part element="brm:PCM_OP_BAL_GET_BALANCES_outputFlist"
+          name="PCM_OP_BAL_GET_BALANCES_outputFlist"/>
+  </message>
+  <message name="PCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVC_inmsg">
+    <part element="brm:PCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVC_inputFlist"
+          name="PCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVC_inputFlist"/>
+  </message>
+  <message name="PCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVC_outmsg">
+    <part element="brm:PCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVC_outputFlist"
+          name="PCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVC_outputFlist"/>
+  </message>
+  <message name="PCM_OP_BAL_GET_ACCT_BILLINFO_inmsg">
+    <part element="brm:PCM_OP_BAL_GET_ACCT_BILLINFO_inputFlist"
+          name="PCM_OP_BAL_GET_ACCT_BILLINFO_inputFlist"/>
+  </message>
+  <message name="PCM_OP_BAL_GET_ACCT_BILLINFO_outmsg">
+    <part element="brm:PCM_OP_BAL_GET_ACCT_BILLINFO_outputFlist"
+          name="PCM_OP_BAL_GET_ACCT_BILLINFO_outputFlist"/>
+  </message>
+  <message name="PCM_OP_BAL_GET_BAL_GRP_AND_SVC_inmsg">
+    <part element="brm:PCM_OP_BAL_GET_BAL_GRP_AND_SVC_inputFlist"
+          name="PCM_OP_BAL_GET_BAL_GRP_AND_SVC_inputFlist"/>
+  </message>
+  <message name="PCM_OP_BAL_GET_BAL_GRP_AND_SVC_outmsg">
+    <part element="brm:PCM_OP_BAL_GET_BAL_GRP_AND_SVC_outputFlist"
+          name="PCM_OP_BAL_GET_BAL_GRP_AND_SVC_outputFlist"/>
+  </message>
+  <message name="PCM_OP_COLLECTIONS_SET_ACTION_STATUS_inmsg">
+    <part element="brm:PCM_OP_COLLECTIONS_SET_ACTION_STATUS_inputFlist"
+          name="PCM_OP_COLLECTIONS_SET_ACTION_STATUS_inputFlist"/>
+  </message>
+  <message name="PCM_OP_COLLECTIONS_SET_ACTION_STATUS_outmsg">
+    <part element="brm:PCM_OP_COLLECTIONS_SET_ACTION_STATUS_outputFlist"
+          name="PCM_OP_COLLECTIONS_SET_ACTION_STATUS_outputFlist"/>
+  </message>
+  <message name="PCM_OP_CUST_UPDATE_SERVICES_inmsg">
+    <part element="brm:PCM_OP_CUST_UPDATE_SERVICES_inputFlist"
+          name="PCM_OP_CUST_UPDATE_SERVICES_inputFlist"/>
+  </message>
+  <message name="PCM_OP_CUST_UPDATE_SERVICES_outmsg">
+    <part element="brm:PCM_OP_CUST_UPDATE_SERVICES_outputFlist"
+          name="PCM_OP_CUST_UPDATE_SERVICES_outputFlist"/>
+  </message>
+  <message name="PCM_OP_CUST_CREATE_PROFILE_inmsg">
+    <part element="brm:PCM_OP_CUST_CREATE_PROFILE_inputFlist"
+          name="PCM_OP_CUST_CREATE_PROFILE_inputFlist"/>
+  </message>
+  <message name="PCM_OP_CUST_CREATE_PROFILE_outmsg">
+    <part element="brm:PCM_OP_CUST_CREATE_PROFILE_outputFlist"
+          name="PCM_OP_CUST_CREATE_PROFILE_outputFlist"/>
+  </message>
+  <message name="PCM_OP_CUST_COMMIT_CUSTOMER_inmsg">
+    <part element="brm:PCM_OP_CUST_COMMIT_CUSTOMER_inputFlist"
+          name="PCM_OP_CUST_COMMIT_CUSTOMER_inputFlist"/>
+  </message>
+  <message name="PCM_OP_CUST_COMMIT_CUSTOMER_outmsg">
+    <part element="brm:PCM_OP_CUST_COMMIT_CUSTOMER_outputFlist"
+          name="PCM_OP_CUST_COMMIT_CUSTOMER_outputFlist"/>
+  </message>
+  <message name="PCM_OP_CUST_SET_STATUS_inmsg">
+    <part element="brm:PCM_OP_CUST_SET_STATUS_inputFlist"
+          name="PCM_OP_CUST_SET_STATUS_inputFlist"/>
+  </message>
+  <message name="PCM_OP_CUST_SET_STATUS_outmsg">
+    <part element="brm:PCM_OP_CUST_SET_STATUS_outputFlist"
+          name="PCM_OP_CUST_SET_STATUS_outputFlist"/>
+  </message>
+  <message name="PCM_OP_CUST_UPDATE_CUSTOMER_inmsg">
+    <part element="brm:PCM_OP_CUST_UPDATE_CUSTOMER_inputFlist"
+          name="PCM_OP_CUST_UPDATE_CUSTOMER_inputFlist"/>
+  </message>
+  <message name="PCM_OP_CUST_UPDATE_CUSTOMER_outmsg">
+    <part element="brm:PCM_OP_CUST_UPDATE_CUSTOMER_outputFlist"
+          name="PCM_OP_CUST_UPDATE_CUSTOMER_outputFlist"/>
+  </message>
+  <message name="PCM_OP_CUST_MODIFY_PROFILE_inmsg">
+    <part element="brm:PCM_OP_CUST_MODIFY_PROFILE_inputFlist"
+          name="PCM_OP_CUST_MODIFY_PROFILE_inputFlist"/>
+  </message>
+  <message name="PCM_OP_CUST_MODIFY_PROFILE_outmsg">
+    <part element="brm:PCM_OP_CUST_MODIFY_PROFILE_outputFlist"
+          name="PCM_OP_CUST_MODIFY_PROFILE_outputFlist"/>
+  </message>
+  <message name="PCM_OP_CUST_DELETE_PAYINFO_inmsg">
+    <part element="brm:PCM_OP_CUST_DELETE_PAYINFO_inputFlist"
+          name="PCM_OP_CUST_DELETE_PAYINFO_inputFlist"/>
+  </message>
+  <message name="PCM_OP_CUST_DELETE_PAYINFO_outmsg">
+    <part element="brm:PCM_OP_CUST_DELETE_PAYINFO_outputFlist"
+          name="PCM_OP_CUST_DELETE_PAYINFO_outputFlist"/>
+  </message>
+  <message name="PCM_OP_CUST_MODIFY_CUSTOMER_inmsg">
+    <part element="brm:PCM_OP_CUST_MODIFY_CUSTOMER_inputFlist"
+          name="PCM_OP_CUST_MODIFY_CUSTOMER_inputFlist"/>
+  </message>
+  <message name="PCM_OP_CUST_MODIFY_CUSTOMER_outmsg">
+    <part element="brm:PCM_OP_CUST_MODIFY_CUSTOMER_outputFlist"
+          name="PCM_OP_CUST_MODIFY_CUSTOMER_outputFlist"/>
+  </message>
+  <message name="PCM_OP_CUST_DELETE_ACCT_inmsg">
+    <part element="brm:PCM_OP_CUST_DELETE_ACCT_inputFlist"
+          name="PCM_OP_CUST_DELETE_ACCT_inputFlist"/>
+  </message>
+  <message name="PCM_OP_CUST_DELETE_ACCT_outmsg">
+    <part element="brm:PCM_OP_CUST_DELETE_ACCT_outputFlist"
+          name="PCM_OP_CUST_DELETE_ACCT_outputFlist"/>
+  </message>
+  <message name="PCM_OP_CUST_DELETE_PROFILE_inmsg">
+    <part element="brm:PCM_OP_CUST_DELETE_PROFILE_inputFlist"
+          name="PCM_OP_CUST_DELETE_PROFILE_inputFlist"/>
+  </message>
+  <message name="PCM_OP_CUST_DELETE_PROFILE_outmsg">
+    <part element="brm:PCM_OP_CUST_DELETE_PROFILE_outputFlist"
+          name="PCM_OP_CUST_DELETE_PROFILE_outputFlist"/>
+  </message>
+  <message name="PCM_OP_CUSTCARE_MOVE_ACCT_inmsg">
+    <part element="brm:PCM_OP_CUSTCARE_MOVE_ACCT_inputFlist"
+          name="PCM_OP_CUSTCARE_MOVE_ACCT_inputFlist"/>
+  </message>
+  <message name="PCM_OP_CUSTCARE_MOVE_ACCT_outmsg">
+    <part element="brm:PCM_OP_CUSTCARE_MOVE_ACCT_outputFlist"
+          name="PCM_OP_CUSTCARE_MOVE_ACCT_outputFlist"/>
+  </message>
+  <message name="PCM_OP_BILL_GROUP_MOVE_MEMBER_inmsg">
+    <part element="brm:PCM_OP_BILL_GROUP_MOVE_MEMBER_inputFlist"
+          name="PCM_OP_BILL_GROUP_MOVE_MEMBER_inputFlist"/>
+  </message>
+  <message name="PCM_OP_BILL_GROUP_MOVE_MEMBER_outmsg">
+    <part element="brm:PCM_OP_BILL_GROUP_MOVE_MEMBER_outputFlist"
+          name="PCM_OP_BILL_GROUP_MOVE_MEMBER_outputFlist"/>
+  </message>
+  <message name="PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT_inmsg">
+    <part element="brm:PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT_inputFlist"
+          name="PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT_inputFlist"/>
+  </message>
+  <message name="PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT_outmsg">
+    <part element="brm:PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT_outputFlist"
+          name="PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT_outputFlist"/>
+  </message>
+  <message name="PCM_OP_BILL_MAKE_BILL_NOW_inmsg">
+    <part element="brm:PCM_OP_BILL_MAKE_BILL_NOW_inputFlist"
+          name="PCM_OP_BILL_MAKE_BILL_NOW_inputFlist"/>
+  </message>
+  <message name="PCM_OP_BILL_MAKE_BILL_NOW_outmsg">
+    <part element="brm:PCM_OP_BILL_MAKE_BILL_NOW_outputFlist"
+          name="PCM_OP_BILL_MAKE_BILL_NOW_outputFlist"/>
+  </message>
+  <message name="PCM_OP_BILL_GROUP_GET_PARENT_inmsg">
+    <part element="brm:PCM_OP_BILL_GROUP_GET_PARENT_inputFlist"
+          name="PCM_OP_BILL_GROUP_GET_PARENT_inputFlist"/>
+  </message>
+  <message name="PCM_OP_BILL_GROUP_GET_PARENT_outmsg">
+    <part element="brm:PCM_OP_BILL_GROUP_GET_PARENT_outputFlist"
+          name="PCM_OP_BILL_GROUP_GET_PARENT_outputFlist"/>
+  </message>
+  <message name="PCM_OP_BILL_DEBIT_inmsg">
+    <part element="brm:PCM_OP_BILL_DEBIT_inputFlist"
+          name="PCM_OP_BILL_DEBIT_inputFlist"/>
+  </message>
+  <message name="PCM_OP_BILL_DEBIT_outmsg">
+    <part element="brm:PCM_OP_BILL_DEBIT_outputFlist"
+          name="PCM_OP_BILL_DEBIT_outputFlist"/>
+  </message>
+  <message name="PCM_OP_SEARCH_inmsg">
+    <part element="brm:PCM_OP_SEARCH_inputFlist"
+          name="PCM_OP_SEARCH_inputFlist"/>
+  </message>
+  <message name="PCM_OP_SEARCH_outmsg">
+    <part element="brm:PCM_OP_SEARCH_outputFlist"
+          name="PCM_OP_SEARCH_outputFlist"/>
+  </message>
+  <message name="PCM_OP_READ_OBJ_inmsg">
+    <part element="brm:PCM_OP_READ_OBJ_inputFlist"
+          name="PCM_OP_READ_OBJ_inputFlist"/>
+  </message>
+  <message name="PCM_OP_READ_OBJ_outmsg">
+    <part element="brm:PCM_OP_READ_OBJ_outputFlist"
+          name="PCM_OP_READ_OBJ_outputFlist"/>
+  </message>
+  <message name="PCM_OP_READ_FLDS_inmsg">
+    <part element="brm:PCM_OP_READ_FLDS_inputFlist"
+          name="PCM_OP_READ_FLDS_inputFlist"/>
+  </message>
+  <message name="PCM_OP_READ_FLDS_outmsg">
+    <part element="brm:PCM_OP_READ_FLDS_outputFlist"
+          name="PCM_OP_READ_FLDS_outputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_TRANSFER_SUBSCRIPTION_inmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_TRANSFER_SUBSCRIPTION_inputFlist"
+          name="PCM_OP_SUBSCRIPTION_TRANSFER_SUBSCRIPTION_inputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_TRANSFER_SUBSCRIPTION_outmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_TRANSFER_SUBSCRIPTION_outputFlist"
+          name="PCM_OP_SUBSCRIPTION_TRANSFER_SUBSCRIPTION_outputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_PURCHASE_DEAL_inmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_PURCHASE_DEAL_inputFlist"
+          name="PCM_OP_SUBSCRIPTION_PURCHASE_DEAL_inputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_PURCHASE_DEAL_outmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_PURCHASE_DEAL_outputFlist"
+          name="PCM_OP_SUBSCRIPTION_PURCHASE_DEAL_outputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_CHANGE_DEAL_inmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_CHANGE_DEAL_inputFlist"
+          name="PCM_OP_SUBSCRIPTION_CHANGE_DEAL_inputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_CHANGE_DEAL_outmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_CHANGE_DEAL_outputFlist"
+          name="PCM_OP_SUBSCRIPTION_CHANGE_DEAL_outputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS_inmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS_inputFlist"
+          name="PCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS_inputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS_outmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS_outputFlist"
+          name="PCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS_outputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_SET_PRODINFO_inmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_SET_PRODINFO_inputFlist"
+          name="PCM_OP_SUBSCRIPTION_SET_PRODINFO_inputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_SET_PRODINFO_outmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_SET_PRODINFO_outputFlist"
+          name="PCM_OP_SUBSCRIPTION_SET_PRODINFO_outputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_CANCEL_PRODUCT_inmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_CANCEL_PRODUCT_inputFlist"
+          name="PCM_OP_SUBSCRIPTION_CANCEL_PRODUCT_inputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_CANCEL_PRODUCT_outmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_CANCEL_PRODUCT_outputFlist"
+          name="PCM_OP_SUBSCRIPTION_CANCEL_PRODUCT_outputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_CANCEL_DISCOUNT_inmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_CANCEL_DISCOUNT_inputFlist"
+          name="PCM_OP_SUBSCRIPTION_CANCEL_DISCOUNT_inputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_CANCEL_DISCOUNT_outmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_CANCEL_DISCOUNT_outputFlist"
+          name="PCM_OP_SUBSCRIPTION_CANCEL_DISCOUNT_outputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS_inmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS_inputFlist"
+          name="PCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS_inputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS_outmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS_outputFlist"
+          name="PCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS_outputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_SET_DISCOUNTINFO_inmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_SET_DISCOUNTINFO_inputFlist"
+          name="PCM_OP_SUBSCRIPTION_SET_DISCOUNTINFO_inputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_SET_DISCOUNTINFO_outmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_SET_DISCOUNTINFO_outputFlist"
+          name="PCM_OP_SUBSCRIPTION_SET_DISCOUNTINFO_outputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGS_inmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGS_inputFlist"
+          name="PCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGS_inputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGS_outmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGS_outputFlist"
+          name="PCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGS_outputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_SET_BUNDLE_inmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_SET_BUNDLE_inputFlist"
+          name="PCM_OP_SUBSCRIPTION_SET_BUNDLE_inputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_SET_BUNDLE_outmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_SET_BUNDLE_outputFlist"
+          name="PCM_OP_SUBSCRIPTION_SET_BUNDLE_outputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_CANCEL_SUBSCRIPTION_inmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_CANCEL_SUBSCRIPTION_inputFlist"
+          name="PCM_OP_SUBSCRIPTION_CANCEL_SUBSCRIPTION_inputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_CANCEL_SUBSCRIPTION_outmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_CANCEL_SUBSCRIPTION_outputFlist"
+          name="PCM_OP_SUBSCRIPTION_CANCEL_SUBSCRIPTION_outputFlist"/>
+  </message>
+  <message name="PCM_OP_PYMT_COLLECT_inmsg">
+    <part element="brm:PCM_OP_PYMT_COLLECT_inputFlist"
+          name="PCM_OP_PYMT_COLLECT_inputFlist"/>
+  </message>
+  <message name="PCM_OP_PYMT_COLLECT_outmsg">
+    <part element="brm:PCM_OP_PYMT_COLLECT_outputFlist"
+          name="PCM_OP_PYMT_COLLECT_outputFlist"/>
+  </message>
+  <message name="PCM_OP_TRANS_OPEN_inmsg">
+    <part element="brm:PCM_OP_TRANS_OPEN_inputFlist"
+          name="PCM_OP_TRANS_OPEN_inputFlist"/>
+  </message>
+  <message name="PCM_OP_TRANS_OPEN_outmsg">
+    <part element="brm:PCM_OP_TRANS_OPEN_outputFlist"
+          name="PCM_OP_TRANS_OPEN_outputFlist"/>
+  </message>
+  <message name="PCM_OP_TRANS_COMMIT_inmsg">
+    <part element="brm:PCM_OP_TRANS_COMMIT_inputFlist"
+          name="PCM_OP_TRANS_COMMIT_inputFlist"/>
+  </message>
+  <message name="PCM_OP_TRANS_COMMIT_outmsg">
+    <part element="brm:PCM_OP_TRANS_COMMIT_outputFlist"
+          name="PCM_OP_TRANS_COMMIT_outputFlist"/>
+  </message>
+  <message name="PCM_OP_TRANS_ABORT_inmsg">
+    <part element="brm:PCM_OP_TRANS_ABORT_inputFlist"
+          name="PCM_OP_TRANS_ABORT_inputFlist"/>
+  </message>
+  <message name="PCM_OP_TRANS_ABORT_outmsg">
+    <part element="brm:PCM_OP_TRANS_ABORT_outputFlist"
+          name="PCM_OP_TRANS_ABORT_outputFlist"/>
+  </message>
+  <message name="PCM_OP_PRICE_COMMIT_PRODUCT_inmsg">
+    <part element="brm:PCM_OP_PRICE_COMMIT_PRODUCT_inputFlist"
+          name="PCM_OP_PRICE_COMMIT_PRODUCT_inputFlist"/>
+  </message>
+  <message name="PCM_OP_PRICE_COMMIT_PRODUCT_outmsg">
+    <part element="brm:PCM_OP_PRICE_COMMIT_PRODUCT_outputFlist"
+          name="PCM_OP_PRICE_COMMIT_PRODUCT_outputFlist"/>
+  </message>
+  <message name="PCM_OP_PRICE_SET_PRICE_LIST_inmsg">
+    <part element="brm:PCM_OP_PRICE_SET_PRICE_LIST_inputFlist"
+          name="PCM_OP_PRICE_SET_PRICE_LIST_inputFlist"/>
+  </message>
+  <message name="PCM_OP_PRICE_SET_PRICE_LIST_outmsg">
+    <part element="brm:PCM_OP_PRICE_SET_PRICE_LIST_outputFlist"
+          name="PCM_OP_PRICE_SET_PRICE_LIST_outputFlist"/>
+  </message>
+  <message name="PCM_OP_PRICE_COMMIT_DISCOUNT_inmsg">
+    <part element="brm:PCM_OP_PRICE_COMMIT_DISCOUNT_inputFlist"
+          name="PCM_OP_PRICE_COMMIT_DISCOUNT_inputFlist"/>
+  </message>
+  <message name="PCM_OP_PRICE_COMMIT_DISCOUNT_outmsg">
+    <part element="brm:PCM_OP_PRICE_COMMIT_DISCOUNT_outputFlist"
+          name="PCM_OP_PRICE_COMMIT_DISCOUNT_outputFlist"/>
+  </message>
+  <message name="PCM_OP_PRICE_GET_PRICE_LIST_inmsg">
+    <part element="brm:PCM_OP_PRICE_GET_PRICE_LIST_inputFlist"
+          name="PCM_OP_PRICE_GET_PRICE_LIST_inputFlist"/>
+  </message>
+  <message name="PCM_OP_PRICE_GET_PRICE_LIST_outmsg">
+    <part element="brm:PCM_OP_PRICE_GET_PRICE_LIST_outputFlist"
+          name="PCM_OP_PRICE_GET_PRICE_LIST_outputFlist"/>
+  </message>
+  <message name="PCM_OP_INV_VIEW_INVOICE_inmsg">
+    <part element="brm:PCM_OP_INV_VIEW_INVOICE_inputFlist"
+          name="PCM_OP_INV_VIEW_INVOICE_inputFlist"/>
+  </message>
+  <message name="PCM_OP_INV_VIEW_INVOICE_outmsg">
+    <part element="brm:PCM_OP_INV_VIEW_INVOICE_outputFlist"
+          name="PCM_OP_INV_VIEW_INVOICE_outputFlist"/>
+  </message>
+  <!-- Sharing Groups   Start -->
+  <message name="PCM_OP_SUBSCRIPTION_ORDERED_BALGRP_inmsg">
+        <part element="brm:PCM_OP_SUBSCRIPTION_ORDERED_BALGRP_inputFlist" name="PCM_OP_SUBSCRIPTION_ORDERED_BALGRP_inputFlist"/>
+    </message>
+    <message name="PCM_OP_SUBSCRIPTION_ORDERED_BALGRP_outmsg">
+        <part element="brm:PCM_OP_SUBSCRIPTION_ORDERED_BALGRP_outputFlist" name="PCM_OP_SUBSCRIPTION_ORDERED_BALGRP_outputFlist"/>
+    </message>
+	<message name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_CREATE_inmsg">
+        <part element="brm:PCM_OP_SUBSCRIPTION_SHARING_GROUP_CREATE_inputFlist" name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_CREATE_inputFlist"/>
+    </message>
+    <message name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_CREATE_outmsg">
+        <part element="brm:PCM_OP_SUBSCRIPTION_SHARING_GROUP_CREATE_outputFlist" name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_CREATE_outputFlist"/>
+    </message>
+    <message name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_MODIFY_inmsg">
+        <part element="brm:PCM_OP_SUBSCRIPTION_SHARING_GROUP_MODIFY_inputFlist" name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_MODIFY_inputFlist"/>
+    </message>
+    <message name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_MODIFY_outmsg">
+        <part element="brm:PCM_OP_SUBSCRIPTION_SHARING_GROUP_MODIFY_outputFlist" name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_MODIFY_outputFlist"/>
+    </message>
+    <message name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_DELETE_inmsg">
+        <part element="brm:PCM_OP_SUBSCRIPTION_SHARING_GROUP_DELETE_inputFlist" name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_DELETE_inputFlist"/>
+    </message>
+    <message name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_DELETE_outmsg">
+        <part element="brm:PCM_OP_SUBSCRIPTION_SHARING_GROUP_DELETE_outputFlist" name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_DELETE_outputFlist"/>
+    </message>
+    <message name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_SET_PARENT_inmsg">
+        <part element="brm:PCM_OP_SUBSCRIPTION_SHARING_GROUP_SET_PARENT_inputFlist" name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_SET_PARENT_inputFlist"/>
+    </message>
+    <message name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_SET_PARENT_outmsg">
+        <part element="brm:PCM_OP_SUBSCRIPTION_SHARING_GROUP_SET_PARENT_outputFlist" name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_SET_PARENT_outputFlist"/>
+    </message>
+  <!-- Sharing Groups   End-->
+  <!-- MBG Changes, START-->
+  <message name="PCM_OP_SUBSCRIPTION_SERVICE_BALGRP_TRANSFER_inmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_SERVICE_BALGRP_TRANSFER_inputFlist"
+          name="PCM_OP_SUBSCRIPTION_SERVICE_BALGRP_TRANSFER_inputFlist"/>
+  </message>
+  <message name="PCM_OP_SUBSCRIPTION_SERVICE_BALGRP_TRANSFER_outmsg">
+    <part element="brm:PCM_OP_SUBSCRIPTION_SERVICE_BALGRP_TRANSFER_outputFlist"
+          name="PCM_OP_SUBSCRIPTION_SERVICE_BALGRP_TRANSFER_outputFlist"/>
+  </message>
+  <!-- MBG Changes, END-->
+  
+  <!-- Start Collection Sharing Groups-->
+	<message name="PCM_OP_COLLECTIONS_ADD_ACTION_inmsg">
+		<part element="brm:PCM_OP_COLLECTIONS_ADD_ACTION_inputFlist" name="PCM_OP_COLLECTIONS_ADD_ACTION_inputFlist"/>
+	</message>
+	<message name="PCM_OP_COLLECTIONS_ADD_ACTION_outmsg">
+		<part element="brm:PCM_OP_COLLECTIONS_ADD_ACTION_outputFlist" name="PCM_OP_COLLECTIONS_ADD_ACTION_outputFlist"/>
+	</message>
+
+	<message name="PCM_OP_COLLECTIONS_GET_SCENARIO_DETAIL_inmsg">
+		<part element="brm:PCM_OP_COLLECTIONS_GET_SCENARIO_DETAIL_inputFlist" name="PCM_OP_COLLECTIONS_GET_SCENARIO_DETAIL_inputFlist"/>
+	</message>
+	<message name="PCM_OP_COLLECTIONS_GET_SCENARIO_DETAIL_outmsg">
+		<part element="brm:PCM_OP_COLLECTIONS_GET_SCENARIO_DETAIL_outputFlist" name="PCM_OP_COLLECTIONS_GET_SCENARIO_DETAIL_outputFlist"/>
+	</message>
+
+	<message name="PCM_OP_COLLECTIONS_GROUP_ADD_MEMBER_inmsg">
+		<part element="brm:PCM_OP_COLLECTIONS_GROUP_ADD_MEMBER_inputFlist" name="PCM_OP_COLLECTIONS_GROUP_ADD_MEMBER_inputFlist"/>
+	</message>
+	<message name="PCM_OP_COLLECTIONS_GROUP_ADD_MEMBER_outmsg">
+		<part element="brm:PCM_OP_COLLECTIONS_GROUP_ADD_MEMBER_outputFlist" name="PCM_OP_COLLECTIONS_GROUP_ADD_MEMBER_outputFlist"/>
+	</message>
+
+	<message name="PCM_OP_COLLECTIONS_GROUP_CREATE_inmsg">
+		<part element="brm:PCM_OP_COLLECTIONS_GROUP_CREATE_inputFlist" name="PCM_OP_COLLECTIONS_GROUP_CREATE_inputFlist"/>
+	</message>
+	<message name="PCM_OP_COLLECTIONS_GROUP_CREATE_outmsg">
+		<part element="brm:PCM_OP_COLLECTIONS_GROUP_CREATE_outputFlist" name="PCM_OP_COLLECTIONS_GROUP_CREATE_outputFlist"/>
+	</message>
+
+
+	<message name="PCM_OP_COLLECTIONS_GROUP_DELETE_inmsg">
+		<part element="brm:PCM_OP_COLLECTIONS_GROUP_DELETE_inputFlist" name="PCM_OP_COLLECTIONS_GROUP_DELETE_inputFlist"/>
+	</message>
+	<message name="PCM_OP_COLLECTIONS_GROUP_DELETE_outmsg">
+		<part element="brm:PCM_OP_COLLECTIONS_GROUP_DELETE_outputFlist" name="PCM_OP_COLLECTIONS_GROUP_DELETE_outputFlist"/>
+	</message>
+
+
+	<message name="PCM_OP_COLLECTIONS_GROUP_DELETE_MEMBER_inmsg">
+		<part element="brm:PCM_OP_COLLECTIONS_GROUP_DELETE_MEMBER_inputFlist" name="PCM_OP_COLLECTIONS_GROUP_DELETE_MEMBER_inputFlist"/>
+	</message>
+	<message name="PCM_OP_COLLECTIONS_GROUP_DELETE_MEMBER_outmsg">
+		<part element="brm:PCM_OP_COLLECTIONS_GROUP_DELETE_MEMBER_outputFlist" name="PCM_OP_COLLECTIONS_GROUP_DELETE_MEMBER_outputFlist"/>
+	</message>
+
+	<message name="PCM_OP_COLLECTIONS_GROUP_GET_BILLINFO_inmsg">
+		<part element="brm:PCM_OP_COLLECTIONS_GROUP_GET_BILLINFO_inputFlist" name="PCM_OP_COLLECTIONS_GROUP_GET_BILLINFO_inputFlist"/>
+	</message>
+	<message name="PCM_OP_COLLECTIONS_GROUP_GET_BILLINFO_outmsg">
+		<part element="brm:PCM_OP_COLLECTIONS_GROUP_GET_BILLINFO_outputFlist" name="PCM_OP_COLLECTIONS_GROUP_GET_BILLINFO_outputFlist"/>
+	</message>
+
+
+	<message name="PCM_OP_COLLECTIONS_GROUP_MODIFY_inmsg">
+		<part element="brm:PCM_OP_COLLECTIONS_GROUP_MODIFY_inputFlist" name="PCM_OP_COLLECTIONS_GROUP_MODIFY_inputFlist"/>
+	</message>
+	<message name="PCM_OP_COLLECTIONS_GROUP_MODIFY_outmsg">
+		<part element="brm:PCM_OP_COLLECTIONS_GROUP_MODIFY_outputFlist" name="PCM_OP_COLLECTIONS_GROUP_MODIFY_outputFlist"/>
+	</message>
+
+	
+	<message name="PCM_OP_COLLECTIONS_GROUP_SET_PARENT_inmsg">
+		<part element="brm:PCM_OP_COLLECTIONS_GROUP_SET_PARENT_inputFlist" name="PCM_OP_COLLECTIONS_GROUP_SET_PARENT_inputFlist"/>
+	</message>
+	<message name="PCM_OP_COLLECTIONS_GROUP_SET_PARENT_outmsg">
+		<part element="brm:PCM_OP_COLLECTIONS_GROUP_SET_PARENT_outputFlist" name="PCM_OP_COLLECTIONS_GROUP_SET_PARENT_outputFlist"/>
+	</message>
+
+ 	<message name="PCM_OP_COLLECTIONS_ASSIGN_AGENT_inmsg">
+        <part element="brm:PCM_OP_COLLECTIONS_ASSIGN_AGENT_inputFlist" name="PCM_OP_COLLECTIONS_ASSIGN_AGENT_inputFlist"/>
+   	 </message>
+   	 <message name="PCM_OP_COLLECTIONS_ASSIGN_AGENT_outmsg">
+        <part element="brm:PCM_OP_COLLECTIONS_ASSIGN_AGENT_outputFlist" name="PCM_OP_COLLECTIONS_ASSIGN_AGENT_outputFlist"/>
+    	</message>
+
+ 	<message name="PCM_OP_COLLECTIONS_EXEMPT_BILLINFO_inmsg">
+        <part element="brm:PCM_OP_COLLECTIONS_EXEMPT_BILLINFO_inputFlist" name="PCM_OP_COLLECTIONS_EXEMPT_BILLINFO_inputFlist"/>
+    	</message>
+    	<message name="PCM_OP_COLLECTIONS_EXEMPT_BILLINFO_outmsg">
+        <part element="brm:PCM_OP_COLLECTIONS_EXEMPT_BILLINFO_outputFlist" name="PCM_OP_COLLECTIONS_EXEMPT_BILLINFO_outputFlist"/>
+    	</message>
+
+  	<message name="PCM_OP_COLLECTIONS_INVOKE_PROMISE_TO_PAY_inmsg">
+        <part element="brm:PCM_OP_COLLECTIONS_INVOKE_PROMISE_TO_PAY_inputFlist" name="PCM_OP_COLLECTIONS_INVOKE_PROMISE_TO_PAY_inputFlist"/>
+    </message>
+    <message name="PCM_OP_COLLECTIONS_INVOKE_PROMISE_TO_PAY_outmsg">
+        <part element="brm:PCM_OP_COLLECTIONS_INVOKE_PROMISE_TO_PAY_outputFlist" name="PCM_OP_COLLECTIONS_INVOKE_PROMISE_TO_PAY_outputFlist"/>
+    </message>
+    <message name="PCM_OP_COLLECTIONS_REPLACE_SCENARIO_inmsg">
+        <part element="brm:PCM_OP_COLLECTIONS_REPLACE_SCENARIO_inputFlist" name="PCM_OP_COLLECTIONS_REPLACE_SCENARIO_inputFlist"/>
+    </message>
+    <message name="PCM_OP_COLLECTIONS_REPLACE_SCENARIO_outmsg">
+        <part element="brm:PCM_OP_COLLECTIONS_REPLACE_SCENARIO_outputFlist" name="PCM_OP_COLLECTIONS_REPLACE_SCENARIO_outputFlist"/>
+    </message>
+    <message name="PCM_OP_COLLECTIONS_REVOKE_PROMISE_TO_PAY_inmsg">
+        <part element="brm:PCM_OP_COLLECTIONS_REVOKE_PROMISE_TO_PAY_inputFlist" name="PCM_OP_COLLECTIONS_REVOKE_PROMISE_TO_PAY_inputFlist"/>
+    </message>
+    <message name="PCM_OP_COLLECTIONS_REVOKE_PROMISE_TO_PAY_outmsg">
+        <part element="brm:PCM_OP_COLLECTIONS_REVOKE_PROMISE_TO_PAY_outputFlist" name="PCM_OP_COLLECTIONS_REVOKE_PROMISE_TO_PAY_outputFlist"/>
+    </message>
+    <message name="PCM_OP_COLLECTIONS_UPDATE_ACTION_PAYMENT_DETAILS_inmsg">
+        <part element="brm:PCM_OP_COLLECTIONS_UPDATE_ACTION_PAYMENT_DETAILS_inputFlist" name="PCM_OP_COLLECTIONS_UPDATE_ACTION_PAYMENT_DETAILS_inputFlist"/>
+    </message>
+    <message name="PCM_OP_COLLECTIONS_UPDATE_ACTION_PAYMENT_DETAILS_outmsg">
+        <part element="brm:PCM_OP_COLLECTIONS_UPDATE_ACTION_PAYMENT_DETAILS_outputFlist" name="PCM_OP_COLLECTIONS_UPDATE_ACTION_PAYMENT_DETAILS_outputFlist"/>
+    </message> 
+
+	<!-- End Collection Sharing Groups-->
+  <portType name="BRMCAVSService_ptt">
+    <operation name="PCM_OP_BAL_GET_BALANCES">
+      <input message="brm:PCM_OP_BAL_GET_BALANCES_inmsg"
+             name="PCM_OP_BAL_GET_BALANCES_Request"/>
+      <output message="brm:PCM_OP_BAL_GET_BALANCES_outmsg"
+              name="PCM_OP_BAL_GET_BALANCES_Response"/>
+    </operation>
+    <operation name="PCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVC">
+      <input message="brm:PCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVC_inmsg"
+             name="PCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVC_Request"/>
+      <output message="brm:PCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVC_outmsg"
+              name="PCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVC_Response"/>
+    </operation>
+    <operation name="PCM_OP_BAL_GET_ACCT_BILLINFO">
+      <input message="brm:PCM_OP_BAL_GET_ACCT_BILLINFO_inmsg"
+             name="PCM_OP_BAL_GET_ACCT_BILLINFO_Request"/>
+      <output message="brm:PCM_OP_BAL_GET_ACCT_BILLINFO_outmsg"
+              name="PCM_OP_BAL_GET_ACCT_BILLINFO_Response"/>
+    </operation>
+    <operation name="PCM_OP_BAL_GET_BAL_GRP_AND_SVC">
+      <input message="brm:PCM_OP_BAL_GET_BAL_GRP_AND_SVC_inmsg"
+             name="PCM_OP_BAL_GET_BAL_GRP_AND_SVC_Request"/>
+      <output message="brm:PCM_OP_BAL_GET_BAL_GRP_AND_SVC_outmsg"
+              name="PCM_OP_BAL_GET_BAL_GRP_AND_SVC_Response"/>
+    </operation>
+    <operation name="PCM_OP_COLLECTIONS_SET_ACTION_STATUS">
+      <input message="brm:PCM_OP_COLLECTIONS_SET_ACTION_STATUS_inmsg"
+             name="PCM_OP_COLLECTIONS_SET_ACTION_STATUS_Request"/>
+      <output message="brm:PCM_OP_COLLECTIONS_SET_ACTION_STATUS_outmsg"
+              name="PCM_OP_COLLECTIONS_SET_ACTION_STATUS_Response"/>
+    </operation>
+    <operation name="PCM_OP_INV_VIEW_INVOICE">
+      <input message="brm:PCM_OP_INV_VIEW_INVOICE_inmsg"
+             name="PCM_OP_INV_VIEW_INVOICE_Request"/>
+      <output message="brm:PCM_OP_INV_VIEW_INVOICE_outmsg"
+              name="PCM_OP_INV_VIEW_INVOICE_Response"/>
+    </operation>
+    <operation name="PCM_OP_PRICE_COMMIT_PRODUCT">
+      <input message="brm:PCM_OP_PRICE_COMMIT_PRODUCT_inmsg"
+             name="PCM_OP_PRICE_COMMIT_PRODUCT_Request"/>
+      <output message="brm:PCM_OP_PRICE_COMMIT_PRODUCT_outmsg"
+              name="PCM_OP_PRICE_COMMIT_PRODUCT_Response"/>
+    </operation>
+    <operation name="PCM_OP_PRICE_SET_PRICE_LIST">
+      <input message="brm:PCM_OP_PRICE_SET_PRICE_LIST_inmsg"
+             name="PCM_OP_PRICE_SET_PRICE_LIST_Request"/>
+      <output message="brm:PCM_OP_PRICE_SET_PRICE_LIST_outmsg"
+              name="PCM_OP_PRICE_SET_PRICE_LIST_Response"/>
+    </operation>
+    <operation name="PCM_OP_PRICE_COMMIT_DISCOUNT">
+      <input message="brm:PCM_OP_PRICE_COMMIT_DISCOUNT_inmsg"
+             name="PCM_OP_PRICE_COMMIT_DISCOUNT_Request"/>
+      <output message="brm:PCM_OP_PRICE_COMMIT_DISCOUNT_outmsg"
+              name="PCM_OP_PRICE_COMMIT_DISCOUNT_Response"/>
+    </operation>
+    <operation name="PCM_OP_PRICE_GET_PRICE_LIST">
+      <input message="brm:PCM_OP_PRICE_GET_PRICE_LIST_inmsg"
+             name="PCM_OP_PRICE_GET_PRICE_LIST_Request"/>
+      <output message="brm:PCM_OP_PRICE_GET_PRICE_LIST_outmsg"
+              name="PCM_OP_PRICE_GET_PRICE_LIST_Response"/>
+    </operation>
+    <operation name="PCM_OP_CUST_UPDATE_SERVICES">
+      <input message="brm:PCM_OP_CUST_UPDATE_SERVICES_inmsg"
+             name="PCM_OP_CUST_UPDATE_SERVICES_Request"/>
+      <output message="brm:PCM_OP_CUST_UPDATE_SERVICES_outmsg"
+              name="PCM_OP_CUST_UPDATE_SERVICES_Response"/>
+    </operation>
+    <operation name="PCM_OP_CUST_CREATE_PROFILE">
+      <input message="brm:PCM_OP_CUST_CREATE_PROFILE_inmsg"
+             name="PCM_OP_CUST_CREATE_PROFILE_Request"/>
+      <output message="brm:PCM_OP_CUST_CREATE_PROFILE_outmsg"
+              name="PCM_OP_CUST_CREATE_PROFILE_Response"/>
+    </operation>
+    <operation name="PCM_OP_CUST_COMMIT_CUSTOMER">
+      <input message="brm:PCM_OP_CUST_COMMIT_CUSTOMER_inmsg"
+             name="PCM_OP_CUST_COMMIT_CUSTOMER_Request"/>
+      <output message="brm:PCM_OP_CUST_COMMIT_CUSTOMER_outmsg"
+              name="PCM_OP_CUST_COMMIT_CUSTOMER_Response"/>
+    </operation>
+    <operation name="PCM_OP_CUST_SET_STATUS">
+      <input message="brm:PCM_OP_CUST_SET_STATUS_inmsg"
+             name="PCM_OP_CUST_SET_STATUS_Request"/>
+      <output message="brm:PCM_OP_CUST_SET_STATUS_outmsg"
+              name="PCM_OP_CUST_SET_STATUS_Response"/>
+    </operation>
+    <operation name="PCM_OP_CUST_UPDATE_CUSTOMER">
+      <input message="brm:PCM_OP_CUST_UPDATE_CUSTOMER_inmsg"
+             name="PCM_OP_CUST_UPDATE_CUSTOMER_Request"/>
+      <output message="brm:PCM_OP_CUST_UPDATE_CUSTOMER_outmsg"
+              name="PCM_OP_CUST_UPDATE_CUSTOMER_Response"/>
+    </operation>
+    <operation name="PCM_OP_CUST_MODIFY_PROFILE">
+      <input message="brm:PCM_OP_CUST_MODIFY_PROFILE_inmsg"
+             name="PCM_OP_CUST_MODIFY_PROFILE_Request"/>
+      <output message="brm:PCM_OP_CUST_MODIFY_PROFILE_outmsg"
+              name="PCM_OP_CUST_MODIFY_PROFILE_Response"/>
+    </operation>
+    <operation name="PCM_OP_CUST_DELETE_PAYINFO">
+      <input message="brm:PCM_OP_CUST_DELETE_PAYINFO_inmsg"
+             name="PCM_OP_CUST_DELETE_PAYINFO_Request"/>
+      <output message="brm:PCM_OP_CUST_DELETE_PAYINFO_outmsg"
+              name="PCM_OP_CUST_DELETE_PAYINFO_Response"/>
+    </operation>
+    <operation name="PCM_OP_CUST_MODIFY_CUSTOMER">
+      <input message="brm:PCM_OP_CUST_MODIFY_CUSTOMER_inmsg"
+             name="PCM_OP_CUST_MODIFY_CUSTOMER_Request"/>
+      <output message="brm:PCM_OP_CUST_MODIFY_CUSTOMER_outmsg"
+              name="PCM_OP_CUST_MODIFY_CUSTOMER_Response"/>
+    </operation>
+    <operation name="PCM_OP_CUST_DELETE_ACCT">
+      <input message="brm:PCM_OP_CUST_DELETE_ACCT_inmsg"
+             name="PCM_OP_CUST_DELETE_ACCT_Request"/>
+      <output message="brm:PCM_OP_CUST_DELETE_ACCT_outmsg"
+              name="PCM_OP_CUST_DELETE_ACCT_Response"/>
+    </operation>
+    <operation name="PCM_OP_CUST_DELETE_PROFILE">
+      <input message="brm:PCM_OP_CUST_DELETE_PROFILE_inmsg"
+             name="PCM_OP_CUST_DELETE_PROFILE_Request"/>
+      <output message="brm:PCM_OP_CUST_DELETE_PROFILE_outmsg"
+              name="PCM_OP_CUST_DELETE_PROFILE_Response"/>
+    </operation>
+    <operation name="PCM_OP_CUSTCARE_MOVE_ACCT">
+      <input message="brm:PCM_OP_CUSTCARE_MOVE_ACCT_inmsg"
+             name="PCM_OP_CUSTCARE_MOVE_ACCT_Request"/>
+      <output message="brm:PCM_OP_CUSTCARE_MOVE_ACCT_outmsg"
+              name="PCM_OP_CUSTCARE_MOVE_ACCT_Response"/>
+    </operation>
+    <operation name="PCM_OP_BILL_GROUP_MOVE_MEMBER">
+      <input message="brm:PCM_OP_BILL_GROUP_MOVE_MEMBER_inmsg"
+             name="PCM_OP_BILL_GROUP_MOVE_MEMBER_Request"/>
+      <output message="brm:PCM_OP_BILL_GROUP_MOVE_MEMBER_outmsg"
+              name="PCM_OP_BILL_GROUP_MOVE_MEMBER_Response"/>
+    </operation>
+    <operation name="PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT">
+      <input message="brm:PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT_inmsg"
+             name="PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT_Request"/>
+      <output message="brm:PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT_outmsg"
+              name="PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT_Response"/>
+    </operation>
+    <operation name="PCM_OP_BILL_MAKE_BILL_NOW">
+      <input message="brm:PCM_OP_BILL_MAKE_BILL_NOW_inmsg"
+             name="PCM_OP_BILL_MAKE_BILL_NOW_Request"/>
+      <output message="brm:PCM_OP_BILL_MAKE_BILL_NOW_outmsg"
+              name="PCM_OP_BILL_MAKE_BILL_NOW_Response"/>
+    </operation>
+    <operation name="PCM_OP_BILL_GROUP_GET_PARENT">
+      <input message="brm:PCM_OP_BILL_GROUP_GET_PARENT_inmsg"
+             name="PCM_OP_BILL_GROUP_GET_PARENT_Request"/>
+      <output message="brm:PCM_OP_BILL_GROUP_GET_PARENT_outmsg"
+              name="PCM_OP_BILL_GROUP_GET_PARENT_Response"/>
+    </operation>
+    <operation name="PCM_OP_BILL_DEBIT">
+      <input message="brm:PCM_OP_BILL_DEBIT_inmsg"
+             name="PCM_OP_BILL_DEBIT_Request"/>
+      <output message="brm:PCM_OP_BILL_DEBIT_outmsg"
+              name="PCM_OP_BILL_DEBIT_Response"/>
+    </operation>
+    <operation name="PCM_OP_SEARCH">
+      <input message="brm:PCM_OP_SEARCH_inmsg" name="PCM_OP_SEARCH_Request"/>
+      <output message="brm:PCM_OP_SEARCH_outmsg" name="PCM_OP_SEARCH_Response"/>
+    </operation>
+    <operation name="PCM_OP_READ_OBJ">
+      <input message="brm:PCM_OP_READ_OBJ_inmsg"
+             name="PCM_OP_READ_OBJ_Request"/>
+      <output message="brm:PCM_OP_READ_OBJ_outmsg"
+              name="PCM_OP_READ_OBJ_Response"/>
+    </operation>
+    <operation name="PCM_OP_READ_FLDS">
+      <input message="brm:PCM_OP_READ_FLDS_inmsg"
+             name="PCM_OP_READ_FLDS_Request"/>
+      <output message="brm:PCM_OP_READ_FLDS_outmsg"
+              name="PCM_OP_READ_FLDS_Response"/>
+    </operation>
+    <operation name="PCM_OP_SUBSCRIPTION_TRANSFER_SUBSCRIPTION">
+      <input message="brm:PCM_OP_SUBSCRIPTION_TRANSFER_SUBSCRIPTION_inmsg"
+             name="PCM_OP_SUBSCRIPTION_TRANSFER_SUBSCRIPTION_Request"/>
+      <output message="brm:PCM_OP_SUBSCRIPTION_TRANSFER_SUBSCRIPTION_outmsg"
+              name="PCM_OP_SUBSCRIPTION_TRANSFER_SUBSCRIPTION_Response"/>
+    </operation>
+    <operation name="PCM_OP_SUBSCRIPTION_PURCHASE_DEAL">
+      <input message="brm:PCM_OP_SUBSCRIPTION_PURCHASE_DEAL_inmsg"
+             name="PCM_OP_SUBSCRIPTION_PURCHASE_DEAL_Request"/>
+      <output message="brm:PCM_OP_SUBSCRIPTION_PURCHASE_DEAL_outmsg"
+              name="PCM_OP_SUBSCRIPTION_PURCHASE_DEAL_Response"/>
+    </operation>
+    <operation name="PCM_OP_SUBSCRIPTION_CHANGE_DEAL">
+      <input message="brm:PCM_OP_SUBSCRIPTION_CHANGE_DEAL_inmsg"
+             name="PCM_OP_SUBSCRIPTION_CHANGE_DEAL_Request"/>
+      <output message="brm:PCM_OP_SUBSCRIPTION_CHANGE_DEAL_outmsg"
+              name="PCM_OP_SUBSCRIPTION_CHANGE_DEAL_Response"/>
+    </operation>
+    <operation name="PCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS">
+      <input message="brm:PCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS_inmsg"
+             name="PCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS_Request"/>
+      <output message="brm:PCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS_outmsg"
+              name="PCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS_Response"/>
+    </operation>
+    <operation name="PCM_OP_SUBSCRIPTION_SET_PRODINFO">
+      <input message="brm:PCM_OP_SUBSCRIPTION_SET_PRODINFO_inmsg"
+             name="PCM_OP_SUBSCRIPTION_SET_PRODINFO_Request"/>
+      <output message="brm:PCM_OP_SUBSCRIPTION_SET_PRODINFO_outmsg"
+              name="PCM_OP_SUBSCRIPTION_SET_PRODINFO_Response"/>
+    </operation>
+    <operation name="PCM_OP_SUBSCRIPTION_CANCEL_PRODUCT">
+      <input message="brm:PCM_OP_SUBSCRIPTION_CANCEL_PRODUCT_inmsg"
+             name="PCM_OP_SUBSCRIPTION_CANCEL_PRODUCT_Request"/>
+      <output message="brm:PCM_OP_SUBSCRIPTION_CANCEL_PRODUCT_outmsg"
+              name="PCM_OP_SUBSCRIPTION_CANCEL_PRODUCT_Response"/>
+    </operation>
+    <operation name="PCM_OP_SUBSCRIPTION_CANCEL_DISCOUNT">
+      <input message="brm:PCM_OP_SUBSCRIPTION_CANCEL_DISCOUNT_inmsg"
+             name="PCM_OP_SUBSCRIPTION_CANCEL_DISCOUNT_Request"/>
+      <output message="brm:PCM_OP_SUBSCRIPTION_CANCEL_DISCOUNT_outmsg"
+              name="PCM_OP_SUBSCRIPTION_CANCEL_DISCOUNT_Response"/>
+    </operation>
+    <operation name="PCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS">
+      <input message="brm:PCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS_inmsg"
+             name="PCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS_Request"/>
+      <output message="brm:PCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS_outmsg"
+              name="PCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS_Response"/>
+    </operation>
+    <operation name="PCM_OP_SUBSCRIPTION_SET_DISCOUNTINFO">
+      <input message="brm:PCM_OP_SUBSCRIPTION_SET_DISCOUNTINFO_inmsg"
+             name="PCM_OP_SUBSCRIPTION_SET_DISCOUNTINFO_Request"/>
+      <output message="brm:PCM_OP_SUBSCRIPTION_SET_DISCOUNTINFO_outmsg"
+              name="PCM_OP_SUBSCRIPTION_SET_DISCOUNTINFO_Response"/>
+    </operation>
+    <operation name="PCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGS">
+      <input message="brm:PCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGS_inmsg"
+             name="PCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGS_Request"/>
+      <output message="brm:PCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGS_outmsg"
+              name="PCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGS_Response"/>
+    </operation>
+    <operation name="PCM_OP_SUBSCRIPTION_SET_BUNDLE">
+      <input message="brm:PCM_OP_SUBSCRIPTION_SET_BUNDLE_inmsg"
+             name="PCM_OP_SUBSCRIPTION_SET_BUNDLE_Request"/>
+      <output message="brm:PCM_OP_SUBSCRIPTION_SET_BUNDLE_outmsg"
+              name="PCM_OP_SUBSCRIPTION_SET_BUNDLE_Response"/>
+    </operation>
+    <operation name="PCM_OP_SUBSCRIPTION_CANCEL_SUBSCRIPTION">
+      <input message="brm:PCM_OP_SUBSCRIPTION_CANCEL_SUBSCRIPTION_inmsg"
+             name="PCM_OP_SUBSCRIPTION_CANCEL_SUBSCRIPTION_Request"/>
+      <output message="brm:PCM_OP_SUBSCRIPTION_CANCEL_SUBSCRIPTION_outmsg"
+              name="PCM_OP_SUBSCRIPTION_CANCEL_SUBSCRIPTION_Response"/>
+    </operation>
+    <operation name="PCM_OP_PYMT_COLLECT">
+      <input message="brm:PCM_OP_PYMT_COLLECT_inmsg"
+             name="PCM_OP_PYMT_COLLECT_Request"/>
+      <output message="brm:PCM_OP_PYMT_COLLECT_outmsg"
+              name="PCM_OP_PYMT_COLLECT_Response"/>
+    </operation>
+    <operation name="PCM_OP_TRANS_OPEN">
+      <input message="brm:PCM_OP_TRANS_OPEN_inmsg"
+             name="PCM_OP_TRANS_OPEN_Request"/>
+      <output message="brm:PCM_OP_TRANS_OPEN_outmsg"
+              name="PCM_OP_TRANS_OPEN_Response"/>
+    </operation>
+    <operation name="PCM_OP_TRANS_COMMIT">
+      <input message="brm:PCM_OP_TRANS_COMMIT_inmsg"
+             name="PCM_OP_TRANS_COMMIT_Request"/>
+      <output message="brm:PCM_OP_TRANS_COMMIT_outmsg"
+              name="PCM_OP_TRANS_COMMIT_Response"/>
+    </operation>
+    <operation name="PCM_OP_TRANS_ABORT">
+      <input message="brm:PCM_OP_TRANS_ABORT_inmsg"
+             name="PCM_OP_TRANS_ABORT_Request"/>
+      <output message="brm:PCM_OP_TRANS_ABORT_outmsg"
+              name="PCM_OP_TRANS_ABORT_Response"/>
+    </operation>
+    <operation name="PCM_OP_AR_GET_ACCT_BILLS">
+      <input message="brm:PCM_OP_AR_GET_ACCT_BILLS_inmsg"
+             name="PCM_OP_AR_GET_ACCT_BILLS_Request"/>
+      <output message="brm:PCM_OP_AR_GET_ACCT_BILLS_outmsg"
+              name="PCM_OP_AR_GET_ACCT_BILLS_Response"/>
+    </operation>
+    <operation name="PCM_OP_AR_GET_ACCT_BAL_SUMMARY">
+      <input message="brm:PCM_OP_AR_GET_ACCT_BAL_SUMMARY_inmsg"
+             name="PCM_OP_AR_GET_ACCT_BAL_SUMMARY_Request"/>
+      <output message="brm:PCM_OP_AR_GET_ACCT_BAL_SUMMARY_outmsg"
+              name="PCM_OP_AR_GET_ACCT_BAL_SUMMARY_Response"/>
+    </operation>
+    <operation name="PCM_OP_AR_BILL_ADJUSTMENT">
+      <input message="brm:PCM_OP_AR_BILL_ADJUSTMENT_inmsg"
+             name="PCM_OP_AR_BILL_ADJUSTMENT_Request"/>
+      <output message="brm:PCM_OP_AR_BILL_ADJUSTMENT_outmsg"
+              name="PCM_OP_AR_BILL_ADJUSTMENT_Response"/>
+    </operation>
+    <operation name="PCM_OP_AR_GET_ACTION_ITEMS">
+      <input message="brm:PCM_OP_AR_GET_ACTION_ITEMS_inmsg"
+             name="PCM_OP_AR_GET_ACTION_ITEMS_Request"/>
+      <output message="brm:PCM_OP_AR_GET_ACTION_ITEMS_outmsg"
+              name="PCM_OP_AR_GET_ACTION_ITEMS_Response"/>
+    </operation>
+    <operation name="PCM_OP_AR_ITEM_ADJUSTMENT">
+      <input message="brm:PCM_OP_AR_ITEM_ADJUSTMENT_inmsg"
+             name="PCM_OP_AR_ITEM_ADJUSTMENT_Request"/>
+      <output message="brm:PCM_OP_AR_ITEM_ADJUSTMENT_outmsg"
+              name="PCM_OP_AR_ITEM_ADJUSTMENT_Response"/>
+    </operation>
+    <operation name="PCM_OP_AR_GET_BAL_SUMMARY">
+      <input message="brm:PCM_OP_AR_GET_BAL_SUMMARY_inmsg"
+             name="PCM_OP_AR_GET_BAL_SUMMARY_Request"/>
+      <output message="brm:PCM_OP_AR_GET_BAL_SUMMARY_outmsg"
+              name="PCM_OP_AR_GET_BAL_SUMMARY_Response"/>
+    </operation>
+    <operation name="PCM_OP_AR_ACCOUNT_ADJUSTMENT">
+      <input message="brm:PCM_OP_AR_ACCOUNT_ADJUSTMENT_inmsg"
+             name="PCM_OP_AR_ACCOUNT_ADJUSTMENT_Request"/>
+      <output message="brm:PCM_OP_AR_ACCOUNT_ADJUSTMENT_outmsg"
+              name="PCM_OP_AR_ACCOUNT_ADJUSTMENT_Response"/>
+    </operation>
+    <operation name="PCM_OP_AR_EVENT_ADJUSTMENT">
+      <input message="brm:PCM_OP_AR_EVENT_ADJUSTMENT_inmsg"
+             name="PCM_OP_AR_EVENT_ADJUSTMENT_Request"/>
+      <output message="brm:PCM_OP_AR_EVENT_ADJUSTMENT_outmsg"
+              name="PCM_OP_AR_EVENT_ADJUSTMENT_Response"/>
+    </operation>
+    <operation name="PCM_OP_AR_RESOURCE_AGGREGATION">
+      <input message="brm:PCM_OP_AR_RESOURCE_AGGREGATION_inmsg"
+             name="PCM_OP_AR_RESOURCE_AGGREGATION_Request"/>
+      <output message="brm:PCM_OP_AR_RESOURCE_AGGREGATION_outmsg"
+              name="PCM_OP_AR_RESOURCE_AGGREGATION_Response"/>
+    </operation>
+    <operation name="PCM_OP_AR_GET_BILLS">
+      <input message="brm:PCM_OP_AR_GET_BILLS_inmsg"
+             name="PCM_OP_AR_GET_BILLS_Request"/>
+      <output message="brm:PCM_OP_AR_GET_BILLS_outmsg"
+              name="PCM_OP_AR_GET_BILLS_Response"/>
+    </operation>
+    <operation name="PCM_OP_AR_GET_BILL_ITEMS">
+      <input message="brm:PCM_OP_AR_GET_BILL_ITEMS_inmsg"
+             name="PCM_OP_AR_GET_BILL_ITEMS_Request"/>
+      <output message="brm:PCM_OP_AR_GET_BILL_ITEMS_outmsg"
+              name="PCM_OP_AR_GET_BILL_ITEMS_Response"/>
+    </operation>
+    <operation name="PCM_OP_AR_GET_ACCT_ACTION_ITEMS">
+      <input message="brm:PCM_OP_AR_GET_ACCT_ACTION_ITEMS_inmsg"
+             name="PCM_OP_AR_GET_ACCT_ACTION_ITEMS_Request"/>
+      <output message="brm:PCM_OP_AR_GET_ACCT_ACTION_ITEMS_outmsg"
+              name="PCM_OP_AR_GET_ACCT_ACTION_ITEMS_Response"/>
+    </operation>
+	<!-- Sharing Groups  Start-->
+		<operation name="PCM_OP_SUBSCRIPTION_ORDERED_BALGRP">
+            <input message="brm:PCM_OP_SUBSCRIPTION_ORDERED_BALGRP_inmsg" name="PCM_OP_SUBSCRIPTION_ORDERED_BALGRP_Request"/>
+            <output message="brm:PCM_OP_SUBSCRIPTION_ORDERED_BALGRP_outmsg" name="PCM_OP_SUBSCRIPTION_ORDERED_BALGRP_Response"/>
+        </operation>
+		<operation name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_CREATE">
+            <input message="brm:PCM_OP_SUBSCRIPTION_SHARING_GROUP_CREATE_inmsg" name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_CREATE_Request"/>
+            <output message="brm:PCM_OP_SUBSCRIPTION_SHARING_GROUP_CREATE_outmsg" name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_CREATE_Response"/>
+        </operation>
+		<operation name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_MODIFY">
+            <input message="brm:PCM_OP_SUBSCRIPTION_SHARING_GROUP_MODIFY_inmsg" name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_MODIFY_Request"/>
+            <output message="brm:PCM_OP_SUBSCRIPTION_SHARING_GROUP_MODIFY_outmsg" name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_MODIFY_Response"/>
+        </operation>
+		<operation name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_DELETE">
+            <input message="brm:PCM_OP_SUBSCRIPTION_SHARING_GROUP_DELETE_inmsg" name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_DELETE_Request"/>
+            <output message="brm:PCM_OP_SUBSCRIPTION_SHARING_GROUP_DELETE_outmsg" name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_DELETE_Response"/>
+        </operation>
+		<operation name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_SET_PARENT">
+            <input message="brm:PCM_OP_SUBSCRIPTION_SHARING_GROUP_SET_PARENT_inmsg" name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_SET_PARENT_Request"/>
+            <output message="brm:PCM_OP_SUBSCRIPTION_SHARING_GROUP_SET_PARENT_outmsg" name="PCM_OP_SUBSCRIPTION_SHARING_GROUP_SET_PARENT_Response"/>
+        </operation>
+		<!-- Sharing Groups  End-->
+	<!--MBG changes, Start-->
+	<operation name="PCM_OP_SUBSCRIPTION_SERVICE_BALGRP_TRANSFER">
+      <input message="brm:PCM_OP_SUBSCRIPTION_SERVICE_BALGRP_TRANSFER_inmsg"
+             name="PCM_OP_SUBSCRIPTION_SERVICE_BALGRP_TRANSFER_Request"/>
+      <output message="brm:PCM_OP_SUBSCRIPTION_SERVICE_BALGRP_TRANSFER_outmsg"
+              name="PCM_OP_SUBSCRIPTION_SERVICE_BALGRP_TRANSFER_Response"/>
+    </operation>
+	<!-- MBG Changes, END-->
+	
+	<!-- Start Collection Sharing Groups -->
+		<operation name="PCM_OP_COLLECTIONS_ADD_ACTION">
+			<input message="brm:PCM_OP_COLLECTIONS_ADD_ACTION_inmsg"   name="PCM_OP_COLLECTIONS_ADD_ACTION_Request"/>
+			<output message="brm:PCM_OP_COLLECTIONS_ADD_ACTION_outmsg" name="PCM_OP_COLLECTIONS_ADD_ACTION_Response"/>
+		</operation>
+
+		<operation name="PCM_OP_COLLECTIONS_GET_SCENARIO_DETAIL">
+			<input message="brm:PCM_OP_COLLECTIONS_GET_SCENARIO_DETAIL_inmsg"   name="PCM_OP_COLLECTIONS_GET_SCENARIO_DETAIL_Request"/>
+			<output message="brm:PCM_OP_COLLECTIONS_GET_SCENARIO_DETAIL_outmsg" name="PCM_OP_COLLECTIONS_GET_SCENARIO_DETAIL_Response"/>
+		</operation>
+
+		<operation name="PCM_OP_COLLECTIONS_GROUP_ADD_MEMBER">
+			<input message="brm:PCM_OP_COLLECTIONS_GROUP_ADD_MEMBER_inmsg"   name="PCM_OP_COLLECTIONS_GROUP_ADD_MEMBER_Request"/>
+			<output message="brm:PCM_OP_COLLECTIONS_GROUP_ADD_MEMBER_outmsg" name="PCM_OP_COLLECTIONS_GROUP_ADD_MEMBER_Response"/>
+		</operation>
+		<operation name="PCM_OP_COLLECTIONS_GROUP_CREATE">
+			<input message="brm:PCM_OP_COLLECTIONS_GROUP_CREATE_inmsg"   name="PCM_OP_COLLECTIONS_GROUP_CREATE_Request"/>
+			<output message="brm:PCM_OP_COLLECTIONS_GROUP_CREATE_outmsg" name="PCM_OP_COLLECTIONS_GROUP_CREATE_Response"/>
+		</operation>
+		<operation name="PCM_OP_COLLECTIONS_GROUP_DELETE">
+			<input message="brm:PCM_OP_COLLECTIONS_GROUP_DELETE_inmsg"   name="PCM_OP_COLLECTIONS_GROUP_DELETE_Request"/>
+			<output message="brm:PCM_OP_COLLECTIONS_GROUP_DELETE_outmsg" name="PCM_OP_COLLECTIONS_GROUP_DELETE_Response"/>
+		</operation>
+		<operation name="PCM_OP_COLLECTIONS_GROUP_DELETE_MEMBER">
+			<input message="brm:PCM_OP_COLLECTIONS_GROUP_DELETE_MEMBER_inmsg"   name="PCM_OP_COLLECTIONS_GROUP_DELETE_MEMBER_Request"/>
+			<output message="brm:PCM_OP_COLLECTIONS_GROUP_DELETE_MEMBER_outmsg" name="PCM_OP_COLLECTIONS_GROUP_DELETE_MEMBER_Response"/>
+		</operation>
+		<operation name="PCM_OP_COLLECTIONS_GROUP_GET_BILLINFO">
+			<input message="brm:PCM_OP_COLLECTIONS_GROUP_GET_BILLINFO_inmsg"   name="PCM_OP_COLLECTIONS_GROUP_GET_BILLINFO_Request"/>
+			<output message="brm:PCM_OP_COLLECTIONS_GROUP_GET_BILLINFO_outmsg" name="PCM_OP_COLLECTIONS_GROUP_GET_BILLINFO_Response"/>
+		</operation>
+		<operation name="PCM_OP_COLLECTIONS_GROUP_SET_PARENT">
+			<input message="brm:PCM_OP_COLLECTIONS_GROUP_SET_PARENT_inmsg"   name="PCM_OP_COLLECTIONS_GROUP_SET_PARENT_Request"/>
+			<output message="brm:PCM_OP_COLLECTIONS_GROUP_SET_PARENT_outmsg" name="PCM_OP_COLLECTIONS_GROUP_SET_PARENT_Response"/>
+		</operation>
+		<operation name="PCM_OP_COLLECTIONS_GROUP_MODIFY">
+			<input message="brm:PCM_OP_COLLECTIONS_GROUP_MODIFY_inmsg"   name="PCM_OP_COLLECTIONS_GROUP_MODIFY_Request"/>
+			<output message="brm:PCM_OP_COLLECTIONS_GROUP_MODIFY_outmsg" name="PCM_OP_COLLECTIONS_GROUP_MODIFY_Response"/>
+		</operation>
+		 <operation name="PCM_OP_COLLECTIONS_INVOKE_PROMISE_TO_PAY">
+            <input message="brm:PCM_OP_COLLECTIONS_INVOKE_PROMISE_TO_PAY_inmsg" name="PCM_OP_COLLECTIONS_INVOKE_PROMISE_TO_PAY_Request"/>
+            <output message="brm:PCM_OP_COLLECTIONS_INVOKE_PROMISE_TO_PAY_outmsg" name="PCM_OP_COLLECTIONS_INVOKE_PROMISE_TO_PAY_Response"/>
+        </operation>
+        <operation name="PCM_OP_COLLECTIONS_REPLACE_SCENARIO">
+            <input message="brm:PCM_OP_COLLECTIONS_REPLACE_SCENARIO_inmsg" name="PCM_OP_COLLECTIONS_REPLACE_SCENARIO_Request"/>
+            <output message="brm:PCM_OP_COLLECTIONS_REPLACE_SCENARIO_outmsg" name="PCM_OP_COLLECTIONS_REPLACE_SCENARIO_Response"/>
+        </operation>
+        <operation name="PCM_OP_COLLECTIONS_REVOKE_PROMISE_TO_PAY">
+            <input message="brm:PCM_OP_COLLECTIONS_REVOKE_PROMISE_TO_PAY_inmsg" name="PCM_OP_COLLECTIONS_REVOKE_PROMISE_TO_PAY_Request"/>
+            <output message="brm:PCM_OP_COLLECTIONS_REVOKE_PROMISE_TO_PAY_outmsg" name="PCM_OP_COLLECTIONS_REVOKE_PROMISE_TO_PAY_Response"/>
+        </operation>
+         <operation name="PCM_OP_COLLECTIONS_UPDATE_ACTION_PAYMENT_DETAILS">
+            <input message="brm:PCM_OP_COLLECTIONS_UPDATE_ACTION_PAYMENT_DETAILS_inmsg" name="PCM_OP_COLLECTIONS_UPDATE_ACTION_PAYMENT_DETAILS_Request"/>
+            <output message="brm:PCM_OP_COLLECTIONS_UPDATE_ACTION_PAYMENT_DETAILS_outmsg" name="PCM_OP_COLLECTIONS_UPDATE_ACTION_PAYMENT_DETAILS_Response"/>
+        </operation>
+
+	        <operation name="PCM_OP_COLLECTIONS_ASSIGN_AGENT">
+            <input message="brm:PCM_OP_COLLECTIONS_ASSIGN_AGENT_inmsg" name="PCM_OP_COLLECTIONS_ASSIGN_AGENT_Request"/>
+            <output message="brm:PCM_OP_COLLECTIONS_ASSIGN_AGENT_outmsg" name="PCM_OP_COLLECTIONS_ASSIGN_AGENT_Response"/>
+        </operation>
+
+		<!-- End Collection Sharing Groups -->
+
+  </portType>
+  <service name="CAVSAnyService">
+    <port name="CAVSAnyPort" binding="brm:CAVSAnyBinding">
+      <soap:address location="http://sdc60010sems.us.oracle.com:7036/set.at.runtime"/>
+    </port>
+  </service>
+  <plt:partnerLinkType name="BRMCAVSService">
+    <plt:role name="BRMCAVSService_ptt">
+      <plt:portType name="brm:BRMCAVSService_ptt"/>
+    </plt:role>
+  </plt:partnerLinkType>
+  <binding name="CAVSAnyBinding" type="brm:BRMCAVSService_ptt">
+    <soap:binding style="document"
+                  transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="PCM_OP_BAL_GET_BALANCES">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_BAL_GET_BALANCES"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_BAL_GET_BALANCES_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="PCM_OP_BAL_GET_BALANCES_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVC">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVC"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVC_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVC_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_BAL_GET_ACCT_BILLINFO">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_BAL_GET_ACCT_BILLINFO"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_BAL_GET_ACCT_BILLINFO_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_BAL_GET_ACCT_BILLINFO_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_BAL_GET_BAL_GRP_AND_SVC">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_BAL_GET_BAL_GRP_AND_SVC"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_BAL_GET_BAL_GRP_AND_SVC_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_BAL_GET_BAL_GRP_AND_SVC_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_COLLECTIONS_SET_ACTION_STATUS">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_COLLECTIONS_SET_ACTION_STATUS"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_SET_ACTION_STATUS_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_SET_ACTION_STATUS_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_INV_VIEW_INVOICE">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_INV_VIEW_INVOICE"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_INV_VIEW_INVOICE_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="PCM_OP_INV_VIEW_INVOICE_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_PRICE_COMMIT_PRODUCT">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_PRICE_COMMIT_PRODUCT"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_PRICE_COMMIT_PRODUCT_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_PRICE_COMMIT_PRODUCT_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_PRICE_SET_PRICE_LIST">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_PRICE_SET_PRICE_LIST"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_PRICE_SET_PRICE_LIST_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_PRICE_SET_PRICE_LIST_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_PRICE_COMMIT_DISCOUNT">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_PRICE_COMMIT_DISCOUNT"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_PRICE_COMMIT_DISCOUNT_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_PRICE_COMMIT_DISCOUNT_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_PRICE_GET_PRICE_LIST">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_PRICE_GET_PRICE_LIST"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_PRICE_GET_PRICE_LIST_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_PRICE_GET_PRICE_LIST_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_CUST_UPDATE_SERVICES">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_CUST_UPDATE_SERVICES"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_CUST_UPDATE_SERVICES_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_CUST_UPDATE_SERVICES_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_CUST_CREATE_PROFILE">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_CUST_CREATE_PROFILE"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_CUST_CREATE_PROFILE_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_CUST_CREATE_PROFILE_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_CUST_COMMIT_CUSTOMER">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_CUST_COMMIT_CUSTOMER"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_CUST_COMMIT_CUSTOMER_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_CUST_COMMIT_CUSTOMER_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_CUST_SET_STATUS">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_CUST_SET_STATUS"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_CUST_SET_STATUS_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="PCM_OP_CUST_SET_STATUS_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_CUST_UPDATE_CUSTOMER">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_CUST_UPDATE_CUSTOMER"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_CUST_UPDATE_CUSTOMER_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_CUST_UPDATE_CUSTOMER_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_CUST_MODIFY_PROFILE">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_CUST_MODIFY_PROFILE"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_CUST_MODIFY_PROFILE_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_CUST_MODIFY_PROFILE_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_CUST_DELETE_PAYINFO">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_CUST_DELETE_PAYINFO"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_CUST_DELETE_PAYINFO_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_CUST_DELETE_PAYINFO_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_CUST_MODIFY_CUSTOMER">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_CUST_MODIFY_CUSTOMER"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_CUST_MODIFY_CUSTOMER_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_CUST_MODIFY_CUSTOMER_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_CUST_DELETE_ACCT">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_CUST_DELETE_ACCT"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_CUST_DELETE_ACCT_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="PCM_OP_CUST_DELETE_ACCT_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_CUST_DELETE_PROFILE">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_CUST_DELETE_PROFILE"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_CUST_DELETE_PROFILE_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_CUST_DELETE_PROFILE_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_CUSTCARE_MOVE_ACCT">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_CUSTCARE_MOVE_ACCT"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_CUSTCARE_MOVE_ACCT_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="PCM_OP_CUSTCARE_MOVE_ACCT_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_BILL_GROUP_MOVE_MEMBER">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_BILL_GROUP_MOVE_MEMBER"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_BILL_GROUP_MOVE_MEMBER_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_BILL_GROUP_MOVE_MEMBER_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_BILL_MAKE_BILL_NOW">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_BILL_MAKE_BILL_NOW"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_BILL_MAKE_BILL_NOW_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="PCM_OP_BILL_MAKE_BILL_NOW_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_BILL_GROUP_GET_PARENT">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_BILL_GROUP_GET_PARENT"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_BILL_GROUP_GET_PARENT_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_BILL_GROUP_GET_PARENT_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_BILL_DEBIT">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_BILL_DEBIT"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_BILL_DEBIT_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="PCM_OP_BILL_DEBIT_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_SEARCH">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_SEARCH"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_SEARCH_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="PCM_OP_SEARCH_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_READ_OBJ">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_READ_OBJ"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_READ_OBJ_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="PCM_OP_READ_OBJ_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_READ_FLDS">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_READ_FLDS"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_READ_FLDS_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="PCM_OP_READ_FLDS_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_SUBSCRIPTION_TRANSFER_SUBSCRIPTION">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_SUBSCRIPTION_TRANSFER_SUBSCRIPTION"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_TRANSFER_SUBSCRIPTION_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_TRANSFER_SUBSCRIPTION_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_SUBSCRIPTION_PURCHASE_DEAL">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_SUBSCRIPTION_PURCHASE_DEAL"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_PURCHASE_DEAL_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_PURCHASE_DEAL_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_SUBSCRIPTION_CHANGE_DEAL">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_SUBSCRIPTION_CHANGE_DEAL"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_CHANGE_DEAL_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_CHANGE_DEAL_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_SUBSCRIPTION_SET_PRODINFO">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_SUBSCRIPTION_SET_PRODINFO"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_SET_PRODINFO_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_SET_PRODINFO_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_SUBSCRIPTION_CANCEL_PRODUCT">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_SUBSCRIPTION_CANCEL_PRODUCT"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_CANCEL_PRODUCT_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_CANCEL_PRODUCT_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_SUBSCRIPTION_CANCEL_DISCOUNT">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_SUBSCRIPTION_CANCEL_DISCOUNT"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_CANCEL_DISCOUNT_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_CANCEL_DISCOUNT_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_SUBSCRIPTION_SET_DISCOUNTINFO">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_SUBSCRIPTION_SET_DISCOUNTINFO"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_SET_DISCOUNTINFO_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_SET_DISCOUNTINFO_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGS">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGS"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGS_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGS_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_SUBSCRIPTION_SET_BUNDLE">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_SUBSCRIPTION_SET_BUNDLE"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_SET_BUNDLE_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_SET_BUNDLE_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_SUBSCRIPTION_CANCEL_SUBSCRIPTION">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_SUBSCRIPTION_CANCEL_SUBSCRIPTION"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_CANCEL_SUBSCRIPTION_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_CANCEL_SUBSCRIPTION_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_PYMT_COLLECT">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_PYMT_COLLECT"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_PYMT_COLLECT_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="PCM_OP_PYMT_COLLECT_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_TRANS_OPEN">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_TRANS_OPEN"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_TRANS_OPEN_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="PCM_OP_TRANS_OPEN_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_TRANS_COMMIT">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_TRANS_COMMIT"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_TRANS_COMMIT_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="PCM_OP_TRANS_COMMIT_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_TRANS_ABORT">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_TRANS_ABORT"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_TRANS_ABORT_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="PCM_OP_TRANS_ABORT_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_AR_GET_ACCT_BILLS">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_AR_GET_ACCT_BILLS"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_AR_GET_ACCT_BILLS_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="PCM_OP_AR_GET_ACCT_BILLS_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_AR_GET_ACCT_BAL_SUMMARY">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_AR_GET_ACCT_BAL_SUMMARY"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_AR_GET_ACCT_BAL_SUMMARY_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_AR_GET_ACCT_BAL_SUMMARY_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_AR_BILL_ADJUSTMENT">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_AR_BILL_ADJUSTMENT"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_AR_BILL_ADJUSTMENT_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="PCM_OP_AR_BILL_ADJUSTMENT_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_AR_GET_ACTION_ITEMS">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_AR_GET_ACTION_ITEMS"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_AR_GET_ACTION_ITEMS_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_AR_GET_ACTION_ITEMS_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_AR_ITEM_ADJUSTMENT">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_AR_ITEM_ADJUSTMENT"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_AR_ITEM_ADJUSTMENT_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="PCM_OP_AR_ITEM_ADJUSTMENT_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_AR_GET_BAL_SUMMARY">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_AR_GET_BAL_SUMMARY"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_AR_GET_BAL_SUMMARY_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="PCM_OP_AR_GET_BAL_SUMMARY_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_AR_ACCOUNT_ADJUSTMENT">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_AR_ACCOUNT_ADJUSTMENT"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_AR_ACCOUNT_ADJUSTMENT_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_AR_ACCOUNT_ADJUSTMENT_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_AR_EVENT_ADJUSTMENT">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_AR_EVENT_ADJUSTMENT"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_AR_EVENT_ADJUSTMENT_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_AR_EVENT_ADJUSTMENT_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_AR_RESOURCE_AGGREGATION">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_AR_RESOURCE_AGGREGATION"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_AR_RESOURCE_AGGREGATION_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_AR_RESOURCE_AGGREGATION_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_AR_GET_BILLS">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_AR_GET_BILLS"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_AR_GET_BILLS_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="PCM_OP_AR_GET_BILLS_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_AR_GET_BILL_ITEMS">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_AR_GET_BILL_ITEMS"/>
+      <input>
+        <soap:body use="literal" parts="PCM_OP_AR_GET_BILL_ITEMS_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="PCM_OP_AR_GET_BILL_ITEMS_outputFlist"/>
+      </output>
+    </operation>
+    <operation name="PCM_OP_AR_GET_ACCT_ACTION_ITEMS">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_AR_GET_ACCT_ACTION_ITEMS"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_AR_GET_ACCT_ACTION_ITEMS_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_AR_GET_ACCT_ACTION_ITEMS_outputFlist"/>
+      </output>
+    </operation>
+	<!-- MBG Changes, Start-->
+	<operation name="PCM_OP_SUBSCRIPTION_SERVICE_BALGRP_TRANSFER">
+      <soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_SUBSCRIPTION_SERVICE_BALGRP_TRANSFER"/>
+      <input>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_SERVICE_BALGRP_TRANSFER_inputFlist"/>
+      </input>
+      <output>
+        <soap:body use="literal"
+                   parts="PCM_OP_SUBSCRIPTION_SERVICE_BALGRP_TRANSFER_outputFlist"/>
+      </output>
+    </operation>
+	<!-- MBG changes, END-->
+
+	
+				<!-- Start Collection Sharing Groups -->
+		<operation name="PCM_OP_COLLECTIONS_ADD_ACTION">
+			<soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_COLLECTIONS_ADD_ACTION"/>
+			<input>
+				<soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_ADD_ACTION_inputFlist"/>
+			</input>
+			<output>
+				<soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_ADD_ACTION_outputFlist"/>
+			</output>
+		</operation>
+
+		<operation name="PCM_OP_COLLECTIONS_GET_SCENARIO_DETAIL">
+			<soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_COLLECTIONS_GET_SCENARIO_DETAIL"/>
+			<input>
+				<soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_GET_SCENARIO_DETAIL_inputFlist"/>
+			</input>
+			<output>
+				<soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_GET_SCENARIO_DETAIL_outputFlist"/>
+			</output>
+		</operation>
+
+		<operation name="PCM_OP_COLLECTIONS_GROUP_ADD_MEMBER">
+			<soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_COLLECTIONS_GROUP_ADD_MEMBER"/>
+			<input>
+				<soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_GROUP_ADD_MEMBER_inputFlist"/>
+			</input>
+			<output>
+				<soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_GROUP_ADD_MEMBER_outputFlist"/>
+			</output>
+		</operation>
+
+		<operation name="PCM_OP_COLLECTIONS_GROUP_CREATE">
+			<soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_COLLECTIONS_GROUP_CREATE"/>
+			<input>
+				<soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_GROUP_CREATE_inputFlist"/>
+			</input>
+			<output>
+				<soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_GROUP_CREATE_outputFlist"/>
+			</output>
+		</operation>
+
+		<operation name="PCM_OP_COLLECTIONS_GROUP_DELETE">
+			<soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_COLLECTIONS_GROUP_DELETE"/>
+			<input>
+				<soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_GROUP_DELETE_inputFlist"/>
+			</input>
+			<output>
+				<soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_GROUP_DELETE_outputFlist"/>
+			</output>
+		</operation>
+		<operation name="PCM_OP_COLLECTIONS_GROUP_DELETE_MEMBER">
+			<soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_COLLECTIONS_GROUP_DELETE_MEMBER"/>
+			<input>
+				<soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_GROUP_DELETE_MEMBER_inputFlist"/>
+			</input>
+			<output>
+				<soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_GROUP_DELETE_MEMBER_outputFlist"/>
+			</output>
+		</operation>
+		<operation name="PCM_OP_COLLECTIONS_GROUP_GET_BILLINFO">
+			<soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_COLLECTIONS_GROUP_GET_BILLINFO"/>
+			<input>
+				<soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_GROUP_GET_BILLINFO_inputFlist"/>
+			</input>
+			<output>
+				<soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_GROUP_GET_BILLINFO_outputFlist"/>
+			</output>
+		</operation>
+		<operation name="PCM_OP_COLLECTIONS_GROUP_MODIFY">
+			<soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_COLLECTIONS_GROUP_MODIFY"/>
+			<input>
+				<soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_GROUP_MODIFY_inputFlist"/>
+			</input>
+			<output>
+				<soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_GROUP_MODIFY_outputFlist"/>
+			</output>
+		</operation>
+		<operation name="PCM_OP_COLLECTIONS_GROUP_SET_PARENT">
+			<soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_COLLECTIONS_GROUP_SET_PARENT"/>
+			<input>
+				<soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_GROUP_SET_PARENT_inputFlist"/>
+			</input>
+			<output>
+				<soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_GROUP_SET_PARENT_outputFlist"/>
+			</output>
+		</operation>
+
+		<operation name="PCM_OP_COLLECTIONS_INVOKE_PROMISE_TO_PAY">
+			<soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_COLLECTIONS_INVOKE_PROMISE_TO_PAY"/>
+			<input>
+				<soap:body use="literal" parts="PCM_OP_COLLECTIONS_INVOKE_PROMISE_TO_PAY_inputFlist"/>
+			</input>
+			<output>
+				<soap:body use="literal" parts="PCM_OP_COLLECTIONS_INVOKE_PROMISE_TO_PAY_outputFlist"/>
+			</output>
+		</operation>
+
+				<operation name="PCM_OP_COLLECTIONS_REPLACE_SCENARIO">
+			<soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_COLLECTIONS_REPLACE_SCENARIO"/>
+			<input>
+				<soap:body use="literal" parts="PCM_OP_COLLECTIONS_REPLACE_SCENARIO_inputFlist"/>
+			</input>
+			<output>
+				<soap:body use="literal" parts="PCM_OP_COLLECTIONS_REPLACE_SCENARIO_outputFlist"/>
+			</output>
+		</operation>
+				<operation name="PCM_OP_COLLECTIONS_REVOKE_PROMISE_TO_PAY">
+			<soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_COLLECTIONS_REVOKE_PROMISE_TO_PAY"/>
+			<input>
+				<soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_REVOKE_PROMISE_TO_PAY_inputFlist"/>
+			</input>
+			<output>
+				<soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_REVOKE_PROMISE_TO_PAY_outputFlist"/>
+			</output>
+		</operation>
+
+		<operation name="PCM_OP_COLLECTIONS_UPDATE_ACTION_PAYMENT_DETAILS">
+			<soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_COLLECTIONS_UPDATE_ACTION_PAYMENT_DETAILS"/>
+			<input>
+				<soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_UPDATE_ACTION_PAYMENT_DETAILS_inputFlist"/>
+			</input>
+			<output>
+				<soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_UPDATE_ACTION_PAYMENT_DETAILS_outputFlist"/>
+			</output>
+		</operation>
+
+
+					<operation name="PCM_OP_COLLECTIONS_ASSIGN_AGENT">
+			<soap:operation style="document"
+                      soapAction="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes/PCM_OP_COLLECTIONS_ASSIGN_AGENT"/>
+			<input>
+				<soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_ASSIGN_AGENT_inputFlist"/>
+			</input>
+			<output>
+				<soap:body use="literal"
+                   parts="PCM_OP_COLLECTIONS_ASSIGN_AGENT_outputFlist"/>
+			</output>
+		</operation>
+
+		<!-- End Collection Sharing Groups -->
+	
+  </binding>
+</definitions>

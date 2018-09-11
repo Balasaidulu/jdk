@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:brmcustpartyabo="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes"
+             xmlns:brmcustservice="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes"
+             xmlns:corecustomerebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+             xmlns:corecustomerext="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/SyncCustomerPartyListBRMCommsProvABCSImplExtension"
+             xmlns:brm="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V2"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             name="SyncCustomerPartyListBRMCommsProvABCSImplExtension"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/SyncCustomerPartyListBRMCommsProvABCSImplExtension">
+ <documentation>
+  <svcdoc:Service>
+   <svcdoc:Description>This service contains intercepting operations that would
+                       be used by the participating application</svcdoc:Description>
+   <svcdoc:ServiceType>ABCSExtension</svcdoc:ServiceType>
+   <svcdoc:DisplayName>SyncCustomerPartyListBRMCommsProvABCSImpl Requester ABCS
+                       Extension Implementation Interface</svcdoc:DisplayName>
+   <svcdoc:ServiceObjectName>SyncCustomerPartyList</svcdoc:ServiceObjectName>
+   <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+   <svcdoc:Version>1.0</svcdoc:Version>
+   <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+   <svcdoc:ProductFamily>BRM</svcdoc:ProductFamily>
+   <svcdoc:ProductPillar>Portal</svcdoc:ProductPillar>
+   <svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+  </svcdoc:Service>
+ </documentation>
+ <types>
+  <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/SyncCustomerPartyListBRMCommsProvABCSImplExtension" elementFormDefault="qualified">
+   <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/CustomerParty/V2/CustomerPartyEBM.xsd" />
+   <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd" />
+   <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_SEARCH.xsd" />
+   <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_BILL_GROUP_GET_PARENT.xsd" />
+   <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUSTCARE_MOVE_ACCT.xsd" />
+   <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_UPDATE_CUSTOMER.xsd" />
+   <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_DELETE_PAYINFO.xsd" />
+   <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_TRANS_OPEN.xsd" />
+   <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_TRANS_COMMIT.xsd" />
+   <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_READ_OBJ.xsd" />
+   <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_READ_FLDS.xsd" />
+   <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_BILL_GROUP_MOVE_MEMBER.xsd" />
+   <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT.xsd" />
+   <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_BILL_MAKE_BILL_NOW.xsd" />
+   <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_BILL_DEBIT.xsd" />
+   <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_UPDATE_SERVICES.xsd" />
+   <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_CREATE_PROFILE.xsd" />
+   <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_COMMIT_CUSTOMER.xsd" />
+   <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_SET_STATUS.xsd" />
+   <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_DELETE_PROFILE.xsd" />
+   <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_MODIFY_CUSTOMER.xsd" />
+   <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_MODIFY_PROFILE.xsd" />
+   <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_TRANS_ABORT.xsd" />
+  </xsd:schema>
+ </types>
+ <message name="PreXFormEBMtoABMMsg">
+  <part name="EBMPayload" element="corecustomerebo:SyncCustomerPartyListEBM"/>
+ </message>
+ <message name="PreInvokePCM_OP_BILL_GROUP_GET_PARENTABMMsg">
+  <part name="ABMPayload"
+        element="brm:PCM_OP_BILL_GROUP_GET_PARENT_inputFlist"/>
+ </message>
+ <message name="PostInvokePCM_OP_BILL_GROUP_GET_PARENTABMMsg">
+  <part name="ABMPayload"
+        element="brm:PCM_OP_BILL_GROUP_GET_PARENT_outputFlist"/>
+ </message>
+ <message name="PreInvokePCM_OP_SEARCHABMMsg">
+  <part name="ABMPayload" element="brm:PCM_OP_SEARCH_inputFlist"/>
+ </message>
+ <message name="PostInvokePCM_OP_SEARCHABMMsg">
+  <part name="ABMPayload" element="brm:PCM_OP_SEARCH_outputFlist"/>
+ </message>
+ <message name="PreInvokePCM_OP_TRANS_OPENABMMsg">
+  <part name="ABMPayload" element="brm:PCM_OP_TRANS_OPEN_inputFlist"/>
+ </message>
+ <message name="PostInvokePCM_OP_TRANS_OPENABMMsg">
+  <part name="ABMPayload" element="brm:PCM_OP_TRANS_OPEN_outputFlist"/>
+ </message>
+ <message name="PreInvokePCM_OP_TRANS_COMMITMsg">
+  <part name="ABMPayload" element="brm:PCM_OP_TRANS_COMMIT_inputFlist"/>
+ </message>
+ <message name="PostInvokePCM_OP_TRANS_COMMITMsg">
+  <part name="ABMPayload" element="brm:PCM_OP_TRANS_COMMIT_outputFlist"/>
+ </message>
+ <message name="PreInvokePCM_OP_CUSTCARE_MOVE_ACCTABMMsg">
+  <part name="ABMPayload" element="brm:PCM_OP_CUSTCARE_MOVE_ACCT_inputFlist"/>
+ </message>
+ <message name="PostInvokePCM_OP_CUSTCARE_MOVE_ACCTABMMsg">
+  <part name="ABMPayload" element="brm:PCM_OP_CUSTCARE_MOVE_ACCT_outputFlist"/>
+ </message>
+ <message name="PreInvokePCM_OP_CUST_UPDATE_CUSTOMERABMMsg">
+  <part name="ABMPayload" element="brm:PCM_OP_CUST_UPDATE_CUSTOMER_inputFlist"/>
+ </message>
+ <message name="PostInvokePCM_OP_CUST_UPDATE_CUSTOMERABMMsg">
+  <part name="ABMPayload"
+        element="brm:PCM_OP_CUST_UPDATE_CUSTOMER_outputFlist"/>
+ </message>
+ <message name="PreInvokePCM_OP_CUST_DELETE_PAYINFOABMMsg">
+  <part name="ABMPayload" element="brm:PCM_OP_CUST_DELETE_PAYINFO_inputFlist"/>
+ </message>
+ <message name="PostInvokePCM_OP_CUST_DELETE_PAYINFOABMMsg">
+  <part name="ABMPayload" element="brm:PCM_OP_CUST_DELETE_PAYINFO_outputFlist"/>
+ </message>
+ <message name="PostXFormABMtoEBMMsg">
+  <part name="EBMPayload"
+        element="corecustomerebo:SyncCustomerPartyListResponseEBM"/>
+ </message>
+ <message name="FaultMessage">
+    <part name="AIAFault" element="corecom:Fault"/>
+ </message>
+<message name="PreInvokePCM_OP_CUST_COMMIT_CUSTOMERMsg">
+    <part name="PCM_OP_CUST_COMMIT_CUSTOMER_inputFlist" element="brm:PCM_OP_CUST_COMMIT_CUSTOMER_inputFlist"/>
+</message>
+<message name="PostInvokePCM_OP_CUST_COMMIT_CUSTOMERMsg">
+    <part name="PCM_OP_CUST_COMMIT_CUSTOMER_outputFlist" element="brm:PCM_OP_CUST_COMMIT_CUSTOMER_outputFlist"/>
+</message>
+ 
+ 
+ <portType name="SyncCustomerPartyListBRMCommsProvABCSImplExtensionService">
+  <documentation>
+   <svcdoc:Interface>
+    <svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+    <svcdoc:DisplayName>SyncCustomerPartyListBRMCommsProvABCSImplExtensionService</svcdoc:DisplayName>
+    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+   </svcdoc:Interface>
+  </documentation>
+  <operation name="PreInvokePCM_OP_BILL_GROUP_GET_PARENTABM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to PreInvoke an
+                         PCM_OP_BILL_GROUP_GET_PARENT object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>PreInvokePCM_OP_BILL_GROUP_GET_PARENTABM</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="corecustomerext:PreInvokePCM_OP_BILL_GROUP_GET_PARENTABMMsg"/>
+   <output message="corecustomerext:PreInvokePCM_OP_BILL_GROUP_GET_PARENTABMMsg"/>
+   <fault name="fault" message="corecustomerext:FaultMessage"/>
+  </operation>
+  <operation name="PostInvokePCM_OP_BILL_GROUP_GET_PARENTABM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to PostInvoke an
+                         PCM_OP_BILL_GROUP_GET_PARENTABM object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>PostInvokePCM_OP_BILL_GROUP_GET_PARENTABM</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="corecustomerext:PostInvokePCM_OP_BILL_GROUP_GET_PARENTABMMsg"/>
+   <output message="corecustomerext:PostInvokePCM_OP_BILL_GROUP_GET_PARENTABMMsg"/>
+   <fault name="AIAFault" message="corecustomerext:FaultMessage"/>
+  </operation>
+  <operation name="PreInvokePCM_OP_SEARCHABM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to PreInvoke an PCM_OP_SEARCHABM
+                         object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>PreInvokePCM_OP_SEARCHABM</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="corecustomerext:PreInvokePCM_OP_SEARCHABMMsg"/>
+   <output message="corecustomerext:PreInvokePCM_OP_SEARCHABMMsg"/>
+   <fault name="fault" message="corecustomerext:FaultMessage"/>
+  </operation>
+  <operation name="PostInvokePCM_OP_SEARCHABM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to PostInvoke an
+                         PCM_OP_SEARCHABM object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>PostInvokePCM_OP_SEARCHABM</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="corecustomerext:PostInvokePCM_OP_SEARCHABMMsg"/>
+   <output message="corecustomerext:PostInvokePCM_OP_SEARCHABMMsg"/>
+   <fault name="fault" message="corecustomerext:FaultMessage"/>
+  </operation>
+  <operation name="PreInvokePCM_OP_TRANS_OPENABM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to PreInvoke an
+                         PCM_OP_TRANS_OPENABM object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>PreInvokePCM_OP_TRANS_OPENABM</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="corecustomerext:PreInvokePCM_OP_TRANS_OPENABMMsg"/>
+   <output message="corecustomerext:PreInvokePCM_OP_TRANS_OPENABMMsg"/>
+   <fault name="fault" message="corecustomerext:FaultMessage"/>
+  </operation>
+  <operation name="PostInvokePCM_OP_TRANS_OPENABM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to PostInvoke an
+                         PCM_OP_TRANS_OPENABM object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>PostInvokePCM_OP_TRANS_OPENABM</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="corecustomerext:PostInvokePCM_OP_TRANS_OPENABMMsg"/>
+   <output message="corecustomerext:PostInvokePCM_OP_TRANS_OPENABMMsg"/>
+   <fault name="fault" message="corecustomerext:FaultMessage"/>
+  </operation>
+  <operation name="PreInvokePCM_OP_TRANS_COMMITABM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to PreInvoke an
+                         PCM_OP_TRANS_COMMIT object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>PreInvokePCM_OP_TRANS_COMMIT</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="corecustomerext:PreInvokePCM_OP_TRANS_COMMITMsg"/>
+   <output message="corecustomerext:PreInvokePCM_OP_TRANS_COMMITMsg"/>
+   <fault name="fault" message="corecustomerext:FaultMessage"/>
+  </operation>
+  <operation name="PostInvokePCM_OP_TRANS_COMMITABM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to PostInvoke an
+                         PCM_OP_TRANS_COMMIT object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>PostInvokePCM_OP_TRANS_COMMITMsg</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="corecustomerext:PostInvokePCM_OP_TRANS_COMMITMsg"/>
+   <output message="corecustomerext:PostInvokePCM_OP_TRANS_COMMITMsg"/>
+   <fault name="fault" message="corecustomerext:FaultMessage"/>
+  </operation>
+  <operation name="PreInvokePCM_OP_CUSTCARE_MOVE_ACCTABM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to PreInvoke an
+                         PCM_OP_CUSTCARE_MOVE_ACCTABM object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>PreInvokePCM_OP_CUSTCARE_MOVE_ACCTABM</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="corecustomerext:PreInvokePCM_OP_CUSTCARE_MOVE_ACCTABMMsg"/>
+   <output message="corecustomerext:PreInvokePCM_OP_CUSTCARE_MOVE_ACCTABMMsg"/>
+   <fault name="fault" message="corecustomerext:FaultMessage"/>
+  </operation>
+  <operation name="PostInvokePCM_OP_CUSTCARE_MOVE_ACCTABM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to PostInvoke an
+                         PCM_OP_CUSTCARE_MOVE_ACCT object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>PostInvokePCM_OP_CUSTCARE_MOVE_ACCTABMMsg</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="corecustomerext:PostInvokePCM_OP_CUSTCARE_MOVE_ACCTABMMsg"/>
+   <output message="corecustomerext:PostInvokePCM_OP_CUSTCARE_MOVE_ACCTABMMsg"/>
+   <fault name="fault" message="corecustomerext:FaultMessage"/>
+  </operation>
+  <operation name="PreInvokePCM_OP_CUST_UPDATE_CUSTOMERABM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to PreInvoke a
+                         PCM_OP_CUST_UPDATE_CUSTOMERABM object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>PreInvokePCM_OP_CUST_UPDATE_CUSTOMERABM</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="corecustomerext:PreInvokePCM_OP_CUST_UPDATE_CUSTOMERABMMsg"/>
+   <output message="corecustomerext:PreInvokePCM_OP_CUST_UPDATE_CUSTOMERABMMsg"/>
+   <fault name="fault" message="corecustomerext:FaultMessage"/>
+  </operation>
+  <operation name="PostInvokePCM_OP_CUST_UPDATE_CUSTOMERABM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to PostInvoke an
+                         PCM_OP_CUST_UPDATE_CUSTOMERABM object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>PostInvokePCM_OP_CUST_UPDATE_CUSTOMERABMMsg</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="corecustomerext:PostInvokePCM_OP_CUST_UPDATE_CUSTOMERABMMsg"/>
+   <output message="corecustomerext:PostInvokePCM_OP_CUST_UPDATE_CUSTOMERABMMsg"/>
+   <fault name="fault" message="corecustomerext:FaultMessage"/>
+  </operation>
+  <operation name="PreInvokePCM_OP_CUST_DELETE_PAYINFOABM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to PreInvoke a
+                         PCM_OP_CUST_DELETE_PAYINFOABM object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>PreInvokePCM_OP_CUST_DELETE_PAYINFOABM</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="corecustomerext:PreInvokePCM_OP_CUST_DELETE_PAYINFOABMMsg"/>
+   <output message="corecustomerext:PreInvokePCM_OP_CUST_DELETE_PAYINFOABMMsg"/>
+   <fault name="fault" message="corecustomerext:FaultMessage"/>
+  </operation>
+  <operation name="PostInvokePPCM_OP_CUST_DELETE_PAYINFOABMMsg">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to PostInvoke an
+                         PPCM_OP_CUST_DELETE_PAYINFOABM object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>PostInvokePPCM_OP_CUST_DELETE_PAYINFOABM</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="corecustomerext:PostInvokePCM_OP_CUST_DELETE_PAYINFOABMMsg"/>
+   <output message="corecustomerext:PostInvokePCM_OP_CUST_DELETE_PAYINFOABMMsg"/>
+   <fault name="fault" message="corecustomerext:FaultMessage"/>
+  </operation>
+  <operation name="PostXFormABMtoEBM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to PostInvoke an ABMtoEBM object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>PostXFormABMtoEBM</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="corecustomerext:PostXFormABMtoEBMMsg"/>
+   <output message="corecustomerext:PostXFormABMtoEBMMsg"/>
+   <fault name="fault" message="corecustomerext:FaultMessage"/>
+  </operation>
+  <operation name="PreXFormEBMtoABM">
+   <input message="corecustomerext:PreXFormEBMtoABMMsg"/>
+   <output message="corecustomerext:PreXFormEBMtoABMMsg"/>
+   <fault name="fault" message="corecustomerext:FaultMessage"/>
+  </operation>
+<operation name="PreInvokeABSPCM_OP_CUST_COMMIT_CUSTOMERABM">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to PreInvokeEBS an
+                         ProcessSalesOrderEBM object</svcdoc:Description>
+                    <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+                    <svcdoc:DisplayName>PreInvokeABSABM</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="corecustomerext:PreInvokePCM_OP_CUST_COMMIT_CUSTOMERMsg"/>
+            <output message="corecustomerext:PreInvokePCM_OP_CUST_COMMIT_CUSTOMERMsg"/>
+            <fault name="fault" message="corecustomerext:FaultMessage"/>
+        </operation>
+        <operation name="PostInvokeABSPCM_OP_CUST_COMMIT_CUSTOMERABM">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to PostInvokeEBS an
+                         ProcessSalesOrderEBM object</svcdoc:Description>
+                    <svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+                    <svcdoc:DisplayName>PostInvokeABSEBM</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="corecustomerext:PostInvokePCM_OP_CUST_COMMIT_CUSTOMERMsg"/>
+            <output message="corecustomerext:PostInvokePCM_OP_CUST_COMMIT_CUSTOMERMsg"/>
+            <fault name="fault" message="corecustomerext:FaultMessage"/>
+        </operation> 
+ </portType>
+ <!--the pcmopcustsetstatus is a part of custservices.wsdl-->
+ <plnk:partnerLinkType name="SyncCustomerPartyListBRMCommsProvABCSImplExtensionService">
+  <plnk:role name="SyncCustomerPartyListBRMCommsProvABCSImplExtensionServiceProvider">
+   <plnk:portType name="corecustomerext:SyncCustomerPartyListBRMCommsProvABCSImplExtensionService"/>
+  </plnk:role>
+ </plnk:partnerLinkType>
+ 
+<binding name="SyncCustomerPartyListBRMCommsProvABCSImplExtensionBinding" type="corecustomerext:SyncCustomerPartyListBRMCommsProvABCSImplExtensionService">
+   <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" /> 
+   <operation name="PreInvokePCM_OP_BILL_GROUP_GET_PARENTABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   <operation name="PostInvokePCM_OP_BILL_GROUP_GET_PARENTABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   <operation name="PreInvokePCM_OP_SEARCHABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   <operation name="PostInvokePCM_OP_SEARCHABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   <operation name="PreInvokePCM_OP_TRANS_OPENABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   <operation name="PreInvokePCM_OP_TRANS_COMMITABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   <operation name="PostInvokePCM_OP_TRANS_COMMITABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   <operation name="PreInvokePCM_OP_CUSTCARE_MOVE_ACCTABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   <operation name="PostInvokePCM_OP_CUSTCARE_MOVE_ACCTABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   <operation name="PreInvokePCM_OP_CUST_UPDATE_CUSTOMERABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   <operation name="PostInvokePCM_OP_CUST_UPDATE_CUSTOMERABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   <operation name="PreInvokePCM_OP_CUST_DELETE_PAYINFOABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   <operation name="PostInvokePPCM_OP_CUST_DELETE_PAYINFOABMMsg">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   <operation name="PostXFormABMtoEBM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   <operation name="PreXFormEBMtoABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+<operation name="PreInvokeABSPCM_OP_CUST_COMMIT_CUSTOMERABM">
+           	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+        </operation>
+        <operation name="PostInvokeABSPCM_OP_CUST_COMMIT_CUSTOMERABM">
+            	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+        </operation> 
+ </binding>
+
+<service name="mirrorAnyService">
+	<port name="SyncCustomerPartyListBRMCommsProvABCSImplExtensionPort" binding="corecustomerext:SyncCustomerPartyListBRMCommsProvABCSImplExtensionBinding">
+		<soap:address location="http://${fp.server.soaserverhostname}:${fp.server.soaserverport}/MirrorServlet/mirror" /> 
+	</port>
+</service>
+
+</definitions>

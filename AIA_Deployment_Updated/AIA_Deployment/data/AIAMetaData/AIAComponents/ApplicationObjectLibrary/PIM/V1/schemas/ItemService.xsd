@@ -1,0 +1,61 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/item/service"
+     xmlns:tns="http://xmlns.oracle.com/apps/ego/item/service" 
+     xmlns:bomin="http://xmlns.oracle.com/apps/bom/structure/service/in" 
+     xmlns:bomout="http://xmlns.oracle.com/apps/bom/structure/service/out" 
+     xmlns:itemin="http://xmlns.oracle.com/apps/ego/item/service/in" 
+     xmlns:itemout="http://xmlns.oracle.com/apps/ego/item/service/out" 
+     xmlns:fnd="http://xmlns.oracle.com/FndSecurity"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+     
+   <xsd:import namespace="http://xmlns.oracle.com/apps/bom/structure/service/out" schemaLocation="ListOfStructureHeaders.xsd"/>
+   <xsd:import namespace="http://xmlns.oracle.com/apps/bom/structure/service/in" schemaLocation="StructureQueryParameters.xsd"/>
+
+   <xsd:import namespace="http://xmlns.oracle.com/apps/ego/item/service/out" schemaLocation="ListOfItems.xsd"/>
+   <xsd:import namespace="http://xmlns.oracle.com/apps/ego/item/service/in" schemaLocation="ItemQueryParameters.xsd"/>
+
+   <xsd:import schemaLocation="FndSecurity.xsd" namespace="http://xmlns.oracle.com/FndSecurity"/>
+   
+   
+
+   <xsd:complexType name="GetStrucReqType">
+        <xsd:sequence>
+            <xsd:element name="structureQueryParameters" type="bomin:StrucQryParamType" minOccurs="0"   nillable="true"/>
+            <xsd:element name="FndSecurity" type="fnd:fnd_security" minOccurs="0"   nillable="true"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="GetStrucRespType">
+        <xsd:sequence>
+            <xsd:element name="listOfStructureHeaders" type="bomout:ListOfStrcHeadType" minOccurs="0"
+                 nillable="true"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    
+       <xsd:complexType name="GetItemReqType">
+        <xsd:sequence>
+            <xsd:element name="itemQueryParameters" type="itemin:ItemQueryParamsType" minOccurs="0"   nillable="true"/>
+            <xsd:element name="FndSecurity" type="fnd:fnd_security" minOccurs="0"   nillable="true"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="GetItemRespType">
+        <xsd:sequence>
+            <xsd:element name="listOfItems" type="itemout:ListOfItemsTpye" minOccurs="0"
+                 nillable="true"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    
+     <xsd:element name="ItemQueryIn" type="tns:GetItemReqType" nillable="true"/>
+     <xsd:element name="ItemQueryOut" type="tns:GetItemRespType" nillable="true"/>
+     
+
+     <xsd:element name="StructureQueryIn" type="tns:GetStrucReqType" nillable="true"/>
+     <xsd:element name="StructureQueryOut" type="tns:GetStrucRespType" nillable="true"/>
+
+
+    </xsd:schema>
+

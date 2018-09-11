@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siebel.com/xml/SWIOrderEntry(Sales)IORes" xmlns:xsdLocal="http://www.siebel.com/xml/SWIOrderEntry(Sales)IORes" attributeFormDefault="unqualified" elementFormDefault="qualified" 
+><xsd:annotation
+><xsd:documentation
+>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation
+></xsd:annotation
+><xsd:element name="ListOfSwiorderentrySalesIores" type="xsdLocal:ListOfSwiorderentrySalesIores"
+/><xsd:complexType name="ListOfSwiorderentrySalesIoresTopElmt"
+><xsd:sequence
+><xsd:element name="ListOfSwiorderentrySalesIores" type="xsdLocal:ListOfSwiorderentrySalesIores" minOccurs="1" maxOccurs="1"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="ListOfSwiorderentrySalesIores"
+><xsd:sequence
+><xsd:element name="FmSolutionsVbc" type="xsdLocal:FmSolutionsVbc" minOccurs="0" maxOccurs="unbounded"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="FmSolutionsVbc"
+><xsd:sequence
+><xsd:element name="DestinationPricingRegion" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="Feasible" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="FleetIntegId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="Itinerary" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ItineraryCurrency" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ItineraryID" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ItineraryPrice" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="OriginPricingRegion" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="PlannedEndDateTime" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="PlannedStartDateTime" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="StaticProfit" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ListOfFmSolutionDetailsVbc" type="xsdLocal:ListOfFmSolutionDetailsVbc" minOccurs="0" maxOccurs="1"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="ListOfFmSolutionDetailsVbc"
+><xsd:sequence
+><xsd:element name="FmSolutionDetailsVbc" type="xsdLocal:FmSolutionDetailsVbc" minOccurs="0" maxOccurs="unbounded"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="FmSolutionDetailsVbc"
+><xsd:sequence
+><xsd:element name="DestinationLocation" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="Distance" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="DistanceUOM" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ItineraryID" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="Mode" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="OriginLocation" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="RateOffering" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ServiceProvideEndTime" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ServiceProvideStartTime" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ServiceProvider" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="SolutionId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="DestinationLocationId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="OriginLocationId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ListOfFmSolutionDetailPricingVbc" type="xsdLocal:ListOfFmSolutionDetailPricingVbc" minOccurs="0" maxOccurs="1"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="ListOfFmSolutionDetailPricingVbc"
+><xsd:sequence
+><xsd:element name="FmSolutionDetailPricingVbc" type="xsdLocal:FmSolutionDetailPricingVbc" minOccurs="0" maxOccurs="unbounded"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="FmSolutionDetailPricingVbc"
+><xsd:sequence
+><xsd:element name="AcceptedPrice" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="CustomerOffer" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ItineraryCurrency" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ItineraryPrice" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="Non-Negotiable" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="Product" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ProductType" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="SolutionId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ProductId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/></xsd:sequence
+></xsd:complexType
+></xsd:schema
+>

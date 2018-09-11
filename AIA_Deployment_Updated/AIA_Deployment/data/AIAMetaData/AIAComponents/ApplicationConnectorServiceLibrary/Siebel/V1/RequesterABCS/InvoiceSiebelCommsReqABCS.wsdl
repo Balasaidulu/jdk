@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created By: Ankur Singhal  -->
+<!-- Date Created: 05-25-2007     -->
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:abcssiebelinv="http://xmlns.oracle.com/ABCS/Siebel/Industry/Communications/InvoiceSiebelCommsReqABCS/V1"
+             xmlns:invlreqabo="http://www.siebel.com/xml/CMU%20Request%20Billing%20Profile%20IO"
+             xmlns:invlresabo="http://www.siebel.com/xml/CMU%20Response%20Billing%20Invoice%20IO"
+             xmlns:invreqabo="http://www.siebel.com/xml/CMU%20Request%20Billed%20Usage%20IO"
+             xmlns:invresabo="http://www.siebel.com/xml/CMU%20Response%20Billed%20Usage%20Details%20IO"
+             xmlns:invedreqabo="http://www.siebel.com/xml/CMU%20Request%20CDR%20Details%20IO"
+             xmlns:invedresabo="http://www.siebel.com/xml/CMU%20Response%20CDR%20Details%20IO"
+             xmlns:invedsreqabo="http://www.siebel.com/xml/CMU%20Request%20CDR%20Details%20Search%20IO"
+             xmlns:invrbreqabo="http://www.siebel.com/xml/CMU%20Request%20CDR%20Balance%20Details%20IO"
+             xmlns:invrbresabo="http://www.siebel.com/xml/CMU%20Response%20CDR%20Balance%20Details%20IO"
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+             xmlns:sblflt="http://www.siebel.com/xml/SWIFault/V0"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+             name="InvoiceSiebelCommsReqABCS"
+             targetNamespace="http://xmlns.oracle.com/ABCS/Siebel/Industry/Communications/InvoiceSiebelCommsReqABCS/V1">
+ <documentation>
+  <svcdoc:Service>
+   <svcdoc:Description>This service contains operations that would be used by
+                       the participating application to interact with the
+                       external systems</svcdoc:Description>
+   <svcdoc:ServiceType>RequestorABCSImplementation</svcdoc:ServiceType>
+   <svcdoc:DisplayName>Invoice Siebel Requestor ABCS Interface</svcdoc:DisplayName>
+   <svcdoc:EBOName>InvoiceEBO</svcdoc:EBOName>
+   <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+   <svcdoc:ImplementationTechnology>ESB</svcdoc:ImplementationTechnology>
+   <svcdoc:Version>1.0</svcdoc:Version>
+   <svcdoc:ProductFamily>CRM</svcdoc:ProductFamily>
+   <svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+   <svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+  </svcdoc:Service>
+ </documentation>
+ <types>
+  <documentation>
+   <svcdoc:Schema>
+    <svcdoc:SchemaReferenced>CmuRequestBillingProfileIo.xsd</svcdoc:SchemaReferenced>
+    <svcdoc:SchemaReferenced>CmuResponseBillingInvoiceIo.xsd</svcdoc:SchemaReferenced>
+    <svcdoc:SchemaReferenced>CmuRequestBilledUsageIo.xsd</svcdoc:SchemaReferenced>
+    <svcdoc:SchemaReferenced>CmuResponseBilledUsageDetailsIo.xsd</svcdoc:SchemaReferenced>
+    <svcdoc:SchemaReferenced>CmuRequestCdrDetailsIo.xsd</svcdoc:SchemaReferenced>
+    <svcdoc:SchemaReferenced>CmuResponseCdrDetailsIo.xsd</svcdoc:SchemaReferenced>
+    <svcdoc:SchemaReferenced>CmuRequestCdrDetailsSearchIo.xsd</svcdoc:SchemaReferenced>
+    <svcdoc:SchemaReferenced>CmuRequestCdrBalanceDetailsIo.xsd</svcdoc:SchemaReferenced>
+    <svcdoc:SchemaReferenced>CmuResponseCdrBalanceDetailsIo.xsd</svcdoc:SchemaReferenced>
+    <svcdoc:SchemaReferenced>Meta.xsd</svcdoc:SchemaReferenced>
+   </svcdoc:Schema>
+  </documentation>
+  <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCS/Siebel/Industry/Communications/InvoiceSiebelCommsReqABCS/V1"
+              elementFormDefault="qualified">
+   <xsd:import namespace="http://www.siebel.com/xml/CMU%20Request%20Billing%20Profile%20IO"
+               schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestBillingProfileIo.xsd"/>
+   <xsd:import namespace="http://www.siebel.com/xml/CMU%20Response%20Billing%20Invoice%20IO"
+               schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuResponseBillingInvoiceIo.xsd"/>
+   <xsd:import namespace="http://www.siebel.com/xml/CMU%20Request%20Billed%20Usage%20IO"
+               schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestBilledUsageIo.xsd"/>
+   <xsd:import namespace="http://www.siebel.com/xml/CMU%20Response%20Billed%20Usage%20Details%20IO"
+               schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuResponseBilledUsageDetailsIo.xsd"/>
+   <xsd:import namespace="http://www.siebel.com/xml/CMU%20Request%20CDR%20Details%20IO"
+               schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestCdrDetailsIo.xsd"/>
+   <xsd:import namespace="http://www.siebel.com/xml/CMU%20Response%20CDR%20Details%20IO"
+               schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuResponseCdrDetailsIo.xsd"/>
+   <xsd:import namespace="http://www.siebel.com/xml/CMU%20Request%20CDR%20Details%20Search%20IO"
+               schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestCdrDetailsSearchIo.xsd"/>
+   <xsd:import namespace="http://www.siebel.com/xml/CMU%20Request%20CDR%20Balance%20Details%20IO"
+               schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestCdrBalanceDetailsIo.xsd"/>
+   <xsd:import namespace="http://www.siebel.com/xml/CMU%20Response%20CDR%20Balance%20Details%20IO"
+               schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuResponseCdrBalanceDetailsIo.xsd"/>
+   <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+               schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+   <xsd:import namespace="http://www.siebel.com/xml/SWIFault/V0"
+               schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/Fault.xsd"/>
+  </xsd:schema>
+ </types>
+ <message name="QueryInvoiceListReqMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message will contain Invoice List request attribute</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="ListOfCmuRequestBillingProfileIo"
+        element="invlreqabo:ListOfCmuRequestBillingProfileIo"/>
+ </message>
+ <message name="QueryInvoiceListRespMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message will contain the Invoive List response
+                        attributes</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="ListOfCmuResponseBillingInvoiceIo"
+        element="invlresabo:ListOfCmuResponseBillingInvoiceIo"/>
+ </message>
+ <message name="QueryInvoiceReqMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message will contain the Invoice request attributes </svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="ListOfCmuRequestBilledUsageIo"
+        element="invreqabo:ListOfCmuRequestBilledUsageIo"/>
+ </message>
+ <message name="QueryInvoiceRespMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message will contain the Invoice response attributes</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="ListOfCmuResponseBilledUsageDetailsIo"
+        element="invresabo:ListOfCmuResponseBilledUsageDetailsIo"/>
+ </message>
+ <message name="QueryEventDetailsReqMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message will contain the Invoice Event Details
+                        request attributes</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="ListOfCmuRequestCdrDetailsIo"
+        element="invedreqabo:ListOfCmuRequestCdrDetailsIo"/>
+ </message>
+ <message name="QueryEventDetailsRespMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message will contain the Invoice Event Details
+                        response attributes</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="ListOfCmuResponseCdrDetailsIo"
+        element="invedresabo:ListOfCmuResponseCdrDetailsIo"/>
+ </message>
+ <message name="SearchEventDetailsReqMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message will contain the Search Invoice Event
+                        Details request attributes</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="ListOfCmuRequestCdrDetailsSearchIo"
+        element="invedsreqabo:ListOfCmuRequestCdrDetailsSearchIo"/>
+ </message>
+ <message name="SearchEventDetailsRespMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message will contain the Search Invoice Event
+                        Details response attributes</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="ListOfCmuResponseCdrDetailsIo"
+        element="invedresabo:ListOfCmuResponseCdrDetailsIo"/>
+ </message>
+ <message name="QueryResourceBalanceReqMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message will contain the Query Invoice Resource
+                        Balance request attributes</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="ListOfCmuRequestCdrBalanceDetailsIo"
+        element="invrbreqabo:ListOfCmuRequestCdrBalanceDetailsIo"/>
+ </message>
+ <message name="QueryResourceBalanceRespMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message will contain the Query Invoice Resource
+                        Balance response attributes</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="ListOfCmuResponseCdrBalanceDetailsIo"
+        element="invrbresabo:ListOfCmuResponseCdrBalanceDetailsIo"/>
+ </message>
+ <message name="FaultMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message is used for propagating Error Context and
+                        Error Message</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="Fault" element="corecom:Fault"/>
+ </message>
+ <message name="SiebelFaultMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message is used for propagating Error Context and
+                        Error Message</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="SiebelFault" element="sblflt:Fault"/>
+ </message>
+ <portType name="InvoiceSiebelCommsReqABCS">
+  <documentation>
+   <svcdoc:Interface>
+    <svcdoc:Description>This ABCS Interface contains operations that route the
+                        input messages to the appropriate ABCS Implementation
+                        services</svcdoc:Description>
+    <svcdoc:DisplayName>Invoice Siebel ABCS Requestor Interface</svcdoc:DisplayName>
+    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+   </svcdoc:Interface>
+  </documentation>
+  <operation name="QueryInvoiceList">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation routes to theQueryInvoiceList operation
+                         of the QueryInvoiceListSiebelABCSImpl service</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>Query Invoice List</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="abcssiebelinv:QueryInvoiceListReqMsg"/>
+   <output message="abcssiebelinv:QueryInvoiceListRespMsg"/>
+   <fault name="fault" message="abcssiebelinv:SiebelFaultMsg"/>
+  </operation>
+  <operation name="QueryInvoice">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation routes to theQueryInvoice operation of
+                         the QueryInvoiceSiebelABCSImpl service</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>Query Invoice</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="abcssiebelinv:QueryInvoiceReqMsg"/>
+   <output message="abcssiebelinv:QueryInvoiceRespMsg"/>
+   <fault name="fault" message="abcssiebelinv:SiebelFaultMsg"/>
+  </operation>
+  <operation name="QueryEventDetails">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation routes to theQueryInvoiceEventDetails
+                         operation of the QueryInvoiceEventDetailsSiebelABCSImpl
+                         service</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>Query Invoice Event Details</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="abcssiebelinv:QueryEventDetailsReqMsg"/>
+   <output message="abcssiebelinv:QueryEventDetailsRespMsg"/>
+   <fault name="fault" message="abcssiebelinv:SiebelFaultMsg"/>
+  </operation>
+  <operation name="SearchEventDetails">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation routes to the SearchInvoiceEventDetails
+                         operation of the
+                         SearchInvoiceEventDetailsSiebelABCSImpl service</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>Search Invoice Event Details</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="abcssiebelinv:SearchEventDetailsReqMsg"/>
+   <output message="abcssiebelinv:SearchEventDetailsRespMsg"/>
+   <fault name="fault" message="abcssiebelinv:SiebelFaultMsg"/>
+  </operation>
+  <operation name="QueryResourceBalance">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation routes to the
+                         QueryInvoiceResourceBalance operation of the
+                         QueryInvoiceResourceBalanceSiebelABCSImpl service.</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>Query Invoice Resource Balance</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="abcssiebelinv:QueryResourceBalanceReqMsg"/>
+   <output message="abcssiebelinv:QueryResourceBalanceRespMsg"/>
+   <fault name="fault" message="abcssiebelinv:SiebelFaultMsg"/>
+  </operation>
+ </portType>
+</definitions>

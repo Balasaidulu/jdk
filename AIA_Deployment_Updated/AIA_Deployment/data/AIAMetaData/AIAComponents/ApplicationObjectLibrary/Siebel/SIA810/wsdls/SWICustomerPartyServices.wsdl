@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsdLocal1="http://www.siebel.com/xml/SWICustomerPartyIO" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://siebel.com/asi/V0" targetNamespace="http://siebel.com/asi/V0">
+  <types>
+    <xsd:schema elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="http://siebel.com/asi/V0">
+      <xsd:import namespace="http://www.siebel.com/xml/SWICustomerPartyIO" schemaLocation="../schemas/SWICustomerPartyIO.xsd" />
+      <xsd:element name="SWICustomerPartySynchronize_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal1:ListOfSwicustomerpartyio" />
+            <xsd:element name="StatusObject" minOccurs="0" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SWICustomerPartySynchronize_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal1:ListOfSwicustomerpartyio" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SWICustomerPartyInsertOrUpdate_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal1:ListOfSwicustomerpartyio" />
+            <xsd:element name="StatusObject" minOccurs="0" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SWICustomerPartyInsertOrUpdate_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal1:ListOfSwicustomerpartyio" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SWICustomerPartyQueryByExample_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal1:ListOfSwicustomerpartyio" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SWICustomerPartyQueryByExample_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal1:ListOfSwicustomerpartyio" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>    
+  </types>
+  <message name="SWICustomerPartySynchronize_Input">
+    <part name="SWICustomerPartySynchronize_Input" element="tns:SWICustomerPartySynchronize_Input" />
+  </message>
+  <message name="SWICustomerPartySynchronize_Output">
+    <part name="SWICustomerPartySynchronize_Output" element="tns:SWICustomerPartySynchronize_Output" />
+  </message>
+  <message name="SWICustomerPartyInsertOrUpdate_Input">
+    <part name="SWICustomerPartyInsertOrUpdate_Input" element="tns:SWICustomerPartyInsertOrUpdate_Input" />
+  </message>
+  <message name="SWICustomerPartyInsertOrUpdate_Output">
+    <part name="SWICustomerPartyInsertOrUpdate_Output" element="tns:SWICustomerPartyInsertOrUpdate_Output" />
+  </message>
+  <message name="SWICustomerPartyQueryByExample_Input">
+    <part name="SWICustomerPartyQueryByExample_Input" element="tns:SWICustomerPartyQueryByExample_Input" />
+  </message>
+  <message name="SWICustomerPartyQueryByExample_Output">
+    <part name="SWICustomerPartyQueryByExample_Output" element="tns:SWICustomerPartyQueryByExample_Output" />
+  </message>
+  <portType name="SWI_spcCustomer_spcParty_spcService">
+    <operation name="SWICustomerPartySynchronize">
+      <input message="tns:SWICustomerPartySynchronize_Input" />
+      <output message="tns:SWICustomerPartySynchronize_Output" />
+    </operation>
+    <operation name="SWICustomerPartyInsertOrUpdate">
+      <input message="tns:SWICustomerPartyInsertOrUpdate_Input" />
+      <output message="tns:SWICustomerPartyInsertOrUpdate_Output" />
+    </operation>
+    <operation name="SWICustomerPartyQueryByExample">
+      <input message="tns:SWICustomerPartyQueryByExample_Input" />
+      <output message="tns:SWICustomerPartyQueryByExample_Output" />
+    </operation>
+  </portType>
+  <binding name="SWI_spcCustomer_spcParty_spcService" type="tns:SWI_spcCustomer_spcParty_spcService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="SWICustomerPartySynchronize">
+      <soap:operation soapAction="document/http://siebel.com/asi/V0:SWICustomerPartySynchronize" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SWICustomerPartyInsertOrUpdate">
+      <soap:operation soapAction="document/http://siebel.com/asi/V0:SWICustomerPartyInsertOrUpdate" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SWICustomerPartyQueryByExample">
+      <soap:operation soapAction="document/http://siebel.com/asi/V0:SWICustomerPartyQueryByExample" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="SWICustomerParty">
+    <port binding="tns:SWI_spcCustomer_spcParty_spcService" name="SWI_spcCustomer_spcParty_spcService">
+      <soap:address location="http://set.at.runtime" />
+    </port>
+  </service>
+</definitions>

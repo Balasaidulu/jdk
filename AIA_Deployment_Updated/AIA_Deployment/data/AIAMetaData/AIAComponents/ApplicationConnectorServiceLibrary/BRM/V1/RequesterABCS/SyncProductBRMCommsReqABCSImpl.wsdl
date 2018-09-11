@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions name="SyncProductBRMCommsReqABCSImpl" targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/SyncProductBRMCommsReqABCSImpl/V1" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:abcsimplbrmprod="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/SyncProductBRMCommsReqABCSImpl/V1" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V2" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:brmproductabo="http://www.portal.com/schemas/CRMSync" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:itemcompositionebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ItemComposition/V1" xmlns:pns1="http://xmlns.oracle.com/SyncProductBRMCommsReqABCSImpl/correlationset" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+	<documentation>
+		<svcdoc:Service>
+			<svcdoc:Description>This service contains operations that would be used to Sync the Products  from BRM to Siebel</svcdoc:Description>
+			<svcdoc:ServiceType>RequesterABCSImplementation</svcdoc:ServiceType>
+			<svcdoc:DisplayName>SyncProductBRMReqABCSImpl/V1 Requester ABCS
+                          Implementation Interface</svcdoc:DisplayName>
+			<svcdoc:ServiceObjectName>SyncProduct</svcdoc:ServiceObjectName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:Version>1.0</svcdoc:Version>
+			<svcdoc:EBOName>ItemCompositionEBO,PriceListEBO</svcdoc:EBOName>
+			<svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+			<svcdoc:ProductFamily>BRM</svcdoc:ProductFamily>
+			<svcdoc:ProductPillar>BRM</svcdoc:ProductPillar>
+			<svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+		</svcdoc:Service>
+	</documentation>
+	<import namespace="http://xmlns.oracle.com/SyncProductBRMCommsReqABCSImpl/correlationset" location="SyncProductBRMCommsReqABCSImpl_Properties.wsdl"/>
+	<import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+	<types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://www.portal.com/schemas/CRMSync" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/ProductInfoChange.xsd"/>
+			<import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+			<import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ItemComposition/V1" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/ItemComposition/V1/ItemCompositionEBM.xsd"/>
+		</schema>
+	</types>
+	<message name="SyncProductReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as a payload to Sync Product operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="SyncProduct" element="brmproductabo:ProductInfoChange"/>
+	</message>
+	<message name="SyncItemCompositionListRespMessage">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as a payload to Sync Product Response operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="SyncItemCompositionListResponseEBM" element="itemcompositionebo:SyncItemCompositionListResponseEBM"/>
+	</message>
+
+	<message name="FaultMessage">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="AIAFault" element="corecom:Fault" />
+	</message>
+
+	<portType name="SyncProductBRMReqABCSImpl">
+		<documentation>
+			<svcdoc:Interface>
+				<svcdoc:Description>This interface contains operations that can act upon
+                            the object</svcdoc:Description>
+				<svcdoc:DisplayName>Sync Product BRM Requestor ABCS Implementation</svcdoc:DisplayName>
+				<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			</svcdoc:Interface>
+		</documentation>
+		<operation name="SyncProduct">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to Sync an Product
+                              object</svcdoc:Description>
+					<svcdoc:MEP>FireAndForget</svcdoc:MEP>
+					<svcdoc:DisplayName>SyncProduct</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="abcsimplbrmprod:SyncProductReqMsg"/>
+		</operation>
+		<operation name="SyncItemCompositionListResponse">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This callback operation will be used to provide the SyncProduct Response</svcdoc:Description>
+					<svcdoc:DisplayName>SyncProductResponse</svcdoc:DisplayName>
+					<svcdoc:Status>Active</svcdoc:Status>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="abcsimplbrmprod:SyncItemCompositionListRespMessage"/>
+		</operation>
+	</portType>
+	<plnk:partnerLinkType name="SyncProductBRMReqABCSImpl">
+		<plnk:role name="SyncProductBRMReqABCSImplProvider">
+			<plnk:portType name="abcsimplbrmprod:SyncProductBRMReqABCSImpl"/>
+		</plnk:role>
+	</plnk:partnerLinkType>
+	<bpws:propertyAlias xmlns:ns3="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ItemComposition/V1" xmlns:ns7="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" propertyName="pns1:SyncItemCompositionListEBM_prop" messageType="abcsimplbrmprod:SyncItemCompositionListRespMessage" part="SyncItemCompositionListResponseEBM" query="/ns3:SyncItemCompositionListResponseEBM/ns7:EBMHeader/ns7:RequestEBMID"/>
+	<bpws:propertyAlias xmlns:ns2="http://xmlns.oracle.com/EnterpriseServices/Core/ItemComposition/V1" xmlns:itemcomposition="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ItemComposition/V1" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" propertyName="pns1:SyncItemCompositionListEBM_prop" messageType="ns2:SyncItemCompositionListReqMsg" part="SyncItemCompositionListEBM" query="/itemcomposition:SyncItemCompositionListEBM/corecom:EBMHeader/corecom:EBMID"/>
+</definitions>

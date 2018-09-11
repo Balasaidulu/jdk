@@ -1,0 +1,23 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/item/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/item/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="ItemUDA.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="ItemAttributeGroup" sdoJava:package="oracle.apps.ego.item.service" sdoJava:instanceClass="oracle.apps.ego.item.service.ItemAttributeGroup">
+        <xsd:annotation>
+            <xsd:documentation>User defined attribute groups.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="AttributegroupId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AttributeGroupName" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="RevisionId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ExtensionId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ItemUDA" type="ItemUDA" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="itemAttributeGroup" type="ItemAttributeGroup" nillable="true"/>
+</xsd:schema>

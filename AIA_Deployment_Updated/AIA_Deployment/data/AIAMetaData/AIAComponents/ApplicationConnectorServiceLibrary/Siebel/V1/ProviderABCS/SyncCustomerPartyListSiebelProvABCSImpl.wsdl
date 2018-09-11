@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="SyncCustomerPartyListSiebelProvABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncCustomerPartyListSiebelProvABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:tns="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncCustomerPartyListSiebelProvABCSImpl/V1"
+     xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:corecust="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service contains operations that would be used by
+                       the participating application to interact with the
+                       external systems</svcdoc:Description>
+            <svcdoc:ServiceType>ProviderABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>Account Provider ABCS Implementation Interface</svcdoc:DisplayName>
+            <svcdoc:EBOName>CustomerPartyEBO</svcdoc:EBOName>
+            <svcdoc:Status>Active</svcdoc:Status>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>Siebel</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/CustomerParty/V2/CustomerPartyEBM.xsd"
+                 namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"/>
+        </schema>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWICustomerPartyIO.xsd"
+                 namespace="http://www.siebel.com/xml/SWICustomerPartyIO"/>
+        </schema>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/WS-Addressing.xsd"/>
+        </schema>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+        </schema>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </schema>
+    </types>
+    <message name="SyncCustomerPartyListReqMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>Request payload for the async SyncCustomerPartyList operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="SyncCustomerPartyListEBM" element="corecust:SyncCustomerPartyListEBM"/>
+    </message>
+    <message name="SyncCustomerPartyListSyncReqMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>Request payload for the synchronous SyncCustomerPartyListSync operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="SyncCustomerPartyListEBM" element="corecust:SyncCustomerPartyListEBM"/>
+    </message>
+    <message name="SyncCustomerPartyListSyncRespMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>Response payload for the synchronous SyncCustomerPartyListSync operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="SyncCustomerPartyListResponseEBM" element="corecust:SyncCustomerPartyListResponseEBM"/>
+    </message>
+    <message name="FaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>Fault payload for the SyncCustomerPartyList operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="AIAFault" element="corecom:Fault"/>
+    </message>
+    <message name="SyncCustomerPartyListRespMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>Response payload for the async SyncCustomerPartyList operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="SyncCustomerPartyListResponseEBM" element="corecust:SyncCustomerPartyListResponseEBM"/>
+    </message>
+    <portType name="SyncCustomerPartyListSiebelProvABCSImplService">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This interface contains the web service operations related to the CustomerParty object.</svcdoc:Description>
+                <svcdoc:DisplayName>SyncCustomerPartyListSiebelProvABCSImplService</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="SyncCustomerPartyList">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This is an asynchronous fire and forget operation, used to Sync or Upsert the CustomerParty object</svcdoc:Description>
+                    <svcdoc:MEP>FIRE_AND_FORGET</svcdoc:MEP>
+                    <svcdoc:DisplayName>SyncCustomerPartyList</svcdoc:DisplayName>
+                    <svcdoc:Status>Active</svcdoc:Status>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="tns:SyncCustomerPartyListReqMsg"/>
+        </operation>
+        <operation name="SyncCustomerPartyListSync">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This is a synchronous operation, used to Sync or Upsert the CustomerParty object</svcdoc:Description>
+                    <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+                    <svcdoc:DisplayName>SyncCustomerPartyListSync</svcdoc:DisplayName>
+                    <svcdoc:Status>Active</svcdoc:Status>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="tns:SyncCustomerPartyListSyncReqMsg"/>
+            <output message="tns:SyncCustomerPartyListSyncRespMsg"/>
+            <fault name="fault" message="tns:FaultMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="SyncCustomerPartyListSiebelProvABCSImpl">
+        <plnk:role name="SyncCustomerPartyListSiebelProvABCSImplProvider">
+            <plnk:portType name="tns:SyncCustomerPartyListSiebelProvABCSImplService"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

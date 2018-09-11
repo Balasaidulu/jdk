@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:tns="http://xmlns.oracle.com/communications/ordermanagement/FulfillmentWS" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	name="FulfillmentWS" 
+	targetNamespace="http://xmlns.oracle.com/communications/ordermanagement/FulfillmentWS" 
+	xmlns:fs="http://xmlns.oracle.com/communications/ordermanagement/FulfillmentWS">
+    <wsdl:import namespace="http://xmlns.oracle.com/communications/ordermanagement/FulfillmentWS" location="FulfillmentWS.xsd"></wsdl:import>
+    <wsdl:message name="SuspendFulfillmentOrderRequest">
+		<wsdl:part name="SuspendFulfillmentOrderRequest" element="tns:SuspendFulfillmentOrder"/>
+	</wsdl:message>
+	<wsdl:message name="UpdateFulfillmentOrderRequest">
+		<wsdl:part name="UpdateFulfillmentOrderRequest" element="tns:UpdateFulfillmentOrder"/>
+	</wsdl:message>
+	<wsdl:message name="GetFulfillmentOrderRequest">
+		<wsdl:part name="GetFulfillmentOrderRequest" element="tns:GetFulfillmentOrder"/>
+	</wsdl:message>
+	<wsdl:message name="FindFulfillmentOrderRequest">
+		<wsdl:part name="FindFulfillmentOrderRequest" element="tns:FindFulfillmentOrder"/>
+	</wsdl:message>
+	<wsdl:message name="ReceiveFulfillmentOrderUpdate">
+		<wsdl:part name="ReceiveFulfillmentOrderUpdate" element="tns:ReceiveFulfillmentOrderUpdate"/>
+	</wsdl:message>
+	<wsdl:message name="SuspendFulfillmentOrderResponse">
+		<wsdl:part name="SuspendFulfillmentOrderResponse" element="tns:SuspendFulfillmentOrderResponse"/>
+	</wsdl:message>
+	<wsdl:message name="UpdateFulfillmentOrderResponse">
+		<wsdl:part name="UpdateFulfillmentOrderResponse" element="tns:UpdateFulfillmentOrderResponse"/>
+	</wsdl:message>
+	<wsdl:message name="GetFulfillmentOrderResponse">
+		<wsdl:part name="GetFulfillmentOrderResponse" element="tns:GetFulfillmentOrderResponse"/>
+	</wsdl:message>
+	<wsdl:message name="FindFulfillmentOrderResponse">
+		<wsdl:part name="FindFulfillmentOrderResponse" element="tns:FindFulfillmentOrderResponse"/>
+	</wsdl:message>
+	<wsdl:message name="CreateFulfillmentOrderRequest">
+		<wsdl:part name="CreateFulfillmentOrderRequest" element="tns:CreateFulfillmentOrder"/>
+	</wsdl:message>
+	<wsdl:message name="CreateFulfillmentOrderResponse">
+		<wsdl:part name="CreateFulfillmentOrderResponse" element="tns:CreateFulfillmentOrderResponse"/>
+	</wsdl:message>
+	<wsdl:message name="CancelFulfillmentOrderRequest">
+		<wsdl:part name="CancelFulfillmentOrderRequest" element="tns:CancelFulfillmentOrder"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="CancelFulfillmentOrderResponse">
+		<wsdl:part name="CancelFulfillmentOrderResponse" element="tns:CancelFulfillmentOrderResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ResumeFulfillmentOrderRequest">
+		<wsdl:part name="ResumeFulfillmentOrderRequest" element="tns:ResumeFulfillmentOrder"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ResumeFulfillmentOrderResponse">
+		<wsdl:part name="ResumeFulfillmentOrderResponse" element="tns:ResumeFulfillmentOrderResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="FulfillmentSystemWSPort">
+		<wsdl:operation name="CreateFulfillmentOrder">
+			<wsdl:input message="tns:CreateFulfillmentOrderRequest"/>
+			<wsdl:output message="tns:CreateFulfillmentOrderResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="SuspendFulfillmentOrder">
+			<wsdl:input message="tns:SuspendFulfillmentOrderRequest"/>
+			<wsdl:output message="tns:SuspendFulfillmentOrderResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateFulfillmentOrder">
+			<wsdl:input message="tns:UpdateFulfillmentOrderRequest"/>
+			<wsdl:output message="tns:UpdateFulfillmentOrderResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetFulfillmentOrder">
+			<wsdl:input message="tns:GetFulfillmentOrderRequest"/>
+			<wsdl:output message="tns:GetFulfillmentOrderResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="ReceiveFulfillmentOrderUpdate">
+                        <wsdl:input message="tns:ReceiveFulfillmentOrderRequest"/>
+			<wsdl:output message="tns:ReceiveFulfillmentOrderUpdate"/>
+		</wsdl:operation>
+		<wsdl:operation name="CancelFulfillmentOrder">
+			<wsdl:input message="tns:CancelFulfillmentOrderRequest"></wsdl:input>
+			<wsdl:output message="tns:CancelFulfillmentOrderResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ResumeFulfillmentOrder">
+			<wsdl:input message="tns:ResumeFulfillmentOrderRequest"></wsdl:input>
+			<wsdl:output message="tns:ResumeFulfillmentOrderResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="FindFulfillmentOrder">
+			<wsdl:input message="tns:FindFulfillmentOrderRequest"></wsdl:input>
+			<wsdl:output message="tns:FindFulfillmentOrderResponse"></wsdl:output>
+		</wsdl:operation>                
+	</wsdl:portType>
+	<wsdl:binding name="FulfillmentSystemWebServicePortBindingHttp" type="tns:FulfillmentSystemWSPort">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="CreateFulfillmentOrder">
+			<soap:operation
+				soapAction="http://xmlns.oracle.com/communications/ordermanagement/FulfillmentWS/CreateFulfillmentOrder" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="SuspendFulfillmentOrder">
+			<soap:operation
+				soapAction="http://xmlns.oracle.com/communications/ordermanagement/FulfillmentWS/SuspendFulfillmentOrder" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateFulfillmentOrder">
+			<soap:operation
+				soapAction="http://xmlns.oracle.com/communications/ordermanagement/FulfillmentWS/UpdateFulfillmentOrder" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetFulfillmentOrder">
+			<soap:operation
+				soapAction="http://xmlns.oracle.com/communications/ordermanagement/FulfillmentWS/GetFulfillmentOrder" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="FindFulfillmentOrder">
+			<soap:operation
+				soapAction="http://xmlns.oracle.com/communications/ordermanagement/FulfillmentWS/FindFulfillmentOrder" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ReceiveFulfillmentOrderUpdate">
+			<soap:operation
+				soapAction="http://xmlns.oracle.com/communications/ordermanagement/FulfillmentWS/ReceiveFulfillmentOrderUpdate" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:binding name="FulfillmentSystemWebServicePortBindingJms" type="tns:FulfillmentSystemWSPort">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="CreateFulfillmentOrder">
+			<soap:operation
+				soapAction="http://xmlns.oracle.com/communications/ordermanagement/FulfillmentWS/CreateFulfillmentOrder" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="SuspendFulfillmentOrder">
+			<soap:operation
+				soapAction="http://xmlns.oracle.com/communications/ordermanagement/FulfillmentWS/SuspendFulfillmentOrder" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateFulfillmentOrder">
+			<soap:operation
+				soapAction="http://xmlns.oracle.com/communications/ordermanagement/FulfillmentWS/UpdateFulfillmentOrder" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetFulfillmentOrder">
+			<soap:operation
+				soapAction="http://xmlns.oracle.com/communications/ordermanagement/FulfillmentWS/GetFulfillmentOrder" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="FindFulfillmentOrder">
+			<soap:operation
+				soapAction="http://xmlns.oracle.com/communications/ordermanagement/FulfillmentWS/FindFulfillmentOrder" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ReceiveFulfillmentOrderUpdate">
+			<soap:operation
+				soapAction="http://xmlns.oracle.com/communications/ordermanagement/FulfillmentWS/ReceiveFulfillmentOrderUpdate" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="FulfillmentSystemService">
+		<wsdl:port binding="tns:FulfillmentSystemWebServicePortBindingHttp" name="FulfillmentSystemWebServicePort">
+			<soap:address location="http://remotehost:port/fulfillment"/>
+		</wsdl:port>
+	</wsdl:service>
+	<wsdl:service name="FulfillmentSystemServiceJMS">
+		<wsdl:port name="FulfillmentSystemServiceJMSPort" binding="tns:FulfillmentSystemWebServicePortBindingJms">
+			<soap:address location="jms://remotehost:port/fulfillment" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

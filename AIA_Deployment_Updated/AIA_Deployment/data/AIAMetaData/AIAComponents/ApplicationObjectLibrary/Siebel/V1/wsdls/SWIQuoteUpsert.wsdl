@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://siebel.com/asi/" targetNamespace="http://siebel.com/asi/">
+	<types>
+		<xsd:schema xmlns:xsdLocal1="http://siebel.com/OrderManagement/Quote/Data" elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="http://siebel.com/asi/">
+			<xsd:import namespace="http://siebel.com/OrderManagement/Quote/Data" schemaLocation="../schemas/SWIQuoteIO.xsd" />
+			<xsd:element name="SBLQuoteUpsert_Input">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Process_spcInstance_spcId" type="xsd:string" />
+						<xsd:element name="Object_spcId" type="xsd:string" />
+						<xsd:element name="Siebel_spcOperation_spcObject_spcId" type="xsd:string" />
+						<xsd:element name="StatusObject" type="xsd:string" />
+						<xsd:element ref="xsdLocal1:ListOfSWIQuoteIO" />
+						<xsd:element name="Error_spcCode" type="xsd:string" />
+						<xsd:element name="Error_spcMessage" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SBLQuoteUpsert_Output">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Error_spcCode" type="xsd:string" />
+						<xsd:element name="Error_spcMessage" type="xsd:string" />
+						<xsd:element name="Object_spcId" type="xsd:string" />
+						<xsd:element name="Process_spcInstance_spcId" type="xsd:string" />
+						<xsd:element name="Siebel_spcOperation_spcObject_spcId" type="xsd:string" />
+						<xsd:element ref="xsdLocal1:ListOfSWIQuoteIO" />
+						<xsd:element name="StatusObject" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</types>
+	<message name="SBLQuoteUpsert_Input">
+		<part name="SBLQuoteUpsert_Input" element="tns:SBLQuoteUpsert_Input" />
+	</message>
+	<message name="SBLQuoteUpsert_Output">
+		<part name="SBLQuoteUpsert_Output" element="tns:SBLQuoteUpsert_Output" />
+	</message>
+	<portType name="SWIQuoteUpsert">
+		<operation name="SBLQuoteUpsert">
+			<input message="tns:SBLQuoteUpsert_Input" />
+			<output message="tns:SBLQuoteUpsert_Output" />
+		</operation>
+	</portType>
+	<binding name="SWIQuoteUpsert" type="tns:SWIQuoteUpsert">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="SBLQuoteUpsert">
+			<soap:operation soapAction="document/http://siebel.com/asi/:SBLQuoteUpsert" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+	</binding>
+	<service name="SWIQuoteUpsert">
+		<port name="SWIQuoteUpsert" binding="tns:SWIQuoteUpsert">
+			<soap:address location="http://set.at.runtime" />
+		</port>
+	</service>
+</definitions>

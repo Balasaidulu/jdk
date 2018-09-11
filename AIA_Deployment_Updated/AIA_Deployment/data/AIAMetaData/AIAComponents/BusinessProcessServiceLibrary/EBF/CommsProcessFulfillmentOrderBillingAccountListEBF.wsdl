@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="CommsProcessFulfillmentOrderBillingAccountListEBF"
+     targetNamespace="http://xmlns.oracle.com/EnterpriseFlows/Industry/Comms/CommsProcessFulfillmentOrderBillingAccountListEBF/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+     xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:ns1="http://schemas.oracle.com/bpel/extension"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:cpartyebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+     xmlns:pns1="http://xmlns.oracle.com/EnterpriseFlows/Industry/Comms/CommsProcessFulfillmentOrderBillingAccountListEBF/V1/correlationset"
+     xmlns:client="http://xmlns.oracle.com/EnterpriseFlows/Industry/Comms/CommsProcessFulfillmentOrderBillingAccountListEBF/V1"
+     xmlns:fordebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/FulfillmentOrder/V1"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>Transforms Order Object to create a unique list of accounts and billing profiles and calls ProcessBillingAccountListEBF(Async delayed response BPEL process detailed in Customer TDD) to create accounts and billing profiles in Billing System</svcdoc:Description>
+            <svcdoc:ServiceType>EnterpriseBusinessFlow</svcdoc:ServiceType>
+            <svcdoc:DisplayName>ProcessFulfillmentOrderBillingAccountListEBF Implementation</svcdoc:DisplayName>
+            <svcdoc:EBOName>SalesOrderEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://xmlns.oracle.com/EnterpriseFlows/Industry/Comms/CommsProcessFulfillmentOrderBillingAccountListEBF/V1/correlationset"
+         location="CommsProcessFulfillmentOrderBillingAccountListEBF_Properties.wsdl"/>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/CustomerParty/V2/CustomerPartyEBM.xsd"/>
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/FulfillmentOrder/V1"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/FulfillmentOrder/V1/FulfillmentOrderEBM.xsd"/>
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+            <import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </schema>
+    </types>
+    <message name="CommsProcessFulfillmentOrderBillingAccountListEBFRequestMessage">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used as a payload to ProcessFulfillmentOrderBillingAccountListEBF operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="ProcessFulfillmentOrderBillingAccountListEBM" element="fordebo:ProcessFulfillmentOrderBillingAccountListEBM"/>
+    </message>
+    <message name="CommsProcessBillingAccountListEBFResponseMessage">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for sending response by ProcessBillingAccountListEBFResponse operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="ProcessBillingAccountListResponseEBM" element="cpartyebo:ProcessBillingAccountListResponseEBM"/>
+    </message>
+    <message name="AIAFaultMsg">
+        <part name="AIAFault" element="corecom:Fault"/>
+    </message>
+    <portType name="CommsProcessFulfillmentOrderBillingAccountListEBF">
+        <operation name="initiate">
+            <input message="client:CommsProcessFulfillmentOrderBillingAccountListEBFRequestMessage"/>
+        </operation>
+        <operation name="ProcessBillingAccountListResponse">
+            <input message="client:CommsProcessBillingAccountListEBFResponseMessage"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="CommsProcessFulfillmentOrderBillingAccountListEBF">
+        <plnk:role name="CommsProcessFulfillmentOrderBillingAccountListEBFProvider">
+            <plnk:portType name="client:CommsProcessFulfillmentOrderBillingAccountListEBF"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <bpws:propertyAlias xmlns:billebs="http://xmlns.oracle.com/EnterpriseServices/Core/Billing/V1" xmlns:corecustmr="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+         propertyName="pns1:RequestEBMID" messageType="billebs:ProcessBillingAccountListReqMsg"
+         part="ProcessBillingAccountListEBM" query="/corecustmr:ProcessBillingAccountListEBM/corecom:EBMHeader/corecom:EBMID"/>
+    <bpws:propertyAlias xmlns:billebs="http://xmlns.oracle.com/EnterpriseServices/Core/Billing/V1" xmlns:corecustmr="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+         propertyName="pns1:RequestEBMID" messageType="client:CommsProcessBillingAccountListEBFResponseMessage"
+         part="ProcessBillingAccountListResponseEBM" query="/corecustmr:ProcessBillingAccountListResponseEBM/corecom:EBMHeader/corecom:RequestEBMID"/>
+</definitions>

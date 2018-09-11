@@ -1,0 +1,794 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<xsd:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xsdLocal1="http://siebel.com/OrderManagement/Order/Details/Data/Query"
+     targetNamespace="http://siebel.com/OrderManagement/Order/Details/Data/Query" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:annotation>
+        <xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All
+                           rights reserved. Siebel XSD Generation</xsd:documentation>
+    </xsd:annotation>
+    <xsd:element name="ListOfOrderDetail" type="xsdLocal1:ListOfOrderDetailQuery"/>
+    <xsd:complexType name="ListOfOrderDetailTopElmtQuery">
+        <xsd:sequence>
+            <xsd:element name="ListOfOrderDetail" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfOrderDetailQuery"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ListOfOrderDetailQuery">
+        <xsd:sequence>
+            <xsd:element name="OrderDetail" maxOccurs="1" minOccurs="0" type="xsdLocal1:OrderDetailQuery"/>
+        </xsd:sequence>
+        <xsd:attribute name="pagesize" type="xsd:integer"/>
+        <xsd:attribute name="startrownum" type="xsd:integer"/>
+        <xsd:attribute name="recordcountneeded" type="xsd:boolean"/>
+    </xsd:complexType>
+    <xsd:complexType name="OrderDetailQuery">
+        <xsd:sequence>
+            <xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Created" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Updated" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ConflictId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Account" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="AccountAddressId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="AccountContractedProductsOnlyFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="AccountId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="AccountLocation" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="AccountType" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Active" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Approved" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillToAccount" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillToAccountId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillToAccountLocation" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillToAddressId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillToContactId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillableFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccountId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CarrierPriority" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CarrierType" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CompoundProductNumber" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ContactEmailAddress" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ContactFirstName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ContactId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ContactLastName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ContactWorkPhone" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CurrencyCode" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Discount" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="DiscountAmount" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ExchangeDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Freight" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="IntegrationId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="MRCTotal" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="NRCTotal" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="OptyId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="OrderDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="OrderNumber" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="OrderPriority" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="OrderTotal" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="OrderType" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="OrderTypeCode" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="OrderTypeId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PaymentTerm" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PaymentTermId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalShipToAddressId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalShipToCity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalShipToCountry" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalShipToPostalCode" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalShipToState" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalShipToStreetAddress" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalShipToStreetAddress2" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PriceListId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryBillToAddress" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryBillToAddress2" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryBillToCity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryBillToCountry" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryBillToEmail" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryBillToFirstName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryBillToLastName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryBillToPostalCode" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryBillToState" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryBillToWorkPhone" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryOrganizationId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryPositionId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryShipToAddress" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryShipToAddress2" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryShipToAddressId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryShipToCity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryShipToCountry" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryShipToEmail" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryShipToFirstName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryShipToLastName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryShipToPostalCode" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryShipToState" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryShipToWorkPhone" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="QuoteId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="QuoteNumber" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="RequestedShipDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Revision" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ScenarioTestFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceAccount" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceAccountAddress" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceAccountAddress2" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceAccountAddressId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceAccountCity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceAccountCountry" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceAccountId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceAccountLocation" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceAccountState" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceAccountZip" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceContactEmail" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceContactFirstName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceContactId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceContactLastName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceContactWorkPhone" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipInstructions" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToAccount" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToAccountId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToAccountLocation" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToAddressId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToContactId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Status" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TaxAmount" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TaxExempt" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TaxExemptNumber" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TaxExemptReason" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TaxRate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalBillToAddressId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalBillToCity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalBillToCountry" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalBillToPostalCode" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalBillToState" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalBillToStreetAddress" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalBillToStreetAddress2" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccount" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccountLocation" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccountNumber" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingProfileId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingProfileName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceAccountNumber" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Comments" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccountAddress" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccountAddress2" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccountAddressId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccountCity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccountContactId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccountCountry" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccountState" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccountZip" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingContactEmail" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingContactFirstName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingContactLastName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingContactWorkPhone" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalShipToAddressee" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryShipToAddressee" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ListOfOrderApprovalHistory" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfOrderApprovalHistoryQuery"/>
+            <xsd:element name="ListOfShipment" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfShipmentQuery"/>
+            <xsd:element name="ListOfOrderItemDetail" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfOrderItemDetailQuery"/>
+            <xsd:element name="ListOfOrderPayment" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfOrderPaymentQuery"/>
+        </xsd:sequence>
+        <xsd:attribute name="searchspec" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="ListOfOrderApprovalHistoryQuery">
+        <xsd:sequence>
+            <xsd:element name="OrderApprovalHistory" maxOccurs="1" minOccurs="0" type="xsdLocal1:OrderApprovalHistoryQuery"/>
+        </xsd:sequence>
+        <xsd:attribute name="pagesize" type="xsd:integer"/>
+        <xsd:attribute name="startrownum" type="xsd:integer"/>
+        <xsd:attribute name="recordcountneeded" type="xsd:boolean"/>
+    </xsd:complexType>
+    <xsd:complexType name="OrderApprovalHistoryQuery">
+        <xsd:sequence>
+            <xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Created" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Updated" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ConflictId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Action" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ActiveFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Comments" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="DueTime" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ItemId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ItemObjectId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PastDue" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Priority" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ProtectOwnershipFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="StartTime" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TaskOwnerFirstName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TaskOwnerFullName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TaskOwnerId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TaskOwnerLastName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TaskOwnerLogin" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+        </xsd:sequence>
+        <xsd:attribute name="searchspec" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="ListOfShipmentQuery">
+        <xsd:sequence>
+            <xsd:element name="Shipment" maxOccurs="1" minOccurs="0" type="xsdLocal1:ShipmentQuery"/>
+        </xsd:sequence>
+        <xsd:attribute name="pagesize" type="xsd:integer"/>
+        <xsd:attribute name="startrownum" type="xsd:integer"/>
+        <xsd:attribute name="recordcountneeded" type="xsd:boolean"/>
+    </xsd:complexType>
+    <xsd:complexType name="ShipmentQuery">
+        <xsd:sequence>
+            <xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Created" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Updated" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ConflictId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="AssignedTo" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="AssignedToID" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Carrier" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CarrierPriority" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Condition" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="FreightCost" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Incoterms" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Instructions" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="InsuranceCost" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="InsuredValue" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="IntegrationId2" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="NoofContainers" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="OrderId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="POD" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrimaryOrderId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ReceiveDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ReceiveInvLocation" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ReceiveLocationId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ReceiveUnknownFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ReceivedBy" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ReceivedContact" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ScheduledDeliveryDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ScheduledPickUpDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipDueDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipInvLocId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipInvLocation" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipInvLocationIntegrationId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipTo" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToAccount" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToAccountId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToAccountIntegrationId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToAccountLocation" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToAddress2" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToAddressIntegrationId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToCity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToCityState" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToCityStateZip" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToContactId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToContactIntegrationId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToCountry" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToFirstName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToID" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToLastName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToState" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToZip" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipVia" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipmentNumber" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShippedBy" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShippedContact" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Status" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="StatusAsOfDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TransitToAccount" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TransitToAccountId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TransitToAccountIntegrationId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TransitToAccountLocation" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TransitToAddress" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TransitToAddressId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TransitToAddressIntegrationId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TransitToContactId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TransitToContactIntegrationId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TransitToFirstName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TransitToLastName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="UOMFreight" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="UOMInsuranceCost" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="UOMInsuranceValue" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="UOMWeight" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="UnknownOrderMatch" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="UnknownOrderNum" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="UnknownOrdertype" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="WaybillNumber" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Weight" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ListOfShipmentItem" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfShipmentItemQuery"/>
+        </xsd:sequence>
+        <xsd:attribute name="searchspec" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="ListOfOrderItemDetailQuery">
+        <xsd:sequence>
+            <xsd:element name="OrderItemDetail" maxOccurs="1" minOccurs="0" type="xsdLocal1:OrderItemDetailQuery"/>
+        </xsd:sequence>
+        <xsd:attribute name="pagesize" type="xsd:integer"/>
+        <xsd:attribute name="startrownum" type="xsd:integer"/>
+        <xsd:attribute name="recordcountneeded" type="xsd:boolean"/>
+    </xsd:complexType>
+    <xsd:complexType name="OrderItemDetailQuery">
+        <xsd:sequence>
+            <xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Created" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Updated" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ConflictId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ActionCode" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="AdjustedListPrice" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="AmountExchangeDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="AssetId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="AssetIntegrationId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="AssetStatus" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="AutoExplodeFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BasePrice" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccountId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CalculatedAssetStatus" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CalculatedDueDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CarrierCode" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CarrierPriority" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CfgActiveFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CfgEndDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CfgLatestReleasedFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CfgObjectDefFirstVersion" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CfgObjectDefLastVersion" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CfgReleasedFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CfgStartDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CfgStateCode" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CfgType" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CfgVersion" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ChangeCost" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ClassRegistrationId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CommitmentCoveredFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CompoundProductFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CompoundProductNumber" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ConfigurationModelId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ContactEmail" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ContactFirstName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ContactId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ContactLastName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ContactWorkPhone" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ConvertToAgreementFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ConvertToAssetFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Cost" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CurrencyCode" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Discount2" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="DiscountAmount" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="DiscountPercent" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="DiscountSource" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="DueDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="EligibilityReason" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="EligibilityStatus" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ExchangeDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ExcludePricingFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ExtendedQuantity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ForcastableFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="HasGenericsFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="HeaderCurrencyCode" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="HeaderDiscount" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="HeaderExchangeDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="InclusiveEligibilityFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="IntegrationId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="IsComplexProduct" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="IsComplexProductComponent" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="IsComplexProductRoot" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ItemPrice" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ItemPriceListId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="JointWorkspaceId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="LineNumber" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="LineNumber2" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="MRCCxTotal" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="MRCCxTotalinHeaderCurrency" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="MaximumQuantity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="MinimumQuantity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="NRCCxTotal" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="NRCCxTotalinHeaderCurrency" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="NeedRefreshBasePrice" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="NetPrice" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="NetworkElementType" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Node" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="OrderActiveFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="OrderCPN" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="OrderHeaderId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="OwnerAccountId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ParentOrderItemId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PartNumber" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PostPickCD" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PrePickCD" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PreviousAssetStatus" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PreviousBillingAccountId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PreviousServiceAccountId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PreviousServiceId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PreviousUsageAssetId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PriceListId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PriceType" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PricingComments" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ProcessedFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ProdItemId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ProdPromId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ProdPromInstanceId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ProdPromName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ProdPromRuleId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ProdPromSourceId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Product" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ProductDefTypeCode" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ProductEffectiveFrom" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ProductEffectiveTo" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ProductId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ProductPortId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ProductPrimaryProductLineId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ProductTypeCode" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ProductXAClassId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PromotionItemFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Quantity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="QuantityRequested" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="QuantityShipped" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="RevisedLineItemId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="RollupAmount" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="RollupItemPrice" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="RootAssetIntegrationId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="RootItemPriceListId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="RootOrderItemId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="RootProductId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="SalesServiceFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceAccount" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceAccountAddress" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceAccountAddress2" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceAccountAddressId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceAccountCity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceAccountCountry" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceAccountId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceAccountLocation" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceAccountState" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceAccountZip" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServiceId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipInstrustions" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToAccount" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToAccountId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToAccountLocation" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToAddress" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToAddress2" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToAddressId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToCity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToContact-Email" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToContact-FirstName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToContact-LastName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToContact-WorkPhone" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToContactId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToCountry" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToState" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToZip" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="SmartPartNumber" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Status" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TaxAmount" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TaxExemptFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ToNode" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ToServiceAccount" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ToServiceAccountId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="UnitPrice" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="UnitofMeasure" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="VODRowId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="VolumeDiscountId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="VolumeDiscountItem" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="VolumeDiscountItemId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="VolumeUpsellItem" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="VolumeUpsellItemId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="VolumeUpsellMessage" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Write-InProduct" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalShipToAddress" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalShipToAddress2" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalShipToAddressId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalShipToCity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalShipToCountry" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalShipToState" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalShipToZip" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalShipToAddressee" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipToAddressee" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccount" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccountAddress" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccountNumber" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccountLocation" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingProfileId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingProfileName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccountAddress2" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccountAddressId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccountCity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccountContactId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccountCountry" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccountState" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccountZip" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingContactEmail" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingContactFirstName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingContactLastName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingContactWorkPhone" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="DonatingServiceProvider" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="EndingPhoneNumber" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="LegacyAccountNumber" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="NumberPortabilityAgencyName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="NumberToPort" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PIN" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="RequestedPortingDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ServicePostalCode" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="StartingPhoneNumber" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ListOfOrderItemXADetail" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfOrderItemXADetailQuery"/>
+            <xsd:element name="ListOfOrderItemProductLine" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfOrderItemProductLineQuery"/>
+            <xsd:element name="OrderItemDetail" maxOccurs="1" minOccurs="0" type="xsdLocal1:OrderItemDetailQuery"/>
+        </xsd:sequence>
+        <xsd:attribute name="searchspec" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="ListOfOrderPaymentQuery">
+        <xsd:sequence>
+            <xsd:element name="OrderPayment" maxOccurs="1" minOccurs="0" type="xsdLocal1:OrderPaymentQuery"/>
+        </xsd:sequence>
+        <xsd:attribute name="pagesize" type="xsd:integer"/>
+        <xsd:attribute name="startrownum" type="xsd:integer"/>
+        <xsd:attribute name="recordcountneeded" type="xsd:boolean"/>
+    </xsd:complexType>
+    <xsd:complexType name="OrderPaymentQuery">
+        <xsd:sequence>
+            <xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Created" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Updated" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ConflictId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ABACode" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="AVSCode" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="AccountNumber" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="AccountNumber-ReadOnly" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ActualCharge" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="AuthorizationCode" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="AuthorizationDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BCReadOnlyFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BankAccountId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BankAddressId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillToAddressId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillToAddressIntegrationId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CalculatedOrderType" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CardHolder" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ContactEmail" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ContactFirstLastName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ContactFirstName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ContactLastFirstName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ContactLastName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ContactName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ContactPhone" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CreatedByName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CreditCardNumber-Display" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CreditCardTransactionResponseCode" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CreditCardTransactionResponseMessage" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CreditCheckMessage" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CreditCheckStatus" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CreditCheckStatusAsOfDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CurrencyCode" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CustomerId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="DateOfBirth" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Description" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="DesiredPayDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="EncryptionKey" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ExchangeDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ExpirationDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ExpirationMonth" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ExpirationYear" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="FirstName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="IntegrationId2" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="InvoiceId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="InvoiceNumber" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="IssuingBankCustomerId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="IssuingBankName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="IssuingBankPhoneNumber" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="LastName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="LineNumber3" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ManualAuthorizationFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="MerchantId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="OrderCustomerId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="OrderId2" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="OrderNumber" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="OrderTypeCode" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Payment" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PaymentAccountId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PaymentAccountIntegrationId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PaymentAccountLocation" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PaymentAccountName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PaymentAccountSite" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PaymentContactId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PaymentContactIntegrationId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PaymentDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PaymentImportFlg" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PaymentMethod" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PaymentMethodLIC" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PaymentProfileName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PaymentStatus" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PaymentStatusAsOfDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PaymentType" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PaymentTypeReadOnlyFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalBillToCity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalBillToCountry" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalBillToPostalCode" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalBillToState" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalBillToStreetAddress" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PersonalBillToStreetAddress2" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="QuoteCustomerId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="QuoteId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="QuoteNumber2" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="SSNEncryptionKey" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="SaveCreditCard" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="SocialSecurityNumber" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TransactionAmount" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TransactionId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TransactionMessage" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TransactionTime" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TransactionType" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="VendorId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="VerificationNumber" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillToCity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillToState" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillToZip" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillToCountry" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingProfileId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccountId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingProfileName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccount" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingAccountNumber" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BankCity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BankState" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BankZip" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillToAddress" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="InvoiceTo" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BankAddress" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ListOfOrderPaymentsBankAddress" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfOrderPaymentsBankAddressQuery"/>
+            <xsd:element name="ListOfOrderPaymentsBillToAddress" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfOrderPaymentsBillToAddressQuery"/>
+        </xsd:sequence>
+        <xsd:attribute name="searchspec" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="ListOfShipmentItemQuery">
+        <xsd:sequence>
+            <xsd:element name="ShipmentItem" maxOccurs="1" minOccurs="0" type="xsdLocal1:ShipmentItemQuery"/>
+        </xsd:sequence>
+        <xsd:attribute name="pagesize" type="xsd:integer"/>
+        <xsd:attribute name="startrownum" type="xsd:integer"/>
+        <xsd:attribute name="recordcountneeded" type="xsd:boolean"/>
+    </xsd:complexType>
+    <xsd:complexType name="ShipmentItemQuery">
+        <xsd:sequence>
+            <xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Created" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Updated" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ConflictId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="AssetNumber" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillingQuantity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="DeliveryDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="DeliveryQuantity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="LineItemActionType" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="LineItemActionTypeId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="LineNumber4" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PickingDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PickingQuantity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PlanDispatchDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PlanDispatchQuantity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Product2" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ProductName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipmentDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipmentId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ShipmentQuantity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Status" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="StatusAsOfDate" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+        </xsd:sequence>
+        <xsd:attribute name="searchspec" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="ListOfOrderItemXADetailQuery">
+        <xsd:sequence>
+            <xsd:element name="OrderItemXADetail" maxOccurs="1" minOccurs="0" type="xsdLocal1:OrderItemXADetailQuery"/>
+        </xsd:sequence>
+        <xsd:attribute name="pagesize" type="xsd:integer"/>
+        <xsd:attribute name="startrownum" type="xsd:integer"/>
+        <xsd:attribute name="recordcountneeded" type="xsd:boolean"/>
+    </xsd:complexType>
+    <xsd:complexType name="OrderItemXADetailQuery">
+        <xsd:sequence>
+            <xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Created" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Updated" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ConflictId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ActionCode" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="AttributeId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BCReadOnlyFlag2" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="CfgStateCode" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="DataType" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="DateValue" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Description2" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="DisplayName" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Hidden" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="IntegrationId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="LOVType" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="MLOV" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Name" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="NumericValue" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ObjectId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="OrderItemStatus" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ParentComplexProductFlag" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PreviousDateValue" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PreviousNumericValue" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PreviousTextValue" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="PreviousValue" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ReadOnly" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Required" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Sequence" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="TextValue" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="UnitofMeasure" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Validation" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Value" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+        </xsd:sequence>
+        <xsd:attribute name="searchspec" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="ListOfOrderItemProductLineQuery">
+        <xsd:sequence>
+            <xsd:element name="OrderItemProductLine" maxOccurs="1" minOccurs="0" type="xsdLocal1:OrderItemProductLineQuery"/>
+        </xsd:sequence>
+        <xsd:attribute name="pagesize" type="xsd:integer"/>
+        <xsd:attribute name="startrownum" type="xsd:integer"/>
+        <xsd:attribute name="recordcountneeded" type="xsd:boolean"/>
+    </xsd:complexType>
+    <xsd:complexType name="OrderItemProductLineQuery">
+        <xsd:sequence>
+            <xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Created" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Updated" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ConflictId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ProductLineId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+        </xsd:sequence>
+        <xsd:attribute name="IsPrimaryMVG" type="xsd:string"/>
+        <xsd:attribute name="searchspec" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="ListOfOrderPaymentsBankAddressQuery">
+        <xsd:sequence>
+            <xsd:element name="OrderPaymentsBankAddress" maxOccurs="1" minOccurs="0" type="xsdLocal1:OrderPaymentsBankAddressQuery"/>
+        </xsd:sequence>
+        <xsd:attribute name="pagesize" type="xsd:integer"/>
+        <xsd:attribute name="startrownum" type="xsd:integer"/>
+        <xsd:attribute name="recordcountneeded" type="xsd:boolean"/>
+    </xsd:complexType>
+    <xsd:complexType name="OrderPaymentsBankAddressQuery">
+        <xsd:sequence>
+            <xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Created" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Updated" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ConflictId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BankAddress" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BankAddress2" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BankCity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BankCountry" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BankState" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BankZip" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+        </xsd:sequence>
+        <xsd:attribute name="IsPrimaryMVG" type="xsd:string"/>
+        <xsd:attribute name="searchspec" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="ListOfOrderPaymentsBillToAddressQuery">
+        <xsd:sequence>
+            <xsd:element name="OrderPaymentsBillToAddress" maxOccurs="1" minOccurs="0" type="xsdLocal1:OrderPaymentsBillToAddressQuery"/>
+        </xsd:sequence>
+        <xsd:attribute name="pagesize" type="xsd:integer"/>
+        <xsd:attribute name="startrownum" type="xsd:integer"/>
+        <xsd:attribute name="recordcountneeded" type="xsd:boolean"/>
+    </xsd:complexType>
+    <xsd:complexType name="OrderPaymentsBillToAddressQuery">
+        <xsd:sequence>
+            <xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Created" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="Updated" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ConflictId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillToAddress" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillToAddress2" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillToCity" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillToCountry" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillToState" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+            <xsd:element name="BillToZip" maxOccurs="1" minOccurs="0" type="xsdLocal1:queryType"/>
+        </xsd:sequence>
+        <xsd:attribute name="IsPrimaryMVG" type="xsd:string"/>
+        <xsd:attribute name="searchspec" type="xsd:string"/>
+    </xsd:complexType>
+    <xsd:complexType name="queryType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="sortorder" type="xsd:string"/>
+                <xsd:attribute name="sortsequence" type="xsd:string"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd1="http://www.siebel.com/xml/SWIAdminISSClassDefinitionIO"
+             targetNamespace="http://siebel.com/asi/"
+             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:tns="http://siebel.com/asi/">
+  <types>
+    <xsd:schema elementFormDefault="qualified"
+                attributeFormDefault="unqualified"
+                targetNamespace="http://siebel.com/asi/"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://www.siebel.com/xml/SWIAdminISSClassDefinitionIO" schemaLocation = "../schemas/SWIAdminISSClassDefinitionIO.xsd"></xsd:import>
+      <xsd:element name="ProductClassQueryById_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="PrimaryRowId" type="xsd:string"></xsd:element>
+            <xsd:element name="Get_spcParent_spcFlag" minOccurs="0"
+                         type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ProductClassQueryById_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsd1:ListOfSwiadminissclassdefinitionio"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ProductClassQueryByExample_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Get_spcParent_spcFlag" minOccurs="0"
+                         type="xsd:string"></xsd:element>
+            <xsd:element ref="xsd1:ListOfSwiadminissclassdefinitionio"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ProductClassQueryByExample_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsd1:ListOfSwiadminissclassdefinitionio"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="ProductClassQueryById_Input">
+    <part name="ProductClassQueryById_Input"
+          element="tns:ProductClassQueryById_Input"></part>
+  </message>
+  <message name="ProductClassQueryById_Output">
+    <part name="ProductClassQueryById_Output"
+          element="tns:ProductClassQueryById_Output"></part>
+  </message>
+  <message name="ProductClassQueryByExample_Input">
+    <part name="ProductClassQueryByExample_Input"
+          element="tns:ProductClassQueryByExample_Input"></part>
+  </message>
+  <message name="ProductClassQueryByExample_Output">
+    <part name="ProductClassQueryByExample_Output"
+          element="tns:ProductClassQueryByExample_Output"></part>
+  </message>
+  <portType name="Product_spcClass">
+    <operation name="ProductClassQueryById">
+      <input message="tns:ProductClassQueryById_Input"></input>
+      <output message="tns:ProductClassQueryById_Output"></output>
+    </operation>
+    <operation name="ProductClassQueryByExample">
+      <input message="tns:ProductClassQueryByExample_Input"></input>
+      <output message="tns:ProductClassQueryByExample_Output"></output>
+    </operation>
+  </portType>
+  <binding name="Product_spcClass" type="tns:Product_spcClass">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"
+                  style="document"></soap:binding>
+    <operation name="ProductClassQueryById">
+      <soap:operation soapAction="document/http://siebel.com/asi/:ProductClassQueryById"></soap:operation>
+      <input>
+        <soap:body use="literal"></soap:body>
+      </input>
+      <output>
+        <soap:body use="literal"></soap:body>
+      </output>
+    </operation>
+    <operation name="ProductClassQueryByExample">
+      <soap:operation soapAction="document/http://siebel.com/asi/:ProductClassQueryByExample"></soap:operation>
+      <input>
+        <soap:body use="literal"></soap:body>
+      </input>
+      <output>
+        <soap:body use="literal"></soap:body>
+      </output>
+    </operation>
+  </binding>
+  <service name="SWIAdminISSClassDefinitionIO">
+    <port binding="tns:Product_spcClass" name="Product_spcClass">
+      <soap:address location="http://set.at.runtime"></soap:address>
+    </port>
+  </service>
+</definitions>
+

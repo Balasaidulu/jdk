@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="QuerySpecificationValueSetListPIMCommsProvABCSImplExtension"
+                  targetNamespace="http://xmlns.oracle.com/ABCSImpl/PIM/Industry/Comms/QuerySpecificationValueSetListPIMCommsProvABCSImplExtension/V1"
+                  xmlns:tns="http://xmlns.oracle.com/ABCSImpl/PIM/Industry/Comms/QuerySpecificationValueSetListPIMCommsProvABCSImplExtension/V1"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+                  xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+                  xmlns:commsvaluesetlistebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SpecificationValueSet/V1"
+                  xmlns:pimxsd="http://xmlns.oracle.com/ValuesetService" 
+                  xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+   <wsdl:documentation>
+      <svcdoc:Service>
+         <svcdoc:Description>This service contains operations that would be used by the participating application to interact with the external systems</svcdoc:Description>
+         <svcdoc:TargetServiceType>ABCSExtension</svcdoc:TargetServiceType>
+         <svcdoc:DisplayName>QuerySpecificationValueSetListPIMCommsProvABCSImpl Provider ABCS Extention Implementation Interface</svcdoc:DisplayName>
+         <svcdoc:ServiceObjectName>QuerySpecificationSpecificationValueSetList</svcdoc:ServiceObjectName>
+         <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         <svcdoc:Version>1.0</svcdoc:Version>
+         <svcdoc:EBOName>SpecificationValueSetEBO</svcdoc:EBOName>
+         <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+         <svcdoc:ProductFamily>ERP</svcdoc:ProductFamily>
+         <svcdoc:ProductPillar>MDMPRODUCT</svcdoc:ProductPillar>
+         <svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+      </svcdoc:Service>
+   </wsdl:documentation>
+   <wsdl:types>
+      <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/PIM/Industry/Comms/QuerySpecificationValueSetListPIMCommsProvABCSImplExtension/V1" elementFormDefault="qualified">
+         <xsd:import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SpecificationValueSet/V1"  schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/SpecificationValueSet/V1/SpecificationValueSetEBM.xsd"/>
+         <xsd:import namespace="http://xmlns.oracle.com/ValuesetService" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PIM/V1/schemas/ValuesetService.xsd"/>
+      </xsd:schema>
+   </wsdl:types>
+   <wsdl:message name="PreXformEBMtoABMValueSetListABMMsg">
+      <wsdl:documentation>
+         <svcdoc:message>
+            <svcdoc:Description>This message is used as a payload to PreXformEBMtoABMValueSetListEBM operation</svcdoc:Description>
+         </svcdoc:message>
+      </wsdl:documentation>
+      <wsdl:part name="QueryValueSetListEBM" element="commsvaluesetlistebo:QuerySpecificationValueSetListEBM"/>
+   </wsdl:message>
+   <wsdl:message name="PostXformABMtoEBMValueSetListEBMMsg">
+      <wsdl:documentation>
+         <svcdoc:message>
+            <svcdoc:Description>This message is used as a payload to PostXformABMtoEBMValueSetListEBM operation</svcdoc:Description>
+         </svcdoc:message>
+      </wsdl:documentation>
+      <wsdl:part name="QueryValueSetListRespEBM" element="commsvaluesetlistebo:QuerySpecificationValueSetListResponseEBM"/>
+   </wsdl:message>
+   <wsdl:message name="PreInvokeEBMtoABMValueSetListABMMsg">
+      <wsdl:documentation>
+         <svcdoc:message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBMtoABMValueSetListABM operation</svcdoc:Description>
+         </svcdoc:message>
+      </wsdl:documentation>
+      <wsdl:part name="QueryValueSetABM" element="pimxsd:ValuesetQueryIn"/>
+   </wsdl:message>
+   <wsdl:message name="PostInvokeABMtoEBMValueSetListEBMMsg">
+      <wsdl:documentation>
+         <svcdoc:message>
+            <svcdoc:Description>This message is used as a payload to PostInvokeABMtoEBMValueSetListEBM operation</svcdoc:Description>
+         </svcdoc:message>
+      </wsdl:documentation>
+      <wsdl:part name="QueryValueSetRespABM" element="pimxsd:ValuesetQueryOut"/>
+   </wsdl:message>
+   <wsdl:message name="FaultMessage">
+      <wsdl:documentation>
+         <svcdoc:message>
+            <svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+         </svcdoc:message>
+      </wsdl:documentation>
+      <wsdl:part name="AIAFault" element="corecom:Fault"/>
+   </wsdl:message>
+   <wsdl:portType name="QuerySpecificationValueSetListPIMCommsProvABCSImplExtensionService">
+      <wsdl:documentation>
+         <svcdoc:Interface>
+            <svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+            <svcdoc:DisplayName>QueryValueSetListPIMCommsProvABCSImplExtensionService</svcdoc:DisplayName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         </svcdoc:Interface>
+      </wsdl:documentation>
+      <wsdl:operation name="PreXformEBMtoABMValueSetListABM">
+         <wsdl:documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformEBMtoABM a ListOfValueSets</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformEBMtoABMValueSetListABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </wsdl:documentation>
+         <wsdl:input message="tns:PreXformEBMtoABMValueSetListABMMsg"/>
+         <wsdl:output message="tns:PreXformEBMtoABMValueSetListABMMsg"/>
+         <wsdl:fault name="fault" message="tns:FaultMessage"/>
+      </wsdl:operation>
+      <wsdl:operation name="PostXformABMtoEBMValueSetListEBM">
+         <wsdl:documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to Post Process ABM an ListOfValueSets</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PostXformABMtoEBMValueSetListEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </wsdl:documentation>
+         <wsdl:input message="tns:PostXformABMtoEBMValueSetListEBMMsg"/>
+         <wsdl:output message="tns:PostXformABMtoEBMValueSetListEBMMsg"/>
+         <wsdl:fault name="fault" message="tns:FaultMessage"/>
+      </wsdl:operation>
+      <wsdl:operation name="PreInvokeEBMtoABMValueSetListABM">
+         <wsdl:documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostInvokeValueSetEBS an PreXformEBMtoABMValueSetABM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformEBMtoABMValueSetABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </wsdl:documentation>
+         <wsdl:input message="tns:PreInvokeEBMtoABMValueSetListABMMsg"/>
+         <wsdl:output message="tns:PreInvokeEBMtoABMValueSetListABMMsg"/>
+         <wsdl:fault name="fault" message="tns:FaultMessage"/>
+      </wsdl:operation>
+      <wsdl:operation name="PostInvokeABMtoEBMValueSetListEBM">
+         <wsdl:documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to ValueSetPreProcessEBM an ListOfValueSets</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>ValueSetPreProcessEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </wsdl:documentation>
+         <wsdl:input message="tns:PostInvokeABMtoEBMValueSetListEBMMsg"/>
+         <wsdl:output message="tns:PostInvokeABMtoEBMValueSetListEBMMsg"/>
+         <wsdl:fault name="fault" message="tns:FaultMessage"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PARTNER LINK TYPE DEFINITION
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+   <plnk:partnerLinkType name="QuerySpecificationValueSetListPIMCommsProvABCSImplExtensionService">
+      <plnk:role name="QuerySpecificationValueSetListPIMCommsProvABCSImplExtensionServiceProvider">
+         <plnk:portType name="tns:QuerySpecificationValueSetListPIMCommsProvABCSImplExtensionService"/>
+      </plnk:role>
+   </plnk:partnerLinkType>
+   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	BINDING
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+   <wsdl:binding name="QuerySpecificationValueSetListPIMCommsProvABCSImplExtensionService_Binding" type="tns:QueryValueSetListPIMCommsProvABCSImplExtensionService">
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+      <wsdl:operation name="PreXformEBMtoABMValueSetListABM">
+          <soap:operation soapAction="mirror" style="document" />
+         <wsdl:input><soap:body use="literal" /></wsdl:input>
+         <wsdl:output><soap:body use="literal" /></wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="PostXformABMtoEBMValueSetListEBM">
+          <soap:operation soapAction="mirror" style="document" />
+         <wsdl:input><soap:body use="literal" /></wsdl:input>
+         <wsdl:output><soap:body use="literal" /></wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="PreInvokeEBMtoABMValueSetListABM">
+          <soap:operation soapAction="mirror" style="document" />
+         <wsdl:input><soap:body use="literal" /></wsdl:input>
+         <wsdl:output><soap:body use="literal" /></wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="PostInvokeABMtoEBMValueSetListEBM">
+          <soap:operation soapAction="mirror" style="document" />
+         <wsdl:input><soap:body use="literal" /></wsdl:input>
+         <wsdl:output><soap:body use="literal" /></wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="mirrorAnyService">
+      <wsdl:port name="QuerySpecificationValueSetListPIMCommsProvABCSImplExtensionService" 
+            binding="tns:QuerySpecificationValueSetListPIMCommsProvABCSImplExtensionService_Binding">
+         <soap:address location="http://kanlddev639a.us.oracle.com:8001/MirrorServlet/mirror" />
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>

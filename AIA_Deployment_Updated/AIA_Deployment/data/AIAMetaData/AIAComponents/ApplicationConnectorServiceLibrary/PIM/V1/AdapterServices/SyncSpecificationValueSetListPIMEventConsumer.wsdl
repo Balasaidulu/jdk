@@ -1,0 +1,21 @@
+<?binding.jca SyncSpecificationValueSetListPIMEventConsumer_apps.jca?>
+<definitions name="SyncSpecificationValueSetListPIMEventConsumer" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/apps/SyncSpecificationValueSetListPIMEventConsumer/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:hdr="http://xmlns.oracle.com/pcbpel/adapter/aq/inbound/" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/apps/SyncSpecificationValueSetListPIMEventConsumer/" xmlns:imp1="http://xmlns.oracle.com/xdb/APPS" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="DEQUEUE_plt">
+        <plt:role name="DEQUEUE_role">
+            <plt:portType name="tns:DEQUEUE_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/xdb/APPS" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PIM/V1/schemas/APPS_WF_EVENT_T.xsd"/>
+        </schema>
+    </types>
+    <message name="WF_EVENT_T_msg">
+        <part name="WF_EVENT_T" element="imp1:WF_EVENT_T"/>
+    </message>
+    <portType name="DEQUEUE_ptt">
+        <operation name="DEQUEUE">
+            <input message="tns:WF_EVENT_T_msg"/>
+        </operation>
+    </portType>
+</definitions>

@@ -1,0 +1,160 @@
+<definitions
+     name="InterfaceSalesQuoteToFulfillmentEBF"
+     targetNamespace="http://xmlns.oracle.com/EnterpriseFlows/Core/InterfaceSalesQuoteToFulfillmentEBF/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+     xmlns:salesquoteorchebs="http://xmlns.oracle.com/EnterpriseServices/Core/SalesQuoteOrchestrationEBS/V1"
+     xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:coresalesquote="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SalesQuote/V1"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:salesquoteebs="http://xmlns.oracle.com/EnterpriseServices/Core/SalesQuote/V1"
+     xmlns:pns1="http://xmlns.oracle.com/EnterpriseFlows/Core/InterfaceSalesQuoteToFulfillmentEBF/V1/correlationset"
+     xmlns:client="http://xmlns.oracle.com/EnterpriseFlows/Core/InterfaceSalesQuoteToFulfillmentEBF/V1"
+     xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>Interface Sales Quote to Fulfillment Enterprise
+                                    Business Flow</svcdoc:Description>
+            <svcdoc:ServiceType>EnterpriseBusinessFlow</svcdoc:ServiceType>
+            <svcdoc:DisplayName>InterfaceSalesQuoteToFulfillmentEBF</svcdoc:DisplayName>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:EBOName>SalesQuoteEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://xmlns.oracle.com/EnterpriseFlows/Core/InterfaceSalesQuoteToFulfillmentEBF/V1/correlationset"
+         location="InterfaceSalesQuoteToFulfillmentEBF_Properties.wsdl"/>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SalesQuote/V1"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/SalesQuote/V1/SalesQuoteEBM.xsd"/>
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+            <xsd:import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="InterfaceSalesQuoteToFulfillmentReqMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used as the request payload
+                                    to the InterfaceSalesQuoteToFulfillment
+                                    operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="ProcessSalesQuoteEBM" element="coresalesquote:ProcessSalesQuoteEBM"/>
+    </message>
+    <message name="InterfaceSalesQuoteToCustomerRespMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used as the inbound response
+                                    payload received after the
+                                    InterfaceSalesQuoteToCustomer operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="ProcessSalesQuoteResponseEBM" element="coresalesquote:ProcessSalesQuoteResponseEBM"/>
+    </message>
+    <message name="CreateSalesQuoteRespMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used as the inbound response
+                                    payload received after the CreateSalesQuote
+                                    operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="CreateSalesQuoteResponseEBM" element="coresalesquote:CreateSalesQuoteResponseEBM"/>
+    </message>
+    <message name="InterfaceSalesQuoteToFulfillmentEBFRequestMessage">
+        <part name="payload" type="xsd:string"/>
+    </message>
+    <message name="AIAFaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used as the internal fault
+                                    message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="AIAFault" element="corecom:Fault"/>
+    </message>
+    <message name="InterfaceSalesQuoteToFulfillmentEBFResponseMessage">
+        <part name="payload" type="xsd:string"/>
+    </message>
+    <portType name="InterfaceSalesQuoteToFulfillmentEBF">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This interface contains the
+                                    InterfaceSalesQuoteToFulfillmentEBF service</svcdoc:Description>
+                <svcdoc:DisplayName>InterfaceSalesQuoteToFulfillmentEBF Interface</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="InterfaceSalesQuoteToFulfillment">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to interface
+                                        sales quote to fulfillment</svcdoc:Description>
+                    <svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+                    <svcdoc:DisplayName>InterfaceSalesQuoteToFulfillment</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="client:InterfaceSalesQuoteToFulfillmentReqMsg"/>
+        </operation>
+        <operation name="InterfaceSalesQuoteToCustomerResponse">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This is the callback operation for the
+                                        interface sales quote to customer
+                                        invocation</svcdoc:Description>
+                    <svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+                    <svcdoc:DisplayName>InterfaceSalesQuoteToCustomerResponse</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                    <svcdoc:InitiatorService>InterfaceSalesQuoteToCustomerEBF</svcdoc:InitiatorService>
+                    <svcdoc:InitiatorInterface>InterfaceSalesQuoteToCustomerEBF</svcdoc:InitiatorInterface>
+                    <svcdoc:InitiatorOperation>InterfaceSalesQuoteToCustomer</svcdoc:InitiatorOperation>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="client:InterfaceSalesQuoteToCustomerRespMsg"/>
+        </operation>
+        <operation name="CreateSalesQuoteResponse">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This is the callback operation for the
+                                        Create Sales Quote invocation</svcdoc:Description>
+                    <svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+                    <svcdoc:DisplayName>CreateSalesQuoteResponse</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                    <svcdoc:InitiatorService>SalesQuoteResponseEBS</svcdoc:InitiatorService>
+                    <svcdoc:InitiatorInterface>SalesQuoteResponseEBS</svcdoc:InitiatorInterface>
+                    <svcdoc:InitiatorOperation>CreateSalesQuoteResponse</svcdoc:InitiatorOperation>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="client:CreateSalesQuoteRespMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="InterfaceSalesQuoteToFulfillmentEBF_PL">
+        <plnk:role name="InterfaceSalesQuoteToFulfillmentEBF_Role">
+            <plnk:portType name="client:InterfaceSalesQuoteToFulfillmentEBF"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <bpws:propertyAlias propertyName="pns1:InterfaceSalesQuoteToCustomerReq_EBMID"
+                        messageType="salesquoteorchebs:InterfaceSalesQuoteToCustomerReqMsg"
+                        part="ProcessSalesQuoteEBM"
+                        query="/coresalesquote:ProcessSalesQuoteEBM/corecom:EBMHeader/corecom:EBMID"/>
+    <bpws:propertyAlias propertyName="pns1:InterfaceSalesQuoteToCustomerReq_EBMID"
+                        messageType="client:InterfaceSalesQuoteToCustomerRespMsg"
+                        part="ProcessSalesQuoteResponseEBM"
+                        query="/coresalesquote:ProcessSalesQuoteResponseEBM/corecom:EBMHeader/corecom:RequestEBMID"/>    
+    <bpws:propertyAlias propertyName="pns1:CreateSalesQuoteReq_EBMID" messageType="salesquoteebs:CreateSalesQuoteReqMsg"
+         part="CreateSalesQuoteEBM" query="/coresalesquote:CreateSalesQuoteEBM/corecom:EBMHeader/corecom:EBMID"
+         xmlns:ns1="urn:oasis:names:tc:xacml:2.0:context:schema:cd:04"/>
+    <bpws:propertyAlias propertyName="pns1:CreateSalesQuoteReq_EBMID" messageType="client:CreateSalesQuoteRespMsg"
+         part="CreateSalesQuoteResponseEBM" query="/coresalesquote:CreateSalesQuoteResponseEBM/corecom:EBMHeader/corecom:RequestEBMID"
+         xmlns:ns1="urn:oasis:names:tc:xacml:2.0:context:schema:cd:04"/>
+</definitions>

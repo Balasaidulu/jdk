@@ -1,0 +1,25 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/item/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/item/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="LeadTimeCharacteristics" sdoJava:package="oracle.apps.ego.item.service" sdoJava:instanceClass="oracle.apps.ego.item.service.LeadTimeCharacteristics">
+        <xsd:annotation>
+            <xsd:documentation>Lead Time Characteristics</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="PreprocessingLeadTime" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="FullLeadTime" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PostprocessingLeadTime" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="FixedLeadTime" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="VariableLeadTime" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="CumManufacturingLeadTime" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="CumulativeTotalLeadTime" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="LeadTimeLotSize" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="leadTimeCharacteristics" type="LeadTimeCharacteristics" nillable="true"/>
+</xsd:schema>

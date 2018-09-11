@@ -1,0 +1,51 @@
+<definitions
+     name="ProcessFulfillmentOrderBillingResponseOSMCFSCommsJMSProducer"
+     targetNamespace="http://xmlns.oracle.com/ProcessFulfillmentOrderBillingResponseOSMCFSCommsJMSProducer"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:ns1="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/FulfillmentOrder/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:ns2="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:client="http://xmlns.oracle.com/ProcessFulfillmentOrderBillingResponseOSMCFSCommsJMSProducer"
+    >
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/ProcessFulfillmentOrderBillingResponseOSMCFSCommsJMSProducer"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/OSM/V1/ProcessFulfillmentOrderBillingResponseOSMCFSCommsJMSProducer.xsd"/>
+        </schema>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/FulfillmentOrder/V1"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/FulfillmentOrder/V1/FulfillmentOrderEBM.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="ProcessFulfillmentOrderBillingResponseOSMCFSCommsJMSProducerRequestMessage">
+        <part name="ProcessFulfillmentOrderBillingResponseEBM" element="ns1:ProcessFulfillmentOrderBillingResponseEBM"/>
+    </message>
+    <message name="ProcessFulfillmentOrderBillingResponseOSMCFSCommsJMSProducerResponseMessage">
+        <part name="payload" element="client:ProcessFulfillmentOrderBillingResponseOSMCFSCommsJMSProducerProcessResponse"/>
+    </message>
+    <message name="AIAFault_MsgTyp">
+        <part name="AIAFault_Msg" element="ns2:Fault"/>
+    </message>
+    <portType name="ProcessFulfillmentOrderBillingResponseOSMCFSCommsJMSProducer">
+        <operation name="ProcessFulfillmentOrderBillingResponse">
+            <input message="client:ProcessFulfillmentOrderBillingResponseOSMCFSCommsJMSProducerRequestMessage"/>
+        </operation>
+    </portType>
+    <portType name="ProcessFulfillmentOrderBillingResponseOSMCFSCommsJMSProducerCallback">
+        <operation name="onResult">
+            <input message="client:ProcessFulfillmentOrderBillingResponseOSMCFSCommsJMSProducerResponseMessage"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="ProcessFulfillmentOrderBillingResponseOSMCFSCommsJMSProducer">
+        <plnk:role name="ProcessFulfillmentOrderBillingResponseOSMCFSCommsJMSProducerProvider">
+            <plnk:portType name="client:ProcessFulfillmentOrderBillingResponseOSMCFSCommsJMSProducer"/>
+        </plnk:role>
+        <plnk:role name="ProcessFulfillmentOrderBillingResponseOSMCFSCommsJMSProducerRequester">
+            <plnk:portType name="client:ProcessFulfillmentOrderBillingResponseOSMCFSCommsJMSProducerCallback"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

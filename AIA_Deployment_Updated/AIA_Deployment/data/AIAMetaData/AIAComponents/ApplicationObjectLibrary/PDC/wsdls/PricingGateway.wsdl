@@ -1,0 +1,133 @@
+<definitions targetNamespace="urn:PricingGateWay"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:ejb="http://schemas.xmlsoap.org/wsdl/ejb/"
+             xmlns:pricinggateway="http://www.oracle.com/communications/pricing"
+             xmlns:tns="urn:PricingGateWay"
+             xmlns:pgwy="http://www.oracle.com/communications/pricing"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:format="http://schemas.xmlsoap.org/wsdl/formatbinding/"
+             xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://www.oracle.com/communications/pricing"
+                        schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PDC/schemas/Pricing/PricingGateway.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="CreatePricingRequest">
+        <part name="param" element="pricinggateway:CreatePricingInputXML"/>
+    </message>
+    <message name="CreatePricingResponse">
+        <part name="return" element="pricinggateway:PDCResponse"/>
+    </message>
+    <message name="UpdatePricingRequest">
+        <part name="param" element="pricinggateway:UpdatePricingInputXML"/>
+    </message>
+    <message name="CreatePublishPricingRequest">
+        <part name="param"
+              element="pricinggateway:CreatePublishPricingInputXML"/>
+    </message>
+    <message name="UpdatePublishPricingRequest">
+        <part name="param"
+              element="pricinggateway:UpdatePublishPricingInputXML"/>
+    </message>
+    <message name="PricingExceptionResponse">
+        <part name="fault" element="pricinggateway:PricingException"/>
+    </message>
+    <portType name="pricingGatewayPortType">
+        <operation name="createPricing">
+            <input message="tns:CreatePricingRequest"/>
+            <output message="tns:CreatePricingResponse"/>
+            <fault name="PricingException"
+                   message="tns:PricingExceptionResponse"/>
+        </operation>
+        <operation name="modifyPricing">
+            <input message="tns:UpdatePricingRequest"/>
+            <output message="tns:CreatePricingResponse"/>
+            <fault name="PricingException"
+                   message="tns:PricingExceptionResponse"/>
+        </operation>
+        <operation name="createPricingAndSubmit">
+            <input message="tns:CreatePublishPricingRequest"/>
+            <output message="tns:CreatePricingResponse"/>
+            <fault name="PricingException"
+                   message="tns:PricingExceptionResponse"/>
+        </operation>
+        <operation name="modifyPricingAndSubmit">
+            <input message="tns:UpdatePublishPricingRequest"/>
+            <output message="tns:CreatePricingResponse"/>
+            <fault name="PricingException"
+                   message="tns:PricingExceptionResponse"/>
+        </operation>
+    </portType>
+    <binding name="pricingGatewayPortTypeSOAP12Binding"
+             type="tns:pricingGatewayPortType">
+        <soap12:binding style="document"
+                        transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="createPricing">
+            <soap12:operation style="document"
+                              soapAction="urn:PricingGateWay/createPricing"
+                              soapActionRequired="false"/>
+            <input>
+                <soap12:body use="literal" parts="param"/>
+            </input>
+            <output>
+                <soap12:body use="literal" parts="return"/>
+            </output>
+            <fault name="PricingException">
+                <soap12:fault name="PricingException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="modifyPricing">
+            <soap12:operation style="document"
+                              soapAction="urn:PricingGateWay/modifyPricing"
+                              soapActionRequired="false"/>
+            <input>
+                <soap12:body use="literal" parts="param"/>
+            </input>
+            <output>
+                <soap12:body use="literal" parts="return"/>
+            </output>
+            <fault name="PricingException">
+                <soap12:fault name="PricingException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="createPricingAndSubmit">
+            <soap12:operation style="document"
+                              soapAction="urn:PricingGateWay/createPricingAndSubmit"
+                              soapActionRequired="false"/>
+            <input>
+                <soap12:body use="literal" parts="param"/>
+            </input>
+            <output>
+                <soap12:body use="literal" parts="return"/>
+            </output>
+            <fault name="PricingException">
+                <soap12:fault name="PricingException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="modifyPricingAndSubmit">
+            <soap12:operation style="document"
+                              soapAction="urn:PricingGateWay/modifyPricingAndSubmit"
+                              soapActionRequired="false"/>
+            <input>
+                <soap12:body use="literal" parts="param"/>
+            </input>
+            <output>
+                <soap12:body use="literal" parts="return"/>
+            </output>
+            <fault name="PricingException">
+                <soap12:fault name="PricingException" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+    <service name="PricingGateway">
+        <port name="PricingGatewayPort"
+              binding="tns:pricingGatewayPortTypeSOAP12Binding">
+            <soap12:address location="www.oracle.com/communications/pricing/PricingGateway"/>
+        </port>
+    </service>
+</definitions>
+
+

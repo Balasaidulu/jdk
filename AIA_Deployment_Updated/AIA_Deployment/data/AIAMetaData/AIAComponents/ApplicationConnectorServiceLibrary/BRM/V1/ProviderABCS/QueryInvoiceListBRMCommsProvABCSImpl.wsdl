@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="QueryInvoiceListBRMCommsProvABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryInvoiceListBRMCommsProvABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:bpelcom="http://schemas.oracle.com/service/bpel/common"
+     xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:commsinvabcs="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryInvoiceListBRMCommsProvABCSImpl/V1"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:commsinvebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Invoice/V2"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service contains operations that would be used to Query Invoice related information using the billing system APIs</svcdoc:Description>
+            <svcdoc:ServiceType>ProviderABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>QueryInvoiceListBRMCommsProvABCSImpl Provider ABCS
+                          Implementation Interface</svcdoc:DisplayName>
+            <svcdoc:EBOName>InvoiceEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology> 
+            <svcdoc:ProductFamily>BRM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>BRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>Billing</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Invoice/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/Invoice/V2/InvoiceEBM.xsd"/>
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+            <import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </schema>
+    </types>
+    <message name="QueryInvoiceListReqMsg">
+	        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message will contain the Query Invoice List request attributes</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="QueryInvoiceListEBM" element="commsinvebo:QueryInvoiceListEBM"/>
+    </message>
+    <message name="QueryInvoiceListRespMsg">
+	        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message will contain the Query Invoice List response attributes</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="QueryInvoiceListResponseEBM" element="commsinvebo:QueryInvoiceListResponseEBM"/>
+    </message>
+    <message name="QueryInvoiceListFaultMsg">
+	        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error Context and
+                        Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="QueryInvoiceListFault" element="corecom:Fault"/>
+    </message>
+    <portType name="QueryInvoiceListBRMCommsProvABCSImpl">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This Service Contains Query Invoice List BRM Provider ABCS Implementation</svcdoc:Description>
+                <svcdoc:DisplayName>Query InvoiceList BRM Requestor ABCS Implementation</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="QueryInvoiceList">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Query an InvoiceList
+                              object</svcdoc:Description>
+                    <svcdoc:MEP>SyncReqResp</svcdoc:MEP>
+                    <svcdoc:DisplayName>QueryInvoiceList</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="commsinvabcs:QueryInvoiceListReqMsg"/>
+            <output message="commsinvabcs:QueryInvoiceListRespMsg"/>
+            <fault name="fault" message="commsinvabcs:QueryInvoiceListFaultMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="QueryInvoiceListBRMCommsProvABCSImpl">
+        <plnk:role name="QueryInvoiceListBRMCommsProvABCSImplProvider">
+            <plnk:portType name="commsinvabcs:QueryInvoiceListBRMCommsProvABCSImpl"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

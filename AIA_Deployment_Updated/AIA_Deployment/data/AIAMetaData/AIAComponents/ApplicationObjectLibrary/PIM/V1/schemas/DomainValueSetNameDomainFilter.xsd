@@ -1,0 +1,19 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/svc"
+     xmlns="http://xmlns.oracle.com/svc" xmlns:sdoJava="commonj.sdo/java" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="DomainValueSetNameDomainFilter" sdoJava:package="oracle.svc" sdoJava:instanceClass="oracle.svc.DataObjectImpl">
+        <xsd:annotation>
+            <xsd:documentation>A filter used to return the domain value sets used in a data 
+object tree for a certain data source.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="DataObject">
+                <xsd:sequence>
+                    <xsd:element name="ServiceQualifiedName" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="BaseDataSourceName" type="xsd:string" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="domainValueSetNameDomainFilter" type="DomainValueSetNameDomainFilter" nillable="true"/>
+</xsd:schema>

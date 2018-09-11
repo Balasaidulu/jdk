@@ -1,0 +1,37 @@
+<definitions
+     name="CreateOrderFalloutNotificationOSMCFSCommsJMSProducer"
+     targetNamespace="http://xmlns.oracle.com/Industry/Comms/CreateOrderFalloutNotificationOSMCFSCommsJMSProducer/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:orderfalloutnotification="http://xmlns.oracle.com/ABCS/OrderFalloutNotification/V1"
+     xmlns:client="http://xmlns.oracle.com/Industry/Comms/CreateOrderFalloutNotificationOSMCFSCommsJMSProducer/V1"
+    >
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://xmlns.oracle.com/ABCS/OrderFalloutNotification/V1"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:client="http://xmlns.oracle.com/Industry/Comms/CreateOrderFalloutNotificationOSMCFSCommsJMSProducer/V1">
+            <import namespace="http://xmlns.oracle.com/Industry/Comms/CreateOrderFalloutNotificationOSMCFSCommsJMSProducer/V1"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/OSM/V1/CreateOrderFalloutNotificationOSMCFSCommsJMSProducer.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://xmlns.oracle.com/ABCS/OrderFalloutNotification/V1"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:client="http://xmlns.oracle.com/Industry/Comms/CreateOrderFalloutNotificationOSMCFSCommsJMSProducer/V1">
+            <xsd:import namespace="http://xmlns.oracle.com/ABCS/OrderFalloutNotification/V1" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/OSM/V1/OrderFalloutNotification.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://schemas.xmlsoap.org/soap/envelope/" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/soapEnvelope.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="CreateOrderFalloutNotificationOSMCFSCommsJMSProducerRequestMessage">
+        <part name="payload" element="orderfalloutnotification:OrderFalloutNotification"/>
+    </message>
+    <portType name="CreateOrderFalloutNotificationOSMCFSCommsJMSProducer">
+        <operation name="initiate">
+            <input message="client:CreateOrderFalloutNotificationOSMCFSCommsJMSProducerRequestMessage"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="CreateOrderFalloutNotificationOSMCFSCommsJMSProducer">
+        <plnk:role name="CreateOrderFalloutNotificationOSMCFSCommsJMSProducerProvider">
+            <plnk:portType name="client:CreateOrderFalloutNotificationOSMCFSCommsJMSProducer"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

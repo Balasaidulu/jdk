@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+** Oracle Corporation  **
+** This is an Entity EBS, BASED ON CRUD OPERATIONS **
+** We always include the wsdl,xsd, soap, our documentation, and Core Common namespaces. Always the same prefixes. **
+** Need to define namespaces for EBO and EBS, and always use these same prefixes - ebo and ebs. **
+** Need to define the target namespace equal to the EBS namespace. Also define a name, in the form of - name+EBS. **
+ 
+ Copyright (c) 2007, 2010, Oracle and/or its affiliates. All rights reserved. 
+ 
+    WSDL File Name
+   Name: \\EnterpriseBusinessServiceLibrary\Core\EBO\BillOfMaterialsConfiguration\V1\BillOfMaterialsConfigurationEBSV1.wsdl
+ 
+-->
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:ebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/BillOfMaterialsConfiguration/V1" xmlns:ebs="http://xmlns.oracle.com/EnterpriseServices/Core/BillOfMaterialsConfiguration/V1" name="BillOfMaterialsConfigurationEBSV1" targetNamespace="http://xmlns.oracle.com/EnterpriseServices/Core/BillOfMaterialsConfiguration/V1">
+	<documentation>
+		<svcdoc:Service>
+			<svcdoc:Description>BillOfMaterialsConfiguration Enterprise Business Service</svcdoc:Description>
+			<svcdoc:ServiceType>EnterpriseBusinessService</svcdoc:ServiceType>
+			<svcdoc:DisplayName>BillOfMaterialsConfigurationEBSV1</svcdoc:DisplayName>
+			<svcdoc:Version>1.00</svcdoc:Version>
+			<svcdoc:EBOName>BillOfMaterialsConfigurationEBO</svcdoc:EBOName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:ImplementationTechnology>ESB</svcdoc:ImplementationTechnology>
+		</svcdoc:Service>
+	</documentation>
+	<types>
+		<xsd:schema targetNamespace="http://xmlns.oracle.com/EnterpriseServices/BillOfMaterialsConfiguration/V1" elementFormDefault="qualified">
+			<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/BillOfMaterialsConfiguration/V1" schemaLocation="../../../../../EnterpriseObjectLibrary/Core/EBO/BillOfMaterialsConfiguration/V1/BillOfMaterialsConfigurationEBM.xsd"/>
+			<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../../../EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+		</xsd:schema>
+	</types>
+	<message name="FaultMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="AIAFault" element="corecom:Fault"/>
+	</message>
+	<message name="CreateBillOfMaterialsConfigurationReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the request payload to the CreateBillOfMaterialsConfiguration operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="CreateBillOfMaterialsConfigurationEBM" element="ebo:CreateBillOfMaterialsConfigurationEBM"/>
+	</message>
+	<message name="CreateBillOfMaterialsConfigurationRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the CreateBillOfMaterialsConfiguration operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="CreateBillOfMaterialsConfigurationResponseEBM" element="ebo:CreateBillOfMaterialsConfigurationResponseEBM"/>
+	</message>
+	<message name="CreateBillOfMaterialsConfigurationListReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the request payload to the CreateBillOfMaterialsConfigurationList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="CreateBillOfMaterialsConfigurationListEBM" element="ebo:CreateBillOfMaterialsConfigurationListEBM"/>
+	</message>
+	<message name="CreateBillOfMaterialsConfigurationListRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the CreateBillOfMaterialsConfigurationList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="CreateBillOfMaterialsConfigurationListResponseEBM" element="ebo:CreateBillOfMaterialsConfigurationListResponseEBM"/>
+	</message>
+	<message name="DeleteBillOfMaterialsConfigurationReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the request payload to the DeleteBillOfMaterialsConfiguration operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="DeleteBillOfMaterialsConfigurationEBM" element="ebo:DeleteBillOfMaterialsConfigurationEBM"/>
+	</message>
+	<message name="DeleteBillOfMaterialsConfigurationRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the DeleteBillOfMaterialsConfiguration operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="DeleteBillOfMaterialsConfigurationResponseEBM" element="ebo:DeleteBillOfMaterialsConfigurationResponseEBM"/>
+	</message>
+	<message name="DeleteBillOfMaterialsConfigurationListReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the request payload to the DeleteBillOfMaterialsConfigurationList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="DeleteBillOfMaterialsConfigurationListEBM" element="ebo:DeleteBillOfMaterialsConfigurationListEBM"/>
+	</message>
+	<message name="DeleteBillOfMaterialsConfigurationListRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the DeleteBillOfMaterialsConfigurationList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="DeleteBillOfMaterialsConfigurationListResponseEBM" element="ebo:DeleteBillOfMaterialsConfigurationListResponseEBM"/>
+	</message>
+	<message name="UpdateBillOfMaterialsConfigurationReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the request payload to the UpdateBillOfMaterialsConfiguration operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="UpdateBillOfMaterialsConfigurationEBM" element="ebo:UpdateBillOfMaterialsConfigurationEBM"/>
+	</message>
+	<message name="UpdateBillOfMaterialsConfigurationRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the UpdateBillOfMaterialsConfiguration operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="UpdateBillOfMaterialsConfigurationResponseEBM" element="ebo:UpdateBillOfMaterialsConfigurationResponseEBM"/>
+	</message>
+	<message name="UpdateBillOfMaterialsConfigurationListReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the request payload to the UpdateBillOfMaterialsConfigurationList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="UpdateBillOfMaterialsConfigurationListEBM" element="ebo:UpdateBillOfMaterialsConfigurationListEBM"/>
+	</message>
+	<message name="UpdateBillOfMaterialsConfigurationListRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the UpdateBillOfMaterialsConfigurationList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="UpdateBillOfMaterialsConfigurationListResponseEBM" element="ebo:UpdateBillOfMaterialsConfigurationListResponseEBM"/>
+	</message>
+	<message name="QueryBillOfMaterialsConfigurationReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the request payload to the QueryBillOfMaterialsConfiguration operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="QueryBillOfMaterialsConfigurationEBM" element="ebo:QueryBillOfMaterialsConfigurationEBM"/>
+	</message>
+	<message name="QueryBillOfMaterialsConfigurationRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the QueryBillOfMaterialsConfiguration operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="QueryBillOfMaterialsConfigurationResponseEBM" element="ebo:QueryBillOfMaterialsConfigurationResponseEBM"/>
+	</message>
+	<message name="QueryBillOfMaterialsConfigurationListReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the request payload to the QueryBillOfMaterialsConfigurationList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="QueryBillOfMaterialsConfigurationListEBM" element="ebo:QueryBillOfMaterialsConfigurationListEBM"/>
+	</message>
+	<message name="QueryBillOfMaterialsConfigurationListRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the QueryBillOfMaterialsConfigurationList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="QueryBillOfMaterialsConfigurationListResponseEBM" element="ebo:QueryBillOfMaterialsConfigurationListResponseEBM"/>
+	</message>
+	<message name="SyncBillOfMaterialsConfigurationListReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the request payload to the SyncBillOfMaterialsConfigurationList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="SyncBillOfMaterialsConfigurationListEBM" element="ebo:SyncBillOfMaterialsConfigurationListEBM"/>
+	</message>
+	<message name="SyncBillOfMaterialsConfigurationListRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the SyncBillOfMaterialsConfigurationList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="SyncBillOfMaterialsConfigurationListResponseEBM" element="ebo:SyncBillOfMaterialsConfigurationListResponseEBM"/>
+	</message>
+	<message name="GetConfiguratorURLReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the request payload to the ProcessBillOfMaterialsConfiguration operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="GetConfiguratorURLEBM" element="ebo:GetConfiguratorURLEBM"/>
+	</message>
+	<message name="GetConfiguratorURLRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the GetConfiguratorURL operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="GetConfiguratorURLResponseEBM" element="ebo:GetConfiguratorURLResponseEBM"/>
+	</message>
+	<portType name="BillOfMaterialsConfigurationEBS">
+		<documentation>
+			<svcdoc:Interface>
+				<svcdoc:Description>This interface contains operations for the Request-Response and Request-Only patterns</svcdoc:Description>
+				<svcdoc:DisplayName>RequestBillOfMaterialsConfiguration EBS Interface</svcdoc:DisplayName>
+				<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			</svcdoc:Interface>
+		</documentation>
+		<!-- operation support for CreateBillOfMaterialsConfiguration -->
+		<operation name="CreateBillOfMaterialsConfiguration">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to Create a BillOfMaterialsConfiguration EBO.</svcdoc:Description>
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+					<svcdoc:DisplayName>CreateBillOfMaterialsConfiguration</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="ebs:CreateBillOfMaterialsConfigurationReqMsg"/>
+		</operation>
+		<!-- operation support for CreateBillOfMaterialsConfigurationList -->
+		<operation name="CreateBillOfMaterialsConfigurationList">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to Create multiple BillOfMaterialsConfiguration EBOs.</svcdoc:Description>
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+					<svcdoc:DisplayName>CreateBillOfMaterialsConfigurationList</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="ebs:CreateBillOfMaterialsConfigurationListReqMsg"/>
+		</operation>
+		<!-- operation support for DeleteBillOfMaterialsConfiguration -->
+		<operation name="DeleteBillOfMaterialsConfiguration">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to Delete a BillOfMaterialsConfiguration EBO.</svcdoc:Description>
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+					<svcdoc:DisplayName>DeleteBillOfMaterialsConfiguration</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="ebs:DeleteBillOfMaterialsConfigurationReqMsg"/>
+		</operation>
+		<!-- operation support for DeleteBillOfMaterialsConfigurationList -->
+		<operation name="DeleteBillOfMaterialsConfigurationList">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to Delete multiple BillOfMaterialsConfiguration EBOs.</svcdoc:Description>
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+					<svcdoc:DisplayName>DeleteBillOfMaterialsConfigurationList</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="ebs:DeleteBillOfMaterialsConfigurationListReqMsg"/>
+		</operation>
+		<!-- operation support for UpdateBillOfMaterialsConfiguration -->
+		<operation name="UpdateBillOfMaterialsConfiguration">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to Update a BillOfMaterialsConfiguration EBO.</svcdoc:Description>
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+					<svcdoc:DisplayName>UpdateBillOfMaterialsConfiguration</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="ebs:UpdateBillOfMaterialsConfigurationReqMsg"/>
+		</operation>
+		<!-- operation support for UpdateBillOfMaterialsConfigurationList -->
+		<operation name="UpdateBillOfMaterialsConfigurationList">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to Update multiple BillOfMaterialsConfiguration EBOs.</svcdoc:Description>
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+					<svcdoc:DisplayName>UpdateBillOfMaterialsConfigurationList</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="ebs:UpdateBillOfMaterialsConfigurationListReqMsg"/>
+		</operation>
+		<!-- operation support for QueryBillOfMaterialsConfiguration -->
+		<operation name="QueryBillOfMaterialsConfiguration">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to Query a BillOfMaterialsConfiguration EBO.</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>QueryBillOfMaterialsConfiguration</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="ebs:QueryBillOfMaterialsConfigurationReqMsg"/>
+			<output message="ebs:QueryBillOfMaterialsConfigurationRespMsg"/>
+			<fault name="fault" message="ebs:FaultMsg"/>
+		</operation>
+		<!-- operation support for QueryBillOfMaterialsConfigurationList -->
+		<operation name="QueryBillOfMaterialsConfigurationList">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to Query multiple BillOfMaterialsConfiguration EBOs.</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>QueryBillOfMaterialsConfigurationList</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="ebs:QueryBillOfMaterialsConfigurationListReqMsg"/>
+			<output message="ebs:QueryBillOfMaterialsConfigurationListRespMsg"/>
+			<fault name="fault" message="ebs:FaultMsg"/>
+		</operation>
+		<!-- operation support for SyncBillOfMaterialsConfigurationList -->
+		<operation name="SyncBillOfMaterialsConfigurationList">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to Sync multiple BillOfMaterialsConfiguration EBOs.</svcdoc:Description>
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+					<svcdoc:DisplayName>SyncBillOfMaterialsConfigurationList</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="ebs:SyncBillOfMaterialsConfigurationListReqMsg"/>
+		</operation>
+		<!-- operation support for GetConfiguratorURL -->
+		<operation name="GetConfiguratorURL">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to Process a BillOfMaterialsConfiguration EBO.</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>GetConfiguratorURL</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="ebs:GetConfiguratorURLReqMsg"/>
+			<output message="ebs:GetConfiguratorURLRespMsg"/>
+			<fault name="fault" message="ebs:FaultMsg"/>
+		</operation>
+	</portType>
+	<portType name="BillOfMaterialsConfigurationEBSResponse">
+		<documentation>
+			<svcdoc:Interface>
+				<svcdoc:Description>This interface contains operations for the ResponseBillOfMaterialsConfiguration EBS</svcdoc:Description>
+				<svcdoc:DisplayName>ResponseBillOfMaterialsConfiguration EBS Interface</svcdoc:DisplayName>
+				<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			</svcdoc:Interface>
+		</documentation>
+		<!-- operation support for CreateBillOfMaterialsConfiguration response -->
+		<operation name="CreateBillOfMaterialsConfigurationResponse">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This callback operation will be used to provide the CreateBillOfMaterialsConfiguration Response.</svcdoc:Description>
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>CreateBillOfMaterialsConfigurationResponse</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+					<svcdoc:InitiatorService>BillOfMaterialsConfigurationEBSV1</svcdoc:InitiatorService>
+					<svcdoc:InitiatorInterface>CreateBillOfMaterialsConfigurationResponseEBM</svcdoc:InitiatorInterface>
+					<svcdoc:InitiatorOperation>CreateBillOfMaterialsConfigurationRequest</svcdoc:InitiatorOperation>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="ebs:CreateBillOfMaterialsConfigurationRespMsg"/>
+		</operation>
+		<!-- operation support for CreateBillOfMaterialsConfigurationListResponse -->
+		<operation name="CreateBillOfMaterialsConfigurationListResponse">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This callback operation will be used to provide the CreateBillOfMaterialsConfigurationList Response.</svcdoc:Description>
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>CreateBillOfMaterialsConfigurationListResponse</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+					<svcdoc:InitiatorService>BillOfMaterialsConfigurationEBSV1</svcdoc:InitiatorService>
+					<svcdoc:InitiatorInterface>CreateBillOfMaterialsConfigurationResponseEBM</svcdoc:InitiatorInterface>
+					<svcdoc:InitiatorOperation>CreateBillOfMaterialsConfigurationListRequest</svcdoc:InitiatorOperation>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="ebs:CreateBillOfMaterialsConfigurationListRespMsg"/>
+		</operation>
+		<!-- operation support for DeleteBillOfMaterialsConfiguration response -->
+		<operation name="DeleteBillOfMaterialsConfigurationResponse">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This callback operation will be used to provide the DeleteBillOfMaterialsConfiguration Response.</svcdoc:Description>
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>DeleteBillOfMaterialsConfigurationResponse</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+					<svcdoc:InitiatorService>BillOfMaterialsConfigurationEBSV1</svcdoc:InitiatorService>
+					<svcdoc:InitiatorInterface>DeleteBillOfMaterialsConfigurationResponseEBM</svcdoc:InitiatorInterface>
+					<svcdoc:InitiatorOperation>DeleteBillOfMaterialsConfigurationRequest</svcdoc:InitiatorOperation>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="ebs:DeleteBillOfMaterialsConfigurationRespMsg"/>
+		</operation>
+		<!-- operation support for DeleteBillOfMaterialsConfigurationListResponse -->
+		<operation name="DeleteBillOfMaterialsConfigurationListResponse">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This callback operation will be used to provide the DeleteBillOfMaterialsConfigurationList Response.</svcdoc:Description>
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>DeleteBillOfMaterialsConfigurationListResponse</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+					<svcdoc:InitiatorService>BillOfMaterialsConfigurationEBSV1</svcdoc:InitiatorService>
+					<svcdoc:InitiatorInterface>DeleteBillOfMaterialsConfigurationResponseEBM</svcdoc:InitiatorInterface>
+					<svcdoc:InitiatorOperation>DeleteBillOfMaterialsConfigurationListRequest</svcdoc:InitiatorOperation>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="ebs:DeleteBillOfMaterialsConfigurationListRespMsg"/>
+		</operation>
+		<!-- operation support for UpdateBillOfMaterialsConfiguration response -->
+		<operation name="UpdateBillOfMaterialsConfigurationResponse">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This callback operation will be used to provide the UpdateBillOfMaterialsConfiguration Response.</svcdoc:Description>
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>UpdateBillOfMaterialsConfigurationResponse</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+					<svcdoc:InitiatorService>BillOfMaterialsConfigurationEBSV1</svcdoc:InitiatorService>
+					<svcdoc:InitiatorInterface>UpdateBillOfMaterialsConfigurationResponseEBM</svcdoc:InitiatorInterface>
+					<svcdoc:InitiatorOperation>UpdateBillOfMaterialsConfigurationRequest</svcdoc:InitiatorOperation>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="ebs:UpdateBillOfMaterialsConfigurationRespMsg"/>
+		</operation>
+		<!-- operation support for UpdateBillOfMaterialsConfigurationListResponse -->
+		<operation name="UpdateBillOfMaterialsConfigurationListResponse">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This callback operation will be used to provide the UpdateBillOfMaterialsConfigurationList Response.</svcdoc:Description>
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>UpdateBillOfMaterialsConfigurationListResponse</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+					<svcdoc:InitiatorService>BillOfMaterialsConfigurationEBSV1</svcdoc:InitiatorService>
+					<svcdoc:InitiatorInterface>UpdateBillOfMaterialsConfigurationResponseEBM</svcdoc:InitiatorInterface>
+					<svcdoc:InitiatorOperation>UpdateBillOfMaterialsConfigurationListRequest</svcdoc:InitiatorOperation>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="ebs:UpdateBillOfMaterialsConfigurationListRespMsg"/>
+		</operation>
+		<!-- operation support for SyncBillOfMaterialsConfigurationListResponse -->
+		<operation name="SyncBillOfMaterialsConfigurationListResponse">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This callback operation will be used to provide the SyncBillOfMaterialsConfigurationList Response.</svcdoc:Description>
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>SyncBillOfMaterialsConfigurationListResponse</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+					<svcdoc:InitiatorService>BillOfMaterialsConfigurationEBSV1</svcdoc:InitiatorService>
+					<svcdoc:InitiatorInterface>SyncBillOfMaterialsConfigurationResponseEBM</svcdoc:InitiatorInterface>
+					<svcdoc:InitiatorOperation>SyncBillOfMaterialsConfigurationListRequest</svcdoc:InitiatorOperation>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="ebs:SyncBillOfMaterialsConfigurationListRespMsg"/>
+		</operation>
+	</portType>
+</definitions>

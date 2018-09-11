@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="CreatePaymentSiebelCommsReqABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/CreatePaymentSiebelCommsReqABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+     xmlns:corecommon="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:rpebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ReceivedPayment/V1"
+     xmlns:pns1="http://xmlns.oracle.com/CreatePaymentSiebelCommsReqABCSImpl/correlationset"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:abcsimplsiebelcpreqabcs="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/CreatePaymentSiebelCommsReqABCSImpl/V1"
+     xmlns:siebelfault="http://www.siebel.com/xml/SWIFault/V0"
+     xmlns:abcsimplsiebelcpreqabo="http://www.siebel.com/xml/CMU%20Request%20New%20Payment%20Capture%20IO"
+     xmlns:bpelcommon="http://schemas.oracle.com/service/bpel/common"
+     xmlns:abcsimplsiebelcprespabo="http://www.siebel.com/xml/CMU%20Response%20New%20Payments%20IO"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service contains Siebel ABCS implementation of Create Received Payment operation</svcdoc:Description>
+            <svcdoc:ServiceType>RequesterABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>Create Received Payment Siebel Requestor ABCS Implememntation</svcdoc:DisplayName>
+            <svcdoc:ServiceObjectName>ReceivedPayment</svcdoc:ServiceObjectName>
+            <svcdoc:EBOName>ReceivedPaymentEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>2.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>CRM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://xmlns.oracle.com/CreatePaymentSiebelCommsReqABCSImpl/correlationset"
+         location="CreatePaymentSiebelCommsReqABCSImpl_Properties.wsdl"/>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.siebel.com/xml/CMU%20Request%20New%20Payment%20Capture%20IO"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestNewPaymentCaptureIo.xsd"/>
+            <import namespace="http://www.siebel.com/xml/CMU%20Response%20New%20Payments%20IO"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuResponseNewPaymentsIo.xsd"/>
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+            <import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ReceivedPayment/V1"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/ReceivedPayment/V1/ReceivedPaymentEBM.xsd"/>
+            <xsd:import namespace="http://www.siebel.com/xml/SWIFault/V0" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/Fault.xsd"/>
+        </schema>
+    </types>
+    <message name="CreatePaymentReqMsg">
+        <part name="CreatePayment" element="abcsimplsiebelcpreqabo:ListOfCmuRequestNewPaymentCaptureIo"/>
+    </message>
+    <message name="CreatePaymentRespMsg">
+        <part name="CreatePaymentResponse" element="abcsimplsiebelcprespabo:ListOfCmuResponseNewPaymentsIo"/>
+    </message>
+    <message name="SiebelFaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error Context and
+                        Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="Fault" element="siebelfault:Fault"/>
+    </message>
+    <message name="CreatePaymentEBSRespMsg">
+        <part name="CreatePaymentEBSResponse" element="rpebo:CreateReceivedPaymentResponseEBM"/>
+    </message>
+    <message name="CreatePaymentFaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message will contain the Query Payment request attributes</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="CreatePaymentFault" element="corecommon:Fault"/>
+    </message>
+    <portType name="CreatePaymentSiebelCommsReqABCSImpl">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This interface contains operations that can act upon the Payment object</svcdoc:Description>
+                <svcdoc:DisplayName>Payment Interface</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="CreatePayment">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to query an Payment object</svcdoc:Description>
+                    <svcdoc:MEP>ASYNC_REQ</svcdoc:MEP>
+                    <svcdoc:DisplayName>Create Payment Request</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="abcsimplsiebelcpreqabcs:CreatePaymentReqMsg"/>
+            <output message="abcsimplsiebelcpreqabcs:CreatePaymentRespMsg"/>
+            <fault name="fault" message="abcsimplsiebelcpreqabcs:SiebelFaultMsg"/>
+        </operation>
+        <operation name="CreatePaymentESBResp">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to responsd an Payment object</svcdoc:Description>
+                    <svcdoc:MEP>ASYNC_RESP</svcdoc:MEP>
+                    <svcdoc:DisplayName>Create Payment Response</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="abcsimplsiebelcpreqabcs:CreatePaymentEBSRespMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="CreatePaymentSiebelCommsReqABCSImpl">
+        <plnk:role name="CreatePaymentSiebelCommsReqABCSImplProvider">
+            <plnk:portType name="abcsimplsiebelcpreqabcs:CreatePaymentSiebelCommsReqABCSImpl"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <bpws:propertyAlias xmlns:commsrecpaymentebs="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ReceivedPayment/V1"
+         xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" propertyName="pns1:CreateReceivedPaymentEBM_prop"
+         messageType="abcsimplsiebelcpreqabcs:CreatePaymentEBSRespMsg" part="CreatePaymentEBSResponse"
+         query="/commsrecpaymentebs:CreateReceivedPaymentResponseEBM/corecom:EBMHeader/corecom:RequestEBMID"/>
+    <bpws:propertyAlias xmlns:commsrecpmtebs="http://xmlns.oracle.com/EnterpriseServices/Core/ReceivedPayment/V1"
+         xmlns:commsrecpaymentebs="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ReceivedPayment/V1"
+         xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" propertyName="pns1:CreateReceivedPaymentEBM_prop"
+         messageType="commsrecpmtebs:CreateReceivedPaymentReqMsg" part="CreateReceivedPaymentEBM"
+         query="/commsrecpaymentebs:CreateReceivedPaymentEBM/corecom:EBMHeader/corecom:EBMID"/>
+</definitions>

@@ -1,0 +1,224 @@
+<!-- $Header: aiapip/apps/fp/components/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PIM/V1/schemas/StructureQueryParameters.xsd /main/2 2012/12/17 05:37:44 sduggine Exp $ -->
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/bom/structure/service/in"
+     xmlns="http://xmlns.oracle.com/apps/bom/structure/service/in"  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+
+    <xsd:complexType name="BatchStrQryParamType" >
+        <xsd:annotation>
+            <xsd:documentation>This dataobject contains all the batch-level parameters required to retrieve the structures associated with the end-items specified in the batch.</xsd:documentation>
+        </xsd:annotation>
+        
+                <xsd:sequence>
+                    <xsd:element name="BatchId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Configurability" type="ConfigureType" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+        
+    </xsd:complexType>
+
+    
+        <xsd:complexType name="BomItemNameType">
+        <xsd:annotation>
+            <xsd:documentation>Inventory Item Name parameter to item and structure service.</xsd:documentation>
+        </xsd:annotation>
+        
+                <xsd:sequence>
+                    <xsd:element name="Segment1" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment2" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment3" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment4" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment5" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment6" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment7" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment8" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment9" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment10" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment11" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment12" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment13" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment14" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment15" type="xsd:string" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+        
+    </xsd:complexType>
+
+    <xsd:complexType name="StrucQryParamsType">
+        <xsd:annotation>
+            <xsd:documentation>EMT Annotations</xsd:documentation>
+        </xsd:annotation>
+        
+                <xsd:sequence>
+                    <xsd:element name="InventoryItemId"   type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="InventoryItemName" type="BomItemNameType" minOccurs="0"   nillable="true"/>
+                    <xsd:element name="OrganizationId"    type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="OrganizationCode"  type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="RevisionId"        type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Revision"          type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="RevisionDate"      type="xsd:dateTime" minOccurs="0" nillable="true"/>
+                    <xsd:element name="StructureName"     type="xsd:string" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+        
+    </xsd:complexType>
+
+
+    <xsd:complexType name="LangInfoType" >
+        <xsd:annotation>
+            <xsd:documentation>EMT</xsd:documentation>
+        </xsd:annotation>
+        
+                <xsd:sequence>
+                    <xsd:element name="LanguageCode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="LanguageName" type="xsd:string" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+        
+    </xsd:complexType>
+
+
+
+         <xsd:complexType name="PubCompAttrGrpType" >
+        <xsd:annotation>
+            <xsd:documentation>PublishComponentAttributeGroup has the following fields - AttributegroupId and AttributeGroupName. Users can indicate which Component Attribute Groups they want to be published by specifying these values.</xsd:documentation>
+        </xsd:annotation>
+        
+                <xsd:sequence>
+                    <xsd:element name="AttributegroupId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AttributeGroupName" type="xsd:string" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+        
+    </xsd:complexType>
+
+
+    <xsd:complexType name="ListOfCompAgType">
+        <xsd:annotation>
+            <xsd:documentation>ListOfPublishComponentAttributeGroups is a list of PublishComponentAttributeGroup entities.</xsd:documentation>
+        </xsd:annotation>
+        
+                <xsd:sequence>
+                    <xsd:element name="PublishComponentAttributeGroup" type="PubCompAttrGrpType"
+                         minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+                </xsd:sequence>
+        
+    </xsd:complexType>
+
+
+    <xsd:complexType name="PubStrucCompsType">
+        <xsd:annotation>
+            <xsd:documentation>PublishStructureComponents has configuration parameters related to structure components. It has the following fields - StructureReferenceDesignators, StructureSubstituteComponents and ComponentAttributeGroups. It has a child entity - ListOfPublishComponentAttributeGroups.</xsd:documentation>
+        </xsd:annotation>
+        
+                <xsd:sequence>
+                    <xsd:element name="StructureReferenceDesignators"	 type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="StructureSubstituteComponents"	type="xsd:string" minOccurs="0"    nillable="true"/>
+                    <xsd:element name="ComponentAttributeGroups"	type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ListOfPublishComponentAttributeGroups" type="ListOfCompAgType"   minOccurs="0" nillable="true"/>
+                    <xsd:element name="ComponentExclusions" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ComponentUDAOverrides" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ValueSetExclusions" type="xsd:string" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+        
+    </xsd:complexType>
+
+
+     <xsd:complexType name="PubStrucHdrAttrGrpsType" >
+        <xsd:annotation>
+            <xsd:documentation>PublishStructureHeaderAttributeGroup has the following fields - AttributegroupId and AttributeGroupName. Users can indicate which Structure Header Attribute Groups they want to be published by specifying these values.</xsd:documentation>
+        </xsd:annotation>
+        
+                <xsd:sequence>
+                    <xsd:element name="AttributegroupId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AttributeGroupName" type="xsd:string" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+        
+    </xsd:complexType>
+
+
+    <xsd:complexType name="ListOfStrAttrGrpType" >
+        <xsd:annotation>
+            <xsd:documentation>ListOfPublishStructureHeaderAttributeGroups is a list of PublishStructureHeaderAttributeGroup entities.</xsd:documentation>
+        </xsd:annotation>
+        
+                <xsd:sequence>
+                    <xsd:element name="PublishStructureHeaderAttributeGroup" type="PubStrucHdrAttrGrpsType"
+                         minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+                </xsd:sequence>
+        
+    </xsd:complexType>
+
+    <xsd:complexType name="PubStrctEntityType" >
+        <xsd:annotation>
+            <xsd:documentation>PublishEntities indicates which entities will be published in the output. It has the following fields - StructureRevision, StructureHeaderAttributeGroups and StructureComponents. It has the following child entities - ListOfPublishStructureHeaderAttributeGroups and PublishStructureComponents.</xsd:documentation>
+        </xsd:annotation>
+        
+                <xsd:sequence>
+                    <xsd:element name="StructureRevision" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="StructureHeaderAttributeGroups" type="xsd:string" minOccurs="0"     nillable="true"/>
+                    <xsd:element name="StructureComponents" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ListOfStrAttrGrpType"
+                                 type="ListOfStrAttrGrpType"  minOccurs="0" nillable="true"/>
+                    <xsd:element name="PublishStructureComponents" type="PubStrucCompsType"  minOccurs="0" nillable="true"/>
+		    <xsd:element name="ReturnPayload" type="xsd:string" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+        
+    </xsd:complexType>
+
+   
+     <xsd:complexType name="BomExplodeParamType" >
+        <xsd:annotation>
+            <xsd:documentation>BomExploderParameters contains the parameters for the bom explosion of the top inventory item&apos;s structure. It has the following fields - LevelsToExplode and ExplodeOption.</xsd:documentation>
+        </xsd:annotation>
+        
+                <xsd:sequence>
+                    <xsd:element name="LevelsToExplode" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ExplodeOption" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ExplodeStandard" type="xsd:string" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+        
+    </xsd:complexType>
+
+    <xsd:complexType name="ConfigureType" >
+        <xsd:annotation>
+            <xsd:documentation>EMT comments</xsd:documentation>
+        </xsd:annotation>
+        
+                <xsd:sequence>
+                    <xsd:element name="ListOfLanguageInformation" type="LangInfoType" minOccurs="0"    maxOccurs="unbounded" nillable="true"/>
+                    <xsd:element name="BomExploderParameters" type="BomExplodeParamType" minOccurs="0"  nillable="true"/>
+                    <xsd:element name="PublishEntities" type="PubStrctEntityType" minOccurs="0"    nillable="true"/>
+                </xsd:sequence>
+        
+    </xsd:complexType>
+
+    <xsd:complexType name="ParamsForLstOfItemsType" >
+        <xsd:annotation>
+            <xsd:documentation>EMT comments</xsd:documentation>
+        </xsd:annotation>
+        
+                <xsd:sequence>
+                    <xsd:element name="Configurability" type="ConfigureType" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ListOfItemStructureQueryParams" type="StrucQryParamsType"
+                         minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+                </xsd:sequence>
+        
+    </xsd:complexType>
+
+    <xsd:complexType name="StrucQryParamType" >
+        
+                <xsd:sequence>
+                    <xsd:element name="InventoryItemId"		type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="InventoryItemName"	type="BomItemNameType" minOccurs="0"   nillable="true"/>
+                    <xsd:element name="OrganizationId"		type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="OrganizationCode"	type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="RevisionId"		type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Revision"		type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="RevisionDate"		type="xsd:dateTime" minOccurs="0" nillable="true"/>
+                    <xsd:element name="StructureName"		type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ListOfLanguageInformation" type="LangInfoType" minOccurs="0"        maxOccurs="unbounded" nillable="true"/>
+                    <xsd:element name="BomExploderParameters"	type="BomExplodeParamType" minOccurs="0"    nillable="true"/>
+                    <xsd:element name="PublishEntities"		type="PubStrctEntityType" minOccurs="0"      nillable="true"/>
+                    <xsd:element name="BatchStructureQueryParameters" type="BatchStrQryParamType"     minOccurs="0" nillable="true"/>
+                    <xsd:element name="ParametersForListOfItems"	type="ParamsForLstOfItemsType" minOccurs="0"    nillable="true"/>
+                </xsd:sequence>
+        
+    </xsd:complexType>
+    <xsd:element name="structureQueryParameters" type="StrucQryParamType" nillable="true"/>
+</xsd:schema>

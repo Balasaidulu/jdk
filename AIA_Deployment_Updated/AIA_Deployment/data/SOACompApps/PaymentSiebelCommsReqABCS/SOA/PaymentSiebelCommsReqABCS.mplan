@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><Mediator xmlns="http://xmlns.oracle.com/sca/1.0/mediator" name="PaymentSiebelCommsReqABCS" wsdlTargetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Communications/PaymentSiebelCommsReqABCS/V1">
+   <operation name="QueryPayment">
+      <switch>
+         <case executionType="direct" name="QueryPaymentSiebelCommsReqABCSImplService.QueryPayment">
+            <action>
+               <assign>
+                  <copy expression="$in.ListOfCmuRequestBillingProfileIo" target="$out.QueryPayment"/>
+                  <copy xmlns:med="http://schemas.oracle.com/mediator/xpath" xmlns:prbpreqabo="http://www.siebel.com/xml/CMU%20Request%20Billing%20Profile%20IO" expression="med:setCompositeInstanceTitle(concat('Billing ',$in.ListOfCmuRequestBillingProfileIo/prbpreqabo:ListOfCmuRequestBillingProfileIo/prbpreqabo:ComInvoiceProfile/prbpreqabo:AccountName, ' : ',$in.ListOfCmuRequestBillingProfileIo/prbpreqabo:ListOfCmuRequestBillingProfileIo/prbpreqabo:ComInvoiceProfile/prbpreqabo:BillingProfileName))" target="$out.property.tracking.compositeInstanceTitle"/>
+               </assign>
+               <invoke operation="QueryPayment" reference="QueryPaymentSiebelCommsReqABCSImplService">
+                  <onReply>
+                     <assign>
+                        <copy expression="$in.QueryPaymentResponse" target="$out.ListOfCmuResponseBillingProfilePaymentsIo"/>
+                     </assign>
+                     <reply/>
+                  </onReply>
+                  <onFault type="fault">
+                     <fault type="fault"/>
+                  </onFault>
+               </invoke>
+            </action>
+         </case>
+      </switch>
+   </operation>
+   <operation name="SearchPayment">
+      <switch>
+         <case executionType="direct" name="SearchPaymentSiebelCommsReqABCSImplService.SearchPayment">
+            <action>
+               <assign>
+                  <copy expression="$in.ListOfCmuRequestBillingProfilePaymentsSearchIo" target="$out.SearchPayment"/>
+                  <copy xmlns:med="http://schemas.oracle.com/mediator/xpath" xmlns:prsreqabo="http://www.siebel.com/xml/CMU%20Request%20Billing%20Profile%20Payments%20Search%20IO" expression="med:setCompositeInstanceTitle(concat('Billing ',$in.ListOfCmuRequestBillingProfilePaymentsSearchIo/prsreqabo:ListOfCmuRequestBillingProfilePaymentsSearchIo/prsreqabo:CmuBillingProfilePaymentsVbc/prsreqabo:Account,' : ',$in.ListOfCmuRequestBillingProfilePaymentsSearchIo/prsreqabo:ListOfCmuRequestBillingProfilePaymentsSearchIo/prsreqabo:CmuBillingProfilePaymentsVbc/prsreqabo:BillingProfile))" target="$out.property.tracking.compositeInstanceTitle"/>
+               </assign>
+               <invoke operation="SearchPayment" reference="SearchPaymentSiebelCommsReqABCSImplService">
+                  <onReply>
+                     <assign>
+                        <copy expression="$in.SearchPaymentResponse" target="$out.ListOfCmuResponseBillingProfilePaymentsIo"/>
+                     </assign>
+                     <reply/>
+                  </onReply>
+                  <onFault type="fault">
+                     <fault type="fault"/>
+                  </onFault>
+               </invoke>
+            </action>
+         </case>
+      </switch>
+   </operation>
+   <operation name="QueryInvoicePayment">
+      <switch>
+         <case executionType="direct" name="QueryInvoicePaymentSiebelCommsReqABCSImplService.QueryInvoicePayment">
+            <action>
+               <assign>
+                  <copy expression="$in.ListOfCmuRequestBilledUsageIo" target="$out.QueryInvoicePayment"/>
+                  <copy xmlns:med="http://schemas.oracle.com/mediator/xpath" xmlns:prsreqinabo="http://www.siebel.com/xml/CMU%20Request%20Billed%20Usage%20IO" expression="med:setCompositeInstanceTitle(concat('Billing ',$in.ListOfCmuRequestBilledUsageIo/prsreqinabo:ListOfCmuRequestBilledUsageIo/prsreqinabo:CmuInvoiceVbc/prsreqinabo:AccountName,' : ',$in.ListOfCmuRequestBilledUsageIo/prsreqinabo:ListOfCmuRequestBilledUsageIo/prsreqinabo:CmuInvoiceVbc/prsreqinabo:BillingProfileName))" target="$out.property.tracking.compositeInstanceTitle"/>
+               </assign>
+               <invoke operation="QueryInvoicePayment" reference="QueryInvoicePaymentSiebelCommsReqABCSImplService">
+                  <onReply>
+                     <assign>
+                        <copy expression="$in.QueryInvoicePaymentResponse" target="$out.ListOfCmuResponseBilledUsgaePaymentsIo"/>
+                     </assign>
+                     <reply/>
+                  </onReply>
+                  <onFault type="fault">
+                     <fault type="fault"/>
+                  </onFault>
+               </invoke>
+            </action>
+         </case>
+      </switch>
+   </operation>
+   <operation name="CreateInvoicePayment">
+      <switch>
+         <case executionType="direct" name="CreateInvoicePaymentSiebelCommsReqABCSImplService.CreateInvoicePayment">
+            <action>
+               <assign>
+                  <copy expression="$in.ListOfCmuRequestNewPaymentCaptureInvoiceIo" target="$out.CreateInvoicePayment"/>
+                  <copy xmlns:med="http://schemas.oracle.com/mediator/xpath" xmlns:prcreqinabo="http://www.siebel.com/xml/CMU%20Request%20New%20Payment%20Capture%20Invoice%20IO" expression="med:setCompositeInstanceTitle(concat('Billing ', $in.ListOfCmuRequestNewPaymentCaptureInvoiceIo/prcreqinabo:ListOfCmuRequestNewPaymentCaptureInvoiceIo/prcreqinabo:CmuCaptureNewPaymentInvoiceVbc/prcreqinabo:AccountName,' : ',$in.ListOfCmuRequestNewPaymentCaptureInvoiceIo/prcreqinabo:ListOfCmuRequestNewPaymentCaptureInvoiceIo/prcreqinabo:CmuCaptureNewPaymentInvoiceVbc/prcreqinabo:BillingProfileName))" target="$out.property.tracking.compositeInstanceTitle"/>
+               </assign>
+               <invoke operation="CreateInvoicePayment" reference="CreateInvoicePaymentSiebelCommsReqABCSImplService">
+                  <onReply>
+                     <assign>
+                        <copy expression="$in.CreateInvoicePaymentResponse" target="$out.ListOfCmuResponseNewPaymentInvoiceIo"/>
+                     </assign>
+                     <reply/>
+                  </onReply>
+                  <onFault type="fault">
+                     <fault type="fault"/>
+                  </onFault>
+               </invoke>
+            </action>
+         </case>
+      </switch>
+   </operation>
+   <operation name="CreatePayment">
+      <switch>
+         <case executionType="direct" name="CreatePaymentSiebelCommsReqABCSImplService.CreatePayment">
+            <action>
+               <assign>
+                  <copy expression="$in.ListOfCmuRequestNewPaymentCaptureIo" target="$out.CreatePayment"/>
+                  <copy xmlns:med="http://schemas.oracle.com/mediator/xpath" xmlns:prcreqabo="http://www.siebel.com/xml/CMU%20Request%20New%20Payment%20Capture%20IO" expression="med:setCompositeInstanceTitle(concat('Billing ',$in.ListOfCmuRequestNewPaymentCaptureIo/prcreqabo:ListOfCmuRequestNewPaymentCaptureIo/prcreqabo:CmuCaptureNewPaymentVbc/prcreqabo:AccountName,' : ',$in.ListOfCmuRequestNewPaymentCaptureIo/prcreqabo:ListOfCmuRequestNewPaymentCaptureIo/prcreqabo:CmuCaptureNewPaymentVbc/prcreqabo:BillingProfileName))" target="$out.property.tracking.compositeInstanceTitle"/>
+               </assign>
+               <invoke operation="CreatePayment" reference="CreatePaymentSiebelCommsReqABCSImplService">
+                  <onReply>
+                     <assign>
+                        <copy expression="$in.CreatePaymentResponse" target="$out.ListOfCmuResponseNewPaymentsIo"/>
+                     </assign>
+                     <reply/>
+                  </onReply>
+                  <onFault type="fault">
+                     <fault type="fault"/>
+                  </onFault>
+               </invoke>
+            </action>
+         </case>
+      </switch>
+   </operation>
+</Mediator>

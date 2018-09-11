@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<definitions name="ProcessInstalledProductSpecialRatingSetListBRMCommsProvABCSImplExtension1"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/ProcessInstalledProductSpecialRatingSetListBRMCommsProvABCSImplExtension/V1"
+	     xmlns:brmservice="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes"
+	     xmlns:brm="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes"
+	     xmlns:commsinstprodebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/InstalledProduct/V2"
+             xmlns:commsinstprodext="http://xmlns.oracle.com/ABCSImpl/BRM/ProcessInstalledProductSpecialRatingSetListBRMCommsProvABCSImplExtension/V1"
+	     
+	     
+	     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+   <documentation>
+      <svcdoc:Service>
+         <svcdoc:Description>This service contains intercepting operations that
+                             would be used by the participating application</svcdoc:Description>
+         <svcdoc:ServiceType>ProviderABCSExtension</svcdoc:ServiceType>
+         <svcdoc:DisplayName>ProcessInstalledProductSpecialRatingSetListBRMCommsProvABCSImpl Provider ABCS Extension
+                          Implementation Interface</svcdoc:DisplayName>
+			<svcdoc:ServiceObjectName>ProcessInstalledProductSpecialRatingSetList</svcdoc:ServiceObjectName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:Version>1.0</svcdoc:Version>
+			<svcdoc:ImplementationTechnology><!-- PLACEHOLDER--></svcdoc:ImplementationTechnology>
+			<svcdoc:ProductFamily>BRM</svcdoc:ProductFamily>
+			<svcdoc:ProductPillar>BRM</svcdoc:ProductPillar>
+			<svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+      </svcdoc:Service>
+   </documentation>
+   <types>
+      <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/ProcessInstalledProductSpecialRatingSetListBRMCommsProvABCSImplExtension/V1"
+                  elementFormDefault="qualified">
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/InstalledProduct/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/InstalledProduct/V2/InstalledProductEBM.xsd"/>
+         
+		 <!--xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/wsdls/BRMCustServices.wsdl"/-->
+		 		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_UPDATE_SERVICES.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_CREATE_PROFILE.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_COMMIT_CUSTOMER.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_SET_STATUS.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_UPDATE_CUSTOMER.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_DELETE_PAYINFO.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_MODIFY_PROFILE.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_MODIFY_CUSTOMER.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_DELETE_PROFILE.xsd" />			 
+		 
+	 <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+      </xsd:schema>
+   </types>
+   <message name="PreXformEBMtoABMInstalledProductSpecialRatingSetListMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreXformEBMtoABMABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="ProcessInstalledProductSpecialRatingSetListEBM"
+            element="commsinstprodebo:ProcessInstalledProductSpecialRatingSetListEBM"/>
+   </message>
+	<message name="PreInvokeABSProcessBRMCUSTServiceReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_CUST_MODIFY_PROFILE_inputFlist"
+            element="brm:PCM_OP_CUST_MODIFY_PROFILE_inputFlist"/>
+   </message>
+
+   
+   <message name="FaultMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used for propagating Error
+                                Context and Error Message</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="AIAFault" element="corecom:Fault"/>
+   </message>
+   <portType name="ProcessInstalledProductSpecialRatingSetListBRMCommsProvABCSImplV1ExtensionService">
+      <documentation>
+         <svcdoc:Interface>
+            <svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+            <svcdoc:DisplayName>ProcessSalesOrderSiebelProvABCSImplV2ExtensionService</svcdoc:DisplayName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         </svcdoc:Interface>
+      </documentation>
+      <operation name="PreXformEBMtoABMInstalledProductSpecialRatingSetListEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformEBMtoABM an ListOfSWIOrderIO object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformEBMtoABMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsinstprodext:PreXformEBMtoABMInstalledProductSpecialRatingSetListMsg"/>
+         <output message="commsinstprodext:PreXformEBMtoABMInstalledProductSpecialRatingSetListMsg"/>
+         <fault name="fault" message="commsinstprodext:FaultMessage"/>
+      </operation>
+	 <operation name="PreInvokeABSBRMCUSTServiceABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ProcessSalesOrderEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsinstprodext:PreInvokeABSProcessBRMCUSTServiceReqMsg"/>
+         <output message="commsinstprodext:PreInvokeABSProcessBRMCUSTServiceReqMsg"/>
+         <fault name="fault" message="commsinstprodext:FaultMessage"/>
+      </operation>
+   </portType>
+   <plnk:partnerLinkType name="ProcessInstalledProductSpecialRatingSetListBRMCommsProvABCSImplV1ExtensionService">
+      <plnk:role name="ProcessInstalledProductSpecialRatingSetListBRMCommsProvABCSImplV1ExtensionServiceProvider">
+         <plnk:portType name="commsinstprodext:ProcessInstalledProductSpecialRatingSetListBRMCommsProvABCSImplV1ExtensionService"/>
+      </plnk:role>
+   </plnk:partnerLinkType>
+   <binding name="ProcessInstalledProductSpecialRatingSetListBRMCommsProvABCSImplV1ExtensionService_Binding"
+            type="commsinstprodext:ProcessInstalledProductSpecialRatingSetListBRMCommsProvABCSImplV1ExtensionService">
+      <soap:binding style="document"
+                    transport="http://schemas.xmlsoap.org/soap/http"/>
+      <operation name="PreXformEBMtoABMInstalledProductSpecialRatingSetListEBM">
+         <soap:operation style="document" soapAction="mirror"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal" encodingStyle=""/>
+         </fault>
+      </operation>
+      <operation name="PreInvokeABSBRMCUSTServiceABM">
+         <soap:operation style="document" soapAction="mirror"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal" encodingStyle=""/>
+         </fault>
+      </operation>
+   </binding>
+	<service name="mirrorAnyService">
+		<port name="ProcessInstalledProductSpecialRatingSetListBRMCommsProvABCSImplV1ExtensionService" binding="commsinstprodext:ProcessInstalledProductSpecialRatingSetListBRMCommsProvABCSImplV1ExtensionService_Binding">
+			<soap:address location="http://${fp.server.soaserverhostname}:${fp.server.soaserverport}/MirrorServlet/mirror" /> 
+		</port>
+  </service>
+</definitions>

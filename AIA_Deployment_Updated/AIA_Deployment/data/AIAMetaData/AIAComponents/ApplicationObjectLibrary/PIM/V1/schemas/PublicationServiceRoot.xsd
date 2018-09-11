@@ -1,0 +1,20 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/pubfwk/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/pubfwk/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="TargetSystem.xsd"/>
+    <xsd:include schemaLocation="DetUpStatusResult.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="PublicationServiceRoot" sdoJava:package="oracle.svc" sdoJava:instanceClass="oracle.svc.DataObjectImpl">
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="DetUpStatusResult" type="DetUpStatusResult" minOccurs="0" maxOccurs="unbounded"
+                         nillable="true"/>
+                    <xsd:element name="TargetSystem" type="TargetSystem" minOccurs="0" maxOccurs="unbounded"
+                         nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="publicationServiceRoot" type="PublicationServiceRoot" nillable="true"/>
+</xsd:schema>

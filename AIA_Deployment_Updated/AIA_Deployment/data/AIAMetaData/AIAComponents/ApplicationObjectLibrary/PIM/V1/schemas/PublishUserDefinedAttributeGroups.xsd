@@ -1,0 +1,21 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/item/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/item/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="PublishUserDefinedAttributeGroups" sdoJava:package="oracle.apps.ego.item.service"
+         sdoJava:instanceClass="oracle.apps.ego.item.service.PublishUserDefinedAttributeGroups">
+        <xsd:annotation>
+            <xsd:documentation>Publish User Defined Attribute Groups</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="AttributeGroupId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AttributeGroupName" type="xsd:string" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="publishUserDefinedAttributeGroups" type="PublishUserDefinedAttributeGroups"
+         nillable="true"/>
+</xsd:schema>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="SyncSponsorshipBRMCommsReqABCSImpl"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/SyncSponsorshipBRMCommsReqABCSImpl/V1"
+	     
+	     
+	     xmlns:sponsorshipabmabo="http://www.portal.com/schemas/CRMSync"
+             xmlns:sponsorshipabmabcs="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/SyncSponsorshipBRMCommsReqABCSImpl/V1"
+	     xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" 
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" 
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" >
+	
+	
+	<documentation>
+		<svcdoc:Service>
+		               <svcdoc:Description>
+
+</svcdoc:Description>
+		               
+			<svcdoc:ServiceType>RequesterABCSImpl</svcdoc:ServiceType>
+			<svcdoc:Version>1</svcdoc:Version>
+			<svcdoc:ProductCode>BRM</svcdoc:ProductCode>
+		</svcdoc:Service>
+	</documentation>  
+	
+	 <import namespace="http://schemas.oracle.com/bpel/extension" 
+ location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+	 <types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+	            <import namespace="http://www.portal.com/schemas/CRMSync" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/SponsorshipInfoChange.xsd"/>
+             
+		
+	  
+		</schema>
+	</types>
+	<message name="SyncSponsorshipReqMsg">
+		<part name="SyncSponsorship" 
+element="sponsorshipabmabo:SponsorshipInfoChange"/>
+	</message>
+	<portType name="SyncSponsorshipBRMCommsReqABCSImpl">
+        <operation name="SyncSponsorship">
+                <documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to Sync an Sponsorship
+                              object</svcdoc:Description>
+					<svcdoc:MEP>FireAndForget</svcdoc:MEP>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="sponsorshipabmabcs:SyncSponsorshipReqMsg"/>
+		</operation>
+	   
+	    </portType>
+	<plnk:partnerLinkType name="SyncSponsorshipBRMCommsReqABCSImpl">
+		<plnk:role name="SyncSponsorshipBRMCommsReqABCSImplProvider">
+			<plnk:portType name="sponsorshipabmabcs:SyncSponsorshipBRMCommsReqABCSImpl"/>
+		</plnk:role>
+	</plnk:partnerLinkType>
+</definitions>

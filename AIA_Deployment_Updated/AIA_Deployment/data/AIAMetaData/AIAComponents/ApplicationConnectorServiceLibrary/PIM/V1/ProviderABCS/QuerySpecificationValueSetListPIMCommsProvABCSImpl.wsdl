@@ -1,0 +1,65 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="QuerySpecificationValueSetListPIMCommsProvABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/PIM/Industry/Comms/QuerySpecificationValueSetListPIMCommsProvABCSImpl/V1"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:ns2="http://oracle.apps.ego.extfwk.service/"
+     xmlns:ns1="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SpecificationValueSet/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://xmlns.oracle.com/ABCSImpl/PIM/Industry/Comms/QuerySpecificationValueSetListPIMCommsProvABCSImpl/V1"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+    >
+    <wsdl:documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This is Implementation service for Querying ValueSets from PIM</svcdoc:Description>
+            <svcdoc:ServiceType>ProviderABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>Querying ValueSets from PIM ABCS Implementation</svcdoc:DisplayName>
+            <svcdoc:EBOName/>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>PIM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>MDMPRODUCT</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>PIM</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </wsdl:documentation>
+    <plnk:partnerLinkType name="QuerySpecificationValueSetListPIMCommsProvABCSImpl">
+        <plnk:role name="QuerySpecificationValueSetListPIMCommsProvABCSImplProvider">
+            <plnk:portType name="client:QuerySpecificationValueSetListPIMCommsProvABCSImpl"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <wsdl:import namespace="http://oracle.apps.ego.extfwk.service/" location="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PIM/V1/wsdls/ValuesetService.wsdl"/>
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+             xmlns:ns1="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SpecificationValueSet/V1"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:client="http://xmlns.oracle.com/ABCSImpl/PIM/Industry/Comms/QuerySpecificationValueSetListPIMCommsProvABCSImpl/V1"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2">
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SpecificationValueSet/V1"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/SpecificationValueSet/V1/SpecificationValueSetEBM.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="QueryValueSetListPIMCommsProvABCSImplRequestMessage">
+        <wsdl:part name="QueryValueSetListEBM" element="ns1:QuerySpecificationValueSetListEBM"/>
+    </wsdl:message>
+    <wsdl:message name="QueryValueSetListPIMCommsProvABCSImplResponseMessage">
+        <wsdl:part name="QueryValueSetListResponseEBM" element="ns1:QuerySpecificationValueSetListResponseEBM"/>
+    </wsdl:message>
+    <wsdl:message name="QueryValueSetListFaultMsg">
+        <wsdl:documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </wsdl:documentation>
+        <wsdl:part name="QueryValueSetListFault" element="corecom:Fault"/>
+    </wsdl:message>
+    <wsdl:portType name="QuerySpecificationValueSetListPIMCommsProvABCSImpl">
+        <wsdl:operation name="QuerySpecificationValueSetList">
+            <wsdl:input message="client:QueryValueSetListPIMCommsProvABCSImplRequestMessage"/>
+            <wsdl:output message="client:QueryValueSetListPIMCommsProvABCSImplResponseMessage"/>
+            <wsdl:fault name="fault" message="client:QueryValueSetListFaultMsg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

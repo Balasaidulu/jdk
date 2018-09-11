@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="QueryBalanceGroupServicesSiebelCommsReqABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryBalanceGroupServicesSiebelCommsReqABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:siebelfault="http://www.siebel.com/xml/SWIFault/V0"
+     xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:bpelcom="http://schemas.oracle.com/service/bpel/common"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:balGrpSrvcsabo="http://www.siebel.com/xml/SWIBillingGroupDetailIOReq"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:balGrpSrvcsRespabo="http://www.siebel.com/xml/SWIBalanceGroupServicesIORes"
+     xmlns:balGrpSrvcsabcs="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryBalanceGroupServicesSiebelCommsReqABCSImpl/V1"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service contains operations that would be used to query the BalanceGroup Services associated with an account, from the billing system</svcdoc:Description>
+            <svcdoc:ServiceType>RequesterABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>QueryBalanceGroupServicesSiebelCommsReqABCSImpl Requester ABCS
+                          Implementation Interface</svcdoc:DisplayName>
+            <svcdoc:EBOName>InstalledProductEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>CRM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.siebel.com/xml/SWIBillingGroupDetailIOReq" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/Swibillinggroupdetailioreq.xsd"/>
+            <xsd:import namespace="http://www.siebel.com/xml/SWIBalanceGroupServicesIORes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/Swibalancegroupservicesiores.xsd"/>
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+            <xsd:import namespace="http://www.siebel.com/xml/SWIFault/V0" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/Fault.xsd"/>
+            <import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </schema>
+    </types>
+    <message name="QueryBalanceGroupServicesReqMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used as a payload to Query Balance
+                        Group Services operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="ListOfSwiBillingGroupDetailIoReq" element="balGrpSrvcsabo:ListOfSwibillinggroupdetailioreq"/>
+    </message>
+    <message name="QueryBalanceGroupServicesRespMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for sending response by Query
+                        Balance Group Services operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="ListOfSwibalancegroupservicesiores" element="balGrpSrvcsRespabo:ListOfSwibalancegroupservicesiores"/>
+    </message>
+    <message name="SiebelFaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error Context and
+                        Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="Fault" element="siebelfault:Fault"/>
+    </message>
+    <message name="QueryBalanceGroupServicesFaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error Context and
+                        Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="Fault" element="corecom:Fault"/>
+    </message>
+    <portType name="QueryBalanceGroupServicesSiebelCommsReqABCSImpl">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This interface contains operations that can act upon
+                            the object</svcdoc:Description>
+                <svcdoc:DisplayName>Query BalanceGroupServices Siebel Requestor ABCS Implementation</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="QueryBalanceGroupServices">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Query an BalanceGroupServices
+                              object</svcdoc:Description>
+                    <svcdoc:MEP>SyncReqResp</svcdoc:MEP>
+                    <svcdoc:DisplayName>QueryBalanceGroupServices</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="balGrpSrvcsabcs:QueryBalanceGroupServicesReqMsg"/>
+            <output message="balGrpSrvcsabcs:QueryBalanceGroupServicesRespMsg"/>
+            <fault name="fault" message="balGrpSrvcsabcs:SiebelFaultMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="QueryBalanceGroupServicesSiebelCommsReqABCSImpl">
+        <plnk:role name="QueryBalanceGroupServicesSiebelCommsReqABCSImplProvider">
+            <plnk:portType name="balGrpSrvcsabcs:QueryBalanceGroupServicesSiebelCommsReqABCSImpl"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

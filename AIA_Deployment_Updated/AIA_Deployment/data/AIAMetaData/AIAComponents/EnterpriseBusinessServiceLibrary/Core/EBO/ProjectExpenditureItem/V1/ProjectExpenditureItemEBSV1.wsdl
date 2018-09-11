@@ -1,0 +1,1415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+** Oracle Corporation  **
+** This is an Entity EBS, BASED ON CRUD OPERATIONS **
+** We always include the wsdl,xsd, soap, our documentation, and Core Common namespaces. Always the same prefixes. **
+** Need to define namespaces for EBO and EBS, and always use these same prefixes - ebo and ebs. **
+** Need to define the target namespace equal to the EBS namespace. Also define a name, in the form of - name+EBS. **
+ 
+ Copyright (c) 2007, 2010, Oracle and/or its affiliates. All rights reserved. 
+ 
+    WSDL File Name 
+   Name: \\EnterpriseBusinessServiceLibrary\Core\EBO\ProjectExpenditureItem\V1\ProjectExpenditureItemEBSV1.wsdl 
+ 
+-->
+ 
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:ebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ProjectExpenditureItem/V1" xmlns:ebs="http://xmlns.oracle.com/EnterpriseServices/Core/ProjectExpenditureItem/V1" name="ProjectExpenditureItemEBSV1" targetNamespace="http://xmlns.oracle.com/EnterpriseServices/Core/ProjectExpenditureItem/V1">
+
+	<documentation>
+
+
+		<svcdoc:Service>
+
+
+			<svcdoc:Description>ProjectExpenditureItem Enterprise Business Service</svcdoc:Description>
+
+
+			<svcdoc:ServiceType>EnterpriseBusinessService</svcdoc:ServiceType>
+
+
+			<svcdoc:DisplayName>ProjectExpenditureItemEBSV1</svcdoc:DisplayName>
+
+
+			<svcdoc:Version>1.00</svcdoc:Version>
+
+
+			<svcdoc:EBOName>ProjectExpenditureItemEBO</svcdoc:EBOName>
+
+
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+			<svcdoc:ImplementationTechnology>ESB</svcdoc:ImplementationTechnology>
+
+
+		</svcdoc:Service>
+
+
+	</documentation>
+
+
+	<types>
+
+
+	<xsd:schema targetNamespace="http://xmlns.oracle.com/EnterpriseServices/ProjectExpenditureItem/V1" elementFormDefault="qualified">
+
+
+		<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ProjectExpenditureItem/V1" schemaLocation="../../../../../EnterpriseObjectLibrary/Core/EBO/ProjectExpenditureItem/V1/ProjectExpenditureItemEBM.xsd"/>
+
+
+		<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../../../EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+
+
+	</xsd:schema>
+
+
+	</types>
+
+
+	<message name="FaultMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="AIAFault" element="corecom:Fault"/>
+
+
+	</message>
+
+
+	<message name="CreateProjectExpenditureItemReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the CreateProjectExpenditureItem operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="CreateProjectExpenditureItemEBM" element="ebo:CreateProjectExpenditureItemEBM"/>
+
+
+	</message>
+
+
+	<message name="CreateProjectExpenditureItemRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the CreateProjectExpenditureItem operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="CreateProjectExpenditureItemResponseEBM" element="ebo:CreateProjectExpenditureItemResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="CreateProjectExpenditureItemListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the CreateProjectExpenditureItemList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="CreateProjectExpenditureItemListEBM" element="ebo:CreateProjectExpenditureItemListEBM"/>
+
+
+	</message>
+
+
+	<message name="CreateProjectExpenditureItemListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the CreateProjectExpenditureItemList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="CreateProjectExpenditureItemListResponseEBM" element="ebo:CreateProjectExpenditureItemListResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="QueryProjectExpenditureItemReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the QueryProjectExpenditureItem operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="QueryProjectExpenditureItemEBM" element="ebo:QueryProjectExpenditureItemEBM"/>
+
+
+	</message>
+
+
+	<message name="QueryProjectExpenditureItemRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the QueryProjectExpenditureItem operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="QueryProjectExpenditureItemResponseEBM" element="ebo:QueryProjectExpenditureItemResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="QueryProjectExpenditureItemListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the QueryProjectExpenditureItemList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="QueryProjectExpenditureItemListEBM" element="ebo:QueryProjectExpenditureItemListEBM"/>
+
+
+	</message>
+
+
+	<message name="QueryProjectExpenditureItemListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the QueryProjectExpenditureItemList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="QueryProjectExpenditureItemListResponseEBM" element="ebo:QueryProjectExpenditureItemListResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="UpdateProjectExpenditureItemReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the UpdateProjectExpenditureItem operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="UpdateProjectExpenditureItemEBM" element="ebo:UpdateProjectExpenditureItemEBM"/>
+
+
+	</message>
+
+
+	<message name="UpdateProjectExpenditureItemRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the UpdateProjectExpenditureItem operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="UpdateProjectExpenditureItemResponseEBM" element="ebo:UpdateProjectExpenditureItemResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="UpdateProjectExpenditureItemListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the UpdateProjectExpenditureItemList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="UpdateProjectExpenditureItemListEBM" element="ebo:UpdateProjectExpenditureItemListEBM"/>
+
+
+	</message>
+
+
+	<message name="UpdateProjectExpenditureItemListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the UpdateProjectExpenditureItemList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="UpdateProjectExpenditureItemListResponseEBM" element="ebo:UpdateProjectExpenditureItemListResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="DeleteProjectExpenditureItemReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the DeleteProjectExpenditureItem operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="DeleteProjectExpenditureItemEBM" element="ebo:DeleteProjectExpenditureItemEBM"/>
+
+
+	</message>
+
+
+	<message name="DeleteProjectExpenditureItemRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the DeleteProjectExpenditureItem operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="DeleteProjectExpenditureItemResponseEBM" element="ebo:DeleteProjectExpenditureItemResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="DeleteProjectExpenditureItemListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the DeleteProjectExpenditureItemList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="DeleteProjectExpenditureItemListEBM" element="ebo:DeleteProjectExpenditureItemListEBM"/>
+
+
+	</message>
+
+
+	<message name="DeleteProjectExpenditureItemListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the DeleteProjectExpenditureItemList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="DeleteProjectExpenditureItemListResponseEBM" element="ebo:DeleteProjectExpenditureItemListResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="SyncProjectExpenditureItemListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the SyncProjectExpenditureItemList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="SyncProjectExpenditureItemListEBM" element="ebo:SyncProjectExpenditureItemListEBM"/>
+
+
+	</message>
+
+
+	<message name="SyncProjectExpenditureItemListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the SyncProjectExpenditureItemList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="SyncProjectExpenditureItemListResponseEBM" element="ebo:SyncProjectExpenditureItemListResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="SyncProjectLaborExpenditureItemListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the SyncProjectExpenditureItemList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="SyncProjectLaborExpenditureItemListEBM" element="ebo:SyncProjectLaborExpenditureItemListEBM"/>
+
+
+	</message>
+
+
+	<message name="SyncProjectLaborExpenditureItemListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the SyncProjectExpenditureItemList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="SyncProjectLaborExpenditureItemListResponseEBM" element="ebo:SyncProjectLaborExpenditureItemListResponseEBM"/>
+
+
+	</message>
+
+
+	<portType name="ProjectExpenditureItemEBS">
+
+
+		<documentation>
+
+
+			<svcdoc:Interface>
+
+
+				<svcdoc:Description>This interface contains operations for the Request-Response and Request-Only patterns</svcdoc:Description>
+
+
+				<svcdoc:DisplayName>RequestProjectExpenditureItem EBS Interface</svcdoc:DisplayName>
+
+
+				<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+			</svcdoc:Interface>
+
+
+		</documentation>
+
+
+		<!-- operation support for CreateProjectExpenditureItem -->
+
+
+		<operation name="CreateProjectExpenditureItem">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Create a ProjectExpenditureItem EBO.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>CreateProjectExpenditureItem</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:CreateProjectExpenditureItemReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for CreateProjectExpenditureItemList -->
+
+
+		<operation name="CreateProjectExpenditureItemList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Create multiple ProjectExpenditureItem EBOs.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>CreateProjectExpenditureItemList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:CreateProjectExpenditureItemListReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for QueryProjectExpenditureItem -->
+
+
+		<operation name="QueryProjectExpenditureItem">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Query a ProjectExpenditureItem EBO.</svcdoc:Description>
+
+
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>QueryProjectExpenditureItem</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:QueryProjectExpenditureItemReqMsg"/>
+
+
+			<output message="ebs:QueryProjectExpenditureItemRespMsg"/>
+
+
+			<fault name= "fault"  message="ebs:FaultMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for QueryProjectExpenditureItemList -->
+
+
+		<operation name="QueryProjectExpenditureItemList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Query multiple ProjectExpenditureItem EBOs.</svcdoc:Description>
+
+
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>QueryProjectExpenditureItemList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:QueryProjectExpenditureItemListReqMsg"/>
+
+
+			<output message="ebs:QueryProjectExpenditureItemListRespMsg"/>
+
+
+			<fault name= "fault"  message="ebs:FaultMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for UpdateProjectExpenditureItem -->
+
+
+		<operation name="UpdateProjectExpenditureItem">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Update a ProjectExpenditureItem EBO.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>UpdateProjectExpenditureItem</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:UpdateProjectExpenditureItemReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for UpdateProjectExpenditureItemList -->
+
+
+		<operation name="UpdateProjectExpenditureItemList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Update multiple ProjectExpenditureItem EBOs.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>UpdateProjectExpenditureItemList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:UpdateProjectExpenditureItemListReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for DeleteProjectExpenditureItem -->
+
+
+		<operation name="DeleteProjectExpenditureItem">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Delete a ProjectExpenditureItem EBO.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>DeleteProjectExpenditureItem</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:DeleteProjectExpenditureItemReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for DeleteProjectExpenditureItemList -->
+
+
+		<operation name="DeleteProjectExpenditureItemList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Delete multiple ProjectExpenditureItem EBOs.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>DeleteProjectExpenditureItemList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:DeleteProjectExpenditureItemListReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for SyncProjectExpenditureItemList -->
+
+
+		<operation name="SyncProjectExpenditureItemList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Sync multiple ProjectExpenditureItem EBOs.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>SyncProjectExpenditureItemList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:SyncProjectExpenditureItemListReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for SyncProjectLaborExpenditureItemList -->
+
+
+		<operation name="SyncProjectLaborExpenditureItemList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Sync multiple ProjectExpenditureItem EBOs.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>SyncProjectLaborExpenditureItemList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:SyncProjectLaborExpenditureItemListReqMsg"/>
+
+
+		</operation>
+
+
+	</portType>
+
+
+	<portType name="ProjectExpenditureItemEBSResponse">
+
+
+		<documentation>
+
+
+			<svcdoc:Interface>
+
+
+				<svcdoc:Description>This interface contains operations for the ResponseProjectExpenditureItem EBS</svcdoc:Description>
+
+
+				<svcdoc:DisplayName>ResponseProjectExpenditureItem EBS Interface</svcdoc:DisplayName>
+
+
+				<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+			</svcdoc:Interface>
+
+
+		</documentation>
+
+
+		<!-- operation support for CreateProjectExpenditureItem response -->
+
+
+		<operation name="CreateProjectExpenditureItemResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the CreateProjectExpenditureItem Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>CreateProjectExpenditureItemResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>ProjectExpenditureItemEBSV1</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>CreateProjectExpenditureItemResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>CreateProjectExpenditureItemRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:CreateProjectExpenditureItemRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for CreateProjectExpenditureItemListResponse -->
+
+
+		<operation name="CreateProjectExpenditureItemListResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the CreateProjectExpenditureItemList Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>CreateProjectExpenditureItemListResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>ProjectExpenditureItemEBSV1</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>CreateProjectExpenditureItemResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>CreateProjectExpenditureItemListRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:CreateProjectExpenditureItemListRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for UpdateProjectExpenditureItem response -->
+
+
+		<operation name="UpdateProjectExpenditureItemResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the UpdateProjectExpenditureItem Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>UpdateProjectExpenditureItemResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>ProjectExpenditureItemEBSV1</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>UpdateProjectExpenditureItemResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>UpdateProjectExpenditureItemRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:UpdateProjectExpenditureItemRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for UpdateProjectExpenditureItemListResponse -->
+
+
+		<operation name="UpdateProjectExpenditureItemListResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the UpdateProjectExpenditureItemList Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>UpdateProjectExpenditureItemListResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>ProjectExpenditureItemEBSV1</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>UpdateProjectExpenditureItemResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>UpdateProjectExpenditureItemListRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:UpdateProjectExpenditureItemListRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for DeleteProjectExpenditureItem response -->
+
+
+		<operation name="DeleteProjectExpenditureItemResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the DeleteProjectExpenditureItem Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>DeleteProjectExpenditureItemResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>ProjectExpenditureItemEBSV1</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>DeleteProjectExpenditureItemResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>DeleteProjectExpenditureItemRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:DeleteProjectExpenditureItemRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for DeleteProjectExpenditureItemListResponse -->
+
+
+		<operation name="DeleteProjectExpenditureItemListResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the DeleteProjectExpenditureItemList Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>DeleteProjectExpenditureItemListResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>ProjectExpenditureItemEBSV1</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>DeleteProjectExpenditureItemResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>DeleteProjectExpenditureItemListRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:DeleteProjectExpenditureItemListRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for SyncProjectExpenditureItemListResponse -->
+
+
+		<operation name="SyncProjectExpenditureItemListResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the SyncProjectExpenditureItemList Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>SyncProjectExpenditureItemListResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>ProjectExpenditureItemEBSV1</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>SyncProjectExpenditureItemResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>SyncProjectExpenditureItemListRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:SyncProjectExpenditureItemListRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for SyncProjectLaborExpenditureItemListResponse -->
+
+
+		<operation name="SyncProjectLaborExpenditureItemListResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the SyncProjectLaborExpenditureItemList Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>SyncProjectLaborExpenditureItemListResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>ProjectExpenditureItemEBSV1</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>SyncProjectLaborExpenditureItemResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>SyncProjectLaborExpenditureItemListRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:SyncProjectLaborExpenditureItemListRespMsg"/>
+
+
+		</operation>
+
+
+	</portType>
+
+
+</definitions>
+
+

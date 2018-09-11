@@ -1,0 +1,75 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/item/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/item/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="ItemRevision.xsd"/>
+    <xsd:include schemaLocation="ItemAttributeGroup.xsd"/>
+    <xsd:include schemaLocation="ProcessMfgCharacteristics.xsd"/>
+    <xsd:include schemaLocation="AssetCharacteristics.xsd"/>
+    <xsd:include schemaLocation="ServiceCharacteristics.xsd"/>
+    <xsd:include schemaLocation="WebOptionsCharacteristics.xsd"/>
+    <xsd:include schemaLocation="InvoicingCharacteristics.xsd"/>
+    <xsd:include schemaLocation="OMCharacteristics.xsd"/>
+    <xsd:include schemaLocation="ReceivingCharacteristics.xsd"/>
+    <xsd:include schemaLocation="PurchasingCharacteristics.xsd"/>
+    <xsd:include schemaLocation="PlanningCharacteristics.xsd"/>
+    <xsd:include schemaLocation="LeadTimeCharacteristics.xsd"/>
+    <xsd:include schemaLocation="CostingCharacteristics.xsd"/>
+    <xsd:include schemaLocation="WorkInProcessCharacteristics.xsd"/>
+    <xsd:include schemaLocation="BOMCharacteristics.xsd"/>
+    <xsd:include schemaLocation="PhysicalCharacteristics.xsd"/>
+    <xsd:include schemaLocation="InventoryCharacteristics.xsd"/>
+    <xsd:include schemaLocation="ItemCatalog.xsd"/>
+    <xsd:include schemaLocation="MainCharacteristics.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="Item" sdoJava:package="oracle.apps.ego.item.service" sdoJava:instanceClass="oracle.apps.ego.item.service.Item">
+        <xsd:annotation>
+            <xsd:documentation>All item Operational Attributes</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="GroupId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="RevFromFunction" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="MainCharacteristics" type="MainCharacteristics" minOccurs="0"
+                         nillable="true"/>
+                    <xsd:element name="ItemCatalog" type="ItemCatalog" minOccurs="0" nillable="true"/>
+                    <xsd:element name="InventoryCharacteristics" type="InventoryCharacteristics" minOccurs="0"
+                         nillable="true"/>
+                    <xsd:element name="PhysicalCharacteristics" type="PhysicalCharacteristics" minOccurs="0"
+                         nillable="true"/>
+                    <xsd:element name="BillsOfMaterialCharacteristics" type="BOMCharacteristics" minOccurs="0"
+                         nillable="true"/>
+                    <xsd:element name="WorkInProcessCharacteristics" type="WorkInProcessCharacteristics"
+                         minOccurs="0" nillable="true"/>
+                    <xsd:element name="CostingCharacteristics" type="CostingCharacteristics" minOccurs="0"
+                         nillable="true"/>
+                    <xsd:element name="ProcessingLeadTimeCharacteristics" type="LeadTimeCharacteristics"
+                         minOccurs="0" nillable="true"/>
+                    <xsd:element name="PlanningCharacteristics" type="PlanningCharacteristics" minOccurs="0"
+                         nillable="true"/>
+                    <xsd:element name="PurchasingCharacteristics" type="PurchasingCharacteristics"
+                         minOccurs="0" nillable="true"/>
+                    <xsd:element name="ReceivingCharacteristics" type="ReceivingCharacteristics" minOccurs="0"
+                         nillable="true"/>
+                    <xsd:element name="OrderManagementCharacteristics" type="OMCharacteristics" minOccurs="0"
+                         nillable="true"/>
+                    <xsd:element name="InvoicingCharacteristics" type="InvoicingCharacteristics" minOccurs="0"
+                         nillable="true"/>
+                    <xsd:element name="WebOptionsCharacteristics" type="WebOptionsCharacteristics"
+                         minOccurs="0" nillable="true"/>
+                    <xsd:element name="ServiceCharacteristics" type="ServiceCharacteristics" minOccurs="0"
+                         nillable="true"/>
+                    <xsd:element name="AssetCharacteristics" type="AssetCharacteristics" minOccurs="0"
+                         nillable="true"/>
+                    <xsd:element name="ProcessMfgCharacteristics" type="ProcessMfgCharacteristics"
+                         minOccurs="0" nillable="true"/>
+                    <xsd:element name="AttributeGroup" type="ItemAttributeGroup" minOccurs="0" maxOccurs="unbounded"
+                         nillable="true"/>
+                    <xsd:element name="ItemRevision" type="ItemRevision" minOccurs="0" maxOccurs="unbounded"
+                         nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="item" type="Item" nillable="true"/>
+</xsd:schema>

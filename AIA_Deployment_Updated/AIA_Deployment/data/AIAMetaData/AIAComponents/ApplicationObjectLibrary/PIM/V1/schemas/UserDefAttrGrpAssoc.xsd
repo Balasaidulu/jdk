@@ -1,0 +1,23 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/extfwk/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/extfwk/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="UserDefinedAttrGroup.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="UserDefAttrGrpAssoc" sdoJava:package="oracle.apps.ego.extfwk.service" sdoJava:instanceClass="oracle.apps.ego.extfwk.service.UserDefAttrGrpAssoc">
+        <xsd:annotation>
+            <xsd:documentation>Service DataObject for ICC to AttrGrp Association</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="DataLevel" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ClassificationCode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AttrGroupId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="UserDefinedAttrGroup" type="UserDefinedAttrGroup" minOccurs="0"
+                         maxOccurs="unbounded" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="userDefAttrGrpAssoc" type="UserDefAttrGrpAssoc" nillable="true"/>
+</xsd:schema>

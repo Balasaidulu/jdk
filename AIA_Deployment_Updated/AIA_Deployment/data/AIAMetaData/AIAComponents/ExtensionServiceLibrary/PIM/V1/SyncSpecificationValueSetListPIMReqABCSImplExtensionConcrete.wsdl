@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:SyncVS="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SpecificationValueSet/V1"
+             xmlns:SyncVSebs="http://xmlns.oracle.com/EnterpriseServices/Core/SpecificationValueSet/V1"
+             xmlns:appsabo="http://xmlns.oracle.com/xdb/APPS"
+             xmlns:appsext="http://xmlns.oracle.com/ABCSImpl/PIM/SyncSpecificationValueSetListPIMCoreReqABCSImplExtension/V1"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V2"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:vsservice="http://xmlns.oracle.com/ValuesetService"
+             xmlns:pubabm="http://xmlns.oracle.com/apps/ego/pubfwk/service"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             name="SyncSpecificationValueSetListPIMReqABCSImplExtension"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/PIM/SyncSpecificationValueSetListPIMCoreReqABCSImplExtension/V1">
+   <documentation>
+      <svcdoc:Service>
+         <svcdoc:Description>This service contains intercepting operations that
+                             would be used by the participating application</svcdoc:Description>
+         <svcdoc:TargetServiceType>ABCSExtension</svcdoc:TargetServiceType>
+         <svcdoc:DisplayName>SyncSpecificationValueSetListPIMReqABCSImpl
+                             Requester ABCS Extension Implementation Interface</svcdoc:DisplayName>
+         <svcdoc:ServiceObjectName>SyncSpecificationValueSetList</svcdoc:ServiceObjectName>
+         <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         <svcdoc:Version>1.0</svcdoc:Version>
+         <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+         <svcdoc:ProductFamily>ERP</svcdoc:ProductFamily>
+         <svcdoc:ProductPillar>MDMPRODUCT</svcdoc:ProductPillar>
+         <svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+      </svcdoc:Service>
+   </documentation>
+         <import namespace="http://xmlns.oracle.com/EnterpriseServices/Core/SpecificationValueSet/V1"
+                     location="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseBusinessServiceLibrary/Core/EBO/SpecificationValueSet/V1/SpecificationValueSetEBS.wsdl"/>
+
+   <types>
+      <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/PIM/SyncSpecificationValueSetListPIMCoreReqABCSImplExtension/V1"
+                  elementFormDefault="qualified">
+         <xsd:import namespace="http://xmlns.oracle.com/xdb/APPS"
+                     schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PIM/V1/schemas/APPS_WF_EVENT_T.xsd"/>
+         <xsd:import namespace="http://xmlns.oracle.com/ValuesetService"
+                     schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PIM/V1/schemas/ValuesetService.xsd"/>
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+                     schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+         <xsd:import namespace="http://xmlns.oracle.com/apps/ego/pubfwk/service"
+                     schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PIM/V1/schemas/PublicationService.xsd"/>
+      </xsd:schema>
+   </types>
+   <message name="PreInvokeValueSetServiceReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to
+                                PreInvokeValueSetServiceABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PreInvokeValueSetServiceABM"
+            element="vsservice:ValuesetQueryIn"/>
+   </message>
+   <message name="PostInvokeValueSetServiceRespMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to
+                                PostInvokeValueSetServiceABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PostInvokeValueSetServiceABM"
+            element="vsservice:ValuesetQueryOut"/>
+   </message>
+   <message name="PreInvokeEBSSyncSpecificationValueSetListReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to
+                                PreInvokeEBSSpecificationValueSetListEBM
+                                operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="SyncSpecificationValueSetListEBM"
+            element="SyncVS:SyncSpecificationValueSetListEBM"/>
+   </message>
+   <message name="PreXformSyncSpecificationValueSetListEBMTOABMReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to
+                                PreXformSyncSpecificationValueSetListEBMTOABMReqMsg
+                                operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="SyncSpecificationValueSetListResponseEBM"
+            element="SyncVS:SyncSpecificationValueSetListResponseEBM"/>
+   </message>
+   <message name="PreInvokeUpdatePublicationStatusABM">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to
+                                PreInvokeUpdatePublicationStatusABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="UpdatePublicationStatusABM"
+            element="pubabm:PublicationService_UpdatePublicationStatus"/>
+   </message>
+   <message name="FaultMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used for propagating Error
+                                Context and Error Message</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="AIAFault" element="corecom:Fault"/>
+   </message>
+   <portType name="SyncSpecificationValueSetListPIMReqABCSImplExtensionService">
+      <documentation>
+         <svcdoc:Interface>
+            <svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+            <svcdoc:DisplayName>SyncSpecificationValueSetPIMReqABCSImplExtensionService</svcdoc:DisplayName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         </svcdoc:Interface>
+      </documentation>
+      <operation name="PreInvokeValueSetServiceABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to
+                                   PreInvokeValueSetServiceABM an ListOfValueSet
+                                   object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeValueSetServiceABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="appsext:PreInvokeValueSetServiceReqMsg"/>
+         <output message="appsext:PreInvokeValueSetServiceReqMsg"/>
+         <fault name="fault" message="appsext:FaultMessage"/>
+      </operation>
+      <operation name="PostInvokeValueSetServiceABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to
+                                   PostInvokeValueSetServiceABM an
+                                   ListOfValueSet object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PostInvokeValueSetServiceABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="appsext:PostInvokeValueSetServiceRespMsg"/>
+         <output message="appsext:PostInvokeValueSetServiceRespMsg"/>
+         <fault name="fault" message="appsext:FaultMessage"/>
+      </operation>
+      <operation name="PreInvokeEBSSpecificationValueSetListEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to
+                                   PreInvokeEBSSpecificationValueSetListEBM an
+                                   SyncSpecificationValueSetPIMReqABCSImpl object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeEBSSpecificationValueSetListEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="appsext:PreInvokeEBSSyncSpecificationValueSetListReqMsg"/>
+         <output message="appsext:PreInvokeEBSSyncSpecificationValueSetListReqMsg"/>
+         <fault name="fault" message="appsext:FaultMessage"/>
+      </operation>
+      <operation name="PreXformSyncSpecificationValueSetListEBMTOABMReqMsg">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to
+                                   PreXformSyncSpecificationValueSetListEBMTOABMReqMsg
+                                   an SyncSpecificationValueSetPIMReqABCSImpl
+                                   object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformSyncSpecificationValueSetListEBMTOABMReqMsg</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="appsext:PreXformSyncSpecificationValueSetListEBMTOABMReqMsg"/>
+         <output message="appsext:PreXformSyncSpecificationValueSetListEBMTOABMReqMsg"/>
+         <fault name="fault" message="appsext:FaultMessage"/>
+      </operation>
+      <operation name="UpdatePublicationStatusABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to
+                                   UpdatePublicationStatusABM an
+                                   SyncSpecificationValueSetPIMReqABCSImpl object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>UpdatePublicationStatusABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="appsext:PreInvokeUpdatePublicationStatusABM"/>
+         <output message="appsext:PreInvokeUpdatePublicationStatusABM"/>
+         <fault name="fault" message="appsext:FaultMessage"/>
+      </operation>
+   </portType>
+   <plnk:partnerLinkType name="SyncSpecificationValueSetListPIMReqABCSImplV1ExtensionService">
+      <plnk:role name="SyncSpecificationValueSetListPIMReqABCSImplV1ExtensionServiceProvider">
+         <plnk:portType name="appsext:SyncSpecificationValueSetListPIMReqABCSImplV1ExtensionService" />
+      </plnk:role>
+   </plnk:partnerLinkType>
+
+   <binding name="SyncSpecificationValueSetListPIMReqABCSImplExtensionService_Binding" type="appsext:SyncSpecificationValueSetListPIMReqABCSImplExtensionService">
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+     
+      <operation name="PreInvokeEBSSpecificationValueSetListEBM">
+         <soap:operation style="document" soapAction="mirror" />
+         <input>
+            <soap:body use="literal" />
+         </input>
+         <output>
+            <soap:body use="literal" />
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal" encodingStyle="" />
+         </fault>
+      </operation>
+
+   </binding>
+   <service name="mirrorAnyService">
+      <port name="SyncSpecificationValueSetListPIMReqABCSImplExtensionService" binding="appsext:SyncSpecificationValueSetListPIMReqABCSImplExtensionService_Binding">
+         <soap:address location="http://sdc60008sems.us.oracle.com:8037/MirrorServlet/mirror" />
+      </port>
+   </service>
+</definitions>

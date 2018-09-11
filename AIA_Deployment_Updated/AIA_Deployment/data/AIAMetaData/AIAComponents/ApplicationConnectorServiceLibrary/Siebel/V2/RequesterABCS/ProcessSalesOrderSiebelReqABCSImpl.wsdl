@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="ProcessSalesOrderSiebelReqABCSImplV2"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/ProcessSalesOrderSiebelReqABCSImpl/V2"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:client="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/ProcessSalesOrderSiebelReqABCSImpl/V2"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+             xmlns:sbldata="http://siebel.com/OrderManagement/Order/Data">
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>Siebel Requester ABCS Implementation to Process
+                                Sales Order</svcdoc:Description>
+            <svcdoc:ServiceType>RequesterABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>ProcessSalesOrderSiebelReqABCSImpl</svcdoc:DisplayName>
+            <svcdoc:Version>2.0</svcdoc:Version>
+            <svcdoc:EBOName>SalesOrderEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:ProductFamily>Siebel</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>SIA</svcdoc:ProductCode>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension"
+            location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://siebel.com/OrderManagement/Order/Data"
+                        schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWIOrderIO.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="SiebelProcessSalesOrderReqMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>Siebel Process Sales Order request ABM</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="ListOfSWIOrderIO" element="sbldata:ListOfSWIOrderIO"/>
+    </message>
+    <portType name="ProcessSalesOrderSiebelReqABCSImplV2">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This interface contains the Siebel ABCS
+                                    implementation for invoking the SalesOrder
+                                    EBS service</svcdoc:Description>
+                <svcdoc:DisplayName>ProcessSalesOrderSiebelReqABCSImplV2</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="ProcessSalesOrder">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to initiate
+                                        Siebel sales order processing</svcdoc:Description>
+                    <svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+                    <svcdoc:DisplayName>ProcessSalesOrder</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="client:SiebelProcessSalesOrderReqMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="ProcessSalesOrderSiebelReqABCSImplV2">
+        <plnk:role name="ProcessSalesOrderSiebelReqABCSImplV2Provider">
+            <plnk:portType name="client:ProcessSalesOrderSiebelReqABCSImplV2"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

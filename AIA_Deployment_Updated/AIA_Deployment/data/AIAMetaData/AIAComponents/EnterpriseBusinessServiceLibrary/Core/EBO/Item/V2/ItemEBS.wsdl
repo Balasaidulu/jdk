@@ -1,0 +1,1280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+** Oracle Corporation  **
+** This is an Entity EBS, BASED ON CRUD OPERATIONS **
+** We always include the wsdl,xsd, soap, our documentation, and Core Common namespaces. Always the same prefixes. **
+** Need to define namespaces for EBO and EBS, and always use these same prefixes - ebo and ebs. **
+** Need to define the target namespace equal to the EBS namespace. Also define a name, in the form of - name+EBS. **
+ 
+ Copyright (c) 2007, 2010, Oracle and/or its affiliates. All rights reserved. 
+ 
+    WSDL File Name 
+   Name: \\EnterpriseBusinessServiceLibrary\Core\EBO\Item\V2\ItemEBS.wsdl 
+ 
+-->
+ 
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:ebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Item/V2" xmlns:ebs="http://xmlns.oracle.com/EnterpriseServices/Core/Item/V2" name="ItemEBS" targetNamespace="http://xmlns.oracle.com/EnterpriseServices/Core/Item/V2">
+
+	<documentation>
+
+
+		<svcdoc:Service>
+
+
+			<svcdoc:Description>Item Enterprise Business Service</svcdoc:Description>
+
+
+			<svcdoc:ServiceType>EnterpriseBusinessService</svcdoc:ServiceType>
+
+
+			<svcdoc:DisplayName>ItemEBS</svcdoc:DisplayName>
+
+
+			<svcdoc:Version>2.00</svcdoc:Version>
+
+
+			<svcdoc:EBOName>ItemEBO</svcdoc:EBOName>
+
+
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+			<svcdoc:ImplementationTechnology>ESB</svcdoc:ImplementationTechnology>
+
+
+		</svcdoc:Service>
+
+
+	</documentation>
+
+
+	<types>
+
+
+	<xsd:schema targetNamespace="http://xmlns.oracle.com/EnterpriseServices/Item/V2" elementFormDefault="qualified">
+
+
+		<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Item/V2" schemaLocation="../../../../../EnterpriseObjectLibrary/Core/EBO/Item/V2/ItemEBM.xsd"/>
+
+
+		<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../../../EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+
+
+	</xsd:schema>
+
+
+	</types>
+
+
+	<message name="FaultMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="AIAFault" element="corecom:Fault"/>
+
+
+	</message>
+
+
+	<message name="CreateItemReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the CreateItem operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="CreateItemEBM" element="ebo:CreateItemEBM"/>
+
+
+	</message>
+
+
+	<message name="CreateItemRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the CreateItem operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="CreateItemResponseEBM" element="ebo:CreateItemResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="CreateItemListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the CreateItemList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="CreateItemListEBM" element="ebo:CreateItemListEBM"/>
+
+
+	</message>
+
+
+	<message name="CreateItemListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the CreateItemList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="CreateItemListResponseEBM" element="ebo:CreateItemListResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="DeleteItemReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the DeleteItem operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="DeleteItemEBM" element="ebo:DeleteItemEBM"/>
+
+
+	</message>
+
+
+	<message name="DeleteItemRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the DeleteItem operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="DeleteItemResponseEBM" element="ebo:DeleteItemResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="DeleteItemListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the DeleteItemList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="DeleteItemListEBM" element="ebo:DeleteItemListEBM"/>
+
+
+	</message>
+
+
+	<message name="DeleteItemListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the DeleteItemList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="DeleteItemListResponseEBM" element="ebo:DeleteItemListResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="QueryItemReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the QueryItem operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="QueryItemEBM" element="ebo:QueryItemEBM"/>
+
+
+	</message>
+
+
+	<message name="QueryItemRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the QueryItem operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="QueryItemResponseEBM" element="ebo:QueryItemResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="QueryItemListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the QueryItemList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="QueryItemListEBM" element="ebo:QueryItemListEBM"/>
+
+
+	</message>
+
+
+	<message name="QueryItemListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the QueryItemList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="QueryItemListResponseEBM" element="ebo:QueryItemListResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="SyncItemListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the SyncItemList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="SyncItemListEBM" element="ebo:SyncItemListEBM"/>
+
+
+	</message>
+
+
+	<message name="SyncItemListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the SyncItemList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="SyncItemListResponseEBM" element="ebo:SyncItemListResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="UpdateItemReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the UpdateItem operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="UpdateItemEBM" element="ebo:UpdateItemEBM"/>
+
+
+	</message>
+
+
+	<message name="UpdateItemRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the UpdateItem operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="UpdateItemResponseEBM" element="ebo:UpdateItemResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="UpdateItemListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the UpdateItemList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="UpdateItemListEBM" element="ebo:UpdateItemListEBM"/>
+
+
+	</message>
+
+
+	<message name="UpdateItemListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the UpdateItemList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="UpdateItemListResponseEBM" element="ebo:UpdateItemListResponseEBM"/>
+
+
+	</message>
+
+
+	<portType name="ItemEBS">
+
+
+		<documentation>
+
+
+			<svcdoc:Interface>
+
+
+				<svcdoc:Description>This interface contains operations for the Request-Response and Request-Only patterns</svcdoc:Description>
+
+
+				<svcdoc:DisplayName>RequestItem EBS Interface</svcdoc:DisplayName>
+
+
+				<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+			</svcdoc:Interface>
+
+
+		</documentation>
+
+
+		<!-- operation support for CreateItem -->
+
+
+		<operation name="CreateItem">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Create a Item EBO.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>CreateItem</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:CreateItemReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for CreateItemList -->
+
+
+		<operation name="CreateItemList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Create multiple Item EBOs.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>CreateItemList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:CreateItemListReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for DeleteItem -->
+
+
+		<operation name="DeleteItem">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Delete a Item EBO.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>DeleteItem</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:DeleteItemReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for DeleteItemList -->
+
+
+		<operation name="DeleteItemList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Delete multiple Item EBOs.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>DeleteItemList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:DeleteItemListReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for QueryItem -->
+
+
+		<operation name="QueryItem">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Query a Item EBO.</svcdoc:Description>
+
+
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>QueryItem</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:QueryItemReqMsg"/>
+
+
+			<output message="ebs:QueryItemRespMsg"/>
+
+
+			<fault name= "fault"  message="ebs:FaultMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for QueryItemList -->
+
+
+		<operation name="QueryItemList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Query multiple Item EBOs.</svcdoc:Description>
+
+
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>QueryItemList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:QueryItemListReqMsg"/>
+
+
+			<output message="ebs:QueryItemListRespMsg"/>
+
+
+			<fault name= "fault"  message="ebs:FaultMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for SyncItemList -->
+
+
+		<operation name="SyncItemList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Sync multiple Item EBOs.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>SyncItemList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:SyncItemListReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for UpdateItem -->
+
+
+		<operation name="UpdateItem">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Update a Item EBO.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>UpdateItem</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:UpdateItemReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for UpdateItemList -->
+
+
+		<operation name="UpdateItemList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Update multiple Item EBOs.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>UpdateItemList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:UpdateItemListReqMsg"/>
+
+
+		</operation>
+
+
+	</portType>
+
+
+	<portType name="ItemEBSResponse">
+
+
+		<documentation>
+
+
+			<svcdoc:Interface>
+
+
+				<svcdoc:Description>This interface contains operations for the ResponseItem EBS</svcdoc:Description>
+
+
+				<svcdoc:DisplayName>ResponseItem EBS Interface</svcdoc:DisplayName>
+
+
+				<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+			</svcdoc:Interface>
+
+
+		</documentation>
+
+
+		<!-- operation support for CreateItem response -->
+
+
+		<operation name="CreateItemResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the CreateItem Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>CreateItemResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>ItemEBS</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>CreateItemResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>CreateItemRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:CreateItemRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for CreateItemListResponse -->
+
+
+		<operation name="CreateItemListResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the CreateItem Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>CreateItemListResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>ItemEBS</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>CreateItemResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>CreateItemListRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:CreateItemListRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for DeleteItem response -->
+
+
+		<operation name="DeleteItemResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the DeleteItem Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>DeleteItemResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>ItemEBS</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>DeleteItemResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>DeleteItemRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:DeleteItemRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for DeleteItemListResponse -->
+
+
+		<operation name="DeleteItemListResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the DeleteItem Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>DeleteItemListResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>ItemEBS</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>DeleteItemResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>DeleteItemListRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:DeleteItemListRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for SyncItemListResponse -->
+
+
+		<operation name="SyncItemListResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the SyncItem Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>SyncItemListResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>ItemEBS</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>SyncItemResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>SyncItemListRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:SyncItemListRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for UpdateItem response -->
+
+
+		<operation name="UpdateItemResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the UpdateItem Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>UpdateItemResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>ItemEBS</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>UpdateItemResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>UpdateItemRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:UpdateItemRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for UpdateItemListResponse -->
+
+
+		<operation name="UpdateItemListResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the UpdateItem Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>UpdateItemListResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>ItemEBS</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>UpdateItemResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>UpdateItemListRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:UpdateItemListRespMsg"/>
+
+
+		</operation>
+
+
+	</portType>
+
+
+</definitions>
+
+

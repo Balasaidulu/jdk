@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siebel.com/xml/SWIAdminISSAttributeDefnIO" xmlns:xsdLocal="http://www.siebel.com/xml/SWIAdminISSAttributeDefnIO" attributeFormDefault="unqualified" elementFormDefault="qualified" 
+><xsd:annotation
+><xsd:documentation
+>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation
+></xsd:annotation
+><xsd:element name="ListOfSwiadminissattributedefnio" type="xsdLocal:ListOfSwiadminissattributedefnio"
+/><xsd:complexType name="ListOfSwiadminissattributedefnioTopElmt"
+><xsd:sequence
+><xsd:element name="ListOfSwiadminissattributedefnio" type="xsdLocal:ListOfSwiadminissattributedefnio" minOccurs="1" maxOccurs="1"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="ListOfSwiadminissattributedefnio"
+><xsd:sequence
+><xsd:element name="SwiAttributeVodBuscomp" type="xsdLocal:SwiAttributeVodBuscomp" minOccurs="0" maxOccurs="unbounded"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="SwiAttributeVodBuscomp"
+><xsd:sequence
+><xsd:element name="Id" type="xsdLocal:string30" minOccurs="0" maxOccurs="1"
+/><xsd:element name="Description" type="xsdLocal:string250" minOccurs="0" maxOccurs="1"
+/><xsd:element name="LockedBy" type="xsdLocal:string50" minOccurs="0" maxOccurs="1"
+/><xsd:element name="LockedDate" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="LockedFlag" type="xsd:string" minOccurs="1" maxOccurs="1"
+/><xsd:element name="VODId" type="xsd:string" minOccurs="1" maxOccurs="1"
+/><xsd:element name="VODName" type="xsdLocal:string100" minOccurs="1" maxOccurs="1"
+/><xsd:element name="VODType" type="xsdLocal:string30" minOccurs="1" maxOccurs="1"
+/><xsd:element name="VODName-Display" type="xsdLocal:string100" minOccurs="1" maxOccurs="1"
+/><xsd:element name="VODReleasedFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="VODVersion" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="EffectiveStartDate" type="xsdLocal:string30" minOccurs="0" maxOccurs="1"
+/><xsd:element name="EffectiveEndDate" type="xsdLocal:string30" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ListOfSwiAttributeDetailsBuscomp" type="xsdLocal:ListOfSwiAttributeDetailsBuscomp" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ListOfSwiAttributeValuesBuscomp" type="xsdLocal:ListOfSwiAttributeValuesBuscomp" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ListOfSwiAttributeVersionsBuscomp" type="xsdLocal:ListOfSwiAttributeVersionsBuscomp" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ListOfSwiIssAttributeDefinitionLangBuscomp" type="xsdLocal:ListOfSwiIssAttributeDefinitionLangBuscomp" minOccurs="0" maxOccurs="1"
+/></xsd:sequence
+><xsd:attribute name="operation" type="xsd:string"
+/><xsd:attribute name="searchspec" type="xsd:string"
+/></xsd:complexType
+><xsd:complexType name="ListOfSwiAttributeDetailsBuscomp"
+><xsd:sequence
+><xsd:element name="SwiAttributeDetailsBuscomp" type="xsdLocal:SwiAttributeDetailsBuscomp" minOccurs="0" maxOccurs="unbounded"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="SwiAttributeDetailsBuscomp"
+><xsd:sequence
+><xsd:element name="Id" type="xsdLocal:string30" minOccurs="0" maxOccurs="1"
+/><xsd:element name="DataType" type="xsdLocal:string30" minOccurs="1" maxOccurs="1"
+/><xsd:element name="DomainType" type="xsdLocal:string30" minOccurs="1" maxOccurs="1"
+/><xsd:element name="FirstVersion" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="LastVersion" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="MaximumValue" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="MinimumValue" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ObjectId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="OrigId" type="xsd:string" minOccurs="1" maxOccurs="1"
+/><xsd:element name="UnitofMeasure" type="xsdLocal:string30" minOccurs="0" maxOccurs="1"
+/></xsd:sequence
+><xsd:attribute name="operation" type="xsd:string"
+/><xsd:attribute name="searchspec" type="xsd:string"
+/></xsd:complexType
+><xsd:complexType name="ListOfSwiAttributeValuesBuscomp"
+><xsd:sequence
+><xsd:element name="SwiAttributeValuesBuscomp" type="xsdLocal:SwiAttributeValuesBuscomp" minOccurs="0" maxOccurs="unbounded"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="SwiAttributeValuesBuscomp"
+><xsd:sequence
+><xsd:element name="Id" type="xsdLocal:string30" minOccurs="0" maxOccurs="1"
+/><xsd:element name="FirstVersion" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="LastVersion" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ObjectId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="OrigId" type="xsd:string" minOccurs="1" maxOccurs="1"
+/><xsd:element name="Sequence" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="Value" type="xsdLocal:string100" minOccurs="1" maxOccurs="1"
+/><xsd:element name="ListOfSwiIssAttributeValuesLangBuscomp" type="xsdLocal:ListOfSwiIssAttributeValuesLangBuscomp" minOccurs="0" maxOccurs="1"
+/></xsd:sequence
+><xsd:attribute name="operation" type="xsd:string"
+/><xsd:attribute name="searchspec" type="xsd:string"
+/></xsd:complexType
+><xsd:complexType name="ListOfSwiAttributeVersionsBuscomp"
+><xsd:sequence
+><xsd:element name="SwiAttributeVersionsBuscomp" type="xsdLocal:SwiAttributeVersionsBuscomp" minOccurs="0" maxOccurs="unbounded"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="SwiAttributeVersionsBuscomp"
+><xsd:sequence
+><xsd:element name="Id" type="xsdLocal:string30" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ActiveFlg" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="Comments" type="xsdLocal:string250" minOccurs="0" maxOccurs="1"
+/><xsd:element name="LatestReleasedFlag" type="xsd:string" minOccurs="1" maxOccurs="1"
+/><xsd:element name="ParentLockedBy" type="xsdLocal:string50" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ParentLockedDt" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ParentLockedFlg" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ParentObjectId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ParentVODName" type="xsdLocal:string100" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ReleasedFlag" type="xsd:string" minOccurs="1" maxOccurs="1"
+/><xsd:element name="RequiredEndDate" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="RequiredStartDate" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="Type" type="xsdLocal:string30" minOccurs="0" maxOccurs="1"
+/><xsd:element name="VODId" type="xsd:string" minOccurs="1" maxOccurs="1"
+/><xsd:element name="Version" type="xsd:string" minOccurs="1" maxOccurs="1"
+/><xsd:element name="VersionId" type="xsd:string" minOccurs="1" maxOccurs="1"
+/><xsd:element name="DisplayVersion" type="xsdLocal:string12" minOccurs="0" maxOccurs="1"
+/><xsd:element name="LockedBy2" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="LockedDt" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="LockedFlg" type="xsd:string" minOccurs="0" maxOccurs="1"
+/></xsd:sequence
+><xsd:attribute name="operation" type="xsd:string"
+/><xsd:attribute name="searchspec" type="xsd:string"
+/></xsd:complexType
+><xsd:complexType name="ListOfSwiIssAttributeDefinitionLangBuscomp"
+><xsd:sequence
+><xsd:element name="SwiIssAttributeDefinitionLangBuscomp" type="xsdLocal:SwiIssAttributeDefinitionLangBuscomp" minOccurs="0" maxOccurs="unbounded"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="SwiIssAttributeDefinitionLangBuscomp"
+><xsd:sequence
+><xsd:element name="Id" type="xsdLocal:string30" minOccurs="0" maxOccurs="1"
+/><xsd:element name="Description" type="xsdLocal:string250" minOccurs="0" maxOccurs="1"
+/><xsd:element name="LangCD" type="xsdLocal:string5" minOccurs="1" maxOccurs="1"
+/><xsd:element name="LangName" type="xsdLocal:string50" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ParentId" type="xsd:string" minOccurs="1" maxOccurs="1"
+/><xsd:element name="VODName" type="xsdLocal:string100" minOccurs="1" maxOccurs="1"
+/></xsd:sequence
+><xsd:attribute name="operation" type="xsd:string"
+/><xsd:attribute name="searchspec" type="xsd:string"
+/></xsd:complexType
+><xsd:complexType name="ListOfSwiIssAttributeValuesLangBuscomp"
+><xsd:sequence
+><xsd:element name="SwiIssAttributeValuesLangBuscomp" type="xsdLocal:SwiIssAttributeValuesLangBuscomp" minOccurs="0" maxOccurs="unbounded"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="SwiIssAttributeValuesLangBuscomp"
+><xsd:sequence
+><xsd:element name="Id" type="xsdLocal:string30" minOccurs="0" maxOccurs="1"
+/><xsd:element name="DisplayName" type="xsdLocal:string100" minOccurs="0" maxOccurs="1"
+/><xsd:element name="Lang" type="xsdLocal:string5" minOccurs="1" maxOccurs="1"
+/><xsd:element name="LangName" type="xsdLocal:string50" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ParentId" type="xsd:string" minOccurs="1" maxOccurs="1"
+/></xsd:sequence
+><xsd:attribute name="operation" type="xsd:string"
+/><xsd:attribute name="searchspec" type="xsd:string"
+/></xsd:complexType
+><xsd:simpleType name ="string250"
+><xsd:restriction base="xsd:string"
+><xsd:maxLength value="250"
+/></xsd:restriction
+></xsd:simpleType
+><xsd:simpleType name ="string50"
+><xsd:restriction base="xsd:string"
+><xsd:maxLength value="50"
+/></xsd:restriction
+></xsd:simpleType
+><xsd:simpleType name ="string30"
+><xsd:restriction base="xsd:string"
+><xsd:maxLength value="30"
+/></xsd:restriction
+></xsd:simpleType
+><xsd:simpleType name ="string5"
+><xsd:restriction base="xsd:string"
+><xsd:maxLength value="5"
+/></xsd:restriction
+></xsd:simpleType
+><xsd:simpleType name ="string100"
+><xsd:restriction base="xsd:string"
+><xsd:maxLength value="100"
+/></xsd:restriction
+></xsd:simpleType
+><xsd:simpleType name ="string12"
+><xsd:restriction base="xsd:string"
+><xsd:maxLength value="12"
+/></xsd:restriction
+></xsd:simpleType
+></xsd:schema
+>

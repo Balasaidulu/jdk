@@ -1,0 +1,42 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/svc"
+     xmlns="http://xmlns.oracle.com/svc" xmlns:sdoJava="commonj.sdo/java" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="MethodRequestListParameter" sdoJava:package="oracle.svc" sdoJava:instanceClass="oracle.svc.MethodRequestListParameter">
+        <xsd:annotation>
+            <xsd:documentation>* This DataObject is used to wrap a method parameter of type List, so that it 
+ * can be used in MethodRequest.
+ * &lt;p&gt;
+ * &lt;b&gt;Example&lt;/b&gt;:
+ * &lt;code&gt;
+ * &lt;pre&gt;
+ * 
+ *      BatchRequest breq = (BatchRequest)doFactory.createDataObject(BatchRequest.QUALIFIED_NAME);
+ *
+ *      //approvePurchaseOrders takes a single parameter, which is a List of po numbers
+ *      List poNumbers = new ArrayList();
+ *      poNumbers.add(new Number(2));
+ *      poNumbers.add(new Number(3));
+ *  
+ *      //wrap the List with MethodRequestListParameter in order to be used in MethodRequest
+ *      MethodRequestListParameter methodParam = (MethodRequestListParameter)doFactory.createDataObject(MethodRequestListParameter.QUALIFIED_NAME);
+ *      methodParam.setValue(poNumbers);
+ *  
+ *      List methodParams = new ArrayList();
+ *      //since approvePurchaseOrders takes a single parameter, methodParams list has one single item
+ *      methodParams.add(methodParam);
+ *  
+ *      breq.addMethodRequest(&quot;test method request&quot;, &quot;approvePurchaseOrders&quot;,methodParams); 
+ * &lt;/pre&gt;
+ * &lt;/code&gt;
+ * @see MethodRequest</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="DataObject">
+                <xsd:sequence>
+                    <xsd:element name="Value" type="xsd:anyType" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="methodRequestListParameter" type="MethodRequestListParameter" nillable="true"/>
+</xsd:schema>

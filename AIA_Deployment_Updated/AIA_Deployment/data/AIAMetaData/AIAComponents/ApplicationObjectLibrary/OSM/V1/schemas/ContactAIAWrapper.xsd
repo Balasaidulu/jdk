@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+        targetNamespace="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:ContactQuery"
+        xmlns:ad="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:AddressQuery"
+        xmlns:ord="http://xmlns.oracle.com/communications/ordermanagement"
+        xmlns:am="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:ContactQuery">
+  <import namespace="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:AddressQuery"
+          schemaLocation="AddressAIAWrapper.xsd"/>
+  <import namespace="http://xmlns.oracle.com/communications/ordermanagement"
+          schemaLocation="EntityManagementWS.xsd"/>
+  <complexType name="ContactType">
+    <complexContent>
+      <extension base="ord:CommonFieldsType">
+        <sequence>
+          <element name="firstName" type="string"/>
+          <element name="lastName" type="string"/>
+          <element name="middleName" type="string" minOccurs="0"/>
+          <element name="salutation" type="string" minOccurs="0"/>
+          <element name="email" type="string"/>
+          <element name="cellPhone" type="integer"/>
+          <element name="homePhone" type="integer" minOccurs="0"/>
+          <element name="workPhone" type="integer"/>
+          <element name="jobTitle" type="string" minOccurs="0"/>
+          <element name="account" type="am:AccountType" minOccurs="0" maxOccurs="unbounded"/>
+          <element name="address" type="ad:AddressType" minOccurs="0" maxOccurs="1"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="AccountType">
+    <sequence>
+      <element name="id" type="long"/>
+    </sequence>
+  </complexType>
+</schema>

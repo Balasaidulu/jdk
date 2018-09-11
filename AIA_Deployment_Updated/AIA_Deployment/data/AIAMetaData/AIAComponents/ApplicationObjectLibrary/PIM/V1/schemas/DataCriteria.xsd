@@ -1,0 +1,168 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/svc"
+     xmlns="http://xmlns.oracle.com/svc" xmlns:sdoJava="commonj.sdo/java" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="SortAttribute.xsd"/>
+    <xsd:include schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="DataCriteria" sdoJava:package="oracle.svc" sdoJava:instanceClass="oracle.svc.DataCriteria">
+        <xsd:annotation>
+            <xsd:documentation>Represents a criteria that the returned data must satisfy
+when getting/requesting data from a {@link DataSourceService DataSourceService}.
+&lt;p&gt;DataCriteria can be used to set criteria for parent as well as children
+data objects. It can also be used to specify criteria for specific instances
+of these data objects.
+&lt;p&gt;&lt;b&gt;Example #1:&lt;/b&gt; 
+Retrieve the first five purchase orders with PONumber 
+between 1 and 10, and description like &apos;printed%&apos;, 
+along with the first five purchase order lines with description like &apos;power%&apos;
+for each purchase order
+&lt;pre&gt;
+DataObjectFactory fac = ...
+DataCriteria dc = (DataCriteria)fac.createDataObject(DataCriteria.QUALIFIED_NAME);
+dc.setFetchIndex(0);
+dc.setFetchSize(5);
+PurchaseOrderFilter filter = 
+   (PurchaseOrderFilter)fac.createDataObject(PurchaseOrderFilter.QUALIFIED_NAME);
+filter.setConjunctionOperator(ExpressionFilter.OPERATOR_AND);
+ArrayList values = new ArrayList();
+values.add(new Number(1));
+values.add(new Number(10));
+filter.addPoNumber(ValueExpression.BETWEEN, values);
+filter.addDescription(ValueExpression.LIKE_IGNORE_CASE, &quot;printed%&quot;);
+dc.setFilter(filter);
+//Lines Data Criteria
+DataCriteria lineRC = (DataCriteria)fac.createDataObject(DataCriteria.QUALIFIED_NAME);
+dc.setFetchIndex(0);
+dc.setFetchSize(5);
+LineFilter lineFilter = 
+   (LineFilter)fac.createDataObject(LineFilter.QUALIFIED_NAME);
+lineFilter.setItemDescription(ValueExpression.LIKE, &quot;%power%&quot;);
+lineRC.setFilter(lineFilter);
+dc.ChildDataCriteria(&quot;Lines&quot;, lineRC);
+List list = svc.getDataList(&quot;PurchaseOrders&quot;, dc, null);
+&lt;/pre&gt;
+ 
+&lt;p&gt;&lt;b&gt;Example #2:&lt;/b&gt; Fetch next 5 purchase orders
+&lt;pre&gt;
+DataObjectFactory fac = ...
+DataCriteria dc = (DataCriteria)fac.createDataObject(DataCriteria.QUALIFIED_NAME);
+dc.setFetchIndex(5);
+dc.setFetchSize(5);
+QueryControll qc = (QueryControll)fac.createDataObject(QueryControll.QUALIFIED_NAME);
+qc.setFetchOnly(Boolean.TRUE);
+java.util.List list = svc.getDataList(&quot;PurchaseOrders&quot;, dc, qc);
+&lt;/pre&gt;
+&lt;p&gt;&lt;b&gt;Example #3:&lt;/b&gt; Query purchase orders and return only the
+&quot;Description&quot; attribute for PoNumber 5, and &quot;Status&quot; for PoNumber 10.
+&lt;pre&gt;
+DataObjectFactory fac = ...
+DataCriteria dc = (DataCriteria)fac.createDataObject(DataCriteria.QUALIFIED_NAME);
+dc.setFetchIndex(0);
+dc.setFetchSize(100);
+ 
+InstanceCriteria ins1 = dc.addInstanceCriteria();
+PurchaseOrder po1 = (PurchaseOrder)fac.createDataObject(PurchaseOrder.QUALIFIED_NAME);
+po1.setPoNumber(5);
+ins1.setDataObjectInstanceAttributes(po1);
+List partialList1 = new ArrayList(1);
+partialList1.add(&quot;Description&quot;);
+ins1.setPartialAttribute(partialList1);
+InstanceCriteria ins2 = dc.addInstanceCriteria();
+PurchaseOrder po2 = (PurchaseOrder)fac.createDataObject(PurchaseOrder.QUALIFIED_NAME);
+po1.setPoNumber(10);
+ins2.setDataObjectInstanceAttributes(po2);
+List partialList1 = new ArrayList(2);
+partialList2.add(&quot;Status&quot;);
+ins2.setPartialAttribute(partialList2);
+List list = svc.getDataList(&quot;PurchaseOrders&quot;, dc, null);
+&lt;/pre&gt;</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="DataObject">
+                <xsd:sequence>
+                    <xsd:element name="FetchIndex" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="FetchSize" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="LastFetchFull" type="xsd:boolean" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Filter" type="DataObject" minOccurs="0" nillable="true"/>
+                    <xsd:element name="SortOrder" type="SortAttribute" minOccurs="0" maxOccurs="unbounded"
+                         nillable="true"/>
+                    <xsd:element name="PartialAttributeMode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PartialAttribute" type="xsd:string" minOccurs="0" maxOccurs="unbounded"
+                         nillable="true"/>
+                    <xsd:element name="ChildDataCriteria" type="ChildDataCriteria" minOccurs="0" maxOccurs="unbounded"
+                         nillable="true"/>
+                    <xsd:element name="InstanceCriteria" type="InstanceCriteria" minOccurs="0" maxOccurs="unbounded"
+                         nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ChildDataCriteria" sdoJava:package="oracle.svc" sdoJava:instanceClass="oracle.svc.ChildDataCriteria">
+        <xsd:annotation>
+            <xsd:documentation>Represents DataCriteria than can be applied to children nodes.
+A {@link DataCriteria DataCriteria} object can be set on child identified by its
+child accessor attribute name.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="DataObject">
+                <xsd:sequence>
+                    <xsd:element name="ChildAttributeName" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DataCriteria" type="DataCriteria" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="InstanceCriteria" sdoJava:package="oracle.svc" sdoJava:instanceClass="oracle.svc.InstanceCriteria">
+        <xsd:annotation>
+            <xsd:documentation>Represents a criteria applied on a specific {@link DataObject DataObject} instance.
+&lt;p&gt;
+The &lt;code&gt;InstanceCriteria&lt;/code&gt; allows partial attributes 
+and child data criteria to be applied to specific {@link DataObject DataObject}
+instances returned by a {@link oracle.svc.DataSourceService DataSourceService}.  
+&lt;p&gt;
+This is an advanced feature useful when fetching documents for use by UI 
+&apos;tree&apos; structures, where some child nodes of the document are expanded 
+and other are not. 
+&lt;p&gt;
+One such object should be created for each {@link DataObject DataObject} instance that 
+requires a special partial attribute list or a special child data criteria.
+&lt;p&gt;
+Values in this object override values specified in the {@link DataCriteria DataCriteria}
+object.
+&lt;p&gt;&lt;b&gt;Example:&lt;/b&gt; Query purchase orders and return only the
+&quot;Description&quot; attribute for PoNumber 5, and &quot;Status&quot; for PoNumber 10.
+&lt;pre&gt;
+DataObjectFactory fac = ...
+DataCriteria dc = (DataCriteria)fac.createDataObject(DataCriteria.QUALIFIED_NAME);
+dc.setFetchIndex(0);
+dc.setFetchSize(100);
+InstanceCriteria ins1 = dc.addInstanceCriteria();
+PurchaseOrder po1 = (PurchaseOrder)fac.createDataObject(PurchaserOder.QUALIFIED_NAME);
+po1.setPoNumber(5);
+ins1.setDataObjectInstanceAttributes(po1);
+List partialList1 = new ArrayList(1);
+partialList1.add(&quot;Description&quot;);
+ins1.setPartialAttribute(partialList1);
+InstanceCriteria ins2 = dc.addInstanceCriteria();
+PurchaseOrder po2 = (PurchaseOrder)fac.createDataObject(PurchaserOder.QUALIFIED_NAME);
+po1.setPoNumber(10);
+ins2.setDataObjectInstanceAttributes(po2);
+List partialList1 = new ArrayList(2);
+partialList2.add(&quot;Status&quot;);
+ins2.setPartialAttribute(partialList2);
+List list = svc.getDataList(&quot;PurchaseOrders&quot;, dc);
+&lt;/pre&gt;</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="DataObject">
+                <xsd:sequence>
+                    <xsd:element name="DataObjectInstanceAttributes" type="DataObject" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PartialAttributeMode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PartialAttribute" type="xsd:string" minOccurs="0" maxOccurs="unbounded"
+                         nillable="true"/>
+                    <xsd:element name="ChildDataCriteria" type="ChildDataCriteria" minOccurs="0" maxOccurs="unbounded"
+                         nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="dataCriteria" type="DataCriteria" nillable="true"/>
+</xsd:schema>

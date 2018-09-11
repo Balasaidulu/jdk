@@ -1,0 +1,26 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/item/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/item/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="PublishUserDefinedAttributeGroups.xsd"/>
+    <xsd:include schemaLocation="PublishOpAttributeGroups.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="PublishEntities" sdoJava:package="oracle.apps.ego.item.service" sdoJava:instanceClass="oracle.apps.ego.item.service.PublishEntities">
+        <xsd:annotation>
+            <xsd:documentation>Entities to publish in item information.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="OperationalAttributeGroups" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="UserDefinedAttributeGroups" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ItemRevision" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PublishOperationalAttributeGroups" type="PublishOpAttributeGroups"
+                         minOccurs="0" nillable="true"/>
+                    <xsd:element name="ListOfPublishUserDefinedAttributeGroups" type="PublishUserDefinedAttributeGroups"
+                         minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="publishEntities" type="PublishEntities" nillable="true"/>
+</xsd:schema>

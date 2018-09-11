@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siebel.com/xml/SWIAddressIO"
+	xmlns:xsdLocal="http://www.siebel.com/xml/SWIAddressIO" attributeFormDefault="unqualified"
+	elementFormDefault="qualified">
+	<xsd:annotation>
+		<xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="ListOfSwiaddressio" type="xsdLocal:ListOfSwiaddressio" />
+	<xsd:complexType name="ListOfSwiaddressioTopElmt">
+		<xsd:sequence>
+			<xsd:element name="ListOfSwiaddressio" type="xsdLocal:ListOfSwiaddressio" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfSwiaddressio">
+		<xsd:sequence>
+			<xsd:element name="CutAddress" type="xsdLocal:CutAddress" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+  <xsd:attribute name="Language" type="xsd:string"/>
+  <xsd:attribute name="Locale" type="xsd:string"/>
+  <xsd:attribute name="MessageId" type="xsd:string"/>
+  <xsd:attribute name="EnterpriseServerName" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="CutAddress">
+		<xsd:sequence>
+			<xsd:element name="AddressName" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="BillAddressFlag" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="City" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="Country" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="County" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="DisableDataCleansing" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="EmailAddress" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="IntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="MainAddressFlag" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="PostalCode" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Province" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="RowId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ShipAddressFlag" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="State" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="StreetAddress" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="StreetAddress2" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="AIAIntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ListOfAccount" type="xsdLocal:ListOfAccount" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ListOfComInvoiceProfile" type="xsdLocal:ListOfComInvoiceProfile" minOccurs="0"
+				maxOccurs="1" />
+			<xsd:element name="ListOfContact" type="xsdLocal:ListOfContact" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ListOfFmLocation" type="xsdLocal:ListOfFmLocation" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfAccount">
+		<xsd:sequence>
+			<xsd:element name="Account" type="xsdLocal:Account" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Account">
+		<xsd:sequence>
+			<xsd:element name="RowId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfComInvoiceProfile">
+		<xsd:sequence>
+			<xsd:element name="ComInvoiceProfile" type="xsdLocal:ComInvoiceProfile" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ComInvoiceProfile">
+		<xsd:sequence>
+			<xsd:element name="BillingProfileId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="AccountId" type="xsd:string" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfContact">
+		<xsd:sequence>
+			<xsd:element name="Contact" type="xsdLocal:Contact" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Contact">
+		<xsd:sequence>
+			<xsd:element name="RowId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfFmLocation">
+		<xsd:sequence>
+			<xsd:element name="FmLocation" type="xsdLocal:FmLocation" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="FmLocation">
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:string" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

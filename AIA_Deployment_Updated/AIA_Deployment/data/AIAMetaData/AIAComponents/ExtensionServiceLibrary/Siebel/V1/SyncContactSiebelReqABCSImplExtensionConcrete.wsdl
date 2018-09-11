@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:abcsimplext="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncContactSiebelReqABCSImplExtension/V1" xmlns:custebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:sblqrycontact="http://siebel.com/asi/V0" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncContactSiebelReqABCSImplExtension/V1" name="SyncContactSiebelReqABCSImplExtension">
+ <documentation>
+  <svcdoc:Service>
+   <svcdoc:Description>
+    This service contains operations that would be used by the participating
+    application to interact with the external systems</svcdoc:Description>
+    <svcdoc:ServiceType>SyncContactSiebelReqABCSImplExtension</svcdoc:ServiceType>
+    <svcdoc:DisplayName>Siebel Customer Account Requestor ABCS Implementation Extension</svcdoc:DisplayName>
+    <svcdoc:ABOName />
+    <svcdoc:EBOName>CustomerPartyEBO</svcdoc:EBOName>
+    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+    <svcdoc:Version>1.0</svcdoc:Version>
+    <svcdoc:ImplementationTechnology>Java Servlet</svcdoc:ImplementationTechnology>    
+  </svcdoc:Service>
+ </documentation>
+ <types>
+  <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncContactSiebelReqABCSImplExtension/V1" elementFormDefault="qualified">
+   <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/CustomerParty/V2/CustomerPartyEBM.xsd" />
+   <xsd:import namespace="http://siebel.com/asi/V0" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/wsdls/SWIContactIO.wsdl" />
+   <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd" />
+  </xsd:schema> 
+ </types>
+ <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	MESSAGE TYPE DEFINITION - Definition of the message types used as 
+	part of the port type defintions
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+ <message name="PreXformListOfSwicontactioMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message is used as payload to Pre-XformListOfSwicontactioABM Customer Account</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="ListOfSwicontactioABM" element="sblqrycontact:SWIContactServicesQueryByExample_Output" />
+ </message>
+ <message name="PreInvokeCustPartyEBSCustomerPartyEBOMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message is used as a payload to PreProcess Customer Party operation</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="SyncCustomerPartyEBM" element="custebo:SyncCustomerPartyListEBM" />
+ </message>
+ <message name="FaultMessage">
+	<documentation>
+		<svcdoc:Message>
+			<svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+		</svcdoc:Message>
+	</documentation>
+	<part name="AIAFault" element="corecom:Fault" />
+</message>
+ <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PORT TYPE DEFINITION - A port type groups a set of operations into
+	a logical service unit.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+ <!-- portType implemented by the SyncContactSiebelReqABCSImplExtension BPEL process -->
+ <portType name="SyncContactSiebelReqABCSImplExtension">
+  <documentation>
+   <svcdoc:Interface>
+    <svcdoc:Description>This interface contains operations that can act upon the Contact object</svcdoc:Description>
+    <svcdoc:DisplayName>Contact Interface</svcdoc:DisplayName>
+    <svcdoc:LifecycleStatus>active</svcdoc:LifecycleStatus>
+   </svcdoc:Interface>
+  </documentation>
+  <operation name="PreXformListOfSwicontactioABMtoEBMABM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to Pre Process ListOfSwicontactio Object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>Pre process ListOfSwicontactio</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="abcsimplext:PreXformListOfSwicontactioMsg" />
+   <output message="abcsimplext:PreXformListOfSwicontactioMsg" />
+   <fault name="fault" message="abcsimplext:FaultMessage" />
+  </operation>
+  <operation name="PreInvokeCustPartyEBSEBM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to Pre Process Customer party Object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>Pre process Customer party</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="abcsimplext:PreInvokeCustPartyEBSCustomerPartyEBOMsg" />
+   <output message="abcsimplext:PreInvokeCustPartyEBSCustomerPartyEBOMsg" />
+  </operation>
+ </portType>
+ <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	TYPE DEFINITION - List of services participating in this BPEL process
+	The default output of the BPEL designer uses strings as input and 
+	output to the BPEL Process. But you can define or import any XML 
+	Schema type and use them as part of the message types.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+ <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PARTNER LINK TYPE DEFINITION
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+ <plnk:partnerLinkType name="SyncContactSiebelReqABCSImplExtension">
+  <plnk:role name="SyncContactSiebelReqABCSImplExtensionProvider">
+   <plnk:portType name="abcsimplext:SyncContactSiebelReqABCSImplExtension" />
+  </plnk:role>
+ </plnk:partnerLinkType>
+ 
+ <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       BINDINGS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+ <binding name="SyncContactSiebelReqABCSImplExtensionBinding" type="abcsimplext:SyncContactSiebelReqABCSImplExtension">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" /> 
+    <operation name="PreXformListOfSwicontactioABMtoEBMABM">
+ 	<soap:operation style="document" soapAction="mirror" /> 
+ 	<input>
+ 		<soap:body use="literal" /> 
+ 	</input>
+ 	<output>
+ 		<soap:body use="literal" /> 
+ 	</output>
+ 	<fault name="fault">
+ 		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+ 	</fault>
+    </operation>
+    <operation name="PreInvokeCustPartyEBSEBM">
+ 	<soap:operation style="document" soapAction="mirror" /> 
+ 	<input>
+ 		<soap:body use="literal" /> 
+ 	</input>
+ 	<output>
+ 		<soap:body use="literal" /> 
+ 	</output>
+ 	<fault name="fault">
+ 		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+ 	</fault>
+    </operation>
+ </binding>
+ <service name="mirrorAnyService">
+ 	<port name="SyncContactSiebelReqABCSImplExtensionPort" binding="abcsimplext:SyncContactSiebelReqABCSImplExtensionBinding">
+ 		<soap:address location="http://adc60120fems.us.oracle.com:7818/MirrorServlet/mirror" /> 
+ 	</port>
+         </service> 
+
+</definitions>

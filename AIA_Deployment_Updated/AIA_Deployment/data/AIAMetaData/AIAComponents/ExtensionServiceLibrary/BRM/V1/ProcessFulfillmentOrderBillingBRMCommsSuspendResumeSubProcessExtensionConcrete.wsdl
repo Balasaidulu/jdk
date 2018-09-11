@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcessExtension/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:custsblabcsext="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcessExtension/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:sordsubsusabcs="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcess/V1" xmlns:brm="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V2" xmlns:sordsubebo="http://xmlns.oracle.com/ProcessFulfillmentOrderBillingBRMCommsSubprocess" name="ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcessExtension" targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcessExtension/V1">
+<documentation>
+	<svcdoc:Service>
+		<svcdoc:Description>This service contains operations to enable ABCS Extensibility</svcdoc:Description> 
+		<svcdoc:ServiceType>ABCSExtension</svcdoc:ServiceType> 
+		<svcdoc:DisplayName>UpdateCustomerPartySiebelTelcoReqABCSImplV2Extension ABCS Extension Abstract Interface</svcdoc:DisplayName> 
+		<svcdoc:Version>1.0</svcdoc:Version> 
+		<svcdoc:EBOName>CustomerPartyEBO</svcdoc:EBOName>
+		
+		<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+		<svcdoc:ImplementationTechnology>Java</svcdoc:ImplementationTechnology>
+		<svcdoc:ProductFamily>Siebel</svcdoc:ProductFamily>
+		<svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+		<svcdoc:ProductCode>?</svcdoc:ProductCode>
+	</svcdoc:Service>
+</documentation>
+
+<!-- Type Definitions --> 
+<types>
+    <!-- Import BRM Schemas/BRM ABM -->
+    <xsd:schema>
+    	<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/FulfillmentOrder/V1" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/FulfillmentOrder/V1/FulfillmentOrderEBM.xsd" />
+    	<xsd:import namespace="http://xmlns.oracle.com/ProcessFulfillmentOrderBillingBRMCommsSubprocess" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/ProcessFulfillmentOrderBillingBRMCommsSubprocess.xsd"/>
+        <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS.xsd" />
+        <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS.xsd" />
+        <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_SET_STATUS.xsd" />
+        <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_SUBSCRIPTION_PURCHASE_DEAL.xsd" />
+    </xsd:schema>
+</types>
+
+<!-- Message Definitions --> 
+
+<message name="PreInvokePCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>Payload for invoking PCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="PCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS_inputFlist" element="brm:PCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS_inputFlist" />
+</message>
+
+<message name="PostInvokePCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>Payload for invoking PCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="PCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS_outputFlist" element="brm:PCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS_outputFlist" />
+</message>
+
+<message name="PreInvokePCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>Payload for invoking PCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="PCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS_inputFlist" element="brm:PCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS_inputFlist" />
+</message>
+
+<message name="PostInvokePCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>Payload for invoking PCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="PCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS_outputFlist" element="brm:PCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS_outputFlist" />
+</message>
+<message name="PreInvokePCM_OP_CUST_SET_STATUS">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>Payload for invoking PCM_OP_CUST_SET_STATUS</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="PCM_OP_CUST_SET_STATUS_inputFlist" element="brm:PCM_OP_CUST_SET_STATUS_inputFlist" />
+</message>
+<message name="PostInvokePCM_OP_CUST_SET_STATUS">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>Payload for invoking PCM_OP_CUST_SET_STATUS</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="PCM_OP_CUST_SET_STATUS_outputFlist" element="brm:PCM_OP_CUST_SET_STATUS_outputFlist" />
+</message>
+<message name="PreInvokePCM_OP_SUBSCRIPTION_PURCHASE_DEAL">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>Payload for invoking PCM_OP_SUBSCRIPTION_PURCHASE_DEAL</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="PCM_OP_SUBSCRIPTION_PURCHASE_DEAL_inputFlist" element="brm:PCM_OP_SUBSCRIPTION_PURCHASE_DEAL_inputFlist" />
+</message>
+<message name="PostInvokePCM_OP_SUBSCRIPTION_PURCHASE_DEAL">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>Payload for invoking PCM_OP_CUST_SET_STATUS</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="PCM_OP_SUBSCRIPTION_PURCHASE_DEAL_outputFlist" element="brm:PCM_OP_SUBSCRIPTION_PURCHASE_DEAL_outputFlist" />
+</message>
+<message name="SubProcPreInvokeProcessFulfillmentOrderBillingEBMMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvoke SubProcess operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="payload" element="sordsubebo:ProcessFulfillmentOrderBillingBRMCommsSubprocessMessage" />
+   </message>
+   
+   <message name="SubProcPostInvokeProcessFulfillmentOrderBillingEBMMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostInvoke SubProcess operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="payload" element="sordsubebo:ProcessFulfillmentOrderBillingBRMCommsSubprocessMessage" />
+   </message>
+<message name="FaultMessage">
+	<documentation>
+		<svcdoc:Message>
+			<svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+		</svcdoc:Message>
+	</documentation>
+	<part name="AIAFault" element="corecom:Fault" />
+</message>
+
+<!-- PortType Definitions --> 
+<portType name="ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcessExtension">
+	<documentation>
+		<svcdoc:Interface>
+		  <svcdoc:Description>This interface contains operations that can act upon the ABO / EBO object</svcdoc:Description> 
+		  <svcdoc:DisplayName>ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcessExtension</svcdoc:DisplayName> 
+		  <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus> 
+	    </svcdoc:Interface>
+	</documentation>
+
+	<operation name="PreInvokePCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUSABMtoPCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUSABM">
+	    <input message="custsblabcsext:PreInvokePCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS" /> 
+	    <output message="custsblabcsext:PreInvokePCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS" />
+	    <fault name="fault" message="custsblabcsext:FaultMessage" />
+	</operation>
+	
+		<operation name="PostInvokePCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUSABMtoPCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUSABM">
+	    <input message="custsblabcsext:PostInvokePCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS" /> 
+	    <output message="custsblabcsext:PostInvokePCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS" />
+	    <fault name="fault" message="custsblabcsext:FaultMessage" />
+	</operation>
+	
+	<operation name="PreInvokePCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUSABMtoPCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUSABM">
+	    <input message="custsblabcsext:PreInvokePCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS" /> 
+	    <output message="custsblabcsext:PreInvokePCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS" />
+	    <fault name="fault" message="custsblabcsext:FaultMessage" />
+	</operation>
+	
+		<operation name="PostInvokePCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUSABMtoPCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUSABM">
+	    <input message="custsblabcsext:PostInvokePCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS" /> 
+	    <output message="custsblabcsext:PostInvokePCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS" />
+	    <fault name="fault" message="custsblabcsext:FaultMessage" />
+	</operation>
+	
+	<operation name="PreInvokePCM_OP_CUST_SET_STATUSABMtoPCM_OP_CUST_SET_STATUSABM">
+	    <input message="custsblabcsext:PreInvokePCM_OP_CUST_SET_STATUS" /> 
+	    <output message="custsblabcsext:PreInvokePCM_OP_CUST_SET_STATUS" />
+	    <fault name="fault" message="custsblabcsext:FaultMessage" />
+	</operation>
+	
+		<operation name="PostInvokePCM_OP_CUST_SET_STATUSABMtoPCM_OP_CUST_SET_STATUSABM">
+	    <input message="custsblabcsext:PostInvokePCM_OP_CUST_SET_STATUS" /> 
+	    <output message="custsblabcsext:PostInvokePCM_OP_CUST_SET_STATUS" />
+	    <fault name="fault" message="custsblabcsext:FaultMessage" />
+	</operation>
+	<operation name="PreInvokePCM_OP_SUBSCRIPTION_PURCHASE_DEALABMtoPCM_OP_SUBSCRIPTION_PURCHASE_DEALABM">
+	    <input message="custsblabcsext:PreInvokePCM_OP_SUBSCRIPTION_PURCHASE_DEAL" /> 
+	    <output message="custsblabcsext:PreInvokePCM_OP_SUBSCRIPTION_PURCHASE_DEAL" />
+	    <fault name="fault" message="custsblabcsext:FaultMessage" />
+	</operation>
+		<operation name="PostInvokePCM_OP_SUBSCRIPTION_PURCHASE_DEALABMtoPCM_OP_SUBSCRIPTION_PURCHASE_DEALABM">
+	    <input message="custsblabcsext:PostInvokePCM_OP_SUBSCRIPTION_PURCHASE_DEAL" /> 
+	    <output message="custsblabcsext:PostInvokePCM_OP_SUBSCRIPTION_PURCHASE_DEAL" />
+	    <fault name="fault" message="custsblabcsext:FaultMessage" />
+	</operation>
+	<operation name="SubProcPreInvokeProcessFulfillmentOrderBillingEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to enrich
+                                   ProcessFulfillmentOrderBillingEBM before it to the
+                                   Sub Processes </svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeProcessFulfillmentOrderBillingEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="custsblabcsext:SubProcPreInvokeProcessFulfillmentOrderBillingEBMMessage" />
+         <output message="custsblabcsext:SubProcPreInvokeProcessFulfillmentOrderBillingEBMMessage" />
+         <fault name="fault" message="custsblabcsext:FaultMessage" />
+      </operation>
+	  
+	  <operation name="SubProcPostInvokeProcessFulfillmentOrderBillingEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to enrich
+                                   ProcessFulfillmentOrderBillingEBM before it to the
+                                   Sub Processes </svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeProcessFulfillmentOrderBillingEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="custsblabcsext:SubProcPreInvokeProcessFulfillmentOrderBillingEBMMessage" />
+         <output message="custsblabcsext:SubProcPreInvokeProcessFulfillmentOrderBillingEBMMessage" />
+         <fault name="fault" message="custsblabcsext:FaultMessage" />
+      </operation>
+	
+	
+	
+	
+  </portType>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PARTNER LINK TYPE DEFINITION
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  --> 
+<plnk:partnerLinkType name="ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcessExtension">
+	<plnk:role name="ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcessExtensionProvider">
+	  <plnk:portType name="custsblabcsext:ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcessExtension" /> 
+	</plnk:role>
+</plnk:partnerLinkType>
+
+<binding name="ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcessExtensionBinding" type="custsblabcsext:ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcessExtension">
+   <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" /> 
+   <operation name="PreInvokePCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUSABMtoPCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUSABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   
+      <operation name="PostInvokePCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUSABMtoPCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUSABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   
+   <operation name="PreInvokePCM_OP_SUBSCRIPTION_PURCHASE_DEALABMtoPCM_OP_SUBSCRIPTION_PURCHASE_DEALABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   
+      <operation name="PostInvokePCM_OP_SUBSCRIPTION_PURCHASE_DEALABMtoPCM_OP_SUBSCRIPTION_PURCHASE_DEALABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   
+   <operation name="PreInvokePCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUSABMtoPCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUSABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   
+      <operation name="PostInvokePCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUSABMtoPCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUSABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   <operation name="PreInvokePCM_OP_CUST_SET_STATUSABMtoPCM_OP_CUST_SET_STATUSABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+      <operation name="PostInvokePCM_OP_CUST_SET_STATUSABMtoPCM_OP_CUST_SET_STATUSABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   
+   <operation name="SubProcPreInvokeProcessFulfillmentOrderBillingEBM">
+         <soap:operation style="document" soapAction="PreInvokeProcessFulfillmentOrderBillingEBM" />
+         <input>
+            <soap:body use="literal" />
+         </input>
+         <output>
+            <soap:body use="literal" />
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal" encodingStyle="" />
+         </fault>
+    </operation>
+	<operation name="SubProcPostInvokeProcessFulfillmentOrderBillingEBM">
+         <soap:operation style="document" soapAction="PostInvokeProcessFulfillmentOrderBillingEBM" />
+         <input>
+            <soap:body use="literal" />
+         </input>
+         <output>
+            <soap:body use="literal" />
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal" encodingStyle="" />
+         </fault>
+    </operation>		
+ </binding>
+
+<service name="mirrorAnyService">
+	<port name="ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcessExtensionPort" binding="custsblabcsext:ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcessExtensionBinding">
+		<soap:address location="http://${fp.server.soaserverhostname}:${fp.server.soaserverport}/MirrorServlet/mirror" /> 
+	</port>
+</service>
+
+</definitions>

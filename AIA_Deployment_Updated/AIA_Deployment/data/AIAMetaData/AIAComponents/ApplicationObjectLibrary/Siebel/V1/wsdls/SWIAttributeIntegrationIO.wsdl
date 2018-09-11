@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsdLocal1="http://www.siebel.com/xml/SWIAttributeIntegerationIO"
+             targetNamespace="http://siebel.com/asi/"
+             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:tns="http://siebel.com/asi/">
+  <types>
+    <xsd:schema elementFormDefault="qualified"
+                attributeFormDefault="unqualified"
+                targetNamespace="http://siebel.com/asi/"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://www.siebel.com/xml/SWIAttributeIntegerationIO" schemaLocation="../schemas/SWIAttributeIntegrationIO.xsd"></xsd:import>
+      <xsd:element name="SWIAttributeImportUpsert_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SyncChild" type="xsd:string"></xsd:element>
+            <xsd:element ref="xsdLocal1:ListOfSwiAttributeIntegerationIO"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SWIAttributeImportUpsert_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal1:ListOfSwiAttributeIntegerationIO"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="SWIAttributeImportUpsert_Input">
+    <part name="SWIAttributeImportUpsert_Input"
+          element="tns:SWIAttributeImportUpsert_Input"></part>
+  </message>
+  <message name="SWIAttributeImportUpsert_Output">
+    <part name="SWIAttributeImportUpsert_Output"
+          element="tns:SWIAttributeImportUpsert_Output"></part>
+  </message>
+  <portType name="SWI_spcProduct_spcAttribute_spcImport">
+    <operation name="SWIAttributeImportUpsert">
+      <input message="tns:SWIAttributeImportUpsert_Input"></input>
+      <output message="tns:SWIAttributeImportUpsert_Output"></output>
+    </operation>
+  </portType>
+  <binding name="SWI_spcProduct_spcAttribute_spcImport"
+           type="tns:SWI_spcProduct_spcAttribute_spcImport">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"
+                  style="document"></soap:binding>
+    <operation name="SWIAttributeImportUpsert">
+      <soap:operation soapAction="document/http://siebel.com/asi/:SWIAttributeImportUpsert"></soap:operation>
+      <input>
+        <soap:body use="literal"></soap:body>
+      </input>
+      <output>
+        <soap:body use="literal"></soap:body>
+      </output>
+    </operation>
+  </binding>
+  <service name="SWIProductAttributeImport">
+    <port binding="tns:SWI_spcProduct_spcAttribute_spcImport"
+          name="SWI_spcProduct_spcAttribute_spcImport">
+      <soap:address location="http://set.at.runtime"></soap:address>
+    </port>
+  </service>
+</definitions>

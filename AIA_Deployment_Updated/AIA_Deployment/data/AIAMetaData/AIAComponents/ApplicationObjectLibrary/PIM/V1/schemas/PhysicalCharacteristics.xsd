@@ -1,0 +1,37 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/item/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/item/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="PhysicalCharacteristics" sdoJava:package="oracle.apps.ego.item.service" sdoJava:instanceClass="oracle.apps.ego.item.service.PhysicalCharacteristics">
+        <xsd:annotation>
+            <xsd:documentation>Physical Characteristics</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="UnitWeight" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="WeightUomCode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="UnitVolume" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="VolumeUomCode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DimensionUomCode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="UnitLength" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="UnitWidth" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="UnitHeight" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ContainerItemFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="VehicleItemFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ContainerTypeCode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="InternalVolume" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="MaximumLoadWeight" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="MinimumFillPercent" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="CollateralFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="EventFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="EquipmentType" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ElectronicFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DownloadableFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="IndivisibleFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="physicalCharacteristics" type="PhysicalCharacteristics" nillable="true"/>
+</xsd:schema>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siebel.com/xml/SWIBillingGroupDetailIORes" xmlns:xsdLocal="http://www.siebel.com/xml/SWIBillingGroupDetailIORes" attributeFormDefault="unqualified" elementFormDefault="qualified">
+	<xsd:annotation>
+		<xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="ListOfSwibillinggroupdetailiores" type="xsdLocal:ListOfSwibillinggroupdetailiores" />
+	<xsd:complexType name="ListOfSwibillinggroupdetailioresTopElmt">
+		<xsd:sequence>
+			<xsd:element name="ListOfSwibillinggroupdetailiores" type="xsdLocal:ListOfSwibillinggroupdetailiores" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfSwibillinggroupdetailiores">
+		<xsd:sequence>
+			<xsd:element name="CmuBalanceVbc" type="xsdLocal:CmuBalanceVbc" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CmuBalanceVbc">
+		<xsd:sequence>
+			<xsd:element name="Account" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="AccountId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Balance" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="BalanceGroupId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="BalanceId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="BillingProfile" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="BillingProfileId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CeilingCreditLimit" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="FloorCreditLimit" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ThresholdCreditLimit" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="UnitofMeasure" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ServiceAccountId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ListOfCmuBalanceDetailsVbc" type="xsdLocal:ListOfCmuBalanceDetailsVbc" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfCmuBalanceDetailsVbc">
+		<xsd:sequence>
+			<xsd:element name="CmuBalanceDetailsVbc" type="xsdLocal:CmuBalanceDetailsVbc" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CmuBalanceDetailsVbc">
+		<xsd:sequence>
+			<xsd:element name="Account" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="AccountId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Available" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="BalanceId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="BillingProfile" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="BillingProfileId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CurrencyCode" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="NoEnd" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ValidFrom" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ValidTo" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ServiceAccountId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<definitions name="SyncCustomerPartyListSiebelProvABCSImplExtension"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/SyncCustomerPartyListSiebelProvABCSImplExtension"
+             xmlns:tns="http://xmlns.oracle.com/ABCSImpl/SyncCustomerPartyListSiebelProvABCSImplExtension"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:abcssynccustsblprov="http://xmlns.oracle.com/ABCSImpl/SyncCustomerPartyListSiebelProvABCSImplExtension"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:coreebocust="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+             xmlns:swicust="http://siebel.com/asi/V0"
+             xmlns:ns4="http://siebel.com/asi/">
+  <documentation>
+    <svcdoc:Service>
+      <svcdoc:Description/>
+      <svcdoc:ServiceType>SyncCustomerPartyListSiebelProvABCSImplExtension</svcdoc:ServiceType>
+      <svcdoc:DisplayName>SyncCustomerPartyListSiebelProvABCSImplExtension</svcdoc:DisplayName>
+      <svcdoc:Version>1</svcdoc:Version>
+      <svcdoc:EBOName>CustomerPartyEBO</svcdoc:EBOName>
+      <svcdoc:ABOName/>
+      <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+      <svcdoc:ImplementationTechnology>Java servlet</svcdoc:ImplementationTechnology>
+    </svcdoc:Service>
+  </documentation>
+  <!-- Type Definitions -->
+  <import location="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/wsdls/SWICustomerPartyServices.wsdl"
+          namespace="http://siebel.com/asi/V0"/>
+  <import location="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/wsdls/SWIMergeService.wsdl"
+          namespace="http://siebel.com/asi/"/>
+  <import location="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/wsdls/SWIContactIO.wsdl"
+          namespace="http://siebel.com/asi/V0"/>
+  <types>
+    <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/SyncCustomerPartyListSiebelProvABCSImplExtension"
+                elementFormDefault="qualified">
+      <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+                  schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/CustomerParty/V2/CustomerPartyEBM.xsd"/>
+      <xsd:import namespace="http://www.siebel.com/xml/SWICustomerPartyIO"
+                  schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWICustomerPartyIO.xsd"/>
+      <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+                  schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+      <xsd:import namespace="http://www.siebel.com/xml/SWIContactIO"
+                  schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWIContactIO.xsd"/>
+    </xsd:schema>
+  </types>
+  <!-- Message Definitions  
+  -->
+  <message name="PreXformEBMtoABMEBMMsg">
+    <part name="EBMPayload" element="coreebocust:SyncCustomerPartyListEBM"/>
+  </message>
+  <message name="PreInvokeSWICustSyncServiceABMMsg">
+    <part name="ABMPayload"
+          element="swicust:SWICustomerPartySynchronize_Input"/>
+  </message>
+  <message name="PreInvokeSWICustUpsertServiceABMMsg">
+    <part name="ABMPayload"
+          element="swicust:SWICustomerPartyInsertOrUpdate_Input"/>
+  </message>
+  <message name="PreInvokeSWICustMergeServiceABMMsg">
+    <part name="ABMPayload" element="ns4:SWIMergeServicesMerge_Input"/>
+  </message>
+  <message name="PostInvokeSWICustSyncServiceABMMsg">
+    <part name="ABMPayload"
+          element="swicust:SWICustomerPartySynchronize_Output"/>
+  </message>
+  <message name="PostInvokeSWICustUpsertServiceABMMsg">
+    <part name="ABMPayload"
+          element="swicust:SWICustomerPartyInsertOrUpdate_Output"/>
+  </message>
+  <message name="PostInvokeSWICustMergeServiceABMMsg">
+    <part name="ABMPayload" element="ns4:SWIMergeServicesMerge_Output"/>
+  </message>
+  <message name="PostXformABMtoEBMEBMMsg">
+    <part name="EBMPayload"
+          element="coreebocust:SyncCustomerPartyListResponseEBM"/>
+  </message>
+  <message name="PreInvokeSWIContactUpsertServiceSWIContactIOMsg">
+    <part name="SWIContactServicesInsertOrUpdate_Input"
+          element="swicust:SWIContactServicesInsertOrUpdate_Input"/>
+  </message>
+  <message name="PostInvokeSWIContactUpsertServiceSWIContactIOMsg">
+    <part name="SWIContactServicesInsertOrUpdate_Output"
+          element="swicust:SWIContactServicesInsertOrUpdate_Output"/>
+  </message>
+  <!-- portType implemented by the SyncCustomerPartyListSiebelProvABCSImpl Extension BPEL process 
+  -->
+  <portType name="SyncCustomerPartyListSiebelProvABCSImplExtensionService">
+    <documentation>
+      <svcdoc:Interface>
+        <svcdoc:Description>This interface contains operations that can act upon
+                            the ABO / EBO object</svcdoc:Description>
+        <svcdoc:DisplayName/>
+        <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+      </svcdoc:Interface>
+    </documentation>
+    <operation name="PreInvokeSWICustSyncServiceABM">
+      <input message="abcssynccustsblprov:PreInvokeSWICustSyncServiceABMMsg"/>
+      <output message="abcssynccustsblprov:PreInvokeSWICustSyncServiceABMMsg"/>
+    </operation>
+    <operation name="PreInvokeSWICustUpsertServiceABM">
+      <input message="abcssynccustsblprov:PreInvokeSWICustUpsertServiceABMMsg"/>
+      <output message="abcssynccustsblprov:PreInvokeSWICustUpsertServiceABMMsg"/>
+    </operation>
+    <operation name="PreInvokeSWICustMergeServiceABM">
+      <input message="abcssynccustsblprov:PreInvokeSWICustMergeServiceABMMsg"/>
+      <output message="abcssynccustsblprov:PreInvokeSWICustMergeServiceABMMsg"/>
+    </operation>
+    <operation name="PreXformEBMtoABMEBM">
+      <input message="abcssynccustsblprov:PreXformEBMtoABMEBMMsg"/>
+      <output message="abcssynccustsblprov:PreXformEBMtoABMEBMMsg"/>
+    </operation>
+    <operation name="PostInvokeSWICustSyncServiceABM">
+      <input message="abcssynccustsblprov:PostInvokeSWICustSyncServiceABMMsg"/>
+      <output message="abcssynccustsblprov:PostInvokeSWICustSyncServiceABMMsg"/>
+    </operation>
+    <operation name="PostInvokeSWICustUpsertServiceABM">
+      <input message="abcssynccustsblprov:PostInvokeSWICustUpsertServiceABMMsg"/>
+      <output message="abcssynccustsblprov:PostInvokeSWICustUpsertServiceABMMsg"/>
+    </operation>
+    <operation name="PostInvokeSWICustMergeServiceABM">
+      <input message="abcssynccustsblprov:PostInvokeSWICustMergeServiceABMMsg"/>
+      <output message="abcssynccustsblprov:PostInvokeSWICustMergeServiceABMMsg"/>
+    </operation>
+    <operation name="PostXformABMtoEBMEBM">
+      <input message="abcssynccustsblprov:PostXformABMtoEBMEBMMsg"/>
+      <output message="abcssynccustsblprov:PostXformABMtoEBMEBMMsg"/>
+    </operation>
+    <operation name="PreInvokeSWIContactUpsertServiceABM">
+      <input message="abcssynccustsblprov:PreInvokeSWIContactUpsertServiceSWIContactIOMsg"/>
+      <output message="abcssynccustsblprov:PreInvokeSWIContactUpsertServiceSWIContactIOMsg"/>
+    </operation>
+    <operation name="PostInvokeSWIContactUpsertServiceABM">
+      <input message="abcssynccustsblprov:PostInvokeSWIContactUpsertServiceSWIContactIOMsg"/>
+      <output message="abcssynccustsblprov:PostInvokeSWIContactUpsertServiceSWIContactIOMsg"/>
+    </operation>
+  </portType>
+  <!--
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PARTNER LINK TYPE DEFINITION
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+  -->
+  <plnk:partnerLinkType name="SyncCustomerPartyListSiebelProvImplExtensionService">
+    <plnk:role name="SyncCustomerPartyListSiebelProvABCSImplExtensionServiceProvider">
+      <plnk:portType name="abcssynccustsblprov:SyncCustomerPartyListSiebelProvABCSImplExtensionService"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <binding name="SyncCustomerPartyListSiebelProvABCSImplExtensionService_Binding"
+           type="abcssynccustsblprov:SyncCustomerPartyListSiebelProvABCSImplExtensionService">
+    <soap:binding style="document"
+                  transport="http://schemas.xmlsoap.org/soap/http"/>
+
+    <operation name="PreXformEBMtoABMEBM">
+      <soap:operation style="document" soapAction="mirror"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="fault">
+        <soap:fault name="fault" use="literal" encodingStyle=""/>
+      </fault>
+    </operation>
+
+    <operation name="PreInvokeSWICustSyncServiceABM">
+      <soap:operation style="document" soapAction="mirror"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="fault">
+        <soap:fault name="fault" use="literal" encodingStyle=""/>
+      </fault>
+    </operation>
+
+    <operation name="PreInvokeSWICustUpsertServiceABM">
+      <soap:operation style="document" soapAction="mirror"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="fault">
+        <soap:fault name="fault" use="literal" encodingStyle=""/>
+      </fault>
+    </operation>
+
+    <operation name="PostInvokeSWICustSyncServiceABM">
+      <soap:operation style="document" soapAction="mirror"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="fault">
+        <soap:fault name="fault" use="literal" encodingStyle=""/>
+      </fault>
+    </operation>
+
+    <operation name="PostInvokeSWICustUpsertServiceABM">
+      <soap:operation style="document" soapAction="mirror"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="fault">
+        <soap:fault name="fault" use="literal" encodingStyle=""/>
+      </fault>
+    </operation>
+
+    <operation name="PostXformABMtoEBMEBM">
+      <soap:operation style="document" soapAction="mirror"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="fault">
+        <soap:fault name="fault" use="literal" encodingStyle=""/>
+      </fault>
+    </operation>
+
+    <operation name="PreInvokeSWICustMergeServiceABM">
+      <soap:operation style="document" soapAction="mirror"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="fault">
+        <soap:fault name="fault" use="literal" encodingStyle=""/>
+      </fault>
+    </operation>
+
+    <operation name="PostInvokeSWICustMergeServiceABM">
+      <soap:operation style="document" soapAction="mirror"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="fault">
+        <soap:fault name="fault" use="literal" encodingStyle=""/>
+      </fault>
+    </operation>
+
+    <operation name="PreInvokeSWIContactUpsertServiceABM">
+      <soap:operation style="document" soapAction="mirror"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="fault">
+        <soap:fault name="fault" use="literal" encodingStyle=""/>
+      </fault>
+    </operation>
+
+    <operation name="PostInvokeSWIContactUpsertServiceABM">
+      <soap:operation style="document" soapAction="mirror"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="fault">
+        <soap:fault name="fault" use="literal" encodingStyle=""/>
+      </fault>
+    </operation>
+
+  </binding>
+
+  <service name="mirrorAnyService">
+    <port name="SyncCustomerPartyListSiebelProvABCSImplExtensionService"
+          binding="abcssynccustsblprov:SyncCustomerPartyListSiebelProvABCSImplExtensionService_Binding">
+      <soap:address location="http://sdc60008sems.us.oracle.com:8037/MirrorServlet/mirror"/>
+    </port>
+  </service>
+</definitions>

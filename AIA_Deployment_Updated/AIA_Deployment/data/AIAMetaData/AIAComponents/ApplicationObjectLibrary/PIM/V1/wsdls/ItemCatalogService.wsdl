@@ -1,0 +1,36 @@
+<definitions name="ItemCatalogService" targetNamespace="http://service.itemcatalog.ego.apps.oracle/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.itemcatalog.ego.apps.oracle/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">   
+   <types>
+      <xsd:schema>
+         <import namespace="http://xmlns.oracle.com/ItemCatalogCategorySvc" schemaLocation="../schemas/ItemCatalogCategorySvc.xsd"/>
+      </xsd:schema>    
+   </types>
+   <message name="getICCDetails">
+      <part name="IccQueryIn" element="ns1:IccQueryIn" xmlns:ns1="http://xmlns.oracle.com/ItemCatalogCategorySvc"/>
+   </message>
+   <message name="getICCDetailsResponse">
+      <part name="IccQueryOut" element="ns2:IccQueryOut" xmlns:ns2="http://xmlns.oracle.com/ItemCatalogCategorySvc"/>
+   </message>
+   <portType name="ItemCatalogService">
+      <operation name="getICCDetails">
+         <input message="tns:getICCDetails"/>
+         <output message="tns:getICCDetailsResponse"/>
+      </operation>
+   </portType>
+   <binding name="ItemCatalogServicePortBinding" type="tns:ItemCatalogService">
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <operation name="getICCDetails">
+         <soap:operation soapAction=""/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+   </binding>
+   <service name="ItemCatalogService">
+      <port name="ItemCatalogServicePort" binding="tns:ItemCatalogServicePortBinding">
+         <soap:address location="http://set.at.runtime"/>
+      </port>
+   </service>
+</definitions>

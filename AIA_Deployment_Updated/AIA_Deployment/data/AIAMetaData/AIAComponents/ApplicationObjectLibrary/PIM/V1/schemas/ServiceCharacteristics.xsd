@@ -1,0 +1,49 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/item/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/item/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="ServiceCharacteristics" sdoJava:package="oracle.apps.ego.item.service" sdoJava:instanceClass="oracle.apps.ego.item.service.ServiceCharacteristics">
+        <xsd:annotation>
+            <xsd:documentation>Service Characteristics</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="ServiceItemFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ServReqEnabledCode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ServiceableProductFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DefectTrackingOnFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="CommsActivationReqdFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ContractItemTypeCode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ServiceDuration" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ServiceDurationPeriodCode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="CoverageScheduleId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ServiceStartingDelay" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="CommsNlTrackableFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AssetCreationCode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="IbItemInstanceClass" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="RecoveredPartDispCode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ServBillingEnabledFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="MaterialBillableFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ServiceableComponentFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PreventiveMaintenanceFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ProrateServiceFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="SubscriptionDependFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ServImportanceLevel" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="VendorWarrantyFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="BaseWarrantyServiceId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PrimarySpecialistId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="SecondarySpecialistId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ServiceableItemClassId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="TimeBillableFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ExpenseBillableFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="WarrantyVendorId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="MaxWarrantyAmount" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ResponseTimePeriodCode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ResponseTimeValue" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="serviceCharacteristics" type="ServiceCharacteristics" nillable="true"/>
+</xsd:schema>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="SyncBillOfMaterialsListPIMReqABCSImplExtension"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/PIM/Core/SyncBillOfMaterialsListPIMReqABCSImplExtension/V1"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:tns="http://xmlns.oracle.com/ABCSImpl/PIM/Core/SyncBillOfMaterialsListPIMReqABCSImplExtension/V1"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:xdbsync="http://xmlns.oracle.com/xdb/APPS"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:bom="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/BillOfMaterials/V1"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:instprodebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Item/V2"
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1">
+
+	<documentation>
+        <svcdoc:Service>
+	<svcdoc:Description/>
+	<svcdoc:ServiceType>SyncBillOfMaterialsListPIMReqABCSImplExtension</svcdoc:ServiceType>
+	<svcdoc:DisplayName>SyncBillOfMaterialsListPIMReqABCSImplExtension</svcdoc:DisplayName>
+	<svcdoc:BillOfMaterials>1</svcdoc:BillOfMaterials>
+	<svcdoc:EBOName>BillOfMaterialsList EBO</svcdoc:EBOName>
+	<svcdoc:ABOName/>
+	<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+	<svcdoc:ImplementationTechnology>Java servlet</svcdoc:ImplementationTechnology>
+</svcdoc:Service>
+</documentation>
+	<types>
+		<xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/PIM/Core/SyncBillOfMaterialsListPIMReqABCSImpl/V1" elementFormDefault="qualified">
+			<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/BillOfMaterials/V1" schemaLocation="http://ap6035fems.us.oracle.com:7832/AIAComponents/EnterpriseObjectLibrary/Core/EBO/BillOfMaterials/V1/BillOfMaterialsEBM.xsd"/>
+			<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Item/V2" schemaLocation="http://ap6035fems.us.oracle.com:7832/AIAComponents/EnterpriseObjectLibrary/Core/EBO/Item/V2/ItemEBM.xsd"/>
+			<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="http://ap6035fems.us.oracle.com:7832/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+		</xsd:schema>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+       	    <xsd:import namespace="http://xmlns.oracle.com/xdb/APPS"
+                  schemaLocation="http://ap6035fems.us.oracle.com:7832/AIAComponents/ApplicationObjectLibrary/Ebiz/schemas/APPS_WF_EVENT_T.xsd"/>
+		</xsd:schema>
+	</types>
+	<message name="PreInvokeBillOfMaterialsOrchestrationEBSEBMMsg">
+		<part name="EBMPayload" element="bom:QueryBillOfMaterialsListEBM"/>
+	</message>
+	<message name="PreXformABMToEBMMsg">
+		<part name="ABMPayload" element="xdbsync:WF_EVENT_T"/>
+	</message>
+	<portType name="SyncBillOfMaterialsListPIMReqABCSImplExtensionService">
+		<documentation>
+                <svcdoc:Interface>
+	<svcdoc:Description>This interface contains operations that can act upon
+                            the ABO / EBO object</svcdoc:Description>
+	<svcdoc:DisplayName>SyncBillOfMaterialsListPIMReqABCSImplExtensionService</svcdoc:DisplayName>
+	<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+</svcdoc:Interface>
+</documentation>
+		<operation name="PreXformABMToEBM">
+			<input message="tns:PreXformABMToEBMMsg"/>
+			<output message="tns:PreXformABMToEBMMsg"/>
+		</operation>
+		<operation name="PreInvokeBillOfMaterialsOrchestrationEBSEBM">
+			<input message="tns:PreInvokeBillOfMaterialsOrchestrationEBSEBMMsg"/>
+			<output message="tns:PreInvokeBillOfMaterialsOrchestrationEBSEBMMsg"/>
+		</operation>
+	</portType>
+	<binding name="SyncBillOfMaterialsListPIMReqABCSImplExtensionService_Binding" type="tns:SyncBillOfMaterialsListPIMReqABCSImplExtensionService">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="PreXformABMToEBM">
+			<soap:operation soapAction="mirror" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PreInvokeBillOfMaterialsOrchestrationEBSEBM">
+			<soap:operation soapAction="mirror" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="mirrorAnyService">
+		<port name="SyncBillOfMaterialsListPIMReqABCSImplExtensionService" binding="tns:SyncBillOfMaterialsListPIMReqABCSImplExtensionService_Binding">
+			<soap:address location="http://ap6035fems.us.oracle.com:7832/MirrorServlet/mirror"/>
+		</port>
+	</service>
+	<!-- Type Definitions
+  -->
+	<!-- Message Definitions
+  -->
+	<!-- portType implemented by the SyncBillOfMaterialsListPIMReqABCSImplExt Extension BPEL process
+  -->
+	<!--
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PARTNER LINK TYPE DEFINITION
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  -->
+	<plnk:partnerLinkType name="SyncBillOfMaterialsListPIMReqABCSImplExtensionService">
+		<plnk:role name="SyncBillOfMaterialsListPIMReqABCSImplExtensionServiceProvider">
+			<plnk:portType name="tns:SyncBillOfMaterialsListPIMReqABCSImplExtensionService"/>
+		</plnk:role>
+	</plnk:partnerLinkType>
+</definitions>

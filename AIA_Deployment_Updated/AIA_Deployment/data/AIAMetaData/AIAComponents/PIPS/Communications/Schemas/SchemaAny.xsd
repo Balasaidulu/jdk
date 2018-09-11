@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://xmlns.oracle.com/PLAYPEN_jws/Anyschema"
+            targetNamespace="http://xmlns.oracle.com/PLAYPEN_jws/Anyschema"
+            elementFormDefault="qualified">
+  <xsd:element name="AnyToHoldCoreRoot">
+    <xsd:annotation>
+      <xsd:documentation>
+        A sample element
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:any id="Test"/>
+        <xsd:any id="TestResponse"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

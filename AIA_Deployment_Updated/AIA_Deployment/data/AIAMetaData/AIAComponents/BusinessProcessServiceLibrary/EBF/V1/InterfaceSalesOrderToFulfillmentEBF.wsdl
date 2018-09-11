@@ -1,0 +1,208 @@
+<definitions
+     name="InterfaceSalesOrderToFulfillmentEBF"
+     targetNamespace="http://xmlns.oracle.com/EnterpriseFlows/Core/InterfaceSalesOrderToFulfillmentEBF/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+     xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:pns1="http://xmlns.oracle.com/EnterpriseFlows/Core/InterfaceSalesOrderToFulfillmentEBF/V1/correlationset"
+     xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+     xmlns:client="http://xmlns.oracle.com/EnterpriseFlows/Core/InterfaceSalesOrderToFulfillmentEBF/V1"
+     xmlns:salesorderebs="http://xmlns.oracle.com/EnterpriseServices/Core/SalesOrder/V2"
+     xmlns:coresalesorder="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SalesOrder/V2"
+     xmlns:salesorderorchebs="http://xmlns.oracle.com/EnterpriseServices/Core/SalesOrderOrchestrationEBS/V2"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>Interface Sales Order to Fulfillment Enterprise
+                                Business Flow</svcdoc:Description>
+            <svcdoc:ServiceType>EnterpriseBusinessFlow</svcdoc:ServiceType>
+            <svcdoc:DisplayName>InterfaceSalesOrderToFulfillmentEBF</svcdoc:DisplayName>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:EBOName>SalesOrderEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://xmlns.oracle.com/EnterpriseFlows/Core/InterfaceSalesOrderToFulfillmentEBF/V1/correlationset"
+         location="InterfaceSalesOrderToFulfillmentEBF_Properties.wsdl"/>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SalesOrder/V2"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/SalesOrder/V2/SalesOrderEBM.xsd"/>
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+            <xsd:import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="InterfaceSalesOrderToFulfillmentReqMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used as the request payload
+                                    to the InterfaceSalesOrderToFulfillment
+                                    operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="ProcessSalesOrderEBM" element="coresalesorder:ProcessSalesOrderEBM"/>
+    </message>
+    <message name="InterfaceSalesOrderToCustomerRespMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used as the inbound response
+                                    payload received after the
+                                    InterfaceSalesOrderToCustomer operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="ProcessSalesOrderResponseEBM" element="coresalesorder:ProcessSalesOrderResponseEBM"/>
+    </message>
+    <message name="CreateSalesOrderRespMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used as the inbound response
+                                    payload received after the CreateSalesOrder
+                                    operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="CreateSalesOrderResponseEBM" element="coresalesorder:CreateSalesOrderResponseEBM"/>
+    </message>
+    <message name="UpdateSalesOrderRespMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used as the inbound response
+                                    payload received after the UpdateSalesOrder
+                                    operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="UpdateSalesOrderResponseEBM" element="coresalesorder:UpdateSalesOrderResponseEBM"/>
+    </message>
+    <message name="SyncSalesOrderListRespMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used as the inbound response
+                                    payload received after the CreateSalesOrder
+                                    operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="SyncSalesOrderListResponseEBM" element="coresalesorder:SyncSalesOrderListResponseEBM"/>
+    </message>
+    <message name="AIAFaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used as the internal fault
+                                    message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="AIAFault" element="corecom:Fault"/>
+    </message>
+    <portType name="InterfaceSalesOrderToFulfillmentEBF">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This interface contains the
+                                    InterfaceSalesOrderToFulfillmentEBF service</svcdoc:Description>
+                <svcdoc:DisplayName>InterfaceSalesOrderToFulfillmentEBF Interface</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="InterfaceSalesOrderToFulfillment">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to interface
+                                        sales order to fulfillment</svcdoc:Description>
+                    <svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+                    <svcdoc:DisplayName>InterfaceSalesOrderToFulfillment</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="client:InterfaceSalesOrderToFulfillmentReqMsg"/>
+        </operation>
+        <operation name="InterfaceSalesOrderToCustomerResponse">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This is the callback operation for the
+                                        interface sales order to customer
+                                        invokation</svcdoc:Description>
+                    <svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+                    <svcdoc:DisplayName>InterfaceSalesOrderToCustomerResponse</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                    <svcdoc:InitiatorService>InterfaceSalesOrderToCustomerEBF</svcdoc:InitiatorService>
+                    <svcdoc:InitiatorInterface>InterfaceSalesOrderToCustomerEBF</svcdoc:InitiatorInterface>
+                    <svcdoc:InitiatorOperation>InterfaceSalesOrderToCustomer</svcdoc:InitiatorOperation>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="client:InterfaceSalesOrderToCustomerRespMsg"/>
+        </operation>
+        <operation name="CreateSalesOrderResponse">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This is the callback operation for the
+                                        Create Sales Order invokation</svcdoc:Description>
+                    <svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+                    <svcdoc:DisplayName>CreateSalesOrderResponse</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                    <svcdoc:InitiatorService>SalesOrderResponseEBS</svcdoc:InitiatorService>
+                    <svcdoc:InitiatorInterface>SalesOrderResponseEBS</svcdoc:InitiatorInterface>
+                    <svcdoc:InitiatorOperation>CreateSalesOrderResponse</svcdoc:InitiatorOperation>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="client:CreateSalesOrderRespMsg"/>
+        </operation>
+        <operation name="UpdateSalesOrderResponse">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This is the callback operation for the
+                                        Update Sales Order invokation</svcdoc:Description>
+                    <svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+                    <svcdoc:DisplayName>UpdateSalesOrderResponse</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                    <svcdoc:InitiatorService>SalesOrderResponseEBS</svcdoc:InitiatorService>
+                    <svcdoc:InitiatorInterface>SalesOrderResponseEBS</svcdoc:InitiatorInterface>
+                    <svcdoc:InitiatorOperation>UpdateSalesOrderResponse</svcdoc:InitiatorOperation>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="client:UpdateSalesOrderRespMsg"/>
+        </operation>
+        <operation name="SyncSalesOrderListResponse">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This is the callback operation for the
+                                        Sync Sales Order invokation</svcdoc:Description>
+                    <svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+                    <svcdoc:DisplayName>SyncSalesOrderListResponse</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                    <svcdoc:InitiatorService>SalesOrderResponseEBS</svcdoc:InitiatorService>
+                    <svcdoc:InitiatorInterface>SalesOrderResponseEBS</svcdoc:InitiatorInterface>
+                    <svcdoc:InitiatorOperation>SyncSalesOrderListResponse</svcdoc:InitiatorOperation>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="client:SyncSalesOrderListRespMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="InterfaceSalesOrderToFulfillmentEBF_PL">
+        <plnk:role name="InterfaceSalesOrderToFulfillmentEBF_Role">
+            <plnk:portType name="client:InterfaceSalesOrderToFulfillmentEBF"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <bpws:propertyAlias propertyName="pns1:InterfaceSalesOrderToCustomerReq_EBMID" messageType="salesorderorchebs:InterfaceSalesOrderToCustomerReqMsg"
+         part="ProcessSalesOrderEBM" query="/coresalesorder:ProcessSalesOrderEBM/corecom:EBMHeader/corecom:EBMID"/>
+    <bpws:propertyAlias propertyName="pns1:InterfaceSalesOrderToCustomerReq_EBMID" messageType="client:InterfaceSalesOrderToCustomerRespMsg"
+         part="ProcessSalesOrderResponseEBM" query="/coresalesorder:ProcessSalesOrderResponseEBM/corecom:EBMHeader/corecom:RequestEBMID"/>
+    <bpws:propertyAlias propertyName="pns1:UpdateSalesOrderReq_EBMID" messageType="salesorderebs:UpdateSalesOrderReqMsg"
+         part="UpdateSalesOrderEBM" query="/coresalesorder:UpdateSalesOrderEBM/corecom:EBMHeader/corecom:EBMID"/>
+    <bpws:propertyAlias propertyName="pns1:UpdateSalesOrderReq_EBMID" messageType="client:UpdateSalesOrderRespMsg"
+         part="UpdateSalesOrderResponseEBM" query="/coresalesorder:UpdateSalesOrderResponseEBM/corecom:EBMHeader/corecom:RequestEBMID"/>
+    <bpws:propertyAlias propertyName="pns1:CreateSalesOrder_EBMID" messageType="salesorderebs:CreateSalesOrderReqMsg"
+         part="CreateSalesOrderEBM" query="/coresalesorder:CreateSalesOrderEBM/corecom:EBMHeader/corecom:EBMID"/>
+    <bpws:propertyAlias propertyName="pns1:CreateSalesOrder_EBMID" messageType="client:CreateSalesOrderRespMsg"
+         part="CreateSalesOrderResponseEBM" query="/coresalesorder:CreateSalesOrderResponseEBM/corecom:EBMHeader/corecom:RequestEBMID"/>
+    <bpws:propertyAlias propertyName="pns1:SyncSalesOrderList_EBMID" messageType="salesorderebs:SyncSalesOrderListReqMsg"
+         part="SyncSalesOrderListEBM" query="/coresalesorder:SyncSalesOrderListEBM/corecom:EBMHeader/corecom:EBMID"/>
+    <bpws:propertyAlias propertyName="pns1:SyncSalesOrderList_EBMID" messageType="client:SyncSalesOrderListRespMsg"
+         part="SyncSalesOrderListResponseEBM" query="/coresalesorder:SyncSalesOrderListResponseEBM/corecom:EBMHeader/corecom:RequestEBMID"/>
+</definitions>

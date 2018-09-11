@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="SyncCustomerSiebelEventAggregatorExtensionAbstract"
+     targetNamespace="http://xmlns.oracle.com/ABCS/Siebel/Core/SyncCustomerSiebelEventAggregatorExtension/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"     
+	xmlns:aggregatorimplext="http://xmlns.oracle.com/ABCS/Siebel/Core/SyncCustomerSiebelEventAggregatorExtension/V1"
+     xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/AIA_SCHEMA_TOKEN/AIA_AGGREGATOR_PUB/SIEBEL_AGGREGATE_ACCOUNT/"
+     xmlns:db1="http://xmlns.oracle.com/pcbpel/adapter/db/AIA_SCHEMA_TOKEN/AIA_AGGREGATOR_PUB/SIEBEL_AGGREGATE_CONTACT/"
+     xmlns:db2="http://xmlns.oracle.com/pcbpel/adapter/db/AIA_SCHEMA_TOKEN/AIA_AGGREGATOR_PUB/SIEBEL_AGGREGATE_ADDRESS/"
+xmlns:db3="http://xmlns.oracle.com/pcbpel/adapter/db/AIA_SCHEMA_TOKEN/AIA_AGGREGATOR_PUB/SIEBEL_AGGREGATE_BP/"
+
+     xmlns:sbladdrevn="http://www.siebel.com/xml/SWIAddressIO"
+     xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:sblfault="http://www.siebel.com/xml/SWIFault/V0"
+     xmlns:client="http://xmlns.oracle.com/ABCS/Siebel/Core/SyncCustomerSiebelEventAggregator/V1"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:sblaccevn="http://www.siebel.com/xml/SWICustomerPartyIO"
+    
+     xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+     xmlns:ns1="http://schemas.oracle.com/bpel/extension"
+     xmlns:sblcontevn="http://www.siebel.com/xml/SWIContactIO"
+     xmlns:sblbpevn="http://www.siebel.com/xml/SWIBillingProfileIO"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service contains operations that would be
+                                invoked by Siebel</svcdoc:Description>
+            <svcdoc:ServiceType>EventAggregator</svcdoc:ServiceType>
+            <svcdoc:DisplayName>Customer Siebel Event Aggregator</svcdoc:DisplayName>
+            <svcdoc:ABOName>SiebelABO</svcdoc:ABOName>
+            <svcdoc:EBOName>CustomerPartyEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>Siebel</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCS/Siebel/Core/SyncCustomerSiebelEventAggregator/V1"
+             elementFormDefault="qualified">
+            <xsd:import namespace="http://www.siebel.com/xml/SWICustomerPartyIO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWICustomerPartyIO.xsd"/>
+            <xsd:import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/AIA_SCHEMA_TOKEN/AIA_AGGREGATOR_PUB/SIEBEL_AGGREGATE_ACCOUNT/" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/AIA_AIA_AGGREGATOR_PUB_SIEBEL_AGGREGATE_ACCOUNT.xsd"/>
+            <xsd:import namespace="http://www.siebel.com/xml/SWIContactIO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWIContactIO.xsd"/>
+            <xsd:import namespace="http://www.siebel.com/xml/SWIAddressIO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWIAddressIO.xsd"/>
+            <xsd:import namespace="http://www.siebel.com/xml/SWIFault/V0" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/Fault.xsd"/>
+            <xsd:import namespace="http://www.siebel.com/xml/SWIBillingProfileIO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWIBillingProfileIO.xsd"/>
+            <xsd:import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+            <xsd:import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/AIA_SCHEMA_TOKEN/AIA_AGGREGATOR_PUB/SIEBEL_AGGREGATE_CONTACT/" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/AIA_AIA_AGGREGATOR_PUB_SIEBEL_AGGREGATE_CONTACT.xsd"/>
+            <xsd:import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/AIA_SCHEMA_TOKEN/AIA_AGGREGATOR_PUB/SIEBEL_AGGREGATE_ADDRESS/" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/AIA_AIA_AGGREGATOR_PUB_SIEBEL_AGGREGATE_ADDRESS.xsd"/>
+            <xsd:import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/AIA_SCHEMA_TOKEN/AIA_AGGREGATOR_PUB/SIEBEL_AGGREGATE_BP/" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/AIA_AIA_AGGREGATOR_PUB_SIEBEL_AGGREGATE_BP.xsd"/>
+        </xsd:schema>
+    </types>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	MESSAGE TYPE DEFINITION - Definition of the message types used as 
+	part of the port type defintions
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+ <message name="PreXformListOfSwiAccountioMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>Request payload on Account event</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+<part name="ListOfSwicustomerpartyio" element="sblaccevn:ListOfSwicustomerpartyio"/>
+ </message>
+ <message name="PreInvokeAccountMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message is used as a payload to PreProcess Customer Party operation</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="InputParameters" element="db:InputParameters" />
+ </message>
+  <message name="PostXformListOfSwiAccountioMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>Request payload on Account event</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+<part name="ListOfSwicustomerpartyio" element="sblaccevn:ListOfSwicustomerpartyio"/>
+ </message>
+ <message name="PreXformListOfSwiContactioMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>Request payload on Account event</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+<part name="ListOfSwicontactio" element="sblcontevn:ListOfSwicontactio"/>
+ </message>
+ <message name="PreInvokeContactMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message is used as a payload to PreProcess Customer Party operation</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="InputParameters" element="db1:InputParameters" />
+ </message>
+ <message name="PostXformListOfSwiContactioMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>Request payload on Account event</svcdoc:Description>
+   </svcdoc:Message>
+</documentation>
+<part name="ListOfSwicontactio" element="sblcontevn:ListOfSwicontactio"/>
+ </message>
+ <message name="PreXformListOfSwiAddressioMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>Request payload on Account event</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+<part name="ListOfSwiaddressio" element="sbladdrevn:ListOfSwiaddressio"/>
+ </message>
+ <message name="PostXformListOfSwiAddressioMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>Request payload on Account event</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="ListOfSwiaddressio" element="sbladdrevn:ListOfSwiaddressio"/>
+ </message>
+ <message name="PreInvokeAddressMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message is used as a payload to PreProcess Customer Party operation</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="InputParameters" element="db2:InputParameters" />
+ </message>
+ <message name="PreXformListOfSwiBPioMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>Request payload on Account event</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+<part name="ListOfSwibillingprofileio" element="sblbpevn:ListOfSwibillingprofileio"/>
+ </message>
+ <message name="PreInvokeBPMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message is used as a payload to PreProcess Customer Party operation</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="InputParameters" element="db3:InputParameters" />
+ </message>
+<message name="PostXformListOfSwiBPioMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>Request payload on Account event</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+<part name="ListOfSwibillingprofileio" element="sblbpevn:ListOfSwibillingprofileio"/>
+ </message>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PORT TYPE DEFINITION - A port type groups a set of operations into
+	a logical service unit.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+ <portType name="SyncCustomerSiebelEventAggregatorExtension">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This interface contains the web service
+                                    operations related to Siebel Account,
+                                    Address and Contact events</svcdoc:Description>
+                <svcdoc:DisplayName>Siebel event aggregator Interface</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+  <operation name="PreXformListOfSwiAccountioABMtoABM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to Pre Process ListOfSwicontactio Object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>Pre process ListOfSwicontactio</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="aggregatorimplext:PreXformListOfSwiAccountioMsg" />
+   <output message="aggregatorimplext:PreXformListOfSwiAccountioMsg" />
+  </operation>
+  <operation name="PreInvokeAccEventAggregator">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to Pre Process Customer party Object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>Pre process Customer party</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="aggregatorimplext:PreInvokeAccountMsg" />
+   <output message="aggregatorimplext:PreInvokeAccountMsg" />
+  </operation>
+   <operation name="PostXformListOfSwiAccountioABMtoABM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to Pre Process ListOfSwicontactio Object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>Post process ListOfSwicAccountio</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>active</svcdoc:LifecycleStatus>
+<svcdoc:Scope>Public</svcdoc:Scope>
+      
+</svcdoc:Operation>
+   </documentation>
+   <input message="aggregatorimplext:PostXformListOfSwiAccountioMsg" />
+   <output message="aggregatorimplext:PostXformListOfSwiAccountioMsg" />
+  </operation>
+  <operation name="PreXformListOfSwiContactioABMtoABM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to Pre Process ListOfSwicontactio Object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>Pre process ListOfSwicontactio</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="aggregatorimplext:PreXformListOfSwiContactioMsg" />
+   <output message="aggregatorimplext:PreXformListOfSwiContactioMsg" />
+  </operation>
+<operation name="PostXformListOfSwiContactioABMtoABM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to Pre Process ListOfSwicontactio Object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>Pre process ListOfSwicontactio</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="aggregatorimplext:PostXformListOfSwiContactioMsg" />
+   <output message="aggregatorimplext:PostXformListOfSwiContactioMsg" />
+  </operation>
+ <operation name="PreInvokeContactEventAggregator">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to Pre Process Customer party Object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>Pre process Customer party</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="aggregatorimplext:PreInvokeContactMsg" />
+   <output message="aggregatorimplext:PreInvokeContactMsg" />
+  </operation>
+<operation name="PreXformListOfSwiAddressioABMtoABM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to Pre Process ListOfSwiAddressio Object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>Pre process ListOfSwicontactio</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="aggregatorimplext:PreXformListOfSwiAddressioMsg" />
+   <output message="aggregatorimplext:PreXformListOfSwiAddressioMsg" />
+  </operation>
+<operation name="PostXformListOfSwiAddressioABMtoABM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to Pre Process ListOfSwiAddressio Object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>Pre process ListOfSwicontactio</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="aggregatorimplext:PostXformListOfSwiAddressioMsg" />
+   <output message="aggregatorimplext:PostXformListOfSwiAddressioMsg" />
+  </operation>
+ <operation name="PreInvokeAddressEventAggregator">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to Pre Process Customer party Object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>Pre process Customer party</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="aggregatorimplext:PreInvokeAddressMsg" />
+   <output message="aggregatorimplext:PreInvokeAddressMsg" />
+  </operation>
+  <operation name="PreXformListOfSwiBPioABMtoABM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to Pre Process ListOfSwiAddressio Object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>Pre process ListOfSwicontactio</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="aggregatorimplext:PreXformListOfSwiBPioMsg" />
+   <output message="aggregatorimplext:PreXformListOfSwiBPioMsg" />
+  </operation>
+
+ <operation name="PreInvokeBPEventAggregator">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to Pre Process Customer party Object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>Pre process Customer party</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="aggregatorimplext:PreInvokeBPMsg" />
+   <output message="aggregatorimplext:PreInvokeBPMsg" />
+  </operation>
+  <operation name="PostXformListOfSwiBPioABMtoABM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to Pre Process ListOfSwicontactio Object</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>Post process ListOfSwicAccountio</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="aggregatorimplext:PostXformListOfSwiBPioMsg" />
+   <output message="aggregatorimplext:PostXformListOfSwiBPioMsg" />
+  </operation>
+ </portType>
+
+   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PARTNER LINK TYPE DEFINITION
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    
+	<plnk:partnerLinkType name="SyncCustomerSiebelEventAggregatorExtension">
+        <plnk:role name="SyncCustomerSiebelEventAggregatorExtensionProvider">
+            <plnk:portType name="aggregatorimplext:SyncCustomerSiebelEventAggregatorExtension"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <binding name="SyncCustomerSiebelEventAggregatorExtensionBinding" type="aggregatorimplext:SyncCustomerSiebelEventAggregatorExtension">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<operation name="PreXformListOfSwiAccountioABMtoABM">
+<soap:operation style="document" soapAction="mirror"/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="PreInvokeAccEventAggregator">
+<soap:operation style="document" soapAction="mirror"/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+  <operation name="PreXformListOfSwiContactioABMtoABM">
+   <soap:operation style="document"
+                   soapAction="http://xmlns.oracle.com/ABCS/Siebel/Core/SyncCustomerSiebelEventAggregatorExtension/V1/PreXformListOfSwiContactioABMtoABM"/>
+   <input>
+    <soap:body use="literal" parts="ListOfSwicontactio"/>
+   </input>
+   <output>
+    <soap:body use="literal" parts="ListOfSwicontactio"/>
+   </output>
+  </operation>
+  <operation name="PreInvokeContactEventAggregator">
+   <soap:operation style="document"
+                   soapAction="http://xmlns.oracle.com/ABCS/Siebel/Core/SyncCustomerSiebelEventAggregatorExtension/V1/PreInvokeContactEventAggregator"/>
+   <input>
+    <soap:body use="literal" parts="InputParameters"/>
+   </input>
+   <output>
+    <soap:body use="literal" parts="InputParameters"/>
+   </output>
+  </operation>
+  <operation name="PreXformListOfSwiAddressioABMtoABM">
+   <soap:operation style="document"
+                   soapAction="http://xmlns.oracle.com/ABCS/Siebel/Core/SyncCustomerSiebelEventAggregatorExtension/V1/PreXformListOfSwiAddressioABMtoABM"/>
+   <input>
+    <soap:body use="literal" parts="ListOfSwiaddressio"/>
+   </input>
+   <output>
+    <soap:body use="literal" parts="ListOfSwiaddressio"/>
+   </output>
+  </operation>
+  <operation name="PreInvokeAddressEventAggregator">
+   <soap:operation style="document"
+                   soapAction="http://xmlns.oracle.com/ABCS/Siebel/Core/SyncCustomerSiebelEventAggregatorExtension/V1/PreInvokeAddressEventAggregator"/>
+   <input>
+    <soap:body use="literal" parts="InputParameters"/>
+   </input>
+   <output>
+    <soap:body use="literal" parts="InputParameters"/>
+   </output>
+  </operation>
+  <operation name="PreXformListOfSwiBPioABMtoABM">
+   <soap:operation style="document"
+                   soapAction="http://xmlns.oracle.com/ABCS/Siebel/Core/SyncCustomerSiebelEventAggregatorExtension/V1/PreXformListOfSwiBPioABMtoABM"/>
+   <input>
+    <soap:body use="literal" parts="ListOfSwibillingprofileio"/>
+   </input>
+   <output>
+    <soap:body use="literal" parts="ListOfSwibillingprofileio"/>
+   </output>
+  </operation>
+  <operation name="PreInvokeBPEventAggregator">
+   <soap:operation style="document"
+                   soapAction="http://xmlns.oracle.com/ABCS/Siebel/Core/SyncCustomerSiebelEventAggregatorExtension/V1/PreInvokeBPEventAggregator"/>
+   <input>
+    <soap:body use="literal" parts="InputParameters"/>
+   </input>
+   <output>
+    <soap:body use="literal" parts="InputParameters"/>
+   </output>
+  </operation>
+  <operation name="PostXformListOfSwiContactioABMtoABM">
+   <soap:operation style="document"
+                   soapAction="http://xmlns.oracle.com/ABCS/Siebel/Core/SyncCustomerSiebelEventAggregatorExtension/V1/PostXformListOfSwiContactioABMtoABM"/>
+   <input>
+    <soap:body use="literal" parts="ListOfSwicontactio"/>
+   </input>
+   <output>
+    <soap:body use="literal" parts="ListOfSwicontactio"/>
+   </output>
+  </operation>
+  <operation name="PostXformListOfSwiAddressioABMtoABM">
+   <soap:operation style="document"
+                   soapAction="http://xmlns.oracle.com/ABCS/Siebel/Core/SyncCustomerSiebelEventAggregatorExtension/V1/PostXformListOfSwiAddressioABMtoABM"/>
+   <input>
+    <soap:body use="literal" parts="ListOfSwiaddressio"/>
+   </input>
+   <output>
+    <soap:body use="literal" parts="ListOfSwiaddressio"/>
+   </output>
+  </operation>
+        <operation name="PostXformListOfSwiAccountioABMtoABM">
+            <soap:operation style="document"
+                            soapAction="http://xmlns.oracle.com/ABCS/Siebel/Core/SyncCustomerSiebelEventAggregatorExtension/V1/PostXformListOfSwiAccountioABMtoABM"/>
+            <input>
+                <soap:body use="literal" parts="ListOfSwicustomerpartyio"/>
+            </input>
+            <output>
+                <soap:body use="literal" parts="ListOfSwicustomerpartyio"/>
+            </output>
+        </operation>
+        <operation name="PostXformListOfSwiBPioABMtoABM">
+            <soap:operation style="document"
+                            soapAction="http://xmlns.oracle.com/ABCS/Siebel/Core/SyncCustomerSiebelEventAggregatorExtension/V1/PostXformListOfSwiBPioABMtoABM"/>
+            <input>
+                <soap:body use="literal" parts="ListOfSwibillingprofileio"/>
+            </input>
+            <output>
+                <soap:body use="literal" parts="ListOfSwibillingprofileio"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="mirrorAnyService">
+<port name="SyncCustomerSiebelEventAggregatorExtensionPort" binding="aggregatorimplext:SyncCustomerSiebelEventAggregatorExtensionBinding">
+<soap:address location="http://sdc60033sems.us.oracle.com:8082/MirrorServlet/mirror"/>
+</port>
+</service>
+</definitions>

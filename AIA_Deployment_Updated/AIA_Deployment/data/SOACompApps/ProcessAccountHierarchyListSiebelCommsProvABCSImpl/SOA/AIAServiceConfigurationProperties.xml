@@ -1,0 +1,13 @@
+<AIAServiceConfiguration xmlns="http://xmlns.oracle.com/aia/core/config/V1" version="1.0">
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/ProcessAccountHierarchyListSiebelCommsProvABCSImpl/V1}ProcessAccountHierarchyListSiebelCommsProvABCSImpl">
+	<Property name="Default.SystemID">SEBL_01</Property>
+	<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+	<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>	
+	<Property name="Routing.SWI_spcAccount_spcHierarchy.RouteToCAVS">false</Property>
+	<Property name="Routing.SWI_spcAccount_spcHierarchy.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+	<Property name="Routing.SWI_spcAccount_spcHierarchy.SEBL_01.EndpointURI">${participatingapplications.siebel.server.InternetProtocol}${participatingapplications.siebel.server.host}:${participatingapplications.siebel.server.port}/eai_${participatingapplications.siebel.server.Language}/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+	<Property name="Routing.SWI_spcAccount_spcHierarchy.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+	<Property name="ABCSExtension.PreInvokeABS">false</Property>
+	<Property name="ABCSExtension.PostInvokeABS">false</Property>
+</ServiceConfiguration>
+</AIAServiceConfiguration>

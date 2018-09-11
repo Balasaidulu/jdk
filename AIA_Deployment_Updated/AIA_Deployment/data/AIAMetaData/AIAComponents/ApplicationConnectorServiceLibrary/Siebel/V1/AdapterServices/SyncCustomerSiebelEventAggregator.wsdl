@@ -1,0 +1,166 @@
+<definitions
+     name="SyncCustomerSiebelEventAggregator"
+     targetNamespace="http://xmlns.oracle.com/ABCS/Siebel/Core/SyncCustomerSiebelEventAggregator/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:sbladdrevn="http://www.siebel.com/xml/SWIAddressIO"
+     xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:sblfault="http://www.siebel.com/xml/SWIFault/V0"
+     xmlns:client="http://xmlns.oracle.com/ABCS/Siebel/Core/SyncCustomerSiebelEventAggregator/V1"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:sblaccevn="http://www.siebel.com/xml/SWICustomerPartyIO"
+     xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+     xmlns:ns1="http://schemas.oracle.com/bpel/extension"
+     xmlns:sblcontevn="http://www.siebel.com/xml/SWIContactIO"
+     xmlns:sblbpenv="http://www.siebel.com/xml/SWIBillingProfileIO"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service contains operations that would be
+                                invoked by Siebel</svcdoc:Description>
+            <svcdoc:ServiceType>EventAggregator</svcdoc:ServiceType>
+            <svcdoc:DisplayName>Customer Siebel Event Aggregator</svcdoc:DisplayName>
+            <svcdoc:ABOName>SiebelABO</svcdoc:ABOName>
+            <svcdoc:EBOName>CustomerPartyEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>Siebel</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCS/Siebel/Core/SyncCustomerSiebelEventAggregator/V1"
+             elementFormDefault="qualified">
+            <xsd:import namespace="http://www.siebel.com/xml/SWICustomerPartyIO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWICustomerPartyIO.xsd"/>
+            <xsd:import namespace="http://www.siebel.com/xml/SWIContactIO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWIContactIO.xsd"/>
+            <xsd:import namespace="http://www.siebel.com/xml/SWIAddressIO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWIAddressIO.xsd"/>
+            <xsd:import namespace="http://www.siebel.com/xml/SWIFault/V0" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/Fault.xsd"/>
+            <xsd:import namespace="http://www.siebel.com/xml/SWIBillingProfileIO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWIBillingProfileIO.xsd"/>
+            <xsd:import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="SiebelAccountEventReqMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>Request payload on Account event</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="ListOfSwicustomerpartyio" element="sblaccevn:ListOfSwicustomerpartyio"/>
+    </message>
+    <message name="SiebelFaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error
+                                    Context and Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="Fault" element="sblfault:Fault"/>
+    </message>
+    <message name="SiebelContactEventReqMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>Request payload on Contact event</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="ListOfSwicontactio" element="sblcontevn:ListOfSwicontactio"/>
+    </message>
+    <message name="SiebelAddressEventReqMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>Request payload on Address event</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="ListOfSwiaddressio" element="sbladdrevn:ListOfSwiaddressio"/>
+    </message>
+    <message name="SiebelBPEventReqMsg">
+	<documentation>
+	  <svcdoc:Message>
+	     <svcdoc:Description>Request payload on Billing Profile event</svcdoc:Description>
+	  </svcdoc:Message>
+	 </documentation>
+	 <part name="ListOfSwibillingprofileio" element="sblbpenv:ListOfSwibillingprofileio"/>
+   </message>
+	
+    <portType name="SyncCustomerSiebelEventAggregator">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This interface contains the web service
+                                    operations related to Siebel Account,
+                                    Address and Contact events</svcdoc:Description>
+                <svcdoc:DisplayName>Siebel event aggregator Interface</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="aggregateaccountevent">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to aggregate
+                                        Account events</svcdoc:Description>
+                    <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+                    <svcdoc:DisplayName>Aggregate Account event</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="client:SiebelAccountEventReqMsg"/>
+            <output message="client:SiebelAccountEventReqMsg"/>
+            <fault name="fault" message="client:SiebelFaultMsg"/>
+        </operation>
+        <operation name="aggregatecontactevent">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to aggregate
+                                        Contact events</svcdoc:Description>
+                    <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+                    <svcdoc:DisplayName>Aggregate Contact event</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="client:SiebelContactEventReqMsg"/>
+            <output message="client:SiebelContactEventReqMsg"/>
+            <fault name="fault" message="client:SiebelFaultMsg"/>
+        </operation>
+        <operation name="aggregateaddressevent">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to aggregate
+                                        Address events</svcdoc:Description>
+                    <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+                    <svcdoc:DisplayName>Aggregate Address event</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="client:SiebelAddressEventReqMsg"/>
+            <output message="client:SiebelAddressEventReqMsg"/>
+            <fault name="fault" message="client:SiebelFaultMsg"/>
+        </operation>
+        <operation name="aggregatebpevent">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to aggregate
+                                        BillingProfile events</svcdoc:Description>
+                    <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+                    <svcdoc:DisplayName>Aggregate BillingProfile event</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="client:SiebelBPEventReqMsg"/>
+            <output message="client:SiebelBPEventReqMsg"/>
+            <fault name="fault" message="client:SiebelFaultMsg"/>
+        </operation>        
+    </portType>
+    <plnk:partnerLinkType name="SyncCustomerSiebelEventAggregator">
+        <plnk:role name="SyncCustomerSiebelEventAggregatorProvider">
+            <plnk:portType name="client:SyncCustomerSiebelEventAggregator"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

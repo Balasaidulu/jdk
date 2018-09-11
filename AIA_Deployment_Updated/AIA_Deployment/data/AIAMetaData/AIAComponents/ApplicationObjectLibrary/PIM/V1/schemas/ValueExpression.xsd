@@ -1,0 +1,38 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/svc/expression"
+     xmlns="http://xmlns.oracle.com/svc/expression" xmlns:sdoJava="commonj.sdo/java" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="Expression.xsd"/>
+    <xsd:complexType name="ValueExpression" sdoJava:package="oracle.svc.expression" sdoJava:instanceClass="oracle.svc.expression.ValueExpression">
+        <xsd:annotation>
+            <xsd:documentation>Represents an expression based on comparing an attribute to a value.
+&lt;br&gt;
+  The Expression can be in one of these three formats:
+  &lt;ul&gt;
+    &lt;li&gt; {Attribute} {No Value Operator}
+    &lt;li&gt; {Attribute} {Single Value Operator} {Value}
+  &lt;/ul&gt;
+&lt;br&gt;
+&lt;p&gt;
+&lt;b&gt;Example:&lt;/b&gt; This example performs this expression on PurchaseOrders: &lt;b&gt;Total &gt; 500&lt;/b&gt;
+&lt;code&gt;
+&lt;pre&gt;
+DataObjectFactory factory = ...
+PurchaseOrderExpressionFilter filter = (PurchaseOrderExpressionFilter)factory.createDataObject(PurchaseOrderExpressionFilter.QUALIFIED_NAME);
+filter.addValueExpression(&quot;Total&quot;, ValueExpression.GREATER_THAN, new Number(500));
+DataCriteria dc = factory.createDataObject(DataCriteria.QUALIFIED_NAME);
+dc.setFilter(filter);
+List result = service.getDataList(&quot;PurchaseOrders&quot;, dc, null);
+&lt;/pre&gt;
+&lt;/code&gt;</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="Expression">
+                <xsd:sequence>
+                    <xsd:element name="AttributeName" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Operator" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Value" type="xsd:anySimpleType" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="valueExpression" type="ValueExpression" nillable="true"/>
+</xsd:schema>

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<definitions name="QueryBillOfMaterialsListPIMProvABCSImplExtension"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/PIM/Core/QueryBillOfMaterialsListPIMProvABCSImplExtenstion/V1"
+             xmlns:tns="http://xmlns.oracle.com/ABCSImpl/PIM/Core/QueryBillOfMaterialsListPIMProvABCSImplExtenstion/V1"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+	     xmlns:bomebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/BillOfMaterials/V1"
+	     xmlns:pimabm="http://xmlns.oracle.com/apps/ego/item/service"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"            
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1">
+  <documentation>
+    <svcdoc:Service>
+      <svcdoc:Description>This service contains intercepting operations that
+                             would be used by the participating application</svcdoc:Description>
+      <svcdoc:ServiceType>ABCSExtension</svcdoc:ServiceType>
+      <svcdoc:DisplayName>QueryBillOfMaterialsListPIMProvABCSImpl ABCS Extension Abstract Interface</svcdoc:DisplayName>
+      <svcdoc:EBOName>BillOfMaterialsEBO</svcdoc:EBOName>
+      <svcdoc:ABOName>PIMABM</svcdoc:ABOName>
+      <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+      <svcdoc:Version>1.0</svcdoc:Version>
+      <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+    </svcdoc:Service>
+  </documentation>
+  
+  <!-- Type Definitions   -->
+                  
+  <types>
+    <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/PIM/Core/QueryBillOfMaterialsListPIMProvABCSImplExtenstion/V1"
+                elementFormDefault="qualified">
+    <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/BillOfMaterials/V1"
+                 schemaLocation="http://adc60120fems.us.oracle.com:7818/AIAComponents/EnterpriseObjectLibrary/Core/EBO/BillOfMaterials/V1/BillOfMaterialsEBM.xsd"/>    
+    <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" 
+            schemaLocation="http://adc60120fems.us.oracle.com:7818/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+    </xsd:schema>
+      <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://xmlns.oracle.com/apps/ego/item/service" schemaLocation="http://adc60120fems.us.oracle.com:7818/AIAComponents/ApplicationObjectLibrary/PIM/schemas/ItemService.xsd"/>
+        </xsd:schema>
+  </types>
+  <!-- Message Definitions  -->
+
+  <message name="PreXformQueryBillOfMaterialsListEBMToABMMsg">
+        <documentation>
+		<svcdoc:Message>
+			<svcdoc:Description>This message will contain the QueryBillOfMaterialsListEBM</svcdoc:Description>
+		</svcdoc:Message>
+	</documentation>
+    <part name="QueryBillOfMaterialsListEBM"
+          element="bomebo:QueryBillOfMaterialsListEBM"/>
+  </message>
+
+  <message name="PreInvokeQueryBillOfMaterialsListPIMABMMsg">
+  	<documentation>
+		<svcdoc:Message>
+			<svcdoc:Description>This message will contain the Input Parameters of PIM BillOfMaterials Service</svcdoc:Description>
+		</svcdoc:Message>
+	</documentation>
+<!--
+    <part name="PIMInputParameters"
+          element="pimabm:PIMInputParameters"/>
+-->        
+
+    <part name="PIMInputParameters"
+          element="pimabm:ItemService_GetItemStructure"/>
+  </message>
+  	
+    <message name="PostInvokeQueryBillOfMaterialsListPIMABMMsg">
+    	<documentation>
+		<svcdoc:Message>
+			<svcdoc:Description>This message will contain the Output Parameters of PIM BillOfMaterials Service</svcdoc:Description>
+		</svcdoc:Message>
+	</documentation>
+<!--        
+    <part name="PIMOutputParameteres"
+          element="pimabm:QueryBillOfMaterialsListEBM"/>
+-->  
+        
+    <part name="PIMOutputParameteres"
+          element="pimabm:ItemService_GetItemStructure_Response"/> 
+  </message>
+  
+    <message name="PostXformQueryBillOfMaterialsListABMToEBMMsg">
+          <documentation>
+		<svcdoc:Message>
+			<svcdoc:Description>This message will contain the QueryItemComposition Response EBM</svcdoc:Description>
+		</svcdoc:Message>
+	</documentation>
+    <part name="QueryBillOfMaterialsListResponseEBM"
+          element="bomebo:QueryBillOfMaterialsListResponseEBM"/>
+  </message>  
+
+  	
+  <message name="FaultMessage">
+	<documentation>
+		<svcdoc:Message>
+			<svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+		</svcdoc:Message>
+	</documentation>
+  <part name="AIAFault" element="corecom:Fault"/>
+ </message>
+ 	
+  <!-- portType implemented by the CustomCreateCustomerABCSExt Extension BPEL process   -->
+
+  <portType name="QueryBillOfMaterialsListPIMProvABCSImplExtension">
+    <documentation>
+      <svcdoc:Interface>
+        <svcdoc:Description>This interface contains operations that can act upon
+                            the ABO / EBO object</svcdoc:Description>
+        <svcdoc:DisplayName>QueryItemCompositionListEbizProvABCSImpl ABCS Extension </svcdoc:DisplayName>
+        <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+      </svcdoc:Interface>
+    </documentation>
+     	<operation name="PreXformQueryBillOfMaterialsListEBM">
+     			<documentation>
+			<svcdoc:Operation>
+				<svcdoc:Description>This operation is For Extension Of QueryBillOfMaterialsListEBM</svcdoc:Description>
+				<svcdoc:MEP>QUERY_REQ_RESPONSE</svcdoc:MEP>
+				<svcdoc:DisplayName>PreXformQueryBillOfMaterialsListEBMToABM</svcdoc:DisplayName>
+				<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+				<svcdoc:Scope>Public</svcdoc:Scope>
+			</svcdoc:Operation>
+		</documentation>
+			<input  message="tns:PreXformQueryBillOfMaterialsListEBMToABMMsg"/>
+			<output message="tns:PreXformQueryBillOfMaterialsListEBMToABMMsg"/>
+			<fault name="fault" message="tns:FaultMessage"/>
+		</operation>  
+		
+       	<operation name="PreInvokeQueryBillOfMaterialsListPIMABM">
+     			<documentation>
+			<svcdoc:Operation>
+				<svcdoc:Description>This operation is For Extension Of InputParameters</svcdoc:Description>
+				<svcdoc:MEP>QUERY_REQ_RESPONSE</svcdoc:MEP>
+				<svcdoc:DisplayName>PreInvokeQueryBillOfMaterialsListPIMABM</svcdoc:DisplayName>
+				<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+				<svcdoc:Scope>Public</svcdoc:Scope>
+			</svcdoc:Operation>
+		</documentation>       	
+			<input  message="tns:PreInvokeQueryBillOfMaterialsListPIMABMMsg"/>
+			<output message="tns:PreInvokeQueryBillOfMaterialsListPIMABMMsg"/>
+			<fault name="fault" message="tns:FaultMessage"/>	
+		</operation>  
+		
+   		<operation name="PostInvokeQueryBillOfMaterialsListPIMABM">
+   				<documentation>
+			<svcdoc:Operation>
+				<svcdoc:Description>This operation is For Extension Of OutputParamters</svcdoc:Description>
+				<svcdoc:MEP>QUERY_REQ_RESPONSE</svcdoc:MEP>
+				<svcdoc:DisplayName>PostInvokeQueryBillOfMaterialsListPIMABM</svcdoc:DisplayName>
+				<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+				<svcdoc:Scope>Public</svcdoc:Scope>
+			</svcdoc:Operation>
+		</documentation>
+			<input  message="tns:PostInvokeQueryBillOfMaterialsListPIMABMMsg"/>
+			<output message="tns:PostInvokeQueryBillOfMaterialsListPIMABMMsg"/>
+			<fault name="fault" message="tns:FaultMessage"/>			
+		</operation>        
+    
+   		<operation name="PostXformQueryBillOfMaterialsListResponseEBM">
+   				<documentation>
+			<svcdoc:Operation>
+				<svcdoc:Description>This operation is For Extension Of QueryBillOfMaterialsListEBM</svcdoc:Description>
+				<svcdoc:MEP>QUERY_REQ_RESPONSE</svcdoc:MEP>
+				<svcdoc:DisplayName>PostXformQueryBillOfMaterialsListABMToEBM</svcdoc:DisplayName>
+				<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+				<svcdoc:Scope>Public</svcdoc:Scope>
+			</svcdoc:Operation>
+		</documentation>
+			<input  message="tns:PostXformQueryBillOfMaterialsListABMToEBMMsg"/>
+			<output message="tns:PostXformQueryBillOfMaterialsListABMToEBMMsg"/>
+		<fault name="fault" message="tns:FaultMessage"/>			
+		</operation>         
+
+      
+    </portType>
+    <!--
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PARTNER LINK TYPE DEFINITION
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+  -->
+    <plnk:partnerLinkType name="QueryBillOfMaterialsListPIMProvABCSImplExtension">
+      <plnk:role name="QueryBillOfMaterialsListPIMProvABCSImplExtension">
+        <plnk:portType name="tns:QueryBillOfMaterialsListPIMProvABCSImplExtension"/>
+      </plnk:role>
+    </plnk:partnerLinkType>
+
+  <binding name="QueryBillOfMaterialsListPIMProvABCSImplExtensionService_Binding" type="tns:QueryBillOfMaterialsListPIMProvABCSImplExtension">
+  <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" /> 
+  
+<operation name="PreXformQueryBillOfMaterialsListEBM">
+  <soap:operation style="document" soapAction="mirror" /> 
+<input>
+  <soap:body use="literal" /> 
+  </input>
+<output>
+  <soap:body use="literal" /> 
+  </output>
+      <fault name="fault">
+        <soap:fault name="fault" use="literal" encodingStyle="" />
+      </fault>
+  </operation>
+<operation name="PreInvokeQueryBillOfMaterialsListPIMABM">
+  <soap:operation style="document" soapAction="mirror" /> 
+<input>
+  <soap:body use="literal" /> 
+  </input>
+<output>
+  <soap:body use="literal" /> 
+  </output>
+          <fault name="fault">
+        <soap:fault name="fault" use="literal" encodingStyle="" />
+      </fault>
+  </operation>
+<operation name="PostInvokeQueryBillOfMaterialsListPIMABM">
+  <soap:operation style="document" soapAction="mirror" /> 
+<input>
+  <soap:body use="literal" /> 
+  </input>
+<output>
+  <soap:body use="literal" /> 
+  </output>
+        <fault name="fault">
+        <soap:fault name="fault" use="literal" encodingStyle="" />
+      </fault>
+  </operation>
+<operation name="PostXformQueryBillOfMaterialsListResponseEBM">
+  <soap:operation style="document" soapAction="mirror" /> 
+<input>
+  <soap:body use="literal" /> 
+  </input>
+<output>
+  <soap:body use="literal" /> 
+  </output>
+      <fault name="fault">
+        <soap:fault name="fault" use="literal" encodingStyle="" />
+      </fault>
+  </operation>
+  </binding>
+<service name="mirrorAnyService">
+<port name="QueryBillOfMaterialsListPIMProvABCSImplExtension" binding="tns:QueryBillOfMaterialsListPIMProvABCSImplExtension_Binding">
+  <soap:address location="http://adc60120fems.us.oracle.com:7818/MirrorServlet/mirror" /> 
+  </port>
+  </service>
+</definitions>

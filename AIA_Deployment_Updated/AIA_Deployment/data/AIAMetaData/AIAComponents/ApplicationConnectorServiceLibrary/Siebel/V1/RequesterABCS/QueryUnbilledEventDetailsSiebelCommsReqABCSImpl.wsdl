@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="QueryUnbilledEventDetailsSiebelCommsReqABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryUnbilledEventDetailsSiebelCommsReqABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:abcsimplsiebelunbilldetreqabo="http://www.siebel.com/xml/CMU%20Request%20Unbilled%20Details%20IO"
+     xmlns:siebelfault="http://www.siebel.com/xml/SWIFault/V0"
+     xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:bpelcommon="http://schemas.oracle.com/service/bpel/common"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:abcsimplsiebelunbilldetreqabcs="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryUnbilledEventDetailsSiebelCommsReqABCSImpl/V1"
+     xmlns:abcsimplsiebelunbilldetrespabo="http://www.siebel.com/xml/CMU%20Response%20Unbilled%20Details%20IO"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service contains Siebel ABCS implementation of Query Unbilled Event Details operation</svcdoc:Description>
+            <svcdoc:ServiceType>RequesterABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>Query Unbilled Event Details Siebel Requestor ABCS Implememntation</svcdoc:DisplayName>
+            <svcdoc:EBOName>ServiceUsageEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>CRM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.siebel.com/xml/CMU%20Request%20Unbilled%20Details%20IO"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestUnbilledDetailsIo.xsd"/>
+            <import namespace="http://www.siebel.com/xml/CMU%20Response%20Unbilled%20Details%20IO"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuResponseUnbilledDetailsIo.xsd"/>
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+            <xsd:import namespace="http://www.siebel.com/xml/SWIFault/V0" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/Fault.xsd"/>
+            <import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </schema>
+    </types>
+    <message name="QueryUnbilledEventDetailsReqMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message will contain the Unbilled Event Details request attributes</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="QueryUnbilledEventDetails" element="abcsimplsiebelunbilldetreqabo:ListOfCmuRequestUnbilledDetailsIo"/>
+    </message>
+    <message name="QueryUnbilledEventDetailsRespMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message will contain the Unbilled Event Details response attributes</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="QueryUnbilledEventDetailsResponse" element="abcsimplsiebelunbilldetrespabo:ListOfCmuResponseUnbilledDetailsIo"/>
+    </message>
+    <message name="SiebelFaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="Fault" element="siebelfault:Fault"/>
+    </message>
+    <message name="QueryUnbilledEventDetailsFaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="QueryUnbilledEventDetailsFault" element="corecom:Fault"/>
+    </message>
+    <portType name="QueryUnbilledEventDetailsSiebelCommsReqABCSImpl">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This Service Contains Query Unbilled Event Details Siebel Requestor ABCS Implementation</svcdoc:Description>
+                <svcdoc:DisplayName>Query Unbilled Event Details Siebel Requestor ABCS Implementation</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="QueryUnbilledEventDetails">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Query On Unbilled Event Details</svcdoc:Description>
+                    <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+                    <svcdoc:DisplayName>Query Unbilled Event Details</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="abcsimplsiebelunbilldetreqabcs:QueryUnbilledEventDetailsReqMsg"/>
+            <output message="abcsimplsiebelunbilldetreqabcs:QueryUnbilledEventDetailsRespMsg"/>
+            <fault name="fault" message="abcsimplsiebelunbilldetreqabcs:SiebelFaultMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="QueryUnbilledEventDetailsSiebelCommsReqABCSImpl">
+        <plnk:role name="QueryUnbilledEventDetailsSiebelCommsReqABCSImplProvider">
+            <plnk:portType name="abcsimplsiebelunbilldetreqabcs:QueryUnbilledEventDetailsSiebelCommsReqABCSImpl"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

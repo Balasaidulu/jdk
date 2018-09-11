@@ -1,0 +1,21 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/svc/expression"
+     xmlns="http://xmlns.oracle.com/svc/expression" xmlns:sdoJava="commonj.sdo/java" xmlns:oans1="http://xmlns.oracle.com/svc"
+     xmlns:oans2="http://xmlns.oracle.com/svc/description" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://xmlns.oracle.com/svc/description" schemaLocation="AttributeDescription.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="ExpressionAttribute" sdoJava:package="oracle.svc" sdoJava:instanceClass="oracle.svc.DataObjectImpl">
+        <xsd:annotation>
+            <xsd:documentation>The Expression Attributes domain.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="Name" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AttributeDescription" type="oans2:AttributeDescription" minOccurs="0"
+                         nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="expressionAttribute" type="ExpressionAttribute" nillable="true"/>
+</xsd:schema>

@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://xmlns.oracle.com/communications/ordermanagement" xmlns:Q1="xs" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:osm="http://xmlns.oracle.com/communications/ordermanagement" xmlns:tns="http://xmlns.oracle.com/communications/ordermanagement">
+	<xsd:include schemaLocation="OrderManagementWS.xsd"/>
+	<xsd:element name="GetOrderCompensations" type="tns:GetOrderCompensationsType"/>
+	<xsd:element name="GetOrderCompensationsResponse" type="tns:GetOrderCompensationsResponseType"/>
+	<xsd:element name="GetOrderProcessHistory" type="tns:GetOrderProcessHistoryType"/>
+	<xsd:element name="GetOrderProcessHistoryResponse" type="tns:GetOrderProcessHistoryResponseType"/>
+	<xsd:complexType name="GetOrderCompensationsType">
+		<xsd:sequence>
+			<xsd:element name="OrderId" type="osm:EntityIdType">
+				<xsd:annotation>
+					<xsd:documentation>
+						Identifies the order to retrieve compensations
+						for.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="GetOrderCompensationsResponseType">
+		<xsd:annotation>
+			<xsd:documentation>
+       		List of all compensations processed for the order.  
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="OrderId" type="osm:EntityIdType" />
+			<xsd:element name="Compensation" type="tns:CompensationInfoType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>
+       		Represents order compensation.
+       	</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="GetOrderProcessHistoryType">
+		<xsd:sequence>
+			<xsd:element name="OrderId" type="osm:EntityIdType">
+				<xsd:annotation>
+					<xsd:documentation>
+						Identifies the order to retrieve process history
+						perspective for.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:choice minOccurs="0">
+				<xsd:element name="CompensationId" type="osm:EntityIdType">
+					<xsd:annotation>
+						<xsd:documentation>
+							Process history perspective resulting from 
+							cumulative application of all process flow activities
+							("do" tasks and compensations)
+							that have occured before and in the specified
+							compensation context and all "do" tasks that have started
+							between the specified compensation and the next compensation context. 
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="Perspective" type="osm:ProcessHistoryRequestedPerspectiveType">
+					<xsd:annotation>
+						<xsd:documentation>
+							Specifies whether requesting latest or
+							original perspective. Original perspective represents 
+							process history perspective before before any compensation.
+							Latest perspective represents process history 
+							perspective that results  from  
+							cumulative application of all process flow activities
+							of all compensations applied to the order so far.
+							For orders in "amending" state this includes the currently 
+							active compensation.
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="ProcessHistoryRequestedPerspectiveType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="original"/>
+			<xsd:enumeration value="latest"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="GetOrderProcessHistoryResponseType">
+		<xsd:annotation>
+			<xsd:documentation>
+        		Represents the order process history perspective.  
+        		Each order compensation defines own process flow history perspective.
+        		Order that has never been compensated has one ("original") process history perspective.  
+				</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="OrderId" type="osm:EntityIdType" />
+            <xsd:element name="Cartridge" type="osm:CartridgeType"></xsd:element>
+            <xsd:element name="Compensation"
+				type="tns:CompensationInfoType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						Represents the compensation that defines
+						presented process history perspective. It is
+						omitted when presenting process history before
+						any compensation (and when presenting history
+						for the order that had never been compensated).
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ProcessHistory"
+				type="tns:ProcessHistoryPerspectiveType">
+				<xsd:annotation>
+					<xsd:documentation>
+						Contain order proces history.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CompensationInfoType">
+		<xsd:sequence>
+			<xsd:element name="CompensationId" type="osm:EntityIdType">
+				<xsd:annotation>
+					<xsd:documentation>
+							id of compensation.
+						</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CompensationType" type="tns:OrderCompensationType"/>
+			<xsd:element name="Submitted" type="xsd:dateTime"/>
+			<xsd:element name="Started" type="xsd:dateTime" minOccurs="0"/>
+			<xsd:element name="Completed" type="xsd:dateTime" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AmendmentCompensationInfoType">
+		<xsd:complexContent>
+			<xsd:extension base="tns:CompensationInfoType">
+				<xsd:sequence>
+					<xsd:element name="AmendmentOrderId"
+						type="osm:OrderIdType" />
+					<xsd:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="FalloutCompensationInfoType">
+		<xsd:complexContent>
+			<xsd:extension base="tns:CompensationInfoType">
+				<xsd:sequence>
+					<xsd:element name="FalloutName" type="osm:EntityNameType"/>
+					<xsd:element name="RaisedBy" type="tns:FalloutInitiatorType"/>
+					<xsd:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="FalloutInitiatorType">
+		<xsd:sequence>
+			<xsd:element name="Task" type="osm:EntityNameType"/>
+			<xsd:element name="HistId" type="osm:EntityIdType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="OrderCompensationType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="amend">
+				<xsd:annotation>
+					<xsd:documentation>
+								Submitted order has been amendmed by
+								external system.
+							</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="cancel">
+				<xsd:annotation>
+					<xsd:documentation>
+								Order processing has been cancelled.
+							</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="fallout">
+				<xsd:annotation>
+					<xsd:documentation>
+								User initiated fallout to have incorrect
+								order data fixed.
+							</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="FalloutItemPropertiesType">
+		<xsd:sequence>
+			<xsd:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ProcessHistoryPerspectiveType">
+		<xsd:annotation>
+			<xsd:documentation>
+        		Represents the order process history perspective.  
+        	</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="tns:Activity" maxOccurs="unbounded"/>
+			<xsd:group ref="tns:FlowItemLinksGroup" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:group name="Activity">
+		<xsd:sequence>
+			<xsd:element name="Item" type="tns:FlowItemType"/>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:complexType name="FlowItemType" abstract="true">
+		<xsd:sequence>
+			<xsd:group ref="tns:FlowItemIdentityGroup" />
+			<xsd:element name="TaskType" type="osm:TaskType" />
+			<xsd:element name="StartDate" type="xsd:dateTime"
+				maxOccurs="1" minOccurs="0" />
+			<xsd:element name="EndDate" type="xsd:dateTime"
+				maxOccurs="1" minOccurs="0" />
+			<xsd:element name="CompensatorRole"
+				type="tns:FlowItemCompensatorRoleType" minOccurs="0" />
+			<xsd:element name="CompensateeRole"
+				type="tns:FlowItemCompensateeRoleType" minOccurs="0" />
+
+			<xsd:element name="User" type="xsd:string"></xsd:element>
+			<xsd:element name="ActualDuration" type="xsd:duration" maxOccurs="1" minOccurs="0"></xsd:element>
+			<xsd:element name="FilteredNode" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="WorkItemType">
+		<xsd:annotation>
+			<xsd:documentation>
+       		Represents one FlowItem in order process flow
+       		history. FlowItem is an instance of order
+       		processing at the task in the process.
+       		Includes links to other FlowItems in
+       		process flow.
+
+       	</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="tns:FlowItemType"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ContainerItemType">
+		<xsd:annotation>
+			<xsd:documentation>
+        		Subprocess and pivots task are represented by container
+        		items. Container FlowItems contain nested process flow
+        		branches. Start of container FlowItem processing starts
+        		its nested flow branches. Container FlowItem is complete when
+        		all its flow branches are complete.
+        	</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="tns:FlowItemType">
+				<xsd:sequence>
+					<xsd:element name="Scope" type="tns:ScopeType" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:group name="FlowItemIdentityGroup">
+		<xsd:annotation>
+			<xsd:documentation>
+        		Includes elements that identify FlowItem in process
+        		flow.
+        	</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Id" type="osm:EntityIdType">
+				<xsd:annotation>
+					<xsd:documentation>
+                        		Uniquely identifies workItem
+                        	</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TaskName" type="osm:EntityNameType">
+				<xsd:annotation>
+					<xsd:documentation>
+                        		Process flow task associated with order
+                        		WorkItem.
+                        	</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:complexType name="FlowItemCompensatorRoleType">
+		<xsd:sequence>
+			<xsd:element name="ExecutionMode" type="tns:ExecutionModeType"/>
+			<xsd:element name="CompensationId" type="osm:EntityIdType"/>
+			<xsd:element name="CompensateeId" type="osm:EntityIdType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="FlowItemCompensateeRoleType">
+		<xsd:sequence>
+			<xsd:element name="ExecutionMode" type="tns:ExecutionModeType"/>
+			<xsd:element name="CompensatorId" type="osm:EntityIdType" minOccurs="0"/>
+			<xsd:element name="CompensatorState" type="tns:TaskStateType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:group name="FlowItemLinksGroup">
+		<xsd:annotation>
+			<xsd:documentation>
+        		Represents links/dependencies in process flow. Used
+        		within the context of FlowItem.
+        	</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Links" type="tns:LinksType">
+				<xsd:annotation>
+					<xsd:documentation>
+             		Represents process flow connections to other WorkItems
+             	</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:complexType name="LinksType">
+		<xsd:sequence>
+			<xsd:element name="Link" type="tns:LinkType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="LinkType">
+		<xsd:annotation>
+			<xsd:documentation>
+        		Defines synchronization dependencies between activities. 
+        	</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Source" type="osm:EntityIdType">
+				<xsd:annotation>
+					<xsd:documentation>
+             		WorkItems that must complete
+             		processing before target
+             		Flowitem element is started
+             	</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Target" type="osm:EntityIdType">
+				<xsd:annotation>
+					<xsd:documentation>
+             		WorkItems that cannot start
+             		processing before source
+             		FlowItem element completes
+             	</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ScopeType">
+		<xsd:annotation>
+			<xsd:documentation>
+        		Represents a branch of order flow processing. Each subprocess
+        		or pivot task creates zero or more of child process flow
+        		branches.
+        	</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Correlation" type="tns:CorrelationType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+							Correlation Filter applied to workItems within this branch.
+						</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:group ref="tns:Activity" maxOccurs="unbounded"/>
+			<xsd:group ref="tns:FlowItemLinksGroup" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CorrelationType">
+		<xsd:annotation>
+			<xsd:documentation>
+        		Correlation instantiates an instance of process flow scope(subprocess instance) 
+        		and defines subset of order data that
+        		FlowItem operates against by excluding descendants of
+        		any sibling of order data element included in correlation. 
+        		Siblings are order data elements with the same metadata nodes that belong to the same parent data element.
+        		Correlation applies to the scope that it is specified in and to all its nested scopes.
+        	</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Pivot" type="osm:XPathExpressionType">
+				<xsd:annotation>
+					<xsd:documentation>
+          		Order data item that defines correlation.
+          	</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="FlowItemStateType">
+		<xsd:annotation>
+			<xsd:documentation>
+                		order FlowItem state.
+                	</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="HistId" type="osm:EntityIdType"/>
+			<xsd:element name="Name" type="osm:EntityNameType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="TaskType">
+		<xsd:annotation>
+			<xsd:documentation>
+                		Process flow task info.
+           	</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="creation"/>
+			<xsd:enumeration value="manual"/>
+			<xsd:enumeration value="automated"/>
+			<xsd:enumeration value="subprocess"/>
+			<xsd:enumeration value="rule"/>
+			<xsd:enumeration value="delay"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="FlowItemStateHistory">
+		<xsd:sequence>
+			<xsd:element name="State" type="tns:FlowItemStateType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="FlowItemHistoryType">
+		<xsd:annotation>
+			<xsd:documentation>
+        		Represents history of order processing within FlowItem
+        	</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Id" type="osm:EntityIdType"/>
+			<xsd:element name="Task" type="tns:TaskType"/>
+			<xsd:element name="ItemStateHistory" type="tns:FlowItemStateHistory">
+				<xsd:annotation>
+					<xsd:documentation>
+                				Order transitions to different WorkItem
+                				states while being processed at the
+                				WorkItem.
+                			</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="XPathExpressionType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- Types that disappeared from ProvisioningWS.xsd between 6.2 and 6.3  -->
+	<xsd:simpleType name="ExecutionModeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="do">
+				<xsd:annotation>
+					<xsd:documentation>
+						This is the normal means by which the system
+						requests work to be done.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="undo">
+				<xsd:annotation>
+					<xsd:documentation>
+						Task was previously completed but the system is
+						now requestiong for the task to be undone. This
+						can occur when cancelling or amending the order.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="redo">
+				<xsd:annotation>
+					<xsd:documentation>
+						Task was previously completed but the system is
+						now requesting for the task to be redone. This
+						can occur when amending the order.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="amend_do">
+				<xsd:annotation>
+					<xsd:documentation>
+						Task must be processed like a "do" task but is
+						part of compensation. This is a special case
+						that occurs as a result of a redo task
+						completing with a different status than its
+						origional "do" task. As a result, one or more
+						dead paths may be created, and one or more new
+						paths may be spawned. If the redo occurs within
+						a subprocess that is complete, then the new
+						paths must be completed using amend_do tasks
+						while the order is in "amending" state until the
+						subprocess is complete.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TaskStateType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+</xsd:schema>

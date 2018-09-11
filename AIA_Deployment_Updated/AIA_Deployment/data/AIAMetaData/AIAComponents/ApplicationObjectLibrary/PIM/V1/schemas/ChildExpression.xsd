@@ -1,0 +1,38 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/svc/expression"
+     xmlns="http://xmlns.oracle.com/svc/expression" xmlns:sdoJava="commonj.sdo/java" xmlns:oans1="http://xmlns.oracle.com/svc"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:include schemaLocation="Expression.xsd"/>
+    <xsd:complexType name="ChildExpression" sdoJava:package="oracle.svc.expression" sdoJava:instanceClass="oracle.svc.expression.ChildExpression">
+        <xsd:annotation>
+            <xsd:documentation>Represents an expression based on filtering children. This type of
+expression can be used to filter a parent by values on its children values.
+This filter results in a subquery on the parent&apos;s data source.
+&lt;br&gt;
+&lt;b&gt;Example:&lt;/b&gt; This example performs this expression on PurchaseOrders: &lt;b&gt;LinePrice = 100&lt;/b&gt;
+&lt;br&gt;
+where LinePrice is an attribute on the Line child of PurchaseOrder.
+&lt;code&gt;
+&lt;pre&gt;
+DataObjectFactory factory = ...
+PurchaseOrderExpressionFilter poFilter = (PurchaseOrderExpressionFilter)factory.createDataObject(PurchaseOrderExpressionFilter.QUALIFIED_NAME);
+LineExpressionFilter LineFilter = (LineExpressionFilter)factory.createDataObject(LineExpressionFilter.QUALIFIED_NAME);
+LineFilter.addValueExpression(&quot;LinePrice&quot;, ValueExpression.EQUAL, new Number(100));
+poFilter.addChildExpression(&quot;Lines&quot;, lineFilter);
+DataCriteria dc = factory.createDataObject(DataCriteria.QUALIFIED_NAME);
+dc.setFilter(filter);
+List result = service.getDataList(&quot;PurchaseOrders&quot;, dc, null);
+&lt;/pre&gt;
+&lt;/code&gt;</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="Expression">
+                <xsd:sequence>
+                    <xsd:element name="AttributeName" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Filter" type="oans1:DataObject" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="childExpression" type="ChildExpression" nillable="true"/>
+</xsd:schema>

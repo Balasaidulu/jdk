@@ -1,0 +1,65 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="QueryClassificationListPIMCommsProvABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/PIM/Industry/Comms/QueryClassificationListPIMCommsProvABCSImpl/V1"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:ns2="http://xmlns.oracle.com/EnterpriseServices/Core/Classification/V1"
+     xmlns:ns1="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Classification/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:ns3="http://schemas.oracle.com/bpel/extension"
+     xmlns:client="http://xmlns.oracle.com/ABCSImpl/PIM/Industry/Comms/QueryClassificationListPIMCommsProvABCSImpl/V1"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This is Implementation service for Querying ICC from PIM </svcdoc:Description>
+            <svcdoc:ServiceType>ProviderABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>Querying ICCs from PIM ABCS Implementation</svcdoc:DisplayName>
+            <svcdoc:EBOName>ClassificationEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>PIM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>MDMPRODUCT</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>PIM</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" 
+                        schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Classification/V1"
+                        schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/Classification/V1/ClassificationEBM.xsd"/>
+            <import namespace="http://schemas.oracle.com/service/bpel/common" 
+                        schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="QueryICCListPIMCommsProvABCSImplRequestMessage">
+        <wsdl:part name="QueryClassificationListEBM" element="ns1:QueryClassificationListEBM"/>
+    </wsdl:message>
+    <wsdl:message name="QueryICCListPIMCommsProvABCSImplResponseMessage">
+        <wsdl:part name="QueryClassificationListResponseEBM" element="ns1:QueryClassificationListResponseEBM"/>
+    </wsdl:message>
+    <wsdl:message name="QueryClassificationListFaultMsg">
+        <wsdl:documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </wsdl:documentation>
+        <wsdl:part name="QueryClassificationListFault" element="corecom:Fault"/>
+    </wsdl:message>
+    <wsdl:portType name="QueryClassificationListPIMCommsProvABCSImpl">
+        <wsdl:operation name="QueryClassificationList">
+            <wsdl:input  message="client:QueryICCListPIMCommsProvABCSImplRequestMessage"/>
+            <wsdl:output message="client:QueryICCListPIMCommsProvABCSImplResponseMessage"/>
+            <wsdl:fault  message="client:QueryClassificationListFaultMsg" name="fault" />
+        </wsdl:operation>
+    </wsdl:portType>
+    <plnk:partnerLinkType name="QueryClassificationListPIMCommsProvABCSImpl">
+        <plnk:role name="QueryClassificationListPIMCommsProvABCSImplProvider">
+            <plnk:portType name="client:QueryClassificationListPIMCommsProvABCSImpl"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</wsdl:definitions>

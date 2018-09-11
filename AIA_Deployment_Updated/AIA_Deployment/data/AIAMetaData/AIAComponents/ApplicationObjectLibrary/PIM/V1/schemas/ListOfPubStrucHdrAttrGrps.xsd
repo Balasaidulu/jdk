@@ -1,0 +1,21 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/bom/structure/service"
+     xmlns="http://xmlns.oracle.com/apps/bom/structure/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="PublishStrucHdrAttrGrps.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="ListOfPubStrucHdrAttrGrps" sdoJava:package="oracle.apps.bom.structure.service"
+         sdoJava:instanceClass="oracle.apps.bom.structure.service.ListOfPubStrucHdrAttrGrps">
+        <xsd:annotation>
+            <xsd:documentation>ListOfPublishStructureHeaderAttributeGroups</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="PublishStructureHeaderAttributeGroup" type="PublishStrucHdrAttrGrps"
+                         minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="listOfPubStrucHdrAttrGrps" type="ListOfPubStrucHdrAttrGrps" nillable="true"/>
+</xsd:schema>

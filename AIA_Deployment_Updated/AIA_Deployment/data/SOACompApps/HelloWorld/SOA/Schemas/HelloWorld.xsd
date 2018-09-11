@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified"
+	targetNamespace="http://xmlns.oracle.com/SampleApplication/HelloWorld/HelloWorld"
+	xmlns="http://www.w3.org/2001/XMLSchema">
+	<element name="process">
+		<complexType>
+			<sequence>
+				<element name="FirstName" type="string"/>
+                                <element name="LastName" type="string"/>
+                                <element name="Maths" type="string"/>
+                                <element name="English" type="string"/>
+                                <element name="Science" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="processResponse">
+		<complexType>
+			<sequence>
+				<element name="FullName" type="string"/>
+                                <element name="Total" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

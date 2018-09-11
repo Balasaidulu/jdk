@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<definitions name="SyncPriceListListBRMProvABCSImplExtension1"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/SyncPriceListListBRMCoreProvABCSImplExtension/V1"
+	     xmlns:brmprod="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes"
+	     xmlns:brmprice="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes"
+	     xmlns:brmFault="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes"
+	     xmlns:corepricelistebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/PriceList/V2"
+             xmlns:corepricelistext="http://xmlns.oracle.com/ABCSImpl/BRM/SyncPriceListListBRMCoreProvABCSImplExtension/V1"
+	     xmlns:corepricelistresp="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/PriceList/V2"
+	     xmlns:pricelistebs="http://xmlns.oracle.com/EnterpriseServices/Core/PriceList/V2"
+	     
+	     
+	     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V2"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+   <documentation>
+      <svcdoc:Service>
+         <svcdoc:Description>This service contains intercepting operations that
+                             would be used by the participating application</svcdoc:Description>
+         <svcdoc:ServiceType>ABCSExtension</svcdoc:ServiceType>
+         <svcdoc:DisplayName>SyncPriceListListBRMProvABCSImpl Provider ABCS Extension
+                          Implementation Interface</svcdoc:DisplayName>
+			<svcdoc:ServiceObjectName>SyncPriceListList</svcdoc:ServiceObjectName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:Version>2.0</svcdoc:Version>
+			<svcdoc:ImplementationTechnology><!-- PLACEHOLDER--></svcdoc:ImplementationTechnology>
+			<svcdoc:ProductFamily>BRM</svcdoc:ProductFamily>
+			<svcdoc:ProductPillar>BRM</svcdoc:ProductPillar>
+			<svcdoc:ProductCode>PFA</svcdoc:ProductCode>
+      </svcdoc:Service>
+   </documentation>
+   <types>
+      <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/SyncPriceListListBRMCoreProvABCSImplExtension/V1"
+                  elementFormDefault="qualified">
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/PriceList/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/PriceList/V2/PriceListEBM.xsd"/>
+<!--         <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/wsdls/BRMPricingServices.wsdl"/>
+		 <xsd:import namespace="http://xmlns.oracle.com/EnterpriseServices/Core/PriceList/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseBusinessServiceLibrary/Industry/Communications/EBO/PriceList/V2/PriceListEBSV2.wsdl"/>
+
+-->
+	  <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_PRICE_COMMIT_PRODUCT.xsd"/>
+        <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_PRICE_SET_PRICE_LIST.xsd"/>
+         <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_PRICE_COMMIT_DISCOUNT.xsd"/>
+         <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_PRICE_GET_PRICE_LIST.xsd"/>
+
+	 <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+      </xsd:schema>
+   </types>
+   <message name="PreXformEBMtoABMPriceListListMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreXformEBMtoABMABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="SyncPriceListListEBM"
+            element="corepricelistebo:SyncPriceListListEBM"/>
+   </message>
+  <message name="PostXformEBMtoABMPriceListListMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostXformEBMtoABMABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+	<part name="SyncPriceListListResponseEBM"
+            element="corepricelistresp:SyncPriceListListResponseEBM"/>
+   </message>
+	<message name="PreInvokeABSSyncPRICE_COMMIT_PRODUCTReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_PRICE_COMMIT_PRODUCT_inputFlist"
+            element="brmprice:PCM_OP_PRICE_COMMIT_PRODUCT_inputFlist"/>
+   </message>
+
+	<message name="PostInvokeABSSyncPRICE_COMMIT_PRODUCTReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_PRICE_COMMIT_PRODUCT_outputFlist"
+            element="brmprice:PCM_OP_PRICE_COMMIT_PRODUCT_outputFlist"/>
+	</message>
+   
+   <message name="FaultMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used for propagating Error
+                                Context and Error Message</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="AIAFault" element="corecom:Fault"/>
+   </message>
+   <portType name="SyncPriceListListBRMProvABCSImplV1ExtensionService">
+      <documentation>
+         <svcdoc:Interface>
+            <svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+            <svcdoc:DisplayName>ProcessSalesOrderSiebelProvABCSImplV2ExtensionService</svcdoc:DisplayName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         </svcdoc:Interface>
+      </documentation>
+      <operation name="PreXformEBMtoABMPriceListListEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformEBMtoABM an ListOfSWIOrderIO object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformEBMtoABMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="corepricelistext:PreXformEBMtoABMPriceListListMsg"/>
+         <output message="corepricelistext:PreXformEBMtoABMPriceListListMsg"/>
+         <fault name="fault" message="corepricelistext:FaultMessage"/>
+      </operation>
+	<operation name="PostXformEBMtoABMPriceListListEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformEBMtoABM an ListOfSWIOrderIO object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformEBMtoABMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="corepricelistext:PostXformEBMtoABMPriceListListMsg"/>
+         <output message="corepricelistext:PostXformEBMtoABMPriceListListMsg"/>
+         <fault name="fault" message="corepricelistext:FaultMessage"/>
+      </operation>
+	 <operation name="PreInvokeABSPRICE_COMMIT_PRODUCTABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ProcessSalesOrderEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="corepricelistext:PreInvokeABSSyncPRICE_COMMIT_PRODUCTReqMsg"/>
+         <output message="corepricelistext:PreInvokeABSSyncPRICE_COMMIT_PRODUCTReqMsg"/>
+         <fault name="fault" message="corepricelistext:FaultMessage"/>
+      </operation>
+	<operation name="PostInvokeABSPRICE_COMMIT_PRODUCTABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ProcessSalesOrderEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="corepricelistext:PostInvokeABSSyncPRICE_COMMIT_PRODUCTReqMsg"/>
+         <output message="corepricelistext:PostInvokeABSSyncPRICE_COMMIT_PRODUCTReqMsg"/>
+         <fault name="fault" message="corepricelistext:FaultMessage"/>
+      </operation>
+   </portType>
+   <binding name="SyncPriceListListBRMProvABCSImplExtensionServiceBinding" type="corepricelistext:SyncPriceListListBRMProvABCSImplV1ExtensionService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="PreXformEBMtoABMPriceListListEBM">
+            <soap:operation style="document" soapAction="PreXformABMtoEBMDiscountABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+        <operation name="PostXformEBMtoABMPriceListListEBM">
+            <soap:operation style="document" soapAction="PreInvokeEBSItemCompositionEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		 <operation name="PreInvokeABSPRICE_COMMIT_PRODUCTABM">
+            <soap:operation style="document" soapAction="PreXformABMtoEBMDiscountABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		 <operation name="PostInvokeABSPRICE_COMMIT_PRODUCTABM">
+            <soap:operation style="document" soapAction="PreXformABMtoEBMDiscountABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+    </binding>  
+   <service name="SyncPriceListListBRMProvABCSImplExtension">
+        <port name="SyncPriceListListBRMProvABCSImplExtensionServicePort" binding="corepricelistext:SyncPriceListListBRMProvABCSImplExtensionServiceBinding">
+            <soap:address location="http://${fp.server.soaserverhostname}:${fp.server.soaserverport}/MirrorServlet/mirror" />
+        </port>
+   </service>
+
+   <plnk:partnerLinkType name="SyncPriceListListBRMProvABCSImplV1ExtensionService">
+      <plnk:role name="SyncPriceListListBRMProvABCSImplV1ExtensionServiceProvider">
+         <plnk:portType name="corepricelistext:SyncPriceListListBRMProvABCSImplV1ExtensionService"/>
+      </plnk:role>
+   </plnk:partnerLinkType>
+</definitions>

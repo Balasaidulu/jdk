@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:itemOut="http://xmlns.oracle.com/apps/ego/item/service/out" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/APPS/AIA_MDMITEMBATCH/QUERY_ITEM/" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/APPS/AIA_MDMITEMBATCH/QUERY_ITEM/" elementFormDefault="qualified">
+<import namespace="http://xmlns.oracle.com/apps/ego/item/service/out" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PIM/V1/schemas/ListOfItems.xsd" />
+   
+   <element name="InputParameters">
+      <complexType>
+         <sequence>
+            <element name="P_BATCH_ID" type="string" db:index="1" db:type="VARCHAR2" minOccurs="0" nillable="true" />
+            <element name="P_BATCH_SIZE" type="decimal" db:index="2" db:type="NUMBER" minOccurs="0" nillable="true" />
+            <element name="P_MODE" type="string" db:index="3" db:type="VARCHAR2" minOccurs="0" nillable="true" />
+            <element name="X_SESSOIN_ID" type="string" db:index="9" db:type="VARCHAR2" minOccurs="0" nillable="true" />
+         </sequence>
+      </complexType>
+   </element>
+   <element name="OutputParameters">
+      <complexType>
+         <sequence>
+            <element name="X_ITEM" type="db:PUBLIC.XMLTYPE" db:index="4" db:type="Opaque" minOccurs="0" nillable="true" />
+            <element name="X_RETURN_STATUS" type="string" db:index="5" db:type="VARCHAR2" minOccurs="0" nillable="true" />
+            <element name="X_CONTINUE_FLAG" type="string" db:index="6" db:type="VARCHAR2" minOccurs="0" nillable="true" />
+            <element name="X_MSG_COUNT" type="decimal" db:index="7" db:type="NUMBER" minOccurs="0" nillable="true" />
+            <element name="X_MSG_DATA" type="string" db:index="8" db:type="VARCHAR2" minOccurs="0" nillable="true" />
+            <element name="X_SESSOIN_ID" type="string" db:index="9" db:type="VARCHAR2" minOccurs="0" nillable="true" />
+         </sequence>
+      </complexType>
+   </element>
+   <!--<complexType name="PUBLIC.XMLTYPE">
+      <sequence>
+         <any processContents="skip"/>
+      </sequence>
+   </complexType>-->
+   <complexType name="PUBLIC.XMLTYPE">
+      <sequence>
+         <element ref="itemOut:listOfItems" />
+      </sequence>
+   </complexType>
+</schema>

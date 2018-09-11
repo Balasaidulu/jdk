@@ -1,0 +1,30 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/svc"
+     xmlns="http://xmlns.oracle.com/svc" xmlns:sdoJava="commonj.sdo/java" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="MethodRequest" sdoJava:package="oracle.svc" sdoJava:instanceClass="oracle.svc.MethodRequest">
+        <xsd:annotation>
+            <xsd:documentation>A method invocation request for a {@link BatchRequest batch request}.
+ &lt;p&gt;
+ &lt;i&gt;MethodRequest does not support overloaded method.&lt;/i&gt;
+ &lt;p&gt;
+ If an exception occurs during processing of a &lt;code&gt;MethodRequest&lt;/code&gt;,
+ then the exception will be returned by the
+ {@link MethodResponse#getServiceMessages() MethodResponse#getServiceMessages()}.
+ @see Service
+ @see BatchRequest
+ @see BatchResponse
+ @see MethodResponse</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="DataObject">
+                <xsd:sequence>
+                    <xsd:element name="RequestName" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="MethodName" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Parameter" type="xsd:anyType" minOccurs="0" maxOccurs="unbounded"
+                         nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="methodRequest" type="MethodRequest" nillable="true"/>
+</xsd:schema>

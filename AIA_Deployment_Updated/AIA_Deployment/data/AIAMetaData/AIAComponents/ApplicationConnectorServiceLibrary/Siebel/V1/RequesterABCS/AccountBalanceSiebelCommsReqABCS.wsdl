@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Created By      : Sunil Kumar Rai --><!--  Date Created : 05-25-2007 --><!--  Last updated By : Mishit Patel    --><!--  Last updated date : 07-03-2008 --><definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:abcssiebelab="http://xmlns.oracle.com/ABCS/Siebel/Industry/Communications/AccountBalanaceSiebelCommsReqABCS/V1" xmlns:abreqabo="http://www.siebel.com/xml/CMU%20Request%20Billing%20Profile%20IO" xmlns:absresabo="http://www.siebel.com/xml/CMU%20Balance%20Summary%20Response%20IO" xmlns:abbgresabo="http://www.siebel.com/xml/SWIBalanceGroupIORes" xmlns:abbgdreqabo="http://www.siebel.com/xml/SWIBillingGroupDetailIOReq" xmlns:abbgdresabo="http://www.siebel.com/xml/SWIBillingGroupDetailIORes" xmlns:abbgsresabo="http://www.siebel.com/xml/SWIBalanceGroupServicesIORes" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:siebelfault="http://www.siebel.com/xml/SWIFault/V0" name="AccountBalanaceSiebelCommsReqABCS" targetNamespace="http://xmlns.oracle.com/ABCS/Siebel/Industry/Communications/AccountBalanaceSiebelCommsReqABCS/V1">
+ <documentation>
+  <svcdoc:Service>
+   <svcdoc:Description>This service contains operations that would be used by
+                       the participating application to interact with the
+                       external systems</svcdoc:Description>
+   <svcdoc:ServiceType>RequestorABCSImplementation</svcdoc:ServiceType>
+   <svcdoc:DisplayName>Account Balance Siebel Requestor ABCS Interface</svcdoc:DisplayName>
+   <svcdoc:ABOName>CmuResponseBalanceGroupIo</svcdoc:ABOName>
+   <svcdoc:EBOName>CustomerPartyEBO</svcdoc:EBOName>
+   <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+   <svcdoc:Version>1.0</svcdoc:Version>
+   <svcdoc:ImplementationTechnology>ESB</svcdoc:ImplementationTechnology>
+   <svcdoc:ProductFamily>CRM</svcdoc:ProductFamily>
+   <svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+   <svcdoc:ProductCode>CMU</svcdoc:ProductCode>
+  </svcdoc:Service>
+ </documentation>
+ <types>
+  <documentation>
+   <svcdoc:Schema>
+    <svcdoc:SchemaReferenced>CmuRequestBillingProfileIo.xsd</svcdoc:SchemaReferenced>
+    <svcdoc:SchemaReferenced>CmuBalanceSummaryResponseIo.xsd</svcdoc:SchemaReferenced>
+    <svcdoc:SchemaReferenced>SWIBalanceGroupIORes.xsd</svcdoc:SchemaReferenced>
+    <svcdoc:SchemaReferenced>SWIBillingGroupDetailIOReq.xsd</svcdoc:SchemaReferenced>
+    <svcdoc:SchemaReferenced>SWIBillingGroupDetailIORes</svcdoc:SchemaReferenced>
+    <svcdoc:SchemaReferenced>SWIBalanceGroupServicesIORes</svcdoc:SchemaReferenced>
+    <svcdoc:SchemaReferenced>Fault.xsd</svcdoc:SchemaReferenced>
+   </svcdoc:Schema>
+  </documentation>
+  <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCS/Siebel/Industry/Communications/AccountBalanaceSiebelCommsReqABCS/V1" elementFormDefault="qualified">
+   <xsd:import namespace="http://www.siebel.com/xml/CMU%20Request%20Billing%20Profile%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestBillingProfileIo.xsd" />
+   <xsd:import namespace="http://www.siebel.com/xml/CMU%20Balance%20Summary%20Response%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuBalanceSummaryResponseIo.xsd" />
+   <xsd:import namespace="http://www.siebel.com/xml/SWIBalanceGroupIORes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/Swibalancegroupiores.xsd" />
+   <xsd:import namespace="http://www.siebel.com/xml/SWIBillingGroupDetailIOReq" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/Swibillinggroupdetailioreq.xsd" />
+   <xsd:import namespace="http://www.siebel.com/xml/SWIBillingGroupDetailIORes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/Swibillinggroupdetailiores.xsd" />
+   <xsd:import namespace="http://www.siebel.com/xml/SWIBalanceGroupServicesIORes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/Swibalancegroupservicesiores.xsd" />
+      <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd" />
+   <xsd:import namespace="http://www.siebel.com/xml/SWIFault/V0" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/Fault.xsd" />
+  </xsd:schema>
+ </types>
+ <message name="QueryBalanceSummaryReqMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message will contain the Account balance summary
+                        request attributes</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="ListOfCmuRequestBillingProfileIo" element="abreqabo:ListOfCmuRequestBillingProfileIo" />
+ </message>
+ <message name="QueryBalanceSummaryRespMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message will contain the Account balance summary
+                        response attributes</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="ListOfCmuBalanceSummaryResponseIo" element="absresabo:ListOfCmuBalanceSummaryResponseIo" />
+ </message>
+ <message name="QueryBalanceGroupListReqMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message will contain the Account balance group
+                        request attributes</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="ListOfCmuRequestBillingProfileIo" element="abreqabo:ListOfCmuRequestBillingProfileIo" />
+ </message>
+ <message name="QueryBalanceGroupListRespMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message will contain the Account balance group
+                        response attributes</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="ListOfSwiBalanceGroupIoRes" element="abbgresabo:ListOfSwibalancegroupiores" />
+ </message>
+ <message name="QueryBalanceDetailsReqMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message will contain the Account balance details
+                        request attributes</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="ListOfSwiBillingGroupDetailIoReq" element="abbgdreqabo:ListOfSwibillinggroupdetailioreq" />
+ </message>
+ <message name="QueryBalanceDetailsRespMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message will contain the Account balance details
+                        response attributes</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="ListOfSwiBillingGroupDetailIoRes" element="abbgdresabo:ListOfSwibillinggroupdetailiores" />
+ </message>
+ <message name="QueryBalanceGroupServicesReqMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message will contain the Account balance group
+                        service request attributes</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="ListOfSwiBillingGroupDetailIoReq" element="abbgdreqabo:ListOfSwibillinggroupdetailioreq" />
+ </message>
+ <message name="QueryBalanceGroupServicesRespMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message will contain the Account balance group
+                        service response attributes</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="ListOfSwiBalanceGroupServicesIoRes" element="abbgsresabo:ListOfSwibalancegroupservicesiores" />
+ </message>
+ <message name="SiebelFaultMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message is used for propagating Error Context and
+                        Error Message</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="Fault" element="siebelfault:Fault" />
+ </message>
+ <message name="FaultMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message is used for propagating Error Context and
+                        Error Message</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="Fault" element="corecom:Fault" />
+ </message>
+ <portType name="AccountBalanceSiebelCommsReqABCS">
+  <documentation>
+   <svcdoc:Interface>
+    <svcdoc:Description>This ABCS Interface contains operations that route the
+                        input messages to the appropriate ABCS Implementation
+                        services</svcdoc:Description>
+    <svcdoc:DisplayName>Account Balance Siebel Requestor ABCS </svcdoc:DisplayName>
+    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+   </svcdoc:Interface>
+  </documentation>
+  <operation name="QueryBalanceSummary">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation QueryBalanceSummary will query the
+                         balance summary and call the
+                         QueryBalanceSummarySiebelABCSImpl service</svcdoc:Description>
+     <svcdoc:MEP>REQUEST_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>Query Balance Summary</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="abcssiebelab:QueryBalanceSummaryReqMsg" />
+   <output message="abcssiebelab:QueryBalanceSummaryRespMsg" />
+   <fault name="fault" message="abcssiebelab:SiebelFaultMsg" />
+  </operation>
+  <operation name="QueryBalanceGroupList">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation QueryBalanceGroupList will query the
+                         list of balance group and call the
+                         QueryBalanceGroupListSiebelABCSImpl service</svcdoc:Description>
+     <svcdoc:MEP>REQUEST_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>Query Balance Group List</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="abcssiebelab:QueryBalanceGroupListReqMsg" />
+   <output message="abcssiebelab:QueryBalanceGroupListRespMsg" />
+   <fault name="fault" message="abcssiebelab:SiebelFaultMsg" />
+  </operation>
+  <operation name="QueryBalanceDetails">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation QueryBalanceDetails will query the
+                         balance details and call the
+                         QueryBalanceDetailsSiebelABCSImpl service</svcdoc:Description>
+     <svcdoc:MEP>REQUEST_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>Query Balance Details</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="abcssiebelab:QueryBalanceDetailsReqMsg" />
+   <output message="abcssiebelab:QueryBalanceDetailsRespMsg" />
+   <fault name="fault" message="abcssiebelab:SiebelFaultMsg" />
+  </operation>
+  <operation name="QueryBalanceGroupServices">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation QueryBalanceGroupServices will query the
+                         balance group services and call the
+                         QueryBalanceGroupServicesSiebelABCSImpl service</svcdoc:Description>
+     <svcdoc:MEP>REQUEST_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>Query Balance Group Services</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="abcssiebelab:QueryBalanceGroupServicesReqMsg" />
+   <output message="abcssiebelab:QueryBalanceGroupServicesRespMsg" />
+   <fault name="fault" message="abcssiebelab:SiebelFaultMsg" />
+  </operation>
+ </portType>
+</definitions>

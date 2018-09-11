@@ -1,0 +1,135 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<xsd:schema elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="http://siebel.com/OrderManagement/Order/Details/Data/Id"
+     xmlns:xsdLocal3="http://siebel.com/OrderManagement/Order/Details/Data/Id" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:annotation>
+        <xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All
+                           rights reserved. Siebel XSD Generation</xsd:documentation>
+    </xsd:annotation>
+    <xsd:element name="ListOfOrderDetail" type="xsdLocal3:ListOfOrderDetailId"/>
+    <xsd:complexType name="ListOfOrderDetailTopElmtId">
+        <xsd:sequence>
+            <xsd:element name="ListOfOrderDetail" maxOccurs="1" minOccurs="1" type="xsdLocal3:ListOfOrderDetailId"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ListOfOrderDetailId">
+        <xsd:sequence>
+            <xsd:element name="OrderDetail" maxOccurs="unbounded" minOccurs="0" type="xsdLocal3:OrderDetailId"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="OrderDetailId">
+        <xsd:sequence>
+            <xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="ListOfOrderApprovalHistory" maxOccurs="1" minOccurs="0" type="xsdLocal3:ListOfOrderApprovalHistoryId"/>
+            <xsd:element name="ListOfShipment" maxOccurs="1" minOccurs="0" type="xsdLocal3:ListOfShipmentId"/>
+            <xsd:element name="ListOfOrderItemDetail" maxOccurs="1" minOccurs="0" type="xsdLocal3:ListOfOrderItemDetailId"/>
+            <xsd:element name="ListOfOrderPayment" maxOccurs="1" minOccurs="0" type="xsdLocal3:ListOfOrderPaymentId"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ListOfOrderApprovalHistoryId">
+        <xsd:sequence>
+            <xsd:element name="OrderApprovalHistory" maxOccurs="unbounded" minOccurs="0" type="xsdLocal3:OrderApprovalHistoryId"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="OrderApprovalHistoryId">
+        <xsd:sequence>
+            <xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ListOfShipmentId">
+        <xsd:sequence>
+            <xsd:element name="Shipment" maxOccurs="unbounded" minOccurs="0" type="xsdLocal3:ShipmentId"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ShipmentId">
+        <xsd:sequence>
+            <xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="ListOfShipmentItem" maxOccurs="1" minOccurs="0" type="xsdLocal3:ListOfShipmentItemId"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ListOfOrderItemDetailId">
+        <xsd:sequence>
+            <xsd:element name="OrderItemDetail" maxOccurs="unbounded" minOccurs="0" type="xsdLocal3:OrderItemDetailId"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="OrderItemDetailId">
+        <xsd:sequence>
+            <xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="ListOfOrderItemXADetail" maxOccurs="1" minOccurs="0" type="xsdLocal3:ListOfOrderItemXADetailId"/>
+            <xsd:element name="ListOfOrderItemProductLine" maxOccurs="1" minOccurs="0" type="xsdLocal3:ListOfOrderItemProductLineId"/>
+            <xsd:element name="OrderItemDetail" maxOccurs="unbounded" minOccurs="0" type="xsdLocal3:OrderItemDetailId"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ListOfOrderPaymentId">
+        <xsd:sequence>
+            <xsd:element name="OrderPayment" maxOccurs="unbounded" minOccurs="0" type="xsdLocal3:OrderPaymentId"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="OrderPaymentId">
+        <xsd:sequence>
+            <xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="ListOfOrderPaymentsBankAddress" maxOccurs="1" minOccurs="0" type="xsdLocal3:ListOfOrderPaymentsBankAddressId"/>
+            <xsd:element name="ListOfOrderPaymentsBillToAddress" maxOccurs="1" minOccurs="0" type="xsdLocal3:ListOfOrderPaymentsBillToAddressId"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ListOfShipmentItemId">
+        <xsd:sequence>
+            <xsd:element name="ShipmentItem" maxOccurs="unbounded" minOccurs="0" type="xsdLocal3:ShipmentItemId"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ShipmentItemId">
+        <xsd:sequence>
+            <xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ListOfOrderItemXADetailId">
+        <xsd:sequence>
+            <xsd:element name="OrderItemXADetail" maxOccurs="unbounded" minOccurs="0" type="xsdLocal3:OrderItemXADetailId"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="OrderItemXADetailId">
+        <xsd:sequence>
+            <xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ListOfOrderItemProductLineId">
+        <xsd:sequence>
+            <xsd:element name="OrderItemProductLine" maxOccurs="unbounded" minOccurs="0" type="xsdLocal3:OrderItemProductLineId"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="OrderItemProductLineId">
+        <xsd:sequence>
+            <xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="ProductLineId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ListOfOrderPaymentsBankAddressId">
+        <xsd:sequence>
+            <xsd:element name="OrderPaymentsBankAddress" maxOccurs="unbounded" minOccurs="0" type="xsdLocal3:OrderPaymentsBankAddressId"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="OrderPaymentsBankAddressId">
+        <xsd:sequence>
+            <xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ListOfOrderPaymentsBillToAddressId">
+        <xsd:sequence>
+            <xsd:element name="OrderPaymentsBillToAddress" maxOccurs="unbounded" minOccurs="0" type="xsdLocal3:OrderPaymentsBillToAddressId"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="OrderPaymentsBillToAddressId">
+        <xsd:sequence>
+            <xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

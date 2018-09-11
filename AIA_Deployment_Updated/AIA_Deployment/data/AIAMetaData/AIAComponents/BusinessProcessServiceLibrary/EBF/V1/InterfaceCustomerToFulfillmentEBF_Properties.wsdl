@@ -1,0 +1,12 @@
+<definitions
+     name="properties"
+     targetNamespace="http://xmlns.oracle.com/EnterpriseFlows/Core/InterfaceCustomerToFulfillmentEBF/V1/correlationset"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:pns1="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+    >
+    <bpws:property name="Invoke_SyncCustomerPartyList_SyncCustomerPartyList_SyncCustomerPartyListEBM_EMBID_prop"
+         type="pns1:IdentifierType"/>
+</definitions>

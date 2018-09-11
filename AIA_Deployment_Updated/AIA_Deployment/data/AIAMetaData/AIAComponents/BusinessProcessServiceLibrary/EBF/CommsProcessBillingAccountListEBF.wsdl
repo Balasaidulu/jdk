@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="CommsProcessBillingAccountListEBF"
+     targetNamespace="http://xmlns.oracle.com/EnterpriseFlows/Industry/Comms/CommsProcessBillingAccountListEBF/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+     xmlns:custebs="http://xmlns.oracle.com/EnterpriseServices/Core/CustomerParty/V2"
+     xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:pns1="http://xmlns.oracle.com/EnterpriseFlows/Industry/Comms/CommsProcessBillingAccountListEBF/V1/correlationset"
+     xmlns:corecustmr="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+     xmlns:client="http://xmlns.oracle.com/EnterpriseFlows/Industry/Comms/CommsProcessBillingAccountListEBF/V1"
+    xmlns:ns3="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessCollectionSharingBRMCommsProvABCSImpl/V1"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>Interface Customer to Billing Enterprise Business Flow</svcdoc:Description>
+            <svcdoc:ServiceType>EnterpriseBusinessFlow</svcdoc:ServiceType>
+            <svcdoc:DisplayName>CommsProcessBillingAccountListEBF</svcdoc:DisplayName>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:EBOName>CustomerPartyEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://xmlns.oracle.com/EnterpriseFlows/Industry/Comms/CommsProcessBillingAccountListEBF/V1/correlationset"
+         location="oramds:/apps/AIAMetaData/AIAComponents/BusinessProcessServiceLibrary/EBF/CommsProcessBillingAccountListEBF_Properties.wsdl"/>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/CustomerParty/V2/CustomerPartyEBM.xsd"/>
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+            <import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </schema>
+    </types>
+    <message name="ProcessBillingAccountListRequestMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used as the request payload to the
+                        CommsProcessBillingAccountList operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="ProcessBillingAccountListEBM" element="corecustmr:ProcessBillingAccountListEBM"/>
+    </message>
+    <message name="ProcessBillingAccountListResponseMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used as the response payload to the
+                        CommsProcessBillingAccountList operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="SyncCustomerPartyListResponseEBM" element="corecustmr:SyncCustomerPartyListResponseEBM"/>
+    </message>
+
+ <message name="ProcessCollectionSharingResponseMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used as the response payload to the
+                        CommsProcessBillingAccountList operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="ProcessBillingAccountListResponseEBM" element="corecustmr:ProcessBillingAccountListResponseEBM"/>
+    </message>
+	
+	<message name="QueryCustomerPartyListResponseMessage">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used as the response payload to the
+                        QueryCustomerPartytList operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="QueryCustomerPartyListResponseEBM" element="corecustmr:QueryCustomerPartyListResponseEBM"/>
+    </message>
+
+    <message name="AIAFaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error Context and
+                        Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="AIAFault" element="corecom:Fault"/>
+    </message>
+    <portType name="CommsProcessBillingAccountListEBF">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This interface contains the CommsProcessBillingAccountList EBF service</svcdoc:Description>
+                <svcdoc:DisplayName>CommsProcessBillingAccountListEBF Interface</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="ProcessBillingAccountList">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to interface customers to billing</svcdoc:Description>
+                    <svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+                    <svcdoc:DisplayName>CommsCommsProcessBillingAccountList</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="client:ProcessBillingAccountListRequestMsg"/>
+        </operation>
+        <operation name="SyncCustomerPartyListResponse">
+            <input message="client:ProcessBillingAccountListResponseMsg"/>
+        </operation>
+	 <operation name="ProcessCollectionSharingResponse">
+            <input message="client:ProcessCollectionSharingResponseMsg"/>
+        </operation>
+		<operation name="QueryCustomerPartyListResponse">
+            <input message="client:QueryCustomerPartyListResponseMessage"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="CommsProcessBillingAccountListEBF">
+        <plnk:role name="CommsProcessBillingAccountListEBFProvider">
+            <plnk:portType name="client:CommsProcessBillingAccountListEBF"/>
+        </plnk:role>
+        <!--plnk:role name="CommsProcessBillingAccountListEBFRequester">
+            <plnk:portType name="client:CommsProcessBillingAccountListEBFCallback"/>
+        </plnk:role-->
+    </plnk:partnerLinkType>
+	<!--plnk:partnerLinkType name="QueryCustomerPartyListResponse">
+        <plnk:role name="QueryCustomerPartyListResponseProvider">
+            <plnk:portType name="client:CommsProcessBillingAccountListEBF"/>
+        </plnk:role>
+    </plnk:partnerLinkType-->
+    <bpws:propertyAlias propertyName="pns1:Create_EBMID" messageType="custebs:SyncCustomerPartyListReqMsg"
+         part="SyncCustomerPartyListEBM" query="/corecustmr:SyncCustomerPartyListEBM/corecom:EBMHeader/corecom:EBMID"/>
+    <bpws:propertyAlias propertyName="pns1:Create_EBMID" messageType="client:ProcessBillingAccountListResponseMsg"
+         part="SyncCustomerPartyListResponseEBM" query="/corecustmr:SyncCustomerPartyListResponseEBM/corecom:EBMHeader/corecom:RequestEBMID"/>
+    <bpws:propertyAlias propertyName="pns1:Update_EBMID" messageType="custebs:SyncCustomerPartyListReqMsg"
+         part="SyncCustomerPartyListEBM" query="/corecustmr:SyncCustomerPartyListEBM/corecom:EBMHeader/corecom:EBMID"/>
+    <bpws:propertyAlias propertyName="pns1:Update_EBMID" messageType="client:ProcessBillingAccountListResponseMsg"
+         part="SyncCustomerPartyListResponseEBM" query="/corecustmr:SyncCustomerPartyListResponseEBM/corecom:EBMHeader/corecom:RequestEBMID"/>
+<bpws:propertyAlias propertyName="pns1:EBMID_LG" messageType="ns3:ProcessCollectionSharingReqMsg" part="ProcessBillingAccountListEBM" query="/corecustmr:ProcessBillingAccountListEBM/corecom:EBMHeader/corecom:EBMID"/>     
+
+<bpws:propertyAlias propertyName="pns1:EBMID_LG" messageType="client:ProcessCollectionSharingResponseMsg" part="ProcessBillingAccountListResponseEBM" query="/corecustmr:ProcessBillingAccountListResponseEBM/corecom:EBMHeader/corecom:RequestEBMID"/>
+    <bpws:propertyAlias propertyName="pns1:QueryCustomerPartyListEBMId" xmlns:ns8="http://xmlns.oracle.com/QueryCustomerPartyListCommsJMSProducer"
+         messageType="ns8:QueryCustomerPartyListCommsJMSProducerBPELProcessRequestMessage" part="body"
+         query="/corecustmr:QueryCustomerPartyListEBM/corecom:EBMHeader/corecom:EBMID"/>
+    <bpws:propertyAlias propertyName="pns1:QueryCustomerPartyListEBMId" xmlns:client="http://xmlns.oracle.com/EnterpriseFlows/Industry/Comms/CommsProcessBillingAccountListEBF/V1"
+         messageType="client:QueryCustomerPartyListResponseMessage" part="QueryCustomerPartyListResponseEBM"
+         query="/corecustmr:QueryCustomerPartyListResponseEBM/corecom:EBMHeader/corecom:RequestEBMID"
+         xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:corecustmr="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"/>
+</definitions>

@@ -1,0 +1,38 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            targetNamespace="http://xmlns.oracle.com/ItemCatalogCategorySvc"
+            xmlns="http://xmlns.oracle.com/ItemCatalogCategorySvc"
+            xmlns:iccin="http://xmlns.oracle.com/apps/ego/itemcatalog/service/in"
+            xmlns:iccout="http://xmlns.oracle.com/apps/ego/itemcatalog/service/out"
+            xmlns:fnd="http://xmlns.oracle.com/FndSecurity"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import schemaLocation="ICCQueryParam.xsd"
+                namespace="http://xmlns.oracle.com/apps/ego/itemcatalog/service/in"/>
+    <xsd:import schemaLocation="ListOfICC.xsd"
+                namespace="http://xmlns.oracle.com/apps/ego/itemcatalog/service/out"/>
+    <xsd:import schemaLocation="FndSecurity.xsd"
+                namespace="http://xmlns.oracle.com/FndSecurity"/>
+    <xsd:complexType name="GetIccReqType">
+        <xsd:annotation>
+            <xsd:documentation>getICCDetails provides the Complete details
+			       of given ICC</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="ICCQueryParam" type="iccin:ICCQueryParamType"
+                         minOccurs="0" nillable="true"/>
+            <xsd:element name="FndSecurity" type="fnd:fnd_security"
+                         minOccurs="0" nillable="true"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="GetIccRespType">
+        <xsd:annotation>
+            <xsd:documentation>getICCDetails provides the Complete details
+			       of given ICC</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="ListOfICC" type="iccout:ListOfICCsType"
+                         minOccurs="0" nillable="true"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="IccQueryIn" type="GetIccReqType" nillable="true"/>
+    <xsd:element name="IccQueryOut" type="GetIccRespType" nillable="true"/>
+</xsd:schema>

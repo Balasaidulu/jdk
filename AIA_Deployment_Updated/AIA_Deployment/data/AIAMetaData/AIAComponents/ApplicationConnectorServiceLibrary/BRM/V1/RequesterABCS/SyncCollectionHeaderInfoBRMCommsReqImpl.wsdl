@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="SyncCollectionHeaderInfoBRMCommsReqImpl"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/SyncCollectionHeaderInfoBRMCommsReqImpl/V1"             
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:implbrmcoll="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/SyncCollectionHeaderInfoBRMCommsReqImpl/V1"
+             xmlns:brmcollabo="http://www.portal.com/schemas/CRMSync"
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V2"
+             xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+<documentation>
+		<svcdoc:Service>
+			<svcdoc:Description>This service contains operations that would be used to Sync StartTime and EndTime of a Collection Run from BRM to Siebel</svcdoc:Description>
+			<svcdoc:ServiceType>RequesterABCSImplementation</svcdoc:ServiceType>
+			<svcdoc:DisplayName>SyncCollectionHeaderInfoBRMCommsReqImpl/V1 Requester Implementation Interface</svcdoc:DisplayName>
+			<svcdoc:ServiceObjectName>SyncCollectionHeaderInfo</svcdoc:ServiceObjectName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:Version>1.0</svcdoc:Version>			
+			<svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+			<svcdoc:ProductFamily>BRM</svcdoc:ProductFamily>
+			<svcdoc:ProductPillar>BRM</svcdoc:ProductPillar>
+			<svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+		</svcdoc:Service>
+	</documentation>
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	TYPE DEFINITION - List of services participating in this BPEL process
+	The default output of the BPEL designer uses strings as input and 
+	output to the BPEL Process. But you can define or import any XML 
+	Schema type and use them as part of the message types.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->   
+        <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+	<types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">			
+                        <import namespace="http://www.portal.com/schemas/CRMSync" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/CollectionsInfoChange.xsd"/>
+                        <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>                        
+		</schema>
+	</types>
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	MESSAGE TYPE DEFINITION - Definition of the message types used as 
+	part of the port type defintions
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->      
+	<message name="SyncCollectionHeaderInfoBRMCommsReqImplProcessRequestMessage">
+        <documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as a payload to Sync Collection Header Information</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="SyncCollectionHeaderInfo" element="brmcollabo:CollectionsInfoChange"/>
+	</message>
+        <message name="FaultMessage">
+        <documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="Fault" element="corecom:Fault"/>
+	</message>
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PORT TYPE DEFINITION - A port type groups a set of operations into
+	a logical service unit.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+	<!-- portType implemented by the SyncCollectionHeaderInfoBRMCommsReqImplProcess BPEL process -->
+	<portType name="SyncCollectionHeaderInfoBRMCommsReqImpl">
+                        <documentation>
+			<svcdoc:Interface>
+				<svcdoc:Description>This interface contains operation that recieves the collection header information from BRM</svcdoc:Description>
+				<svcdoc:DisplayName>Sync CollectionHeaderInfo BRM Comms Requestor Implementation</svcdoc:DisplayName>
+				<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			</svcdoc:Interface>
+		</documentation>
+		<operation name="SyncCollectionHeaderInfo">
+                <documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to Sync Sync Collection Header Information</svcdoc:Description>
+					<svcdoc:MEP>FireAndForget</svcdoc:MEP>
+					<svcdoc:DisplayName>SyncCollectionHeaderInfo</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input  message="implbrmcoll:SyncCollectionHeaderInfoBRMCommsReqImplProcessRequestMessage" />
+		</operation>
+	</portType>
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PARTNER LINK TYPE DEFINITION
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --> 
+	<plnk:partnerLinkType name="SyncCollectionHeaderInfoBRMCommsReqImplProcess">
+		<plnk:role name="SyncCollectionHeaderInfoBRMCommsReqImplProcessProvider">
+			<plnk:portType name="implbrmcoll:SyncCollectionHeaderInfoBRMCommsReqImpl"/>
+		</plnk:role>
+	</plnk:partnerLinkType>
+</definitions>

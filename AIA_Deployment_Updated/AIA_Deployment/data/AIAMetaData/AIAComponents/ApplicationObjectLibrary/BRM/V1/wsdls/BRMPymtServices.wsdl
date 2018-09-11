@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:brm="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BRMPYMTService" targetNamespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes">
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes">
+            <include schemaLocation="../schemas/PCM_OP_PYMT_COLLECT.xsd"/>
+        </schema>
+    </types>
+    <message name="PCM_OP_PYMT_COLLECT_inmsg">
+        <part element="brm:PCM_OP_PYMT_COLLECT_inputFlist" name="PCM_OP_PYMT_COLLECT_inputFlist"/>
+    </message>
+    <message name="PCM_OP_PYMT_COLLECT_outmsg">
+        <part element="brm:PCM_OP_PYMT_COLLECT_outputFlist" name="PCM_OP_PYMT_COLLECT_outputFlist"/>
+    </message>
+    <portType name="BRMPYMTService_ptt">
+        <operation name="PCM_OP_PYMT_COLLECT">
+            <input message="brm:PCM_OP_PYMT_COLLECT_inmsg" name="PCM_OP_PYMT_COLLECT_Request"/>
+            <output message="brm:PCM_OP_PYMT_COLLECT_outmsg" name="PCM_OP_PYMT_COLLECT_Response"/>
+        </operation>
+    </portType>
+    <plt:partnerLinkType name="BRMPYMTService_plt">
+        <plt:role name="BRMPYMTService_role">
+            <plt:portType name="brm:BRMPYMTService_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+</definitions>

@@ -1,0 +1,58 @@
+<schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/AIA_SCHEMA_TOKEN/AIA_AGGREGATOR_PUB/SIEBEL_AGGREGATE_CONTACT/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/AIA_SCHEMA_TOKEN/AIA_AGGREGATOR_PUB/SIEBEL_AGGREGATE_CONTACT/" elementFormDefault="qualified">
+   <element name="InputParameters">
+      <complexType>
+         <sequence>
+            <element name="P_CONTACT_ID" type="string" db:index="1" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+            <element name="P_ACCOUNT_IDS" type="db:AIA_SCHEMA_TOKEN.AIA_AGGREGATOR_LIST_OF_IDS_TBL" db:index="2" db:default="true" db:type="Array" minOccurs="0" nillable="true"/>
+            <element name="P_ADDRESS_IDS" type="db:AIA_SCHEMA_TOKEN.AIA_AGGREGATOR_LIST_OF_IDS_TBL" db:index="3" db:default="true" db:type="Array" minOccurs="0" nillable="true"/>
+            <element name="P_COMINV_IDS" type="db:AIA_SCHEMA_TOKEN.AIA_AGGR_LIST_OF_COMINVIDS_TBL" db:index="4" db:default="true" db:type="Array" minOccurs="0" nillable="true"/>
+            <element name="P_ENTERPRISE_SERVER_ID" type="string" db:index="5" db:default="true" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+            <element name="P_MESSAGE_ID" type="string" db:index="6" db:default="true" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+            <element name="P_LANGUAGE" type="string" db:index="7" db:default="true" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+            <element name="P_LOCALE" type="string" db:index="8" db:default="true" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+         </sequence>
+      </complexType>
+   </element>
+   <element name="OutputParameters">
+      <complexType>
+         <sequence>
+            <element name="X_RETURN_STATUS" type="string" db:index="9" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+            <element name="X_ERROR_STRING" type="string" db:index="10" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+         </sequence>
+      </complexType>
+   </element>
+   <complexType name="AIA_SCHEMA_TOKEN.AIA_AGGREGATOR_LIST_OF_IDS_TBL">
+      <sequence>
+         <element name="P_ACCOUNT_IDS_ITEM" db:type="VARCHAR2" minOccurs="0" maxOccurs="unbounded" nillable="true">
+            <simpleType>
+               <restriction base="string">
+                  <maxLength value="150"/>
+               </restriction>
+            </simpleType>
+         </element>
+      </sequence>
+   </complexType>
+   <complexType name="AIA_SCHEMA_TOKEN.AIA_AGGR_COMINVIDS">
+      <sequence>
+         <element name="ACCOUNTID" db:type="VARCHAR2" minOccurs="0" nillable="true">
+            <simpleType>
+               <restriction base="string">
+                  <maxLength value="150"/>
+               </restriction>
+            </simpleType>
+         </element>
+         <element name="BILLINGPROFILEID" db:type="VARCHAR2" minOccurs="0" nillable="true">
+            <simpleType>
+               <restriction base="string">
+                  <maxLength value="150"/>
+               </restriction>
+            </simpleType>
+         </element>
+      </sequence>
+   </complexType>
+   <complexType name="AIA_SCHEMA_TOKEN.AIA_AGGR_LIST_OF_COMINVIDS_TBL">
+      <sequence>
+         <element name="P_COMINV_IDS_ITEM" type="db:AIA_SCHEMA_TOKEN.AIA_AGGR_COMINVIDS" db:type="Struct" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      </sequence>
+   </complexType>
+</schema>

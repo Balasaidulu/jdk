@@ -1,0 +1,50 @@
+<definitions name="QueryPartialBillOfMaterialsListPIMAdapter" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/apps/QueryPartialBillOfMaterialsListPIMAdapter/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/apps/QueryPartialBillOfMaterialsListPIMAdapter/" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/APPS/AIA_MDMITEMBATCH/QUERY_BOM/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/" xmlns:hdr="http://xmlns.oracle.com/pcbpel/adapter/appscontext/">
+ 	    <import namespace="http://xmlns.oracle.com/pcbpel/adapter/appscontext/" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/AppsContextHeader.wsdl" />
+          <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/" location="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/PIM/V1/AdapterServices/DBAdapterOutboundHeader.wsdl" />
+
+
+	<types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/APPS/AIA_MDMITEMBATCH/QUERY_BOM/" 
+                            schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PIM/V1/schemas/APPS_AIA_MDMITEMBATCH_QUERY_BOM.xsd"/>
+		</schema>
+	</types>
+	<message name="args_in_msg">
+		<part name="InputParameters" element="db:InputParameters"/>
+	</message>
+	<message name="args_out_msg">
+		<part name="OutputParameters" element="db:OutputParameters"/>
+	</message>
+	<portType name="QueryPartialBillOfMaterialsListPIMAdapter_ptt">
+		<operation name="QueryPartialBillOfMaterialsListPIMAdapter">
+			<input message="tns:args_in_msg"/>
+			<output message="tns:args_out_msg"/>
+		</operation>
+	</portType>
+	<binding name="QueryPartialBillOfMaterialsListPIMAdapter_binding" type="tns:QueryPartialBillOfMaterialsListPIMAdapter_ptt">
+		<jca:binding/>
+		<operation name="QueryPartialBillOfMaterialsListPIMAdapter">
+			<jca:operation IRepInternalName="PLSQL:AIA_MDMITEMBATCH:QUERY_BOM" SchemaName="APPS" PackageName="AIA_MDMITEMBATCH" ProcedureName="QUERY_BOM" InteractionSpec="oracle.tip.adapter.apps.AppsStoredProcedureInteractionSpec" Username="sysadmin" Responsibility="System Administrator"/>
+			<input>
+				<jca:header message="hdr:Header_msg" part="Header"/>
+			</input>
+			<output/>
+		</operation>
+	</binding>
+	<service name="QueryPartialBillOfMaterialsListPIMAdapter">
+		<port name="QueryPartialBillOfMaterialsListPIMAdapter_pt" binding="tns:QueryPartialBillOfMaterialsListPIMAdapter_binding">
+			<!--Your runtime connection is declared in 
+J2EE_HOME/application-deployments/default/AppsAdapter/oc4j-ra.xml 
+These mcf properties here are from your design time connection and 
+save you from having to edit that file and restart the application server 
+if eis/Apps/OraclePIMDataSource is missing. 
+These mcf properties are safe to remove.-->
+			<jca:address location="eis/Apps/OraclePIMDataSource" UIConnectionName="DBConnection_MM1Ut210" UIOracleAppType="DBOBJECT" ManagedConnectionFactory="oracle.tip.adapter.apps.AppsManagedConnectionFactory" mcf.ConnectionString="jdbc:oracle:thin:@rws60071rems.us.oracle.com:1614:MM1Ut210" mcf.UserName="apps" mcf.Password="53CB0F044A0D3DD2C063679F18F89870"/>
+		</port>
+	</service>
+	<plt:partnerLinkType name="QueryPartialBillOfMaterialsListPIMAdapter_plt">
+		<plt:role name="QueryPartialBillOfMaterialsListPIMAdapter_role">
+			<plt:portType name="tns:QueryPartialBillOfMaterialsListPIMAdapter_ptt"/>
+		</plt:role>
+	</plt:partnerLinkType>
+</definitions>

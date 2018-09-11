@@ -1,0 +1,24 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/item/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/item/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="InvoicingCharacteristics" sdoJava:package="oracle.apps.ego.item.service" sdoJava:instanceClass="oracle.apps.ego.item.service.InvoicingCharacteristics">
+        <xsd:annotation>
+            <xsd:documentation>Invoicing Characteristics</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="InvoiceableItemFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="InvoiceEnabledFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AccountingRuleId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="InvoicingRuleId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="TaxCode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="SalesAccount" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PaymentTermsId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="invoicingCharacteristics" type="InvoicingCharacteristics" nillable="true"/>
+</xsd:schema>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created By: Kedar Shenoy  --><!-- Date Created: 05-03-2007     --><definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:abcssiebelpr="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Communications/PaymentSiebelCommsReqABCS/V1" xmlns:prbpreqabo="http://www.siebel.com/xml/CMU%20Request%20Billing%20Profile%20IO" xmlns:prcreqabo="http://www.siebel.com/xml/CMU%20Request%20New%20Payment%20Capture%20IO" xmlns:prcresabo="http://www.siebel.com/xml/CMU%20Response%20New%20Payments%20IO" xmlns:prcreqinabo="http://www.siebel.com/xml/CMU%20Request%20New%20Payment%20Capture%20Invoice%20IO" xmlns:prcresinabo="http://www.siebel.com/xml/CMU%20Response%20New%20Payment%20Invoice%20IO" xmlns:prsreqabo="http://www.siebel.com/xml/CMU%20Request%20Billing%20Profile%20Payments%20Search%20IO" xmlns:prsresabo="http://www.siebel.com/xml/CMU%20Response%20Billing%20Profile%20Payments%20IO" xmlns:prsreqinabo="http://www.siebel.com/xml/CMU%20Request%20Billed%20Usage%20IO" xmlns:prsresinabo="http://www.siebel.com/xml/CMU%20Response%20Billed%20Usgae%20Payments%20IO" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:siebelfault="http://www.siebel.com/xml/SWIFault/V0" name="PaymentSiebelCommsReqABCS" targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Communications/PaymentSiebelCommsReqABCS/V1">
+  
+ <documentation>
+    <svcdoc:Service>
+   	 <svcdoc:Description>This service contains operations that would be used by the participating application to interact with the external systems</svcdoc:Description>
+    	 <svcdoc:ServiceType>RequestorABCSImplementation</svcdoc:ServiceType>
+    	 <svcdoc:DisplayName>Payment Reciept Siebel Requestor ABCS Interface</svcdoc:DisplayName>
+       <svcdoc:EBOName>ReceivedPaymentEBO</svcdoc:EBOName>
+       <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+       <svcdoc:Version>1.0</svcdoc:Version>
+       <svcdoc:ImplementationTechnology>ESB</svcdoc:ImplementationTechnology>
+       <svcdoc:ProductFamily>CRM</svcdoc:ProductFamily>
+       <svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+	 <svcdoc:ProductCode>CMU</svcdoc:ProductCode>
+    </svcdoc:Service>
+   </documentation>
+  
+  
+  <types>
+    <documentation>
+    	<svcdoc:Schema>
+    		<svcdoc:SchemaReferenced>CmuRequestBillingProfileIo.xsd</svcdoc:SchemaReferenced>
+                <svcdoc:SchemaReferenced>CmuRequestBilledUsageIo.xsd</svcdoc:SchemaReferenced>                
+                <svcdoc:SchemaReferenced>CmuRequestBillingProfilePaymentsSearchIo.xsd</svcdoc:SchemaReferenced>
+                <svcdoc:SchemaReferenced>CmuRequestNewPaymentCaptureInvoiceIo.xsd</svcdoc:SchemaReferenced>
+		<svcdoc:SchemaReferenced>CmuRequestNewPaymentCaptureIo.xsd</svcdoc:SchemaReferenced>
+                <svcdoc:SchemaReferenced>CmuResponseBilledUsgaePaymentsIo.xsd</svcdoc:SchemaReferenced>                
+                <svcdoc:SchemaReferenced>CmuResponseBillingProfilePaymentsIo.xsd</svcdoc:SchemaReferenced>
+                <svcdoc:SchemaReferenced>CmuResponseNewPaymentInvoiceIo.xsd</svcdoc:SchemaReferenced>
+		<svcdoc:SchemaReferenced>CmuResponseNewPaymentsIo.xsd</svcdoc:SchemaReferenced>
+   	</svcdoc:Schema>
+    </documentation>  
+  <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Communications/PaymentSiebelCommsReqABCS/V1" elementFormDefault="qualified">
+  
+  <xsd:import namespace="http://www.siebel.com/xml/CMU%20Request%20Billing%20Profile%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestBillingProfileIo.xsd" />
+  <xsd:import namespace="http://www.siebel.com/xml/CMU%20Request%20Billing%20Profile%20Payments%20Search%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestBillingProfilePaymentsSearchIo.xsd" />
+  <xsd:import namespace="http://www.siebel.com/xml/CMU%20Request%20New%20Payment%20Capture%20Invoice%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestNewPaymentCaptureInvoiceIo.xsd" />
+  <xsd:import namespace="http://www.siebel.com/xml/CMU%20Request%20New%20Payment%20Capture%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestNewPaymentCaptureIo.xsd" />
+  <xsd:import namespace="http://www.siebel.com/xml/CMU%20Response%20Billing%20Profile%20Payments%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuResponseBillingProfilePaymentsIo.xsd" />
+  <xsd:import namespace="http://www.siebel.com/xml/CMU%20Response%20New%20Payment%20Invoice%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuResponseNewPaymentInvoiceIo.xsd" />
+  <xsd:import namespace="http://www.siebel.com/xml/CMU%20Response%20New%20Payments%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuResponseNewPaymentsIo.xsd" />
+  <xsd:import namespace="http://www.siebel.com/xml/CMU%20Request%20Billed%20Usage%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestBilledUsageIo.xsd" />
+  <xsd:import namespace="http://www.siebel.com/xml/CMU%20Response%20Billed%20Usgae%20Payments%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuResponseBilledUsgaePaymentsIo.xsd" />      
+  <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd" />
+     <xsd:import namespace="http://www.siebel.com/xml/SWIFault/V0" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/Fault.xsd" />
+	 </xsd:schema>
+  </types>
+   
+  <message name="QueryPaymentReqMsg">
+    <documentation>
+    	<svcdoc:Message>
+   		<svcdoc:Description>This message will contain the query payment request attributes </svcdoc:Description>
+   	</svcdoc:Message>
+    </documentation>  
+    <part name="ListOfCmuRequestBillingProfileIo" element="prbpreqabo:ListOfCmuRequestBillingProfileIo" />
+  </message>
+  
+  <message name="QueryPaymentRespMsg">
+    <documentation>
+    	<svcdoc:Message>
+   		<svcdoc:Description>This message will contain the response of query payment operation </svcdoc:Description>
+   	</svcdoc:Message>
+    </documentation>  
+    <part name="ListOfCmuResponseBillingProfilePaymentsIo" element="prsresabo:ListOfCmuResponseBillingProfilePaymentsIo" />
+  </message>
+  <message name="SearchPaymentReqMsg">
+    <documentation>
+    	<svcdoc:Message>
+   		<svcdoc:Description>This message will contain the request attributes of search payments operation </svcdoc:Description>
+   	</svcdoc:Message>
+    </documentation>  
+    <part name="ListOfCmuRequestBillingProfilePaymentsSearchIo" element="prsreqabo:ListOfCmuRequestBillingProfilePaymentsSearchIo" />
+  </message>
+  <message name="SearchPaymentRespMsg">
+    <documentation>
+    	<svcdoc:Message>
+   		<svcdoc:Description>This message will contain the request attributes of search payments operation </svcdoc:Description>
+   	</svcdoc:Message>
+    </documentation>  
+    <part name="ListOfCmuResponseBillingProfilePaymentsIo" element="prsresabo:ListOfCmuResponseBillingProfilePaymentsIo" />
+  </message>
+  
+  <message name="QueryInvoicePaymentReqMsg">
+    <documentation>
+    	<svcdoc:Message>
+   		<svcdoc:Description>This message will contain the request attributes of search payments operation from the invoice screen </svcdoc:Description>
+   	</svcdoc:Message>
+    </documentation>  
+    <part name="ListOfCmuRequestBilledUsageIo" element="prsreqinabo:ListOfCmuRequestBilledUsageIo" />
+  </message>
+  <message name="QueryInvoicePaymentRespMsg">
+    <documentation>
+    	<svcdoc:Message>
+   		<svcdoc:Description>This message will contain the response attributes of search payments operation from the invoice screen </svcdoc:Description>
+   	</svcdoc:Message>
+    </documentation>  
+    <part name="ListOfCmuResponseBilledUsgaePaymentsIo" element="prsresinabo:ListOfCmuResponseBilledUsgaePaymentsIo" />
+  </message>
+  
+  
+  
+  
+  
+  <message name="CreatePaymentReqMsg">
+    <documentation>
+    	<svcdoc:Message>
+   		<svcdoc:Description>This message will contain the request attributes of Create payments operation </svcdoc:Description>
+   	</svcdoc:Message>
+    </documentation>  
+    <part name="ListOfCmuRequestNewPaymentCaptureIo" element="prcreqabo:ListOfCmuRequestNewPaymentCaptureIo" />
+  </message>
+   
+   <message name="CreatePaymentRespMsg">
+    <documentation>
+    	<svcdoc:Message>
+   		<svcdoc:Description>This message will contain the response attributes of create payments operation </svcdoc:Description>
+   	</svcdoc:Message>
+    </documentation>  
+    <part name="ListOfCmuResponseNewPaymentsIo" element="prcresabo:ListOfCmuResponseNewPaymentsIo" />
+  </message>
+  
+  <message name="CreateInvoicePaymentReqMsg">
+    <documentation>
+    	<svcdoc:Message>
+   		<svcdoc:Description>This message will contain the request attributes of create payment operation from the invoice screen </svcdoc:Description>
+   	</svcdoc:Message>
+    </documentation>  
+    <part name="ListOfCmuRequestNewPaymentCaptureInvoiceIo" element="prcreqinabo:ListOfCmuRequestNewPaymentCaptureInvoiceIo" />
+  </message>
+   
+   <message name="CreateInvoicePaymentRespMsg">
+    <documentation>
+    	<svcdoc:Message>
+   		<svcdoc:Description>This message will contain the response attributes of search payments operation from the invoice screen </svcdoc:Description>
+   	</svcdoc:Message>
+    </documentation>  
+    <part name="ListOfCmuResponseNewPaymentInvoiceIo" element="prcresinabo:ListOfCmuResponseNewPaymentInvoiceIo" />
+  </message>
+ <message name="FaultMsg">
+<documentation>
+          <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+          </svcdoc:Message>
+</documentation>
+<part name="Fault" element="corecom:Fault" />
+</message>
+  <message name="SiebelFaultMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message is used for propagating Error Context and
+                        Error Message</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="Fault" element="siebelfault:Fault" />
+ </message>
+  <portType name="PaymentRecieptSiebelABCS">
+  
+   <documentation>
+         <svcdoc:Interface>
+    		<svcdoc:Description>This ABCS Interface contains operations that route the input messages to the appropriate ABCS Implementation services</svcdoc:Description>
+    		<svcdoc:DisplayName>Payment Reciept Siebel ABCS Requestor Interface</svcdoc:DisplayName>
+    		<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         </svcdoc:Interface>
+       </documentation>
+       
+    <operation name="QueryPayment">
+     <documentation>
+          <svcdoc:Operation>
+    		<svcdoc:Description>This operation routes to the QueryPayment operation of the QuerySPaymentRecieptSiebelABCSImpl service</svcdoc:Description>
+    		<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+    		<svcdoc:DisplayName>Query Payment Reciept</svcdoc:DisplayName>
+    		<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Scope>Public</svcdoc:Scope>
+          </svcdoc:Operation>
+       </documentation>
+     
+      <input message="abcssiebelpr:QueryPaymentReqMsg" />
+      <output message="abcssiebelpr:QueryPaymentRespMsg" />
+      <fault name="fault" message="abcssiebelpr:SiebelFaultMsg" />
+    </operation>
+    
+    <operation name="SearchPayment">
+           <documentation>
+          <svcdoc:Operation>
+    		<svcdoc:Description>This operation routes to the QueryPayment operation of the QueryPaymentRecieptSiebelABCSImpl service</svcdoc:Description>
+    		<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+    		<svcdoc:DisplayName>Query Payment Reciept</svcdoc:DisplayName>
+    		<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Scope>Public</svcdoc:Scope>
+          </svcdoc:Operation>
+       </documentation>
+    
+      <input message="abcssiebelpr:SearchPaymentReqMsg" />
+      <output message="abcssiebelpr:SearchPaymentRespMsg" />
+      <fault name="fault" message="abcssiebelpr:SiebelFaultMsg" />
+    </operation>
+    
+    <operation name="QueryInvoicePayment">
+           <documentation>
+          <svcdoc:Operation>
+    		<svcdoc:Description>This operation routes to the QueryPayment operation of the QueryPaymentRecieptSiebelABCSImpl service</svcdoc:Description>
+    		<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+    		<svcdoc:DisplayName>Query Payment Reciept</svcdoc:DisplayName>
+    		<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Scope>Public</svcdoc:Scope>
+          </svcdoc:Operation>
+       </documentation>
+    
+      <input message="abcssiebelpr:QueryInvoicePaymentReqMsg" />
+      <output message="abcssiebelpr:QueryInvoicePaymentRespMsg" />
+      <fault name="fault" message="abcssiebelpr:SiebelFaultMsg" />
+    </operation>
+    
+    
+    <operation name="CreateInvoicePayment">
+           <documentation>
+          <svcdoc:Operation>
+    		<svcdoc:Description>This operation routes to the CreatePayment operation of the CreatePaymentRecieptSiebelABCSImpl service</svcdoc:Description>
+    		<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+    		<svcdoc:DisplayName>Create Payment Reciept</svcdoc:DisplayName>
+    		<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Scope>Public</svcdoc:Scope>
+          </svcdoc:Operation>
+       </documentation>
+    
+      <input message="abcssiebelpr:CreateInvoicePaymentReqMsg" />
+      <output message="abcssiebelpr:CreateInvoicePaymentRespMsg" />
+      <fault name="fault" message="abcssiebelpr:SiebelFaultMsg" />
+    </operation>
+    
+    <operation name="CreatePayment">
+           <documentation>
+          <svcdoc:Operation>
+    		<svcdoc:Description>This operation routes to the CreatePayment operation of the CreatePaymentRecieptSiebelABCSImpl service</svcdoc:Description>
+    		<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+    		<svcdoc:DisplayName>Create Payment Reciept</svcdoc:DisplayName>
+    		<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Scope>Public</svcdoc:Scope>
+          </svcdoc:Operation>
+       </documentation>
+    
+      <input message="abcssiebelpr:CreatePaymentReqMsg" />
+      <output message="abcssiebelpr:CreatePaymentRespMsg" />
+      <fault name="fault" message="abcssiebelpr:SiebelFaultMsg" />
+    </operation>
+  </portType>
+</definitions>

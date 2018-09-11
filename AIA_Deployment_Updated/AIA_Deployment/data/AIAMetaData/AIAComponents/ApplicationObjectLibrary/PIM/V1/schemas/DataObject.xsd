@@ -1,0 +1,10 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/svc"
+     xmlns="http://xmlns.oracle.com/svc" xmlns:sdoJava="commonj.sdo/java" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:complexType name="DataObject" sdoJava:package="oracle.svc" sdoJava:instanceClass="oracle.svc.DataObject">
+        <xsd:annotation>
+            <xsd:documentation>This is the base service data object type for all data objects.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence/>
+    </xsd:complexType>
+    <xsd:element name="dataObject" type="DataObject" nillable="true"/>
+</xsd:schema>

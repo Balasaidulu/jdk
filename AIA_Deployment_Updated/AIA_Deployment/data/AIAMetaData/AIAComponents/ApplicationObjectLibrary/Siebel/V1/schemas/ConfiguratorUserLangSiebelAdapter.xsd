@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by S. Ramaswamy (Siebel Systems Inc) --><schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xmlns.oracle.com/ConfiguratorUserLangSiebelAdapter" elementFormDefault="qualified" attributeFormDefault="unqualified">
+ <element name="ConfiguratorUserLangSiebelAdapterProcessRequest">
+  <complexType>
+   <sequence>
+    <element name="Siebel_Lang" type="string" minOccurs="0" />
+    <element name="Siebel_User" type="string" minOccurs="0" />
+    <element name="Siebel_Business_Unit" type="string" minOccurs="0" />
+   </sequence>
+  </complexType>
+ </element>
+ <element name="ConfiguratorUserLangSiebelAdapterProcessResponse">
+  <complexType>
+   <sequence>
+    <element name="EBIZ_Lang" type="string" minOccurs="0" />
+    <element name="EBIZ_User" type="string" minOccurs="0" />
+    <element name="EBIZ_Responsibility_Id" type="string" minOccurs="0" />
+    <element name="EBIZ_Responsibility_Name" type="string" minOccurs="0" />
+    <element name="EBIZ_Operating_Unit_Id" type="string" minOccurs="0" />
+   </sequence>
+  </complexType>
+ </element>
+</schema>

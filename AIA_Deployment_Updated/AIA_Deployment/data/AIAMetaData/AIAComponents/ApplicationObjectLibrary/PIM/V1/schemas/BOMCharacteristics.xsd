@@ -1,0 +1,29 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/item/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/item/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="BOMCharacteristics" sdoJava:package="oracle.apps.ego.item.service" sdoJava:instanceClass="oracle.apps.ego.item.service.BOMCharacteristics">
+        <xsd:annotation>
+            <xsd:documentation>BOMCharacteristics</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="BomEnabledFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="BomItemType" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="EngItemFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="BaseItemId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AutoCreatedConfigFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="EffectivityControl" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ConfigModelType" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ConfigOrgs" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ConfigMatch" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="EngineeringEcnCode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="EngineeringItemId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="EngineeringDate" type="xsd:dateTime" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="bOMCharacteristics" type="BOMCharacteristics" nillable="true"/>
+</xsd:schema>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd1="http://siebel.com/OrderManagement/Order/Data"
+             targetNamespace="http://siebel.com/asi"
+             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:tns="http://siebel.com/asi">
+ <types>
+  <xsd:schema elementFormDefault="qualified" attributeFormDefault="unqualified"
+              targetNamespace="http://siebel.com/asi"
+              xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <xsd:import namespace="http://siebel.com/OrderManagement/Order/Data"
+               schemaLocation="../schemas/SWIOrderIO.xsd"/>
+   <xsd:element name="SWIOrderUpsert_Input">
+    <xsd:complexType>
+     <xsd:sequence>
+      <xsd:element name="Process_spcInstance_spcId" type="xsd:string"></xsd:element>
+      <xsd:element name="Auto-Asset_spcFlag" type="xsd:string"></xsd:element>
+      <xsd:element name="Object_spcId" type="xsd:string"></xsd:element>
+      <xsd:element ref="xsd1:ListOfSWIOrderIO"></xsd:element>
+      <xsd:element name="Backup_spcOrder_spcFlag" type="xsd:string"></xsd:element>
+      <xsd:element name="Cascade_spcDown_spcFlag" type="xsd:string"></xsd:element>
+      <xsd:element name="Error_spcCode" type="xsd:string"></xsd:element>
+      <xsd:element name="Error_spcMessage" type="xsd:string"></xsd:element>
+     </xsd:sequence>
+    </xsd:complexType>
+   </xsd:element>
+   <xsd:element name="SWIOrderUpsert_Output">
+    <xsd:complexType>
+     <xsd:sequence>
+      <xsd:element name="Error_spcCode" type="xsd:string"></xsd:element>
+      <xsd:element name="Error_spcMessage" type="xsd:string"></xsd:element>
+      <xsd:element name="Object_spcId" type="xsd:string"></xsd:element>
+      <xsd:element name="Process_spcInstance_spcId" type="xsd:string"></xsd:element>
+      <xsd:element ref="xsd1:ListOfSWIOrderIO"></xsd:element>
+     </xsd:sequence>
+    </xsd:complexType>
+   </xsd:element>
+  </xsd:schema>
+ </types>
+ <message name="SWIOrderUpsert_Input">
+  <part name="SWIOrderUpsert_Input" element="tns:SWIOrderUpsert_Input"></part>
+ </message>
+ <message name="SWIOrderUpsert_Output">
+  <part name="SWIOrderUpsert_Output" element="tns:SWIOrderUpsert_Output"></part>
+ </message>
+ <portType name="SWIOrderUpsert">
+  <operation name="SWIOrderUpsert">
+   <input message="tns:SWIOrderUpsert_Input"></input>
+   <output message="tns:SWIOrderUpsert_Output"></output>
+  </operation>
+ </portType>
+ <binding name="SWIOrderUpsert" type="tns:SWIOrderUpsert">
+  <soap:binding transport="http://schemas.xmlsoap.org/soap/http"
+                style="document"></soap:binding>
+  <operation name="SWIOrderUpsert">
+   <soap:operation soapAction="document/http://siebel.com/asi:SWIOrderUpsert"></soap:operation>
+   <input>
+    <soap:body use="literal"></soap:body>
+   </input>
+   <output>
+    <soap:body use="literal"></soap:body>
+   </output>
+  </operation>
+ </binding>
+ <service name="SWIOrderUpsert">
+  <port binding="tns:SWIOrderUpsert" name="SWIOrderUpsert">
+   <soap:address location="http://set.at.runtime"/>
+  </port>
+ </service>
+</definitions>

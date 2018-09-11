@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:itemebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Item/V2" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1.0" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:itemlistabcs="http://xmlns.oracle.com/ABCSImpl/PIM/Core/SyncItemListPIMReqABCSImpl/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pns1="http://xmlns.oracle.com/SyncItemListPIMReqABCSImpl/correlationset" xmlns:pricelistebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/PriceList/V2" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:itemlistabo="http://xmlns.oracle.com/xdb/APPS" xmlns:bpelcommon="http://schemas.oracle.com/service/bpel/common" xmlns:bomebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/BillOfMaterials/V1" name="SyncItemListPIMReqABCSImpl" targetNamespace="http://xmlns.oracle.com/ABCSImpl/PIM/Core/SyncItemListPIMReqABCSImpl/V1">
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service contains operations that would be used by
+                       the participating application to interact with the
+                       external systems</svcdoc:Description>
+            <svcdoc:TargetServiceType>RequesterABCSImpl</svcdoc:TargetServiceType>
+            <svcdoc:DisplayName>SyncItemListPIMReqABCSImpl Requester ABCS Implementation
+                       Interface</svcdoc:DisplayName>
+            <svcdoc:ServiceObjectName>SyncItemList</svcdoc:ServiceObjectName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology />
+            <svcdoc:ProductFamily>ERP</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>MDMPRODUCT</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>PIM</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://xmlns.oracle.com/SyncItemListPIMReqABCSImpl/correlationset" location="SyncItemListPIMReqABCSImpl_Properties.wsdl" />
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl" />
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/ABCSImpl/PIM/Core/SyncItemListPIMReqABCSImpl/V1">
+            <import namespace="http://xmlns.oracle.com/xdb/APPS" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PIM/V1/schemas/APPS_WF_EVENT_T.xsd" />
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Item/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/Item/V2/ItemEBM.xsd" />
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/BillOfMaterials/V1" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/BillOfMaterials/V1/BillOfMaterialsEBM.xsd" />
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/PriceList/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/PriceList/V2/PriceListEBM.xsd" />
+            <import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd" />
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd" />
+            <element name="TargetEntityStatus">
+                <complexType>
+                    <sequence>
+                        <element name="TargetName" type="string" minOccurs="0" maxOccurs="unbounded" />
+                        <element name="BatchId" type="string" minOccurs="0" maxOccurs="unbounded" />
+                        <element name="SequenceId" type="string" minOccurs="0" maxOccurs="unbounded" />
+                        <element name="EntityName" type="string" minOccurs="0" maxOccurs="unbounded" />
+                        <element name="EntrySyncStatus" type="string" minOccurs="0" maxOccurs="unbounded" />
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="TargetEntityStatusArray">
+                <complexType>
+                    <sequence>
+                        <element ref="itemlistabcs:TargetEntityStatus" minOccurs="0" maxOccurs="unbounded" />
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="ItemSyncStatusFlag">
+                <complexType>
+                    <sequence>
+                        <element name="SyncStatus" type="string" maxOccurs="unbounded" />
+                    </sequence>
+                </complexType>
+            </element>
+        </schema>
+    </types>
+    <message name="SyncItemListReqMsg">
+        <part name="SyncItemList" element="itemlistabo:WF_EVENT_T" />
+    </message>
+    <message name="SyncItemListResMsg">
+        <part name="SyncItemListResponseEBM" element="itemebo:SyncItemListResponseEBM" />
+    </message>
+    <message name="SyncPriceListListResMsg">
+        <part name="SyncPriceListListResponseEBM" element="pricelistebo:SyncPriceListListResponseEBM" />
+    </message>
+    <message name="SyncBillOfMaterialsListResMsg">
+        <part name="SyncBillOfMaterialsListResponseEBM" element="bomebo:SyncBillOfMaterialsListResponseEBM" />
+    </message>
+    <message name="SyncItemListEBMMsg">
+        <part name="SyncItemListEBM" element="itemebo:SyncItemListEBM" />
+    </message>
+    <message name="SyncPriceListListEBMMsg">
+        <part name="SyncPriceListListEBM" element="pricelistebo:SyncPriceListListEBM" />
+    </message>
+    <message name="ItemSyncStatusFlag">
+        <part name="ItemSyncStatusFlag" element="itemlistabcs:ItemSyncStatusFlag" />
+    </message>
+    <message name="TargetEntityStatusArrayMsg">
+        <part name="TargetEntityStatusArray" element="itemlistabcs:TargetEntityStatusArray" />
+    </message>
+    <message name="FaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>PIM Fault</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="AIAFault" element="corecom:Fault" />
+    </message>
+    <portType name="SyncItemListPIMReqABCSImplService">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This interface contains operations that can act upon the
+                        object</svcdoc:Description>
+                <svcdoc:DisplayName>Sync ItemList PIM Requestor ABCS Implementation</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="SyncItemList">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Sync an ItemList object</svcdoc:Description>
+                    <svcdoc:MEP>FireAndForget</svcdoc:MEP>
+                    <svcdoc:DisplayName>SyncItemList</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="itemlistabcs:SyncItemListReqMsg" />
+        </operation>
+        <operation name="ReceiveSyncItemListResponse">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Receive the SyncItem List
+                         Response</svcdoc:Description>
+                    <svcdoc:MEP>OneWay</svcdoc:MEP>
+                    <svcdoc:DisplayName>ReceiveSyncItemListResponse</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="itemlistabcs:SyncItemListResMsg" />
+        </operation>
+        <operation name="ReceiveSyncPriceListResponse">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Sync the PriceList object</svcdoc:Description>
+                    <svcdoc:MEP>OneWay</svcdoc:MEP>
+                    <svcdoc:DisplayName>ReceiveSyncPriceList</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="itemlistabcs:SyncPriceListListResMsg" />
+        </operation>
+        <operation name="ReceiveSyncBillOfMaterialsListResponse">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Sync an ItemList object</svcdoc:Description>
+                    <svcdoc:MEP>OneWay</svcdoc:MEP>
+                    <svcdoc:DisplayName>SyncBillOfMaterialsList</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="itemlistabcs:SyncBillOfMaterialsListResMsg" />
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="SyncItemListPIMReqABCSImpl">
+        <plnk:role name="SyncItemListPIMReqABCSImplProvider">
+            <plnk:portType name="itemlistabcs:SyncItemListPIMReqABCSImplService" />
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <bpws:propertyAlias xmlns:ns6="http://xmlns.oracle.com/EnterpriseServices/Core/BillOfMaterials/V1" xmlns:ns2="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/BillOfMaterials/V1" propertyName="pns1:syncBillOfMaterialEBSReqMsg_SyncBillOfMaterialsListEBM_EBMID_prop" messageType="ns6:SyncBillOfMaterialsListReqMsg" part="SyncBillOfMaterialsListEBM" query="/ns2:SyncBillOfMaterialsListEBM/corecom:EBMHeader/corecom:EBMID" />
+    <bpws:propertyAlias xmlns:ns2="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/BillOfMaterials/V1" propertyName="pns1:syncBillOfMaterialEBSReqMsg_SyncBillOfMaterialsListEBM_EBMID_prop" messageType="itemlistabcs:SyncBillOfMaterialsListResMsg" part="SyncBillOfMaterialsListResponseEBM" query="/ns2:SyncBillOfMaterialsListResponseEBM/corecom:EBMHeader/corecom:RequestEBMID" />
+    <bpws:propertyAlias xmlns:itemebs="http://xmlns.oracle.com/EnterpriseServices/Core/Item/V2" xmlns:coreitem="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Item/V2" propertyName="pns1:syncItemListEBSReqMsg_SyncItemListEBM_EBMID_prop" messageType="itemebs:SyncItemListReqMsg" part="SyncItemListEBM" query="/coreitem:SyncItemListEBM/corecom:EBMHeader/corecom:EBMID" />
+    <bpws:propertyAlias xmlns:coreitem="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Item/V2" propertyName="pns1:syncItemListEBSReqMsg_SyncItemListEBM_EBMID_prop" messageType="itemlistabcs:SyncItemListResMsg" part="SyncItemListResponseEBM" query="/coreitem:SyncItemListResponseEBM/corecom:EBMHeader/corecom:RequestEBMID" />
+    <bpws:propertyAlias xmlns:ns4="http://xmlns.oracle.com/EnterpriseServices/Core/PriceList/V2" xmlns:ns3="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/PriceList/V2" propertyName="pns1:syncPriceListListReqMsg_SyncPriceListListEBM_EBMID_prop" messageType="ns4:SyncPriceListListReqMsg" part="SyncPriceListListEBM" query="/ns3:SyncPriceListListEBM/corecom:EBMHeader/corecom:EBMID" />
+    <bpws:propertyAlias xmlns:ns3="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/PriceList/V2" propertyName="pns1:syncPriceListListReqMsg_SyncPriceListListEBM_EBMID_prop" messageType="itemlistabcs:SyncPriceListListResMsg" part="SyncPriceListListResponseEBM" query="/ns3:SyncPriceListListResponseEBM/corecom:EBMHeader/corecom:RequestEBMID" />
+</definitions>

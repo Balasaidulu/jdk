@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="ItemService"
+     targetNamespace="http://xmlns.oracle.com/oracle/apps/ego/item/service/ItemService"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:tns="http://xmlns.oracle.com/oracle/apps/ego/item/service/ItemService"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:tns2="http://xmlns.oracle.com/apps/fnd/ServiceBean"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:tns1="http://xmlns.oracle.com/apps/ego/item/service"
+    >
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://xmlns.oracle.com/apps/ego/item/service" schemaLocation="../schemas/ItemService.xsd"/>
+        </xsd:schema>
+        <xsd:schema elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/fnd/ServiceBean">
+            <xsd:element name="ServiceBean_Header">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="RESPONSIBILITY_NAME" minOccurs="0" type="xsd:string"/>
+                        <xsd:element name="RESPONSIBILITY_APPL_NAME" minOccurs="0" type="xsd:string"/>
+                        <xsd:element name="SECURITY_GROUP_NAME" minOccurs="0" type="xsd:string"/>
+                        <xsd:element name="NLS_LANGUAGE" minOccurs="0" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </types>
+    <message name="ItemService_GetItem_InputMessage">
+        <part name="header" element="tns2:ServiceBean_Header"/>
+        <part name="body" element="tns1:ItemService_GetItem"/>
+    </message>
+    <message name="ItemService_GetItem_OutputMessage">
+        <part name="body" element="tns1:ItemService_GetItem_Response"/>
+    </message>
+    <message name="ItemService_GetItemInformation_InputMessage">
+        <part name="header" element="tns2:ServiceBean_Header"/>
+        <part name="body" element="tns1:ItemService_GetItemInformation"/>
+    </message>
+    <message name="ItemService_GetItemInformation_OutputMessage">
+        <part name="body" element="tns1:ItemService_GetItemInformation_Response"/>
+    </message>
+    <message name="ItemService_GetItemStructure_InputMessage">
+        <part name="header" element="tns2:ServiceBean_Header"/>
+        <part name="body" element="tns1:ItemService_GetItemStructure"/>
+    </message>
+    <message name="ItemService_GetItemStructure_OutputMessage">
+        <part name="body" element="tns1:ItemService_GetItemStructure_Response"/>
+    </message>
+    <portType name="ItemService_PortType">
+        <operation name="ItemService_GetItem">
+            <input message="tns:ItemService_GetItem_InputMessage"/>
+            <output message="tns:ItemService_GetItem_OutputMessage"/>
+        </operation>
+        <operation name="ItemService_GetItemInformation">
+            <input message="tns:ItemService_GetItemInformation_InputMessage"/>
+            <output message="tns:ItemService_GetItemInformation_OutputMessage"/>
+        </operation>
+        <operation name="ItemService_GetItemStructure">
+            <input message="tns:ItemService_GetItemStructure_InputMessage"/>
+            <output message="tns:ItemService_GetItemStructure_OutputMessage"/>
+        </operation>
+    </portType>
+    <binding name="ItemService_SOAPBinding" type="tns:ItemService_PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="ItemService_GetItem">
+            <soap:operation soapAction="http://rws60052rems.us.oracle.com:8096/webservices/AppsWSProvider/oracle/apps/ego/item/service/ItemService"/>
+            <input>
+                <soap:header message="tns:ItemService_GetItem_InputMessage" part="header" use="literal"/>
+                <soap:body use="literal" parts="body"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="ItemService_GetItemInformation">
+            <soap:operation soapAction="http://rws60052rems.us.oracle.com:8096/webservices/AppsWSProvider/oracle/apps/ego/item/service/ItemService"/>
+            <input>
+                <soap:header message="tns:ItemService_GetItemInformation_InputMessage" part="header" use="literal"/>
+                <soap:body use="literal" parts="body"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="ItemService_GetItemStructure">
+            <soap:operation soapAction="http://rws60052rems.us.oracle.com:8096/webservices/AppsWSProvider/oracle/apps/ego/item/service/ItemService"/>
+            <input>
+                <soap:header message="tns:ItemService_GetItemStructure_InputMessage" part="header" use="literal"/>
+                <soap:body use="literal" parts="body"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="ItemService_Service">
+        <documentation/>
+        <port name="ItemService_Port" binding="tns:ItemService_SOAPBinding">
+            <soap:address location="http://rws60052rems.us.oracle.com:8096/webservices/AppsWSProvider/oracle/apps/ego/item/service/ItemService"/>
+        </port>
+    </service>
+</definitions>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="CreateAccountBalanceAdjustmentSiebelCommsReqABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/CreateAccountBalanceAdjustmentSiebelCommsReqABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+     xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:ns1="http://schemas.oracle.com/service/bpel/common"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:adjebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/AccountBalanceAdjustment/V2"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:ns2="http://schemas.oracle.com/bpel/extension"
+     xmlns:createadjreqabo="http://www.siebel.com/xml/CMU%20Request%20Adjustment%20IO"
+     xmlns:createadjrespabo="http://www.siebel.com/xml/CMU%20Response%20Adjustment%20IO"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:abcsimplsiebeladj="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/CreateAccountBalanceAdjustmentSiebelCommsReqABCSImpl/V1"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This is Implementation service for create Account Balance Adjustment Flow</svcdoc:Description>
+            <svcdoc:ServiceType>RequesterABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>Adjustment ABCS Implementation</svcdoc:DisplayName>
+            <svcdoc:EBOName>AccountBalanceAdjustmentEBO</svcdoc:EBOName>
+            <svcdoc:ABOName>ListOfCmuRequestAdjustmentIo</svcdoc:ABOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>CRM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/CreateAccountBalanceAdjustmentSiebelCommsReqABCSImpl/V1"
+             elementFormDefault="qualified">
+            <xsd:import namespace="http://www.siebel.com/xml/CMU%20Request%20Adjustment%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestAdjustmentIo.xsd"/>
+            <xsd:import namespace="http://www.siebel.com/xml/CMU%20Response%20Adjustment%20IO"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuResponseAdjustmentIo.xsd"/>
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/AccountBalanceAdjustment/V2"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/AccountBalanceAdjustment/V2/AccountBalanceAdjustmentEBM.xsd"/>
+        </xsd:schema>
+        <xsd:schema>
+            <xsd:import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="CreateAdjustmentListReqMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used as a payload to CareteAdjustment operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="ListOfCmuRequestAdjustmentIo" element="createadjreqabo:ListOfCmuRequestAdjustmentIo"/>
+    </message>
+    <message name="FaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="Fault" element="corecom:Fault"/>
+    </message>
+    <message name="CreateAdjustmentListRespMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for sending response by CareteAdjustment operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="ListOfCmuResponseAdjustmentIo" element="createadjrespabo:ListOfCmuResponseAdjustmentIo"/>
+    </message>
+    <message name="CreateAdjustmentListEBMRespMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for sending response by CareteAdjustment operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="CreateAccountBalanceAdjustmentListResponseEBM" element="adjebo:CreateAccountBalanceAdjustmentListResponseEBM"/>
+    </message>
+    <portType name="CreateAccountBalanceAdjustmentSiebelCommsReqABCSImpl">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This Implementation contains operations that can act upon the Create Adjustment Siebel requester ABCS Impl Service</svcdoc:Description>
+                <svcdoc:DisplayName>Create Adjustment ABCS Implementation</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="CreateAccountBalanceAdjustmentList">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Create an Account Balance Adjustment object</svcdoc:Description>
+                    <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+                    <svcdoc:DisplayName>Create Adjustment</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="abcsimplsiebeladj:CreateAdjustmentListReqMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="CreateAccountBalanceAdjustmentSiebelCommsReqABCSImpl">
+        <plnk:role name="CreateAccountBalanceAdjustmentSiebelCommsReqABCSImplProvider">
+            <plnk:portType name="abcsimplsiebeladj:CreateAccountBalanceAdjustmentSiebelCommsReqABCSImpl"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

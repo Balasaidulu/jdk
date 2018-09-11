@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="SyncSpecificationValueSetListPIMReqABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/PIM/Core/SyncSpecificationValueSetListPIMReqABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:appsabcs="http://xmlns.oracle.com/ABCSImpl/PIM/Core/SyncSpecificationValueSetListPIMReqABCSImpl/V1"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:pns1="http://xmlns.oracle.com/SyncSpecificationValueSetListPIMReqABCSImpl/correlationset"
+     xmlns:appsabo="http://xmlns.oracle.com/xdb/APPS"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:syncVSebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SpecificationValueSet/V1"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service contains operations that would be
+                                used by the participating application to
+                                interact with the external systems</svcdoc:Description>
+            <svcdoc:TargetServiceType>RequesterABCSImpl</svcdoc:TargetServiceType>
+            <svcdoc:DisplayName>SyncSpecificationValueSetListPIMReqABCSImpl
+                                Requester ABCS Implementation Interface</svcdoc:DisplayName>
+            <svcdoc:ServiceObjectName>SyncSpecificationValueSetList</svcdoc:ServiceObjectName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:EBOName>SpecificationValueSetEBO</svcdoc:EBOName>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>ERP</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>MDMPRODUCT</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://xmlns.oracle.com/SyncSpecificationValueSetListPIMReqABCSImpl/correlationset"
+         location="SyncSpecificationValueSetListPIMReqABCSImpl_Properties.wsdl"/>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/xdb/APPS" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PIM/V1/schemas/APPS_WF_EVENT_T.xsd"/>
+        </schema>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SpecificationValueSet/V1"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/SpecificationValueSet/V1/SpecificationValueSetEBM.xsd"/>
+        </schema>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </schema>
+    </types>
+    <message name="SyncSpecificationValueSetListReqMsg">
+        <part name="SyncSpecificationValueSetList" element="appsabo:WF_EVENT_T"/>
+    </message>
+    <message name="SyncSpecificationValueSetListRespMsg">
+        <part name="SyncSpecificationValueSetListResponse" element="syncVSebo:SyncSpecificationValueSetListResponseEBM"/>
+    </message>
+    <portType name="SyncSpecificationValueSetListPIMReqABCSImplService">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This interface contains operations that can
+                                    act upon the object</svcdoc:Description>
+                <svcdoc:DisplayName>Sync SpecificationValueSetList PIM Requestor
+                                    ABCS Implementation</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="SyncSpecificationValueSetList">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Sync an
+                                        SpecificationValueSetList object</svcdoc:Description>
+                    <svcdoc:MEP>FireAndForget</svcdoc:MEP>
+                    <svcdoc:DisplayName>SyncSpecificationValueSetList</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="appsabcs:SyncSpecificationValueSetListReqMsg"/>
+        </operation>
+        <operation name="SyncSpecificationValueSetListResponse">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Sync an
+                                        SpecificationValueSetList object</svcdoc:Description>
+                    <svcdoc:MEP>FireAndForget</svcdoc:MEP>
+                    <svcdoc:DisplayName>SyncSpecificationValueSetList</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="appsabcs:SyncSpecificationValueSetListRespMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="SyncSpecificationValueSetListPIMReqABCSImpl">
+        <plnk:role name="SyncSpecificationValueSetListPIMReqABCSImplProvider">
+            <plnk:portType name="appsabcs:SyncSpecificationValueSetListPIMReqABCSImplService"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <bpws:propertyAlias xmlns:SyncVS="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SpecificationValueSet/V1"
+         xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" propertyName="pns1:SpecificationValueSetListEBM_EBMID_prop"
+         messageType="appsabcs:SyncSpecificationValueSetListRespMsg" part="SyncSpecificationValueSetListResponse"
+         query="/SyncVS:SyncSpecificationValueSetListResponseEBM/corecom:EBMHeader/corecom:RequestEBMID"/>
+    <bpws:propertyAlias xmlns:SyncVSebs="http://xmlns.oracle.com/EnterpriseServices/Core/SpecificationValueSet/V1"
+         xmlns:SyncVS="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SpecificationValueSet/V1"
+         xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" propertyName="pns1:SpecificationValueSetListEBM_EBMID_prop"
+         messageType="SyncVSebs:SyncSpecificationValueSetListReqMsg" part="SyncSpecificationValueSetListEBM"
+         query="/SyncVS:SyncSpecificationValueSetListEBM/corecom:EBMHeader/corecom:EBMID"/>
+</definitions>

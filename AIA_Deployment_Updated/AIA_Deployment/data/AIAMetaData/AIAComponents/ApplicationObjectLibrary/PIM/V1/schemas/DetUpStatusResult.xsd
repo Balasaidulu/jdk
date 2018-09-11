@@ -1,0 +1,31 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/pubfwk/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/pubfwk/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="DetUpStatusResult" sdoJava:package="oracle.apps.ego.pubfwk.service" sdoJava:instanceClass="oracle.apps.ego.pubfwk.service.DetUpStatusResult">
+        <xsd:annotation>
+            <xsd:documentation>This dataobject has detailed status on the result of update Publication Status per System
+or System Entity based on the mode the  method  was called</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="BatchId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="SystemCode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Pk1Value" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Pk2Value" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Pk3Value" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Pk4Value" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Pk5Value" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PublicationStatus" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PublicationMessage" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="WSReturnStatus" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="WSReturnMessage" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="WSReturnErrorCode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="WSRetErrMsgLangCode" type="xsd:string" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="detUpStatusResult" type="DetUpStatusResult" nillable="true"/>
+</xsd:schema>

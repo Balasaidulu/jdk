@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:commsinvoice="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Invoice/V2" xmlns:commsinvoiceebs="http://xmlns.oracle.com/EnterpriseServices/Core/Invoice/V2" xmlns:commsinvoiceebsfault="http://xmlns.oracle.com/EnterpriseServices/Core/Invoice/V2" xmlns:abcsimplsiebelinvreqabo="http://www.siebel.com/xml/CMU%20Request%20Billed%20Usage%20IO" xmlns:abcsimplsiebelinvreqext="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryInvoiceSiebelCommsReqABCSImplExtension/V1" xmlns:abcsimplsiebelinvrespabo="http://www.siebel.com/xml/CMU%20Response%20Billed%20Usage%20Details%20IO" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:bpelcom="http://schemas.oracle.com/service/bpel/common" name="QueryInvoiceSiebelCommsReqABCSImplExtension1" targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryInvoiceSiebelCommsReqABCSImplExtension/V1">
+   <documentation>
+      <svcdoc:Service>
+         <svcdoc:Description>This service contains intercepting operations that would be used to view Invoice details in CRM app</svcdoc:Description>
+         <svcdoc:ServiceType>RequesterABCSExtension</svcdoc:ServiceType>
+         <svcdoc:DisplayName>QueryInvoiceSiebelCommsReqABCSImpl Requester ABCS Extension
+                          Implementation Interface</svcdoc:DisplayName>
+			<svcdoc:ServiceObjectName>InvoiceEBO</svcdoc:ServiceObjectName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:Version>1.0</svcdoc:Version>
+			<svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+			<svcdoc:ProductFamily>Siebel</svcdoc:ProductFamily>
+			<svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+			<svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+      </svcdoc:Service>
+   </documentation>
+   <types>
+      <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryInvoiceSiebelCommsReqABCSImplExtension/V1" elementFormDefault="qualified">
+         <xsd:import namespace="http://www.siebel.com/xml/CMU%20Request%20Billed%20Usage%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestBilledUsageIo.xsd" />
+        <xsd:import namespace="http://www.siebel.com/xml/CMU%20Response%20Billed%20Usage%20Details%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuResponseBilledUsageDetailsIo.xsd" />
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Invoice/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/Invoice/V2/InvoiceEBM.xsd" />
+	<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd" />
+         <xsd:import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd" />
+      </xsd:schema>
+   </types>
+   <message name="PreXformABMtoEBMInvoiceMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreXformABMtoEBMInvoiceABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QueryInvoiceABM" element="abcsimplsiebelinvreqabo:ListOfCmuRequestBilledUsageIo" />
+   </message>
+  <message name="PostXformABMtoEBMInvoiceMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostXformABMtoEBMInvoiceABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QueryInvoiceABM" element="abcsimplsiebelinvrespabo:ListOfCmuResponseBilledUsageDetailsIo" />
+   </message>
+	<message name="PreInvokeEBSQueryCommsInvoiceReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBS QueryInvoice operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QueryInvoiceListEBM" element="commsinvoice:QueryInvoiceListEBM" />
+   </message>
+
+	<message name="PostInvokeEBSQueryCommsInvoiceReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostInvokeEBS QueryInvoice operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QueryInvoiceListResponseEBM" element="commsinvoice:QueryInvoiceListResponseEBM" />
+	</message>
+   
+   <message name="FaultMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used for propagating Error
+                                Context and Error Message</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="AIAFault" element="corecom:Fault" />
+   </message>
+   <portType name="QueryInvoiceSiebelCommsReqABCSImplExtensionService">
+      <documentation>
+         <svcdoc:Interface>
+            <svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+            <svcdoc:DisplayName>QueryInvoiceSiebelCommsReqABCSImplExtensionService</svcdoc:DisplayName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         </svcdoc:Interface>
+      </documentation>
+      <operation name="PreXformABMtoEBMInvoiceABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformABMtoEBM an CmuRequestBilledUsageIo object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformABMtoEBMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsiebelinvreqext:PreXformABMtoEBMInvoiceMsg" />
+         <output message="abcsimplsiebelinvreqext:PreXformABMtoEBMInvoiceMsg" />
+         <fault name="fault" message="abcsimplsiebelinvreqext:FaultMessage" />
+      </operation>
+	<operation name="PostXformABMtoEBMInvoiceABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostXformEBMtoABM an CmuResponseBilledUsageDetailsIo object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PostXformEBMtoABMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsiebelinvreqext:PostXformABMtoEBMInvoiceMsg" />
+         <output message="abcsimplsiebelinvreqext:PostXformABMtoEBMInvoiceMsg" />
+         <fault name="fault" message="abcsimplsiebelinvreqext:FaultMessage" />
+      </operation>
+	 <operation name="PreInvokeEBSCommsInvoiceEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an QueryInvoiceListEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsiebelinvreqext:PreInvokeEBSQueryCommsInvoiceReqMsg" />
+         <output message="abcsimplsiebelinvreqext:PreInvokeEBSQueryCommsInvoiceReqMsg" />
+         <fault name="fault" message="abcsimplsiebelinvreqext:FaultMessage" />
+      </operation>
+	<operation name="PostInvokeEBSCommsInvoiceEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostInvokeEBS an QueryInvoiceListResponseEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PostInvokeEBSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsiebelinvreqext:PostInvokeEBSQueryCommsInvoiceReqMsg" />
+         <output message="abcsimplsiebelinvreqext:PostInvokeEBSQueryCommsInvoiceReqMsg" />
+         <fault name="fault" message="abcsimplsiebelinvreqext:FaultMessage" />
+      </operation>
+   </portType>
+
+   <binding name="QueryInvoiceSiebelCommsReqABCSImplExtensionServiceBinding" type="abcsimplsiebelinvreqext:QueryInvoiceSiebelCommsReqABCSImplExtensionService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="PreXformABMtoEBMInvoiceABM">
+            <soap:operation style="document" soapAction="PreXformABMtoEBMInvoiceABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		<operation name="PostXformABMtoEBMInvoiceABM">
+            <soap:operation style="document" soapAction="PostXformABMtoEBMInvoiceABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+        <operation name="PreInvokeEBSCommsInvoiceEBM">
+            <soap:operation style="document" soapAction="PreInvokeEBSCommsInvoiceEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+	    <operation name="PostInvokeEBSCommsInvoiceEBM">
+            <soap:operation style="document" soapAction="PostInvokeEBSCommsInvoiceEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+    </binding>
+   <service name="QueryInvoiceSiebelCommsReqABCSImplExtension">
+        <port name="QueryInvoiceSiebelCommsReqABCSImplExtensionServicePort" binding="abcsimplsiebelinvreqext:QueryInvoiceSiebelCommsReqABCSImplExtensionServiceBinding">
+            <soap:address location="http://${fp.server.soaserverhostname}:${fp.server.soaserverport}/MirrorServlet/mirror" />
+        </port>
+   </service>
+   
+   
+   <plnk:partnerLinkType name="QueryInvoiceSiebelCommsReqABCSImplExtensionService">
+      <plnk:role name="QueryInvoiceSiebelCommsReqABCSImplExtensionServiceProvider">
+         <plnk:portType name="abcsimplsiebelinvreqext:QueryInvoiceSiebelCommsReqABCSImplExtensionService" />
+      </plnk:role>
+   </plnk:partnerLinkType>
+</definitions>

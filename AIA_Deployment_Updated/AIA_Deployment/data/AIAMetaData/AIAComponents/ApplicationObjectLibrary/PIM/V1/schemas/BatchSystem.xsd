@@ -1,0 +1,21 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/pubfwk/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/pubfwk/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="SystemStatus.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="BatchSystem" sdoJava:package="oracle.apps.ego.pubfwk.service" sdoJava:instanceClass="oracle.apps.ego.pubfwk.service.BatchSystem">
+        <xsd:annotation>
+            <xsd:documentation>This has information on Batch id and list of Systems and their statuses</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="BatchId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ListofSystemStatuses" type="SystemStatus" minOccurs="0" maxOccurs="unbounded"
+                         nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="batchSystem" type="BatchSystem" nillable="true"/>
+</xsd:schema>

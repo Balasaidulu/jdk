@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+        targetNamespace="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:AddressQuery"
+        xmlns:ord="http://xmlns.oracle.com/communications/ordermanagement"
+        xmlns:am="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:AddressQuery"
+        xmlns:ex="OracleComms_OSM_CommonDataDictionary/4.0">
+  <import namespace="OracleComms_OSM_CommonDataDictionary/4.0" schemaLocation="ExtensionsAIAWrapper.xsd"/>
+  <import namespace="http://xmlns.oracle.com/communications/ordermanagement"
+          schemaLocation="EntityManagementWS.xsd"/>
+  <complexType name="AddressType">
+    <complexContent>
+      <extension base="ord:CommonFieldsType">
+        <sequence>
+          <element name="isPremise" type="string" default="N"/>
+          <element name="longitude" type="string" minOccurs="0"/>
+          <element name="latitude" type="string" minOccurs="0"/>
+          <element name="altitude" type="string" minOccurs="0"/>
+          <element name="utmEasting" type="string" minOccurs="0"/>
+          <element name="utmNorthing" type="string" minOccurs="0"/>
+          <element name="AddressGeneric" type="ex:AddressGenericType"/>
+          <element name="account" type="am:AccountType" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="AccountType">
+    <sequence>
+      <element name="id" type="long"/>
+    </sequence>
+  </complexType>
+</schema>

@@ -1,0 +1,101 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/svc"
+     xmlns="http://xmlns.oracle.com/svc" xmlns:sdoJava="commonj.sdo/java" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="ServiceMessage.xsd"/>
+    <xsd:include schemaLocation="MethodResponse.xsd"/>
+    <xsd:include schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="BatchResponse" sdoJava:package="oracle.svc" sdoJava:instanceClass="oracle.svc.BatchResponse">
+        <xsd:annotation>
+            <xsd:documentation>A bundle of method invocation responses returned from a {@link Service Service}.
+&lt;p&gt;
+A code example for using &lt;code&gt;BatchResponse&lt;/code&gt;:
+&lt;code&gt;
+&lt;pre&gt;
+ List methodResponses = batchResponse.getMethodResponse();
+ if(methodResponses != null &amp; methodResponses.size() &gt; 0)
+ {
+   Iterator respIter = methodResponses.iterator();
+   while(respIter.hasNext())
+   {
+     MethodResponse methodResponse = (MethodResponse)respIter.next();
+     System.out.println(&quot;Response &quot;+methodResponse.getRequestName());
+     Object ret = methodResponse.getReturn();
+     if(ret != null)
+     {
+       if(ret instanceof java.util.List)
+       {
+         List l = (java.util.List)ret;
+         for ( int i=0; i&lt; l.size(); i++ )
+         {
+           Object obj = l.get(i);
+           System.out.println(&quot;Return obj:&quot;+(i+1)+&quot;: &quot;+obj);
+         }
+       }
+       else
+       {
+         System.out.println(&quot;Return obj:&quot;+ret);
+       }  
+     }
+     
+     //Informational messages coming from the method invocation
+     List mesgs = methodResponse.getMessage();
+     if(mesgs != null &amp; mesgs.size() &gt; 0)
+     {
+       for(int i=0; i &lt; mesgs.size(); i++)
+       {
+         System.out.println(&quot;Message #&quot;+(i+1)+&quot;: &quot;+mesgs.get(i).toString());
+       }
+     }
+     //Error messages coming from the method invocation
+     List errors = methodResponse.getErrorMessage();
+     if(errors != null &amp; errors.size() &gt; 0)
+     {
+       for(int i=0; i &lt; errors.size(); i++)
+       {
+         System.out.println(&quot;Error Message #&quot;+(i+1)+&quot;: &quot;+errors.get(i).toString());
+       }
+     }
+   }
+ }
+ 
+ //Informational messages coming from the batch
+ List serviceMessages = batchResponse.getMessage();
+ if(serviceMessages != null &amp; serviceMessages.size() &gt; 0)
+ {
+   System.out.println(&quot;Service Messages:&quot;);
+   for(int i=0; i &lt; serviceMessages.size(); i++)
+   {
+     System.out.println(&quot;Message &quot;+(i+1)+&quot;: &quot;+serviceMessages.get(i).toString());
+   }
+ }
+ //Errors coming from the batch
+ List serviceErrors = batchResponse.getErrorMessage();
+ if(serviceErrors != null &amp; serviceErrors.size() &gt; 0)
+ {
+   System.out.println(&quot;Error Messages:&quot;);
+   for(int i=0; i &lt; serviceErrors.size(); i++)
+   {
+     System.out.println(&quot;Error Message &quot;+(i+1)+&quot;: &quot;+serviceErrors.get(i).toString());
+   }
+ }
+&lt;/pre&gt;
+&lt;/code&gt;
+&lt;p&gt;
+@see BatchRequest
+@see MethodResponse
+@see Service</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="DataObject">
+                <xsd:sequence>
+                    <xsd:element name="MethodResponse" type="MethodResponse" minOccurs="0" maxOccurs="unbounded"
+                         nillable="true"/>
+                    <xsd:element name="Message" type="ServiceMessage" minOccurs="0" maxOccurs="unbounded"
+                         nillable="true"/>
+                    <xsd:element name="ErrorMessage" type="ServiceMessage" minOccurs="0" maxOccurs="unbounded"
+                         nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="batchResponse" type="BatchResponse" nillable="true"/>
+</xsd:schema>

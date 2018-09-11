@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+        targetNamespace="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:PaymentMethodQuery"
+        xmlns:ord="http://xmlns.oracle.com/communications/ordermanagement"
+        xmlns:am="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:PaymentMethodQuery"
+        xmlns:ex="OracleComms_OSM_CommonDataDictionary/4.0">
+  <import namespace="OracleComms_OSM_CommonDataDictionary/4.0" schemaLocation="ExtensionsAIAWrapper.xsd"/>
+  <import namespace="http://xmlns.oracle.com/communications/ordermanagement"
+          schemaLocation="EntityManagementWS.xsd"/>
+  <complexType name="PaymentMethodType">
+    <complexContent>
+      <extension base="ord:CommonFieldsType">
+        <sequence>
+          <element name="PaymentMethodExtensions" type="ex:PaymentMethodExtensionsType"/>
+          <element name="billingProfile" type="am:BillingProfileType" minOccurs="1"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="BillingProfileType">
+    <sequence>
+      <element name="id" type="long"/>
+    </sequence>
+  </complexType>
+</schema>

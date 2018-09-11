@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/apps/SyncItemListPIMEventConsumer/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/" xmlns:pc="http://xmlns.oracle.com/pcbpel/" xmlns:imp1="http://xmlns.oracle.com/xdb/APPS" xmlns:hdr="http://xmlns.oracle.com/pcbpel/adapter/aq/inbound/" name="SyncItemListPIMEventConsumer" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/apps/SyncItemListPIMEventConsumer/">
+	<import namespace="http://xmlns.oracle.com/pcbpel/adapter/aq/inbound/" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/aqAdapterInboundHeader.wsdl" />
+	<types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://xmlns.oracle.com/xdb/APPS" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PIM/V1/schemas/APPS_WF_EVENT_T.xsd" />
+		</schema>
+	</types>
+	<message name="WF_EVENT_T_msg">
+		<part name="WF_EVENT_T" element="imp1:WF_EVENT_T" />
+	</message>
+	<portType name="DEQUEUE_ptt">
+		<operation name="DEQUEUE">
+			<input message="tns:WF_EVENT_T_msg" />
+		</operation>
+	</portType>
+	<binding name="DEQUEUE_binding" type="tns:DEQUEUE_ptt">
+		<pc:inbound_binding />
+		<operation name="DEQUEUE">
+			<jca:operation ActivationSpec="oracle.tip.adapter.apps.AppsWFBesQueueDequeueActivationSpec" QueueName="WF_BPEL_Q" DatabaseSchema="APPS" Consumer="ORA_6krj0c1h8d348hi26l0k2e1m8h" MessageSelectorRule="tab.user_data.event_name = 'oracle.apps.ego.item.publishItem'" AppsEventSchema="NO_SCHEMA" />
+			<input>
+				<jca:header message="hdr:Header" part="Header" />
+			</input>
+		</operation>
+	</binding>
+	<service name="SyncItemListPIMEventConsumer">
+		<port name="DEQUEUE_pt" binding="tns:DEQUEUE_binding">
+			<!--Your runtime connection is declared in 
+J2EE_HOME/application-deployments/default/AppsAdapter/oc4j-ra.xml 
+These mcf properties here are from your design time connection and 
+save you from having to edit that file and restart the application server 
+if eis/Apps/mdm_dev_new is missing. 
+These mcf properties are safe to remove.-->
+			<jca:address location="eis/Apps/OraclePIMDataSource" UIConnectionName="mdm_dev_new" UIOracleAppType="WFBES" UIWfEventName="oracle.apps.ego.item.publishItem" ManagedConnectionFactory="oracle.tip.adapter.apps.AppsManagedConnectionFactory" mcf.ConnectionString="jdbc:oracle:thin:@rws60052rems.us.oracle.com:1617:cz1ms211" mcf.UserName="apps" mcf.Password="53CB0F044A0D3DD2C063679F18F89870" />
+		</port>
+	</service>
+	<plt:partnerLinkType name="DEQUEUE_plt">
+		<plt:role name="DEQUEUE_role">
+			<plt:portType name="tns:DEQUEUE_ptt" />
+		</plt:role>
+	</plt:partnerLinkType>
+</definitions>

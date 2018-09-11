@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone="yes"?>
+<DeploymentPlan component="Metadata" version="3.0">
+	<Configurations>
+		<UpdateMetadata wlserver="fp" >	
+			<fileset dir="${env.SERVICES_LOCATION}/AIAMetaData">
+				<include name="xref/AIADEMOORDERS.xref" />
+			</fileset>
+		</UpdateMetadata>
+	</Configurations>
+</DeploymentPlan>

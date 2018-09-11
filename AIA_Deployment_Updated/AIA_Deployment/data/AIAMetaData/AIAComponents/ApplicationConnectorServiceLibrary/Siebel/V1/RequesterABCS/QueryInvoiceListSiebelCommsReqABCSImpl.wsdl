@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="QueryInvoiceListSiebelCommsReqABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryInvoiceListSiebelCommsReqABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:commsinv="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:bpelcom="http://schemas.oracle.com/service/bpel/common"
+     xmlns:seblflt="http://www.siebel.com/xml/SWIFault/V0"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:abcsimplsiebelinvlstrespabo="http://www.siebel.com/xml/CMU%20Response%20Billing%20Invoice%20IO"
+     xmlns:abcsimplsiebelinvlstreqabo="http://www.siebel.com/xml/CMU%20Request%20Billing%20Profile%20IO"
+     xmlns:abcsimplsiebelinvlstreqabcs="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryInvoiceListSiebelCommsReqABCSImpl/V1"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service contains operations that would to
+                                view list of invoices for an account billing
+                                profile in CRM app</svcdoc:Description>
+            <svcdoc:TargetServiceType>RequesterABCSImpl</svcdoc:TargetServiceType>
+            <svcdoc:DisplayName>QueryInvoiceListSiebelCommsReqABCSImpl Requester
+                                ABCS Implementation Interface</svcdoc:DisplayName>
+            <svcdoc:EBOName>InvoiceEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>CRM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>CMU</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.siebel.com/xml/CMU%20Request%20Billing%20Profile%20IO"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestBillingProfileIo.xsd"/>
+            <import namespace="http://www.siebel.com/xml/CMU%20Response%20Billing%20Invoice%20IO"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuResponseBillingInvoiceIo.xsd"/>
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+            <import namespace="http://www.siebel.com/xml/SWIFault/V0" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/Fault.xsd"/>
+            <xsd:import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </schema>
+    </types>
+    <message name="QueryInvoiceListReqMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used as a payload to Query
+                                    Invoice List operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="QueryInvoiceList" element="abcsimplsiebelinvlstreqabo:ListOfCmuRequestBillingProfileIo"/>
+    </message>
+    <message name="QueryInvoiceListRespMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for sending response by
+                                    Query Invoice List operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="QueryInvoiceListResponse" element="abcsimplsiebelinvlstrespabo:ListOfCmuResponseBillingInvoiceIo"/>
+    </message>
+    <message name="SiebelFaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error
+                                    Context and Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="SiebelFault" element="seblflt:Fault"/>
+    </message>
+    <message name="QueryInvoiceListFaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error
+                                    Context and Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="QueryInvoiceListFault" element="commsinv:Fault"/>
+    </message>
+    <portType name="QueryInvoiceListSiebelCommsReqABCSImpl">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This interface contains operations that can
+                                    act upon the object</svcdoc:Description>
+                <svcdoc:DisplayName>Query InvoiceList Siebel Requestor ABCS
+                                    Implementation</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="QueryInvoiceList">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Query an
+                                        InvoiceList object</svcdoc:Description>
+                    <svcdoc:MEP>SyncReqResp</svcdoc:MEP>
+                    <svcdoc:DisplayName>QueryInvoiceList</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="abcsimplsiebelinvlstreqabcs:QueryInvoiceListReqMsg"/>
+            <output message="abcsimplsiebelinvlstreqabcs:QueryInvoiceListRespMsg"/>
+            <fault name="fault" message="abcsimplsiebelinvlstreqabcs:SiebelFaultMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="QueryInvoiceListSiebelCommsReqABCSImpl">
+        <plnk:role name="QueryInvoiceListSiebelCommsReqABCSImplProvider">
+            <plnk:portType name="abcsimplsiebelinvlstreqabcs:QueryInvoiceListSiebelCommsReqABCSImpl"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by MetaSolv Software Inc. (MetaSolv Software Inc.) -->
+<xsd:schema targetNamespace="http://www.sce.com/QueryProductClassAndAttributesRespABM" xmlns:sce="http://www.sce.com/QueryProductClassAndAttributesRespABM" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:complexType name="ValueSetValueType">
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:string" nillable="true"/>
+			<xsd:element name="Value" type="xsd:string" nillable="true"/>
+			<xsd:element name="TranslatableValues" type="sce:TranslatableValueType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfValueSetValueType">
+		<xsd:sequence>
+			<xsd:element name="VSValue" type="sce:ValueSetValueType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AttributeDefType">
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:string" nillable="true"/>
+			<xsd:element name="Name" type="xsd:string" nillable="true"/>
+			<xsd:element name="DataType" type="xsd:string"/>
+			<xsd:element name="DomainType" type="xsd:string" nillable="true" minOccurs="0"/>
+			<xsd:element name="Version" type="xsd:string" nillable="true" minOccurs="0"/>
+			<xsd:element name="UnitOfMeasure" type="xsd:string" nillable="true" minOccurs="0"/>
+			<xsd:element name="StartDate" type="xsd:string" nillable="true" minOccurs="0"/>
+			<xsd:element name="EndDate" type="xsd:string" nillable="true" minOccurs="0"/>
+			<xsd:element name="ListOfValues" type="sce:ListOfValueSetValueType" nillable="true" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- Replaces  ListOfAttributeDefType -->
+	<xsd:complexType name="ListOfAttributeDefType">
+		<xsd:sequence>
+			<xsd:element name="AttributeDef" type="sce:AttributeDefType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="TranslatableValueType">
+		<xsd:sequence>
+			<xsd:element name="Language" type="xsd:string" nillable="true" minOccurs="0"/>
+			<xsd:element name="DisplayName" type="xsd:string" nillable="true" minOccurs="0"/>
+			<xsd:element name="Description" type="xsd:string" nillable="true" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfAttributeRefType">
+		<xsd:sequence>
+			<xsd:element name="AttributeRef" type="sce:AttributeRefType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AttributeRefType">
+		<xsd:sequence>
+			<xsd:element name="AttributeId" type="xsd:string"/>
+			<xsd:element name="AttributeName" type="xsd:string"/>
+			<xsd:element name="TranslatableValues" type="sce:TranslatableValueType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Sequence" type="xsd:integer" nillable="true" minOccurs="0"/>
+			<xsd:element name="RequiredFlag" type="xsd:string" nillable="true" minOccurs="0"/>
+			<xsd:element name="ReadOnly" type="xsd:string" nillable="true" minOccurs="0"/>
+			<xsd:element name="RejectedValue" type="xsd:string" nillable="true" minOccurs="0"/>
+			<xsd:element name="HiddenFlag" type="xsd:string" nillable="true" minOccurs="0"/>
+			<xsd:element name="DefaultValue" type="xsd:string" nillable="true" minOccurs="0"/>
+			<xsd:element name="UnitOfMeasure" type="xsd:string" nillable="true" minOccurs="0"/>
+			<xsd:element name="AttributeDefinitionId" type="xsd:string" nillable="true" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ProductClassDefType">
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:string"/>
+			<xsd:element name="Name" type="xsd:string"/>
+			<xsd:element name="TranslatableValues" type="sce:TranslatableValueType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Version" type="xsd:string" nillable="true" minOccurs="0"/>
+			<xsd:element name="StartDate" type="xsd:dateTime" nillable="true" minOccurs="0"/>
+			<xsd:element name="EndDate" type="xsd:dateTime" nillable="true" minOccurs="0"/>
+			<xsd:element name="ParentClassName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ParentClassId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ListOfAttributeRef" type="sce:ListOfAttributeRefType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="LanguageCode" type="xsd:string" use="optional"/>
+		<xsd:attribute name="LanguageLocaleCode" type="xsd:string" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfProductClassType">
+		<xsd:sequence>
+			<xsd:element name="ProductClassDef" type="sce:ProductClassDefType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="QueryProductClassAndAttributesRespABMType">
+		<xsd:sequence>
+			<xsd:element name="ListOfProductClass" type="sce:ListOfProductClassType"/>
+			<xsd:element name="ListOfAttributeDef" type="sce:ListOfAttributeDefType"/>
+			<!-- replaces: ListOfAttributeDef -->
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="QueryProductClassAndAttributesRespABM" type="sce:QueryProductClassAndAttributesRespABMType">
+		<xsd:annotation>
+			<xsd:documentation>QueryProductClassAndAttributes Response ABM identifies all the parameters of Product Class Definition, Attribute Definition and Value Set</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+</xsd:schema>

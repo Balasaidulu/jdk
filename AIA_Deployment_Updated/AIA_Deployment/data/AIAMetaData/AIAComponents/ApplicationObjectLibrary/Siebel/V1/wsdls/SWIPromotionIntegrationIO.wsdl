@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsdLocal1="http://www.siebel.com/xml/SWIPromotionIntegrationIO" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://siebel.com/asi/SWIPromotionIntegration/" targetNamespace="http://siebel.com/asi/SWIPromotionIntegration/">
+	<types>
+	  <xsd:schema elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="http://siebel.com/asi/SWIPromotionIntegration/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	  <xsd:import namespace="http://www.siebel.com/xml/SWIPromotionIntegrationIO" schemaLocation = "../schemas/SWIPromotionIntegrationIO.xsd"/>
+	  <xsd:element name="SWIPromotionUpsert_Input">
+		<xsd:complexType>
+		   <xsd:sequence>
+			<xsd:element name="SyncChild" minOccurs="0" type="xsd:string"/>
+			<xsd:element name="DomainModifyFlag" minOccurs="0" type="xsd:string"/>
+			<xsd:element ref="xsdLocal1:ListOfSwipromotionIntegrationio"/>
+			<xsd:element name="UTCCanonicalFlag" minOccurs="0" type="xsd:string"/>
+		   </xsd:sequence>
+	 	</xsd:complexType>
+	  </xsd:element>
+	  <xsd:element name="SWIPromotionUpsert_Output">
+		<xsd:complexType>
+		   <xsd:sequence>
+			<xsd:element ref="xsdLocal1:ListOfSwipromotionIntegrationio"></xsd:element>
+		   </xsd:sequence>
+		</xsd:complexType>
+	  </xsd:element>
+	 </xsd:schema>	
+	</types>
+	<message name="SWIPromotionUpsert_Input">
+		<part name="SWIPromotionUpsert_Input" element="tns:SWIPromotionUpsert_Input"/>
+	</message>
+	<message name="SWIPromotionUpsert_Output">
+		<part name="SWIPromotionUpsert_Output" element="tns:SWIPromotionUpsert_Output"/>
+	</message>
+	<portType name="SWIPromotionImport">
+		<operation name="SWIPromotionUpsert">
+			<input message="tns:SWIPromotionUpsert_Input"/>
+			<output message="tns:SWIPromotionUpsert_Output"/>
+		</operation>
+	</portType>
+	<binding name="SWIPromotionImport" type="tns:SWIPromotionImport">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+		<operation name="SWIPromotionUpsert">
+			<soap:operation soapAction="document/http://siebel.com/asi/SWIPromotionIntegration/:SWIPromotionUpsert"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="SWIPromotionIntegration">
+		<port binding="tns:SWIPromotionImport" name="SWIPromotionImport">
+			<soap:address location="http://set.at.runtime"/>
+		</port>
+	</service>
+</definitions>

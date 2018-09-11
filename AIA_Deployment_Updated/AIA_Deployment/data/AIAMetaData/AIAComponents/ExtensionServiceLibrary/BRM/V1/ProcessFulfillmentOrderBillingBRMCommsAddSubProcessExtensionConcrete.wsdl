@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:billingorderabo="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" xmlns:brmbaseserv="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" xmlns:processbillingFault="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess" xmlns:billingOrderebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SalesOrder/V2" xmlns:billingOrderext="http://xmlns.oracle.com/ABCSImpl/BRM/ProcessFulfillmentOrderBillingBRMCommsAddSubProcessExtension/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sordsubebo="http://xmlns.oracle.com/ProcessFulfillmentOrderBillingBRMCommsSubprocess" name="ProcessSalesOrderBRMCommsProvABCSImplExtension1" targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/ProcessFulfillmentOrderBillingBRMCommsAddSubProcessExtension/V1">
+   <documentation>
+      <svcdoc:Service>
+         <svcdoc:Description>This service contains intercepting operations that
+                             would be used by the participating application</svcdoc:Description>
+         <svcdoc:ServiceType>ABCSExtension</svcdoc:ServiceType>
+         <svcdoc:DisplayName>ProcessFulfillmentOrderBillingBRMCommsAddSubProcess/V1 Requester ABCS Extension
+                          Implementation Interface</svcdoc:DisplayName>
+			<svcdoc:ServiceObjectName>ProcessSalesOrder</svcdoc:ServiceObjectName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:Version>1.0</svcdoc:Version>
+			<svcdoc:ImplementationTechnology><!-- PLACEHOLDER--></svcdoc:ImplementationTechnology>
+			<svcdoc:ProductFamily>BRM</svcdoc:ProductFamily>
+			<svcdoc:ProductPillar>BRM</svcdoc:ProductPillar>
+			<svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+      </svcdoc:Service>
+   </documentation>
+   <types>
+      <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/ProcessFulfillmentOrderBillingBRMCommsAddSubProcessExtension/V1" elementFormDefault="qualified">
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SalesOrder/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/SalesOrder/V2/SalesOrderEBM.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_SEARCH.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_READ_OBJ.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_READ_FLDS.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/ProcessFulfillmentOrderBillingBRMCommsSubprocess" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/ProcessFulfillmentOrderBillingBRMCommsSubprocess.xsd"/>
+	     <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_SUBSCRIPTION_TRANSFER_SUBSCRIPTION.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_SUBSCRIPTION_PURCHASE_DEAL.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_SUBSCRIPTION_CHANGE_DEAL.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUS.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_SUBSCRIPTION_SET_PRODINFO.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_SUBSCRIPTION_CANCEL_PRODUCT.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_SUBSCRIPTION_CANCEL_DISCOUNT.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUS.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_SUBSCRIPTION_SET_DISCOUNTINFO.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGS.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_SUBSCRIPTION_SET_BUNDLE.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_SUBSCRIPTION_CANCEL_SUBSCRIPTION.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_UPDATE_SERVICES.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_CREATE_PROFILE.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_COMMIT_CUSTOMER.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_SET_STATUS.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_UPDATE_CUSTOMER.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_DELETE_PAYINFO.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_MODIFY_PROFILE.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_MODIFY_CUSTOMER.xsd" />
+		 <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_DELETE_PROFILE.xsd" />			 
+      </xsd:schema>
+   </types>
+  
+	<message name="PreInvokeABSProcessPCM_OP_READ_FLDS">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_READ_FLDS_inputFlist" element="brmbaseserv:PCM_OP_READ_FLDS_inputFlist" />
+   </message>
+
+	<message name="PostInvokeABSProcessPCM_OP_READ_FLDS">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_READ_FLDS_outputFlist" element="brmbaseserv:PCM_OP_READ_FLDS_outputFlist" />
+	</message>
+   
+   
+   <message name="PreInvokeABSProcessPCM_OP_CUST_MODIFY_CUSTOMER">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_CUST_MODIFY_CUSTOMER_inputFlist" element="brmbaseserv:PCM_OP_CUST_MODIFY_CUSTOMER_inputFlist" />
+   </message>
+
+	<message name="PostInvokeABSProcessPCM_OP_CUST_MODIFY_CUSTOMER">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_CUST_MODIFY_CUSTOMER_outputFlist" element="brmbaseserv:PCM_OP_CUST_MODIFY_CUSTOMER_outputFlist" />
+	</message>
+	
+	<message name="PreInvokeABSProcessPCM_OP_SUBSCRIPTION_PURCHASE_DEAL">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_SUBSCRIPTION_PURCHASE_DEAL_inputFlist" element="brmbaseserv:PCM_OP_SUBSCRIPTION_PURCHASE_DEAL_inputFlist" />
+   </message>
+
+	<message name="PostInvokeABSProcessPCM_OP_SUBSCRIPTION_PURCHASE_DEAL">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_SUBSCRIPTION_PURCHASE_DEAL_outputFlist" element="brmbaseserv:PCM_OP_SUBSCRIPTION_PURCHASE_DEAL_outputFlist" />
+	</message>
+	<message name="SubProcPreInvokeProcessFulfillmentOrderBillingEBMMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvoke SubProcess operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="payload" element="sordsubebo:ProcessFulfillmentOrderBillingBRMCommsSubprocessMessage" />
+   </message>
+   
+   <message name="SubProcPostInvokeProcessFulfillmentOrderBillingEBMMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostInvoke SubProcess operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="payload" element="sordsubebo:ProcessFulfillmentOrderBillingBRMCommsSubprocessMessage" />
+   </message>
+   <message name="FaultMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used for propagating Error
+                                Context and Error Message</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="AIAFault" element="corecom:Fault" />
+   </message>
+   <portType name="ProcessFulfillmentOrderBillingBRMCommsAddSubProcessExtensionService">
+      <documentation>
+         <svcdoc:Interface>
+            <svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+            <svcdoc:DisplayName>ProcessSalesOrderSiebelProvABCSImplV2ExtensionService</svcdoc:DisplayName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         </svcdoc:Interface>
+      </documentation>
+    
+	 <operation name="PreInvokePCM_OP_READ_FLDSABMtoPCM_OP_READ_FLDSABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ProcessSalesOrderEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="billingOrderext:PreInvokeABSProcessPCM_OP_READ_FLDS" />
+         <output message="billingOrderext:PreInvokeABSProcessPCM_OP_READ_FLDS" />
+         <fault name="fault" message="billingOrderext:FaultMessage" />
+      </operation>
+	<operation name="PostInvokePCM_OP_READ_FLDSABMtoPCM_OP_READ_FLDSABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ProcessSalesOrderEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="billingOrderext:PostInvokeABSProcessPCM_OP_READ_FLDS" />
+         <output message="billingOrderext:PostInvokeABSProcessPCM_OP_READ_FLDS" />
+         <fault name="fault" message="billingOrderext:FaultMessage" />
+      </operation>
+	  
+	  <operation name="PreInvokePCM_OP_CUST_MODIFY_CUSTOMERABMtoPCM_OP_CUST_MODIFY_CUSTOMERABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ProcessSalesOrderEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="billingOrderext:PreInvokeABSProcessPCM_OP_CUST_MODIFY_CUSTOMER" />
+         <output message="billingOrderext:PreInvokeABSProcessPCM_OP_CUST_MODIFY_CUSTOMER" />
+         <fault name="fault" message="billingOrderext:FaultMessage" />
+      </operation>
+	<operation name="PostInvokePCM_OP_CUST_MODIFY_CUSTOMERABMtoPCM_OP_CUST_MODIFY_CUSTOMERABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ProcessSalesOrderEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="billingOrderext:PostInvokeABSProcessPCM_OP_CUST_MODIFY_CUSTOMER" />
+         <output message="billingOrderext:PostInvokeABSProcessPCM_OP_CUST_MODIFY_CUSTOMER" />
+         <fault name="fault" message="billingOrderext:FaultMessage" />
+      </operation>
+	  
+	  <operation name="PreInvokePCM_OP_SUBSCRIPTION_PURCHASE_DEALABMtoPCM_OP_SUBSCRIPTION_PURCHASE_DEALABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ProcessSalesOrderEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="billingOrderext:PreInvokeABSProcessPCM_OP_SUBSCRIPTION_PURCHASE_DEAL" />
+         <output message="billingOrderext:PreInvokeABSProcessPCM_OP_SUBSCRIPTION_PURCHASE_DEAL" />
+         <fault name="fault" message="billingOrderext:FaultMessage" />
+      </operation>
+	<operation name="PostInvokePCM_OP_SUBSCRIPTION_PURCHASE_DEALABMtoPCM_OP_SUBSCRIPTION_PURCHASE_DEALABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ProcessSalesOrderEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="billingOrderext:PostInvokeABSProcessPCM_OP_SUBSCRIPTION_PURCHASE_DEAL" />
+         <output message="billingOrderext:PostInvokeABSProcessPCM_OP_SUBSCRIPTION_PURCHASE_DEAL" />
+         <fault name="fault" message="billingOrderext:FaultMessage" />
+      </operation>
+	  <operation name="SubProcPreInvokeProcessFulfillmentOrderBillingEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to enrich
+                                   ProcessFulfillmentOrderBillingEBM before it to the
+                                   Sub Processes </svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeProcessFulfillmentOrderBillingEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="billingOrderext:SubProcPreInvokeProcessFulfillmentOrderBillingEBMMessage" />
+         <output message="billingOrderext:SubProcPreInvokeProcessFulfillmentOrderBillingEBMMessage" />
+         <fault name="fault" message="billingOrderext:FaultMessage" />
+      </operation>
+	  
+	  <operation name="SubProcPostInvokeProcessFulfillmentOrderBillingEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to enrich
+                                   ProcessFulfillmentOrderBillingEBM before it to the
+                                   Sub Processes </svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeProcessFulfillmentOrderBillingEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="billingOrderext:SubProcPreInvokeProcessFulfillmentOrderBillingEBMMessage" />
+         <output message="billingOrderext:SubProcPreInvokeProcessFulfillmentOrderBillingEBMMessage" />
+         <fault name="fault" message="billingOrderext:FaultMessage" />
+      </operation>
+	  
+   </portType>
+   <plnk:partnerLinkType name="ProcessFulfillmentOrderBillingBRMCommsAddSubProcessExtensionService">
+      <plnk:role name="ProcessFulfillmentOrderBillingBRMCommsAddSubProcessExtensionServiceProvider">
+         <plnk:portType name="billingOrderext:ProcessFulfillmentOrderBillingBRMCommsAddSubProcessExtensionService" />
+      </plnk:role>
+   </plnk:partnerLinkType>
+   
+   <binding name="ProcessFulfillmentOrderBillingBRMCommsAddSubProcessExtensionBinding" type="billingOrderext:ProcessFulfillmentOrderBillingBRMCommsAddSubProcessExtensionService">
+   <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" /> 
+   <operation name="PreInvokePCM_OP_READ_FLDSABMtoPCM_OP_READ_FLDSABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   <operation name="PostInvokePCM_OP_READ_FLDSABMtoPCM_OP_READ_FLDSABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   <operation name="PreInvokePCM_OP_CUST_MODIFY_CUSTOMERABMtoPCM_OP_CUST_MODIFY_CUSTOMERABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   <operation name="PostInvokePCM_OP_CUST_MODIFY_CUSTOMERABMtoPCM_OP_CUST_MODIFY_CUSTOMERABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   <operation name="PreInvokePCM_OP_SUBSCRIPTION_PURCHASE_DEALABMtoPCM_OP_SUBSCRIPTION_PURCHASE_DEALABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   <operation name="PostInvokePCM_OP_SUBSCRIPTION_PURCHASE_DEALABMtoPCM_OP_SUBSCRIPTION_PURCHASE_DEALABM">
+	<soap:operation style="document" soapAction="mirror" /> 
+	<input>
+		<soap:body use="literal" /> 
+	</input>
+	<output>
+		<soap:body use="literal" /> 
+	</output>
+	<fault name="fault">
+		<soap:fault name="fault" use="literal" encodingStyle="" /> 
+	</fault>
+   </operation>
+   <operation name="SubProcPreInvokeProcessFulfillmentOrderBillingEBM">
+         <soap:operation style="document" soapAction="PreInvokeProcessFulfillmentOrderBillingEBM" />
+         <input>
+            <soap:body use="literal" />
+         </input>
+         <output>
+            <soap:body use="literal" />
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal" encodingStyle="" />
+         </fault>
+    </operation>
+	<operation name="SubProcPostInvokeProcessFulfillmentOrderBillingEBM">
+         <soap:operation style="document" soapAction="PostInvokeProcessFulfillmentOrderBillingEBM" />
+         <input>
+            <soap:body use="literal" />
+         </input>
+         <output>
+            <soap:body use="literal" />
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal" encodingStyle="" />
+         </fault>
+    </operation>			
+ </binding>
+
+<service name="mirrorAnyService">
+	<port name="ProcessFulfillmentOrderBillingBRMCommsAddSubProcessExtensionPort" binding="billingOrderext:ProcessFulfillmentOrderBillingBRMCommsAddSubProcessExtensionBinding">
+		<soap:address location="http://${fp.server.soaserverhostname}:${fp.server.soaserverport}/MirrorServlet/mirror" /> 
+	</port>
+</service>
+
+</definitions>

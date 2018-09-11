@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<adapter-config adapter="Oracle BRM Adapter" name="BRMPYMTService"  xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+    <connection-factory UIConnectionName="" adapterRef="" location="eis/BRM"/>
+    <endpoint-interaction operation="PCM_OP_PYMT_COLLECT" portType="BRMPYMTService_ptt">
+        <interaction-spec className="oracle.tip.adapter.brm.BRMInteractionSpec">
+            <property name="OpcodeName" value="PCM_OP_PYMT_COLLECT"/>
+            <property name="OpcodeFlags" value="0"/>
+            <property name="OpcodeSchema" value="PCM_OP_PYMT_COLLECT.xsd"/>
+            <property name="ValidationAttr" value="ValidationRequired"/>
+        </interaction-spec>
+    </endpoint-interaction>
+</adapter-config>

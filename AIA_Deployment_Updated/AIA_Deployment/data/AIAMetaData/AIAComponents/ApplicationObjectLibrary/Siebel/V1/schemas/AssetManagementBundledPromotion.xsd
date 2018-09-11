@@ -1,0 +1,243 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<xsd:schema elementFormDefault="qualified" attributeFormDefault="unqualified"
+              xmlns:xsdLocal1="http://www.siebel.com/xml/SWIAssetManagementPromotion"
+              targetNamespace="http://www.siebel.com/xml/SWIAssetManagementPromotion"
+              xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <xsd:annotation>
+    <xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights
+                       reserved. Siebel XSD Generation</xsd:documentation>
+   </xsd:annotation>
+   <xsd:element name="ListOfSwiassetmanagementpromotion"
+                type="xsdLocal1:ListOfSwiassetmanagementpromotion"/>
+   <xsd:complexType name="ListOfSwiassetmanagementpromotionTopElmt">
+    <xsd:sequence>
+     <xsd:element name="ListOfSwiassetmanagementpromotion" maxOccurs="1"
+                  minOccurs="1"
+                  type="xsdLocal1:ListOfSwiassetmanagementpromotion"/>
+    </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="ListOfSwiassetmanagementpromotion">
+    <xsd:sequence>
+     <xsd:element name="SwiAssetMgmtPromotionAsset" maxOccurs="unbounded"
+                  minOccurs="0" type="xsdLocal1:SwiAssetMgmtPromotionAsset"/>
+    </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="SwiAssetMgmtPromotionAsset">
+    <xsd:sequence>
+     <xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+     <xsd:element name="Created" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+     <xsd:element name="CreatedBy" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="Updated" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+     <xsd:element name="UpdatedBy" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ConflictId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+     <xsd:element name="Searchspec" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="AccountType" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="AssetId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+     <xsd:element name="BillingAccount" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="BillingAccountId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="BillingProfileId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="BillingProfileName" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="BillingType" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="Comments" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="IntegrationId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="Name" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+     <xsd:element name="ParentAssetId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ParentAssetName" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ParentAssetNumber" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ProdItemId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ProdPromId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ProdPromInstanceId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ProdPromName" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ProdPromRuleId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ProdPromSourceId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ProdType" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ProductId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ProductName" maxOccurs="1" minOccurs="1"
+                  type="xsd:string"/>
+     <xsd:element name="ProductSPNDefinitionId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ProductType" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ProductVersion" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ProductXAClassId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="PromGroupId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="PromGroupInstanceId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="PromGroupName" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="PromGroupRuleId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="PromGroupRuleType" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="PromotionGroupType" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="Quantity" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="RootAssetId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="RootIntegrationId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="RootProdPromInstanceId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="RootProductId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="RootPromotionGroupId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="RootPromotionId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ServiceAccount" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ServiceAccountId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ServiceFlag" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ServiceType" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="Status" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+     <xsd:element name="Type" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+     <xsd:element name="ListOfSwiAssetMgmtPromotionComponetAsset" maxOccurs="1"
+                  minOccurs="0"
+                  type="xsdLocal1:ListOfSwiAssetMgmtPromotionComponetAsset"/>
+     <xsd:element name="SwiAssetMgmtPromotionAsset" maxOccurs="unbounded"
+                  minOccurs="0" type="xsdLocal1:SwiAssetMgmtPromotionAsset"/>
+    </xsd:sequence>
+    <xsd:attribute name="Operation" type="xsd:string"/>
+   </xsd:complexType>
+   <xsd:complexType name="ListOfSwiAssetMgmtPromotionComponetAsset">
+    <xsd:sequence>
+     <xsd:element name="SwiAssetMgmtPromotionComponetAsset"
+                  maxOccurs="unbounded" minOccurs="0"
+                  type="xsdLocal1:SwiAssetMgmtPromotionComponetAsset"/>
+    </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="SwiAssetMgmtPromotionComponetAsset">
+    <xsd:sequence>
+     <xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+     <xsd:element name="Created" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+     <xsd:element name="CreatedBy" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="Updated" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+     <xsd:element name="UpdatedBy" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ConflictId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+     <xsd:element name="Searchspec" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="AccountType" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="AssetId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+     <xsd:element name="BillingAccount" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="BillingAccountId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="BillingProfileId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="BillingProfileName" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="BillingType" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="Comments" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="IntegrationId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="Name" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+     <xsd:element name="ParentAssetId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ParentAssetName" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ParentAssetNumber" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ProdItemId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ProdPromId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ProdPromInstanceId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ProdPromName" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ProdPromRuleId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ProdPromSourceId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ProdType" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ProductId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ProductName" maxOccurs="1" minOccurs="1"
+                  type="xsd:string"/>
+     <xsd:element name="ProductSPNDefinitionId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ProductType" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ProductVersion" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ProductXAClassId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="PromGroupId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="PromGroupInstanceId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="PromGroupName" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="PromGroupRuleId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="PromGroupRuleType" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="PromotionGroupType" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="Quantity" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="RootAssetId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="RootIntegrationId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="RootProdPromInstanceId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="RootProductId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="RootPromotionGroupId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="RootPromotionId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ServiceAccount" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ServiceAccountId" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ServiceFlag" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="ServiceType" maxOccurs="1" minOccurs="0"
+                  type="xsd:string"/>
+     <xsd:element name="Status" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+     <xsd:element name="Type" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+    </xsd:sequence>
+    <xsd:attribute name="Operation" type="xsd:string"/>
+   </xsd:complexType>
+  </xsd:schema>

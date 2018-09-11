@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.siebel.com/xml/SWIMergeObjectIO"
+            xmlns:xsdLocal="http://www.siebel.com/xml/SWIMergeObjectIO"
+            attributeFormDefault="unqualified" elementFormDefault="qualified">
+ <xsd:annotation>
+  <xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights
+                     reserved. Siebel XSD Generation</xsd:documentation>
+ </xsd:annotation>
+ <xsd:element name="ListOfSwimergeobjectio"
+              type="xsdLocal:ListOfSwimergeobjectio"/>
+ <xsd:complexType name="ListOfSwimergeobjectioTopElmt">
+  <xsd:sequence>
+   <xsd:element name="ListOfSwimergeobjectio"
+                type="xsdLocal:ListOfSwimergeobjectio" minOccurs="1"
+                maxOccurs="1"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="ListOfSwimergeobjectio">
+  <xsd:sequence>
+   <xsd:element name="SwiMergeObject" type="xsdLocal:SwiMergeObject"
+                minOccurs="0" maxOccurs="unbounded"/>
+  </xsd:sequence>
+  <xsd:attribute name="Language" type="xsd:string"/>
+  <xsd:attribute name="Locale" type="xsd:string"/>
+  <xsd:attribute name="MessageId" type="xsd:string"/>
+  <xsd:attribute name="EnterpriseServerName" type="xsd:string"/>
+ </xsd:complexType>
+ <xsd:complexType name="SwiMergeObject">
+  <xsd:sequence>
+   <xsd:element name="BusinessComponentName" type="xsd:string" minOccurs="0"
+                maxOccurs="1"/>
+   <xsd:element name="BusinessObjectName" type="xsd:string" minOccurs="0"
+                maxOccurs="1"/>
+   <xsd:element name="MergeId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+   <xsd:element name="ListOfSwiLosingObject"
+                type="xsdLocal:ListOfSwiLosingObject" minOccurs="0"
+                maxOccurs="1"/>
+   <xsd:element name="ListOfSwiWinningObject"
+                type="xsdLocal:ListOfSwiWinningObject" minOccurs="0"
+                maxOccurs="1"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="ListOfSwiLosingObject">
+  <xsd:sequence>
+   <xsd:element name="SwiLosingObject" type="xsdLocal:SwiLosingObject"
+                minOccurs="0" maxOccurs="unbounded"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="SwiLosingObject">
+  <xsd:sequence>
+   <xsd:element name="LosingObjectId" type="xsd:string" minOccurs="0"
+                maxOccurs="1"/>
+   <xsd:element name="ParentRowId" type="xsd:string" minOccurs="0"
+                maxOccurs="1"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="ListOfSwiWinningObject">
+  <xsd:sequence>
+   <xsd:element name="SwiWinningObject" type="xsdLocal:SwiWinningObject"
+                minOccurs="1" maxOccurs="1"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="SwiWinningObject">
+  <xsd:sequence>
+   <xsd:element name="ParentRowId" type="xsd:string" minOccurs="0"
+                maxOccurs="1"/>
+   <xsd:element name="WinningObjectId" type="xsd:string" minOccurs="0"
+                maxOccurs="1"/>
+  </xsd:sequence>
+ </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="SyncContactSiebelReqABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncContactSiebelReqABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:ebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+     xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+     xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:sblaggrtbl="http://xmlns.oracle.com/pcbpel/adapter/db/top/SiebelAggrEventConsumer"
+     xmlns:client="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncContactSiebelReqABCSImpl/V1"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service contains operations that would be used by the participating
+    application to interact with the external systems</svcdoc:Description>
+            <svcdoc:ServiceType>RequesterABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>Siebel Customer Party Requestor ABCS Implementation Interface</svcdoc:DisplayName>
+            <svcdoc:ABOName>AiaAggregatedEntitiesCollection</svcdoc:ABOName>
+            <svcdoc:EBOName>CustomerPartyEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>Siebel</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncContactSiebelReqABCSImpl/V1"
+             elementFormDefault="qualified">
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/CustomerParty/V2/CustomerPartyEBM.xsd"/>
+            <xsd:import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/SiebelAggrEventConsumer"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/Aggregator.xsd"/>
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+            <xsd:import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="SyncContactReqMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>Request payload for the Sync operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="AiaAggregatedEntitiesCollection" element="sblaggrtbl:AiaAggregatedEntitiesCollection"/>
+    </message>
+    <message name="FaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error Context and
+                        Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="AIAFault" element="corecom:Fault"/>
+    </message>
+    <portType name="SyncContactSiebelReqABCSImpl">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This interface contains the web service operations
+                        related to the CustomerParty object.</svcdoc:Description>
+                <svcdoc:DisplayName>CustomerParty Account Interface</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="sync">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to sync the CustomerParty
+                         object</svcdoc:Description>
+                    <svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+                    <svcdoc:DisplayName>Sync CustomerParty</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="client:SyncContactReqMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="SyncContactSiebelReqABCSImpl">
+        <plnk:role name="SyncContactSiebelReqABCSImplProvider">
+            <plnk:portType name="client:SyncContactSiebelReqABCSImpl"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

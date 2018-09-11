@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:tns0="http://xmlns.oracle.com/ValuesetService"
+             xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+             xmlns:tns="http://xmlns.oracle.apps.ego.extfwk.service/"
+             name="ValuesetService"
+             targetNamespace="http://xmlns.oracle.apps.ego.extfwk.service/">
+ <types>
+  <xsd:schema>
+   <xsd:import namespace="http://xmlns.oracle.com/ValuesetService"
+               schemaLocation="../schemas/ValuesetService.xsd"/>
+  </xsd:schema>
+ </types>
+ <message name="ValuesetService_getValueSetDetails">
+  <part name="parameters" element="tns0:ValuesetQueryIn"/>
+ </message>
+ <message name="ValuesetService_getValueSetDetailsResponse">
+  <part name="parameters" element="tns0:ValuesetQueryOut"/>
+ </message>
+ <portType name="ValuesetService">
+  <operation name="getValueSetDetails">
+   <input message="tns:ValuesetService_getValueSetDetails"/>
+   <output message="tns:ValuesetService_getValueSetDetailsResponse"/>
+  </operation>
+ </portType>
+ <binding name="ValuesetServiceSoapHttp" type="tns:ValuesetService">
+  <soap:binding style="document"
+                transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="getValueSetDetails">
+   <soap:operation soapAction="http://xmlns.oracle.apps.ego.extfwk.service//getValueSetDetails"/>
+   <input>
+    <soap:body use="literal"/>
+   </input>
+   <output>
+    <soap:body use="literal"/>
+   </output>
+  </operation>
+ </binding>
+ <service name="ValuesetService">
+  <port name="ValuesetServiceSoapHttpPort"
+        binding="tns:ValuesetServiceSoapHttp">
+   <soap:address location="http://rws60112rems.us.oracle.com:7777/oracle/apps/ego/extfwk/ValuesetServiceSoapHttpPort"/>
+  </port>
+ </service>
+</definitions>

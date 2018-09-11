@@ -1,0 +1,61 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            targetNamespace="http://xmlns.oracle.com/apps/ego/extfwk/service/in"
+            xmlns="http://xmlns.oracle.com/apps/ego/extfwk/service/in"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <!-- $Header: aiapip/apps/fp/components/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PIM/V1/schemas/ValuesetQueryParam.xsd /main/2 2012/12/17 05:37:44 sduggine Exp $  -->
+    <xsd:complexType name="ValuesetIdType">
+        <xsd:annotation>
+            <xsd:documentation>Valueset Identifier SDO</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="ValueSetId" type="xsd:decimal" minOccurs="0"
+                         nillable="true"/>
+            <xsd:element name="VersionSeqId" type="xsd:string" minOccurs="0"
+                         nillable="true"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="LanguageType">
+        <xsd:annotation>
+            <xsd:documentation>Service DataObject for Language</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="LanguageCode" type="xsd:string"/>
+            <xsd:element name="LanguageName" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ListOfLangType">
+        <xsd:sequence>
+            <xsd:element name="Language" type="LanguageType" minOccurs="0"
+                         maxOccurs="unbounded" nillable="true"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ValuesetIdListType">
+        <xsd:sequence>
+            <xsd:element name="ValuesetIdentifier" type="ValuesetIdType"
+                         minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="VsQueryParamType">
+        <xsd:annotation>
+            <xsd:documentation>Valueset Query Param SDO</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="BatchId" type="xsd:decimal" minOccurs="0"
+                         nillable="true"/>
+            <xsd:element name="ValuesetIdentifiersList"
+                         type="ValuesetIdListType" minOccurs="1" maxOccurs="1"
+                         nillable="false"/>
+            <xsd:element name="ReturnPayload" type="xsd:string" minOccurs="0"
+                         nillable="true"/>
+            <xsd:element name="ListOfLanguages" type="ListOfLangType"
+                         maxOccurs="1" minOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="ValuesetQueryParam" type="VsQueryParamType"
+                 nillable="true"/>
+</xsd:schema>
+
+
+
+
+

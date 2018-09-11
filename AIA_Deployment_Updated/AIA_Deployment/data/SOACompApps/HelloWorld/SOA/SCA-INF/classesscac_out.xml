@@ -1,0 +1,23 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>error</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='assign'][@name='Assign1']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='copy']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='from']</loc>
+      <line>74</line>
+      <col/>
+      <file>BPEL/HelloWorld.bpel</file>
+      <name>BPEL/HelloWorld.bpel</name>
+      <fix>Check the type definition associated with the BPEL variable.</fix>
+      <msg>The XPath segment "child::client:input" cannot be resolved.</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='assign'][@name='Assign1']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='copy']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='to']</loc>
+      <line>75</line>
+      <col/>
+      <file>BPEL/HelloWorld.bpel</file>
+      <name>BPEL/HelloWorld.bpel</name>
+      <fix>Check the type definition associated with the BPEL variable.</fix>
+      <msg>The XPath segment "child::client:result" cannot be resolved.</msg>
+   </Fault>
+</Faults>

@@ -1,0 +1,53 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<definitions
+     name="SyncItemListPDCProvABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/PDC/Core/SyncItemListPDCProvABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:ns2="urn:PricingGateWay"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:ns1="http://xmlns.oracle.com/communications/platform/model/pricing"
+     xmlns:eboabcs="http://xmlns.oracle.com/ABCSImpl/PDC/Core/SyncItemListPDCProvABCSImpl/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:eboebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Item/V2"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This provider ABCS syncs discounts related objects to PDC.</svcdoc:Description>
+            <svcdoc:ServiceType>ProviderABCSImpl</svcdoc:ServiceType>
+            <svcdoc:Version>1</svcdoc:Version>
+            <svcdoc:ProductCode>PDC</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <plnk:partnerLinkType name="SyncItemListPDCProvABCSImpl">
+        <plnk:role name="SyncItemListPDCProvABCSImplProvider">
+            <plnk:portType name="eboabcs:SyncItemListPDCProvABCSImpl"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <import namespace="urn:PricingGateWay" location="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PDC/wsdls/PricingGateway.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Item/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/Item/V2/ItemEBM.xsd"/>
+            <import namespace="http://xmlns.oracle.com/communications/platform/model/pricing"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PDC/schemas/Pricing/PricingObjects.xsd"/>
+            <import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </schema>
+    </types>
+    <message name="SyncItemListReqMsg">
+        <part name="SyncItemListEBM" element="eboebo:SyncItemListEBM"/>
+    </message>
+    <portType name="SyncItemListPDCProvABCSImpl">
+        <operation name="SyncItemList">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Sync an ItemList
+                              object</svcdoc:Description>
+                    <svcdoc:MEP>AsyncReqResp</svcdoc:MEP>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="eboabcs:SyncItemListReqMsg"/>
+        </operation>
+    </portType>
+</definitions>

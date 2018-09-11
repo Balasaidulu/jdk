@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns="http://xmlns.oracle.com/EnterpriseObjects/Industry/Communications/OrderFailureData/V1" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/EnterpriseObjects/Industry/Communications/OrderFailureData/V1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Infrastructure/V1/Meta.xsd" namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" />
+  <xs:complexType name="OrderLineItemFailureDataType">
+    <xs:sequence>
+      <xs:element name="OrderLineItemID" type="corecom:IdentificationType">
+        <xs:annotation>
+          <xs:documentation>Identification for the failed Order Line Item </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ErrorCode" type="corecom:CodeType">
+        <xs:annotation>
+          <xs:documentation>Error Code for the failed Order Line</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ErrorMessage" type="corecom:TextType">
+        <xs:annotation>
+          <xs:documentation>Complete Error Message for the failed Order Line</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ErrorSeverity" type="corecom:CodeType">
+        <xs:annotation>
+          <xs:documentation>Severity of the Error for the Order Line Item</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="StatusContext" type="corecom:TextType">
+        <xs:annotation>
+          <xs:documentation>Used to capture status related display information, or status related information which is product dependent. It can also be used to capture the current milestone within the provisioning system for the service associated the Order Item.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="FailureSubSystemCode" type="corecom:CodeType">
+        <xs:annotation>
+          <xs:documentation>Sub System Code / API where the Order Line has failed. Applicable in the case of Participating Applications. If the fault is within AIA, the service which faulted is assumed as the Sub System of failure</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderLineItemFailureDataList" type="OrderLineItemFailureDataType" />
+  <xs:complexType name="OrderFailureDataType">
+    <xs:sequence>
+      <xs:element name="OrderID" type="corecom:IdentificationType">
+        <xs:annotation>
+          <xs:documentation>Identification for the failed Order</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AccountID" type="corecom:IdentificationType">
+        <xs:annotation>
+          <xs:documentation>Identification field for the Service Account of the failed order</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ProductID" type="corecom:IdentificationType">
+        <xs:annotation>
+          <xs:documentation>ProductID associated with the failed order. In case of multiple products, this field will contain the Product ID of the First Order Line Item that failed </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ProcessingNumber" type="corecom:StringType">
+        <xs:annotation>
+          <xs:documentation>Job ID - Identifier for the Job to which the order is associated. </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ProcessingTypeCode" type="corecom:CodeType">
+        <xs:annotation>
+          <xs:documentation>Type of the job. Like Homogenous, Heterogenous, Correlated etc.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ProcessingQuantity" type="corecom:QuantityType">
+        <xs:annotation>
+          <xs:documentation>Total number of orders within the job.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="FailureSystemCode" type="corecom:CodeType">
+        <xs:annotation>
+          <xs:documentation>System Code where the Order has failed like AIA, BRM_01, SEBL_01</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="FailureSubSystemCode" type="corecom:CodeType">
+        <xs:annotation>
+          <xs:documentation>Sub System Code / API where the Order has failed. Applicable in the case of Participating Applications. If the fault is within AIA, the service which faulted is assumed as the Sub System of failure</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="OrderLineItemFailureDataList">
+        <xs:annotation>
+          <xs:documentation>Order Failure Data required to enrich the AIA Fault Message for Order Fallout.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="languageCode" type="corecom:LanguageCodeType" />
+  </xs:complexType>
+  <xs:element name="OrderFailureData" type="OrderFailureDataType" />
+  <xs:element name="ApplicationFaultData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" ref="OrderFailureData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

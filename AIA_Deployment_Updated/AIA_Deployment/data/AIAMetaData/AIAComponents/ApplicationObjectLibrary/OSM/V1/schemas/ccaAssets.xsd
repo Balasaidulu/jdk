@@ -1,0 +1,397 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/communications/ordermanagement/cca"
+     xmlns:cca="http://xmlns.oracle.com/communications/ordermanagement/cca" xmlns:slc="http://xmlns.oracle.com/communications/ordermanagement/cca/lifecycle">
+    <xs:import namespace="http://www.w3.org/2001/XMLSchema"/>
+    <xs:element name="assetDetail" type="cca:AssetType"/>
+    <xs:element name="assetDetails" type="cca:AssetDetailsType"/>
+    <xs:complexType name="AssetDetailsType">
+        <xs:sequence>
+            <xs:element name="assetDetail" type="cca:AssetType" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="assetResponse" type="cca:AssetResponseType"/>
+    <xs:element name="errorDetail" type="cca:ErrorDetailType"/>
+    <xs:complexType name="AssetResponseType">
+        <xs:sequence>
+            <xs:element name="asset" type="cca:AssetDescriptionType" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>a list of Assets and their locations can be in the response</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AssetDescriptionType">
+        <xs:annotation>
+            <xs:documentation>The name, description and the URL location of an asset.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="name" type="cca:EntityNameType"/>
+            <xs:element name="version" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Version of the asset. Asset versions are changed with version worthy changes are made to the Asset&apos;s product parameters.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="state" type="cca:EntityNameType">
+                <xs:annotation>
+                    <xs:documentation>State of the asset, life cycle managed.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="location" type="cca:UriLinkType"/>
+
+<!-- S or F for transactionState values, do we need to keep this? 
+-->
+            <xs:element name="transactionState" type="xs:string" nillable="false"/>
+            <xs:element name="errorDetail" type="cca:ErrorDetailType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ErrorDetailType">
+        <xs:sequence>
+            <xs:element name="failureCode" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Application error code.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="failureMessage" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Detailed error message.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AssetType">
+        <xs:annotation>
+            <xs:documentation>Comment describing your root element</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0">
+            <xs:element name="id" type="cca:EntityIdType">
+                <xs:annotation>
+                    <xs:documentation>id holds the unique id of the asset</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="name" type="cca:EntityNameType" nillable="false">
+                <xs:annotation>
+                    <xs:documentation>Name of the asset. It could be the product name or user enterable.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="version" type="xs:int" nillable="false">
+                <xs:annotation>
+                    <xs:documentation/>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="description" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Description of the asset. It could be the product name or user enterable</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="toState" type="cca:EntityNameType">
+                <xs:annotation>
+                    <xs:documentation>In case of state transition, this will be ‘From State’ and To Asset State will be ‘To State’.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="state" type="cca:EntityNameType">
+                <xs:annotation>
+                    <xs:documentation>State of the asset, life cycle managed.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="assetNumber" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>This is specifically for scenarios like service point where serial # of service point are updated. We can use a generic name called &quot;Asset Value&quot;. This is user entered and not generated by the system.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="parentAssetName" type="cca:EntityNameType" minOccurs="0"/>
+            <xs:element name="rootAssetName" type="cca:EntityNameType" minOccurs="0"/>
+            <xs:element name="referencedAssetName" type="cca:EntityNameType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="reasonCode" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Reason for moving an asset to a specific state</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="serviceId" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>This is the service identifier i.e. it’s an ID that represents the service identification in the network. 
+                        Based on domain, each the Service ID changes. For example: For Voice it’s TN, for BB with DSL it DSL port ID etc.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="assetKeyDates" type="cca:AssetKeyDateType">
+                <xs:annotation>
+                    <xs:documentation>Date on which new asset version is created. This is when asset goes to pending state and asset is created for the first time.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="productInfo" type="cca:ProductInfoType"/>
+            <xs:element name="accountAndBillingInfo" type="cca:AccountAndBillingInfoType"/>
+            <xs:element name="partnerDetails" type="cca:PartnerDetailsType"/>
+            <xs:element name="warrantyDetails" type="cca:WarrantyDetailsType"/>
+            <xs:element name="updateDetails" type="cca:UpdateDetailsType"/>
+            <xs:element name="shippingAndInstallIdentifiers" type="cca:ShippingAndInstallIdentifiersType"/>
+            <xs:element name="servicePointIdentifier" type="cca:ServicePointIdentifierType"/>
+            <xs:element name="productAction" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Valid product actions are ADD, DELETE, UPDATE, SUSPEND, RESUME, MOVE-ADD, MOVE-DELETE and NONE</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="statusCode" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Valid status code are IN_PROGRESS, COMPLETE, CANCELLED, FAILED and OPEN</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="location" type="cca:UriLinkType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ProductInfoType">
+        <xs:sequence>
+            <xs:element name="productIdentifier" type="cca:ProductIdentifierType"/>
+            <xs:element name="productQuantity" type="xs:positiveInteger" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Quantity of asset created</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="productParameters" type="cca:ProductParametersType" maxOccurs="unbounded"/>
+            <xs:element name="productPricing" type="cca:ProductPricingAndCostingType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ProductIdentifierType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="productType" type="xs:string" nillable="false">
+                <xs:annotation>
+                    <xs:documentation>Type of products – Simple Offer, Bundle, Service Bundle, Promotions</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="productSpec" type="xs:string" nillable="false">
+                <xs:annotation>
+                    <xs:documentation>Product Spec will be referenced from an asset to enable access to attributes that don&apos;t change per instance 
+                        and necessary to drive business logic such as compatibility rules triggered by change orders</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="productSpecVersion" type="xs:string" minOccurs="0"/>
+            <xs:element name="productName" type="xs:string" nillable="false">
+                <xs:annotation>
+                    <xs:documentation>Name of the product, whether it’s a Simple Offer, Bundle, Service Bundle, Promotions</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="productVersion" type="xs:string" minOccurs="0"/>
+            <xs:element name="productCatalogName" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Product Catalog that stores the products (this will help in identifying the catalog name and version on which the assets are based on)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="productCatalogVersion" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ProductParametersType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" nillable="false">
+                <xs:annotation>
+                    <xs:documentation>User defined parameter name</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="dataType" type="xs:string" nillable="false"/>
+
+<!-- <xs:element name="defaultValue" type="xs:string" minOccurs="0" /> 
+-->
+            <xs:element name="value" type="xs:string" minOccurs="0"/>
+
+<!-- <xs:element name="operation" type="xs:string" minOccurs="0" /> 
+-->
+            <xs:element name="unitOfMeasure" type="xs:string" minOccurs="0"/>
+            <xs:element name="required" type="xs:string" nillable="false"/>
+            <xs:element name="usageDescription" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AccountAndBillingInfoType">
+        <xs:sequence>
+            <xs:element name="customerAccountId" type="xs:string" nillable="false"/>
+            <xs:element name="serviceAccountId" type="xs:string" minOccurs="0"/>
+            <xs:element name="billingAccountId" type="xs:string" minOccurs="0"/>
+            <xs:element name="billingProfileId" type="xs:string" minOccurs="0"/>
+            <xs:element name="accountSystemId" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ShippingAndInstallIdentifiersType">
+        <xs:sequence>
+            <xs:element name="shippingDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="installedDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="returnDate" type="xs:dateTime" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PartnerDetailsType">
+        <xs:sequence>
+            <xs:element name="partnerId" type="xs:string" minOccurs="0"/>
+            <xs:element name="accountSystemId" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="WarrantyDetailsType">
+<!-- Child elements all use String types? what about datetime?? string formate???
+-->
+        <xs:sequence>
+            <xs:element name="warrantyStartDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="warrantyEndDate" type="xs:dateTime" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ServicePointIdentifierType">
+        <xs:sequence>
+            <xs:element name="resourceId" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="UpdateDetailsType">
+        <xs:sequence>
+            <xs:element name="updatingSystemId" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="updatedBy" type="xs:string" nillable="false"/>
+            <xs:element name="orderNumber" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="orderId" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="quoteNumber" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="quoteId" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="agreementNumber" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="agreementId" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="updateMode" type="cca:UpdateModeType" nillable="false"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="UpdateModeType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="MANUAL"/>
+            <xs:enumeration value="ORDER"/>
+            <xs:enumeration value="QUOTE"/>
+            <xs:enumeration value="BULK_UPGRADE"/>
+            <xs:enumeration value="BULK_DOWNGRADE"/>
+            <xs:enumeration value="BAR"/>
+            <xs:enumeration value="DEBAR"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="UriLinkType">
+        <xs:annotation>
+            <xs:documentation>Specified the structure for the links that will allow UI to navigate to related entities.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="rel" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Specifies the current resource and the linked one specified in the href.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="href" type="xs:string" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AssetKeyDateType">
+        <xs:annotation>
+            <xs:documentation>Represents the dates that pertain to the key actions that can be performed on an Asset.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="startDateOfAssetVersion" type="xs:dateTime" nillable="false">
+                <xs:annotation>
+                    <xs:documentation>Date on which new asset version is created. This is when asset goes to pending state and asset is created for the first time.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="endDateOfAssetVersion" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>End Date on which an asset version is closed and a new version is created. This is when a version of asset goes to disconnected state from Active or Suspended State.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="startDateOfActiveAssetVersion" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Date on which an asset moved from pending to active state.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="lastUpdateDateOfAsset" type="xs:dateTime" nillable="false">
+                <xs:annotation>
+                    <xs:documentation>Date on which an asset is last updated. Note that a single version of an asset could be updated multiple times and it’s starts as the same date as ‘Start Date of Asset Version’, but changes based on when the same version of the asset is updated</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="requestedDisconnectionDate" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Date on which an asset version is requested to be disconnected. This could be immediate or in the future</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="requestedSuspendedDate" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Date on which an asset version is requested to be suspended. This could be immediate or in the future</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="requestedResumptionDate" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Date on which an asset version is requested to be resumed. This could be immediate or in the future</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="actualSuspensionDateOfActiveAssetversion" type="xs:dateTime" minOccurs="0"
+                 maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Date on which the asset version is moved to “Suspended” state from active state.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="actualResumptionDateOfActiveAssetversion" type="xs:dateTime" minOccurs="0"
+                 maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Date on which the asset version is moved to “Resumed” i.e.  moved to INPROGRESS state from active state.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ProductPricingAndCostingType">
+        <xs:annotation>
+            <xs:documentation>The cost and the prise identifiers are associated to assets to keep track of how much a customer paid for a product and how much did it cost at that point of time.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="originalPrice" type="xs:float" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="recurringType" type="cca:FrequencyType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="recurringPeriod" type="cca:FrequencyPeriodType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="recurringPriceValidity" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="discountAmount" type="xs:float" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="discountPercent" type="xs:float" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="discountType" type="cca:FrequencyType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="discountPeriod" type="cca:FrequencyPeriodType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="discountPriceValidity" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="overridePrice" type="xs:float" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="currencyCode" type="cca:CurrencyCodeType" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="CurrencyCodeType">
+        <xs:annotation>
+            <xs:documentation>Currency code use for the pricing and discount.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <xs:simpleType name="FrequencyType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ONE_TIME"/>
+            <xs:enumeration value="RECURRING"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="FrequencyPeriodType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="DAYS"/>
+            <xs:enumeration value="WEEK"/>
+            <xs:enumeration value="MONTH"/>
+            <xs:enumeration value="YEAR"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EntityIdType">
+        <xs:annotation>
+            <xs:documentation>An id of an entity within the instance of the Provisioning application.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:long">
+            <xs:minExclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="SystemIdType">
+        <xs:annotation>
+            <xs:documentation>An id of an entity from other system.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <xs:simpleType name="EntityNameType">
+        <xs:restriction base="xs:NCName">
+            <xs:minLength value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

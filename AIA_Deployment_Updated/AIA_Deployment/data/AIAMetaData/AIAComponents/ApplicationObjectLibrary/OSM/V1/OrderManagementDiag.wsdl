@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="OrderManagementDiagService" 
+	targetNamespace="http://xmlns.oracle.com/communications/ordermanagement" 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:osm="http://xmlns.oracle.com/communications/ordermanagement" 
+	xmlns:tns="http://xmlns.oracle.com/communications/ordermanagement" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+	xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <wsp:UsingPolicy xmlns:n1="http://schemas.xmlsoap.org/wsdl/" n1:Required="true"/>
+	<wsp:Policy
+	  wsu:Id="WSPolicy.xml"
+		xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+		xmlns:wssp="http://www.bea.com/wls90/security/policy">
+		<wssp:Identity>
+			<wssp:SupportedTokens>
+				<wssp:SecurityToken TokenType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#UsernameToken">
+					<wssp:UsePassword Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText"/>
+				</wssp:SecurityToken>
+			</wssp:SupportedTokens>
+		</wssp:Identity>
+	</wsp:Policy>
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://xmlns.oracle.com/communications/ordermanagement" xmlns:tns="http://xmlns.oracle.com/communications/ordermanagement" xmlns:osm="http://xmlns.oracle.com/communications/ordermanagement" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:include schemaLocation="OrderManagementDiagWS.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="GetOrderCompensationsRequest">
+		<wsdl:part name="GetOrderCompensationsRequest"
+			element="osm:GetOrderCompensations">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="GetOrderCompensationsResponse">
+		<wsdl:part name="GetOrderCompensationsResponse"
+			element="osm:GetOrderCompensationsResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="GetOrderProcessHistoryRequest">
+		<wsdl:part name="GetOrderProcessHistoryRequest"
+			element="osm:GetOrderProcessHistory">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="GetOrderProcessHistoryResponse">
+		<wsdl:part name="GetOrderProcessHistoryResponse"
+			element="osm:GetOrderProcessHistoryResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="GetOrderProcessHistory_faultMsg">
+		<wsdl:part name="OrderNotFoundFault"
+			element="osm:OrderNotFoundFault">
+			<wsdl:documentation>
+				This fault is raised when the specified order cannot be
+				found. Generally this fault occurs when an incorrect
+				order id is specified.
+			</wsdl:documentation>
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="GetCompensationPlan">
+		<wsdl:part element="osm:GetCompensationPlan" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="GetCompensationPlanResponse">
+		<wsdl:part element="osm:GetCompensationPlanResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="GetCompensationPlan_faultMsg">
+		<wsdl:part name="OrderNotFoundFault" element="osm:OrderNotFoundFault">
+			<wsdl:documentation>
+				This fault is raised when the specified order cannot be
+				found. Generally this fault occurs when an incorrect
+				order id is specified or order is not being compensated.
+			</wsdl:documentation>
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="OrderManagementDiagPortType">
+		<wsdl:operation name="GetOrderCompensations">
+			<wsdl:documentation>
+			</wsdl:documentation>
+			<wsdl:input
+				message="osm:GetOrderCompensationsRequest">
+			</wsdl:input>
+			<wsdl:output
+				message="osm:GetOrderCompensationsResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetOrderProcessHistory">
+			<wsdl:documentation>
+				This operation returns process history perspective of an order.
+
+				There are 3 kinds of process history perspective: original, latest and identified by compenationId.
+				Use "GetOrderCompensations" operation to retrieve information about order compensations including their Ids.
+
+					Original process history perspective:  
+						Order that has never been compensated has only one (original) process history perspective.
+						For order that has been compensated original process history perspective includes all tasks 
+						created before the first compensation for the order has started.
+
+					Process history perspective defined by compensationId:	
+						Each started order compensation creates a new process history perspective for the order.
+						To be included in process history perspective identified by compensation task must satisfy 2 conditions:
+						1.	To be created before any later compensation had started (if any).
+						2.	Not be compensated in any prior compensation. 
+								When tasks is "redo" compensated the "redo" compensator replaces the task 
+								in all subsequent process history perspectives.
+								When task is "undone" it is not included into any subsequent process history perspective.
+						Tasks compensated in the compensation context that process history is requested for are included 
+						in response and their compensation details are provided.
+
+					Latest process history perspective:
+						Includes all tasks that have never been compensated.
+				
+				Preconditions: 1. The specified order exists.
+				
+				Outcome: The process history perspective for the order is returned.
+			</wsdl:documentation>
+			<wsdl:input
+				message="osm:GetOrderProcessHistoryRequest">
+			</wsdl:input>
+			<wsdl:output
+				message="osm:GetOrderProcessHistoryResponse">
+			</wsdl:output>
+			<wsdl:fault name="OrderNotFoundFault"
+				message="osm:GetOrderProcessHistory_faultMsg">
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetCompensationPlan">
+			<wsdl:documentation>
+				This operation retrieves order compensation plan. 
+				A set of compensation tasks is returned, along with 
+				the compensation dependencies between them.
+
+				Preconditions: 1. The specified order must exist.
+				2. Specified order must be open.running.compensating.amending or
+				open.running.compensating.cancelling. 
+
+				Outcome: The order compensation plan information is returned.
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetCompensationPlan"/>
+			<wsdl:output message="tns:GetCompensationPlanResponse"/>
+			<wsdl:fault name="OrderNotFoundFault" message="tns:GetCompensationPlan_faultMsg">
+</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="OrderManagementDiagSOAPPortBinding" type="tns:OrderManagementDiagPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="GetOrderCompensations">
+			<soap:operation
+				soapAction="http://xmlns.oracle.com/communications/ordermanagement/GetOrderCompensations" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<wsp:Policy>
+					<wsp:PolicyReference URI="#WSPolicy.xml"/>
+				</wsp:Policy>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>			
+		<wsdl:operation name="GetOrderProcessHistory">
+			<soap:operation
+				soapAction="http://xmlns.oracle.com/communications/ordermanagement/GetOrderProcessHistory" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<wsp:Policy>
+					<wsp:PolicyReference URI="#WSPolicy.xml"/>
+				</wsp:Policy>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>			
+		<wsdl:operation name="GetCompensationPlan">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<wsp:Policy>
+					<wsp:PolicyReference URI="#WSPolicy.xml"/>
+				</wsp:Policy>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="OrderNotFoundFault">
+				<soap:fault use="literal" name="OrderNotFoundFault"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="OrderManagementDiagService">
+		<wsdl:port binding="tns:OrderManagementDiagSOAPPortBinding" name="OrderManagementDiagSOAPPort">
+			<soap:address location="http://localhost:7001/osm_diag/wsapi"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

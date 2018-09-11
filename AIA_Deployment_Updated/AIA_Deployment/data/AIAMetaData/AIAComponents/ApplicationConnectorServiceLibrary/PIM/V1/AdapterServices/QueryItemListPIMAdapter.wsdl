@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:item="http://xmlns.oracle.com/apps/ego/item/service" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bpelcommon="http://schemas.oracle.com/service/bpel/common" xmlns:client="http://xmlns.oracle.com/PIM/QueryItemListPIMAdapter" xmlns:common="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:itmser="http://xmlns.oracle.com/QueryItemListPIMAdapter" name="QueryItemListPIMAdapter" targetNamespace="http://xmlns.oracle.com/PIM/QueryItemListPIMAdapter">
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/PIM/QueryItemListPIMAdapter">
+            <import namespace="http://xmlns.oracle.com/apps/ego/item/service" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PIM/V1/schemas/ItemService.xsd" />
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd" />
+            <import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd" />
+            <element name="QueryItemListPIMAdapterProcessRequest">
+                <complexType>
+                    <sequence>
+                        <element name="SessionID" type="string" />
+                        <element name="Mode" type="string" />
+                        <element name="SystemID" type="string" />
+                        <element ref="item:ItemQueryIn" />
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="QueryItemListPIMAdapterProcessResponse">
+                <complexType>
+                    <sequence>
+                        <element name="ContinueFlag" type="string" />
+                        <element ref="item:ItemQueryOut" />
+                        <element name="SessionID" type="string" />
+                    </sequence>
+                </complexType>
+            </element>
+        </schema>
+    </types>
+    <message name="QueryItemListPIMAdapterRequestMessage">
+        <part name="QueryItemListPIMAdapterProcessRequest" element="client:QueryItemListPIMAdapterProcessRequest" />
+    </message>
+    <message name="QueryItemListPIMAdapterResponseMessage">
+        <part name="QueryItemListPIMAdapterProcessResponse" element="client:QueryItemListPIMAdapterProcessResponse" />
+    </message>
+    <portType name="QueryItemListPIMAdapterService">
+        <operation name="InvokeItemService">
+            <input message="client:QueryItemListPIMAdapterRequestMessage" />
+            <output message="client:QueryItemListPIMAdapterResponseMessage" />
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="QueryItemListPIMAdapterService">
+        <plnk:role name="QueryItemListPIMAdapterProvider">
+            <plnk:portType name="client:QueryItemListPIMAdapterService" />
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

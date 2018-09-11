@@ -1,0 +1,72 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<definitions
+     name="TestOrderOrchestrationEBF"
+     targetNamespace="http://xmlns.oracle.com/TestOrderOrchestrationEBF"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+     xmlns:client="http://xmlns.oracle.com/TestOrderOrchestrationEBF"
+     xmlns:pns1="http://xmlns.oracle.com/TestOrderOrchestrationEBF/correlationset"
+     xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+     xmlns:sordebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SalesOrder/V2"
+     xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:osmfulfillws="http://xmlns.oracle.com/communications/ordermanagement/FulfillmentWS"
+     xmlns:om="http://xmlns.oracle.com/communications/ordermanagement"
+     xmlns:fulfillord="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/FulfillmentOrder/V1"
+     xmlns:corecustmr="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+    >
+    <plnk:partnerLinkType name="TestOrderOrchestrationEBF">
+        <plnk:role name="TestOrderOrchestrationEBFProvider">
+            <plnk:portType name="client:TestOrderOrchestrationEBF"/>
+        </plnk:role>
+        <plnk:role name="TestOrderOrchestrationEBFRequester">
+            <plnk:portType name="client:TestOrderOrchestrationEBFCallback"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <bpws:propertyAlias propertyName="pns1:EBMID_prop" xmlns:ns4="http://xmlns.oracle.com/pcbpel/adapter/jms/CreateFulfillmentOrderJMSProducer/"
+         messageType="ns4:ProcessFulfillmentOrderBillingAccountListEBM_msg" part="ProcessFulfillmentOrderBillingAccountListEBM"
+         query="/fulfillord:ProcessFulfillmentOrderBillingAccountListEBM/corecom:EBMHeader/corecom:EBMID"/>
+    <bpws:propertyAlias propertyName="pns1:EBMID_prop" messageType="client:TOPCustomerRequestMessage" part="payload"
+         query="/fulfillord:ProcessFulfillmentOrderBillingAccountListResponseEBM/corecom:EBMHeader/corecom:RequestEBMID"/>
+    <bpws:propertyAlias propertyName="pns1:EBMID_prop" xmlns:ns5="http://xmlns.oracle.com/pcbpel/adapter/jms/BillingOrderProducer/"
+         messageType="ns5:ProcessFulfillmentOrderBillingEBM_msg" part="ProcessFulfillmentOrderBillingEBM"
+         query="/fulfillord:ProcessFulfillmentOrderBillingEBM/corecom:EBMHeader/corecom:EBMID"/>
+    <bpws:propertyAlias propertyName="pns1:EBMID_prop" messageType="client:TOPBillingResponseMessage" part="payload"
+         query="/fulfillord:ProcessFulfillmentOrderBillingResponseEBM/corecom:EBMHeader/corecom:RequestEBMID"/>
+    <import namespace="http://xmlns.oracle.com/TestOrderOrchestrationEBF/correlationset" location="TestOrderOrchestrationEBF_Properties.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/FulfillmentOrder/V1"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/FulfillmentOrder/V1/FulfillmentOrderEBM.xsd"/>
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SalesOrder/V2"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/SalesOrder/V2/SalesOrderEBM.xsd"/>
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/CustomerParty/V2/CustomerPartyEBM.xsd"/>
+            <import namespace="http://schemas.xmlsoap.org/soap/envelope/" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/OSM/V1/soapEnvelope.xsd"/>
+        </schema>
+    </types>
+    <message name="TestOrderOrchestrationEBFRequestMessage">
+        <part name="payload" element="soapenv:Envelope"/>
+    </message>
+    <message name="TOPCustomerRequestMessage">
+        <part name="payload" element="fulfillord:ProcessFulfillmentOrderBillingAccountListResponseEBM"/>
+    </message>
+    <message name="TOPBillingResponseMessage">
+        <part name="payload" element="fulfillord:ProcessFulfillmentOrderBillingResponseEBM"/>
+    </message>
+    <message name="AIAFaultMsg">
+        <part name="AIAFault" element="corecom:Fault"/>
+    </message>
+    <portType name="TestOrderOrchestrationEBF">
+        <operation name="initiate">
+            <input message="client:TestOrderOrchestrationEBFRequestMessage"/>
+        </operation>
+        <operation name="customercallback">
+            <input message="client:TOPCustomerRequestMessage"/>
+        </operation>
+        <operation name="billingcallback">
+            <input message="client:TOPBillingResponseMessage"/>
+        </operation>
+    </portType>
+</definitions>

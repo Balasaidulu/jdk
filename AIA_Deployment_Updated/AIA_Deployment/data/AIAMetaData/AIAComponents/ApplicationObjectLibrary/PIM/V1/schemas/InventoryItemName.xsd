@@ -1,0 +1,32 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/item/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/item/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="InventoryItemName" sdoJava:package="oracle.apps.ego.item.service" sdoJava:instanceClass="oracle.apps.ego.item.service.InventoryItemName">
+        <xsd:annotation>
+            <xsd:documentation>Inventory Item Name parameter to item and structure service.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="Segment1" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment2" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment3" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment4" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment5" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment6" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment7" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment8" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment9" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment10" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment11" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment12" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment13" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment14" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment15" type="xsd:string" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="inventoryItemName" type="InventoryItemName" nillable="true"/>
+</xsd:schema>

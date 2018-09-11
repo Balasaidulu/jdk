@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImpl"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:commsadjebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/AccountBalanceAdjustment/V2"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1.0"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:commsadjabcs="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImpl"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service contains operations that would be used by
+                          the participating application to interact with the
+                          external systems</svcdoc:Description>
+            <svcdoc:ServiceType>ProviderABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImpl Provider ABCS
+                          Implementation Interface</svcdoc:DisplayName>
+            <svcdoc:EBOName>AccountBalanceAdjustmentEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology/>
+            <svcdoc:ProductFamily>CRM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+           <import namespace="http://siebel.com/webservices" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/schemas/SiebelWSHeader.xsd"/>
+		 <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/AccountBalanceAdjustment/V2"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/AccountBalanceAdjustment/V2/AccountBalanceAdjustmentEBM.xsd"/>
+        </schema>
+    </types>
+    <message name="UpdateAccountBalanceAdjustmentRespReqMsg">
+        <part name="CreateAccountBalanceAdjustmentListResponseEBM" element="commsadjebo:CreateAccountBalanceAdjustmentListResponseEBM"/>
+    </message>
+    <portType name="UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImplService">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This interface contains operations that can act upon
+                            the object</svcdoc:Description>
+                <svcdoc:DisplayName>Update AccountBalanceAdjustmentResp Siebel Requestor ABCS Implementation</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="UpdateAccountBalanceAdjustmentResp">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Update an AccountBalanceAdjustmentResp
+                              object</svcdoc:Description>
+                    <svcdoc:MEP>FireAndForget</svcdoc:MEP>
+                    <svcdoc:DisplayName>UpdateAccountBalanceAdjustmentResp</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="commsadjabcs:UpdateAccountBalanceAdjustmentRespReqMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImpl">
+        <plnk:role name="UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImplProvider">
+            <plnk:portType name="commsadjabcs:UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImplService"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

@@ -1,0 +1,24 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/svc"
+     xmlns="http://xmlns.oracle.com/svc" xmlns:sdoJava="commonj.sdo/java" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="KeySets" sdoJava:package="oracle.svc" sdoJava:instanceClass="oracle.svc.KeySets">
+        <xsd:annotation>
+            <xsd:documentation>Defines an ordered Key set names to be used to identify a data object.
+The specified key sets will be evaluated in the supplied order when
+locating the data object.
+To get the key set names refer to:
+{@link oracle.svc.description.DataObjectDescription DataObjectDescription} and
+{@link oracle.svc.description.KeySetDescription KeySetDescription}</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="DataObject">
+                <xsd:sequence>
+                    <xsd:element name="DataObjectQualifiedName" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="KeySetName" type="xsd:string" minOccurs="0" maxOccurs="unbounded"
+                         nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="keySets" type="KeySets" nillable="true"/>
+</xsd:schema>

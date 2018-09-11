@@ -1,0 +1,22 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/item/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/item/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc/expression" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://xmlns.oracle.com/svc/expression" schemaLocation="Expression.xsd"/>
+    <xsd:complexType name="AssetCharacteristicsFilter" sdoJava:package="oracle.apps.ego.item.service"
+         sdoJava:instanceClass="oracle.apps.ego.item.service.AssetCharacteristicsFilter">
+        <xsd:annotation>
+            <xsd:documentation>Asset Characteristics Filter</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:Expression">
+                <xsd:sequence>
+                    <xsd:element name="ConjunctionOperator" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Negation" type="xsd:boolean" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Expression" type="oans1:Expression" minOccurs="0" maxOccurs="unbounded"
+                         nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="assetCharacteristicsFilter" type="AssetCharacteristicsFilter" nillable="true"/>
+</xsd:schema>

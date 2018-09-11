@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?><definitions
+ xmlns="http://schemas.xmlsoap.org/wsdl/"
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+ xmlns:xsd1="http://www.siebel.com/xml/SWITroubleTicketIO"
+ targetNamespace="http://siebel.com/asi/"
+ xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:tns="http://siebel.com/asi/"
+><types
+><xsd:schema
+ elementFormDefault="qualified"
+ attributeFormDefault="unqualified"
+ targetNamespace="http://siebel.com/asi/"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+><xsd:import
+namespace="http://www.siebel.com/xml/SWITroubleTicketIO" schemaLocation="../schemas/SWITroubleTicketIO.xsd"
+></xsd:import
+><xsd:element
+ name="SWITroubleTicketUpdate_Input"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ name="Status"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ ref="xsd1:ListOfSWITroubleTicketIO"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+><xsd:element
+ name="SWITroubleTicketUpdate_Output"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ ref="xsd1:ListOfSWITroubleTicketIO"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+><xsd:element
+ name="SWITroubleTicketQueryById_Input"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ name="PrimaryRowId"
+ type="xsd:string"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+><xsd:element
+ name="SWITroubleTicketQueryById_Output"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ ref="xsd1:ListOfSWITroubleTicketIO"
+ minOccurs="0"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+><xsd:element
+ name="SWITroubleTicketInsertOrUpdate_Input"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ name="Status"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ ref="xsd1:ListOfSWITroubleTicketIO"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+><xsd:element
+ name="SWITroubleTicketInsertOrUpdate_Output"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ ref="xsd1:ListOfSWITroubleTicketIO"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+><xsd:element
+ name="SWITroubleTicketInsert_Input"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ name="Status"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ ref="xsd1:ListOfSWITroubleTicketIO"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+><xsd:element
+ name="SWITroubleTicketInsert_Output"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ ref="xsd1:ListOfSWITroubleTicketIO"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+></xsd:schema
+></types
+><message
+ name="SWITroubleTicketUpdate_Input"
+><part
+ name="SWITroubleTicketUpdate_Input"
+ element="tns:SWITroubleTicketUpdate_Input"
+></part
+></message
+><message
+ name="SWITroubleTicketUpdate_Output"
+><part
+ name="SWITroubleTicketUpdate_Output"
+ element="tns:SWITroubleTicketUpdate_Output"
+></part
+></message
+><message
+ name="SWITroubleTicketQueryById_Input"
+><part
+ name="SWITroubleTicketQueryById_Input"
+ element="tns:SWITroubleTicketQueryById_Input"
+></part
+></message
+><message
+ name="SWITroubleTicketQueryById_Output"
+><part
+ name="SWITroubleTicketQueryById_Output"
+ element="tns:SWITroubleTicketQueryById_Output"
+></part
+></message
+><message
+ name="SWITroubleTicketInsertOrUpdate_Input"
+><part
+ name="SWITroubleTicketInsertOrUpdate_Input"
+ element="tns:SWITroubleTicketInsertOrUpdate_Input"
+></part
+></message
+><message
+ name="SWITroubleTicketInsertOrUpdate_Output"
+><part
+ name="SWITroubleTicketInsertOrUpdate_Output"
+ element="tns:SWITroubleTicketInsertOrUpdate_Output"
+></part
+></message
+><message
+ name="SWITroubleTicketInsert_Input"
+><part
+ name="SWITroubleTicketInsert_Input"
+ element="tns:SWITroubleTicketInsert_Input"
+></part
+></message
+><message
+ name="SWITroubleTicketInsert_Output"
+><part
+ name="SWITroubleTicketInsert_Output"
+ element="tns:SWITroubleTicketInsert_Output"
+></part
+></message
+><portType
+ name="SWI_spcTrouble_spcTicket_spcService"
+><operation
+ name="SWITroubleTicketUpdate"
+><input
+ message="tns:SWITroubleTicketUpdate_Input"
+></input
+><output
+ message="tns:SWITroubleTicketUpdate_Output"
+></output
+></operation
+><operation
+ name="SWITroubleTicketQueryById"
+><input
+ message="tns:SWITroubleTicketQueryById_Input"
+></input
+><output
+ message="tns:SWITroubleTicketQueryById_Output"
+></output
+></operation
+><operation
+ name="SWITroubleTicketInsertOrUpdate"
+><input
+ message="tns:SWITroubleTicketInsertOrUpdate_Input"
+></input
+><output
+ message="tns:SWITroubleTicketInsertOrUpdate_Output"
+></output
+></operation
+><operation
+ name="SWITroubleTicketInsert"
+><input
+ message="tns:SWITroubleTicketInsert_Input"
+></input
+><output
+ message="tns:SWITroubleTicketInsert_Output"
+></output
+></operation
+></portType
+><binding
+ name="SWI_spcTrouble_spcTicket_spcService"
+ type="tns:SWI_spcTrouble_spcTicket_spcService"
+><soap:binding
+ transport="http://schemas.xmlsoap.org/soap/http"
+ style="document"
+></soap:binding
+><operation
+ name="SWITroubleTicketUpdate"
+><soap:operation
+ soapAction="document/http://siebel.com/asi/:SWITroubleTicketUpdate"
+></soap:operation
+><input
+><soap:body
+ use="literal"
+></soap:body
+></input
+><output
+><soap:body
+ use="literal"
+></soap:body
+></output
+></operation
+><operation
+ name="SWITroubleTicketQueryById"
+><soap:operation
+ soapAction="document/http://siebel.com/asi/:SWITroubleTicketQueryById"
+></soap:operation
+><input
+><soap:body
+ use="literal"
+></soap:body
+></input
+><output
+><soap:body
+ use="literal"
+></soap:body
+></output
+></operation
+><operation
+ name="SWITroubleTicketInsertOrUpdate"
+><soap:operation
+ soapAction="document/http://siebel.com/asi/:SWITroubleTicketInsertOrUpdate"
+></soap:operation
+><input
+><soap:body
+ use="literal"
+></soap:body
+></input
+><output
+><soap:body
+ use="literal"
+></soap:body
+></output
+></operation
+><operation
+ name="SWITroubleTicketInsert"
+><soap:operation
+ soapAction="document/http://siebel.com/asi/:SWITroubleTicketInsert"
+></soap:operation
+><input
+><soap:body
+ use="literal"
+></soap:body
+></input
+><output
+><soap:body
+ use="literal"
+></soap:body
+></output
+></operation
+></binding
+><service
+ name="SWITroubleTicket"
+><port
+ binding="tns:SWI_spcTrouble_spcTicket_spcService"
+ name="SWI_spcTrouble_spcTicket_spcService"
+><soap:address
+ location="http://set.at.runtime"
+></soap:address
+></port
+></service
+></definitions
+>

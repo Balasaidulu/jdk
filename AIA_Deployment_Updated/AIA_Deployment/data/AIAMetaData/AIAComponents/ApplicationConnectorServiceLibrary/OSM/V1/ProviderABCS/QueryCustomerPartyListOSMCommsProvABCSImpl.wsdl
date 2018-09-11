@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="QueryCustomerPartyListOSMCommsProvABCSImpl" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"  targetNamespace="http://xmlns.oracle.com/ABCSImpl/OSM/Industry/Comms/QueryCustomerPartyListOSMCommsProvABCSImpl/V1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:client="http://xmlns.oracle.com/ABCSImpl/OSM/Industry/Comms/QueryCustomerPartyListOSMCommsProvABCSImpl/V1" xmlns:ns1="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:ns2="http://schemas.oracle.com/bpel/extension" xmlns:ns3="http://schemas.oracle.com/service/bpel/common" xmlns:acc="http://xmlns.oracle.com/communications/ordermanagement" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:cor="http://xmlns.oracle.com/ABCSImpl/OSM/Industry/Comms/QueryCustomerPartyListOSMCommsProvABCSImpl/V1/correlationset">
+   <plnk:partnerLinkType name="QueryCustomerPartyListOSMCommsProvABCSImpl">
+      <plnk:role name="QueryCustomerPartyListOSMCommsProvABCSImplProvider" portType="client:QueryCustomerPartyListOSMCommsProvABCSImpl"/>
+   </plnk:partnerLinkType>
+   <vprop:propertyAlias propertyName="cor:QueryCustomerPartyEBMId" xmlns:ns3="http://xmlns.oracle.com/QueryCustomerPartyListOSMCommsJMSProducer"
+         messageType="ns3:QueryCustomerPartyListOSMCommsJMSProducerBPELProcessRequestMessage"
+         part="FindEntity" xmlns:ns10="http://xmlns.oracle.com/communications/ordermanagement">
+        <vprop:query>ns10:CorrelationId</vprop:query>
+    </vprop:propertyAlias>
+    <vprop:propertyAlias propertyName="cor:QueryCustomerPartyEBMId" xmlns:client="http://xmlns.oracle.com/ABCSImpl/OSM/Industry/Comms/QueryCustomerPartyListOSMCommsProvABCSImpl/V1"
+         messageType="client:QueryCustomerPartyListResponseMessage" part="QueryAccountResponseMessage"
+         xmlns:ns10="http://xmlns.oracle.com/communications/ordermanagement">
+        <vprop:query>ns10:CorrelationId</vprop:query>
+    </vprop:propertyAlias>
+   <wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+   <wsdl:import namespace="http://xmlns.oracle.com/ABCSImpl/OSM/Industry/Comms/QueryCustomerPartyListOSMCommsProvABCSImpl/V1/correlationset"
+         location="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/OSM/V1/ProviderABCS/QueryCustomerPartyListOSMCommsProvABCSImpl_properties.wsdl"/>
+   <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema">
+         <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/CustomerParty/V2/CustomerPartyEBM.xsd"/>
+      </schema>
+	  <schema xmlns="http://www.w3.org/2001/XMLSchema">
+         <import namespace="http://xmlns.oracle.com/communications/ordermanagement" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/OSM/V1/schemas/EntityManagementWS.xsd"/>
+      </schema>
+      <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <xsd:import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+      </xsd:schema>
+	  <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">             
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+	  </xsd:schema>
+   </wsdl:types>
+   <wsdl:message name="QueryCustomerPartyListOSMCommsProvABCSImplRequestMessage">
+      <wsdl:part name="QueryCustomerPartyListEBM" element="ns1:QueryCustomerPartyListEBM"/>
+   </wsdl:message>
+   <wsdl:message name="QueryCustomerPartyListOSMCommsProvABCSImplResponseMessage">
+      <wsdl:part name="QueryCustomerPartyListResponseEBM" element="ns1:QueryCustomerPartyListResponseEBM"/>
+   </wsdl:message>
+   <wsdl:message name="QueryCustomerPartyListResponseMessage">
+      <wsdl:part name="QueryAccountResponseMessage" element="acc:FindEntityResponse"/>
+   </wsdl:message>
+   <wsdl:message name="FindEntityResponseFaultMsg">
+      <wsdl:part name="Fault" element="corecom:Fault"/>
+   </wsdl:message>
+   <wsdl:portType name="QueryCustomerPartyListOSMCommsProvABCSImpl">
+      <wsdl:operation name="QueryCustomerPartyList">
+         <wsdl:input message="client:QueryCustomerPartyListOSMCommsProvABCSImplRequestMessage"/>
+		 <!--wsdl:output message="client:QueryCustomerPartyListOSMCommsProvABCSImplResponseMessage"/-->
+      </wsdl:operation>
+	  <wsdl:operation name="QueryCustomerPartyListResponse">
+         <wsdl:input message="client:QueryCustomerPartyListResponseMessage"/>
+      </wsdl:operation>
+   </wsdl:portType>
+</wsdl:definitions>

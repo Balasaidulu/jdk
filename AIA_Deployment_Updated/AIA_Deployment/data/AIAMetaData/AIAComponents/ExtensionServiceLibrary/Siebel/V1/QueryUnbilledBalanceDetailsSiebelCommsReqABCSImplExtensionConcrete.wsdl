@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:commsservusg="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ServiceUsage/V2" xmlns:commsservusageebsfault="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:abcsimplsiebelunbillbaldetreqabo="http://www.siebel.com/xml/CMU%20Request%20Unbilled%20Balance%20Details%20IO" xmlns:abcsimplsiebelunbillbaldetreqext="http://xmlns.oracle.com/ABCSImpl/Siebel/QueryUnbilledBalanceDetailsSiebelCommsReqABCSImplExtension/V1" xmlns:abcsimplsiebelunbillbaldetrespabo="http://www.siebel.com/xml/CMU%20Response%20Unbilled%20Balance%20Details%20IO" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="QueryUnbilledBalanceDetailsSiebelCommsReqABCSImplExtension1" targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/QueryUnbilledBalanceDetailsSiebelCommsReqABCSImplExtension/V1">
+   <documentation>
+      <svcdoc:Service>
+         <svcdoc:Description>This service contains intercepting operations that would be used to query the Unbilled Balance Details of an account, from the billing system</svcdoc:Description>
+         <svcdoc:ServiceType>RequesterABCSExtension</svcdoc:ServiceType>
+         <svcdoc:DisplayName>Query Unbilled Balance Details Siebel Requestor ABCS Extension
+                          Implementation Interface</svcdoc:DisplayName>
+			<svcdoc:ServiceObjectName>ServiceUsageEBO</svcdoc:ServiceObjectName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:Version>1.0</svcdoc:Version>
+			<svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+			<svcdoc:ProductFamily>Siebel</svcdoc:ProductFamily>
+			<svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+			<svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+      </svcdoc:Service>
+   </documentation>
+   <types>
+      <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/QueryUnbilledBalanceDetailsSiebelCommsReqABCSImplExtension/V1" elementFormDefault="qualified">
+         <xsd:import namespace="http://www.siebel.com/xml/CMU%20Request%20Unbilled%20Balance%20Details%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestUnbilledBalanceDetailsIo.xsd" />
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ServiceUsage/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/ServiceUsage/V2/ServiceUsageEBM.xsd" />
+	<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd" />
+        <xsd:import namespace="http://www.siebel.com/xml/CMU%20Response%20Unbilled%20Balance%20Details%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuResponseUnbilledBalanceDetailsIo.xsd" />
+      </xsd:schema>
+   </types>
+   <message name="PreXformABMtoEBMUnbilledBalanceDetailsMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreXformABMtoEBMUnbilledBalanceDetailsABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QueryUnbilledBalanceDetailsABM" element="abcsimplsiebelunbillbaldetreqabo:ListOfCmuRequestUnbilledBalanceDetailsIo" />
+   </message>
+  <message name="PostXformABMtoEBMUnbilledBalanceDetailsMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostXformABMtoEBMUnbilledBalanceDetailsABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QueryUnbilledBalanceDetailsABM" element="abcsimplsiebelunbillbaldetrespabo:ListOfCmuResponseUnbilledBalanceDetailsIo" />
+   </message>
+	<message name="PreInvokeEBSQueryServiceUasgeReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeQueryServiceUsageList operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QueryServiceUsageListEBM" element="commsservusg:QueryServiceUsageListEBM" />
+   </message>
+
+	<message name="PostInvokeEBSQueryServiceUasgeReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostInvokeQueryServiceUsageList operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QueryServiceUsageListResponseEBM" element="commsservusg:QueryServiceUsageListResponseEBM" />
+	</message>
+   
+   <message name="FaultMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used for propagating Error
+                                Context and Error Message</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="AIAFault" element="corecom:Fault" />
+   </message>
+   <portType name="QueryUnbilledBalanceDetailsSiebelCommsReqABCSImplExtensionService">
+      <documentation>
+         <svcdoc:Interface>
+            <svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+            <svcdoc:DisplayName>ProcessSalesOrderSiebelReqABCSImplExtensionService</svcdoc:DisplayName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         </svcdoc:Interface>
+      </documentation>
+      <operation name="PreXformABMtoEBMUnbilledBalanceDetailsABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformABMtoEBM an ListOfCmuRequestUnbilledBalanceDetailsIo object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformABMtoEBMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsiebelunbillbaldetreqext:PreXformABMtoEBMUnbilledBalanceDetailsMsg" />
+         <output message="abcsimplsiebelunbillbaldetreqext:PreXformABMtoEBMUnbilledBalanceDetailsMsg" />
+         <fault name="fault" message="abcsimplsiebelunbillbaldetreqext:FaultMessage" />
+      </operation>
+	<operation name="PostXformABMtoEBMUnbilledBalanceDetailsABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostXformEBMtoABM an ListOfCmuResponseUnbilledBalanceDetailsIo object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PostXformEBMtoABMEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsiebelunbillbaldetreqext:PostXformABMtoEBMUnbilledBalanceDetailsMsg" />
+         <output message="abcsimplsiebelunbillbaldetreqext:PostXformABMtoEBMUnbilledBalanceDetailsMsg" />
+         <fault name="fault" message="abcsimplsiebelunbillbaldetreqext:FaultMessage" />
+      </operation>
+	 <operation name="PreInvokeEBSServiceUasgeEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ServiceUsageEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsiebelunbillbaldetreqext:PreInvokeEBSQueryServiceUasgeReqMsg" />
+         <output message="abcsimplsiebelunbillbaldetreqext:PreInvokeEBSQueryServiceUasgeReqMsg" />
+         <fault name="fault" message="abcsimplsiebelunbillbaldetreqext:FaultMessage" />
+      </operation>
+	<operation name="PostInvokeEBSServiceUasgeEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostInvokeEBS an ServiceUsageEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PostInvokeEBSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsiebelunbillbaldetreqext:PostInvokeEBSQueryServiceUasgeReqMsg" />
+         <output message="abcsimplsiebelunbillbaldetreqext:PostInvokeEBSQueryServiceUasgeReqMsg" />
+         <fault name="fault" message="abcsimplsiebelunbillbaldetreqext:FaultMessage" />
+      </operation>
+   </portType>
+   
+   <binding name="QueryUnbilledBalanceDetailsSiebelCommsReqABCSImplExtensionServiceBinding" type="abcsimplsiebelunbillbaldetreqext:QueryUnbilledBalanceDetailsSiebelCommsReqABCSImplExtensionService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="PreXformABMtoEBMUnbilledBalanceDetailsABM">
+            <soap:operation style="document" soapAction="PreXformABMtoEBMUnbilledBalanceDetailsABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+        <operation name="PostXformABMtoEBMUnbilledBalanceDetailsABM">
+            <soap:operation style="document" soapAction="PostXformABMtoEBMUnbilledBalanceDetailsABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+        <operation name="PreInvokeEBSServiceUasgeEBM">
+            <soap:operation style="document" soapAction="PreInvokeEBSServiceUasgeEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+        <operation name="PostInvokeEBSServiceUasgeEBM">
+            <soap:operation style="document" soapAction="PostInvokeEBSServiceUasgeEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+    </binding>  
+   <service name="QueryUnbilledBalanceDetailsSiebelCommsReqABCSImplExtension">
+        <port name="QueryUnbilledBalanceDetailsSiebelCommsReqABCSImplExtensionServicePort" binding="abcsimplsiebelunbillbaldetreqext:QueryUnbilledBalanceDetailsSiebelCommsReqABCSImplExtensionServiceBinding">
+            <soap:address location="http://${fp.server.soaserverhostname}:${fp.server.soaserverport}/MirrorServlet/mirror" />
+        </port>
+   </service>
+   
+   
+   <plnk:partnerLinkType name="QueryUnbilledBalanceDetailsSiebelCommsReqABCSImplExtensionService">
+      <plnk:role name="QueryUnbilledBalanceDetailsSiebelCommsReqABCSImplExtensionServiceProvider">
+         <plnk:portType name="abcsimplsiebelunbillbaldetreqext:QueryUnbilledBalanceDetailsSiebelCommsReqABCSImplExtensionService"/>
+      </plnk:role>
+   </plnk:partnerLinkType>
+</definitions>

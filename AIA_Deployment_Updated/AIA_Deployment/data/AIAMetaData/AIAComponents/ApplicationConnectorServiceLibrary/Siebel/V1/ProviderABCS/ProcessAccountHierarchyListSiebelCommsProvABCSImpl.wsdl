@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="ProcessAccountHierarchyListSiebelCommsProvABCSImpl"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/ProcessAccountHierarchyListSiebelCommsProvABCSImpl/V1"
+             xmlns:custhierebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+             xmlns:custhierabcs="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/ProcessAccountHierarchyListSiebelCommsProvABCSImpl/V1"
+             xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			 xmlns:sblws="http://siebel.com/webservices"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+ <documentation>
+  <svcdoc:Service>
+   <svcdoc:Description>ProcessAccountHierarchyPrj</svcdoc:Description>
+   <svcdoc:ServiceType>ProviderABCSImpl</svcdoc:ServiceType>
+   <svcdoc:Version>1</svcdoc:Version>
+   <svcdoc:ProductCode>O2C</svcdoc:ProductCode>
+  </svcdoc:Service>
+ </documentation>
+ <import namespace="http://schemas.oracle.com/bpel/extension"
+         location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+ <types>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+           schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/CustomerParty/V2/CustomerPartyEBM.xsd"/>
+   <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+           schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+    <import namespace="http://siebel.com/webservices" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/schemas/SiebelWSHeader.xsd"/>
+  </schema>
+ </types>
+ <message name="ProcessAccountHierarchyListReqMsg">
+  <part name="ProcessAccountHierarchyListEBM"
+        element="custhierebo:ProcessBillingAccountListEBM"/>
+ </message>
+ <message name="ProcessAccountHierarchyListRespMsg">
+  <part name="ProcessAccountHierarchyListResponseEBM"
+        element="custhierebo:ProcessBillingAccountListEBM"/>
+ </message>
+ <message name="ProcessAccountHierarchyListFaultMsg">
+  <part name="ProcessAccountHierarchyListFault" element="corecom:Fault"/>
+ </message>
+ <portType name="ProcessAccountHierarchyListSiebelCommsProvABCSImpl">
+  <operation name="ProcessAccountHierarchyList">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to Process an
+                         AccountHierarchyList object</svcdoc:Description>
+     <svcdoc:MEP>SyncReqResp</svcdoc:MEP>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="custhierabcs:ProcessAccountHierarchyListReqMsg"/>
+   <output message="custhierabcs:ProcessAccountHierarchyListRespMsg"/>
+   <fault name="fault"
+          message="custhierabcs:ProcessAccountHierarchyListFaultMsg"/>
+  </operation>
+ </portType>
+ <plnk:partnerLinkType name="ProcessAccountHierarchyListSiebelCommsProvABCSImpl">
+  <plnk:role name="ProcessAccountHierarchyListSiebelCommsProvABCSImplProvider">
+   <plnk:portType name="custhierabcs:ProcessAccountHierarchyListSiebelCommsProvABCSImpl"/>
+  </plnk:role>
+ </plnk:partnerLinkType>
+</definitions>

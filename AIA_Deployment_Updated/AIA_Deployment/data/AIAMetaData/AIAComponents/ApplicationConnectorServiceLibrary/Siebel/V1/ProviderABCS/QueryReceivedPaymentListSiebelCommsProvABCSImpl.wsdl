@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="QueryReceivedPaymentListSiebelCommsProvABCSImpl"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryReceivedPaymentListSiebelCommsProvABCSImpl/V1"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:client="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryReceivedPaymentListSiebelCommsProvABCSImpl/V1"
+             xmlns:ns1="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ReceivedPayment/V1"
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+             xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	TYPE DEFINITION - List of services participating in this BPEL process
+	The default output of the BPEL designer uses strings as input and 
+	output to the BPEL Process. But you can define or import any XML 
+	Schema type and use them as part of the message types.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->   
+	<wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+	<wsdl:types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ReceivedPayment/V1" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/ReceivedPayment/V1/ReceivedPaymentEBM.xsd" />
+			<import namespace="http://siebel.com/webservices" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/schemas/SiebelWSHeader.xsd"/>
+			<import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Infrastructure/V1/Meta.xsd"/>
+		</schema>
+	</wsdl:types>
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	MESSAGE TYPE DEFINITION - Definition of the message types used as 
+	part of the port type defintions
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->      
+	<wsdl:message name="QueryReceivedPaymentListReqMsg">
+		<wsdl:part name="QueryReceivedPaymentListEBM" element="ns1:QueryReceivedPaymentListEBM" />
+	</wsdl:message>
+	<wsdl:message name="QueryReceivedPaymentListRespMsg">
+		<wsdl:part name="QueryReceivedPaymentListResponseEBM" element="ns1:QueryReceivedPaymentListResponseEBM" />
+	</wsdl:message>
+	<wsdl:message name="QueryReceivedPaymentFaultMsg">
+		<wsdl:documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message will contain the Query Payment request attributes</svcdoc:Description>
+			</svcdoc:Message>
+		</wsdl:documentation>
+		<wsdl:part name="AIAFault" element="corecom:Fault"/>
+	</wsdl:message>
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PORT TYPE DEFINITION - A port type groups a set of operations into
+	a logical service unit.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+	<!-- portType implemented by the QueryReceivedPaymentListSiebelCommsProvABCSImplProcess BPEL process -->
+	<wsdl:portType name="QueryReceivedPaymentListSiebelCommsProvABCSImpl">
+		<wsdl:operation name="QueryReceivedPaymentList">
+			<wsdl:input  message="client:QueryReceivedPaymentListReqMsg" />
+			<wsdl:output message="client:QueryReceivedPaymentListRespMsg"/>
+			<wsdl:fault name="fault" message="client:QueryReceivedPaymentFaultMsg"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PARTNER LINK TYPE DEFINITION
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --> 
+	<plnk:partnerLinkType name="QueryReceivedPaymentListSiebelCommsProvABCSImpl">
+		<plnk:role name="QueryReceivedPaymentListSiebelCommsProvABCSImplProcessProvider">
+			<plnk:portType name="client:QueryReceivedPaymentListSiebelCommsProvABCSImpl"/>
+		</plnk:role>
+	</plnk:partnerLinkType>
+</wsdl:definitions>

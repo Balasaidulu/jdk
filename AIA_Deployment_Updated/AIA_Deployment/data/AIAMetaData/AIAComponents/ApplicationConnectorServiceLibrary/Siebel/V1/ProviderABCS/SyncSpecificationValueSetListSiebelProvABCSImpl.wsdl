@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="SyncSpecificationValueSetListSiebelProvABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncSpecificationValueSetListSiebelProvABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:coreSpecificationValueSetabcs="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncSpecificationValueSetListSiebelProvABCSImpl/V1"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:coreSpecificationValueSetebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SpecificationValueSet/V1"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service contains operations that would be used by
+                          the participating application to interact with the
+                          external systems</svcdoc:Description>
+            <svcdoc:ServiceType>RequesterABCSImpl</svcdoc:ServiceType>
+            <svcdoc:DisplayName>SyncSpecificationValueSetListSiebelProvABCSImpl Provider ABCS
+                          Implementation Interface</svcdoc:DisplayName>
+            <svcdoc:ServiceObjectName>SyncSpecificationValueSetList</svcdoc:ServiceObjectName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:EBOName>SpecificationValueSetEBO</svcdoc:EBOName>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>CRM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SpecificationValueSet/V1"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/SpecificationValueSet/V1/SpecificationValueSetEBM.xsd"/>
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+            <import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </schema>
+    </types>
+    <message name="SyncSpecificationValueSetListReqMsg">
+        <part name="SyncSpecificationValueSetList" element="coreSpecificationValueSetebo:SyncSpecificationValueSetListEBM"/>
+    </message>
+    <message name="SyncSpecificationValueSetListRespMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>Siebel SyncSpecificationValueSetList Response EBM</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="SyncSpecificationValueSetListResponseEBM" element="coreSpecificationValueSetebo:SyncSpecificationValueSetListResponseEBM"/>
+    </message>
+    <message name="FaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>Siebel Fault</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="AIAFault" element="corecom:Fault"/>
+    </message>
+    <portType name="SyncSpecificationValueSetListSiebelProvABCSImplService">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This interface contains operations that can act upon
+                            the object</svcdoc:Description>
+                <svcdoc:DisplayName>Sync SpecificationValueSetList Siebel Requestor ABCS Implementation</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="SyncSpecificationValueSetList">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Sync an SpecificationValueSetList
+                              object</svcdoc:Description>
+                    <svcdoc:MEP>AsyncReqResp</svcdoc:MEP>
+                    <svcdoc:DisplayName>SyncSpecificationValueSetList</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="coreSpecificationValueSetabcs:SyncSpecificationValueSetListReqMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="SyncSpecificationValueSetListSiebelProvABCSImpl">
+        <plnk:role name="SyncSpecificationValueSetListSiebelProvABCSImplProvider">
+            <plnk:portType name="coreSpecificationValueSetabcs:SyncSpecificationValueSetListSiebelProvABCSImplService"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

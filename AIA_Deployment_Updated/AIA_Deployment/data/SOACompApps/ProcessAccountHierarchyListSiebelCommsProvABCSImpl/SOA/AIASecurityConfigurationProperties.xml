@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SecurityConfiguration xmlns="http://xmlns.oracle.com/fp/core/security/V1" version="1.0" 
+                     compositeName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/ProcessAccountHierarchyListSiebelCommsProvABCSImpl/V1}ProcessAccountHierarchyListSiebelCommsProvABCSImpl">
+   <Reference resourceType = 'SOA-Reference'>
+      <Name>SWI_spcAccount_spcHierarchy</Name>
+      <PortName>SWI_spcAccount_spcHierarchy</PortName>
+      <WSPolicies>
+         <WSPolicyName policyType ="authentication">oracle/no_authentication_client_policy</WSPolicyName>
+      </WSPolicies>
+   </Reference>
+</SecurityConfiguration>

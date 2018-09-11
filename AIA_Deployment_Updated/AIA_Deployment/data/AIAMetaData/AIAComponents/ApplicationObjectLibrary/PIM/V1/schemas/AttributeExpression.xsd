@@ -1,0 +1,34 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/svc/expression"
+     xmlns="http://xmlns.oracle.com/svc/expression" xmlns:sdoJava="commonj.sdo/java" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="Expression.xsd"/>
+    <xsd:complexType name="AttributeExpression" sdoJava:package="oracle.svc.expression" sdoJava:instanceClass="oracle.svc.expression.AttributeExpression">
+        <xsd:annotation>
+            <xsd:documentation>Represents an expression based on comparing two attributes.
+&lt;br&gt;
+  The Expression is in the format: &lt;Attribute1&gt; &lt;Operator&gt; &lt;Attribute2&gt;
+&lt;br&gt;
+&lt;b&gt;Example:&lt;/b&gt; This example performs this expression on PurchaseOrders: &lt;b&gt;StartDate &gt; EndDate&lt;/b&gt;
+&lt;code&gt;
+&lt;pre&gt;
+ 
+DataObjectFactory factory = ...
+PurchaseOrderExpressionFilter filter = (PurchaseOrderExpressionFilter)factory.createDataObject(PurchaseOrderExpressionFilter.QUALIFIED_NAME);
+filter.addAttributeExpressionExpression(&quot;StartDate&quot;, ValueExpression.GREATER_THAN, &quot;EndDate&quot;);
+DataCriteria dc = factory.createDataObject(DataCriteria.QUALIFIED_NAME);
+dc.setFilter(filter);
+List result = service.getDataList(&quot;PurchaseOrders&quot;, dc, null);
+&lt;/pre&gt;
+&lt;/code&gt;</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="Expression">
+                <xsd:sequence>
+                    <xsd:element name="Attribute1Name" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute2Name" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Operator" type="xsd:string" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="attributeExpression" type="AttributeExpression" nillable="true"/>
+</xsd:schema>

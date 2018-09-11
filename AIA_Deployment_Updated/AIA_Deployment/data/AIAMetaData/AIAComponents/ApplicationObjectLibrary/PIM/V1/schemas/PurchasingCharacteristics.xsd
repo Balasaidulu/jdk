@@ -1,0 +1,42 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/item/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/item/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="PurchasingCharacteristics" sdoJava:package="oracle.apps.ego.item.service" sdoJava:instanceClass="oracle.apps.ego.item.service.PurchasingCharacteristics">
+        <xsd:annotation>
+            <xsd:documentation>Purchasing Characteristics</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="PurchasingItemFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PurchasingEnabledFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="MustUseApprovedVendorFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AllowItemDescUpdateFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="OutsourcedAssembly" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="OutsideOperationFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="OutsideOperationUomType" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="RfqRequiredFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="TaxableFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PurchasingTaxCode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ReceiptRequiredFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="InspectionRequiredFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="BuyerId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="UnitOfIssue" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ReceiveCloseTolerance" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="InvoiceCloseTolerance" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="UnNumberId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="HazardClassId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ListPricePerUnit" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="MarketPrice" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PriceTolerancePercent" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="RoundingFactor" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="EncumbranceAccount" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ExpenseAccount" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AssetCategoryId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="purchasingCharacteristics" type="PurchasingCharacteristics" nillable="true"/>
+</xsd:schema>

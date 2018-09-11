@@ -1,0 +1,1646 @@
+<?xml version="1.0" encoding="UTF-8"?><definitions
+ xmlns="http://schemas.xmlsoap.org/wsdl/"
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+ xmlns:xsdLocal1="http://www.siebel.com/xml/SWIProductIntegrationIO"
+ targetNamespace="http://siebel.com/asi/V0"
+ xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:tns="http://siebel.com/asi/V0"
+ xmlns:siebelf="http://www.siebel.com/ws/fault">
+
+
+<types>
+
+<xsd:schema
+ elementFormDefault="qualified"
+ attributeFormDefault="unqualified"
+ xmlns:siebelf="http://www.siebel.com/ws/fault"
+ targetNamespace="http://www.siebel.com/ws/fault"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<xsd:element name="siebdetail">
+<xsd:complexType>
+<xsd:all>
+<xsd:element name="logfilename" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+<xsd:element name="errorstack" minOccurs="1" maxOccurs="1" type="siebelf:errorstack"/>
+</xsd:all>
+</xsd:complexType>
+</xsd:element>
+
+<xsd:complexType name="errorstack">
+<xsd:sequence>
+<xsd:element name="error" minOccurs="1" maxOccurs="1" type="siebelf:error"/>
+</xsd:sequence>
+</xsd:complexType>
+
+<xsd:complexType name="error">
+<xsd:sequence>
+<xsd:element name="errorcode" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+<xsd:element name="errorsymbol" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+<xsd:element name="errormsg" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+
+</xsd:schema>
+
+<xsd:schema
+ elementFormDefault="qualified"
+ attributeFormDefault="unqualified"
+ xmlns:xsdLocal1="http://www.siebel.com/xml/SWIProductIntegrationIO"
+ targetNamespace="http://www.siebel.com/xml/SWIProductIntegrationIO"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:siebelf="http://www.siebel.com/ws/fault">
+
+<xsd:annotation>
+  <xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation>
+</xsd:annotation>
+
+<xsd:element name="ListOfProductImport"  type="xsdLocal1:ListOfProductImport">
+</xsd:element>
+<xsd:complexType
+ name="ListOfProductImportTopElmt">
+ <xsd:sequence>
+	<xsd:element
+	name="ListOfProductImport"
+	 maxOccurs="1"
+	minOccurs="1"
+	type="xsdLocal1:ListOfProductImport">
+	</xsd:element>
+  </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType
+ name="ListOfProductImport">
+ <xsd:sequence>
+ <xsd:element
+ name="ProductIntegration"
+ maxOccurs="unbounded"
+ minOccurs="0"
+ type="xsdLocal1:ProductIntegration">
+ </xsd:element>
+ </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType
+ name="ProductIntegration"
+><xsd:sequence
+><xsd:element
+ name="Id"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="OverrideLockedFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="WorkspaceId"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="WorkspaceName"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="WorkspaceReleaseFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="WorkspaceReuseFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ReleaseDate"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ActiveWorkspaceFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ListOfProductDefinition"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsdLocal1:ListOfProductDefinition"
+></xsd:element
+><xsd:element
+ name="ListOfProductStructure"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsdLocal1:ListOfProductStructure"
+></xsd:element
+></xsd:sequence
+><xsd:attribute
+ name="operation"
+ type="xsd:string"
+></xsd:attribute
+><xsd:attribute
+ name="searchspec"
+ type="xsd:string"
+></xsd:attribute
+></xsd:complexType
+><xsd:complexType
+ name="ListOfProductDefinition"
+><xsd:sequence
+><xsd:element
+ name="ProductDefinition"
+ maxOccurs="unbounded"
+ minOccurs="0"
+ type="xsdLocal1:ProductDefinition"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+><xsd:complexType
+ name="ProductDefinition"
+><xsd:sequence
+><xsd:element
+ name="Id"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ActiveFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="AutoExplodeFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="BillableFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="BusinessUnitId"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="CheckEligibilityFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="CommonId"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Description"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="EffectiveEndTime"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="EffectiveStartTime"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ExternalInventorySystemRef"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="InclusiveEligibilityFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="IntegrationId"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="InventoryFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="LeadTime"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="MaximumQuantity"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="MinimumQuantity"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="OrderableFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="PartNumber"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="PriceType"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="PrimaryProductLineId"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ProductId"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ProductName"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ProductSerializedFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ProductType"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ProductVersion"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ReleaseFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="SalesProductFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ServiceFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ServiceInstanceFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ServiceProductFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ServiceTerms"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ShipFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Status"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="StructureType"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="TrackAsAssetFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Type"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="UnitSize"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="UnitofMeasure"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="UnitsperCase"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="VendorId"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="VendorPartNumber"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="BillingServiceType"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="BillingType"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="BillonFirstService"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Tool"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="CompositionType"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="FulfillmentCriteriaCode"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="FulfillmentItemCode"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ProductObjectNumber"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ProductClassId"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ProductClassName"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ReleaseDate"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ProductClassObjectNumber"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="TargetedIndustry"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="TargetedMinAge"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="TargetedMaxAge"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="TargetedPostalCode"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="TargetedCountry"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="MTBF"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="MTTR"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="FieldReplaceable"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ReturnIfDefective"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ParentProduct"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ItemSize"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ShipMethod"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ShipCarrier"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="AllocateBelowSafetyFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="AutoSubstituteFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="DivisionCodeSAP"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="GlobalProductIdentifier"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ModelProduct"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="TaxableFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="TaxSubcomponentFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ProjectResourceFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Compensatable"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="SpecialRatingType"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="SpecialRatingMaxItems"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="MSISDNRequiredFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="PricingCommitType"
+ maxOccurs="1"
+ minOccurs="1"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="NetworkElementType"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="SuccessDependency"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="DynamicDiscountMethod"
+ maxOccurs="1"
+ minOccurs="1"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="CompoundProductFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ProductLevel"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Format"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="AutoAllocateFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ServiceType"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="DetailedDescription"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="PricingDetails"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Terms"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ListOfProductInvloc"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsdLocal1:ListOfProductInvloc"
+></xsd:element
+><xsd:element
+ name="ListOfSwiAdminProductLineVbc"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsdLocal1:ListOfSwiAdminProductLineVbc"
+></xsd:element
+><xsd:element
+ name="ListOfSwiIssProductAttributesVbc"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsdLocal1:ListOfSwiIssProductAttributesVbc"
+></xsd:element
+><xsd:element
+ name="ListOfSwiPriceListItemVbc"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsdLocal1:ListOfSwiPriceListItemVbc"
+></xsd:element
+><xsd:element
+ name="ListOfSwiProductCompatibility-SubjectVbc"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsdLocal1:ListOfSwiProductCompatibility-SubjectVbc"
+></xsd:element
+><xsd:element
+ name="ListOfSwiProductDetailsLangVbc"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsdLocal1:ListOfSwiProductDetailsLangVbc"
+></xsd:element
+><xsd:element
+ name="ListOfSwiUserAttributeVbc"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsdLocal1:ListOfSwiUserAttributeVbc"
+></xsd:element
+></xsd:sequence
+><xsd:attribute
+ name="operation"
+ type="xsd:string"
+></xsd:attribute
+><xsd:attribute
+ name="searchspec"
+ type="xsd:string"
+></xsd:attribute
+></xsd:complexType
+><xsd:complexType
+ name="ListOfProductStructure"
+><xsd:sequence
+><xsd:element
+ name="ProductStructure"
+ maxOccurs="unbounded"
+ minOccurs="0"
+ type="xsdLocal1:ProductStructure"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+><xsd:complexType
+ name="ProductStructure"
+><xsd:sequence
+><xsd:element
+ name="Id"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ComponentProductBusinessUnitId"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ComponentProductId"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ComponentProductName"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ComponentProductVendorId"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="IntegrationId"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ProductBusinessUnitId"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ProductId"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ProductName"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ProductVendorId"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="DomainType"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ComponentClassName"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="MaxCardinality"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="MinCardinality"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="DefaultCardinality"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="RelationshipName"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ComponentClassObjectNumber"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ComponentProductObjectNumber"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ProductObjectNumber"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ListOfSwiProductStructureDomainVbc"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsdLocal1:ListOfSwiProductStructureDomainVbc"
+></xsd:element
+></xsd:sequence
+><xsd:attribute
+ name="operation"
+ type="xsd:string"
+></xsd:attribute
+><xsd:attribute
+ name="searchspec"
+ type="xsd:string"
+></xsd:attribute
+></xsd:complexType
+><xsd:complexType
+ name="ListOfProductInvloc"
+><xsd:sequence
+><xsd:element
+ name="ProductInvloc"
+ maxOccurs="unbounded"
+ minOccurs="0"
+ type="xsdLocal1:ProductInvloc"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+><xsd:complexType
+ name="ProductInvloc"
+><xsd:sequence
+><xsd:element
+ name="Id"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="IntegrationId"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="InventoryLocationID"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ProductID"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ProductName"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+></xsd:sequence
+><xsd:attribute
+ name="operation"
+ type="xsd:string"
+></xsd:attribute
+><xsd:attribute
+ name="searchspec"
+ type="xsd:string"
+></xsd:attribute
+></xsd:complexType
+><xsd:complexType
+ name="ListOfSwiAdminProductLineVbc"
+><xsd:sequence
+><xsd:element
+ name="ProductLineVbc"
+ maxOccurs="unbounded"
+ minOccurs="0"
+ type="xsdLocal1:ProductLineVbc"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+><xsd:complexType
+ name="ProductLineVbc"
+><xsd:sequence
+><xsd:element
+ name="ProductLineName"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ProductLineManage"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Id"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+></xsd:sequence
+><xsd:attribute
+ name="Operation"
+ type="xsd:string"
+></xsd:attribute
+><xsd:attribute
+ name="Searchspec"
+ type="xsd:string"
+></xsd:attribute
+></xsd:complexType
+><xsd:complexType
+ name="ListOfSwiIssProductAttributesVbc"
+><xsd:sequence
+><xsd:element
+ name="ProductAttributesVbc"
+ maxOccurs="unbounded"
+ minOccurs="0"
+ type="xsdLocal1:ProductAttributesVbc"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+><xsd:complexType
+ name="ProductAttributesVbc"
+><xsd:sequence
+><xsd:element
+ name="Id"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="AssetFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="AttributeName"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="DefaultValue"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="EligibilityProcedureName"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="HiddenFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="MaximumValue"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="MinimumValue"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Name"
+ maxOccurs="1"
+ minOccurs="1"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="PostPickCD"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="PrePickCD"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ReadOnlyFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="RejectedVal"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="RequiredFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="SequenceNumber"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="UnitofMeasure"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="XAIntegrationId"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Description"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ParametricSearchFlg"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+></xsd:sequence
+><xsd:attribute
+ name="Operation"
+ type="xsd:string"
+></xsd:attribute
+><xsd:attribute
+ name="Searchspec"
+ type="xsd:string"
+></xsd:attribute
+></xsd:complexType
+><xsd:complexType
+ name="ListOfSwiPriceListItemVbc"
+><xsd:sequence
+><xsd:element
+ name="PriceListItemVbc"
+ maxOccurs="unbounded"
+ minOccurs="0"
+ type="xsdLocal1:PriceListItemVbc"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+><xsd:complexType
+ name="PriceListItemVbc"
+><xsd:sequence
+><xsd:element
+ name="Id"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="AttributeAdjustment"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ChargePeriod"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Cost"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Description"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ListPrice2"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="MaximumPrice"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="MinimumPrice"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="PriceEndDate"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="PriceListCurrencyCode"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="PriceListId"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="PriceListName"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="PriceStartDate"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="PriceType"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ProductId"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ProductName"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="PromotionalPrice"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ServicePricePercent"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ServicePricingMethod"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="VolumeDiscount"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ProductObjectNumber"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+></xsd:sequence
+><xsd:attribute
+ name="Operation"
+ type="xsd:string"
+></xsd:attribute
+><xsd:attribute
+ name="Searchspec"
+ type="xsd:string"
+></xsd:attribute
+></xsd:complexType
+><xsd:complexType
+ name="ListOfSwiProductCompatibility-SubjectVbc"
+><xsd:sequence
+><xsd:element
+ name="ProductCompatibility-SubjectVbc"
+ maxOccurs="unbounded"
+ minOccurs="0"
+ type="xsdLocal1:ProductCompatibility-SubjectVbc"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+><xsd:complexType
+ name="ProductCompatibility-SubjectVbc"
+><xsd:sequence
+><xsd:element
+ name="Id"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="AdjustmentGroup"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="EffectiveEndDate"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="EffectiveStartDate"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ProductId"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ProductName"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="RelProduct"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="RelProductClass"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="RelProductLine"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Type"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="RelProductObjectNumber"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="RelProductClassObjectNumber"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+></xsd:sequence
+><xsd:attribute
+ name="Operation"
+ type="xsd:string"
+></xsd:attribute
+><xsd:attribute
+ name="Searchspec"
+ type="xsd:string"
+></xsd:attribute
+></xsd:complexType
+><xsd:complexType
+ name="ListOfSwiProductDetailsLangVbc"
+><xsd:sequence
+><xsd:element
+ name="ProductDetailsLangVbc"
+ maxOccurs="unbounded"
+ minOccurs="0"
+ type="xsdLocal1:ProductDetailsLangVbc"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+><xsd:complexType
+ name="ProductDetailsLangVbc"
+><xsd:sequence
+><xsd:element
+ name="Id"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="DisplayName"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="LangCode"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="LangName"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+></xsd:sequence
+><xsd:attribute
+ name="Operation"
+ type="xsd:string"
+></xsd:attribute
+><xsd:attribute
+ name="Searchspec"
+ type="xsd:string"
+></xsd:attribute
+></xsd:complexType
+><xsd:complexType
+ name="ListOfSwiUserAttributeVbc"
+><xsd:sequence
+><xsd:element
+ name="ProductUserAttributeVbc"
+ maxOccurs="unbounded"
+ minOccurs="0"
+ type="xsdLocal1:ProductUserAttributeVbc"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+><xsd:complexType
+ name="ProductUserAttributeVbc"
+><xsd:sequence
+><xsd:element
+ name="Name"
+ maxOccurs="1"
+ minOccurs="1"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Value"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+><xsd:complexType
+ name="ListOfSwiProductStructureDomainVbc"
+><xsd:sequence
+><xsd:element
+ name="ProductStructureDomainVbc"
+ maxOccurs="unbounded"
+ minOccurs="0"
+ type="xsdLocal1:ProductStructureDomainVbc"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+><xsd:complexType
+ name="ProductStructureDomainVbc"
+><xsd:sequence
+><xsd:element
+ name="Id"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="DomainProductName"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="DomainProductObjectNumber"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="RelationshipName"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="ForcastableFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="Comments"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ name="DefaultProductFlag"
+ maxOccurs="1"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+></xsd:sequence
+><xsd:attribute
+ name="Operation"
+ type="xsd:string"
+></xsd:attribute
+><xsd:attribute
+ name="Searchspec"
+ type="xsd:string"
+></xsd:attribute
+></xsd:complexType
+></xsd:schema
+><xsd:schema
+ elementFormDefault="qualified"
+ attributeFormDefault="unqualified"
+ targetNamespace="http://siebel.com/asi/V0"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+><xsd:import
+ namespace="http://www.siebel.com/xml/SWIProductIntegrationIO"
+></xsd:import
+><xsd:element
+ name="SWIProductImportUpsert_Input"
+><xsd:complexType
+><xsd:sequence
+>
+
+<xsd:element
+ name="SyncChild"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+><xsd:element
+ ref="xsdLocal1:ListOfProductImport"
+></xsd:element
+><xsd:element
+ name="UTCCanonicalFlag"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+><xsd:element
+ name="SWIProductImportUpsert_Output"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ ref="xsdLocal1:ListOfProductImport"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+></xsd:schema
+></types
+>
+
+<message name="ExceptionFault">
+<part name="fault" element="siebelf:siebdetail"/>
+</message>
+
+<message
+ name="SWIProductImportUpsert_Input"
+><part
+ name="SWIProductImportUpsert_Input"
+ element="tns:SWIProductImportUpsert_Input"
+></part
+></message
+><message
+ name="SWIProductImportUpsert_Output"
+><part
+ name="SWIProductImportUpsert_Output"
+ element="tns:SWIProductImportUpsert_Output"
+></part
+></message
+><portType
+ name="SWIProductImport"
+><operation
+ name="SWIProductImportUpsert"
+><input
+ message="tns:SWIProductImportUpsert_Input"
+></input
+><output
+ message="tns:SWIProductImportUpsert_Output"
+>
+</output>
+<fault name="fault" message="tns:ExceptionFault"/>
+</operation>
+</portType>
+
+<binding
+ name="SWIProductImport"
+ type="tns:SWIProductImport"
+><soap:binding
+ transport="http://schemas.xmlsoap.org/soap/http"
+ style="document"
+></soap:binding
+><operation
+ name="SWIProductImportUpsert"
+><soap:operation
+ soapAction="document/http://siebel.com/asi/V0:SWIProductImportUpsert"
+></soap:operation>
+<input>
+<soap:body  use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+<fault name="fault">
+<soap:fault name="fault" use="literal"/>
+</fault>
+</operation>
+</binding>
+
+<service
+ name="SWIProductImport"
+><port
+ binding="tns:SWIProductImport"
+ name="SWIProductImport"
+><soap:address
+ location="http://set.at.runtime"
+></soap:address
+></port
+></service
+></definitions
+>

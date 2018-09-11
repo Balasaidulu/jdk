@@ -1,0 +1,31 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/extfwk/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/extfwk/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="UserDefinedAttribute" sdoJava:package="oracle.apps.ego.extfwk.service" sdoJava:instanceClass="oracle.apps.ego.extfwk.service.UserDefinedAttribute">
+        <xsd:annotation>
+            <xsd:documentation>Service data object for Attribute.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="AttrName" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ApplicationId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AttrGroupType" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AttrGroupName" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AttrDisplayName" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Sequence" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DataTypeCode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="EnabledMeaning" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="RequiredMeaning" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ValueSetName" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DefaultValue" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DisplayMeaning" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DatabaseColumn" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="SearchMeaning" type="xsd:string" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="userDefinedAttribute" type="UserDefinedAttribute" nillable="true"/>
+</xsd:schema>

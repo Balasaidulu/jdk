@@ -1,0 +1,21 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/pubfwk/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/pubfwk/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="EntityStatus.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="SystemEntity" sdoJava:package="oracle.apps.ego.pubfwk.service" sdoJava:instanceClass="oracle.apps.ego.pubfwk.service.SystemEntity">
+        <xsd:annotation>
+            <xsd:documentation>This SVO has information on list of Entities and their Publication Status for a System Id</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="SystemCode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ListofEntitiesStatus" type="EntityStatus" minOccurs="0" maxOccurs="unbounded"
+                         nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="systemEntity" type="SystemEntity" nillable="true"/>
+</xsd:schema>

@@ -1,0 +1,13 @@
+<!-- $Header: aiapip/apps/fp/components/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PIM/V1/schemas/FndSecurity.xsd /main/2 2012/12/17 05:37:44 sduggine Exp $ -->
+<xsd:schema  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        targetNamespace="http://xmlns.oracle.com/FndSecurity"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:complexType name="fnd_security">
+      <xsd:sequence>
+        <xsd:element name="RESPONSIBILITY_NAME"  type="xsd:string"/>
+        <xsd:element name="RESPONSIBILITY_APPL_NAME" type="xsd:string"/>
+        <xsd:element name="SECURITY_GROUP_NAME"  type="xsd:string"/>
+        <xsd:element name="NLS_LANGUAGE" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

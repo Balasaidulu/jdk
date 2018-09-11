@@ -1,0 +1,36 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="ProcessSalesOrderFulfillmentCommsJMSProducer"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/Industry/Comms/ProcessSalesOrderFulfillmentCommsJMSProducer/V1"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:client="http://xmlns.oracle.com/ABCSImpl/Industry/Comms/ProcessSalesOrderFulfillmentCommsJMSProducer/V1"
+     xmlns:commso="http://xmlns.oracle.com/EnterpriseObjects/Industry/Communications/OptimizedSalesOrder/V1"
+     xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+     xmlns:ns1="http://schemas.oracle.com/bpel/extension"
+    >
+    <plnk:partnerLinkType name="ProcessSalesOrderFulfillmentCommsJMSProducer">
+        <plnk:role name="ProcessSalesOrderFulfillmentCommsJMSProducerProvider" portType="client:ProcessSalesOrderFulfillmentCommsJMSProducer"/>
+    </plnk:partnerLinkType>    
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Industry/Communications/OptimizedSalesOrder/V1"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/PIPS/Communications/Schemas/OptimizedSalesOrder.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="ProcessSalesOrderFulfillmentCommsJMSProducerRequestMessage">
+        <wsdl:part name="SalesOrder" element="commso:SalesOrder"/>
+    </wsdl:message>
+    <wsdl:message name="ProcessSalesOrderFulfillmentCommsJMSProducerResponseMessage">
+        <wsdl:part name="SalesOrderResponse" element="commso:SalesOrderResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ProcessSalesOrderFulfillmentCommsJMSProducerFaultMessage">
+        <wsdl:part name="Fault" element="commso:Fault"/>
+    </wsdl:message>
+    <wsdl:portType name="ProcessSalesOrderFulfillmentCommsJMSProducer">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:ProcessSalesOrderFulfillmentCommsJMSProducerRequestMessage"/>
+            <wsdl:output message="client:ProcessSalesOrderFulfillmentCommsJMSProducerResponseMessage"/>
+            <wsdl:fault name="Fault" message="client:ProcessSalesOrderFulfillmentCommsJMSProducerFaultMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

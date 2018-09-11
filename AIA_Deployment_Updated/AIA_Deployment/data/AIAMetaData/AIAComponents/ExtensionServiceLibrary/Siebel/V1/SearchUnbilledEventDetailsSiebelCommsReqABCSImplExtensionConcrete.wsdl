@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:commsservusg="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ServiceUsage/V2" xmlns:commsservusageebsfault="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:abcsimplsiebelunbillevdetreqabo="http://www.siebel.com/xml/CMU%20Request%20Unbilled%20Details%20Search%20IO" xmlns:abcsimplsiebelunbillevdetrespabo="http://www.siebel.com/xml/CMU%20Response%20Unbilled%20Details%20IO" xmlns:abcsimplsiebelunbillevdetreqext="http://xmlns.oracle.com/ABCSImpl/Siebel/SearchUnbilledEventDetailsSiebelCommsReqABCSImplExtension/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="SearchUnbilledEventDetailsSiebelCommsReqABCSImplExtension1" targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/SearchUnbilledEventDetailsSiebelCommsReqABCSImplExtension/V1">
+   <documentation>
+      <svcdoc:Service>
+         <svcdoc:Description>This service contains intercepting operations that would be used to query the Search Unbilled Event Details of an account, from the billing system</svcdoc:Description>
+         <svcdoc:ServiceType>RequesterABCSExtension</svcdoc:ServiceType>
+         <svcdoc:DisplayName>Search Unbilled Event Details Siebel Requestor ABCS Extension
+                          Implementation Interface</svcdoc:DisplayName>
+			<svcdoc:ServiceObjectName>ServiceUsageEBO</svcdoc:ServiceObjectName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:Version>1.0</svcdoc:Version>
+			<svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+			<svcdoc:ProductFamily>Siebel</svcdoc:ProductFamily>
+			<svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+			<svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+      </svcdoc:Service>
+   </documentation>
+   <types>
+      <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/SearchUnbilledEventDetailsSiebelCommsReqABCSImplExtension/V1" elementFormDefault="qualified">
+         <xsd:import namespace="http://www.siebel.com/xml/CMU%20Request%20Unbilled%20Details%20Search%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestUnbilledDetailsSearchIo.xsd" />
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ServiceUsage/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/ServiceUsage/V2/ServiceUsageEBM.xsd" />
+	<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd" />
+        <xsd:import namespace="http://www.siebel.com/xml/CMU%20Response%20Unbilled%20Details%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuResponseUnbilledDetailsIo.xsd" />
+      </xsd:schema>
+   </types>
+   <message name="PreXformABMtoEBMUnbilledEventDetailsMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreXformABMtoEBMUnbilledEventDetailsABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="SearchUnbilledEventDetailsABM" element="abcsimplsiebelunbillevdetreqabo:ListOfCmuRequestUnbilledDetailsSearchIo" />
+   </message>
+  <message name="PostXformABMtoEBMUnbilledEventDetailsMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostXformABMtoEBMUnbilledEventDetailsABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="SearchUnbilledEventDetailsABM" element="abcsimplsiebelunbillevdetrespabo:ListOfCmuResponseUnbilledDetailsIo" />
+   </message>
+	<message name="PreInvokeEBSSearchServiceUasgeReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvoke QueryServiceUsageList operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QueryServiceUsageListEBM" element="commsservusg:QueryServiceUsageListEBM" />
+   </message>
+
+	<message name="PostInvokeEBSSearchServiceUasgeReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostInvoke QueryServiceUsageList operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QueryServiceUsageListResponseEBM" element="commsservusg:QueryServiceUsageListResponseEBM" />
+	</message>
+   
+   <message name="FaultMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used for propagating Error
+                                Context and Error Message</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="AIAFault" element="corecom:Fault" />
+   </message>
+   <portType name="SearchUnbilledEventDetailsSiebelCommsReqABCSImplExtensionService">
+      <documentation>
+         <svcdoc:Interface>
+            <svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+            <svcdoc:DisplayName>SearchUnbilledEventDetailsSiebelCommsReqABCSImplExtensionService</svcdoc:DisplayName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         </svcdoc:Interface>
+      </documentation>
+      <operation name="PreXformABMtoEBMUnbilledEventDetailsABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformABMtoEBM an ListOfCmuRequestUnbilledDetailsSearchIo object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformABMtoEBMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsiebelunbillevdetreqext:PreXformABMtoEBMUnbilledEventDetailsMsg" />
+         <output message="abcsimplsiebelunbillevdetreqext:PreXformABMtoEBMUnbilledEventDetailsMsg" />
+         <fault name="fault" message="abcsimplsiebelunbillevdetreqext:FaultMessage" />
+      </operation>
+	<operation name="PostXformABMtoEBMUnbilledEventDetailsABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostXformEBMtoABM an ListOfCmuResponseUnbilledDetailsIo object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PostXformEBMtoABMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsiebelunbillevdetreqext:PostXformABMtoEBMUnbilledEventDetailsMsg" />
+         <output message="abcsimplsiebelunbillevdetreqext:PostXformABMtoEBMUnbilledEventDetailsMsg" />
+         <fault name="fault" message="abcsimplsiebelunbillevdetreqext:FaultMessage" />
+      </operation>
+	 <operation name="PreInvokeEBSServiceUasgeEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ServiceUsageEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsiebelunbillevdetreqext:PreInvokeEBSSearchServiceUasgeReqMsg" />
+         <output message="abcsimplsiebelunbillevdetreqext:PreInvokeEBSSearchServiceUasgeReqMsg" />
+         <fault name="fault" message="abcsimplsiebelunbillevdetreqext:FaultMessage" />
+      </operation>
+	<operation name="PostInvokeEBSServiceUasgeEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostInvokeEBS an ServiceUsageEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PostInvokeEBSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsiebelunbillevdetreqext:PostInvokeEBSSearchServiceUasgeReqMsg" />
+         <output message="abcsimplsiebelunbillevdetreqext:PostInvokeEBSSearchServiceUasgeReqMsg" />
+         <fault name="fault" message="abcsimplsiebelunbillevdetreqext:FaultMessage" />
+      </operation>
+   </portType>
+   
+    <binding name="SearchUnbilledEventDetailsSiebelCommsReqABCSImplExtensionServiceBinding" type="abcsimplsiebelunbillevdetreqext:SearchUnbilledEventDetailsSiebelCommsReqABCSImplExtensionService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+         <operation name="PreXformABMtoEBMUnbilledEventDetailsABM">
+            <soap:operation style="document" soapAction="PreXformABMtoEBMUnbilledEventDetailsABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+        <operation name="PostXformABMtoEBMUnbilledEventDetailsABM">
+            <soap:operation style="document" soapAction="PostXformABMtoEBMUnbilledEventDetailsABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+        <operation name="PreInvokeEBSServiceUasgeEBM">
+            <soap:operation style="document" soapAction="PreInvokeEBSServiceUasgeEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+        <operation name="PostInvokeEBSServiceUasgeEBM">
+            <soap:operation style="document" soapAction="PostInvokeEBSServiceUasgeEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+    </binding>  
+	
+   <service name="SearchUnbilledEventDetailsSiebelCommsReqABCSImplExtension">
+        <port name="SearchUnbilledEventDetailsSiebelCommsReqABCSImplExtensionServicePort" binding="abcsimplsiebelunbillevdetreqext:SearchUnbilledEventDetailsSiebelCommsReqABCSImplExtensionServiceBinding">
+            <soap:address location="http://${fp.server.soaserverhostname}:${fp.server.soaserverport}/MirrorServlet/mirror" />
+        </port>
+   </service>
+   
+   
+   <plnk:partnerLinkType name="SearchUnbilledEventDetailsSiebelCommsReqABCSImplExtensionService">
+      <plnk:role name="SearchUnbilledEventDetailsSiebelCommsReqABCSImplExtensionServiceProvider">
+         <plnk:portType name="abcsimplsiebelunbillevdetreqext:SearchUnbilledEventDetailsSiebelCommsReqABCSImplExtensionService"/>
+      </plnk:role>
+   </plnk:partnerLinkType>
+</definitions>

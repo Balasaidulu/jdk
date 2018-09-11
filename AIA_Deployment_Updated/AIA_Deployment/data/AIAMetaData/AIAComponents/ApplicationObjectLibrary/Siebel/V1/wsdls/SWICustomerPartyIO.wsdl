@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?><definitions
+ xmlns="http://schemas.xmlsoap.org/wsdl/"
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+ xmlns:xsd1="http://www.siebel.com/xml/SWICustomerPartyIO"
+ targetNamespace="http://siebel.com/asi/V0"
+ xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:tns="http://siebel.com/asi/V0"
+><types
+><xsd:schema
+ elementFormDefault="qualified"
+ attributeFormDefault="unqualified"
+ targetNamespace="http://siebel.com/asi/V0"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+><xsd:import
+ namespace="http://www.siebel.com/xml/SWICustomerPartyIO" schemaLocation="../schemas/SWICustomerPartyIO.xsd"
+></xsd:import
+><xsd:element
+ name="SWICustomerPartySynchronize_Input"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ ref="xsd1:ListOfSwicustomerpartyio"
+></xsd:element
+><xsd:element
+ name="StatusObject"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+><xsd:element
+ name="SWICustomerPartySynchronize_Output"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ ref="xsd1:ListOfSwicustomerpartyio"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+><xsd:element
+ name="SWICustomerPartyInsertOrUpdate_Input"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ ref="xsd1:ListOfSwicustomerpartyio"
+></xsd:element
+><xsd:element
+ name="StatusObject"
+ minOccurs="0"
+ type="xsd:string"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+><xsd:element
+ name="SWICustomerPartyInsertOrUpdate_Output"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ ref="xsd1:ListOfSwicustomerpartyio"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+><xsd:element
+ name="SWICustomerPartyQueryByExample_Input"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ ref="xsd1:ListOfSwicustomerpartyio"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+><xsd:element
+ name="SWICustomerPartyQueryByExample_Output"
+><xsd:complexType
+><xsd:sequence
+><xsd:element
+ ref="xsd1:ListOfSwicustomerpartyio"
+></xsd:element
+></xsd:sequence
+></xsd:complexType
+></xsd:element
+></xsd:schema
+></types
+><message
+ name="SWICustomerPartySynchronize_Input"
+><part
+ name="SWICustomerPartySynchronize_Input"
+ element="tns:SWICustomerPartySynchronize_Input"
+></part
+></message
+><message
+ name="SWICustomerPartySynchronize_Output"
+><part
+ name="SWICustomerPartySynchronize_Output"
+ element="tns:SWICustomerPartySynchronize_Output"
+></part
+></message
+><message
+ name="SWICustomerPartyInsertOrUpdate_Input"
+><part
+ name="SWICustomerPartyInsertOrUpdate_Input"
+ element="tns:SWICustomerPartyInsertOrUpdate_Input"
+></part
+></message
+><message
+ name="SWICustomerPartyInsertOrUpdate_Output"
+><part
+ name="SWICustomerPartyInsertOrUpdate_Output"
+ element="tns:SWICustomerPartyInsertOrUpdate_Output"
+></part
+></message
+><message
+ name="SWICustomerPartyQueryByExample_Input"
+><part
+ name="SWICustomerPartyQueryByExample_Input"
+ element="tns:SWICustomerPartyQueryByExample_Input"
+></part
+></message
+><message
+ name="SWICustomerPartyQueryByExample_Output"
+><part
+ name="SWICustomerPartyQueryByExample_Output"
+ element="tns:SWICustomerPartyQueryByExample_Output"
+></part
+></message
+><portType
+ name="SWI_spcCustomer_spcParty_spcService"
+><operation
+ name="SWICustomerPartySynchronize"
+><input
+ message="tns:SWICustomerPartySynchronize_Input"
+></input
+><output
+ message="tns:SWICustomerPartySynchronize_Output"
+></output
+></operation
+><operation
+ name="SWICustomerPartyInsertOrUpdate"
+><input
+ message="tns:SWICustomerPartyInsertOrUpdate_Input"
+></input
+><output
+ message="tns:SWICustomerPartyInsertOrUpdate_Output"
+></output
+></operation
+><operation
+ name="SWICustomerPartyQueryByExample"
+><input
+ message="tns:SWICustomerPartyQueryByExample_Input"
+></input
+><output
+ message="tns:SWICustomerPartyQueryByExample_Output"
+></output
+></operation
+></portType
+><binding
+ name="SWI_spcCustomer_spcParty_spcService"
+ type="tns:SWI_spcCustomer_spcParty_spcService"
+><soap:binding
+ transport="http://schemas.xmlsoap.org/soap/http"
+ style="document"
+></soap:binding
+><operation
+ name="SWICustomerPartySynchronize"
+><soap:operation
+ soapAction="document/http://siebel.com/asi/V0:SWICustomerPartySynchronize"
+></soap:operation
+><input
+><soap:body
+ use="literal"
+></soap:body
+></input
+><output
+><soap:body
+ use="literal"
+></soap:body
+></output
+></operation
+><operation
+ name="SWICustomerPartyInsertOrUpdate"
+><soap:operation
+ soapAction="document/http://siebel.com/asi/V0:SWICustomerPartyInsertOrUpdate"
+></soap:operation
+><input
+><soap:body
+ use="literal"
+></soap:body
+></input
+><output
+><soap:body
+ use="literal"
+></soap:body
+></output
+></operation
+><operation
+ name="SWICustomerPartyQueryByExample"
+><soap:operation
+ soapAction="document/http://siebel.com/asi/V0:SWICustomerPartyQueryByExample"
+></soap:operation
+><input
+><soap:body
+ use="literal"
+></soap:body
+></input
+><output
+><soap:body
+ use="literal"
+></soap:body
+></output
+></operation
+></binding
+><service
+ name="SWICustomerParty"
+><port
+ binding="tns:SWI_spcCustomer_spcParty_spcService"
+ name="SWI_spcCustomer_spcParty_spcService"
+><soap:address
+ location="http://set.at.runtime"
+></soap:address
+></port
+></service
+></definitions
+>

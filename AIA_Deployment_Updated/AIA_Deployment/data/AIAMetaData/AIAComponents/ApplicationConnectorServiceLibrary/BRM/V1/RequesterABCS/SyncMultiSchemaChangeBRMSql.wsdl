@@ -1,0 +1,22 @@
+<?binding.jca SyncMultiSchemaChangeBRMSql_db.jca?>
+<wsdl:definitions name="SyncMultiSchemaChangeBRMSql" targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/SyncMultiSchemaChangeBRMRequesterImpl/V1/SyncMultiSchemaChangeBRMSql" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/DEVAIA_XREF/P_MULTI_SCHEMA_UPDATE/" xmlns:tns="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/SyncMultiSchemaChangeBRMRequesterImpl/V1/SyncMultiSchemaChangeBRMSql" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="SyncMultiSchemaChangeBRMSql_plt">
+        <plt:role name="SyncMultiSchemaChangeBRMSql_role">
+            <plt:portType name="tns:SyncMultiSchemaChangeBRMSql_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/DEVAIA_XREF/P_MULTI_SCHEMA_UPDATE/" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/DEVAIA_XREF_P_MULTI_SCHEMA_UPDATE.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="args_in_msg">
+        <wsdl:part name="InputParameters" element="db:InputParameters"/>
+    </wsdl:message>
+    <wsdl:portType name="SyncMultiSchemaChangeBRMSql_ptt">
+        <wsdl:operation name="SyncMultiSchemaChangeBRMSql">
+            <wsdl:input message="tns:args_in_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>
+

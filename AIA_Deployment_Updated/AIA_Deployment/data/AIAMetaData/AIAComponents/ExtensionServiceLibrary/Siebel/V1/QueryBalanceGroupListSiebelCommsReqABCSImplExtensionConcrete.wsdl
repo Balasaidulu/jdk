@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:commscustparty="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2" xmlns:commscustpartyebs="http://xmlns.oracle.com/EnterpriseServices/Core/CustomerParty/V2" xmlns:commscustpartyebsfault="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:abcsimplsiebelbalgrouplistabo="http://www.siebel.com/xml/CMU%20Request%20Billing%20Profile%20IO" xmlns:abcsimplsiebelbalgrouplistrespabo="http://www.siebel.com/xml/SWIBalanceGroupIORes" xmlns:abcsimplsiebelbalgrouplistext="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryBalanceGroupListSiebelCommsReqABCSImplExtension/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="QueryBalanceGroupListSiebelCommsReqABCSImplExtension" targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryBalanceGroupListSiebelCommsReqABCSImplExtension/V1">
+   <documentation>
+      <svcdoc:Service>
+         <svcdoc:Description>This service contains intercepting operations that would be used to query the BalanceGroup List of an account, from the billing system</svcdoc:Description>
+         <svcdoc:ServiceType>RequesterABCSExtension</svcdoc:ServiceType>
+         <svcdoc:DisplayName>QueryBalanceGroupListSiebelCommsReqABCSImpl Requester ABCS Extension
+                          Implementation Interface</svcdoc:DisplayName>
+			<svcdoc:ServiceObjectName>CustomerPartyEBO</svcdoc:ServiceObjectName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:Version>1.0</svcdoc:Version>
+			<svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+			<svcdoc:ProductFamily>Siebel</svcdoc:ProductFamily>
+			<svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+			<svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+      </svcdoc:Service>
+   </documentation>
+   <types>
+      <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/QueryBalanceGroupListSiebelCommsReqABCSImplExtension/V2" elementFormDefault="qualified">
+         <xsd:import namespace="http://www.siebel.com/xml/CMU%20Request%20Billing%20Profile%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestBillingProfileIo.xsd" />
+         <xsd:import namespace="http://www.siebel.com/xml/SWIBalanceGroupIORes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/Swibalancegroupiores.xsd" />
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/CustomerParty/V2/CustomerPartyEBM.xsd" />
+	<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd" />
+      </xsd:schema>
+   </types>
+    <message name="PreXformABMtoEBMBalanceGroupListMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreXformABMtoEBMBalanceGroupListABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QueryBalanceGroupListABM" element="abcsimplsiebelbalgrouplistabo:ListOfCmuRequestBillingProfileIo" />
+    </message>
+    
+    <message name="PostXformEBMtoABMBalanceGroupListRespMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostXformEBMtoABMBalanceGroupListResponseABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QueryBalanceGroupListResponseABM" element="abcsimplsiebelbalgrouplistrespabo:ListOfSwibalancegroupiores" />
+    </message>
+	
+    <message name="PreInvokeEBSQueryCustomerPartyReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBS QueryBalanceGroupList operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QueryCustomerPartyListEBM" element="commscustparty:QueryCustomerPartyListEBM" />
+    </message>
+
+    <message name="PostInvokeEBSQueryCustomerPartyRespMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostInvokeEBS QueryBalanceGroupList operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QueryCustomerPartyListResponseEBM" element="commscustparty:QueryCustomerPartyListResponseEBM" />
+    </message>
+   
+   <message name="FaultMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used for propagating Error
+                                Context and Error Message</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="AIAFault" element="corecom:Fault" />
+   </message>
+   <portType name="QueryBalanceGroupListSiebelCommsReqABCSImplExtensionService">
+      <documentation>
+         <svcdoc:Interface>
+            <svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+            <svcdoc:DisplayName>QueryBalanceGroupListSiebelCommsReqABCSImplExtensionService</svcdoc:DisplayName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         </svcdoc:Interface>
+      </documentation>
+      <operation name="PreXformABMtoEBMBalanceGroupListABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformABMtoEBM a ListOfCmuRequestBillingProfileIo object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformABMtoEBMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsiebelbalgrouplistext:PreXformABMtoEBMBalanceGroupListMsg" />
+         <output message="abcsimplsiebelbalgrouplistext:PreXformABMtoEBMBalanceGroupListMsg" />
+         <fault name="fault" message="abcsimplsiebelbalgrouplistext:FaultMessage" />
+      </operation>
+      
+	<operation name="PostXformEBMtoABMBalanceGroupListResponseABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostXformEBMtoABM an ListOfSwibalancegroupiores object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PostXformEBMtoABMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsiebelbalgrouplistext:PostXformEBMtoABMBalanceGroupListRespMsg" />
+         <output message="abcsimplsiebelbalgrouplistext:PostXformEBMtoABMBalanceGroupListRespMsg" />
+         <fault name="fault" message="abcsimplsiebelbalgrouplistext:FaultMessage" />
+      </operation>
+      
+	 <operation name="PreInvokeEBSCustomerPartyEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an QueryCustomerPartyListEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsiebelbalgrouplistext:PreInvokeEBSQueryCustomerPartyReqMsg" />
+         <output message="abcsimplsiebelbalgrouplistext:PreInvokeEBSQueryCustomerPartyReqMsg" />
+         <fault name="fault" message="abcsimplsiebelbalgrouplistext:FaultMessage" />
+      </operation>
+	<operation name="PostInvokeEBSCustomerPartyEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostInvokeEBS an QueryCustomerPartyListResponseEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PostInvokeEBSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsiebelbalgrouplistext:PostInvokeEBSQueryCustomerPartyRespMsg" />
+         <output message="abcsimplsiebelbalgrouplistext:PostInvokeEBSQueryCustomerPartyRespMsg" />
+         <fault name="fault" message="abcsimplsiebelbalgrouplistext:FaultMessage" />
+      </operation>
+   </portType>
+
+<binding name="QueryBalanceGroupListSiebelCommsReqABCSImplExtensionServiceBinding" type="abcsimplsiebelbalgrouplistext:QueryBalanceGroupListSiebelCommsReqABCSImplExtensionService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="PreXformABMtoEBMBalanceGroupListABM">
+            <soap:operation style="document" soapAction="PreXformABMtoEBMBalanceGroupListABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		<operation name="PostXformEBMtoABMBalanceGroupListResponseABM">
+            <soap:operation style="document" soapAction="PostXformEBMtoABMBalanceGroupListResponseABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+        <operation name="PreInvokeEBSCustomerPartyEBM">
+            <soap:operation style="document" soapAction="PreInvokeEBSCustomerPartyEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+	    <operation name="PostInvokeEBSCustomerPartyEBM">
+            <soap:operation style="document" soapAction="PostInvokeEBSCustomerPartyEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+    </binding>
+   <service name="QueryBalanceGroupListSiebelCommsReqABCSImplExtension">
+        <port name="QueryBalanceGroupListSiebelCommsReqABCSImplExtensionServicePort" binding="abcsimplsiebelbalgrouplistext:QueryBalanceGroupListSiebelCommsReqABCSImplExtensionServiceBinding">
+            <soap:address location="http://${fp.server.soaserverhostname}:${fp.server.soaserverport}/MirrorServlet/mirror" />
+        </port>
+   </service>   
+
+ <plnk:partnerLinkType name="QueryBalanceGroupListSiebelCommsReqABCSImplExtensionService">
+      <plnk:role name="QueryBalanceGroupListSiebelCommsReqABCSImplExtensionServiceProvider">
+         <plnk:portType name="abcsimplsiebelbalgrouplistext:QueryBalanceGroupListSiebelCommsReqABCSImplExtensionService" />
+      </plnk:role>
+   </plnk:partnerLinkType>
+</definitions>

@@ -1,0 +1,1281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+** Oracle Corporation  **
+** This is an Entity EBS, BASED ON CRUD OPERATIONS **
+** We always include the wsdl,xsd, soap, our documentation, and Core Common namespaces. Always the same prefixes. **
+** Need to define namespaces for EBO and EBS, and always use these same prefixes - ebo and ebs. **
+** Need to define the target namespace equal to the EBS namespace. Also define a name, in the form of - name+EBS. **
+ 
+ Copyright (c) 2007, 2010, Oracle and/or its affiliates. All rights reserved. 
+ 
+    WSDL File Name
+   Name: \\EnterpriseBusinessServiceLibrary\Core\EBO\SpecificationValueSet\V1\SpecificationValueSetEBSV1.wsdl
+ 
+-->
+ 
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:ebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SpecificationValueSet/V1" xmlns:ebs="http://xmlns.oracle.com/EnterpriseServices/Core/SpecificationValueSet/V1" name="SpecificationValueSetEBSV1" targetNamespace="http://xmlns.oracle.com/EnterpriseServices/Core/SpecificationValueSet/V1">
+
+	<documentation>
+
+
+		<svcdoc:Service>
+
+
+			<svcdoc:Description>SpecificationValueSet Enterprise Business Service</svcdoc:Description>
+
+
+			<svcdoc:ServiceType>EnterpriseBusinessService</svcdoc:ServiceType>
+
+
+			<svcdoc:DisplayName>SpecificationValueSetEBSV1</svcdoc:DisplayName>
+
+
+			<svcdoc:Version>1.00</svcdoc:Version>
+
+
+			<svcdoc:EBOName>SpecificationValueSetEBO</svcdoc:EBOName>
+
+
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+			<svcdoc:ImplementationTechnology>ESB</svcdoc:ImplementationTechnology>
+
+
+		</svcdoc:Service>
+
+
+	</documentation>
+
+
+	<types>
+
+
+	<xsd:schema targetNamespace="http://xmlns.oracle.com/EnterpriseServices/SpecificationValueSet/V1" elementFormDefault="qualified">
+
+
+		<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SpecificationValueSet/V1" schemaLocation="../../../../../EnterpriseObjectLibrary/Core/EBO/SpecificationValueSet/V1/SpecificationValueSetEBM.xsd"/>
+
+
+		<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../../../EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+
+
+	</xsd:schema>
+
+
+	</types>
+
+
+	<message name="FaultMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="AIAFault" element="corecom:Fault"/>
+
+
+	</message>
+
+
+	<message name="CreateSpecificationValueSetReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the CreateSpecificationValueSet operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="CreateSpecificationValueSetEBM" element="ebo:CreateSpecificationValueSetEBM"/>
+
+
+	</message>
+
+
+	<message name="CreateSpecificationValueSetRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the CreateSpecificationValueSet operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="CreateSpecificationValueSetResponseEBM" element="ebo:CreateSpecificationValueSetResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="CreateSpecificationValueSetListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the CreateSpecificationValueSetList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="CreateSpecificationValueSetListEBM" element="ebo:CreateSpecificationValueSetListEBM"/>
+
+
+	</message>
+
+
+	<message name="CreateSpecificationValueSetListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the CreateSpecificationValueSetList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="CreateSpecificationValueSetListResponseEBM" element="ebo:CreateSpecificationValueSetListResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="QuerySpecificationValueSetReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the QuerySpecificationValueSet operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="QuerySpecificationValueSetEBM" element="ebo:QuerySpecificationValueSetEBM"/>
+
+
+	</message>
+
+
+	<message name="QuerySpecificationValueSetRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the QuerySpecificationValueSet operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="QuerySpecificationValueSetResponseEBM" element="ebo:QuerySpecificationValueSetResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="QuerySpecificationValueSetListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the QuerySpecificationValueSetList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="QuerySpecificationValueSetListEBM" element="ebo:QuerySpecificationValueSetListEBM"/>
+
+
+	</message>
+
+
+	<message name="QuerySpecificationValueSetListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the QuerySpecificationValueSetList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="QuerySpecificationValueSetListResponseEBM" element="ebo:QuerySpecificationValueSetListResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="UpdateSpecificationValueSetReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the UpdateSpecificationValueSet operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="UpdateSpecificationValueSetEBM" element="ebo:UpdateSpecificationValueSetEBM"/>
+
+
+	</message>
+
+
+	<message name="UpdateSpecificationValueSetRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the UpdateSpecificationValueSet operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="UpdateSpecificationValueSetResponseEBM" element="ebo:UpdateSpecificationValueSetResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="UpdateSpecificationValueSetListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the UpdateSpecificationValueSetList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="UpdateSpecificationValueSetListEBM" element="ebo:UpdateSpecificationValueSetListEBM"/>
+
+
+	</message>
+
+
+	<message name="UpdateSpecificationValueSetListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the UpdateSpecificationValueSetList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="UpdateSpecificationValueSetListResponseEBM" element="ebo:UpdateSpecificationValueSetListResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="DeleteSpecificationValueSetReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the DeleteSpecificationValueSet operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="DeleteSpecificationValueSetEBM" element="ebo:DeleteSpecificationValueSetEBM"/>
+
+
+	</message>
+
+
+	<message name="DeleteSpecificationValueSetRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the DeleteSpecificationValueSet operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="DeleteSpecificationValueSetResponseEBM" element="ebo:DeleteSpecificationValueSetResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="DeleteSpecificationValueSetListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the DeleteSpecificationValueSetList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="DeleteSpecificationValueSetListEBM" element="ebo:DeleteSpecificationValueSetListEBM"/>
+
+
+	</message>
+
+
+	<message name="DeleteSpecificationValueSetListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the DeleteSpecificationValueSetList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="DeleteSpecificationValueSetListResponseEBM" element="ebo:DeleteSpecificationValueSetListResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="SyncSpecificationValueSetListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the SyncSpecificationValueSetList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="SyncSpecificationValueSetListEBM" element="ebo:SyncSpecificationValueSetListEBM"/>
+
+
+	</message>
+
+
+	<message name="SyncSpecificationValueSetListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the SyncSpecificationValueSetList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="SyncSpecificationValueSetListResponseEBM" element="ebo:SyncSpecificationValueSetListResponseEBM"/>
+
+
+	</message>
+
+
+	<portType name="SpecificationValueSetEBS">
+
+
+		<documentation>
+
+
+			<svcdoc:Interface>
+
+
+				<svcdoc:Description>This interface contains operations for the Request-Response and Request-Only patterns</svcdoc:Description>
+
+
+				<svcdoc:DisplayName>RequestSpecificationValueSet EBS Interface</svcdoc:DisplayName>
+
+
+				<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+			</svcdoc:Interface>
+
+
+		</documentation>
+
+
+		<!-- operation support for CreateSpecificationValueSet -->
+
+
+		<operation name="CreateSpecificationValueSet">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Create a SpecificationValueSet EBO.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>CreateSpecificationValueSet</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:CreateSpecificationValueSetReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for CreateSpecificationValueSetList -->
+
+
+		<operation name="CreateSpecificationValueSetList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Create multiple SpecificationValueSet EBOs.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>CreateSpecificationValueSetList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:CreateSpecificationValueSetListReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for QuerySpecificationValueSet -->
+
+
+		<operation name="QuerySpecificationValueSet">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Query a SpecificationValueSet EBO.</svcdoc:Description>
+
+
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>QuerySpecificationValueSet</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:QuerySpecificationValueSetReqMsg"/>
+
+
+			<output message="ebs:QuerySpecificationValueSetRespMsg"/>
+
+
+			<fault name= "fault"  message="ebs:FaultMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for QuerySpecificationValueSetList -->
+
+
+		<operation name="QuerySpecificationValueSetList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Query multiple SpecificationValueSet EBOs.</svcdoc:Description>
+
+
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>QuerySpecificationValueSetList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:QuerySpecificationValueSetListReqMsg"/>
+
+
+			<output message="ebs:QuerySpecificationValueSetListRespMsg"/>
+
+
+			<fault name= "fault"  message="ebs:FaultMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for UpdateSpecificationValueSet -->
+
+
+		<operation name="UpdateSpecificationValueSet">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Update a SpecificationValueSet EBO.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>UpdateSpecificationValueSet</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:UpdateSpecificationValueSetReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for UpdateSpecificationValueSetList -->
+
+
+		<operation name="UpdateSpecificationValueSetList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Update multiple SpecificationValueSet EBOs.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>UpdateSpecificationValueSetList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:UpdateSpecificationValueSetListReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for DeleteSpecificationValueSet -->
+
+
+		<operation name="DeleteSpecificationValueSet">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Delete a SpecificationValueSet EBO.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>DeleteSpecificationValueSet</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:DeleteSpecificationValueSetReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for DeleteSpecificationValueSetList -->
+
+
+		<operation name="DeleteSpecificationValueSetList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Delete multiple SpecificationValueSet EBOs.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>DeleteSpecificationValueSetList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:DeleteSpecificationValueSetListReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for SyncSpecificationValueSetList -->
+
+
+		<operation name="SyncSpecificationValueSetList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Sync multiple SpecificationValueSet EBOs.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>SyncSpecificationValueSetList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:SyncSpecificationValueSetListReqMsg"/>
+
+
+		</operation>
+
+
+	</portType>
+
+
+	<portType name="SpecificationValueSetEBSResponse">
+
+
+		<documentation>
+
+
+			<svcdoc:Interface>
+
+
+				<svcdoc:Description>This interface contains operations for the ResponseSpecificationValueSet EBS</svcdoc:Description>
+
+
+				<svcdoc:DisplayName>ResponseSpecificationValueSet EBS Interface</svcdoc:DisplayName>
+
+
+				<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+			</svcdoc:Interface>
+
+
+		</documentation>
+
+
+		<!-- operation support for CreateSpecificationValueSet response -->
+
+
+		<operation name="CreateSpecificationValueSetResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the CreateSpecificationValueSet Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>CreateSpecificationValueSetResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>SpecificationValueSetEBSV1</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>CreateSpecificationValueSetResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>CreateSpecificationValueSetRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:CreateSpecificationValueSetRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for CreateSpecificationValueSetListResponse -->
+
+
+		<operation name="CreateSpecificationValueSetListResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the CreateSpecificationValueSetList Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>CreateSpecificationValueSetListResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>SpecificationValueSetEBSV1</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>CreateSpecificationValueSetResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>CreateSpecificationValueSetListRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:CreateSpecificationValueSetListRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for UpdateSpecificationValueSet response -->
+
+
+		<operation name="UpdateSpecificationValueSetResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the UpdateSpecificationValueSet Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>UpdateSpecificationValueSetResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>SpecificationValueSetEBSV1</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>UpdateSpecificationValueSetResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>UpdateSpecificationValueSetRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:UpdateSpecificationValueSetRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for UpdateSpecificationValueSetListResponse -->
+
+
+		<operation name="UpdateSpecificationValueSetListResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the UpdateSpecificationValueSetList Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>UpdateSpecificationValueSetListResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>SpecificationValueSetEBSV1</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>UpdateSpecificationValueSetResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>UpdateSpecificationValueSetListRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:UpdateSpecificationValueSetListRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for DeleteSpecificationValueSet response -->
+
+
+		<operation name="DeleteSpecificationValueSetResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the DeleteSpecificationValueSet Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>DeleteSpecificationValueSetResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>SpecificationValueSetEBSV1</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>DeleteSpecificationValueSetResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>DeleteSpecificationValueSetRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:DeleteSpecificationValueSetRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for DeleteSpecificationValueSetListResponse -->
+
+
+		<operation name="DeleteSpecificationValueSetListResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the DeleteSpecificationValueSetList Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>DeleteSpecificationValueSetListResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>SpecificationValueSetEBSV1</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>DeleteSpecificationValueSetResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>DeleteSpecificationValueSetListRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:DeleteSpecificationValueSetListRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for SyncSpecificationValueSetListResponse -->
+
+
+		<operation name="SyncSpecificationValueSetListResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the SyncSpecificationValueSetList Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>SyncSpecificationValueSetListResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>SpecificationValueSetEBSV1</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>SyncSpecificationValueSetResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>SyncSpecificationValueSetListRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:SyncSpecificationValueSetListRespMsg"/>
+
+
+		</operation>
+
+
+	</portType>
+
+
+</definitions>
+
+
+

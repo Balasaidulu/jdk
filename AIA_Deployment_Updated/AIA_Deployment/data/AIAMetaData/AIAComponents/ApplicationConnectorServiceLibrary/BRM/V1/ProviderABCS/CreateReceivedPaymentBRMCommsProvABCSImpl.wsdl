@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="CreateReceivedPaymentBRMCommsProvABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/CreateReceivedPaymentBRMCommsProvABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:abcsimplrpprovabcs="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/CreateReceivedPaymentBRMCommsProvABCSImpl/V1"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:bpelcommon="http://schemas.oracle.com/service/bpel/common"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:abcsimplrpprovebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ReceivedPayment/V1"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service contains BRM ABCS implementation of Create Received Payment operation</svcdoc:Description>
+            <svcdoc:ServiceType>ProviderABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>Create Received Payment BRM Provider ABCS Implememntation</svcdoc:DisplayName>
+            <svcdoc:EBOName>ReceivedPaymentEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>BRM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>BRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>Billing</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ReceivedPayment/V1"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/ReceivedPayment/V1/ReceivedPaymentEBM.xsd"/>
+            <import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+        </schema>
+    </types>
+    <message name="CreateReceivedPaymentReqMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message will contain the Create Payment Receipt request attributes</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="CreateReceivedPaymentEBM" element="abcsimplrpprovebo:CreateReceivedPaymentEBM"/>
+    </message>
+	<message name="CreateReceivedPaymentRespMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message will contain the Create Payment Receipt response attributes</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="CreateReceivedPaymentResponseEBM" element="abcsimplrpprovebo:CreateReceivedPaymentResponseEBM"/>													
+    </message>
+    <message name="CreateReceivedPaymentFaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message will contain the Query Payment request attributes</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="AIAFault" element="corecom:Fault"/>
+    </message>
+    <portType name="CreateReceivedPaymentBRMCommsProvABCSImpl">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This Service Contains Create Received Payment BRM Provider ABCS Implementation</svcdoc:Description>
+                <svcdoc:DisplayName>Create Received Payment BRM Provider ABCS Implementation</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="CreateReceivedPaymentRequestResponse">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Create Received Payment in BRM Billing System</svcdoc:Description>
+                    <svcdoc:MEP>ASYNC_REQ</svcdoc:MEP>
+                    <svcdoc:DisplayName>Create Received Payment</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="abcsimplrpprovabcs:CreateReceivedPaymentReqMsg"/>
+			<output message="abcsimplrpprovabcs:CreateReceivedPaymentRespMsg"/>
+			<fault name="fault" message="abcsimplrpprovabcs:CreateReceivedPaymentFaultMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="CreateReceivedPaymentBRMCommsProvABCSImpl">
+        <plnk:role name="CreateReceivedPaymentBRMCommsProvABCSImplProvider">
+            <plnk:portType name="abcsimplrpprovabcs:CreateReceivedPaymentBRMCommsProvABCSImpl"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

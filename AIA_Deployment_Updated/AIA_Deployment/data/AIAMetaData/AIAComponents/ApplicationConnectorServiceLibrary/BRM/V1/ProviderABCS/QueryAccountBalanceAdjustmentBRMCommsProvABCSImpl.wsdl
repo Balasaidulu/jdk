@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="QueryAccountBalanceAdjustmentBRMCommsProvABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryAccountBalanceAdjustmentBRMCommsProvABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:commsadjebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/AccountBalanceAdjustment/V2"
+     xmlns:bpelcom="http://schemas.oracle.com/service/bpel/common"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1.0"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:commscomadj="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:commsadjabcs="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryAccountBalanceAdjustmentBRMCommsProvABCSImpl/V1"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service contains operations that would be used by
+                          the participating application to interact with the
+                          external systems</svcdoc:Description>
+            <svcdoc:ServiceType>ProviderABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>QueryAccountBalanceAdjustmentOracle BRMCommsProvABCSImpl Provider ABCS
+                          Implementation Interface</svcdoc:DisplayName>
+            <svcdoc:EBOName>AccountBalanceAdjustmentEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>BRM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>BRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/AccountBalanceAdjustment/V2"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/AccountBalanceAdjustment/V2/AccountBalanceAdjustmentEBM.xsd"/>
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+            <import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </schema>
+    </types>
+    <message name="QueryAccountBalanceAdjustmentListReqMsg">
+        <part name="QueryAccountBalanceAdjustmentListEBM" element="commsadjebo:QueryAccountBalanceAdjustmentListEBM"/>
+    </message>
+    <message name="QueryAccountBalanceAdjustmentListRespMsg">
+        <part name="QueryAccountBalanceAdjustmentListResponseEBM" element="commsadjebo:QueryAccountBalanceAdjustmentListResponseEBM"/>
+    </message>
+    <message name="QueryAccountBalanceAdjustmentListFaultMsg">
+        <part name="QueryAccountBalanceAdjustmentListFault" element="commscomadj:Fault"/>
+    </message>
+    <portType name="QueryAccountBalanceAdjustmentBRMCommsProvABCSImpl">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This interface contains operations that can act upon
+                            the object</svcdoc:Description>
+                <svcdoc:DisplayName>Query AccountBalanceAdjustment BRM Requestor ABCS Implementation</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="QueryAccountBalanceAdjustmentList">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Query an AccountBalanceAdjustment
+                              object</svcdoc:Description>
+                    <svcdoc:MEP>SynchronousRequestResponse</svcdoc:MEP>
+                    <svcdoc:DisplayName>QueryAccountBalanceAdjustmentList</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="commsadjabcs:QueryAccountBalanceAdjustmentListReqMsg"/>
+            <output message="commsadjabcs:QueryAccountBalanceAdjustmentListRespMsg"/>
+            <fault name="fault" message="commsadjabcs:QueryAccountBalanceAdjustmentListFaultMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="QueryAccountBalanceAdjustmentBRMCommsProvABCSImpl">
+        <plnk:role name="QueryAccountBalanceAdjustmentBRMCommsProvABCSImplProvider">
+            <plnk:portType name="commsadjabcs:QueryAccountBalanceAdjustmentBRMCommsProvABCSImpl"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

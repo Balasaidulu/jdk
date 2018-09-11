@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:bpelcom="http://schemas.oracle.com/service/bpel/common" xmlns:brm="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" xmlns:brmFault="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" xmlns:commsinvebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Invoice/V2" xmlns:commsinvext="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryInvoiceListBRMCommsProvABCSImplExtension/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryInvoiceListBRMCommsProvABCSImplExtension/V1" name="QueryInvoiceListBRMCommsProvABCSImplExtension1" targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryInvoiceListBRMCommsProvABCSImplExtension/V1">
+   <documentation>
+      <svcdoc:Service>
+         <svcdoc:Description>This service contains intercepting operations that
+                             would be used by the participating application</svcdoc:Description>
+         <svcdoc:ServiceType>ABCSExtension</svcdoc:ServiceType>
+         <svcdoc:DisplayName>QueryInvoiceListBRMCommsProvABCSImpl/V2 Requester ABCS Extension
+                          Implementation Interface</svcdoc:DisplayName>
+			<svcdoc:ServiceObjectName>QueryInvoiceList</svcdoc:ServiceObjectName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:Version>1.0</svcdoc:Version>
+			<svcdoc:ImplementationTechnology><!-- PLACEHOLDER--></svcdoc:ImplementationTechnology>
+			<svcdoc:ProductFamily>BRM</svcdoc:ProductFamily>
+			<svcdoc:ProductPillar>BRM</svcdoc:ProductPillar>
+			<svcdoc:ProductCode />
+      </svcdoc:Service>
+   </documentation>
+   <types>
+      <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryInvoiceListBRMCommsProvABCSImplExtension/V1" elementFormDefault="qualified">
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Invoice/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/Invoice/V2/InvoiceEBM.xsd" />
+     <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_AR_RESOURCE_AGGREGATION.xsd" />    
+     <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_AR_GET_BILL_ITEMS.xsd" />  
+     <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_AR_GET_ACCT_BILLS.xsd" />  
+     <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_BAL_GET_ACCT_BILLINFO.xsd" />  
+     <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT.xsd" />    
+	<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd" />
+        <xsd:import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd" />
+      </xsd:schema>
+   </types>
+   <message name="PreXformEBMtoABMInvoiceListMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreXformEBMtoABMABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QueryInvoiceListEBM" element="commsinvebo:QueryInvoiceListEBM" />
+   </message>
+  <message name="PostXformEBMtoABMInvoiceListMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostXformEBMtoABMABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QueryInvoiceListEBM" element="commsinvebo:QueryInvoiceListResponseEBM" />
+   </message>
+	<message name="PreInvokeABSQueryPCM_OP_AR_RESOURCE_AGGREGATIONReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_AR_RESOURCE_AGGREGATION_inmsg" element="brm:PCM_OP_AR_RESOURCE_AGGREGATION_inputFlist" />
+   </message>
+
+	<message name="PostInvokeABSQueryPCM_OP_AR_RESOURCE_AGGREGATIONReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_AR_RESOURCE_AGGREGATION_outmsg" element="brm:PCM_OP_AR_RESOURCE_AGGREGATION_outputFlist" />
+	</message>
+	<message name="PreInvokeABSQueryPCM_OP_AR_GET_BILL_ITEMSReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_AR_GET_BILL_ITEMS_inmsg" element="brm:PCM_OP_AR_GET_BILL_ITEMS_inputFlist" />
+   </message>
+
+	<message name="PostInvokeABSQueryPCM_OP_AR_GET_BILL_ITEMSReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_AR_GET_BILL_ITEMS_outmsg" element="brm:PCM_OP_AR_GET_BILL_ITEMS_outputFlist" />
+	</message>
+   <message name="PreInvokeABSQueryPCM_OP_AR_GET_ACCT_BILLSReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_AR_GET_ACCT_BILLS_inmsg" element="brm:PCM_OP_AR_GET_ACCT_BILLS_inputFlist" />
+   </message>
+
+	<message name="PostInvokeABSQueryPCM_OP_AR_GET_ACCT_BILLSReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_AR_GET_ACCT_BILLS_outmsg" element="brm:PCM_OP_AR_GET_ACCT_BILLS_outputFlist" />
+	</message>
+   
+    <message name="PreInvokeABSQueryPCM_OP_BAL_GET_ACCT_BILLINFOReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_BAL_GET_ACCT_BILLINFO_inmsg" element="brm:PCM_OP_BAL_GET_ACCT_BILLINFO_inputFlist" />
+   </message>
+
+	<message name="PostInvokeABSQueryPCM_OP_BAL_GET_ACCT_BILLINFOReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_BAL_GET_ACCT_BILLINFO_outmsg" element="brm:PCM_OP_BAL_GET_ACCT_BILLINFO_outputFlist" />
+	</message>
+   
+   <message name="PostInvokeABSQueryPCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNTReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT_outmsg" element="brm:PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT_outputFlist" />
+	</message>
+   <message name="PreInvokeABSQueryPCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNTReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT_inmsg" element="brm:PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT_inputFlist" />
+   </message>
+
+
+   <message name="FaultMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used for propagating Error
+                                Context and Error Message</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="AIAFault" element="corecom:Fault" />
+   </message>
+   <portType name="QueryInvoiceListBRMCommsProvABCSImplExtensionService">
+      <documentation>
+         <svcdoc:Interface>
+            <svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+            <svcdoc:DisplayName>QueryInvoiceListBRMCommsProvABCSImplExtensionService</svcdoc:DisplayName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         </svcdoc:Interface>
+      </documentation>
+      <operation name="PreXformEBMtoABMInvoiceListEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformEBMtoABM an QueryInvoiceListEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformEBMtoABMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsinvext:PreXformEBMtoABMInvoiceListMsg" />
+         <output message="commsinvext:PreXformEBMtoABMInvoiceListMsg" />
+         <fault name="fault" message="commsinvext:FaultMessage" />
+      </operation>
+	<operation name="PostXformEBMtoABMInvoiceListEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostXformEBMtoABM an QueryInvoiceListResponseEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PostXformEBMtoABMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsinvext:PostXformEBMtoABMInvoiceListMsg" />
+         <output message="commsinvext:PostXformEBMtoABMInvoiceListMsg" />
+         <fault name="fault" message="commsinvext:FaultMessage" />
+      </operation>
+	 <operation name="PreInvokeABSPCM_OP_AR_RESOURCE_AGGREGATIONABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an PCM_OP_AR_RESOURCE_AGGREGATION_inputFlist object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsinvext:PreInvokeABSQueryPCM_OP_AR_RESOURCE_AGGREGATIONReqMsg" />
+         <output message="commsinvext:PreInvokeABSQueryPCM_OP_AR_RESOURCE_AGGREGATIONReqMsg" />
+         <fault name="fault" message="commsinvext:FaultMessage" />
+      </operation>
+	<operation name="PostInvokeABSPCM_OP_AR_RESOURCE_AGGREGATIONABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostInvokeEBS an PCM_OP_AR_RESOURCE_AGGREGATION_outputFlist object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PostInvokeABSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsinvext:PostInvokeABSQueryPCM_OP_AR_RESOURCE_AGGREGATIONReqMsg" />
+         <output message="commsinvext:PostInvokeABSQueryPCM_OP_AR_RESOURCE_AGGREGATIONReqMsg" />
+         <fault name="fault" message="commsinvext:FaultMessage" />
+      </operation>
+	   <operation name="PreInvokeABSPCM_OP_AR_GET_BILL_ITEMSABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an PCM_OP_AR_GET_BILL_ITEMS_inputFlist object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsinvext:PreInvokeABSQueryPCM_OP_AR_GET_BILL_ITEMSReqMsg" />
+         <output message="commsinvext:PreInvokeABSQueryPCM_OP_AR_GET_BILL_ITEMSReqMsg" />
+         <fault name="fault" message="commsinvext:FaultMessage" />
+      </operation>
+	<operation name="PostInvokeABSPCM_OP_AR_GET_BILL_ITEMSABM">
+	<operation name="PreInvokeABSPCM_OP_BAL_GET_ACCT_BILLINFOABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an PCM_OP_BAL_GET_ACCT_BILLINFO_inputFlist object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsinvext:PreInvokeABSQueryPCM_OP_BAL_GET_ACCT_BILLINFOReqMsg" />
+         <output message="commsinvext:PreInvokeABSQueryPCM_OP_BAL_GET_ACCT_BILLINFOReqMsg" />
+         <fault name="fault" message="commsinvext:FaultMessage" />
+      </operation>
+	<operation name="PostInvokeABSPCM_OP_BAL_GET_ACCT_BILLINFOABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostInvokeEBS an PCM_OP_BAL_GET_ACCT_BILLINFO_outputFlist object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PostInvokeABSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsinvext:PostInvokeABSQueryPCM_OP_BAL_GET_ACCT_BILLINFOReqMsg" />
+         <output message="commsinvext:PostInvokeABSQueryPCM_OP_BAL_GET_ACCT_BILLINFOReqMsg" />
+         <fault name="fault" message="commsinvext:FaultMessage" />
+      </operation>
+	
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostInvokeEBS an PCM_OP_AR_GET_BILL_ITEMS_outputFlist object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PostInvokeABSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsinvext:PostInvokeABSQueryPCM_OP_AR_GET_BILL_ITEMSReqMsg" />
+         <output message="commsinvext:PostInvokeABSQueryPCM_OP_AR_GET_BILL_ITEMSReqMsg" />
+         <fault name="fault" message="commsinvext:FaultMessage" />
+      </operation>
+	   <operation name="PreInvokeABSPCM_OP_AR_GET_ACCT_BILLSABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an PCM_OP_AR_GET_ACCT_BILLS_inputFlist object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsinvext:PreInvokeABSQueryPCM_OP_AR_GET_ACCT_BILLSReqMsg" />
+         <output message="commsinvext:PreInvokeABSQueryPCM_OP_AR_GET_ACCT_BILLSReqMsg" />
+         <fault name="fault" message="commsinvext:FaultMessage" />
+      </operation>
+	<operation name="PostInvokeABSPCM_OP_AR_GET_ACCT_BILLSABM">
+	
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostInvokeEBS an PCM_OP_AR_GET_ACCT_BILLS_outputFlist object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PostInvokeABSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsinvext:PostInvokeABSQueryPCM_OP_AR_GET_ACCT_BILLSReqMsg" />
+         <output message="commsinvext:PostInvokeABSQueryPCM_OP_AR_GET_ACCT_BILLSReqMsg" />
+         <fault name="fault" message="commsinvext:FaultMessage" />
+      </operation>
+	<operation name="PreInvokeABSPCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNTABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT_inputFlist object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsinvext:PreInvokeABSQueryPCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNTReqMsg" />
+         <output message="commsinvext:PreInvokeABSQueryPCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNTReqMsg" />
+         <fault name="fault" message="commsinvext:FaultMessage" />
+      </operation>
+	<operation name="PostInvokeABSPCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNTABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostInvokeEBS an PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT_outputFlist object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PostInvokeABSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsinvext:PostInvokeABSQueryPCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNTReqMsg" />
+         <output message="commsinvext:PostInvokeABSQueryPCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNTReqMsg" />
+         <fault name="fault" message="commsinvext:FaultMessage" />
+      </operation>
+   
+   <operation name="PreInvokeABSPCM_OP_BAL_GET_ACCT_BILLINFOABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT_inputFlist object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsinvext:PreInvokeABSQueryPCM_OP_BAL_GET_ACCT_BILLINFOReqMsg" />
+         <output message="commsinvext:PreInvokeABSQueryPCM_OP_BAL_GET_ACCT_BILLINFOReqMsg" />
+         <fault name="fault" message="commsinvext:FaultMessage" />
+      </operation>
+	<operation name="PostInvokeABSPCM_OP_BAL_GET_ACCT_BILLINFOABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostInvokeEBS an PCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT_outputFlist object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PostInvokeABSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsinvext:PostInvokeABSQueryPCM_OP_BAL_GET_ACCT_BILLINFOReqMsg" />
+         <output message="commsinvext:PostInvokeABSQueryPCM_OP_BAL_GET_ACCT_BILLINFOReqMsg" />
+         <fault name="fault" message="commsinvext:FaultMessage" />
+      </operation>
+  </portType>
+   
+   
+   <binding name="QueryInvoiceListBRMCommsProvABCSImplExtensionServiceBinding" type="tns:QueryInvoiceListBRMCommsProvABCSImplExtensionService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+       
+
+	   <operation name="PreXformEBMtoABMInvoiceListEBM">
+            <soap:operation style="document" soapAction="PreXformEBMtoABMInvoiceListEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		<operation name="PostXformEBMtoABMInvoiceListEBM">
+            <soap:operation style="document" soapAction="PostXformEBMtoABMInvoiceListEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+        <operation name="PreInvokeABSPCM_OP_AR_RESOURCE_AGGREGATIONABM">
+            <soap:operation style="document" soapAction="PreInvokeABSPCM_OP_AR_RESOURCE_AGGREGATIONABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>	
+	    <operation name="PostInvokeABSPCM_OP_AR_RESOURCE_AGGREGATIONABM">
+            <soap:operation style="document" soapAction="PostInvokeABSPCM_OP_AR_RESOURCE_AGGREGATIONABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		<operation name="PreInvokeABSPCM_OP_AR_GET_BILL_ITEMSABM">
+            <soap:operation style="document" soapAction="PreInvokeABSPCM_OP_AR_GET_BILL_ITEMSABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		<operation name="PostInvokeABSPCM_OP_AR_GET_BILL_ITEMSABM">
+            <soap:operation style="document" soapAction="PostInvokeABSPCM_OP_AR_GET_BILL_ITEMSABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		<operation name="PreInvokeABSPCM_OP_AR_GET_ACCT_BILLSABM">
+            <soap:operation style="document" soapAction="PreInvokeABSPCM_OP_AR_GET_ACCT_BILLSABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		
+	    <operation name="PostInvokeABSPCM_OP_AR_GET_ACCT_BILLSABM">
+            <soap:operation style="document" soapAction="PostInvokeABSPCM_OP_AR_GET_ACCT_BILLSABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		
+		<operation name="PreInvokeABSPCM_OP_BAL_GET_ACCT_BILLINFOABM">
+            <soap:operation style="document" soapAction="PreInvokeABSPCM_OP_BAL_GET_ACCT_BILLINFOABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		
+	    <operation name="PostInvokeABSPCM_OP_BAL_GET_ACCT_BILLINFOABM">
+            <soap:operation style="document" soapAction="PostInvokeABSPCM_OP_BAL_GET_ACCT_BILLINFOABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		
+		
+		<operation name="PreInvokeABSPCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNTABM">
+            <soap:operation style="document" soapAction="PreInvokeABSPCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNTABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		
+		
+        <operation name="PostInvokeABSPCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNTABM">
+            <soap:operation style="document" soapAction="PostInvokeABSPCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNTABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		
+		
+    </binding>
+   <service name="QueryInvoiceListBRMCommsProvABCSImplExtension">
+        <port name="QueryInvoiceListBRMCommsProvABCSImplExtensionServicePort" binding="tns:QueryInvoiceListBRMCommsProvABCSImplExtensionServiceBinding">
+            <soap:address location="http://${fp.server.soaserverhostname}:${fp.server.soaserverport}/MirrorServlet/mirror" />
+        </port>
+   </service>
+   
+   
+   
+   <plnk:partnerLinkType name="QueryInvoiceListBRMCommsProvABCSImplExtensionService">
+      <plnk:role name="QueryInvoiceListBRMCommsProvABCSImplExtensionServiceProvider">
+         <plnk:portType name="commsinvext:QueryInvoiceListBRMCommsProvABCSImplExtensionService" />
+      </plnk:role>
+   </plnk:partnerLinkType>
+</definitions>

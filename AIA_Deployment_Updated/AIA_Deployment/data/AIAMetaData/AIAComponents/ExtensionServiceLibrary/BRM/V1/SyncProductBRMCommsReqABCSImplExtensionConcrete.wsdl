@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<definitions name="SyncProductBRMCommsReqABCSImplExtension1"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/SyncProductBRMCommsReqABCSImplExtension/V1"
+	     xmlns:commspricelist="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/PriceList/V2"
+	     xmlns:itemcompositionebs="http://xmlns.oracle.com/EnterpriseServices/Core/ItemComposition/V1"
+             xmlns:itemcompositionebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ItemComposition/V1"
+	     xmlns:commspricelistebs="http://xmlns.oracle.com/EnterpriseServices/Core/PriceList/V2"
+	     xmlns:brmproductabo="http://www.portal.com/schemas/CRMSync"
+             xmlns:abcsimplbrmprodext="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/SyncProductBRMCommsReqABCSImplExtension/V1"
+             
+	     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V2"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+   <documentation>
+      <svcdoc:Service>
+         <svcdoc:Description>This service contains intercepting operations that
+                             would be used by the participating application</svcdoc:Description>
+         <svcdoc:TargetServiceType>ABCSExtension</svcdoc:TargetServiceType>
+         <svcdoc:DisplayName>SyncProductBRMReqABCSImpl Requester ABCS Extension
+                          Implementation Interface</svcdoc:DisplayName>
+			<svcdoc:ServiceObjectName>SyncProduct</svcdoc:ServiceObjectName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:Version>1.0</svcdoc:Version>
+			<svcdoc:ImplementationTechnology><!-- PLACEHOLDER--></svcdoc:ImplementationTechnology>
+			<svcdoc:ProductFamily>BRM</svcdoc:ProductFamily>
+			<svcdoc:ProductPillar>BRM</svcdoc:ProductPillar>
+			<svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+      </svcdoc:Service>
+   </documentation>
+   <types>
+      <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/SyncProductBRMCommsReqABCSImplExtension/V1"
+                  elementFormDefault="qualified">
+         <xsd:import namespace="http://www.portal.com/schemas/CRMSync" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/ProductInfoChange.xsd"/>
+        <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/PriceList/V2" schemaLocation=     "oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/PriceList/V2/PriceListEBM.xsd" /> 
+	<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+        <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ItemComposition/V1" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/ItemComposition/V1/ItemCompositionEBM.xsd" /> 
+      </xsd:schema>
+   </types>
+   <message name="PreXformABMtoEBMProductMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreXformABMtoEBMABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="SyncProductABM"
+            element="brmproductabo:ProductInfoChange"/>
+   </message>
+	<message name="PreInvokeEBSSyncPriceListEBSReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="SyncPriceListListEBM"
+            element="commspricelist:SyncPriceListListEBM"/>
+   </message>
+    <message name="PreXformProductABMtoSyncItemCompositionListEBMMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreXformProductABMtoItemCompositionListEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="SyncProductABM"
+            element="brmproductabo:ProductInfoChange"/>
+   </message>
+	<message name="PreInvokeEBSItemCompositionEBSReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSItemCompositionEBS operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="SyncItemCompositionListEBM"
+            element="itemcompositionebo:SyncItemCompositionListEBM"/>
+   </message>
+
+   
+   <message name="FaultMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used for propagating Error
+                                Context and Error Message</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="AIAFault" element="corecom:Fault"/>
+   </message>
+   <portType name="SyncProductBRMCommsReqABCSImplExtensionService">
+      <documentation>
+         <svcdoc:Interface>
+            <svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+            <svcdoc:DisplayName>SyncProductBRMCommsReqABCSImplExtensionService</svcdoc:DisplayName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         </svcdoc:Interface>
+      </documentation>
+      <operation name="PreXformABMtoEBMProductABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformABMtoEBM an ProductInfoChange object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformABMtoEBMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplbrmprodext:PreXformABMtoEBMProductMsg"/>
+         <output message="abcsimplbrmprodext:PreXformABMtoEBMProductMsg"/>
+         <fault name="fault" message="abcsimplbrmprodext:FaultMessage"/>
+      </operation>
+	 <operation name="PreInvokeEBSPriceListEBSEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an SyncPriceListListEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplbrmprodext:PreInvokeEBSSyncPriceListEBSReqMsg"/>
+         <output message="abcsimplbrmprodext:PreInvokeEBSSyncPriceListEBSReqMsg"/>
+         <fault name="fault" message="abcsimplbrmprodext:FaultMessage"/>
+      </operation>
+      <operation name="PreXformProductABMtoSyncItemCompositionListEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformABMtoEBM an ProductInfoChange object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformABMtoEBMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplbrmprodext:PreXformProductABMtoSyncItemCompositionListEBMMsg"/>
+         <output message="abcsimplbrmprodext:PreXformProductABMtoSyncItemCompositionListEBMMsg"/>
+         <fault name="fault" message="abcsimplbrmprodext:FaultMessage"/>
+      </operation>
+	 <operation name="PreInvokeEBSItemCompositionEBS">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an SyncItemCompositionListEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplbrmprodext:PreInvokeEBSItemCompositionEBSReqMsg"/>
+         <output message="abcsimplbrmprodext:PreInvokeEBSItemCompositionEBSReqMsg"/>
+         <fault name="fault" message="abcsimplbrmprodext:FaultMessage"/>
+      </operation>
+   </portType>
+   
+    <binding name="SyncProductBRMCommsReqABCSImplExtensionServiceBinding" type="abcsimplbrmprodext:SyncProductBRMCommsReqABCSImplExtensionService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="PreXformABMtoEBMProductABM">
+            <soap:operation style="document" soapAction="PreXformABMtoEBMProductABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+        <operation name="PreInvokeEBSPriceListEBSEBM">
+            <soap:operation style="document" soapAction="PreInvokeEBSPriceListEBSEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		 <operation name="PreXformProductABMtoSyncItemCompositionListEBM">
+            <soap:operation style="document" soapAction="PreXformProductABMtoSyncItemCompositionListEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		 <operation name="PreInvokeEBSItemCompositionEBS">
+            <soap:operation style="document" soapAction="PreInvokeEBSItemCompositionEBS" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+    </binding>  
+   <service name="SyncProductBRMCommsReqABCSImplExtension">
+        <port name="SyncProductBRMCommsReqABCSImplExtensionServicePort" binding="abcsimplbrmprodext:SyncProductBRMCommsReqABCSImplExtensionServiceBinding">
+            <soap:address location="http://${fp.server.soaserverhostname}:${fp.server.soaserverport}/MirrorServlet/mirror" />
+        </port>
+   </service>
+   
+   <plnk:partnerLinkType name="SyncProductBRMCommsReqABCSImplExtensionService">
+      <plnk:role name="SyncProductBRMCommsReqABCSImplExtensionServiceProvider">
+         <plnk:portType name="abcsimplbrmprodext:SyncProductBRMCommsReqABCSImplExtensionService"/>
+      </plnk:role>
+   </plnk:partnerLinkType>
+</definitions>

@@ -1,0 +1,14 @@
+<definitions
+     name="properties"
+     targetNamespace="http://xmlns.oracle.com/SyncSpecificationValueSetListPIMReqABCSImpl/correlationset"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:vsebs="http://xmlns.oracle.com/EnterpriseServices/SpecificationValueSet/V1"
+     xmlns:syncVSebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SpecificationValueSet/V1"
+    >
+   
+    
+    <bpws:property name="SpecificationValueSetListEBM_EBMID_prop" type="vsebs:IdentifierType"/>
+</definitions>

@@ -1,0 +1,67 @@
+<definitions
+     name="ProcessProvisioningOrderOSMPROVCommsJMSProducer"
+     targetNamespace="http://xmlns.oracle.com/ProcessProvisioningOrderOSMPROVCommsJMSProducer"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:ns4="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:ns1="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ProvisioningOrder/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:ns3="http://xmlns.oracle.com/communications/ordermanagement"
+     xmlns:ns2="http://schemas.xmlsoap.org/soap/envelope/"
+     xmlns:client="http://xmlns.oracle.com/ProcessProvisioningOrderOSMPROVCommsJMSProducer"
+    >
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ProvisioningOrder/V1"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:ns3="http://xmlns.oracle.com/communications/ordermanagement"
+             xmlns:ns2="http://schemas.xmlsoap.org/soap/envelope/" xmlns:client="http://xmlns.oracle.com/ProcessProvisioningOrderOSMPROVCommsJMSProducer">
+            <import namespace="http://xmlns.oracle.com/ProcessProvisioningOrderOSMPROVCommsJMSProducer"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/OSM/V1/ProcessProvisioningOrderOSMPROVCommsJMSProducer.xsd"/>
+        </schema>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ProvisioningOrder/V1"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:ns3="http://xmlns.oracle.com/communications/ordermanagement"
+             xmlns:ns2="http://schemas.xmlsoap.org/soap/envelope/" xmlns:client="http://xmlns.oracle.com/ProcessProvisioningOrderOSMPROVCommsJMSProducer">
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ProvisioningOrder/V1"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/ProvisioningOrder/V1/ProvisioningOrderEBM.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ProvisioningOrder/V1"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:ns3="http://xmlns.oracle.com/communications/ordermanagement"
+             xmlns:ns2="http://schemas.xmlsoap.org/soap/envelope/" xmlns:client="http://xmlns.oracle.com/ProcessProvisioningOrderOSMPROVCommsJMSProducer">
+            <xsd:import namespace="http://schemas.xmlsoap.org/soap/envelope/" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/soapEnvelope.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ProvisioningOrder/V1"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:ns3="http://xmlns.oracle.com/communications/ordermanagement"
+             xmlns:ns2="http://schemas.xmlsoap.org/soap/envelope/" xmlns:client="http://xmlns.oracle.com/ProcessProvisioningOrderOSMPROVCommsJMSProducer">
+            <xsd:import namespace="http://xmlns.oracle.com/communications/ordermanagement" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/OSM/V1/OrderManagementWS.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="ProcessProvisioningOrderOSMPROVCommsJMSProducerRequestMessage">
+        <part name="payload" element="ns1:ProcessProvisioningOrderEBM"/>
+    </message>
+    <message name="ProcessProvisioningOrderOSMPROVCommsJMSProducerResponseMessage">
+        <part name="payload" element="client:ProcessProvisioningOrderOSMPROVCommsJMSProducerProcessResponse"/>
+    </message>
+    <message name="AIAFault_MsgType">
+        <part name="AIAFault_Msg" element="ns4:Fault"/>
+    </message>
+    <portType name="ProcessProvisioningOrderOSMPROVCommsJMSProducer">
+        <operation name="initiate">
+            <input message="client:ProcessProvisioningOrderOSMPROVCommsJMSProducerRequestMessage"/>
+        </operation>
+    </portType>
+    <portType name="ProcessProvisioningOrderOSMPROVCommsJMSProducerCallback">
+        <operation name="onResult">
+            <input message="client:ProcessProvisioningOrderOSMPROVCommsJMSProducerResponseMessage"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="ProcessProvisioningOrderOSMPROVCommsJMSProducer">
+        <plnk:role name="ProcessProvisioningOrderOSMPROVCommsJMSProducerProvider">
+            <plnk:portType name="client:ProcessProvisioningOrderOSMPROVCommsJMSProducer"/>
+        </plnk:role>
+        <plnk:role name="ProcessProvisioningOrderOSMPROVCommsJMSProducerRequester">
+            <plnk:portType name="client:ProcessProvisioningOrderOSMPROVCommsJMSProducerCallback"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

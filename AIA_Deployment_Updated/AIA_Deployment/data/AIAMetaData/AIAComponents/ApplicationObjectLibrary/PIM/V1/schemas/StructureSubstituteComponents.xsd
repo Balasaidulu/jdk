@@ -1,0 +1,69 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/bom/component/service"
+     xmlns="http://xmlns.oracle.com/apps/bom/component/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="StructureSubstituteComponents" sdoJava:package="oracle.apps.bom.component.service"
+         sdoJava:instanceClass="oracle.apps.bom.component.service.StructureSubstituteComponents">
+        <xsd:annotation>
+            <xsd:documentation>StructureSubstituteComponent Service Data Object</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="SubstituteComponentId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="SubstituteCompItemName" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment1" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment2" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment3" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment4" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment5" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment6" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment7" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment8" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment9" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment10" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment11" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment12" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment13" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment14" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment15" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment16" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment17" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment18" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment19" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Segment20" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="SubstituteItemQuantity" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ComponentSequenceId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AcdType" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ChangeNotice" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="EnforceIntRequirements" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="CommonComponentSequenceId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="LastUpdateDate" type="xsd:dateTime" minOccurs="0" nillable="true"/>
+                    <xsd:element name="LastUpdatedBy" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="CreationDate" type="xsd:dateTime" minOccurs="0" nillable="true"/>
+                    <xsd:element name="CreatedBy" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="LastUpdateLogin" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AttributeCategory" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute1" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute2" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute3" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute4" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute5" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute6" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute7" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute8" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute9" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute10" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute11" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute12" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute13" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute14" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute15" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="OriginalSystemReference" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Publish" type="xsd:string" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="structureSubstituteComponents" type="StructureSubstituteComponents" nillable="true"/>
+</xsd:schema>

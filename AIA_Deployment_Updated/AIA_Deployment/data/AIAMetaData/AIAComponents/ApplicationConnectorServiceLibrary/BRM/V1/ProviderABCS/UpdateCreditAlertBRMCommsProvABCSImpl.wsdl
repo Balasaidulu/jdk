@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="UpdateCreditAlertBRMCommsProvABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/UpdateCreditAlertBRMCommsProvABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1.0"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	 xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:commscralertebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CreditAlert/V1"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:commscralertabcs="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/UpdateCreditAlertBRMCommsProvABCSImpl/V1"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service contains operations that would be used by
+                          the participating application to interact with the
+                          external systems</svcdoc:Description>
+            <svcdoc:ServiceType>ProviderABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>UpdateCreditAlertBRMCommsProvABCSImpl Provider ABCS Implementation Interface</svcdoc:DisplayName>
+            <svcdoc:ServiceObjectName>UpdateCreditAlert</svcdoc:ServiceObjectName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+			<svcdoc:EBOName>CreditAlertEBO</svcdoc:EBOName>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>BRM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>BRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>PFA</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CreditAlert/V1"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/CreditAlert/V1/CreditAlertEBM.xsd"/>
+				 <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/> 
+        </schema>
+    </types>
+    <message name="UpdateCreditAlertReqMsg">
+        <part name="UpdateCreditAlertListEBM" element="commscralertebo:UpdateCreditAlertListEBM"/>
+    </message>
+	<message name="FaultMessage">
+        <documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="Fault" element="corecom:Fault"/>
+	</message>
+    <portType name="UpdateCreditAlertBRMCommsProvABCSImplService">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This interface contains operations that can act upon
+                            the object</svcdoc:Description>
+                <svcdoc:DisplayName>Update CreditAlert BRM Requestor ABCS Implementation</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="UpdateCreditAlertList">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Update an CreditAlert
+                              object</svcdoc:Description>
+                    <svcdoc:MEP>FireAndForget</svcdoc:MEP>
+                    <svcdoc:DisplayName>UpdateCreditAlert</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="commscralertabcs:UpdateCreditAlertReqMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="UpdateCreditAlertBRMCommsProvABCSImpl">
+        <plnk:role name="UpdateCreditAlertBRMCommsProvABCSImplProvider">
+            <plnk:portType name="commscralertabcs:UpdateCreditAlertBRMCommsProvABCSImplService"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

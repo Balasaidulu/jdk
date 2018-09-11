@@ -1,0 +1,39 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/svc/description"
+     xmlns="http://xmlns.oracle.com/svc/description" xmlns:sdoJava="commonj.sdo/java" xmlns:oans1="http://xmlns.oracle.com/svc"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="AttributeDescription" sdoJava:package="oracle.svc.description" sdoJava:instanceClass="oracle.svc.description.AttributeDescription">
+        <xsd:annotation>
+            <xsd:documentation>Used to describe an attribute of a &lt;code&gt;DataObject&lt;/code&gt;.
+These definitions intentionally avoid describing the internal
+structure of the attribute, which may or may not be based on SQL.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="Name" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AttributeSet" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DisplayName" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Documentation" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="TypeJavaClass" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="TypeNamespace" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="TypeName" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="TypeQualifiedName" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Scale" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Precision" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="SearchCriteriaType" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DataObject" type="xsd:boolean" minOccurs="0" nillable="true"/>
+                    <xsd:element name="InnerAttributeDescription" type="AttributeDescription" minOccurs="0"
+                         maxOccurs="unbounded" nillable="true"/>
+                    <xsd:element name="DomainValueSetName" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attachment" type="xsd:boolean" minOccurs="0" nillable="true"/>
+                    <xsd:element name="MimeType" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Composite" type="xsd:boolean" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Translatable" type="xsd:boolean" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ManyValued" type="xsd:boolean" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="attributeDescription" type="AttributeDescription" nillable="true"/>
+</xsd:schema>

@@ -1,0 +1,81 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/svc/expression"
+     xmlns="http://xmlns.oracle.com/svc/expression" xmlns:sdoJava="commonj.sdo/java" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="Expression.xsd"/>
+    <xsd:complexType name="ExpressionFilter" sdoJava:package="oracle.svc.expression" sdoJava:instanceClass="oracle.svc.expression.ExpressionFilter">
+        <xsd:annotation>
+            <xsd:documentation>A logical filter that can be used to perform logical operations
+on a list of {@link Expression expressions} to achieve a more
+complicated filter expressions.
+&lt;p&gt;
+&lt;b&gt;Example 1:&lt;/b&gt; This example performs this expression on PurchaseOrders: &lt;b&gt;Total &gt; 500&lt;/b&gt;
+&lt;code&gt;
+&lt;pre&gt;
+DataObjectFactory factory = ...
+ExpressionFilter filter = (ExpressionFilter)factory.createDataObject(PurchaseOrderExpressionFilter.QUALIFIED_NAME);
+filter.addValueExpression(&quot;Total&quot;, ValueExpression.GREATER_THAN, new Number(500));
+DataCriteria dc = factory.createDataObject(DataCriteria.QUALIFIED_NAME);
+dc.setFilter(filter);
+List result = service.getDataList(&quot;PurchaseOrders&quot;, dc, null);
+&lt;/pre&gt;
+&lt;/code&gt;
+&lt;b&gt;Example 2:&lt;/b&gt; This example performs this expression on PurchaseOrders: &lt;b&gt;StartDate &gt; EndDate&lt;/b&gt;
+&lt;code&gt;
+&lt;pre&gt;
+DataObjectFactory factory = ...
+ExpressionFilter filter = (ExpressionFilter)factory.createDataObject(PurchaseOrderExpressionFilter.QUALIFIED_NAME);
+filter.addAttributeExpressionExpression(&quot;StartDate&quot;, ValueExpression.GREATER_THAN, &quot;EndDate&quot;);
+DataCriteria dc = factory.createDataObject(DataCriteria.QUALIFIED_NAME);
+dc.setFilter(filter);
+List result = service.getDataList(&quot;PurchaseOrders&quot;, dc, null);
+&lt;/pre&gt;
+&lt;/code&gt;
+&lt;b&gt;Example 3:&lt;/b&gt; This example performs this expression on PurchaseOrders: &lt;b&gt;LinePrice = 100&lt;/b&gt;
+&lt;br&gt;
+where LinePrice is an attribute on the Line child of PurchaseOrder.
+&lt;code&gt;
+&lt;pre&gt;
+DataObjectFactory factory = ...
+ExpressionFilter poFilter = (ExpressionFilter)factory.createDataObject(PurchaseOrderExpressionFilter.QUALIFIED_NAME);
+ExpressionFilter LineFilter = (ExpressionFilter)factory.createDataObject(LineExpressionFilter.QUALIFIED_NAME);
+LineFilter.addValueExpression(&quot;LinePrice&quot;, ValueExpression.EQUAL, new Number(100));
+poFilter.addChildExpression(&quot;Lines&quot;, lineFilter);
+DataCriteria dc = factory.createDataObject(DataCriteria.QUALIFIED_NAME);
+dc.setFilter(filter);
+List result = service.getDataList(&quot;PurchaseOrders&quot;, dc, null);
+&lt;/pre&gt;
+&lt;/code&gt;
+&lt;b&gt;Example 4:&lt;/b&gt; This example performs this expression on PurchaseOrders: &lt;b&gt;(Total &gt; 500 AND StartDate &gt; EndDate) OR (LinePrice = 100)&lt;/b&gt;
+&lt;br&gt;
+where LinePrice is an attribute on the Line child of PurchaseOrder.
+&lt;code&gt;
+&lt;pre&gt;
+DataObjectFactory factory = ...
+ExpressionFilter mainFilter = (ExpressionFilter)factory.createDataObject(PurchaseOrderExpressionFilter.QUALIFIED_NAME);
+mainFilter.setConjunctionOperator(OPERATOR_OR);
+ExpressionFilter LineFilter = (ExpressionFilter)factory.createDataObject(LineExpressionFilter.QUALIFIED_NAME);
+LineFilter.addValueExpression(&quot;LinePrice&quot;, ValueExpression.EQUAL, new Number(100));
+mainFilter.addChildExpression(&quot;Lines&quot;, lineFilter);
+ExpressionFilter poFilter = (ExpressionFilter)factory.createDataObject(PurchaseOrderExpressionFilter.QUALIFIED_NAME);
+poFilter.setConjunctionOperator(OPERATOR_AND);
+poFilter.addValueExpression(&quot;Total&quot;, ValueExpression.GREATER_THAN, new Number(500));
+poFilter.addAttributeExpression(&quot;StartDate&quot;, AttributeExpression.GREATER_THAN, &quot;EndDate&quot;);
+mainFilter.addExpression(poFilter);
+DataCriteria dc = factory.createDataObject(DataCriteria.QUALIFIED_NAME);
+dc.setFilter(mainFilter);
+List result = service.getDataList(&quot;PurchaseOrders&quot;, dc, null);
+&lt;/pre&gt;
+&lt;/code&gt;</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="Expression">
+                <xsd:sequence>
+                    <xsd:element name="ConjunctionOperator" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Negation" type="xsd:boolean" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Expression" type="Expression" minOccurs="0" maxOccurs="unbounded"
+                         nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="expressionFilter" type="ExpressionFilter" nillable="true"/>
+</xsd:schema>

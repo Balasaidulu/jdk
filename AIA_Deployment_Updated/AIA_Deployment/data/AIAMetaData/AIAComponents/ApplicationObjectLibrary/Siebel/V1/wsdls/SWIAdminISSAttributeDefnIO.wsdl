@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd1="http://www.siebel.com/xml/SWIAdminISSAttributeDefnIO"
+             targetNamespace="http://siebel.com/asi/"
+             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:tns="http://siebel.com/asi/">
+  <types>
+    <xsd:schema elementFormDefault="qualified"
+                attributeFormDefault="unqualified"
+                targetNamespace="http://siebel.com/asi/"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://www.siebel.com/xml/SWIAdminISSAttributeDefnIO" schemaLocation = "../schemas/SWIAdminISSAttributeDefnIO.xsd"></xsd:import>
+      <xsd:element name="AttributeDefinitionQueryByExample_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsd1:ListOfSwiadminissattributedefnio"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AttributeDefinitionQueryByExample_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsd1:ListOfSwiadminissattributedefnio"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AttributeDefinitionQueryById_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="PrimaryRowId" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AttributeDefinitionQueryById_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsd1:ListOfSwiadminissattributedefnio"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="AttributeDefinitionQueryByExample_Input">
+    <part name="AttributeDefinitionQueryByExample_Input"
+          element="tns:AttributeDefinitionQueryByExample_Input"></part>
+  </message>
+  <message name="AttributeDefinitionQueryByExample_Output">
+    <part name="AttributeDefinitionQueryByExample_Output"
+          element="tns:AttributeDefinitionQueryByExample_Output"></part>
+  </message>
+  <message name="AttributeDefinitionQueryById_Input">
+    <part name="AttributeDefinitionQueryById_Input"
+          element="tns:AttributeDefinitionQueryById_Input"></part>
+  </message>
+  <message name="AttributeDefinitionQueryById_Output">
+    <part name="AttributeDefinitionQueryById_Output"
+          element="tns:AttributeDefinitionQueryById_Output"></part>
+  </message>
+  <portType name="Attribute_spcDefinition">
+    <operation name="AttributeDefinitionQueryByExample">
+      <input message="tns:AttributeDefinitionQueryByExample_Input"></input>
+      <output message="tns:AttributeDefinitionQueryByExample_Output"></output>
+    </operation>
+    <operation name="AttributeDefinitionQueryById">
+      <input message="tns:AttributeDefinitionQueryById_Input"></input>
+      <output message="tns:AttributeDefinitionQueryById_Output"></output>
+    </operation>
+  </portType>
+  <binding name="Attribute_spcDefinition" type="tns:Attribute_spcDefinition">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"
+                  style="document"></soap:binding>
+    <operation name="AttributeDefinitionQueryByExample">
+      <soap:operation soapAction="document/http://siebel.com/asi/:AttributeDefinitionQueryByExample"></soap:operation>
+      <input>
+        <soap:body use="literal"></soap:body>
+      </input>
+      <output>
+        <soap:body use="literal"></soap:body>
+      </output>
+    </operation>
+    <operation name="AttributeDefinitionQueryById">
+      <soap:operation soapAction="document/http://siebel.com/asi/:AttributeDefinitionQueryById"></soap:operation>
+      <input>
+        <soap:body use="literal"></soap:body>
+      </input>
+      <output>
+        <soap:body use="literal"></soap:body>
+      </output>
+    </operation>
+  </binding>
+  <service name="SWIAdminISSAttributeDefnIO">
+    <port binding="tns:Attribute_spcDefinition" name="Attribute_spcDefinition">
+      <soap:address location="http://set.at.runtime"></soap:address>
+    </port>
+  </service>
+</definitions>
+

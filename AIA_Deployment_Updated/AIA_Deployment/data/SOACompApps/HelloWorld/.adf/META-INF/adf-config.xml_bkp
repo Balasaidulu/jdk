@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adf-config xmlns="http://xmlns.oracle.com/adf/config"
+            xmlns:sec="http://xmlns.oracle.com/adf/security/config">
+  <adf-mds-config xmlns="http://xmlns.oracle.com/adf/mds/config">
+    <mds-config xmlns="http://xmlns.oracle.com/mds/config">
+      <persistence-config>
+        <metadata-namespaces>
+          <namespace metadata-store-usage="mstore-usage_2" path="/apps"/>
+          <namespace metadata-store-usage="mstore-usage_2" path="/soa/shared"/>
+        </metadata-namespaces>
+
+        <metadata-store-usages>
+          <metadata-store-usage id="mstore-usage_2">
+            <metadata-store class-name="oracle.mds.persistence.stores.file.FileMetadataStore">
+              <property value="${fp.mds.path}" name="metadata-path"/>
+              <property value="soainfra" name="partition-name"/>
+          </metadata-store>
+        </metadata-store-usage>
+        </metadata-store-usages>
+
+      </persistence-config>
+    </mds-config>
+  </adf-mds-config>
+</adf-config>

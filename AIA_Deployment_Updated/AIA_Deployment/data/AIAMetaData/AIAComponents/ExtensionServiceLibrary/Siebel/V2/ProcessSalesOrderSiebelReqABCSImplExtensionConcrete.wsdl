@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="ProcessSalesOrderSiebelReqABCSImplExtensionV2"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/ProcessSalesOrderSiebelReqABCSImplExtension/V2"
+             xmlns:tns="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/ProcessSalesOrderSiebelReqABCSImplExtension/V2"
+             xmlns:coresalesorder="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SalesOrder/V2"
+             xmlns:sbldata="http://siebel.com/OrderManagement/Order/Data"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+   <documentation>
+      <svcdoc:Service>
+         <svcdoc:Description>This service contains intercepting operations that
+                             would be used by the participating application</svcdoc:Description>
+         <svcdoc:ServiceType>ABCSExtension</svcdoc:ServiceType>
+         <svcdoc:DisplayName>ProcessSalesOrderSiebelReqABCSImplV2 ABCS Extension Abstract Interface</svcdoc:DisplayName>
+         <svcdoc:ABOName>ListOfSWIOrderIO</svcdoc:ABOName>
+         <svcdoc:EBOName>SalesOrderEBO</svcdoc:EBOName>
+         <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         <svcdoc:Version>2.0</svcdoc:Version>
+         <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+         <svcdoc:ProductFamily>Siebel</svcdoc:ProductFamily>
+         <svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+         <svcdoc:ProductCode>SIA</svcdoc:ProductCode>
+      </svcdoc:Service>
+   </documentation>
+   <types>
+      <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/ProcessSalesOrderSiebelReqABCSImplExtension/V2"
+                  elementFormDefault="qualified">
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SalesOrder/V2"
+                     schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/SalesOrder/V2/SalesOrderEBM.xsd"/>
+         <xsd:import namespace="http://siebel.com/OrderManagement/Order/Data"
+                     schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWIOrderIO.xsd"/>
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+                     schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+      </xsd:schema>
+   </types>
+   <message name="PreXformABMtoEBMListOfSWIOrderIOMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreXformABMtoEBMABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="ProcessListOfSWIOrderIOABM"
+            element="sbldata:ListOfSWIOrderIO"/>
+   </message>
+   <message name="PreInvokeEBSProcessSalesOrderReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="ProcessSalesOrderEBM"
+            element="coresalesorder:ProcessSalesOrderEBM"/>
+   </message>
+   <message name="FaultMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used for propagating Error
+                                Context and Error Message</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="AIAFault" element="corecom:Fault"/>
+   </message>
+   <portType name="ProcessSalesOrderSiebelReqABCSImplV2ExtensionService">
+      <documentation>
+         <svcdoc:Interface>
+            <svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+            <svcdoc:DisplayName>ProcessSalesOrderSiebelReqABCSImplV2ExtensionService</svcdoc:DisplayName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         </svcdoc:Interface>
+      </documentation>
+      <operation name="PreXformABMtoEBMABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformABMtoEBM an ListOfSWIOrderIO object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformABMtoEBMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="tns:PreXformABMtoEBMListOfSWIOrderIOMsg"/>
+         <output message="tns:PreXformABMtoEBMListOfSWIOrderIOMsg"/>
+         <fault name="fault" message="tns:FaultMessage"/>
+      </operation>
+      <operation name="PreInvokeEBSEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ProcessSalesOrderEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="tns:PreInvokeEBSProcessSalesOrderReqMsg"/>
+         <output message="tns:PreInvokeEBSProcessSalesOrderReqMsg"/>
+         <fault name="fault" message="tns:FaultMessage"/>
+      </operation>
+   </portType>
+   <binding name="ProcessSalesOrderSiebelReqABCSImplV2ExtensionServiceBinding" type="tns:ProcessSalesOrderSiebelReqABCSImplV2ExtensionService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="PreXformABMtoEBMABM">
+            <soap:operation style="document" soapAction="PreXformABMtoEBMABM"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="fault">
+                <soap:fault  name="fault" use="literal" encodingStyle=""/>
+            </fault>
+        </operation>
+        <operation name="PreInvokeEBSEBM">
+            <soap:operation style="document" soapAction="PreInvokeEBSEBM"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="fault">
+                <soap:fault  name="fault" use="literal" encodingStyle=""/>
+            </fault>
+        </operation>
+   </binding>   
+   <service name="ProcessSalesOrderSiebelReqABCSImplV2Extension">
+        <port name="ProcessSalesOrderSiebelReqABCSImplV2ExtensionServicePort" binding="tns:ProcessSalesOrderSiebelReqABCSImplV2ExtensionServiceBinding">
+            <soap:address location="http://ap6035fems.us.oracle.com:7857/MirrorServlet/mirror"/>
+        </port>
+   </service>
+   <plnk:partnerLinkType name="ProcessSalesOrderSiebelReqABCSImplV2ExtensionService">
+      <plnk:role name="ProcessSalesOrderSiebelReqABCSImplV2ExtensionServiceProvider">
+         <plnk:portType name="tns:ProcessSalesOrderSiebelReqABCSImplV2ExtensionService"/>
+      </plnk:role>
+   </plnk:partnerLinkType>
+</definitions>

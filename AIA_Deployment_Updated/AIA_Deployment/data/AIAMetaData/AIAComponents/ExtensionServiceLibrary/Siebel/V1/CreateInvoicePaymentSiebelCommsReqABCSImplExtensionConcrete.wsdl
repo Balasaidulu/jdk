@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:commsrecpaymentebs="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ReceivedPayment/V1" xmlns:commsrecpmtebs="http://xmlns.oracle.com/EnterpriseServices/Core/ReceivedPayment/V1" xmlns:commsrecpaymentebsfault="http://xmlns.oracle.com/EnterpriseServices/Core/ReceivedPayment/V1" xmlns:abcsimplsiebelcipreqabo="http://www.siebel.com/xml/CMU%20Request%20New%20Payment%20Capture%20Invoice%20IO" xmlns:abcsimplsiebelciprespabo="http://www.siebel.com/xml/CMU%20Response%20New%20Payment%20Invoice%20IO" xmlns:abcsimplsiebelcipreqext="http://xmlns.oracle.com/ABCSImpl/Siebel/CreateInvoicePaymentSiebelCommsReqABCSImplExtension/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="CreateInvoicePaymentSiebelCommsReqABCSImplExtension1" targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/CreateInvoicePaymentSiebelCommsReqABCSImplExtension/V1">
+   <documentation>
+      <svcdoc:Service>
+         <svcdoc:Description>This service contains intercepting operations that would be used to create Invoice payment of an account, from the billing system</svcdoc:Description>
+         <svcdoc:ServiceType>RequesterABCSExtension</svcdoc:ServiceType>
+         <svcdoc:DisplayName>Create Invoice Payment Siebel Requester ABCS Extension
+                          Implementation Interface</svcdoc:DisplayName>
+			<svcdoc:ServiceObjectName>ReceivedPaymentEBO</svcdoc:ServiceObjectName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:Version>2.0</svcdoc:Version>
+			<svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+			<svcdoc:ProductFamily>Siebel</svcdoc:ProductFamily>
+			<svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+			<svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+      </svcdoc:Service>
+   </documentation>
+   <types>
+      <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/CreateInvoicePaymentSiebelCommsReqABCSImplExtension/V1" elementFormDefault="qualified">
+         <xsd:import namespace="http://www.siebel.com/xml/CMU%20Request%20New%20Payment%20Capture%20Invoice%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestNewPaymentCaptureInvoiceIo.xsd" />
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ReceivedPayment/V1" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/ReceivedPayment/V1/ReceivedPaymentEBM.xsd" />
+	 <xsd:import namespace="http://www.siebel.com/xml/CMU%20Response%20New%20Payment%20Invoice%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuResponseNewPaymentInvoiceIo.xsd" />
+	<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd" />
+      </xsd:schema>
+   </types>
+   <message name="PreXformABMtoEBMInvoicePaymentMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreXformABMtoEBMInvoicePaymentABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="CreateInvoicePaymentABM" element="abcsimplsiebelcipreqabo:ListOfCmuRequestNewPaymentCaptureInvoiceIo" />
+   </message>
+  <message name="PostXformABMtoEBMInvoicePaymentMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostXformABMtoEBMInvoicePaymentABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+	<part name="CreateInvoicePaymentABM" element="abcsimplsiebelciprespabo:ListOfCmuResponseNewPaymentInvoiceIo" />
+   </message>
+	<message name="PreInvokeEBSCreateReceivedPaymentReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeCreateReceivedPayment operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="CreateReceivedPaymentEBM" element="commsrecpaymentebs:CreateReceivedPaymentEBM" />
+   </message>
+
+	<message name="PostInvokeEBSCreateReceivedPaymentReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostInvokeCreateReceivedPayment operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="CreateReceivedPaymentResponseEBM" element="commsrecpaymentebs:CreateReceivedPaymentResponseEBM" />
+	</message>
+   
+   <message name="FaultMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used for propagating Error
+                                Context and Error Message</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="AIAFault" element="corecom:Fault" />
+   </message>
+   <portType name="CreateInvoicePaymentSiebelCommsReqABCSImplExtensionService">
+      <documentation>
+         <svcdoc:Interface>
+            <svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+            <svcdoc:DisplayName>CreateInvoicePaymentSiebelCommsReqABCSImplExtensionService</svcdoc:DisplayName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         </svcdoc:Interface>
+      </documentation>
+      <operation name="PreXformABMtoEBMInvoicePaymentABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformABMtoEBM an ListOfCmuRequestNewPaymentCaptureInvoiceIo object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformABMtoEBMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsiebelcipreqext:PreXformABMtoEBMInvoicePaymentMsg" />
+         <output message="abcsimplsiebelcipreqext:PreXformABMtoEBMInvoicePaymentMsg" />
+         <fault name="fault" message="abcsimplsiebelcipreqext:FaultMessage" />
+      </operation>
+	<operation name="PostXformABMtoEBMInvoicePaymentABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostXformABMtoEBM an ListOfCmuResponseNewPaymentInvoiceIo object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PostXformABMtoEBMEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsiebelcipreqext:PostXformABMtoEBMInvoicePaymentMsg" />
+         <output message="abcsimplsiebelcipreqext:PostXformABMtoEBMInvoicePaymentMsg" />
+         <fault name="fault" message="abcsimplsiebelcipreqext:FaultMessage" />
+      </operation>
+	 <operation name="PreInvokeEBSReceivedPaymentEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ReceivedPaymentEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsiebelcipreqext:PreInvokeEBSCreateReceivedPaymentReqMsg" />
+         <output message="abcsimplsiebelcipreqext:PreInvokeEBSCreateReceivedPaymentReqMsg" />
+         <fault name="fault" message="abcsimplsiebelcipreqext:FaultMessage" />
+      </operation>
+	<operation name="PostInvokeEBSReceivedPaymentEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostInvokeEBS an ReceivedPaymentEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PostInvokeEBSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsiebelcipreqext:PostInvokeEBSCreateReceivedPaymentReqMsg" />
+         <output message="abcsimplsiebelcipreqext:PostInvokeEBSCreateReceivedPaymentReqMsg" />
+         <fault name="fault" message="abcsimplsiebelcipreqext:FaultMessage" />
+      </operation>
+   </portType>
+
+
+   <binding name="CreateInvoicePaymentSiebelCommsReqABCSImplExtensionServiceBinding" type="abcsimplsiebelcipreqext:CreateInvoicePaymentSiebelCommsReqABCSImplExtensionService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="PreXformABMtoEBMInvoicePaymentABM">
+            <soap:operation style="document" soapAction="PreXformABMtoEBMInvoicePaymentABM"  />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+        <operation name="PostXformABMtoEBMInvoicePaymentABM">
+            <soap:operation style="document" soapAction="PostXformABMtoEBMInvoicePaymentABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		 <operation name="PreInvokeEBSReceivedPaymentEBM">
+            <soap:operation style="document" soapAction="PreInvokeEBSReceivedPaymentEBM"  />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+        <operation name="PostInvokeEBSReceivedPaymentEBM">
+            <soap:operation style="document" soapAction="PostInvokeEBSReceivedPaymentEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+    </binding>  
+	
+   <service name="CreateInvoicePaymentSiebelCommsReqABCSImplExtension">
+        <port name="CreateInvoicePaymentSiebelCommsReqABCSImplExtensionServicePort" binding="abcsimplsiebelcipreqext:CreateInvoicePaymentSiebelCommsReqABCSImplExtensionServiceBinding">
+            <soap:address location="http://${fp.server.soaserverhostname}:${fp.server.soaserverport}/MirrorServlet/mirror" />
+        </port>
+   </service>
+   
+   <plnk:partnerLinkType name="CreateInvoicePaymentSiebelCommsReqABCSImplExtensionService">
+      <plnk:role name="CreateInvoicePaymentSiebelCommsReqABCSImplExtensionServiceProvider">
+         <plnk:portType name="abcsimplsiebelcipreqext:CreateInvoicePaymentSiebelCommsReqABCSImplExtensionService"/>
+      </plnk:role>
+   </plnk:partnerLinkType>
+</definitions>

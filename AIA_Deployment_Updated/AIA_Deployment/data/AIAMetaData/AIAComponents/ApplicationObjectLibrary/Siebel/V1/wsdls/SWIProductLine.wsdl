@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions  xmlns="http://schemas.xmlsoap.org/wsdl/"  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"  xmlns:xsdLocal1="http://www.siebel.com/xml/SWIAdminProductLine"  targetNamespace="http://siebel.com/asi/"  xmlns:xsdLocal3="http://www.siebel.com/xml/SWIAdminProductLine/Id"  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"  xmlns:xsdLocal4="http://www.siebel.com/xml/SWIAdminProductLine/Query"  xmlns:xsdLocal2="http://www.siebel.com/xml/SWIAdminProductLine/Data"  xmlns:xsd="http://www.w3.org/2001/XMLSchema"  xmlns:tns="http://siebel.com/asi/" >
+	<types>
+		<xsd:schema  elementFormDefault="qualified"  attributeFormDefault="unqualified"  targetNamespace="http://www.siebel.com/xml/SWIAdminProductLine/Id"  xmlns:xsdLocal3="http://www.siebel.com/xml/SWIAdminProductLine/Id"  xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
+			<xsd:annotation >
+				<xsd:documentation >Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation >
+			</xsd:annotation >
+			<xsd:element  name="ListOfAdminProductLine"  type="xsdLocal3:ListOfAdminProductLineId" />
+			<xsd:complexType  name="ListOfAdminProductLineTopElmtId" >
+				<xsd:sequence >
+					<xsd:element  name="ListOfAdminProductLine"  maxOccurs="1"  minOccurs="1"  type="xsdLocal3:ListOfAdminProductLineId" />
+				</xsd:sequence >
+			</xsd:complexType >
+			<xsd:complexType  name="ListOfAdminProductLineId" >
+				<xsd:sequence >
+					<xsd:element  name="AdminProductLine"  maxOccurs="unbounded"  minOccurs="0"  type="xsdLocal3:AdminProductLineId" />
+				</xsd:sequence >
+			</xsd:complexType >
+			<xsd:complexType  name="AdminProductLineId" >
+				<xsd:sequence >
+					<xsd:element  name="Id"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="ModId"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="ListOfAdminProductLine_Position"  maxOccurs="1"  minOccurs="0"  type="xsdLocal3:ListOfAdminProductLine_PositionId" />
+					<xsd:element  name="ListOfAdminProductLine_InternalProduct"  maxOccurs="1"  minOccurs="0"  type="xsdLocal3:ListOfAdminProductLine_InternalProductId" />
+				</xsd:sequence >
+			</xsd:complexType >
+			<xsd:complexType  name="ListOfAdminProductLine_PositionId" >
+				<xsd:sequence >
+					<xsd:element  name="AdminProductLine_Position"  maxOccurs="unbounded"  minOccurs="0"  type="xsdLocal3:AdminProductLine_PositionId" />
+				</xsd:sequence >
+			</xsd:complexType >
+			<xsd:complexType  name="AdminProductLine_PositionId" >
+				<xsd:sequence >
+					<xsd:element  name="PositionId"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+				</xsd:sequence >
+			</xsd:complexType >
+			<xsd:complexType  name="ListOfAdminProductLine_InternalProductId" >
+				<xsd:sequence >
+					<xsd:element  name="AdminProductLine_InternalProduct"  maxOccurs="unbounded"  minOccurs="0"  type="xsdLocal3:AdminProductLine_InternalProductId" />
+				</xsd:sequence >
+			</xsd:complexType >
+			<xsd:complexType  name="AdminProductLine_InternalProductId" >
+				<xsd:sequence />
+			</xsd:complexType >
+		</xsd:schema >
+		<xsd:schema  elementFormDefault="qualified"  attributeFormDefault="unqualified"  targetNamespace="http://www.siebel.com/xml/SWIAdminProductLine/Query"  xmlns:xsdLocal4="http://www.siebel.com/xml/SWIAdminProductLine/Query"  xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
+			<xsd:annotation >
+				<xsd:documentation >Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation >
+			</xsd:annotation >
+			<xsd:element  name="ListOfAdminProductLine"  type="xsdLocal4:ListOfAdminProductLineQuery" />
+			<xsd:complexType  name="ListOfAdminProductLineTopElmtQuery" >
+				<xsd:sequence >
+					<xsd:element  name="ListOfAdminProductLine"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:ListOfAdminProductLineQuery" />
+				</xsd:sequence >
+			</xsd:complexType >
+			<xsd:complexType  name="ListOfAdminProductLineQuery" >
+				<xsd:sequence >
+					<xsd:element  name="AdminProductLine"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:AdminProductLineQuery" />
+				</xsd:sequence >
+				<xsd:attribute  name="pagesize"  type="xsd:integer" />
+				<xsd:attribute  name="startrownum"  type="xsd:integer" />
+				<xsd:attribute  name="recordcountneeded"  type="xsd:boolean" />
+			</xsd:complexType >
+			<xsd:complexType  name="AdminProductLineQuery" >
+				<xsd:sequence >
+					<xsd:element  name="Id"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:queryType" />
+					<xsd:element  name="Created"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:queryType" />
+					<xsd:element  name="Updated"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:queryType" />
+					<xsd:element  name="ConflictId"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:queryType" />
+					<xsd:element  name="ModId"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:queryType" />
+					<xsd:element  name="Description"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:queryType" />
+					<xsd:element  name="IntegrationId"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:queryType" />
+					<xsd:element  name="Name"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:queryType" />
+					<xsd:element  name="PrimaryPositionId"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:queryType" />
+					<xsd:element  name="PrimaryProductId"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:queryType" />
+					<xsd:element  name="Contracting"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:queryType" />
+					<xsd:element  name="Licensing"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:queryType" />
+					<xsd:element  name="ListOfAdminProductLine_Position"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:ListOfAdminProductLine_PositionQuery" />
+					<xsd:element  name="ListOfAdminProductLine_InternalProduct"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:ListOfAdminProductLine_InternalProductQuery" />
+				</xsd:sequence >
+				<xsd:attribute  name="searchspec"  type="xsd:string" />
+			</xsd:complexType >
+			<xsd:complexType  name="ListOfAdminProductLine_PositionQuery" >
+				<xsd:sequence >
+					<xsd:element  name="AdminProductLine_Position"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:AdminProductLine_PositionQuery" />
+				</xsd:sequence >
+				<xsd:attribute  name="pagesize"  type="xsd:integer" />
+				<xsd:attribute  name="startrownum"  type="xsd:integer" />
+				<xsd:attribute  name="recordcountneeded"  type="xsd:boolean" />
+			</xsd:complexType >
+			<xsd:complexType  name="AdminProductLine_PositionQuery" >
+				<xsd:sequence >
+					<xsd:element  name="Position"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:queryType" />
+					<xsd:element  name="PositionId"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:queryType" />
+					<xsd:element  name="PrimaryEmployeeId"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:queryType" />
+					<xsd:element  name="ProductLineManager"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:queryType" />
+					<xsd:element  name="WorkPhoneNumber"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:queryType" />
+					<xsd:element  name="DivisionIntegrationId"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:queryType" />
+					<xsd:element  name="Division"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:queryType" />
+				</xsd:sequence >
+				<xsd:attribute  name="IsPrimaryMVG"  type="xsd:string" />
+				<xsd:attribute  name="searchspec"  type="xsd:string" />
+			</xsd:complexType >
+			<xsd:complexType  name="ListOfAdminProductLine_InternalProductQuery" >
+				<xsd:sequence >
+					<xsd:element  name="AdminProductLine_InternalProduct"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:AdminProductLine_InternalProductQuery" />
+				</xsd:sequence >
+				<xsd:attribute  name="pagesize"  type="xsd:integer" />
+				<xsd:attribute  name="startrownum"  type="xsd:integer" />
+				<xsd:attribute  name="recordcountneeded"  type="xsd:boolean" />
+			</xsd:complexType >
+			<xsd:complexType  name="AdminProductLine_InternalProductQuery" >
+				<xsd:sequence >
+					<xsd:element  name="Product"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:queryType" />
+					<xsd:element  name="Part"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:queryType" />
+					<xsd:element  name="IntegrationId"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:queryType" />
+					<xsd:element  name="PrimaryOrganization"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:queryType" />
+					<xsd:element  name="VendorIntegrationId"  maxOccurs="1"  minOccurs="0"  type="xsdLocal4:queryType" />
+				</xsd:sequence >
+				<xsd:attribute  name="IsPrimaryMVG"  type="xsd:string" />
+				<xsd:attribute  name="searchspec"  type="xsd:string" />
+			</xsd:complexType >
+			<xsd:complexType  name="queryType" >
+				<xsd:simpleContent >
+					<xsd:extension  base="xsd:string" >
+						<xsd:attribute  name="sortorder"  type="xsd:string" />
+						<xsd:attribute  name="sortsequence"  type="xsd:string" />
+					</xsd:extension >
+				</xsd:simpleContent >
+			</xsd:complexType >
+		</xsd:schema >
+		<xsd:schema  elementFormDefault="qualified"  attributeFormDefault="unqualified"  targetNamespace="http://siebel.com/asi/"  xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
+			<xsd:import  namespace="http://www.siebel.com/xml/SWIAdminProductLine/Query" />
+			<xsd:import  namespace="http://www.siebel.com/xml/SWIAdminProductLine/Id" />
+			<xsd:import  namespace="http://www.siebel.com/xml/SWIAdminProductLine/Data" />
+			<xsd:import  namespace="http://www.siebel.com/xml/SWIAdminProductLine" />
+			<xsd:element  name="SWIProductLine_Synchronize_Input" >
+				<xsd:complexType >
+					<xsd:sequence >
+						<xsd:element  ref="xsdLocal1:ListOfAdminProductLine" />
+						<xsd:element  name="StatusObject"  minOccurs="0"  type="xsd:string" />
+					</xsd:sequence >
+				</xsd:complexType >
+			</xsd:element >
+			<xsd:element  name="SWIProductLine_Synchronize_Output" >
+				<xsd:complexType >
+					<xsd:sequence >
+						<xsd:element  ref="xsdLocal1:ListOfAdminProductLine" />
+					</xsd:sequence >
+				</xsd:complexType >
+			</xsd:element >
+			<xsd:element  name="SWIProductLine_Insert_Input" >
+				<xsd:complexType >
+					<xsd:sequence >
+						<xsd:element  ref="xsdLocal2:ListOfAdminProductLine" />
+						<xsd:element  name="StatusObject"  minOccurs="0"  type="xsd:string" />
+					</xsd:sequence >
+				</xsd:complexType >
+			</xsd:element >
+			<xsd:element  name="SWIProductLine_Insert_Output" >
+				<xsd:complexType >
+					<xsd:sequence >
+						<xsd:element  ref="xsdLocal2:ListOfAdminProductLine" />
+					</xsd:sequence >
+				</xsd:complexType >
+			</xsd:element >
+			<xsd:element  name="SWIProductLine_Upsert_Input" >
+				<xsd:complexType >
+					<xsd:sequence >
+						<xsd:element  ref="xsdLocal1:ListOfAdminProductLine" />
+						<xsd:element  name="StatusObject"  minOccurs="0"  type="xsd:string" />
+					</xsd:sequence >
+				</xsd:complexType >
+			</xsd:element >
+			<xsd:element  name="SWIProductLine_Upsert_Output" >
+				<xsd:complexType >
+					<xsd:sequence >
+						<xsd:element  ref="xsdLocal1:ListOfAdminProductLine" />
+					</xsd:sequence >
+				</xsd:complexType >
+			</xsd:element >
+			<xsd:element  name="SWIProductLine_Delete_Input" >
+				<xsd:complexType >
+					<xsd:sequence >
+						<xsd:element  ref="xsdLocal3:ListOfAdminProductLine" />
+						<xsd:element  name="StatusObject"  minOccurs="0"  type="xsd:string" />
+					</xsd:sequence >
+				</xsd:complexType >
+			</xsd:element >
+			<xsd:element  name="SWIProductLine_Delete_Output" >
+				<xsd:complexType >
+					<xsd:sequence >
+						<xsd:element  ref="xsdLocal3:ListOfAdminProductLine" />
+					</xsd:sequence >
+				</xsd:complexType >
+			</xsd:element >
+			<xsd:element  name="SWIProductLine_QueryByExample_Input" >
+				<xsd:complexType >
+					<xsd:sequence >
+						<xsd:element  ref="xsdLocal4:ListOfAdminProductLine" />
+					</xsd:sequence >
+				</xsd:complexType >
+			</xsd:element >
+			<xsd:element  name="SWIProductLine_QueryByExample_Output" >
+				<xsd:complexType >
+					<xsd:sequence >
+						<xsd:element  ref="xsdLocal4:ListOfAdminProductLine" />
+					</xsd:sequence >
+				</xsd:complexType >
+			</xsd:element >
+			<xsd:element  name="SWIProductLine_Update_Input" >
+				<xsd:complexType >
+					<xsd:sequence >
+						<xsd:element  ref="xsdLocal2:ListOfAdminProductLine" />
+						<xsd:element  name="StatusObject"  minOccurs="0"  type="xsd:string" />
+					</xsd:sequence >
+				</xsd:complexType >
+			</xsd:element >
+			<xsd:element  name="SWIProductLine_Update_Output" >
+				<xsd:complexType >
+					<xsd:sequence >
+						<xsd:element  ref="xsdLocal2:ListOfAdminProductLine" />
+					</xsd:sequence >
+				</xsd:complexType >
+			</xsd:element >
+			<xsd:element  name="SWIProductLine_QueryById_Input" >
+				<xsd:complexType >
+					<xsd:sequence >
+						<xsd:element  name="PrimaryRowId"  type="xsd:string" />
+					</xsd:sequence >
+				</xsd:complexType >
+			</xsd:element >
+			<xsd:element  name="SWIProductLine_QueryById_Output" >
+				<xsd:complexType >
+					<xsd:sequence >
+						<xsd:element  ref="xsdLocal1:ListOfAdminProductLine" />
+					</xsd:sequence >
+				</xsd:complexType >
+			</xsd:element >
+		</xsd:schema >
+		<xsd:schema  elementFormDefault="qualified"  attributeFormDefault="unqualified"  xmlns:xsdLocal1="http://www.siebel.com/xml/SWIAdminProductLine"  targetNamespace="http://www.siebel.com/xml/SWIAdminProductLine"  xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
+			<xsd:annotation >
+				<xsd:documentation >Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation >
+			</xsd:annotation >
+			<xsd:element  name="ListOfAdminProductLine"  type="xsdLocal1:ListOfAdminProductLine" />
+			<xsd:complexType  name="ListOfAdminProductLineTopElmt" >
+				<xsd:sequence >
+					<xsd:element  name="ListOfAdminProductLine"  maxOccurs="1"  minOccurs="1"  type="xsdLocal1:ListOfAdminProductLine" />
+				</xsd:sequence >
+			</xsd:complexType >
+			<xsd:complexType  name="ListOfAdminProductLine" >
+				<xsd:sequence >
+					<xsd:element  name="AdminProductLine"  maxOccurs="unbounded"  minOccurs="0"  type="xsdLocal1:AdminProductLine" />
+				</xsd:sequence >
+			</xsd:complexType >
+			<xsd:complexType  name="AdminProductLine" >
+				<xsd:sequence >
+					<xsd:element  name="Id"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="Created"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="Updated"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="ConflictId"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="ModId"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="Description"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="IntegrationId"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="Name"  maxOccurs="1"  minOccurs="1"  type="xsd:string" />
+					<xsd:element  name="PrimaryPositionId"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="PrimaryProductId"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="Contracting"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="Licensing"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="ListOfAdminProductLine_Position"  maxOccurs="1"  minOccurs="0"  type="xsdLocal1:ListOfAdminProductLine_Position" />
+					<xsd:element  name="ListOfAdminProductLine_InternalProduct"  maxOccurs="1"  minOccurs="0"  type="xsdLocal1:ListOfAdminProductLine_InternalProduct" />
+				</xsd:sequence >
+				<xsd:attribute  name="operation"  type="xsd:string" />
+				<xsd:attribute  name="searchspec"  type="xsd:string" />
+			</xsd:complexType >
+			<xsd:complexType  name="ListOfAdminProductLine_Position" >
+				<xsd:sequence >
+					<xsd:element  name="AdminProductLine_Position"  maxOccurs="unbounded"  minOccurs="0"  type="xsdLocal1:AdminProductLine_Position" />
+				</xsd:sequence >
+			</xsd:complexType >
+			<xsd:complexType  name="AdminProductLine_Position" >
+				<xsd:sequence >
+					<xsd:element  name="Position"  maxOccurs="1"  minOccurs="1"  type="xsd:string" />
+					<xsd:element  name="PositionId"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="PrimaryEmployeeId"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="ProductLineManager"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="WorkPhoneNumber"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="DivisionIntegrationId"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="Division"  maxOccurs="1"  minOccurs="1"  type="xsd:string" />
+				</xsd:sequence >
+				<xsd:attribute  name="IsPrimaryMVG"  type="xsd:string" />
+				<xsd:attribute  name="operation"  type="xsd:string" />
+				<xsd:attribute  name="searchspec"  type="xsd:string" />
+			</xsd:complexType >
+			<xsd:complexType  name="ListOfAdminProductLine_InternalProduct" >
+				<xsd:sequence >
+					<xsd:element  name="AdminProductLine_InternalProduct"  maxOccurs="unbounded"  minOccurs="0"  type="xsdLocal1:AdminProductLine_InternalProduct" />
+				</xsd:sequence >
+			</xsd:complexType >
+			<xsd:complexType  name="AdminProductLine_InternalProduct" >
+				<xsd:sequence >
+					<xsd:element  name="Product"  maxOccurs="1"  minOccurs="1"  type="xsd:string" />
+					<xsd:element  name="Part"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="IntegrationId"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="PrimaryOrganization"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="VendorIntegrationId"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+				</xsd:sequence >
+				<xsd:attribute  name="IsPrimaryMVG"  type="xsd:string" />
+				<xsd:attribute  name="operation"  type="xsd:string" />
+				<xsd:attribute  name="searchspec"  type="xsd:string" />
+			</xsd:complexType >
+		</xsd:schema >
+		<xsd:schema  elementFormDefault="qualified"  attributeFormDefault="unqualified"  targetNamespace="http://www.siebel.com/xml/SWIAdminProductLine/Data"  xmlns:xsdLocal2="http://www.siebel.com/xml/SWIAdminProductLine/Data"  xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
+			<xsd:annotation >
+				<xsd:documentation >Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation >
+			</xsd:annotation >
+			<xsd:element  name="ListOfAdminProductLine"  type="xsdLocal2:ListOfAdminProductLineData" />
+			<xsd:complexType  name="ListOfAdminProductLineTopElmtData" >
+				<xsd:sequence >
+					<xsd:element  name="ListOfAdminProductLine"  maxOccurs="1"  minOccurs="1"  type="xsdLocal2:ListOfAdminProductLineData" />
+				</xsd:sequence >
+			</xsd:complexType >
+			<xsd:complexType  name="ListOfAdminProductLineData" >
+				<xsd:sequence >
+					<xsd:element  name="AdminProductLine"  maxOccurs="unbounded"  minOccurs="0"  type="xsdLocal2:AdminProductLineData" />
+				</xsd:sequence >
+				<xsd:attribute  name="lastpage"  type="xsd:boolean" />
+				<xsd:attribute  name="recordcount"  type="xsd:integer" />
+			</xsd:complexType >
+			<xsd:complexType  name="AdminProductLineData" >
+				<xsd:sequence >
+					<xsd:element  name="Id"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="Created"  maxOccurs="1"  minOccurs="0"  type="xsd:dateTime" />
+					<xsd:element  name="Updated"  maxOccurs="1"  minOccurs="0"  type="xsd:dateTime" />
+					<xsd:element  name="ConflictId"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="ModId"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="Description"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="IntegrationId"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="Name"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="PrimaryPositionId"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="PrimaryProductId"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="Contracting"  maxOccurs="1"  minOccurs="0"  type="xsd:boolean" />
+					<xsd:element  name="Licensing"  maxOccurs="1"  minOccurs="0"  type="xsd:boolean" />
+					<xsd:element  name="ListOfAdminProductLine_Position"  maxOccurs="1"  minOccurs="0"  type="xsdLocal2:ListOfAdminProductLine_PositionData" />
+					<xsd:element  name="ListOfAdminProductLine_InternalProduct"  maxOccurs="1"  minOccurs="0"  type="xsdLocal2:ListOfAdminProductLine_InternalProductData" />
+				</xsd:sequence >
+				<xsd:attribute  name="operation"  type="xsd:string" />
+			</xsd:complexType >
+			<xsd:complexType  name="ListOfAdminProductLine_PositionData" >
+				<xsd:sequence >
+					<xsd:element  name="AdminProductLine_Position"  maxOccurs="unbounded"  minOccurs="0"  type="xsdLocal2:AdminProductLine_PositionData" />
+				</xsd:sequence >
+				<xsd:attribute  name="lastpage"  type="xsd:boolean" />
+				<xsd:attribute  name="recordcount"  type="xsd:integer" />
+			</xsd:complexType >
+			<xsd:complexType  name="AdminProductLine_PositionData" >
+				<xsd:sequence >
+					<xsd:element  name="Position"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="PositionId"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="PrimaryEmployeeId"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="ProductLineManager"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="WorkPhoneNumber"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="DivisionIntegrationId"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="Division"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+				</xsd:sequence >
+				<xsd:attribute  name="IsPrimaryMVG"  type="xsd:string" />
+				<xsd:attribute  name="operation"  type="xsd:string" />
+			</xsd:complexType >
+			<xsd:complexType  name="ListOfAdminProductLine_InternalProductData" >
+				<xsd:sequence >
+					<xsd:element  name="AdminProductLine_InternalProduct"  maxOccurs="unbounded"  minOccurs="0"  type="xsdLocal2:AdminProductLine_InternalProductData" />
+				</xsd:sequence >
+				<xsd:attribute  name="lastpage"  type="xsd:boolean" />
+				<xsd:attribute  name="recordcount"  type="xsd:integer" />
+			</xsd:complexType >
+			<xsd:complexType  name="AdminProductLine_InternalProductData" >
+				<xsd:sequence >
+					<xsd:element  name="Product"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="Part"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="IntegrationId"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="PrimaryOrganization"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="VendorIntegrationId"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+				</xsd:sequence >
+				<xsd:attribute  name="IsPrimaryMVG"  type="xsd:string" />
+				<xsd:attribute  name="operation"  type="xsd:string" />
+			</xsd:complexType >
+		</xsd:schema >
+	</types >
+	<message  name="SWIProductLine_Synchronize_Input" >
+		<part  name="SWIProductLine_Synchronize_Input"  element="tns:SWIProductLine_Synchronize_Input" />
+	</message >
+	<message  name="SWIProductLine_Synchronize_Output" >
+		<part  name="SWIProductLine_Synchronize_Output"  element="tns:SWIProductLine_Synchronize_Output" />
+	</message >
+	<message  name="SWIProductLine_Insert_Input" >
+		<part  name="SWIProductLine_Insert_Input"  element="tns:SWIProductLine_Insert_Input" />
+	</message >
+	<message  name="SWIProductLine_Insert_Output" >
+		<part  name="SWIProductLine_Insert_Output"  element="tns:SWIProductLine_Insert_Output" />
+	</message >
+	<message  name="SWIProductLine_Upsert_Input" >
+		<part  name="SWIProductLine_Upsert_Input"  element="tns:SWIProductLine_Upsert_Input" />
+	</message >
+	<message  name="SWIProductLine_Upsert_Output" >
+		<part  name="SWIProductLine_Upsert_Output"  element="tns:SWIProductLine_Upsert_Output" />
+	</message >
+	<message  name="SWIProductLine_Delete_Input" >
+		<part  name="SWIProductLine_Delete_Input"  element="tns:SWIProductLine_Delete_Input" />
+	</message >
+	<message  name="SWIProductLine_Delete_Output" >
+		<part  name="SWIProductLine_Delete_Output"  element="tns:SWIProductLine_Delete_Output" />
+	</message >
+	<message  name="SWIProductLine_QueryByExample_Input" >
+		<part  name="SWIProductLine_QueryByExample_Input"  element="tns:SWIProductLine_QueryByExample_Input" />
+	</message >
+	<message  name="SWIProductLine_QueryByExample_Output" >
+		<part  name="SWIProductLine_QueryByExample_Output"  element="tns:SWIProductLine_QueryByExample_Output" />
+	</message >
+	<message  name="SWIProductLine_Update_Input" >
+		<part  name="SWIProductLine_Update_Input"  element="tns:SWIProductLine_Update_Input" />
+	</message >
+	<message  name="SWIProductLine_Update_Output" >
+		<part  name="SWIProductLine_Update_Output"  element="tns:SWIProductLine_Update_Output" />
+	</message >
+	<message  name="SWIProductLine_QueryById_Input" >
+		<part  name="SWIProductLine_QueryById_Input"  element="tns:SWIProductLine_QueryById_Input" />
+	</message >
+	<message  name="SWIProductLine_QueryById_Output" >
+		<part  name="SWIProductLine_QueryById_Output"  element="tns:SWIProductLine_QueryById_Output" />
+	</message >
+	<portType  name="SWIProductLine" >
+		<operation  name="SWIProductLine_Synchronize" >
+			<input  message="tns:SWIProductLine_Synchronize_Input" />
+			<output  message="tns:SWIProductLine_Synchronize_Output" />
+		</operation >
+		<operation  name="SWIProductLine_Insert" >
+			<input  message="tns:SWIProductLine_Insert_Input" />
+			<output  message="tns:SWIProductLine_Insert_Output" />
+		</operation >
+		<operation  name="SWIProductLine_Upsert" >
+			<input  message="tns:SWIProductLine_Upsert_Input" />
+			<output  message="tns:SWIProductLine_Upsert_Output" />
+		</operation >
+		<operation  name="SWIProductLine_Delete" >
+			<input  message="tns:SWIProductLine_Delete_Input" />
+			<output  message="tns:SWIProductLine_Delete_Output" />
+		</operation >
+		<operation  name="SWIProductLine_QueryByExample" >
+			<input  message="tns:SWIProductLine_QueryByExample_Input" />
+			<output  message="tns:SWIProductLine_QueryByExample_Output" />
+		</operation >
+		<operation  name="SWIProductLine_Update" >
+			<input  message="tns:SWIProductLine_Update_Input" />
+			<output  message="tns:SWIProductLine_Update_Output" />
+		</operation >
+		<operation  name="SWIProductLine_QueryById" >
+			<input  message="tns:SWIProductLine_QueryById_Input" />
+			<output  message="tns:SWIProductLine_QueryById_Output" />
+		</operation >
+	</portType >
+	<binding  name="SWIProductLine"  type="tns:SWIProductLine" >
+		<soap:binding  transport="http://schemas.xmlsoap.org/soap/http"  style="document" />
+		<operation  name="SWIProductLine_Synchronize" >
+			<soap:operation  soapAction="document/http://siebel.com/asi/:SWIProductLine_Synchronize" />
+			<input >
+				<soap:body  use="literal" />
+			</input >
+			<output >
+				<soap:body  use="literal" />
+			</output >
+		</operation >
+		<operation  name="SWIProductLine_Insert" >
+			<soap:operation  soapAction="document/http://siebel.com/asi/:SWIProductLine_Insert" />
+			<input >
+				<soap:body  use="literal" />
+			</input >
+			<output >
+				<soap:body  use="literal" />
+			</output >
+		</operation >
+		<operation  name="SWIProductLine_Upsert" >
+			<soap:operation  soapAction="document/http://siebel.com/asi/:SWIProductLine_Upsert" />
+			<input >
+				<soap:body  use="literal" />
+			</input >
+			<output >
+				<soap:body  use="literal" />
+			</output >
+		</operation >
+		<operation  name="SWIProductLine_Delete" >
+			<soap:operation  soapAction="document/http://siebel.com/asi/:SWIProductLine_Delete" />
+			<input >
+				<soap:body  use="literal" />
+			</input >
+			<output >
+				<soap:body  use="literal" />
+			</output >
+		</operation >
+		<operation  name="SWIProductLine_QueryByExample" >
+			<soap:operation  soapAction="document/http://siebel.com/asi/:SWIProductLine_QueryByExample" />
+			<input >
+				<soap:body  use="literal" />
+			</input >
+			<output >
+				<soap:body  use="literal" />
+			</output >
+		</operation >
+		<operation  name="SWIProductLine_Update" >
+			<soap:operation  soapAction="document/http://siebel.com/asi/:SWIProductLine_Update" />
+			<input >
+				<soap:body  use="literal" />
+			</input >
+			<output >
+				<soap:body  use="literal" />
+			</output >
+		</operation >
+		<operation  name="SWIProductLine_QueryById" >
+			<soap:operation  soapAction="document/http://siebel.com/asi/:SWIProductLine_QueryById" />
+			<input >
+				<soap:body  use="literal" />
+			</input >
+			<output >
+				<soap:body  use="literal" />
+			</output >
+		</operation >
+	</binding >
+	<service  name="SWIProductLine" >
+		<port  binding="tns:SWIProductLine"  name="SWIProductLine" >
+			<soap:address  location="http://&lt;webserver&gt;/eai_&lt;lang&gt;/start.swe?SWEExtSource=WebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1" />
+		</port >
+	</service >
+</definitions >

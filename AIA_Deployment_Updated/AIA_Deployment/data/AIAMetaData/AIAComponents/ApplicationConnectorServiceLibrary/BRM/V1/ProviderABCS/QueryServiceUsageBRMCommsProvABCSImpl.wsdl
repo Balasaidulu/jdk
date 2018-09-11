@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="QueryServiceUsageBRMCommsProvABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryServiceUsageBRMCommsProvABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:corecomServiceUsage="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:commsservusgebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ServiceUsage/V2"
+     xmlns:ns3="http://schemas.oracle.com/service/bpel/common"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:commsservusgabcs="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryServiceUsageBRMCommsProvABCSImpl/V1"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service contains BRM ABCS implementation of Query Service Usage List operation</svcdoc:Description>
+            <svcdoc:ServiceType>ProviderABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>Query Service usage List Provider ABCS Implememntation</svcdoc:DisplayName>
+            <svcdoc:EBOName>ServiceUsageEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1</svcdoc:Version>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>BRM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>BRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>Billing</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ServiceUsage/V2"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/ServiceUsage/V2/ServiceUsageEBM.xsd"/>
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+            <xsd:import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </schema>
+    </types>
+    <message name="QueryServiceUsageListReqMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message will contain the Query Service Usage List request EBM</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="QueryServiceUsageListEBM" element="commsservusgebo:QueryServiceUsageListEBM"/>
+    </message>
+    <message name="QueryServiceUsageListRespMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message will contain the Query Service Usage List response EBM</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="QueryServiceUsageListResponseEBM" element="commsservusgebo:QueryServiceUsageListResponseEBM"/>
+    </message>
+    <message name="QueryServiceUsageListFaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="AIAFault" element="corecomServiceUsage:Fault"/>
+    </message>
+    <portType name="QueryServiceUsageBRMCommsProvABCSImpl">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This Service Contains Query Service Usage List Provider ABCS Implementation</svcdoc:Description>
+                <svcdoc:DisplayName>Query Service Usage List Provider ABCS Implementation</svcdoc:DisplayName>
+                <svcdoc:Status>Active</svcdoc:Status>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="QueryServiceUsageList">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Query On service Usage List</svcdoc:Description>
+                    <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+                    <svcdoc:DisplayName>Query Service Usage List</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="commsservusgabcs:QueryServiceUsageListReqMsg"/>
+            <output message="commsservusgabcs:QueryServiceUsageListRespMsg"/>
+            <fault name="QueryServiceUsageListFaultMsg" message="commsservusgabcs:QueryServiceUsageListFaultMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="QueryServiceUsageBRMCommsProvABCSImpl">
+        <plnk:role name="QueryServiceUsageBRMCommsProvABCSImplProvider">
+            <plnk:portType name="commsservusgabcs:QueryServiceUsageBRMCommsProvABCSImpl"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

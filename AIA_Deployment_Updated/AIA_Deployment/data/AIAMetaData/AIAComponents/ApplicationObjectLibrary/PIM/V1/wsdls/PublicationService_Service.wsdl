@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="PublicationService"
+     targetNamespace="http://xmlns.oracle.com/oracle/apps/ego/pubfwk/service/PublicationService"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:tns1="http://xmlns.oracle.com/apps/ego/pubfwk/service"
+     xmlns:tns2="http://xmlns.oracle.com/apps/fnd/ServiceBean"
+     xmlns:tns="http://xmlns.oracle.com/oracle/apps/ego/pubfwk/service/PublicationService"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    >
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://xmlns.oracle.com/apps/ego/pubfwk/service" schemaLocation="../schemas/PublicationService.xsd"/>
+        </xsd:schema>
+        <xsd:schema elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/fnd/ServiceBean">
+            <xsd:element name="ServiceBean_Header">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="RESPONSIBILITY_NAME" type="xsd:string"/>
+                        <xsd:element name="RESPONSIBILITY_APPL_NAME" type="xsd:string"/>
+                        <xsd:element name="SECURITY_GROUP_NAME" type="xsd:string"/>
+                        <xsd:element name="NLS_LANGUAGE" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </types>
+    <message name="PublicationService_GetBatchSystems_InputMessage">
+        <part name="header" element="tns2:ServiceBean_Header"/>
+        <part name="body" element="tns1:PublicationService_GetBatchSystems"/>
+    </message>
+    <message name="PublicationService_GetBatchSystems_OutputMessage">
+        <part name="body" element="tns1:PublicationService_GetBatchSystems_Response"/>
+    </message>
+    <message name="PublicationService_UpdatePublicationStatus_InputMessage">
+        <part name="header" element="tns2:ServiceBean_Header"/>
+        <part name="body" element="tns1:PublicationService_UpdatePublicationStatus"/>
+    </message>
+    <message name="PublicationService_UpdatePublicationStatus_OutputMessage">
+        <part name="body" element="tns1:PublicationService_UpdatePublicationStatus_Response"/>
+    </message>
+    <portType name="PublicationService_PortType">
+        <operation name="PublicationService_GetBatchSystems">
+            <input message="tns:PublicationService_GetBatchSystems_InputMessage"/>
+            <output message="tns:PublicationService_GetBatchSystems_OutputMessage"/>
+        </operation>
+        <operation name="PublicationService_UpdatePublicationStatus">
+            <input message="tns:PublicationService_UpdatePublicationStatus_InputMessage"/>
+            <output message="tns:PublicationService_UpdatePublicationStatus_OutputMessage"/>
+        </operation>
+    </portType>
+    <binding name="PublicationService_SOAPBinding" type="tns:PublicationService_PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="PublicationService_GetBatchSystems">
+            <soap:operation soapAction="http://rws60064rems.us.oracle.com:8048/webservices/AppsWSProvider/oracle/apps/ego/pubfwk/service/PublicationService"/>
+            <input>
+                <soap:header message="tns:PublicationService_GetBatchSystems_InputMessage" part="header"
+                     use="literal"/>
+                <soap:body use="literal" parts="body"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="PublicationService_UpdatePublicationStatus">
+            <soap:operation soapAction="http://rws60064rems.us.oracle.com:8048/webservices/AppsWSProvider/oracle/apps/ego/pubfwk/service/PublicationService"/>
+            <input>
+                <soap:header message="tns:PublicationService_UpdatePublicationStatus_InputMessage" part="header"
+                     use="literal"/>
+                <soap:body use="literal" parts="body"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="PublicationService_Service">
+        <documentation/>
+        <port name="PublicationService_Port" binding="tns:PublicationService_SOAPBinding">
+            <soap:address location="http://rws60064rems.us.oracle.com:8048/webservices/AppsWSProvider/oracle/apps/ego/pubfwk/service/PublicationService"/>
+        </port>
+    </service>
+</definitions>

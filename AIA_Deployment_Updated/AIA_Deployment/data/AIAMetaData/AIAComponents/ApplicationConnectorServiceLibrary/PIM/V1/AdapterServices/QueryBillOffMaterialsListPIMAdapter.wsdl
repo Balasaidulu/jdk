@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:bom="http://xmlns.oracle.com/apps/ego/item/service" xmlns:itmser="http://xmlns.oracle.com/QueryBillOffMaterialsListPIMAdapter" xmlns:common="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:client="http://xmlns.oracle.com/PIM/QueryBillOffMaterialsListPIMAdapter" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" name="QueryBillOffMaterialsListPIMAdapter" targetNamespace="http://xmlns.oracle.com/PIM/QueryBillOffMaterialsListPIMAdapter">
+ <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	TYPE DEFINITION - List of services participating in this BPEL process
+	The default output of the BPEL designer uses strings as input and 
+	output to the BPEL Process. But you can define or import any XML 
+	Schema type and use them as part of the message types.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+ <types>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/PIM/QueryBillOffMaterialsListPIMAdapter">
+   <import namespace="http://xmlns.oracle.com/apps/ego/item/service" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PIM/V1/schemas/ItemService.xsd" />
+   <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd" />
+   <import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd" />
+   <element name="QueryBillOffMaterialsListPIMAdapterProcessRequest">
+    <complexType>
+     <sequence>
+      <element name="SessionID" type="string" />
+      <element name="Mode" type="string" />
+      <element name="SystemID" type="string" />
+      <element ref="bom:StructureQueryIn" />
+     </sequence>
+    </complexType>
+   </element>
+   <element name="QueryBillOffMaterialsListPIMAdapterProcessResponse">
+    <complexType>
+     <sequence>
+      <element name="SessionID" type="string" />
+      <element name="ContinueFlag" type="string" />
+      <element ref="bom:StructureQueryOut" />
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </types>
+ <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	MESSAGE TYPE DEFINITION - Definition of the message types used as 
+	part of the port type defintions
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+ <message name="QueryBillOffMaterialsListPIMAdapterRequestMessage">
+  <part name="QueryBillOffMaterialsListPIMAdapterProcessRequest" element="client:QueryBillOffMaterialsListPIMAdapterProcessRequest" />
+ </message>
+ <message name="QueryBillOffMaterialsListPIMAdapterResponseMessage">
+  <part name="QueryBillOffMaterialsListPIMAdapterProcessResponse" element="client:QueryBillOffMaterialsListPIMAdapterProcessResponse" />
+ </message>
+ <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PORT TYPE DEFINITION - A port type groups a set of operations into
+	a logical service unit.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+ <!-- portType implemented by the QueryBillOffMaterialsListPIMAdapter BPEL process -->
+ <portType name="QueryBillOffMaterialsListPIMAdapterService">
+  <operation name="InvolkeBillofMaterialService">
+   <input message="client:QueryBillOffMaterialsListPIMAdapterRequestMessage" />
+   <output message="client:QueryBillOffMaterialsListPIMAdapterResponseMessage" />
+  </operation>
+ </portType>
+ <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PARTNER LINK TYPE DEFINITION
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+ <plnk:partnerLinkType name="QueryBillOffMaterialsListPIMAdapterService">
+  <plnk:role name="QueryBillOffMaterialsListPIMAdapterProvider">
+   <plnk:portType name="client:QueryBillOffMaterialsListPIMAdapterService" />
+  </plnk:role>
+ </plnk:partnerLinkType>
+</definitions>

@@ -1,0 +1,87 @@
+<xsd:schema xmlns:pricinggateway="http://www.oracle.com/communications/pricing"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.example.org"
+            targetNamespace="http://www.oracle.com/communications/pricing"
+            elementFormDefault="qualified">
+    <xsd:element name="CreatePricingInputXML"
+                 type="pricinggateway:PricingInputXMLType"/>
+    <xsd:element name="UpdatePricingInputXML"
+                 type="pricinggateway:PricingInputXMLType"/>
+    <xsd:element name="CreatePublishPricingInputXML"
+                 type="pricinggateway:PricingInputXMLType"/>
+    <xsd:element name="UpdatePublishPricingInputXML"
+                 type="pricinggateway:PricingInputXMLType"/>
+    <xsd:complexType name="PricingInputXMLType">
+        <xsd:sequence>
+            <xsd:element name="xmlBinaryString" type="xsd:base64Binary"/>
+            <xsd:element name="UserContext"
+                         type="pricinggateway:UserContextType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="UserContextType">
+        <xsd:sequence>
+            <xsd:element name="userid" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="PersistedPricingObject">
+        <xsd:annotation>
+            <xsd:documentation>Persistet Object Info</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="externalId" type="xsd:string" minOccurs="1"
+                         maxOccurs="1"/>
+            <xsd:element name="pdcID" type="xsd:string" minOccurs="1"
+                         maxOccurs="1"/>
+            <xsd:element name="name" type="xsd:string" minOccurs="1"
+                         maxOccurs="1"/>
+            <xsd:element name="type" type="xsd:string" minOccurs="1"
+                         maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PDCResponse" type="pricinggateway:PDCResponseType"/>
+    <xsd:complexType name="PDCResponseType">
+        <xsd:annotation>
+            <xsd:documentation>PDC Webservice Response.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="status" type="xsd:string" minOccurs="1"
+                         maxOccurs="1"/>
+            <xsd:element name="changeSet" type="xsd:long" minOccurs="0"
+                         maxOccurs="unbounded"/>
+            <xsd:element name="validationError" type="xsd:string" minOccurs="0"
+                         maxOccurs="unbounded"/>
+            <xsd:element name="pricingResult"
+                         type="pricinggateway:PersistedPricingObject"
+                         minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PricingException"
+                 type="pricinggateway:PricingExceptionType"/>
+    <xsd:complexType name="PricingExceptionType">
+        <xsd:complexContent>
+            <xsd:extension base="pricinggateway:GenericExceptionType">
+                <xsd:sequence>
+                    <xsd:any namespace="##other" processContents="lax"
+                             minOccurs="0" maxOccurs="unbounded"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="GenericExceptionType">
+        <xsd:sequence>
+            <xsd:element name="Code" type="xsd:string"/>
+            <xsd:element name="Severity"
+                         type="pricinggateway:GenericSeverityType"/>
+            <xsd:element name="Reason" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="GenericSeverityType">
+        <xsd:restriction base="xsd:NCName">
+            <xsd:enumeration value="ERROR"/>
+            <xsd:enumeration value="FATAL"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>
+
+
+

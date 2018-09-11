@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siebel.com/xml/CMU%20Response%20Unbilled%20Balance%20Details%20IO" xmlns:xsdLocal="http://www.siebel.com/xml/CMU%20Response%20Unbilled%20Balance%20Details%20IO" attributeFormDefault="unqualified" elementFormDefault="qualified">
+	<xsd:annotation>
+		<xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="ListOfCmuResponseUnbilledBalanceDetailsIo" type="xsdLocal:ListOfCmuResponseUnbilledBalanceDetailsIo" />
+	<xsd:complexType name="ListOfCmuResponseUnbilledBalanceDetailsIoTopElmt">
+		<xsd:sequence>
+			<xsd:element name="ListOfCmuResponseUnbilledBalanceDetailsIo" type="xsdLocal:ListOfCmuResponseUnbilledBalanceDetailsIo" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfCmuResponseUnbilledBalanceDetailsIo">
+		<xsd:sequence>
+			<xsd:element name="CmuUnbilledBalanceDetailsVbc" type="xsdLocal:CmuUnbilledBalanceDetailsVbc" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CmuUnbilledBalanceDetailsVbc">
+		<xsd:sequence>
+			<xsd:element name="Account" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="AccountId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="AfterARActions" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="BillingProfile" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="BillingProfileId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CurrencyCode" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="OriginalNetAmount" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="PriorAdjustment" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="PriorDisputesSettlements" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ResourceName" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="UnbilledBalanceTotalsId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="UnbilledEventDetailsId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="UnbilledItemChargesId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="UnbilledUsageServiceId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ServiceAccountId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

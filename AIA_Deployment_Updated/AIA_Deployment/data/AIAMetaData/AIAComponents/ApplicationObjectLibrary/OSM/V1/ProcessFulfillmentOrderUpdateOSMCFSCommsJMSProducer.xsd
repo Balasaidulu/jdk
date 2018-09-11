@@ -1,0 +1,12 @@
+<schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified"
+	targetNamespace="http://xmlns.oracle.com/ProcessFulfillmentOrderUpdateOSMCFSCommsJMSProducer"
+	xmlns="http://www.w3.org/2001/XMLSchema">
+	<element name="ProcessFulfillmentOrderUpdateOSMCFSCommsJMSProducerProcessResponse">
+		<complexType>
+			<sequence>
+				<element name="result" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

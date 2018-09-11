@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="CreateAccountBalanceAdjustmentBRMCommsProvABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/CreateAccountBalanceAdjustmentBRMCommsProvABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:abcsimplportaladj="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/CreateAccountBalanceAdjustmentBRMCommsProvABCSImpl/V1"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:bpelext="http://schemas.oracle.com/bpel/extension"
+     xmlns:para="http://schemas.oracle.com/service/bpel/common"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:createadjebm="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/AccountBalanceAdjustment/V2"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This is Implementation service for Create Account Balance Adjustment Flow</svcdoc:Description>
+            <svcdoc:ServiceType>ProviderABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>Create Account Balance Adjustment BRM ABCS Implementation</svcdoc:DisplayName>
+            <svcdoc:EBOName>AccountBalanceAdjustmentEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>BRM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>BRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>Billing</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <xsd:schema xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V0" targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/CreateAccountBalanceAdjustmentBRMCommsProvABCSImpl/V1"
+             elementFormDefault="qualified">
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/AccountBalanceAdjustment/V2"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/AccountBalanceAdjustment/V2/AccountBalanceAdjustmentEBM.xsd"/>
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+            <xsd:import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+            <xsd:import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/WS-Addressing.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="CreateAccountBalanceAdjustmentListReqMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message will contain the Create Account Balance Adjustment List Request attributes</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="CreateAccountBalanceAdjustmentListEBM" element="createadjebm:CreateAccountBalanceAdjustmentListEBM"/>
+    </message>
+    <message name="FaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="Fault" element="corecom:Fault"/>
+    </message>
+    <message name="CreateAccountBalanceAdjustmentListRespMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message will contain the Create Account Balance Adjustment List Response attributes</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="CreateAccountBalanceAdjustmentListResponseEBM" element="createadjebm:CreateAccountBalanceAdjustmentListResponseEBM"/>
+    </message>
+    <message name="AIAFaultMessage">
+        <part name="AIAFaultMsg" type="corecom:FaultType"/>
+    </message>
+    <portType name="CreateAccountBalanceAdjustmentBRMCommsProvABCSImpl">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This Implementation contains operations that can act upon the create Adjustment BRM ABCS Impl Service</svcdoc:Description>
+                <svcdoc:DisplayName>Create Adjustment BRM ABCS Implementation</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="CreateAccountBalanceAdjustmentList">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Create an Adjustment object</svcdoc:Description>
+                    <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+                    <svcdoc:DisplayName>Create Account Blance Adjustment</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="abcsimplportaladj:CreateAccountBalanceAdjustmentListReqMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="CreateAccountBalanceAdjustmentBRMCommsProvABCSImpl">
+        <plnk:role name="CreateAccountBalanceAdjustmentBRMCommsProvABCSImplProvider">
+            <plnk:portType name="abcsimplportaladj:CreateAccountBalanceAdjustmentBRMCommsProvABCSImpl"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

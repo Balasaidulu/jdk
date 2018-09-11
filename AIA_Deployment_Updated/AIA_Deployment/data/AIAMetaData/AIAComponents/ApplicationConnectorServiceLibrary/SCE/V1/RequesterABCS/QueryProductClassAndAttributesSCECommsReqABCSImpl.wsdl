@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="QueryProductClassAndAttributesSCECommsReqABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/SCE/Industry/Comms/QueryProductClassAndAttributesSCECommsReqABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:classificationebs="http://xmlns.oracle.com/EnterpriseServices/Core/Classification/V1"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1.0"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:abcsimplsceqryprod="http://xmlns.oracle.com/ABCSImpl/SCE/Industry/Comms/QueryProductClassAndAttributesSCECommsReqABCSImpl/V1"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:sceqryprodabo="http://www.sce.com/QueryProductClassAndAttributesRespABM"
+     xmlns:commsclasificationlist="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Classification/V1"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service contains operations that would be used by
+                       the participating application to interact with the
+                       external systems</svcdoc:Description>
+            <svcdoc:ServiceType>RequesterABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>QueryProductClassAndAttributesSCECommsReqABCSImpl
+                       Requester ABCS Implementation Interface</svcdoc:DisplayName>
+            <svcdoc:ServiceObjectName>QueryProductClassAndAttributes</svcdoc:ServiceObjectName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:EBOName>ClassificationEBO,SpecificationEBO,SpecificationValueSetEBO</svcdoc:EBOName>
+            <svcdoc:ImplementationTechnology/>
+            <svcdoc:ProductFamily>SCE</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>SCE</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://xmlns.oracle.com/EnterpriseServices/Core/Classification/V1" location="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseBusinessServiceLibrary/Industry/Communications/EBO/Classification/V1/CommunicationsClassificationEBSV1.wsdl"/>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sce.com/QueryProductClassAndAttributesRespABM" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/SCE/V1/schemas/ProductClassAndAttributesABM.xsd"/>
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+            <import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </schema>
+    </types>
+    <message name="QueryProductClassAndAttributesReqMsg">
+        <part name="QueryProductClassAndAttributes" element="commsclasificationlist:QueryClassificationListEBM"/>
+    </message>
+    <message name="QueryProductClassAndAttributesRespMsg">
+        <part name="QueryProductClassAndAttributesResponse" element="sceqryprodabo:QueryProductClassAndAttributesRespABM"/>
+    </message>
+    <message name="QueryProductClassAndAttributesFaultMsg">
+        <part name="AIAFault" element="corecom:Fault"/>
+    </message>
+    <portType name="QueryProductClassAndAttributesSCECommsReqABCSImplService">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This interface contains operations that can act upon the
+                        object</svcdoc:Description>
+                <svcdoc:DisplayName>Query ProdClassAndAttributes SCE Requestor ABCS
+                        Implementation</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="QueryProductClassAndAttributes">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Query an
+                         ProdClassAndAttributes object</svcdoc:Description>
+                    <svcdoc:MEP>SyncReqResp</svcdoc:MEP>
+                    <svcdoc:DisplayName>QueryProductClassAndAttributes</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="abcsimplsceqryprod:QueryProductClassAndAttributesReqMsg"/>
+            <output message="abcsimplsceqryprod:QueryProductClassAndAttributesRespMsg"/>
+            <fault name="fault" message="abcsimplsceqryprod:QueryProductClassAndAttributesFaultMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="QueryProductClassAndAttributesSCECommsReqABCSImpl">
+        <plnk:role name="QueryProductClassAndAttributesSCECommsReqABCSImplProvider">
+            <plnk:portType name="abcsimplsceqryprod:QueryProductClassAndAttributesSCECommsReqABCSImplService"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

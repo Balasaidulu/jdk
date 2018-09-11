@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="ProcessCollectionSharingBRMCommsProvABCSImpl"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessCollectionSharingBRMCommsProvABCSImpl/V1"
+	     xmlns:corecustmr="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+             xmlns:corecustmrabcs="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessCollectionSharingBRMCommsProvABCSImpl/V1"
+	     xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+	     xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" 
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" 
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" >
+	
+         <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>BRM Provider ABCS Implementation for Order To
+                                Billing Integration</svcdoc:Description>
+            <svcdoc:ServiceType>ProviderABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>ProcessCollectionSharingBRMCommsProvABCSImpl</svcdoc:DisplayName>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:EBOName>CustomerPartyEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>BRM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>BRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+        
+	 <import namespace="http://schemas.oracle.com/bpel/extension" 
+ 	 location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    
+	<types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+	            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/CustomerParty/V2/CustomerPartyEBM.xsd"/>
+		    <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+		    <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+
+                    <import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+		    <import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/WS-Addressing.xsd"/>
+		</schema>
+	</types>
+
+	 <message name="ProcessCollectionSharingReqMsg">
+		<part name="ProcessBillingAccountListEBM" element="corecustmr:ProcessBillingAccountListEBM"/>
+	</message>  
+	<!--<message name="ProcessBillingAccountListRequestMsg">
+		<part name="ProcessBillingAccountListEBM" element="corecustmr:ProcessBillingAccountListEBM"/>
+	</message>-->
+	<message name="ProcessCollectionSharingRespMsg">
+		<part name="ProcessBillingAccountListResponseEBM" element="corecustmr:ProcessBillingAccountListResponseEBM"/>
+	</message>
+	<message name="ProcessCollectionSharingFaultMsg">
+		<part name="Fault" element="corecom:Fault"/>
+	</message>
+
+	<portType name="ProcessCollectionSharingBRMCommsProvABCSImpl">
+                    <operation name="ProcessCollectionSharing">
+                            <documentation>
+                                <svcdoc:Operation>
+                                    <svcdoc:Description>This operation is used to update a CustomerParty object</svcdoc:Description>
+                                    <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+                                    <svcdoc:DisplayName>ProcessCollectionSharing</svcdoc:DisplayName>
+                                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                                    <svcdoc:Scope>Public</svcdoc:Scope>
+                                </svcdoc:Operation>
+                            </documentation>
+                                            <input message="corecustmrabcs:ProcessCollectionSharingReqMsg"/>
+                                     <!--       <output message="corecustmrabcs:ProcessCollectionSharingRespMsg"/>
+                                            <fault name="fault" message="corecustmrabcs:ProcessCollectionSharingFaultMsg"/> -->
+                    </operation>        
+             </portType>
+
+	<plnk:partnerLinkType name="ProcessCollectionSharingBRMCommsProvABCSImpl_pt">
+		<plnk:role name="ProcessCollectionSharingBRMCommsProvABCSImplProvider">
+			<plnk:portType name="corecustmrabcs:ProcessCollectionSharingBRMCommsProvABCSImpl"/>
+		</plnk:role>
+		  <plnk:role name="ProcessCollectionSharingBRMCommsProvABCSImplRequester">
+            <plnk:portType name="corecustmrabcs:ProcessCollectionSharingBRMCommsProvABCSImplCallback"/>
+        </plnk:role>
+	</plnk:partnerLinkType>
+</definitions>

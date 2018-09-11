@@ -1,0 +1,27 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/item/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/item/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="ItemUDA" sdoJava:package="oracle.apps.ego.item.service" sdoJava:instanceClass="oracle.apps.ego.item.service.ItemUDA">
+        <xsd:annotation>
+            <xsd:documentation>Item user defined attributes</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="ExtensionId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ApplicationId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Name" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DataTypeCode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="CharValue" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="NumberValue" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="UomValue" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DateValue" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DatetimeValue" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="RevisionId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="itemUDA" type="ItemUDA" nillable="true"/>
+</xsd:schema>

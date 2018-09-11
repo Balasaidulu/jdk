@@ -1,0 +1,2620 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:pdc="http://xmlns.oracle.com/communications/platform/model/pricing"
+           xmlns:cmn="http://xmlns.oracle.com/communications/platform/model/Common"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jxb="http://java.sun.com/xml/ns/jaxb" jxb:version="1.0"
+           elementFormDefault="unqualified" attributeFormDefault="unqualified"
+           targetNamespace="http://xmlns.oracle.com/communications/platform/model/pricing">
+    <xs:import namespace="http://xmlns.oracle.com/communications/platform/model/Common"
+               schemaLocation="../common/common.xsd"/>
+    <xs:annotation>
+        <xs:documentation>Root for all pricing objects</xs:documentation>
+        <xs:appinfo>
+            <jxb:schemaBindings>
+                <jxb:package name="oracle.communications.brm.pdc.server.pricing.jaxb"/>
+                <jxb:nameXmlTransform>
+                    <jxb:typeName suffix="JXB"/>
+                </jxb:nameXmlTransform>
+            </jxb:schemaBindings>
+        </xs:appinfo>
+    </xs:annotation>
+    <!-- _____________________________________________________________-->
+    <!--                  PricingObjects                              -->
+    <!-- _____________________________________________________________-->
+    <xs:element name="PricingObjectsJXB">
+        <!-- _____________________________________________________________-->
+        <!--                  PricingObjects                              -->
+        <!-- _____________________________________________________________-->
+        <xs:complexType>
+            <xs:annotation>
+                <xs:documentation>Root for all pricing objects</xs:documentation>
+            </xs:annotation>
+            <xs:sequence>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <!-- _________________________________________________________-->
+                    <!--                  PriceModel                              -->
+                    <!-- _________________________________________________________-->
+                    <xs:element name="priceModel" type="pdc:PriceModel" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:choice>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <!-- _____________________________________________________________-->
+                    <!--                  TimeModel                                   -->
+                    <!-- _____________________________________________________________-->
+                    <xs:element name="timeModel" type="pdc:TimeModel" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:choice>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <!-- _____________________________________________________________-->
+                    <!--                  Generic Selector                            -->
+                    <!-- _____________________________________________________________-->
+                    <xs:element name="genericSelector" type="pdc:AttributeAnalyzerModel" minOccurs="0"
+                                maxOccurs="unbounded"/>
+                </xs:choice>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <!-- _____________________________________________________________-->
+                    <!--                  Price Model Selector                        -->
+                    <!-- _____________________________________________________________-->
+                    <xs:element name="priceModelSelector" type="pdc:AttributeAnalyzerModel" minOccurs="0"
+                                maxOccurs="unbounded"/>
+                </xs:choice>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <!-- _____________________________________________________________-->
+                    <!--                  APN selector                                -->
+                    <!-- _____________________________________________________________-->
+                    <xs:element name="apnSelector" type="pdc:AttributeAnalyzerModel" minOccurs="0"
+                                maxOccurs="unbounded"/>
+                </xs:choice>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <!-- _____________________________________________________________-->
+                    <!--                  USC Selector                                -->
+                    <!-- _____________________________________________________________-->
+                    <xs:element name="uscSelector" type="pdc:AttributeAnalyzerModel" minOccurs="0"
+                                maxOccurs="unbounded"/>
+                </xs:choice>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <!-- _____________________________________________________________-->
+                    <!--                  TriggerSpecs                                -->
+                    <!-- _____________________________________________________________-->
+                    <xs:element name="triggerSpec" type="pdc:TriggerSpec" minOccurs="0" maxOccurs="unbounded"/>
+                    <!-- _____________________________________________________________-->
+                    <!--                  ChargeSelectorSpecs                         -->
+                    <!-- _____________________________________________________________-->
+                    <xs:element name="chargeSelectorSpec" type="pdc:ChargeSelectorSpec" minOccurs="0"
+                                maxOccurs="unbounded"/>
+                </xs:choice>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <!-- _____________________________________________________________-->
+                    <!--                  RatePlans                                   -->
+                    <!-- _____________________________________________________________-->
+                    <xs:element name="alterationRatePlan" type="pdc:AlterationRatePlan" minOccurs="0"
+                                maxOccurs="unbounded"/>
+                    <xs:element name="chargeRatePlan" type="pdc:ChargeRatePlan" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element name="distributionRatePlan" type="pdc:DistributionRatePlan" minOccurs="0"
+                                maxOccurs="unbounded"/>
+                    <xs:element name="rolloverRatePlan" type="pdc:RolloverRatePlan" minOccurs="0"
+                                maxOccurs="unbounded"/>
+                </xs:choice>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <!-- _____________________________________________________________-->
+                    <!--                  CRP selector                                -->
+                    <!-- _____________________________________________________________-->
+                    <xs:element name="chargeRateplanSelector" type="pdc:AttributeAnalyzerModel" minOccurs="0"
+                                maxOccurs="unbounded"/>
+                </xs:choice>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <!-- _____________________________________________________________-->
+                    <!--                  ARP selector                                -->
+                    <!-- _____________________________________________________________-->
+                    <xs:element name="alterationRateplanSelector" type="pdc:AttributeAnalyzerModel" minOccurs="0"
+                                maxOccurs="unbounded"/>
+                </xs:choice>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <!-- _____________________________________________________________-->
+                    <!--                     ChargeOffering                           -->
+                    <!-- _____________________________________________________________-->
+                    <xs:element name="chargeOffering" type="pdc:ChargeOffering" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>A ChargeOffering class.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <!-- _____________________________________________________________-->
+                    <!--                     AlterationOffering                       -->
+                    <!-- _____________________________________________________________-->
+                    <xs:element name="alterationOffering" type="pdc:AlterationOffering" minOccurs="0"
+                                maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>An AlterationOffering class.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <!-- _____________________________________________________________-->
+                    <!--                     DistributionOffering                     -->
+                    <!-- _____________________________________________________________-->
+                    <xs:element name="distributionOffering" type="pdc:DistributionOffering" minOccurs="0"
+                                maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>A DistributionOffering class.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:choice>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <!-- _____________________________________________________________-->
+                    <!--                     BundledProductOffering                   -->
+                    <!-- _____________________________________________________________-->
+                    <xs:element name="bundledProductOffering" type="pdc:BundledProductOffering" minOccurs="0"
+                                maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>A BundledProductOffering</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:choice>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <!-- _____________________________________________________________-->
+                    <!--                  Package                                     -->
+                    <!-- _____________________________________________________________-->
+                    <xs:element name="package" type="pdc:Package" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>A Package</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:choice>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <!-- _____________________________________________________________-->
+                    <!--                  PackageList                                 -->
+                    <!-- _____________________________________________________________-->
+                    <xs:element name="packageList" type="pdc:PackageList" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>A PackageList</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <!-- _____________________________________________________________-->
+                    <!--                     BestPricing                              -->
+                    <!-- _____________________________________________________________-->
+                    <xs:element name="bestPricing" type="pdc:BestPricing" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>A BestPricing class.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <!-- _____________________________________________________________-->
+                    <!--               BundledProductOfferingDependency               -->
+                    <!-- _____________________________________________________________-->
+                    <xs:element name="bundledProductOfferingDependency" type="pdc:BundledProductOfferingDependency"
+                                minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>A BundledProductOfferingDependency class.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <!-- _____________________________________________________________-->
+                    <!--                     PackageExclusion                         -->
+                    <!-- _____________________________________________________________-->
+                    <xs:element name="packageExclusion" type="pdc:PackageExclusion" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>A PackageExclusion class.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <!-- _____________________________________________________________-->
+                    <!--                 AlterationOfferingExclusion                  -->
+                    <!-- _____________________________________________________________-->
+                    <xs:element name="alterationOfferingExclusion" type="pdc:AlterationOfferingExclusion" minOccurs="0"
+                                maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>A AlterationOfferingExclusion class.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <!-- _____________________________________________________________-->
+                    <!--                     PackageTransition                        -->
+                    <!-- _____________________________________________________________-->
+                    <xs:element name="packageTransition" type="pdc:PackageTransition" minOccurs="0"
+                                maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>A PackageTransition class.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <!-- _____________________________________________________________-->
+                    <!--              BundledProductOfferingTransition                -->
+                    <!-- _____________________________________________________________-->
+                    <xs:element name="bundledProductOfferingTransition" type="pdc:BundledProductOfferingTransition"
+                                minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>A BundledProductOfferingTransition class.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:choice>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- _____________________________________________________________-->
+    <!--                     PriceModel                               -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="PriceModel" abstract="false">
+        <xs:annotation>
+            <xs:documentation>PriceModel</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:APricingObject">
+                <xs:sequence>
+                    <xs:choice id="PopModelInPriceModel">
+                        <xs:element name="alterationPopModel" type="pdc:AlterationPopModel"/>
+                        <xs:element name="oneTimePopModel" type="pdc:OneTimePopModel"/>
+                        <xs:element name="recurringPopModel" type="pdc:RecurringPopModel"/>
+                        <xs:element name="replacementPopModel" type="pdc:ReplacementPopModel"/>
+                        <xs:element name="rolloverPopModel" type="pdc:RolloverPopModel"/>
+                        <xs:element name="usageChargePopModel" type="pdc:UsageChargePopModel"/>
+                    </xs:choice>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     OneTimeChargePop                         -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="OneTimeChargePop" abstract="false">
+        <xs:annotation>
+            <xs:documentation>An OneTimeChargeProdOfferPriceCharge.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:AProdOfferPriceCharge"></xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     FixedChargePop                           -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="FixedChargePop" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A FixedProdOfferPriceCharge.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:AProdOfferPriceCharge"></xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     ScaledChargePop                          -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ScaledChargePop" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A ScaledProdOfferPriceCharge.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:AProdOfferPriceCharge">
+                <xs:sequence>
+                    <xs:element name="incrementStep" type="xs:int" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="incrementRounding" type="cmn:IncrementRounding" minOccurs="0" maxOccurs="1"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     RecurringChargePop                       -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="RecurringChargePop" abstract="false">
+        <xs:annotation>
+            <xs:documentation>An RecurringChargeProdOfferPriceCharge.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:AProdOfferPriceCharge">
+                <xs:sequence>
+                    <xs:element name="proratable" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     FixedProdOfferPriceAlteration            -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="FixedAlterationPop" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A FixedProdOfferPriceAlteration.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:AProdOfferPriceAlteration">
+                <xs:sequence>
+                    <xs:element name="incrementStep" type="xs:int"/>
+                    <xs:element name="prorateLastIncrementStep" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     PercentProdOfferPriceAlteration          -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="PercentAlterationPop" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A PercentProdOfferPriceAlteration.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:AProdOfferPriceAlteration"></xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     ProdOfferPriceRollover                   -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="RolloverPop" abstract="false">
+        <xs:annotation>
+            <xs:documentation>Rollover Pop charge definition</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="glid" type="xs:int" minOccurs="0" maxOccurs="1"/>
+            <!--xs:element name="price" type="xs:double"/-->
+            <xs:element name="unitOfMeasure" type="cmn:RolloverUnitOfMeasure"/>
+            <xs:element name="balanceElementNumCode" type="xs:long"/>
+            <xs:element name="rolloverUnits" type="xs:double"/>
+            <xs:element name="rolloverMaxUnits" type="xs:double"/>
+            <xs:element name="rolloverCount" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     Replacement Pop                          -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ReplacementPop" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A ProdOfferPriceReplacement.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="glid" type="xs:int" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="type" type="cmn:ReplacementType"/>
+            <xs:element name="taxTime" type="cmn:TaxTime" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="taxCode" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="price" type="xs:double"/>
+            <xs:element name="balanceElementNumCode" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     AProdOfferPriceCharge                    -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AProdOfferPriceCharge" abstract="true">
+        <xs:annotation>
+            <xs:documentation>A ProdOfferPriceCharge.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:AComponentProdOfferPrice">
+                <xs:sequence>
+                    <xs:element name="discountable" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="priceType" type="cmn:PriceType" minOccurs="1" maxOccurs="1"/>
+                    <xs:element name="taxTime" type="cmn:TaxTime" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="taxCode" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="glid" type="xs:int" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="priceValidity" type="pdc:PriceValidity" minOccurs="0" maxOccurs="1"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     AProdOfferPriceAlteration                -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AProdOfferPriceAlteration" abstract="true">
+        <xs:annotation>
+            <xs:documentation>A ProdOfferPriceAlteration.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:AComponentProdOfferPrice">
+                <xs:sequence>
+                    <xs:element name="alterationAppliesTo" type="cmn:AlterationRecipientType"/>
+                    <xs:element name="alterationBasedOn" type="pdc:AlterationBasisExpression"/>
+                    <xs:element name="priceType" type="cmn:PriceType"/>
+                    <xs:element name="taxTime" type="cmn:TaxTime" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="taxCode" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="glid" type="xs:int" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="priceValidity" type="pdc:PriceValidity" minOccurs="0" maxOccurs="1"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  AComponentProdOfferPrice                    -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AComponentProdOfferPrice">
+        <xs:sequence>
+            <xs:element name="price" type="xs:double"/>
+            <xs:element name="unitOfMeasure" type="cmn:UnitOfMeasure"/>
+            <xs:element name="balanceElementNumCode" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  RumChargeTierExpression                    -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="RumChargeTierExpression">
+        <xs:sequence/>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  BalanceChargeTierExpression                    -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="BalanceChargeTierExpression">
+        <xs:sequence>
+            <xs:element name="balanceElementNumCode" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  ChargeTierExpression                    -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ChargeTierExpression">
+        <xs:sequence>
+            <xs:choice id="chargeTierExpression">
+                <xs:element name="rumTierExpression" type="pdc:RumChargeTierExpression"/>
+                <xs:element name="balanceTierExpression" type="pdc:BalanceChargeTierExpression"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  QuantityAlterationBasisExpression                    -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="QuantityAlterationBasisExpression">
+        <xs:sequence>
+            <xs:element name="useTierComponent" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  BalanceAlterationBasisExpression                    -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="BalanceAlterationBasisExpression">
+        <xs:sequence>
+            <xs:element name="balanceElementNumCode" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  ChargeAlterationBasisExpression                    -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ChargeAlterationBasisExpression">
+        <xs:sequence>
+            <xs:element name="useTierComponent" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  CustomAlterationBasisExpression                    -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="CustomAlterationBasisExpression">
+        <xs:sequence>
+            <xs:element name="functionName" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  NumberAlterationBasisExpression                    -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="NumberAlterationBasisExpression">
+        <xs:sequence>
+            <xs:element name="value" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  BinaryAlterationBasisExpression                    -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="BinaryAlterationBasisExpression">
+        <xs:sequence>
+            <xs:element name="binaryOperator" type="xs:string"/>
+            <xs:element name="leftOperand" type="pdc:AlterationBasisExpression"/>
+            <xs:element name="rightOperand" type="pdc:AlterationBasisExpression"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  BalanceAlterationTBExpression                    -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="BalanceAlterationTBExpression">
+        <xs:sequence>
+            <xs:element name="balanceElementNumCode" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  BinaryAlterationTBExpression                -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="BinaryAlterationTBExpression">
+        <xs:sequence>
+            <xs:element name="binaryOperator" type="xs:string"/>
+            <xs:element name="leftOperand" type="pdc:AlterationTierBoundExpression"/>
+            <xs:element name="rightOperand" type="pdc:AlterationTierBoundExpression"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  NumberAlterationTBExpression                    -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="NumberAlterationTBExpression">
+        <xs:sequence>
+            <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  CustomAlterationTBExpression                    -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="CustomAlterationTBExpression">
+        <xs:sequence>
+            <xs:element name="functionName" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  AlterationTierExpression                    -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AlterationTierExpression">
+        <xs:sequence>
+            <xs:choice id="alterationTierExpression">
+                <xs:element name="quantityTierExpression" type="pdc:QuantityAlterationBasisExpression"/>
+                <xs:element name="balanceTierExpression" type="pdc:BalanceAlterationBasisExpression"/>
+                <xs:element name="chargeTierExpression" type="pdc:ChargeAlterationBasisExpression"/>
+                <xs:element name="customTierExpression" type="pdc:CustomAlterationBasisExpression"/>
+                <xs:element name="binaryTierExpression" type="pdc:BinaryAlterationBasisExpression"/>
+                <xs:element name="numberTierExpression" type="pdc:NumberAlterationBasisExpression"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  AlterationBasisExpression                    -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AlterationBasisExpression">
+        <xs:sequence>
+            <xs:choice id="alterationBasisExpression">
+                <xs:element name="quantityBasisExpression" type="pdc:QuantityAlterationBasisExpression"/>
+                <xs:element name="balanceBasisExpression" type="pdc:BalanceAlterationBasisExpression"/>
+                <xs:element name="chargeBasisExpression" type="pdc:ChargeAlterationBasisExpression"/>
+                <xs:element name="customBasisExpression" type="pdc:CustomAlterationBasisExpression"/>
+                <xs:element name="numberBasisExpression" type="pdc:NumberAlterationBasisExpression"/>
+                <xs:element name="binaryBasisExpression" type="pdc:BinaryAlterationBasisExpression"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  AlterationTierBoundExpression                    -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AlterationTierBoundExpression">
+        <xs:sequence>
+            <xs:choice id="alterationTBExpression">
+                <xs:element name="numberTBExpression" type="pdc:NumberAlterationTBExpression"/>
+                <xs:element name="balanceTBExpression" type="pdc:BalanceAlterationTBExpression"/>
+                <xs:element name="customTBExpression" type="pdc:CustomAlterationTBExpression"/>
+                <xs:element name="binaryTBExpression" type="pdc:BinaryAlterationTBExpression"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  NumberChargeTBExpr                          -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="NumberChargeTBExpression">
+        <xs:sequence>
+            <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  ChargeTierBoundExpression                    -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ChargeTierBoundExpression">
+        <xs:sequence>
+            <xs:choice id="chargeTierBoundExpression">
+                <xs:element name="numberTBExpression" type="pdc:NumberChargeTBExpression"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     APriceTier                               -->
+    <!-- _____________________________________________________________-->
+    <!--For TierBasis- Possible values are USAGEQTY, RESOURCE(Balance Element numeric code),RUMQTY -->
+    <xs:complexType name="APriceTier" abstract="true">
+        <xs:annotation>
+            <xs:documentation>A PriceTier.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="distributionMethod" type="cmn:DistributionMethod"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  PriceValidity                               -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="PriceValidity">
+        <xs:sequence>
+            <xs:element name="startValidityMode" type="cmn:StartValidityMode" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="endValidityMode" type="cmn:EndValidityMode" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="validityRange" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="relativeStartOffset" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="relativeEndOffset" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="relativeStartOffsetUnit" type="cmn:OffsetUnit" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="relativeEndOffsetUnit" type="cmn:OffsetUnit" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     AlterationPopModel                       -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AlterationPopModel" abstract="false">
+        <xs:annotation>
+            <xs:documentation>An AlterationProdOfferPriceModel.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:APopModel">
+                <xs:sequence>
+                    <xs:element name="priceTier" type="pdc:AlterationPriceTier"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     AlterationPriceTier                      -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AlterationPriceTier" abstract="false">
+        <xs:annotation>
+            <xs:documentation>An AlterationPriceTier.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:APriceTier">
+                <xs:sequence>
+                    <xs:element name="tierBasis" type="pdc:AlterationTierExpression"/>
+                    <xs:element name="lowerBound" type="pdc:AlterationTierBoundExpression"/>
+                    <xs:element name="tierRange" type="pdc:AlterationPriceTierRange" minOccurs="1"
+                                maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  AlterationPriceTierRange                    -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AlterationPriceTierRange">
+        <xs:sequence>
+            <xs:element name="upperBound" type="pdc:AlterationTierBoundExpression"/>
+            <xs:element name="fixedAlteration" type="pdc:FixedAlterationPop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="percentAlteration" type="pdc:PercentAlterationPop" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     OneTimeProdOfferPriceModel               -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="OneTimePopModel" abstract="false">
+        <xs:annotation>
+            <xs:documentation>An OneTimeProdOfferPriceModel.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:APopModel">
+                <xs:sequence>
+                    <xs:element name="priceTier" type="pdc:OneTimePriceTier"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  OneTimePriceTier                            -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="OneTimePriceTier">
+        <xs:sequence>
+            <xs:element name="lowerBound" type="xs:string"/>
+            <xs:element name="tierBasis" type="pdc:ChargeTierExpression"/>
+            <xs:element name="rumName" type="xs:string"/>
+            <xs:element name="enforceCreditLimit" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="tierRange" type="pdc:OneTimePriceTierRange" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  OneTimePriceTierRange                       -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="OneTimePriceTierRange">
+        <xs:sequence>
+            <xs:element name="upperBound" type="xs:string"/>
+            <xs:element name="oneTimeCharge" type="pdc:OneTimeChargePop" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     RecurringProdOfferPriceModel             -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="RecurringPopModel" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A RecurringProdOfferPriceModel.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:APopModel">
+                <xs:sequence>
+                    <xs:element name="priceTier" type="pdc:RecurringPriceTier"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  RecurringPriceTier                          -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="RecurringPriceTier">
+        <xs:sequence>
+            <xs:element name="lowerBound" type="xs:string"/>
+            <xs:element name="tierBasis" type="pdc:ChargeTierExpression"/>
+            <xs:element name="rumName" type="xs:string"/>
+            <xs:element name="enforceCreditLimit" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="tierRange" type="pdc:RecurringPriceTierRange" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  RecurringPriceTierRange                     -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="RecurringPriceTierRange">
+        <xs:sequence>
+            <xs:element name="upperBound" type="xs:string"/>
+            <xs:element name="recurringCharge" type="pdc:RecurringChargePop" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     ReplacementProdOfferPriceModel           -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ReplacementPopModel" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A ReplacementProdOfferPriceModel.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:APopModel">
+                <xs:sequence>
+                    <xs:element name="replacementCharge" type="pdc:ReplacementPop"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     RolloverProdOfferPriceModel              -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="RolloverPopModel" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A RolloverProdOfferPriceModel.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:APopModel">
+                <xs:sequence>
+                    <xs:element name="rolloverCharge" type="pdc:RolloverPop" minOccurs="1" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     UsageChargeProdOfferPriceModel           -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="UsageChargePopModel" abstract="false">
+        <xs:annotation>
+            <xs:documentation>An UsageChargeProdOfferPriceModel.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:APopModel">
+                <xs:sequence>
+                    <xs:element name="priceTier" type="pdc:ChargePriceTier" minOccurs="1" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     ChargePriceTier                          -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ChargePriceTier" abstract="false">
+        <xs:annotation>
+            <xs:documentation>Defines Price Tiers for Usage charges</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:APriceTier">
+                <xs:sequence>
+                    <xs:element name="tierBasis" type="pdc:ChargeTierExpression" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="enforceCreditLimit" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="rumName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                    <xs:element name="priceTierValidityPeriod" type="pdc:PriceTierValidityPeriod" minOccurs="1"
+                                maxOccurs="unbounded"/>
+                    <xs:element name="applicableQuantity" type="cmn:ApplicableQuantity" minOccurs="1" maxOccurs="1"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     PriceTierValidityPeriod                  -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="PriceTierValidityPeriod" abstract="false">
+        <xs:annotation>
+            <xs:documentation>Defines Validity based Tiers</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="minimumCharge" type="pdc:MinimumCharge" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="lowerBound" type="xs:string"/>
+            <xs:element name="validFrom" type="xs:string"/>
+            <xs:element name="priceTierRange" type="pdc:ChargePriceTierRange" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     Minimum Charge                           -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="MinimumCharge" abstract="false">
+        <xs:annotation>
+            <xs:documentation>Defines Minimum charge configuration</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="value" type="xs:double"/>
+            <xs:element name="balanceElementNumCode" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  ChargePriceTierRange                             -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ChargePriceTierRange">
+        <xs:sequence>
+            <xs:element name="upperBound" type="xs:string"/>
+            <xs:element name="fixedCharge" type="pdc:FixedChargePop" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="scaledCharge" type="pdc:ScaledChargePop" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     AttributeAnalyzerModel                   -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AttributeAnalyzerModel" abstract="false">
+        <xs:annotation>
+            <xs:documentation>An AttributeAnalyzerModel.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:APricingObject">
+                <xs:sequence>
+                    <xs:element name="stereoType" type="cmn:AAStereoType" minOccurs="1" maxOccurs="1"/>
+                    <xs:element name="productSpecName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="eventSpecName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="customerSpecName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="validityPeriod" type="pdc:AAValidityPeriod" minOccurs="1" maxOccurs="unbounded"/>
+                    <xs:element name="modelData" type="pdc:AAModelData" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  AAModelData                                  -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AAModelData">
+        <xs:sequence>
+            <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="key" type="xs:string"/>
+            <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  AAValidityPeriod                            -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AAValidityPeriod">
+        <xs:sequence>
+            <xs:element name="validFrom" type="xs:string"/>
+            <xs:element name="rule" type="pdc:AARule" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  AARule                                      -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AARule">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" minOccurs="0"/>
+            <xs:element name="ruleData" type="pdc:AARuleData" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="result" type="pdc:AAResult" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element name="namedResultExpression" type="pdc:NamedResultExpression" minOccurs="0"
+                        maxOccurs="unbounded"/>
+            <xs:element name="customExpression" type="pdc:CustomExpression" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="fieldToValueExpression" type="pdc:FieldToValueExpression" minOccurs="0"
+                        maxOccurs="unbounded"/>
+            <xs:element name="fieldToFieldExpression" type="pdc:FieldToFieldExpression" minOccurs="0"
+                        maxOccurs="unbounded"/>
+            <xs:element name="zoneValueExpression" type="pdc:ZoneValueExpression" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="crSelectorExpression" type="pdc:CRSelectorExpression" minOccurs="0"
+                        maxOccurs="unbounded"/>
+            <xs:element name="complexAAExpression" type="pdc:ComplexAAExpression" minOccurs="0" maxOccurs="unbounded"/>
+            <!--xs:element name="attributeAnalyzerExpressions" type="pdc:AttributeAnalyzerExpressions" minOccurs="0"
+                        maxOccurs="unbounded"/-->
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     AAttributeAnalyzerExpression                      -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AttributeAnalyzerExpressions">
+        <xs:annotation>
+            <xs:documentation>A AttributeAnalyzerExpressions.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:choice>
+                <xs:element name="namedResultExpression" type="pdc:NamedResultExpression"/>
+                <xs:element name="customExpression" type="pdc:CustomExpression"/>
+                <xs:element name="fieldToValueExpression" type="pdc:FieldToValueExpression"/>
+                <xs:element name="fieldToFieldExpression" type="pdc:FieldToFieldExpression"/>
+                <xs:element name="zoneValueExpression" type="pdc:ZoneValueExpression"/>
+                <xs:element name="crSelectorExpression" type="pdc:CRSelectorExpression"/>
+                <xs:element name="complexAAExpression" type="pdc:ComplexAAExpression"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  AARuleData                                  -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AARuleData">
+        <xs:sequence>
+            <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="key" type="xs:string"/>
+            <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  AAResult                                    -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AAResult">
+        <xs:sequence>
+            <xs:element name="resultName" type="xs:string"/>
+            <xs:element name="resultData" type="pdc:AAResultData" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  AAResultData                                -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AAResultData">
+        <xs:sequence>
+            <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="key" type="xs:string"/>
+            <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  AAttributeAnalyzerExpression                -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AAttributeAnalyzerExpression" abstract="true"></xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     CustomExpression                         -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="CustomExpression" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A CustomExpression.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:AAttributeAnalyzerExpression">
+                <xs:sequence>
+                    <xs:element name="functionName" type="xs:string"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     NamedResultExpression                     -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="NamedResultExpression" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A NamedResultExpression.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:AAttributeAnalyzerExpression">
+                <xs:sequence>
+                    <xs:element name="namedResult" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     AFieldExpression                         -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AFieldExpression" abstract="true">
+        <xs:annotation>
+            <xs:documentation>An AFieldExpression.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:AAttributeAnalyzerExpression">
+                <xs:sequence>
+                    <xs:element name="operation" type="cmn:Operator"/>
+                    <xs:element name="seperator" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     ZoneValueExpression                      -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ZoneValueExpression" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A ZoneValueExpression.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:AFieldExpression">
+                <xs:sequence>
+                    <xs:choice id="zoneMapOrModel">
+                        <xs:element name="zoneMapName" type="xs:string"/>
+                        <xs:element name="zoneModelName" type="xs:string"/>
+                    </xs:choice>
+                    <xs:element name="zoneFieldName" type="xs:string"/>
+                    <xs:element name="zoneValue" type="xs:string"/>
+                    <xs:element name="fieldKind" type="cmn:FieldKind"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     FieldToFieldExpression                   -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="FieldToFieldExpression" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A FieldToFieldExpression.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:AFieldExpression">
+                <xs:sequence>
+                    <xs:element name="lhsFieldName" type="xs:string"/>
+                    <xs:element name="rhsFieldName" type="xs:string"/>
+                    <xs:element name="lhsFieldKind" type="cmn:FieldKind"/>
+                    <xs:element name="rhsFieldKind" type="cmn:FieldKind"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     FieldToValueExpression                   -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="FieldToValueExpression" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A FieldToValueExpression.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:AFieldExpression">
+                <xs:sequence>
+                    <xs:element name="fieldName" type="xs:string"/>
+                    <xs:element name="fieldValue" type="xs:string"/>
+                    <xs:element name="fieldKind" type="cmn:FieldKind"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     CRSelectorExpression                     -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="CRSelectorExpression" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A CustomRule Selector Expression.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:AAttributeAnalyzerExpression">
+                <xs:sequence>
+                    <xs:element name="leftOperand" type="xs:string" minOccurs="0"/>
+                    <xs:element name="rightOperand" type="xs:string"/>
+                    <xs:element name="operator" type="cmn:LogicalOperator" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     ComplexAAExpression                      -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ComplexAAExpression" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A Complex AA Expression.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:AAttributeAnalyzerExpression">
+                <xs:sequence>
+                    <xs:element name="leftOperand" type="pdc:AttributeAnalyzerExpressions" minOccurs="0"/>
+                    <xs:element name="rightOperand" type="pdc:AttributeAnalyzerExpressions"/>
+                    <xs:element name="operator" type="cmn:LogicalOperator" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     TimeModel                                -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="TimeModel" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A TimeModel.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:APricingObject">
+                <xs:sequence>
+                    <xs:element name="holidayCalendarName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="validityPeriod" type="pdc:TimeModelValidityPeriod" minOccurs="1"
+                                maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  TimeModelValidityPeriod                           -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="TimeModelValidityPeriod">
+        <xs:sequence>
+            <xs:element name="validFrom" type="xs:string"/>
+            <xs:element name="timeModelTag" type="pdc:TimeModelTag" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  TimeModelTag                                 -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="TimeModelTag">
+        <xs:sequence>
+            <xs:element name="tagName" type="xs:string"/>
+            <xs:element name="timeSpecification" type="pdc:TimeSpec" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     TimeSpec                                 -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="TimeSpec" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A Timespec.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="timeOfDay" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="daysOfWeek" type="pdc:daysOfWeek" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="monthsOfYear" type="pdc:monthsOfYear" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="daysOfMonth" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="holiday" type="xs:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     DaysOfWeek                               -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="daysOfWeek" abstract="false">
+        <xs:sequence minOccurs="1">
+            <xs:element name="day" type="cmn:DayOfWeekEnum" minOccurs="1" maxOccurs="7"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     MonthsOfYear                               -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="monthsOfYear" abstract="false">
+        <xs:sequence>
+            <xs:element name="month" type="cmn:MonthOfYearEnum" minOccurs="1" maxOccurs="12"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     DaysOfMonth                               -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="daysOfMonth">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="((([0]?)[1-9])|[1][0-9]|[2][0-9]|[3][0-1])(,([ ])*((([0])?[1-9])|[1][0-9]|[2][0-9]|[3][0-1]))*"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  NextElement                                 -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="nextElement">
+        <xs:sequence>
+            <xs:group ref="pdc:alterationNextElement"/>
+            <xs:group ref="pdc:chargeRateNextElement"/>
+            <xs:group ref="pdc:distributionNextElement"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                 ChargeRateNextElement  GROUP                -->
+    <!-- _____________________________________________________________-->
+    <xs:group name="chargeRateNextElement">
+        <xs:choice>
+            <xs:element name="subscriberCurrency" type="pdc:ChargeRateSubscriberCurrencyRPE" maxOccurs="unbounded"/>
+            <xs:element name="applicableRum" type="pdc:ApplicableRumRPEBranch" maxOccurs="unbounded"/>
+            <xs:element name="genericSelector" type="pdc:GenericSelectorRPE" maxOccurs="unbounded"/>
+            <xs:element name="crpDateRange" type="pdc:ChargeRateDateRange" maxOccurs="unbounded"/>
+            <xs:element name="crpRelDateRange" type="pdc:ChargeRateRelDateRange" maxOccurs="unbounded"/>
+            <xs:element name="crpAttributeAnalyzerModel" type="pdc:CRAttributeAnalyzerRPE" maxOccurs="unbounded"/>
+            <xs:element name="zoneModel" type="pdc:ZoneModelRPE" maxOccurs="unbounded"/>
+            <xs:element name="enhancedZoneModel" type="pdc:EnhancedZoneRPE" maxOccurs="unbounded"/>
+            <xs:element name="crpCompositePopModel" type="pdc:CompositePopModelRPE"/>
+            <xs:element name="timeConfiguration" type="pdc:ChargeRateTimeRPE" maxOccurs="unbounded"/>
+        </xs:choice>
+    </xs:group>
+    <!-- _____________________________________________________________-->
+    <!--                     ALTERATION                               -->
+    <!-- _____________________________________________________________-->
+    <!-- _____________________________________________________________-->
+    <!--                  AlterationNextElement  GROUP                -->
+    <!-- _____________________________________________________________-->
+    <xs:group name="alterationNextElement">
+        <xs:choice>
+            <xs:element name="arpDateRange" type="pdc:AlterationDateRangeRPEBranch" maxOccurs="unbounded"/>
+            <xs:element name="alterationConfiguration" type="pdc:AlterationRPEBranch" maxOccurs="unbounded"/>
+            <xs:element name="arpCompositePopModel" type="pdc:CompositePopModelRPE"/>
+        </xs:choice>
+    </xs:group>
+    <!-- _____________________________________________________________-->
+    <!--                     AlterationRPE                -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AlterationRPE" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A AlterationRPE.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlanElement">
+                <xs:sequence>
+                    <xs:element name="branches" type="pdc:AlterationRPEBranch" minOccurs="1" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     AlterationRPEBranch                  -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AlterationRPEBranch" abstract="false">
+        <xs:annotation>
+            <xs:documentation>An AlterationRPE Branch.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlanElementBranch">
+                <xs:sequence>
+                    <xs:element name="applicableChargeAndQuantity" type="cmn:ApplicableChargeAndQuantity"/>
+                    <xs:element name="triggerSpecName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="chargeSelectorSpecName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:group ref="pdc:alterationNextElement"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     DISTRIBUTION                               -->
+    <!-- _____________________________________________________________-->
+    <!-- _____________________________________________________________-->
+    <!--                  DistributionNextElement  GROUP                -->
+    <!-- _____________________________________________________________-->
+    <xs:group name="distributionNextElement">
+        <xs:choice>
+            <xs:element name="drpDateRange" type="pdc:DistributionDateRangeRPEBranch" maxOccurs="unbounded"/>
+            <xs:element name="distributionConfiguration" type="pdc:DistributionRPEBranch" maxOccurs="unbounded"/>
+            <xs:element name="drpCompositePopModel" type="pdc:CompositePopModelRPE"/>
+        </xs:choice>
+    </xs:group>
+    <!-- _____________________________________________________________-->
+    <!--                     DistributionRPE                -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="DistributionRPE" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A DtstributionRPE.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlanElement">
+                <xs:sequence>
+                    <xs:element name="branches" type="pdc:DistributionRPEBranch" minOccurs="1" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     DistributionRPEBranch                  -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="DistributionRPEBranch" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A DistributionRPE Branch.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlanElementBranch">
+                <xs:sequence>
+                    <xs:element name="triggerSpecName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="chargeSelectorSpecName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:group ref="pdc:distributionNextElement"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     CRAttributeAnalyzerRPE         -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="CRAttributeAnalyzerRPE" abstract="false">
+        <xs:annotation>
+            <xs:documentation>An AttributeAnalyzerRPE.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlanElementBranch">
+                <xs:sequence>
+                    <xs:element name="stereoType" type="cmn:AAStereoType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="attributeAnalyzerModelName" type="xs:string"/>
+                    <!--<xs:element name="results"
+                                type="pdc:AttributeAnalyzerResults"
+                                minOccurs="1" maxOccurs="unbounded"/>-->
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     GenericSelectorRPE                       -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="GenericSelectorRPE" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A GenericSelector RatePlanElement.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlanElement">
+                <xs:sequence>
+                    <xs:element name="genericSelectorName" type="xs:string"/>
+                    <xs:element name="results" type="pdc:AttributeAnalyzerResults" minOccurs="1" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     DATERANGE                                -->
+    <!-- _____________________________________________________________-->
+    <!-- _____________________________________________________________-->
+    <!--                     AlterationDateRangeRPE                   -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AlterationDateRangeRPE" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A DateRangeRPE for Alteration rateplan.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="branches" type="pdc:AlterationDateRangeRPEBranch" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     DistributionDateRangeRPEBranch             -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="DistributionDateRangeRPEBranch" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A DateRangeRPEBranch for the Distribution rate plan.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlanElementBranch">
+                <xs:sequence>
+                    <xs:element name="startDate" type="xs:string"/>
+                    <xs:element name="endDate" type="xs:string"/>
+                    <xs:group ref="pdc:distributionNextElement"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     AlterationDateRangeRPEBranch             -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AlterationDateRangeRPEBranch" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A DateRangeRPEBranch for the Alteration rate plan.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlanElementBranch">
+                <xs:sequence>
+                    <xs:element name="startDate" type="xs:string"/>
+                    <xs:element name="endDate" type="xs:string"/>
+                    <xs:group ref="pdc:alterationNextElement"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  RolloverRateDateRange                  -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="RolloverRateDateRange" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A DateRangeRPEBranch.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlanElementBranch">
+                <xs:sequence>
+                    <xs:element name="startDate" type="xs:string"/>
+                    <xs:element name="endDate" type="xs:string"/>
+                    <xs:element name="rolloverPopModel" type="pdc:RolloverPopModel"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  ChargeRateDateRange                         -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ChargeRateDateRange" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A DateRangeRPEBranch for ChargeRatePlans.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlanElementBranch">
+                <xs:sequence>
+                    <xs:element name="absoluteDateRange" type="pdc:CRAbsoluteDateRange"/>
+                    <xs:group ref="pdc:chargeRateNextElement"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  CRAbsoluteDateRange                         -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="CRAbsoluteDateRange" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A DateRangeRPE for the Charge rate plan.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="startDate" type="xs:string"/>
+            <xs:element name="endDate" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  ChargeRateRelDateRange                  -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ChargeRateRelDateRange" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A DateRangeRPEBranch for ChargeRatePlans.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlanElementBranch">
+                <xs:sequence>
+                    <xs:choice id="dateRangeInCRPDateRange">
+                        <xs:element name="absoluteDateRange" type="pdc:CRAbsoluteDateRange"/>
+                        <xs:element name="relativeDateRange" type="cmn:RelativeDateRange"/>
+                    </xs:choice>
+                    <xs:group ref="pdc:chargeRateNextElement"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     DateRangeRPEBranch                   -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="DateRangeRPEBranch" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A DateRangeRPEBranch.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlanElementBranch">
+                <xs:choice id="dateRangeInDRRPEBranch">
+                    <xs:element name="absoluteDateRange" type="cmn:AbsoluteDateRange"/>
+                </xs:choice>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     RelDateRangeRPEBranch                   -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="RelDateRangeRPEBranch" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A Relative DateRangeRPEBranch.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlanElementBranch">
+                <xs:choice id="dateRangeInRelDRRPEBranch">
+                    <xs:element name="absoluteDateRange" type="cmn:AbsoluteDateRange"/>
+                    <xs:element name="relativeDateRange" type="cmn:RelativeDateRange"/>
+                </xs:choice>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     POPMODEL                                 -->
+    <!-- _____________________________________________________________-->
+    <!-- _____________________________________________________________-->
+    <!--                     AlterationPopModelRPE                    -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AlterationPopModelRPE" abstract="false">
+        <xs:annotation>
+            <xs:documentation>An AlterationPopModelRPE.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlanElement">
+                <xs:sequence>
+                    <xs:element name="alterationPopModelName" type="xs:string"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     CompositePopModelRPE         -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="CompositePopModelRPE" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A rateplan element that directly composes an APopModel.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlanElement">
+                <xs:sequence>
+                    <xs:choice id="PopModelInCompRPE">
+                        <xs:element name="alterationPopModel" type="pdc:AlterationPopModel"/>
+                        <xs:element name="oneTimePopModel" type="pdc:OneTimePopModel"/>
+                        <xs:element name="recurringPopModel" type="pdc:RecurringPopModel"/>
+                        <xs:element name="replacementPopModel" type="pdc:ReplacementPopModel"/>
+                        <xs:element name="rolloverPopModel" type="pdc:RolloverPopModel"/>
+                        <xs:element name="usageChargePopModel" type="pdc:UsageChargePopModel"/>
+                    </xs:choice>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     SUBSCRIBERCURRENCY                       -->
+    <!-- _____________________________________________________________-->
+    <!-- _____________________________________________________________-->
+    <!--                     ChargeRateSubscriberCurrencyRPE        -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ChargeRateSubscriberCurrencyRPE" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A SubscriberCurrencyRPE.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlanElementBranch">
+                <xs:sequence>
+                    <xs:element name="currencyCode" type="xs:string"/>
+                    <xs:group ref="pdc:chargeRateNextElement"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     TIME                                     -->
+    <!-- _____________________________________________________________-->
+    <!-- _____________________________________________________________-->
+    <!--                     ChargeRateTimeRPE                     -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ChargeRateTimeRPE" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A TimeModel.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlanElementBranch">
+                <xs:sequence>
+                    <xs:element name="timeModelName" type="xs:string" maxOccurs="1"/>
+                    <xs:element name="tags" type="pdc:TimeTags" minOccurs="1" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  TimeTags                          -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="TimeTags">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:group ref="pdc:chargeRateNextElement"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     ZONEMODEL                                -->
+    <!-- _____________________________________________________________-->
+    <!-- _____________________________________________________________-->
+    <!--                     ZoneModelRPE                 -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ZoneModelRPE" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A ZoneModelRatePlanElement.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlanElementBranch">
+                <xs:sequence>
+                    <xs:element name="zoneModelName" type="xs:string"/>
+                    <xs:element name="results" type="pdc:ZoneResults" minOccurs="1" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     EnhancedZoneRPE                 -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="EnhancedZoneRPE" abstract="false">
+        <xs:annotation>
+            <xs:documentation>An EnhancedZoneRatePlanElement.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlanElementBranch">
+                <xs:sequence>
+                    <xs:element name="zoneModelName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                    <xs:element name="uscModelName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="apnModelName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="results" type="pdc:ZoneResults" minOccurs="1" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     ApplicableRumRPE                         -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ApplicableRumRPE" abstract="false">
+        <xs:annotation>
+            <xs:documentation>An applicable RUM set rateplan element.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlanElement">
+                <xs:sequence>
+                    <xs:element name="branches" type="pdc:ApplicableRumRPEBranch" minOccurs="1" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     ApplicableRumRPEBranch                   -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ApplicableRumRPEBranch" abstract="false">
+        <xs:annotation>
+            <xs:documentation>An applicable RUM set rateplan element branch.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlanElementBranch">
+                <xs:sequence>
+                    <xs:element name="applicableRumName" type="xs:string"/>
+                    <xs:element name="minQuantity" type="xs:double"/>
+                    <xs:element name="minQuantityUnit" type="cmn:RumQuantityUnit"/>
+                    <xs:element name="incrementQuantity" type="xs:double"/>
+                    <xs:element name="incrementQuantityUnit" type="cmn:RumQuantityUnit"/>
+                    <xs:element name="roundingMode" type="cmn:RoundingMode">
+                        <xs:annotation>
+                            <xs:documentation>Specifies how RUM quantity is rounded.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:group ref="pdc:chargeRateNextElement"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- __________________________________________________________-->
+    <!--                  ZoneResults                          -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ZoneResults">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:group ref="pdc:chargeRateNextElement"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  AttributeAnalyzerResults                         -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AttributeAnalyzerResults">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:group ref="pdc:chargeRateNextElement"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  Common objects                              -->
+    <!-- _____________________________________________________________-->
+    <!-- _____________________________________________________________-->
+    <!--                     ARatePlanElement                         -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ARatePlanElement" abstract="true">
+        <xs:annotation>
+            <xs:documentation>A RatePlanElement abstract class.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     ARatePlanElementBranch                   -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ARatePlanElementBranch" abstract="true">
+        <xs:annotation>
+            <xs:documentation>A RatePlanElementBranch abstract class.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ratePlans" type="pdc:RatePlans"/>
+    <!-- _____________________________________________________________-->
+    <!--                  RatePlans                                   -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="RatePlans" abstract="false">
+        <xs:annotation>
+            <xs:documentation>Root for all rate plans</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="alterationRatePlan" type="pdc:AlterationRatePlan" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="chargeRatePlan" type="pdc:ChargeRatePlan" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="distributionRatePlan" type="pdc:DistributionRatePlan" minOccurs="0"
+                        maxOccurs="unbounded"/>
+            <xs:element name="rolloverRatePlan" type="pdc:RolloverRatePlan" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  AlterationRatePlan                          -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AlterationRatePlan" abstract="false">
+        <xs:annotation>
+            <xs:documentation>An AlterationRatePlan.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlan">
+                <xs:group ref="pdc:alterationNextElement"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  OffsetUnit                                  -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="BillOffsetUnit">
+        <xs:annotation>
+            <xs:documentation>Offset units.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="DAYS"/>
+            <xs:enumeration value="MONTHS"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  ChargeRatePlan                              -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ChargeRatePlan" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A ChargeRatePlan.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlan">
+                <xs:sequence>
+                    <xs:element name="applicableRums" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+                    <xs:element name="applicableQuantity" type="cmn:ApplicableQuantity" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="taxTime" type="cmn:TaxTime" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="todMode" type="cmn:TODMode" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="applicableQtyTreatment" type="cmn:ApplicableQuantityTreatment" minOccurs="0"
+                                maxOccurs="1"/>
+                    <xs:element name="permittedName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                    <xs:element name="permittedType" type="cmn:PermittedType" minOccurs="1" maxOccurs="1"/>
+                    <xs:element name="eventName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                    <xs:element name="cycleFeeFlag" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="billOffset" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="offsetUnit" type="pdc:BillOffsetUnit" minOccurs="0" maxOccurs="1"/>
+                    <!--<xs:element name="ratePlanElement"
+                                type="pdc:ARatePlanElement"/>-->
+                    <xs:group ref="pdc:chargeRateNextElement"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  DistributionRatePlan                        -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="DistributionRatePlan" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A DistributionRatePlan.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlan">
+                <xs:group ref="pdc:distributionNextElement"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  RolloverRatePlan                            -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="RolloverRatePlan" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A RolloverRatePlan.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ARatePlan">
+                <xs:sequence>
+                    <xs:element name="dateRange" type="pdc:RolloverRateDateRange"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     ARatePlan                                -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ARatePlan" abstract="true">
+        <xs:annotation>
+            <xs:documentation>A RatePlan abstract class.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:APricingObject">
+                <xs:sequence>
+                    <xs:element name="taxCode" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     ChargeEventMap                           -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ChargeEventMap" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A ChargeEvent Maps</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:APriceEventType">
+                <xs:sequence>
+                    <xs:element name="rum" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="timezoneMode" type="cmn:TimeZoneMode"/>
+                    <xs:element name="minQuantity" type="xs:decimal"/>
+                    <xs:element name="minQuantityUnit" type="xs:string"/>
+                    <xs:element name="incrementQuantity" type="xs:decimal"/>
+                    <xs:element name="incrementQuantityUnit" type="xs:string"/>
+                    <xs:element name="roundingMode" type="cmn:RoundingMode"/>
+                    <xs:element name="prorateFirst" type="cmn:ProrationValue"/>
+                    <xs:element name="prorateLast" type="cmn:ProrationValue"/>
+                    <xs:element name="chargeRatePlanInfo" type="pdc:ChargeRatePlanInfo" minOccurs="0" maxOccurs="1"/>
+                    <xs:choice id="chargeRatePlanName">
+                        <xs:element name="chargeRatePlanSelectorName" type="xs:string"/>
+                        <xs:element name="chargeRatePlanName" type="xs:string"/>
+                        <xs:element name="rolloverRatePlanName" type="xs:string"/>
+                    </xs:choice>
+                    <xs:choice id="rateObjectIIDInCEP">
+                        <xs:element name="ratePlanIID" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                        <xs:element name="ratePlanSelIID" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    </xs:choice>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     AlterationEventMap                        -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AlterationEventMap" abstract="false">
+        <xs:annotation>
+            <xs:documentation>Alteration Event Map</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:APriceEventType">
+                <xs:sequence>
+                    <xs:element name="snowball" type="xs:boolean"/>
+                    <xs:element name="validAtStartNotValidAtEnd" type="cmn:AlterationProrationValue"/>
+                    <xs:element name="notValidAtStartValidAtEnd" type="cmn:AlterationProrationValue"/>
+                    <xs:element name="notValidAtStartNotValidAtEnd" type="cmn:AlterationProrationValue"/>
+                    <xs:element name="alterationRatePlanInfo" type="pdc:RatePlanInfo" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="alterationRatePlanSelectorInfo" type="pdc:RatePlanSelectorInfo" minOccurs="0"
+                                maxOccurs="1"/>
+                    <xs:choice id="alterationRatePlanName">
+                        <xs:element name="alterationRatePlanName" type="xs:string"/>
+                        <xs:element name="alterationRatePlanSelectorName" type="xs:string"/>
+                    </xs:choice>
+                    <xs:choice id="rateObjectIIDInAEP">
+                        <xs:element name="ratePlanIID" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                        <xs:element name="ratePlanSelIID" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    </xs:choice>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     DistributionEventMap                     -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="DistributionEventMap" abstract="false">
+        <xs:annotation>
+            <xs:documentation>Distribution Event Map</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:APriceEventType">
+                <xs:sequence>
+                    <xs:element name="distributionRatePlanInfo" type="pdc:RatePlanInfo" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="distributionRatePlanName" type="xs:string"/>
+                    <xs:element name="ratePlanIID" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     PackageList                              -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="PackageList" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A PackageList</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:APricingObject">
+                <xs:sequence>
+                    <xs:element name="type" type="xs:string"/>
+                    <xs:element name="segment" type="xs:string" minOccurs="0"/>
+                    <xs:element name="packageName" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+                    <xs:element name="packageListStatus" type="pdc:PackageListStatus"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     Package                                  -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="Package" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A Package</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:APricingObject">
+                <xs:sequence>
+                    <xs:element name="billOnPurchase" type="xs:boolean" minOccurs="0"/>
+                    <xs:element name="customerSpecPackageItem" type="pdc:CustomerSpecPackageItem" minOccurs="0"
+                                maxOccurs="1"/>
+                    <xs:element name="productSpecPackageItem" type="pdc:ProductSpecPackageItem" minOccurs="0"
+                                maxOccurs="unbounded"/>
+                    <xs:element name="balanceSpecification" type="pdc:BalanceSpecification" minOccurs="1"
+                                maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="PackagePackageList">
+        <xs:sequence>
+            <xs:element name="packageObjIID" type="xs:string"/>
+            <xs:element name="packageListIID" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  CustomerPackageItem                         -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="CustomerSpecPackageItem">
+        <xs:annotation>
+            <xs:documentation>A CustomerSpecPackageItem class.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="balanceSpecificationName" type="xs:string" minOccurs="0"/>
+            <xs:element name="bundledProductOfferingAssociation" type="pdc:BundledProductOfferingAssociation"
+                        minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--               ProductSpecPackageItem                         -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ProductSpecPackageItem">
+        <xs:annotation>
+            <xs:documentation>A ProductSpecPackageItem class.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="balanceSpecificationName" type="xs:string" minOccurs="0"/>
+            <xs:element name="productSpecName" type="xs:string"/>
+            <xs:element name="bundledProductOfferingAssociation" type="pdc:BundledProductOfferingAssociation"
+                        minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="subPackageItem" type="pdc:ProductSpecPackageItem" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  BundledProductOfferingAssociation           -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="BundledProductOfferingAssociation">
+        <xs:annotation>
+            <xs:documentation>A BundledProductOfferingAssociation class.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="optional" type="xs:boolean"/>
+            <xs:element name="bundledProductOfferingName" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     BundledProductOffering                   -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="BundledProductOffering" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A BundledProductOffering class.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:APricingObject">
+                <xs:sequence>
+                    <xs:element name="timeRange" type="xs:string"/>
+                    <xs:choice id="assignedTo">
+                        <xs:element name="productSpecName" type="xs:string"/>
+                        <xs:element name="customerSpecName" type="xs:string"/>
+                    </xs:choice>
+                    <xs:element name="billOnPurchase" type="xs:boolean" minOccurs="0"/>
+                    <xs:element name="customize" type="cmn:CustomizeType" minOccurs="0"/>
+                    <xs:element name="groupBalanceElements" type="xs:boolean" minOccurs="0"/>
+                    <xs:element name="bundledProductOfferingItem" type="pdc:BundledProductOfferingItem" minOccurs="0"
+                                maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     ChargeOffering                           -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ChargeOffering" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A ChargeOffering class.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:AProductOffering">
+                <xs:sequence>
+                    <xs:element name="offerType" type="cmn:OfferType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="priority" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="provisioningTag" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="partial" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="purchaseMin" type="xs:double" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="purchaseMax" type="xs:double" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="ownMin" type="xs:double" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="ownMax" type="xs:double" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="taxSupplier" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="applicableQuantity" type="cmn:ApplicableQuantity"/>
+                    <xs:element name="chargeEventMap" type="pdc:ChargeEventMap" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     AlterationOffering                       -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AlterationOffering" abstract="false">
+        <xs:annotation>
+            <xs:documentation>An AlterationOffering class.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:AProductOffering">
+                <xs:sequence>
+                    <xs:element name="offerType" type="cmn:OfferType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="priority" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="provisioningTag" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="purchaseMin" type="xs:double" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="purchaseMax" type="xs:double" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="ownMin" type="xs:double" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="ownMax" type="xs:double" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="applicableChargeAndQuantity" type="cmn:ApplicableChargeAndQuantity"/>
+                    <xs:element name="alterationEventMap" type="pdc:AlterationEventMap" minOccurs="0"
+                                maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     DistributionOffering                     -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="DistributionOffering" abstract="false">
+        <xs:annotation>
+            <xs:documentation>An DistributionOffering class.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:AProductOffering">
+                <xs:sequence>
+                    <xs:element name="distributionEventMap" type="pdc:DistributionEventMap" minOccurs="0"
+                                maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  BundledProductOfferingItem                  -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="BundledProductOfferingItem">
+        <xs:annotation>
+            <xs:documentation>A bundled product offering item</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="purchaseStart" type="cmn:Validity" minOccurs="0"/>
+            <xs:element name="purchaseEnd" type="cmn:Validity" minOccurs="0"/>
+            <xs:element name="usageStart" type="cmn:Validity" minOccurs="0"/>
+            <xs:element name="usageEnd" type="cmn:Validity" minOccurs="0"/>
+            <xs:element name="cycleStart" type="cmn:Validity" minOccurs="0"/>
+            <xs:element name="cycleEnd" type="cmn:Validity" minOccurs="0"/>
+            <xs:element name="status" type="xs:integer" minOccurs="1"/>
+            <xs:element name="statusCode" type="xs:integer" minOccurs="0"/>
+            <xs:element name="quantity" type="xs:double" minOccurs="0"/>
+            <xs:element name="purchaseChargeAdjustment" type="xs:double" minOccurs="0"/>
+            <xs:element name="usageChargeAdjustment" type="xs:double" minOccurs="0"/>
+            <xs:element name="cycleChargeAdjustment" type="xs:double" minOccurs="0"/>
+            <xs:choice id="productOffering">
+                <xs:element name="chargeOfferingName" type="xs:string"/>
+                <xs:element name="alterationOfferingName" type="xs:string"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  BalanceSpecification                        -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="BalanceSpecification">
+        <xs:annotation>
+            <xs:documentation>A BalanceSpecification</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" minOccurs="1"/>
+            <xs:element name="balanceElementSpecification" type="pdc:BalanceElementSpecification" minOccurs="0"
+                        maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     BalanceElementSpecification              -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="BalanceElementSpecification" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A BalanceElementSpecification provides an association between BalanceElementCode,
+                              ConsumptionRule and BalanceCreditProfile</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="balanceElementNumCode" type="xs:long" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>The Num code of the BalanceElement config object</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="consumptionRule" type="cmn:ConsumptionRuleType" minOccurs="0" default="NONE">
+                <xs:annotation>
+                    <xs:documentation>The consumption rule</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="balanceCreditProfile" type="pdc:BalanceCreditProfile" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>The balance credit profile</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     BalanceCreditProfile                     -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="BalanceCreditProfile" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A BalanceCreditProfile class.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="floor" type="xs:double" default="0"/>
+            <xs:element name="ceiling" type="xs:double" default="0"/>
+            <xs:element name="thresholdLevel" type="pdc:ThresholdLevel" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  ThresholdLevel                              -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ThresholdLevel">
+        <xs:annotation>
+            <xs:documentation>A ThresholdLevel class.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="threshold" type="xs:double"/>
+            <xs:element name="type" type="pdc:ThresholdType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  ThresholdType                               -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="ThresholdType">
+        <xs:annotation>
+            <xs:documentation>Allowed types for the Threshold.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="PERCENTAGE"/>
+            <xs:enumeration value="ABSOLUTE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  PackageListStatus                               -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="PackageListStatus">
+        <xs:annotation>
+            <xs:documentation>A PackageListStatus class.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ACTIVE"/>
+            <xs:enumeration value="INACTIVE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                     BestPricing                              -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="BestPricing" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A best pricing object.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:APricingObject">
+                <xs:sequence>
+                    <xs:element name="mode" type="cmn:BestPricingMode">
+                        <xs:annotation>
+                            <xs:documentation>BestPricing Mode</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="bundledProductOfferingName" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>Name of BundledProductOffering</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="alternateBundledProductOffering" type="pdc:AlternateOffering" minOccurs="1"
+                                maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>Alternate BundledProductOfferings</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  AlternateBundle                             -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AlternateOffering">
+        <xs:sequence>
+            <xs:element name="minimumAmount" type="xs:double">
+                <xs:annotation>
+                    <xs:documentation>Mininum Amount</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="condition" type="pdc:AlternateCondition" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Condition for applying Alternate BundledProductOffering</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="bundledProductOfferingName" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Name of Alternate BundledProductOffering</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  AlternateCondition                                   -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AlternateCondition">
+        <xs:sequence>
+            <xs:element name="amount" type="xs:double">
+                <xs:annotation>
+                    <xs:documentation>Amount</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="operator" type="pdc:ConditionOperator">
+                <xs:annotation>
+                    <xs:documentation>Condition Operation</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="balanceElementNumCode" type="xs:long">
+                <xs:annotation>
+                    <xs:documentation>The Num code of the BalanceElement config object</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  ConditionOperator                             -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="ConditionOperator">
+        <xs:annotation>
+            <xs:documentation>Allowed operators for the Condition.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="EQUAL_TO"/>
+            <xs:enumeration value="NOT_EQUAL_TO"/>
+            <xs:enumeration value="LESS_THAN"/>
+            <xs:enumeration value="LESS_THAN_EQUAL"/>
+            <xs:enumeration value="GREATER_THAN"/>
+            <xs:enumeration value="GREATER_THAN_EQUAL"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                BundledProductOfferingDependency              -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="BundledProductOfferingDependency" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A bundle dependency.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:APricingObject">
+                <xs:sequence>
+                    <xs:element name="active" type="xs:boolean" default="true"/>
+                    <xs:element name="bundledProductOfferingName" type="xs:string"/>
+                    <xs:group ref="pdc:DependentBPOChoice"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                         DependentBPOChoice                    -->
+    <!-- _____________________________________________________________-->
+    <xs:group name="DependentBPOChoice">
+        <xs:choice>
+            <xs:element name="prohibitedBundledProductOfferingName" type="xs:string"/>
+            <xs:element name="prerequisiteBundledProductOfferingName" type="xs:string"/>
+        </xs:choice>
+    </xs:group>
+    <!-- _____________________________________________________________-->
+    <!--                     AlterationDependency                     -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AlterationOfferingDependency" abstract="true">
+        <xs:annotation>
+            <xs:documentation>An AlterationOffering dependency.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:APricingObject">
+                <xs:sequence>
+                    <xs:element name="active" type="xs:boolean" default="true"/>
+                    <xs:element name="prohibitedAlterationOfferingName" type="xs:string"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     PackageExclusion                         -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="PackageExclusion" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A package Exclusion.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:AlterationOfferingDependency">
+                <xs:sequence>
+                    <xs:element name="packageName" type="xs:string"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--              AlterationOfferingExclusion                     -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AlterationOfferingExclusion" abstract="false">
+        <xs:annotation>
+            <xs:documentation>An Alteration Exclusion with a AlterationOffering.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:AlterationOfferingDependency">
+                <xs:sequence>
+                    <xs:element name="alterationOfferingName" type="xs:string"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     PackageTransition                        -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="PackageTransition" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A package transition object.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:ATransition">
+                <xs:sequence>
+                    <xs:element name="type" type="pdc:PackageTransitionType"/>
+                    <xs:element name="fromPackageName" type="xs:string"/>
+                    <xs:element name="toPackageName" type="xs:string"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--               BundledProductOfferingTransition               -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="BundledProductOfferingTransition" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A bundled Product Offering transition object.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:ATransition">
+                <xs:sequence>
+                    <xs:element name="type" type="pdc:BundledPOTransitionType"/>
+                    <xs:element name="fromBundledProductOfferingName" type="xs:string"/>
+                    <xs:element name="toBundledProductOfferingName" type="xs:string"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  PackageTransitionType                       -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="PackageTransitionType">
+        <xs:annotation>
+            <xs:documentation>Allowed types for the Package Transition.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="UPGRADE"/>
+            <xs:enumeration value="DOWNGRADE"/>
+            <xs:enumeration value="GENERATION_CHANGE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  BundledPOTransitionType                     -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="BundledPOTransitionType">
+        <xs:annotation>
+            <xs:documentation>Allowed types for the BundledProductOffering Transition.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="UPGRADE"/>
+            <xs:enumeration value="DOWNGRADE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="chargeSelectorSpec" type="pdc:ChargeSelectorSpec"/>
+    <!-- _____________________________________________________________-->
+    <!--                     ChargeSelectorSpec                       -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ChargeSelectorSpec" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A ChargeSelectorSpec.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:APricingObject">
+                <xs:sequence>
+                    <xs:element name="validFrom" type="xs:string"/>
+                    <xs:element name="validTo" type="xs:string"/>
+                    <xs:element name="rumName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element name="timeModelName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element name="timeModelTagName" type="xs:string" minOccurs="0"/>
+                    <xs:element name="zoneResult" type="xs:string" minOccurs="0"/>
+                    <xs:element name="genericSelectorResult" type="xs:string" minOccurs="0"/>
+                    <xs:element name="chargeRatePlanName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element name="balanceElementNumCode" type="xs:long" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element name="glid" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element name="zoneModelName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element name="priceModelName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element name="eventConditions" type="pdc:ChargeSelectorEventCondition" minOccurs="0"
+                                maxOccurs="unbounded"/>
+                    <xs:element name="pricingName" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  ChargeSelectorEventCondition                -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ChargeSelectorEventCondition">
+        <xs:sequence>
+            <xs:element name="eventField" type="xs:string"/>
+            <xs:element name="eventValue" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="triggerSpec" type="pdc:TriggerSpec"/>
+    <!-- _____________________________________________________________-->
+    <!--                     TriggerSpec                              -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="TriggerSpec" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A TriggerSpec class.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:APricingObject">
+                <xs:choice id="triggerExpressions" minOccurs="1" maxOccurs="unbounded">
+                    <xs:element name="chargeTriggerExpression" type="pdc:ChargeTriggerExpression"/>
+                    <xs:element name="quantityTriggerExpression" type="pdc:QuantityTriggerExpression"/>
+                    <xs:element name="balanceTriggerExpression" type="pdc:BalanceTriggerExpression"/>
+                    <xs:element name="customTriggerExpression" type="pdc:CustomTriggerExpression"/>
+                    <xs:element name="complexTriggerExpression" type="pdc:ComplexTriggerExpression"/>
+                </xs:choice>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     ComplexTriggerExpression                 -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ComplexTriggerExpression" abstract="false">
+        <xs:annotation>
+            <xs:documentation>ComplexTriggerExpression class based on ATriggerExpression. Can be used to recursively
+                              define complex expression using simple expressions</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ATriggerExpression">
+                <xs:sequence>
+                    <xs:element name="binaryExpression" type="pdc:BinaryExpression"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     BinaryExpression                         -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="BinaryExpression" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A Binary Expression for BinaryTriggerExpression</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="leftOperand" type="pdc:BinaryOperandExpression"/>
+            <xs:element name="rightOperand" type="pdc:BinaryOperandExpression"/>
+            <xs:element name="binaryOperator" type="cmn:ArithmeticOperator" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     CustomFunctionExpression                 -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="CustomFunctionExpression" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A CustomExpression.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="functionName" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     BinaryOperandExpression                  -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="BinaryOperandExpression">
+        <xs:annotation>
+            <xs:documentation>A BinaryOperandExpression for left and right operands in Binary Expression</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:choice>
+                <xs:element name="binaryExpression" type="pdc:BinaryExpression"/>
+                <xs:element name="customExpression" type="pdc:CustomFunctionExpression"/>
+                <xs:element name="balanceExpression" type="pdc:BalanceExpression"/>
+                <xs:element name="chargeExpression" type="pdc:EmptyExpression"/>
+                <xs:element name="quantityExpression" type="pdc:EmptyExpression"/>
+                <xs:element name="numberExpression" type="pdc:NumberExpression"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     BalanceExpression                        -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="BalanceExpression" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A simple BalanceExpression for TriggerExpression.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="balanceElementNumCode" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     NumberExpression                         -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="NumberExpression" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A simple NumberExpression for TriggerExpression.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="number" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     EmptyExpression                          -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="EmptyExpression" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A simple EmptyExpression for Quantity and Charge expression .</xs:documentation>
+        </xs:annotation>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     NumberTriggerExpression                  -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="NumberTriggerExpression" abstract="false">
+        <xs:annotation>
+            <xs:documentation>NumberTriggerExpression class based on ATriggerExpression.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ATriggerExpression">
+                <xs:sequence>
+                    <xs:element name="number" type="xs:double"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     CustomTriggerExpression                  -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="CustomTriggerExpression" abstract="false">
+        <xs:annotation>
+            <xs:documentation>CustomTriggerExpression class based on ATriggerExpression.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ATriggerExpression">
+                <xs:sequence>
+                    <xs:element name="functionName" type="xs:string"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     BalanceTriggerExpression                 -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="BalanceTriggerExpression" abstract="false">
+        <xs:annotation>
+            <xs:documentation>BalanceTriggerExpression class based on ATriggerExpression.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ATriggerExpression">
+                <xs:sequence>
+                    <xs:element name="balanceElementNumCode" type="xs:long"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     QuantityTriggerExpression                -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="QuantityTriggerExpression" abstract="false">
+        <xs:annotation>
+            <xs:documentation>QuantityTriggerExpression class based on ATriggerExpression.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ATriggerExpression"></xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     ChargeTriggerExpression                  -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ChargeTriggerExpression" abstract="false">
+        <xs:annotation>
+            <xs:documentation>ChargeTriggerExpression class based on ATriggerExpression.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pdc:ATriggerExpression"></xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     ATriggerExpression                       -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ATriggerExpression" abstract="true">
+        <xs:annotation>
+            <xs:documentation>ATriggerExpression base class.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="operator" type="cmn:TriggerOperator">
+                <xs:annotation>
+                    <xs:documentation>The operator for the expression.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="value" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     Charge Rate Plan Info                          -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ChargeRatePlanInfo" abstract="false">
+        <xs:annotation>
+            <xs:documentation>The ChargeRatePlanInfo indicates to which rating engine(s) the ChargeRatePlan is published
+                              to.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="targetEngine" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                      Rate Plan Info                          -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="RatePlanInfo" abstract="false">
+        <xs:annotation>
+            <xs:documentation>The RatePlanInfo indicates to which rating engine(s) the RatePlan is published to.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="targetEngine" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     Rate Plan Selector Info                  -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="RatePlanSelectorInfo" abstract="false">
+        <xs:annotation>
+            <xs:documentation>The RatePlanSelectorInfo indicates to which rating engine(s) the RatePlanSelector is
+                              published to.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="targetEngine" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

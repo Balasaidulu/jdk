@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsdLocal1="http://www.siebel.com/xml/SWIContactIO"
+             targetNamespace="http://siebel.com/asi/V0"
+             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:tns="http://siebel.com/asi/V0">
+  <types>
+    <xsd:schema elementFormDefault="qualified"
+                attributeFormDefault="unqualified"
+                xmlns:xsdLocal1="http://www.siebel.com/xml/SWIContactIO"
+                targetNamespace="http://siebel.com/asi/V0"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                <xsd:import namespace="http://www.siebel.com/xml/SWIContactIO" schemaLocation="../schemas/SWIContactIO.xsd"/>
+      <xsd:annotation>
+        <xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All
+                           rights reserved. Siebel XSD Generation</xsd:documentation>
+      </xsd:annotation>     
+      <xsd:element name="SWIContactServicesQueryByExample_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal1:ListOfSwicontactio"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SWIContactServicesQueryByExample_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal1:ListOfSwicontactio"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SWIContactServicesSynchronize_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal1:ListOfSwicontactio"></xsd:element>
+            <xsd:element name="StatusObject" minOccurs="0" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SWIContactServicesSynchronize_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal1:ListOfSwicontactio"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SWIContactServicesInsertOrUpdate_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal1:ListOfSwicontactio"></xsd:element>
+            <xsd:element name="StatusObject" minOccurs="0" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SWIContactServicesInsertOrUpdate_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal1:ListOfSwicontactio"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="SWIContactServicesQueryByExample_Input">
+    <part name="SWIContactServicesQueryByExample_Input"
+          element="tns:SWIContactServicesQueryByExample_Input"></part>
+  </message>
+  <message name="SWIContactServicesQueryByExample_Output">
+    <part name="SWIContactServicesQueryByExample_Output"
+          element="tns:SWIContactServicesQueryByExample_Output"></part>
+  </message>
+  <message name="SWIContactServicesSynchronize_Input">
+    <part name="SWIContactServicesSynchronize_Input"
+          element="tns:SWIContactServicesSynchronize_Input"></part>
+  </message>
+  <message name="SWIContactServicesSynchronize_Output">
+    <part name="SWIContactServicesSynchronize_Output"
+          element="tns:SWIContactServicesSynchronize_Output"></part>
+  </message>
+  <message name="SWIContactServicesInsertOrUpdate_Input">
+    <part name="SWIContactServicesInsertOrUpdate_Input"
+          element="tns:SWIContactServicesInsertOrUpdate_Input"></part>
+  </message>
+  <message name="SWIContactServicesInsertOrUpdate_Output">
+    <part name="SWIContactServicesInsertOrUpdate_Output"
+          element="tns:SWIContactServicesInsertOrUpdate_Output"></part>
+  </message>
+  <portType name="SWI_spcContact_spcService">
+    <operation name="SWIContactServicesQueryByExample">
+      <input message="tns:SWIContactServicesQueryByExample_Input"></input>
+      <output message="tns:SWIContactServicesQueryByExample_Output"></output>
+    </operation>
+    <operation name="SWIContactServicesSynchronize">
+      <input message="tns:SWIContactServicesSynchronize_Input"></input>
+      <output message="tns:SWIContactServicesSynchronize_Output"></output>
+    </operation>
+    <operation name="SWIContactServicesInsertOrUpdate">
+      <input message="tns:SWIContactServicesInsertOrUpdate_Input"></input>
+      <output message="tns:SWIContactServicesInsertOrUpdate_Output"></output>
+    </operation>
+  </portType>
+  <binding name="SWI_spcContact_spcService"
+           type="tns:SWI_spcContact_spcService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"
+                  style="document"></soap:binding>
+    <operation name="SWIContactServicesQueryByExample">
+      <soap:operation soapAction="document/http://siebel.com/asi/V0:SWIContactServicesQueryByExample"></soap:operation>
+      <input>
+        <soap:body use="literal"></soap:body>
+      </input>
+      <output>
+        <soap:body use="literal"></soap:body>
+      </output>
+    </operation>
+    <operation name="SWIContactServicesSynchronize">
+      <soap:operation soapAction="document/http://siebel.com/asi/V0:SWIContactServicesSynchronize"></soap:operation>
+      <input>
+        <soap:body use="literal"></soap:body>
+      </input>
+      <output>
+        <soap:body use="literal"></soap:body>
+      </output>
+    </operation>
+    <operation name="SWIContactServicesInsertOrUpdate">
+      <soap:operation soapAction="document/http://siebel.com/asi/V0:SWIContactServicesInsertOrUpdate"></soap:operation>
+      <input>
+        <soap:body use="literal"></soap:body>
+      </input>
+      <output>
+        <soap:body use="literal"></soap:body>
+      </output>
+    </operation>
+  </binding>
+  <service name="SWIContactServices">
+    <port binding="tns:SWI_spcContact_spcService" name="SWI_spcContact_spcService">
+      <soap:address location="http://set.at.runtime" />
+    </port>
+  </service>
+</definitions>

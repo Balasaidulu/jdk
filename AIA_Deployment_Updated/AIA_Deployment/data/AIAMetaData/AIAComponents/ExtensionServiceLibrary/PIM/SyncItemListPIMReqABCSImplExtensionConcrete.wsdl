@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.oracle.com/ABCSImpl/PIM/Core/SyncItemListPIMReqABCSImplExtension/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xdbsync="http://xmlns.oracle.com/xdb/APPS" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:instprodebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Item/V2" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" name="SyncItemListPIMReqABCSImplExtension" targetNamespace="http://xmlns.oracle.com/ABCSImpl/PIM/Core/SyncItemListPIMReqABCSImplExtension/V1">
+	<documentation>
+        <svcdoc:Service>
+	<svcdoc:Description/>
+	<svcdoc:ServiceType>SyncItemListPIMReqABCSImplExtension</svcdoc:ServiceType>
+	<svcdoc:DisplayName>SyncItemListPIMReqABCSImplExtension</svcdoc:DisplayName>
+	<svcdoc:Version>1</svcdoc:Version>
+	<svcdoc:EBOName>ItemEBO</svcdoc:EBOName>
+	<svcdoc:ABOName/>
+	<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+	<svcdoc:ImplementationTechnology>Java servlet</svcdoc:ImplementationTechnology>
+</svcdoc:Service>
+</documentation>
+	<types>
+		<xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/PIM/Core/SyncItemListPIMReqABCSImpl/V1" elementFormDefault="qualified">
+			<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Item/V2" schemaLocation="http://ap6035fems.us.oracle.com:7832/AIAComponents/EnterpriseObjectLibrary/Core/EBO/Item/V2/ItemEBM.xsd"/>
+			<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="http://ap6035fems.us.oracle.com:7832/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+		</xsd:schema>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://xmlns.oracle.com/xdb/APPS" schemaLocation="http://ap6035fems.us.oracle.com:7832/AIAComponents/ApplicationObjectLibrary/Ebiz/schemas/APPS_WF_EVENT_T.xsd"/>
+		</xsd:schema>
+	</types>
+	<message name="PreInvokeItemOrchestrationEBSEBMMsg">
+		<part name="EBMPayload" element="instprodebo:QueryItemListEBM"/>
+	</message>
+	<message name="PreXformABMToEBMMsg">
+		<part name="ABMPayload" element="xdbsync:WF_EVENT_T"/>
+	</message>
+	<portType name="SyncItemListPIMReqABCSImplExtensionService">
+		<documentation>
+                <svcdoc:Interface>
+	<svcdoc:Description>This interface contains operations that can act upon
+                            the ABO / EBO object</svcdoc:Description>
+	<svcdoc:DisplayName>SyncItemListPIMReqABCSImplExtensionService</svcdoc:DisplayName>
+	<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+</svcdoc:Interface>
+</documentation>
+		<operation name="PreXformABMToEBM">
+			<input message="tns:PreXformABMToEBMMsg"/>
+			<output message="tns:PreXformABMToEBMMsg"/>
+		</operation>
+		<operation name="PreInvokeItemOrchestrationEBSEBM">
+			<input message="tns:PreInvokeItemOrchestrationEBSEBMMsg"/>
+			<output message="tns:PreInvokeItemOrchestrationEBSEBMMsg"/>
+		</operation>
+	</portType>
+	<binding name="SyncItemListPIMReqABCSImplExtensionService_Binding" type="tns:SyncItemListPIMReqABCSImplExtensionService">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="PreXformABMToEBM">
+			<soap:operation soapAction="mirror" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PreInvokeItemOrchestrationEBSEBM">
+			<soap:operation soapAction="mirror" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="mirrorAnyService">
+		<port name="SyncItemListPIMReqABCSImplExtensionService" binding="tns:SyncItemListPIMReqABCSImplExtensionService_Binding">
+			<soap:address location="http://ap6035fems.us.oracle.com:7832/MirrorServlet/mirror"/>
+		</port>
+	</service>
+	<!-- Type Definitions
+  -->
+	<!-- Message Definitions
+  -->
+	<!-- portType implemented by the SyncItemListPIMReqABCSImplExt Extension BPEL process
+  -->
+	<!--
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PARTNER LINK TYPE DEFINITION
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+  -->
+	<plnk:partnerLinkType name="SyncItemListPIMReqABCSImplExtensionService">
+		<plnk:role name="SyncItemListPIMReqABCSImplExtensionServiceProvider">
+			<plnk:portType name="tns:SyncItemListPIMReqABCSImplExtensionService"/>
+		</plnk:role>
+	</plnk:partnerLinkType>
+</definitions>

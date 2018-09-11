@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 sp1 (http://www.altova.com) by Ashish K Singh (Oracle India Pvt Ltd) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsdLocal="http://www.siebel.com/xml/SWIBillingProfileIO" targetNamespace="http://www.siebel.com/xml/SWIBillingProfileIO" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="ListOfSwibillingprofileio" type="xsdLocal:ListOfSwibillingprofileio"/>
+	<xsd:complexType name="ListOfSwibillingprofileioTopElmt">
+		<xsd:sequence>
+			<xsd:element name="ListOfSwibillingprofileio" type="xsdLocal:ListOfSwibillingprofileio"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfSwibillingprofileio">
+		<xsd:sequence>
+			<xsd:element name="ComInvoiceProfile" type="xsdLocal:ComInvoiceProfile" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="Language" type="xsd:string"/>
+		<xsd:attribute name="Locale" type="xsd:string"/>
+		<xsd:attribute name="MessageId" type="xsd:string"/>
+		<xsd:attribute name="EnterpriseServerName" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="ComInvoiceProfile">
+		<xsd:sequence>
+			<xsd:element name="BillingProfileId" type="xsdLocal:string30" minOccurs="0"/>
+			<xsd:element name="AccountId" type="xsd:string"/>
+			<xsd:element name="AddressId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="BankAccountName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="BankAccountNumber" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="BankAccountType" type="xsdLocal:string30" minOccurs="0"/>
+			<xsd:element name="BankAuthorizationflag" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="BankBranch" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="BankLanguageCode" type="xsdLocal:string5" minOccurs="0"/>
+			<xsd:element name="BankLanguageId" type="xsdLocal:string5" minOccurs="0"/>
+			<xsd:element name="BankName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="BillAverage" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="BillCycle" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="BillCycleDay" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="BillFrequency" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="BillSequence" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="BillSource" type="xsdLocal:string30" minOccurs="0"/>
+			<xsd:element name="BillType" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="BillVendorId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="BudgetBillingFlag" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CPNIDate" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CPNIFlag" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CollectionsFlag" type="xsd:string"/>
+			<xsd:element name="ContactId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CreditCardBlockFlag" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CreditCardBlockReason" type="xsdLocal:string30" minOccurs="0"/>
+			<xsd:element name="CreditCardCategory" type="xsdLocal:string30" minOccurs="0"/>
+			<xsd:element name="CreditCardExpirationDate" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CreditCardName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CreditCardNumber" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CreditCardNumberEncryptkeyReference" type="xsdLocal:string30" minOccurs="0"/>
+			<xsd:element name="CreditCardSecurityCode" type="xsdLocal:string10" minOccurs="0"/>
+			<xsd:element name="CreditCardType" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CreditCardVerificationNumber" type="xsdLocal:string20" minOccurs="0"/>
+			<xsd:element name="CreditCardVerificationNumberEncryptionKey" type="xsdLocal:string30" minOccurs="0"/>
+			<xsd:element name="DaysToCash" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="EmailBillTo" type="xsdLocal:string100" minOccurs="0"/>
+			<xsd:element name="ExternalBillingAccountNumber-Old" type="xsdLocal:string30" minOccurs="0"/>
+			<xsd:element name="ExtraCopies" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="InterestatInvoiceFlag" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="LastBillAmount" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="LastBillDate" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="MediaType" type="xsdLocal:string30" minOccurs="0"/>
+			<xsd:element name="BillingProfileName" type="xsdLocal:string100"/>
+			<xsd:element name="NoPayFormFlag" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="NumberofManualInvoices" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="PaymentMethod" type="xsdLocal:string30" minOccurs="0"/>
+			<xsd:element name="ReasonforManualOutsource" type="xsdLocal:string30" minOccurs="0"/>
+			<xsd:element name="RepeatDebtorFlag" type="xsd:string"/>
+			<xsd:element name="RoutingNumber" type="xsdLocal:string30" minOccurs="0"/>
+			<xsd:element name="StandingOrderFlag" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="StatementFlag" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Status" type="xsdLocal:string30" minOccurs="0"/>
+			<xsd:element name="YearlyAdvancePaymentFlag" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ListOfCutAddress" type="xsdLocal:ListOfCutAddress" minOccurs="0"/>
+			<xsd:element name="ListOfContact" type="xsdLocal:ListOfContact" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfCutAddress">
+		<xsd:sequence>
+			<xsd:element name="CutAddress" type="xsdLocal:CutAddress" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CutAddress">
+		<xsd:sequence>
+			<xsd:element name="AddressName" type="xsdLocal:string100"/>
+			<xsd:element name="City" type="xsdLocal:string50"/>
+			<xsd:element name="Country" type="xsdLocal:string30" minOccurs="0"/>
+			<xsd:element name="PostalCode" type="xsdLocal:string30" minOccurs="0"/>
+			<xsd:element name="AddressId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="State" type="xsdLocal:string10" minOccurs="0"/>
+			<xsd:element name="AddressLine1" type="xsdLocal:string200"/>
+			<xsd:element name="AddressLine2" type="xsdLocal:string100" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfContact">
+		<xsd:sequence>
+			<xsd:element name="Contact" type="xsdLocal:Contact" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Contact">
+		<xsd:sequence>
+			<xsd:element name="CellularPhone" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="EmailAddress" type="xsdLocal:string50" minOccurs="0"/>
+			<xsd:element name="FaxPhone" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="FirstName" type="xsdLocal:string50"/>
+			<xsd:element name="HomePhone" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="JobTitle" type="xsdLocal:string75" minOccurs="0"/>
+			<xsd:element name="LastName" type="xsdLocal:string50"/>
+			<xsd:element name="Salutation" type="xsdLocal:string15" minOccurs="0"/>
+			<xsd:element name="MiddleName" type="xsdLocal:string50" minOccurs="0"/>
+			<xsd:element name="PrimaryOrganizationId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ContactId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="WorkPhone" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="string50">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="50"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string10">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="10"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string15">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="15"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string75">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="75"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string30">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="30"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string5">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="5"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string200">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="200"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string100">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="100"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string20">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="20"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

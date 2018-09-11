@@ -1,0 +1,21 @@
+<?binding.jca ProcessInstalledProductSpecialRatingSetListSiebelCommsJMSConsumer_jms.jca?>
+<definitions name="ProcessInstalledProductSpecialRatingSetListSiebelCommsJMSConsumer" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/jms/ProcessInstalledProductSpecialRatingSetListSiebelCommsJMSConsumer/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:hdr="http://xmlns.oracle.com/pcbpel/adapter/jms/" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/jms/ProcessInstalledProductSpecialRatingSetListSiebelCommsJMSConsumer/" xmlns:imp1="http://schemas.xmlsoap.org/soap/envelope/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="Consume_Message_plt">
+        <plt:role name="Consume_Message_role">
+            <plt:portType name="tns:Consume_Message_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://schemas.xmlsoap.org/soap/envelope/" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/soapEnvelope.xsd"/>
+        </schema>
+    </types>
+    <message name="Envelope_msg">
+        <part name="Envelope" element="imp1:Envelope"/>
+    </message>
+    <portType name="Consume_Message_ptt">
+        <operation name="Consume_Message">
+            <input message="tns:Envelope_msg"/>
+        </operation>
+    </portType>
+</definitions>

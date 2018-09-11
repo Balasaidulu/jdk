@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="QuerySpecificationListSiebelCommsProvABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QuerySpecificationListSiebelCommsProvABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:commsspecificationlistebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Specification/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:commsspecificationlistabcs="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QuerySpecificationListSiebelCommsProvABCSImpl/V1"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service contains operations that would be used by
+                       the participating application to interact with the
+                       external systems</svcdoc:Description>
+            <svcdoc:ServiceType>ProviderABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>QuerySpecificationListSiebelCommsProvABCSImpl Provider
+                       ABCS Implementation Interface</svcdoc:DisplayName>
+            <svcdoc:ServiceObjectName>QuerySpecificationList</svcdoc:ServiceObjectName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+			<svcdoc:EBOName>SpecificationEBO</svcdoc:EBOName>
+            <svcdoc:ImplementationTechnology/>
+            <svcdoc:ProductFamily>CRM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Specification/V1"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/Specification/V1/SpecificationEBM.xsd"/>
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+            <import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+			<import namespace="http://siebel.com/webservices"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/schemas/SiebelWSHeader.xsd"/>
+        </schema>
+    </types>
+    <message name="QuerySpecificationListReqMsg">
+        <part name="QuerySpecificationListEBM" element="commsspecificationlistebo:QuerySpecificationListEBM"/>
+    </message>
+    <message name="QuerySpecificationListRespMsg">
+        <part name="QuerySpecificationListResponseEBM" element="commsspecificationlistebo:QuerySpecificationListResponseEBM"/>
+    </message>
+    <message name="QuerySpecificationListFaultMsg">
+        <part name="AIAFault" element="corecom:Fault"/>
+    </message>
+    <portType name="QuerySpecificationListSiebelCommsProvABCSImplService">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This interface contains operations that can act upon the
+                        object</svcdoc:Description>
+                <svcdoc:DisplayName>Query SpecificationList Siebel Requestor ABCS
+                        Implementation</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="QuerySpecificationList">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Query an SpecificationList
+                         object</svcdoc:Description>
+                    <svcdoc:MEP>SyncReqResp</svcdoc:MEP>
+                    <svcdoc:DisplayName>QuerySpecificationList</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="commsspecificationlistabcs:QuerySpecificationListReqMsg"/>
+            <output message="commsspecificationlistabcs:QuerySpecificationListRespMsg"/>
+            <fault name="fault" message="commsspecificationlistabcs:QuerySpecificationListFaultMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="QuerySpecificationListSiebelCommsProvABCSImpl">
+        <plnk:role name="QuerySpecificationListSiebelCommsProvABCSImplProvider">
+            <plnk:portType name="commsspecificationlistabcs:QuerySpecificationListSiebelCommsProvABCSImplService"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

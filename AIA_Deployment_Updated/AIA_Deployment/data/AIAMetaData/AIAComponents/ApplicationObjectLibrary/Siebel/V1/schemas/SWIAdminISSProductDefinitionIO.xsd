@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siebel.com/xml/SWIAdminISSProductDefinitionIO" xmlns:xsdLocal="http://www.siebel.com/xml/SWIAdminISSProductDefinitionIO" attributeFormDefault="unqualified" elementFormDefault="qualified">
+	<xsd:annotation>
+		<xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="ListOfSwiAdminIssProductDefinition" type="xsdLocal:ListOfSwiAdminIssProductDefinition" />
+	<xsd:complexType name="ListOfSwiAdminIssProductDefinitionTopElmt">
+		<xsd:sequence>
+			<xsd:element name="ListOfSwiAdminIssProductDefinition" type="xsdLocal:ListOfSwiAdminIssProductDefinition" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfSwiAdminIssProductDefinition">
+		<xsd:sequence>
+			<xsd:element name="SwiInternalProductVod" type="xsdLocal:SwiInternalProductVod" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+		<xsd:attribute name="Language" type="xsd:string" />
+		<xsd:attribute name="Locale" type="xsd:string" />
+		<xsd:attribute name="MessageId" type="xsd:string" />
+		<xsd:attribute name="EnterpriseServerName" type="xsd:string" />
+	</xsd:complexType>
+	<xsd:complexType name="SwiInternalProductVod">
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ActiveFlag" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="AutoExplodeFlag" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="BillableFlag" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Description" type="xsdLocal:string255" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="EffectiveEndTime" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ExternalInventorySystemRef" type="xsdLocal:string40" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="InclusiveEligibilityFlag" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="IntegrationId" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="InventoryFlag" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="LeadTime" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="MaximumQuantity" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="MinimumQuantity" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ProductName" type="xsdLocal:string100" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="OrderableFlag" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="PartNumber" type="xsdLocal:string50" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CheckEligibilityFlag" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="PriceType" type="xsdLocal:string30" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="PricingMethod" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="BusinessUnitId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="PrimaryProductLineId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="StructureType" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ProductType" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ProductVersion" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="SalesProductFlag" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ServiceProductFlag" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ProductSerializedFlag" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ServiceFlag" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ServiceInstanceFlag" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ServiceTerms" type="xsdLocal:string255" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ShipFlag" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="EffectiveStartTime" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="TrackAsAssetFlag" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Type" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="UnitSize" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="UnitofMeasure" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="UnitsperCase" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="VendorId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="VendorPartNumber" type="xsdLocal:string50" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Status" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+		<xsd:attribute name="Operation" type="xsd:string" />
+		<xsd:attribute name="Searchspec" type="xsd:string" />
+	</xsd:complexType>
+	<xsd:simpleType name="string50">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="50" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string255">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string40">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="40" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string30">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="30" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string100">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="100" />
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

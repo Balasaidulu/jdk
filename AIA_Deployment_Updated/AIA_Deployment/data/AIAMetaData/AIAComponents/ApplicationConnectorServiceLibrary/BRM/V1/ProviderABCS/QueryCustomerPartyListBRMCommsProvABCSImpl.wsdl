@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="QueryCustomerPartyListBRMCommsProvABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryCustomerPartyListBRMCommsProvABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:commsCustPartyListabcs="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryCustomerPartyListBRMCommsProvABCSImpl/V1"
+     xmlns:bpelcom="http://schemas.oracle.com/service/bpel/common"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:corecomCustPartyList="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:commsCustPartyListebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service contains operations that would be used to query the Account Balance related information using the billing system APIs</svcdoc:Description>
+            <svcdoc:ServiceType>ProviderABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>QueryCustomerPartyListBRMCommsProvABCSImpl Provider ABCS Implementation Interface</svcdoc:DisplayName>
+            <svcdoc:EBOName>CustomerPartyEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology> 
+            <svcdoc:ProductFamily>BRM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>BRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/CustomerParty/V2/CustomerPartyEBM.xsd"/>
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+            <import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </schema>
+    </types>
+    <message name="QueryCustomerPartyListReqMsg">
+	        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message will contain the customer party list request attributes</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="QueryCustomerPartyListEBM" element="commsCustPartyListebo:QueryCustomerPartyListEBM"/>
+    </message>
+    <message name="QueryCustomerPartyListRespMsg">
+	        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message will contain the customer party list response attributes</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="QueryCustomerPartyListResponseEBM" element="commsCustPartyListebo:QueryCustomerPartyListResponseEBM"/>
+    </message>
+    <message name="QueryCustomerPartyListFaultMsg">
+	        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="Fault" element="corecomCustPartyList:Fault"/>
+    </message>
+    <portType name="QueryCustomerPartyListBRMCommsProvABCSImpl">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This Service Contains Query Customer Party List Provider ABCS Implementation</svcdoc:Description>
+                <svcdoc:DisplayName>Query CustomerPartyList BRM Requestor ABCS Implementation</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="QueryCustomerPartyList">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Query an CustomerPartyList
+                              object</svcdoc:Description>
+                    <svcdoc:MEP>SyncReqResp</svcdoc:MEP>
+                    <svcdoc:DisplayName>QueryCustomerPartyList</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="commsCustPartyListabcs:QueryCustomerPartyListReqMsg"/>
+            <output message="commsCustPartyListabcs:QueryCustomerPartyListRespMsg"/>
+            <fault name="fault" message="commsCustPartyListabcs:QueryCustomerPartyListFaultMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="QueryCustomerPartyListBRMCommsProvABCSImpl">
+        <plnk:role name="QueryCustomerPartyListBRMCommsProvABCSImplProvider">
+            <plnk:portType name="commsCustPartyListabcs:QueryCustomerPartyListBRMCommsProvABCSImpl"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

@@ -1,0 +1,84 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/item/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/item/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="PlanningCharacteristics" sdoJava:package="oracle.apps.ego.item.service" sdoJava:instanceClass="oracle.apps.ego.item.service.PlanningCharacteristics">
+        <xsd:annotation>
+            <xsd:documentation>Planning Characteristics</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="InventoryPlanningCode" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PlannerCode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="SubcontractingComponent" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PlanningMakeBuyCode" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="MinMinmaxQuantity" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="MaxMinmaxQuantity" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="MinimumOrderQuantity" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="MaximumOrderQuantity" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="OrderCost" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="CarryingCost" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="SourceType" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="SourceOrganizationId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="SourceSubinventory" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="MrpSafetyStockCode" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="SafetyStockBucketDays" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="MrpSafetyStockPercent" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="FixedOrderQuantity" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="FixedDaysSupply" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="FixedLotMultiplier" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="VmiMinimumUnits" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="VmiMinimumDays" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="VmiMaximumUnits" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="VmiMaximumDays" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="VmiFixedOrderQuantity" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="SoAuthorizationFlag" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ConsignedFlag" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AsnAutoexpireFlag" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="VmiForecastType" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ForecastHorizon" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ProductFamilyItemId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="MrpPlanningCode" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PlanningExceptionSet" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AtoForecastControl" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ShrinkageRate" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="EndAssemblyPeggingFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AcceptableEarlyDays" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="RoundingControlType" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PlannedInvPointFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="CreateSupplyFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ExcludeFromBudgetFlag" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="CriticalComponentFlag" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="RepetitivePlanningFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="OverrunPercentage" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AcceptableRateIncrease" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AcceptableRateDecrease" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="MrpCalculateAtpFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AutoReduceMps" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PlanningTimeFenceCode" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PlanningTimeFenceDays" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DemandTimeFenceCode" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DemandTimeFenceDays" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ReleaseTimeFenceCode" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ReleaseTimeFenceDays" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="SubstitutionWindowCode" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="SubstitutionWindowDays" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ContinousTransfer" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Convergence" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Divergence" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DrpPlannedFlag" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DaysMaxInvSupply" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DaysMaxInvWindow" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DaysTgtInvSupply" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DaysTgtInvWindow" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="RepairProgram" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="RepairYield" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="RepairLeadtime" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PrepositionPoint" type="xsd:string" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="planningCharacteristics" type="PlanningCharacteristics" nillable="true"/>
+</xsd:schema>

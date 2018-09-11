@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="QueryItemListPIMProvABCSImplExtension"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/PIM/Core/QueryItemListPIMProvABCSImplExtension"
+             xmlns:tns="http://xmlns.oracle.com/ABCSImpl/PIM/Core/QueryItemListPIMProvABCSImplExtension"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:pimabo="http://xmlns.oracle.com/apps/ego/item/service"
+             xmlns:pimabo1="http://xmlns.oracle.com/apps/fnd/ServiceBean"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:coreitem="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Item/V2"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1">
+  <documentation>
+    <svcdoc:Service>
+      <svcdoc:Description>This service contains intercepting operations that
+                          would be used by the participating application</svcdoc:Description>
+      <svcdoc:ServiceType>ABCSExtension</svcdoc:ServiceType>
+      <svcdoc:DisplayName>Query Item List PIMProvABCSImpl ABCS Extension
+                          Abstract Interface</svcdoc:DisplayName>
+      <svcdoc:EBOName>ItemEBO</svcdoc:EBOName>
+      <svcdoc:ABOName>Item</svcdoc:ABOName>
+      <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+      <svcdoc:Version>1.0</svcdoc:Version>
+      <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+      <svcdoc:ProductFamily>PIM</svcdoc:ProductFamily>
+      <svcdoc:ProductPillar>PIM</svcdoc:ProductPillar>
+      <svcdoc:ProductCode>PIM</svcdoc:ProductCode>
+    </svcdoc:Service>
+  </documentation>
+  <import namespace="http://xmlns.oracle.com/apps/ego/item/service"
+          location="http://adc60120fems.us.oracle.com:7818/AIAComponents/ApplicationObjectLibrary/PIM/wsdls/ItemService_Service.wsdl"/>
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Item/V2"
+                  schemaLocation="http://adc60120fems.us.oracle.com:7818/AIAComponents/EnterpriseObjectLibrary/Core/EBO/Item/V2/ItemEBM.xsd"/>
+      <xsd:import namespace="http://schemas.oracle.com/service/bpel/common"
+                  schemaLocation="http://adc60120fems.us.oracle.com:7818/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+      <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+                  schemaLocation="http://adc60120fems.us.oracle.com:7818/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+    </xsd:schema>
+    <xsd:schema elementFormDefault="qualified"
+                targetNamespace="http://xmlns.oracle.com/apps/fnd/ServiceBean">
+      <xsd:element name="ServiceBean_Header">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RESPONSIBILITY_NAME" minOccurs="0"
+                         type="xsd:string"/>
+            <xsd:element name="RESPONSIBILITY_APPL_NAME" minOccurs="0"
+                         type="xsd:string"/>
+            <xsd:element name="SECURITY_GROUP_NAME" minOccurs="0"
+                         type="xsd:string"/>
+            <xsd:element name="NLS_LANGUAGE" minOccurs="0" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <!-- Message Definitions  
+-->
+  <message name="PreXformEBMtoABMEBMMsg">
+    <documentation>
+      <svcdoc:Message>
+        <svcdoc:Description>This message will contain the SyncItemList EBM</svcdoc:Description>
+      </svcdoc:Message>
+    </documentation>
+    <part name="QueryItemListEBM" element="coreitem:QueryItemListEBM"/>
+  </message>
+  <message name="PreInvokeItemQueryABMMsg">
+    <documentation>
+      <svcdoc:Message>
+        <svcdoc:Description>This message will contain the Input Parameters of
+                            Query PIM Items Service</svcdoc:Description>
+      </svcdoc:Message>
+    </documentation>
+    <part name="header" element="pimabo1:ServiceBean_Header"/>
+    <part name="body" element="pimabo:ItemService_GetItemInformation"/>
+  </message>
+  <message name="PostInvokeItemResponseABMMsg">
+    <documentation>
+      <svcdoc:Message>
+        <svcdoc:Description>This message will contain the Output Parameters of
+                            Query PIM Items Service</svcdoc:Description>
+      </svcdoc:Message>
+    </documentation>
+    <part name="body" element="pimabo:ItemService_GetItemInformation_Response"/>
+  </message>
+  <message name="PostXformABMtoEBMEBMMsg">
+    <documentation>
+      <svcdoc:Message>
+        <svcdoc:Description>This message will contain the SyncItemListResponse
+                            EBM</svcdoc:Description>
+      </svcdoc:Message>
+    </documentation>
+    <part name="QueryItemListResponseEBM"
+          element="coreitem:QueryItemListResponseEBM"/>
+  </message>
+  <message name="FaultMessage">
+    <documentation>
+      <svcdoc:Message>
+        <svcdoc:Description>This message is used for propagating Error Context
+                            and Error Message</svcdoc:Description>
+      </svcdoc:Message>
+    </documentation>
+    <part name="AIAFault" element="corecom:Fault"/>
+  </message>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PORT TYPE DEFINITION - A port type groups a set of operations into
+	a logical service unit.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <portType name="QueryItemListPIMProvABCSImplExtensionService">
+    <documentation>
+      <svcdoc:Interface>
+        <svcdoc:Description>This interface contains operations that can act upon
+                            the ABO / EBO object</svcdoc:Description>
+        <svcdoc:DisplayName>QueryItemListPIMProvABCSImpl ABCS Extension </svcdoc:DisplayName>
+        <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+      </svcdoc:Interface>
+    </documentation>
+    <operation name="PreXformItemEBMtoABMEBM">
+      <documentation>
+        <svcdoc:Operation>
+          <svcdoc:Description>This operation is For Extension Of SyncItemListEBM</svcdoc:Description>
+          <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+          <svcdoc:DisplayName>PreXformItemEBMtoABMEBM</svcdoc:DisplayName>
+          <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+          <svcdoc:Scope>Public</svcdoc:Scope>
+        </svcdoc:Operation>
+      </documentation>
+      <input message="tns:PreXformEBMtoABMEBMMsg"/>
+      <output message="tns:PreXformEBMtoABMEBMMsg"/>
+      <fault name="fault" message="tns:FaultMessage"/>
+    </operation>
+    <operation name="PreInvokeItemQueryABM">
+      <documentation>
+        <svcdoc:Operation>
+          <svcdoc:Description>This operation is For Extension Of InputParameters</svcdoc:Description>
+          <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+          <svcdoc:DisplayName>PreInvokeItemQueryABM</svcdoc:DisplayName>
+          <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+          <svcdoc:Scope>Public</svcdoc:Scope>
+        </svcdoc:Operation>
+      </documentation>
+      <input message="tns:PreInvokeItemQueryABMMsg"/>
+      <output message="tns:PreInvokeItemQueryABMMsg"/>
+      <fault name="fault" message="tns:FaultMessage"/>
+    </operation>
+    <operation name="PostInvokeItemResponseABM">
+      <documentation>
+        <svcdoc:Operation>
+          <svcdoc:Description>This operation is For Extension Of OutputParamters</svcdoc:Description>
+          <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+          <svcdoc:DisplayName>PostInvokeItemResponseABMMsg</svcdoc:DisplayName>
+          <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+          <svcdoc:Scope>Public</svcdoc:Scope>
+        </svcdoc:Operation>
+      </documentation>
+      <input message="tns:PostInvokeItemResponseABMMsg"/>
+      <output message="tns:PostInvokeItemResponseABMMsg"/>
+      <fault name="fault" message="tns:FaultMessage"/>
+    </operation>
+    <operation name="PostXformABMtoEBMEBM">
+      <documentation>
+        <svcdoc:Operation>
+          <svcdoc:Description>This operation is For Extension Of
+                              SyncItemListResponseEBM</svcdoc:Description>
+          <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+          <svcdoc:DisplayName>PostXformABMtoEBMEBM</svcdoc:DisplayName>
+          <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+          <svcdoc:Scope>Public</svcdoc:Scope>
+        </svcdoc:Operation>
+      </documentation>
+      <input message="tns:PostXformABMtoEBMEBMMsg"/>
+      <output message="tns:PostXformABMtoEBMEBMMsg"/>
+      <fault name="fault" message="tns:FaultMessage"/>
+    </operation>
+  </portType>
+  <!-- portType implemented by the requester of QueryItemListPIMProvABCSImpl BPEL process
+	for asynchronous callback purposes
+	-->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PARTNER LINK TYPE DEFINITION
+	the QueryItemListPIMProvABCSImpl partnerLinkType binds the provider and
+	requester portType into an asynchronous conversation.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <plnk:partnerLinkType name="QueryItemListPIMProvABCSImplExtensionService">
+    <plnk:role name="QueryItemListPIMProvABCSImplExtensionServiceProvider">
+      <plnk:portType name="tns:QueryItemListPIMProvABCSImplExtensionService"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+  
+  <binding name="QueryItemListPIMProvABCSImplExtensionService_Binding" type="tns:QueryItemListPIMProvABCSImplExtensionService">
+  <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" /> 
+  
+<operation name="PreXformItemEBMtoABMEBM">
+  <soap:operation style="document" soapAction="mirror" /> 
+<input>
+  <soap:body use="literal" /> 
+  </input>
+<output>
+  <soap:body use="literal" /> 
+  </output>
+      <fault name="fault">
+        <soap:fault name="fault" use="literal" encodingStyle="" />
+      </fault>
+  </operation>
+<operation name="PreInvokeItemQueryABM">
+  <soap:operation style="document" soapAction="mirror" /> 
+<input>
+  <soap:body use="literal" /> 
+  </input>
+<output>
+  <soap:body use="literal" /> 
+  </output>
+          <fault name="fault">
+        <soap:fault name="fault" use="literal" encodingStyle="" />
+      </fault>
+  </operation>
+<operation name="PostInvokeItemResponseABM">
+  <soap:operation style="document" soapAction="mirror" /> 
+<input>
+  <soap:body use="literal" /> 
+  </input>
+<output>
+  <soap:body use="literal" /> 
+  </output>
+        <fault name="fault">
+        <soap:fault name="fault" use="literal" encodingStyle="" />
+      </fault>
+  </operation>
+<operation name="PostXformABMtoEBMEBM">
+  <soap:operation style="document" soapAction="mirror" /> 
+<input>
+  <soap:body use="literal" /> 
+  </input>
+<output>
+  <soap:body use="literal" /> 
+  </output>
+      <fault name="fault">
+        <soap:fault name="fault" use="literal" encodingStyle="" />
+      </fault>
+  </operation>
+  </binding>
+<service name="mirrorAnyService">
+<port name="QueryItemListPIMProvABCSImplExtensionService" binding="tns:QueryItemListPIMProvABCSImplExtensionService_Binding">
+  <soap:address location="http://adc60120fems.us.oracle.com:7818/MirrorServlet/mirror" /> 
+  </port>
+  </service>
+</definitions>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsdLocal1="http://www.siebel.com/xml/SWIProductIntegrationIO" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://siebel.com/asi/V0" targetNamespace="http://siebel.com/asi/V0">
+  <types>
+  
+    <xsd:schema elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="http://siebel.com/asi/V0">
+      <xsd:import namespace="http://www.siebel.com/xml/SWIProductIntegrationIO" schemaLocation="../schemas/SWIProductIntegrationIO.xsd" />
+      <xsd:element name="SWIProductImportUpsert_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="SyncChild" type="xsd:string" />
+            <xsd:element ref="xsdLocal1:ListOfProductImport" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SWIProductImportUpsert_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal1:ListOfProductImport" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="SWIProductImportUpsert_Input">
+    <part name="SWIProductImportUpsert_Input" element="tns:SWIProductImportUpsert_Input" />
+  </message>
+  <message name="SWIProductImportUpsert_Output">
+    <part name="SWIProductImportUpsert_Output" element="tns:SWIProductImportUpsert_Output" />
+  </message>
+  <portType name="SWIProductImport">
+    <operation name="SWIProductImportUpsert">
+      <input message="tns:SWIProductImportUpsert_Input" />
+      <output message="tns:SWIProductImportUpsert_Output" />
+    </operation>
+  </portType>
+  <binding name="SWIProductImport" type="tns:SWIProductImport">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="SWIProductImportUpsert">
+      <soap:operation soapAction="document/http://siebel.com/asi/V0:SWIProductImportUpsert" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="SWIProductImport">
+    <port binding="tns:SWIProductImport" name="SWIProductImport">
+      <soap:address location="http://set.at.runtime"/>
+    </port>
+  </service>
+</definitions>

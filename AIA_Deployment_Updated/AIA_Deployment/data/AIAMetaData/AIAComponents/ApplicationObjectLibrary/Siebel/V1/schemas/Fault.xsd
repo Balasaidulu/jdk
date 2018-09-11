@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siebel.com/xml/SWIFault/V0" xmlns:xsdLocal="http://www.siebel.com/xml/SWIFault/V0" attributeFormDefault="unqualified" elementFormDefault="qualified">
+ <xsd:annotation>
+  <xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights
+                     reserved. Siebel XSD Generation</xsd:documentation>
+ </xsd:annotation>
+ <xsd:element name="Fault" type="xsdLocal:Fault"/>
+ <xsd:complexType name="FaultTopElmt">
+  <xsd:sequence>
+   <xsd:element name="Fault" type="xsdLocal:Fault" minOccurs="1" maxOccurs="1"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="Fault">
+  <xsd:sequence>
+   <xsd:element name="Code" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+   <xsd:element name="Detail" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+   <xsd:element name="Summary" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+  </xsd:sequence>
+ </xsd:complexType>
+</xsd:schema>

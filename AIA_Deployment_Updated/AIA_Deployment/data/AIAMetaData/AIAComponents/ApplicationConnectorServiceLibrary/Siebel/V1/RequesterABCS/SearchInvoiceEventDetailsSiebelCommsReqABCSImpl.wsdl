@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="SearchInvoiceEventDetailsSiebelCommsReqABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/SearchInvoiceEventDetailsSiebelCommsReqABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:bpelcom="http://schemas.oracle.com/service/bpel/common"
+     xmlns:seblflt="http://www.siebel.com/xml/SWIFault/V0"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:abcsimplsiebelinvevntdtlreqabcs="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/SearchInvoiceEventDetailsSiebelCommsReqABCSImpl/V1"
+     xmlns:commsinvsrchevntdtl="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:abcsimplsiebelinvevntdtlreqabo="http://www.siebel.com/xml/CMU%20Request%20CDR%20Details%20Search%20IO"
+     xmlns:abcsimplsiebelinvevntdtlrespabo="http://www.siebel.com/xml/CMU%20Response%20CDR%20Details%20IO"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service contains operations that would be used to search Invoice Event Detail records (CDR records) in CRM app</svcdoc:Description>
+            <svcdoc:ServiceType>RequesterABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>SearchInvoiceEventDetailsSiebelCommsReqABCSImpl Requester ABCS Implementation Interface</svcdoc:DisplayName>
+            <svcdoc:EBOName>InvoiceEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>CRM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>CMU</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.siebel.com/xml/CMU%20Request%20CDR%20Details%20Search%20IO"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestCdrDetailsSearchIo.xsd"/>
+            <import namespace="http://www.siebel.com/xml/CMU%20Response%20CDR%20Details%20IO"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuResponseCdrDetailsIo.xsd"/>
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+            <import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+            <import namespace="http://www.siebel.com/xml/SWIFault/V0" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/Fault.xsd"/>
+        </schema>
+    </types>
+    <message name="SearchInvoiceEventDetailsReqMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used as a payload to Search Invoice Event Details operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="SearchInvoiceEventDetails" element="abcsimplsiebelinvevntdtlreqabo:ListOfCmuRequestCdrDetailsSearchIo"/>
+    </message>
+    <message name="SearchInvoiceEventDetailsRespMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for sending response by Search Invoice EventDetails operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="SearchInvoiceEventDetailsResponse" element="abcsimplsiebelinvevntdtlrespabo:ListOfCmuResponseCdrDetailsIo"/>
+    </message>
+    <message name="SiebelFaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error
+                                    Context and Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="SiebelFault" element="seblflt:Fault"/>
+    </message>
+    <message name="SearchInvoiceEventDetailsFaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error Context and
+                        Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="SearchInvoiceEventDetailsFault" element="commsinvsrchevntdtl:Fault"/>
+    </message>
+    <portType name="SearchInvoiceEventDetailsSiebelCommsReqABCSImpl">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This interface contains operations that can act upon
+                            the object</svcdoc:Description>
+                <svcdoc:DisplayName>Search InvoiceEventDetails Siebel Requestor ABCS Implementation</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="SearchInvoiceEventDetails">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Search an InvoiceEventDetails
+                              object</svcdoc:Description>
+                    <svcdoc:MEP>SyncReqResp</svcdoc:MEP>
+                    <svcdoc:DisplayName>SearchInvoiceEventDetails</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="abcsimplsiebelinvevntdtlreqabcs:SearchInvoiceEventDetailsReqMsg"/>
+            <output message="abcsimplsiebelinvevntdtlreqabcs:SearchInvoiceEventDetailsRespMsg"/>
+            <fault name="fault" message="abcsimplsiebelinvevntdtlreqabcs:SiebelFaultMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="SearchInvoiceEventDetailsSiebelCommsReqABCSImpl">
+        <plnk:role name="SearchInvoiceEventDetailsSiebelCommsReqABCSImplProvider">
+            <plnk:portType name="abcsimplsiebelinvevntdtlreqabcs:SearchInvoiceEventDetailsSiebelCommsReqABCSImpl"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcess"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcess/V1"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:com="http://schemas.oracle.com/service/bpel/common"
+             xmlns:bg="http://schemas.oracle.com/BG/bpel/common"
+             xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:sordsubebo="http://xmlns.oracle.com/ProcessFulfillmentOrderBillingBRMCommsSubprocess"
+             xmlns:brm="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+             xmlns:sordsubsusabcs="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcess/V1">
+    <import namespace="http://schemas.oracle.com/bpel/extension"
+            location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+                        schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+        </xsd:schema>
+        <xsd:schema>
+            <xsd:import namespace="http://schemas.oracle.com/service/bpel/common"
+                        schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </xsd:schema>
+        <xsd:schema>
+            <xsd:import namespace="http://xmlns.oracle.com/ProcessFulfillmentOrderBillingBRMCommsSubprocess"
+                        schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/PIPS/Communications/Schemas/ProcessFulfillmentOrderBillingBRMCommsSubprocess.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcessRequestMessage">
+        <part name="payload"
+              element="sordsubebo:ProcessFulfillmentOrderBillingBRMCommsSubprocessMessage"/>
+    </message>
+    <message name="ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcessResponseMessage">
+        <part name="payload"
+              element="sordsubebo:ProcessFulfillmentOrderBillingBRMCommsSubprocessMessage"/>
+    </message>
+    <message name="FaultMsg">
+        <part name="Fault" element="corecom:Fault"/>
+    </message>
+    <portType name="ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcess">
+        <operation name="processBillingSuspendResume">
+            <input message="sordsubsusabcs:ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcessRequestMessage"/>
+            <output message="sordsubsusabcs:ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcessResponseMessage"/>
+            <fault name="fault" message="sordsubsusabcs:FaultMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcess">
+        <plnk:role name="ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcessProvider">
+            <plnk:portType name="sordsubsusabcs:ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcess"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

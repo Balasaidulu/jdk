@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsdLocal1="http://www.siebel.com/xml/SWIAssetManagementPromotion"
+             targetNamespace="http://siebel.com/CustomUI"
+             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:tns="http://siebel.com/CustomUI">
+ <types>
+  <xsd:schema elementFormDefault="qualified" attributeFormDefault="unqualified"
+              targetNamespace="http://siebel.com/CustomUI"
+              xmlns:xsd="http://www.w3.org/2001/XMLSchema">   
+   <xsd:import namespace="http://www.siebel.com/xml/SWIAssetManagementPromotion" schemaLocation="../schemas/AssetManagementBundledPromotion.xsd"/>   
+   <xsd:element name="SWIAssetManagementPromotionQueryByExample_Input">
+    <xsd:complexType>
+     <xsd:sequence>
+      <xsd:element ref="xsdLocal1:ListOfSwiassetmanagementpromotion"/>
+     </xsd:sequence>
+    </xsd:complexType>
+   </xsd:element>
+   <xsd:element name="SWIAssetManagementPromotionQueryByExample_Output">
+    <xsd:complexType>
+     <xsd:sequence>
+      <xsd:element ref="xsdLocal1:ListOfSwiassetmanagementpromotion"/>
+     </xsd:sequence>
+    </xsd:complexType>
+   </xsd:element>
+  </xsd:schema>
+ </types>
+ <message name="SWIAssetManagementPromotionQueryByExample_Input">
+  <part name="SWIAssetManagementPromotionQueryByExample_Input"
+        element="tns:SWIAssetManagementPromotionQueryByExample_Input"/>
+ </message>
+ <message name="SWIAssetManagementPromotionQueryByExample_Output">
+  <part name="SWIAssetManagementPromotionQueryByExample_Output"
+        element="tns:SWIAssetManagementPromotionQueryByExample_Output"/>
+ </message>
+ <portType name="SWI_spcAsset_spcManagement_spcPromotion">
+  <operation name="SWIAssetManagementPromotionQueryByExample">
+   <input message="tns:SWIAssetManagementPromotionQueryByExample_Input"/>
+   <output message="tns:SWIAssetManagementPromotionQueryByExample_Output"/>
+  </operation>
+ </portType>
+ <binding name="SWI_spcAsset_spcManagement_spcPromotion"
+          type="tns:SWI_spcAsset_spcManagement_spcPromotion">
+  <soap:binding transport="http://schemas.xmlsoap.org/soap/http"
+                style="document"/>
+  <operation name="SWIAssetManagementPromotionQueryByExample">
+   <soap:operation soapAction="document/http://siebel.com/CustomUI:SWIAssetManagementPromotionQueryByExample"/>
+   <input>
+    <soap:body use="literal"/>
+   </input>
+   <output>
+    <soap:body use="literal"/>
+   </output>
+  </operation>
+ </binding>
+ <service name="SWI_spcAsset_spcManagement_spcPromotion">
+  <port binding="tns:SWI_spcAsset_spcManagement_spcPromotion"
+        name="SWI_spcAsset_spcManagement_spcPromotion">
+   <soap:address location="http://set.at.runtime"/>
+  </port>
+ </service>
+</definitions>

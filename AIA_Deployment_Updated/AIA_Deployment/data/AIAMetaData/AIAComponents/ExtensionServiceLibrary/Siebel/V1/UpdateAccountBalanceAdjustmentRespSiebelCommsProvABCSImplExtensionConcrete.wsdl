@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:sblasi="http://siebel.com/asi/" xmlns:sbladjio="http://www.siebel.com/xml/SWISIAAdjustmentIO" xmlns:commsadjebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/AccountBalanceAdjustment/V2" xmlns:commsadjext="http://xmlns.oracle.com/ABCSImpl/Siebel/UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImplExtension" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImplExtension" targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImplExtension">
+   <documentation>
+      <svcdoc:Service>
+         <svcdoc:Description>This service contains intercepting operations that
+                             would be used by the participating application</svcdoc:Description>
+         <svcdoc:ServiceType>ABCSExtension</svcdoc:ServiceType>
+         <svcdoc:DisplayName>UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImpl Provider ABCS Extension
+                          Implementation Interface</svcdoc:DisplayName>
+			<svcdoc:ServiceObjectName>UpdateAccountBalanceAdjustmentResp</svcdoc:ServiceObjectName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:Version>1.0</svcdoc:Version>
+			<svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+			<svcdoc:ProductFamily>CRM</svcdoc:ProductFamily>
+			<svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+			<svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+      </svcdoc:Service>
+   </documentation>
+   <types>
+      <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImplExtension" elementFormDefault="qualified">
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/AccountBalanceAdjustment/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/AccountBalanceAdjustment/V2/AccountBalanceAdjustmentEBM.xsd" />
+         <xsd:import namespace="http://www.siebel.com/xml/SWISIAAdjustmentIO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWISIAAdjustmentIO.xsd" />
+	 <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd" />
+     <xsd:element name="SWIAdjustmentStatusUpdate_Input">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Error_spcCode" type="xsd:string"></xsd:element>
+                <xsd:element name="Error_spcMessage" type="xsd:string"></xsd:element>
+                <xsd:element name="Object_spcId" type="xsd:string"></xsd:element>
+                <xsd:element name="Process_spcInstance_spcId" type="xsd:string"></xsd:element>
+                <xsd:element name="Siebel_spcOperation_spcObject_spcId" type="xsd:string"></xsd:element>
+                <xsd:element ref="sbladjio:ListOfSwisiaadjustmentio"></xsd:element>
+                <xsd:element name="UTCCanonical" type="xsd:string"></xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+</xsd:element>
+      </xsd:schema>
+   </types>
+   <message name="PreXformEBMtoABMAccountBalanceAdjustmentRespMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreXformEBMtoABMABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="CreateAccountBalanceAdjustmentListResponseEBM" element="commsadjebo:CreateAccountBalanceAdjustmentListResponseEBM" />
+   </message>
+	<message name="PreInvokeABSUpdateUpdateAdjustmentReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="SWIAdjustmentStatusUpdate_Input" element="sblasi:SWIAdjustmentStatusUpdate_Input" />
+   </message>
+   <message name="FaultMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used for propagating Error
+                                Context and Error Message</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="AIAFault" element="corecom:Fault" />
+   </message>
+   <portType name="UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImplExtensionService">
+      <documentation>
+         <svcdoc:Interface>
+            <svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+            <svcdoc:DisplayName>UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImplExtension</svcdoc:DisplayName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         </svcdoc:Interface>
+      </documentation>
+      <operation name="PreXformEBMtoABMAccountBalanceAdjustmentRespEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformEBMtoABM a CreateAccountBalanceAdjustmentListResponseEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformEBMtoABMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsadjext:PreXformEBMtoABMAccountBalanceAdjustmentRespMsg" />
+         <output message="commsadjext:PreXformEBMtoABMAccountBalanceAdjustmentRespMsg" />
+         <fault name="fault" message="commsadjext:FaultMessage" />
+      </operation>
+	 <operation name="PreInvokeABSUpdateAdjustmentABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeABS a SWIAdjustmentStatusUpdate object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsadjext:PreInvokeABSUpdateUpdateAdjustmentReqMsg" />
+         <output message="commsadjext:PreInvokeABSUpdateUpdateAdjustmentReqMsg" />
+         <fault name="fault" message="commsadjext:FaultMessage" />
+      </operation>
+   </portType>
+   <binding name="UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImplExtensionServiceBinding" type="commsadjext:UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImplExtensionService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="PreXformEBMtoABMAccountBalanceAdjustmentRespEBM">
+            <soap:operation style="document" soapAction="PreXformEBMtoABMAccountBalanceAdjustmentRespEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		<operation name="PreInvokeABSUpdateAdjustmentABM">
+            <soap:operation style="document" soapAction="PreInvokeABSUpdateAdjustmentABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+        </binding>
+   <service name="UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImplExtension">
+        <port name="UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImplExtensionServicePort" binding="commsadjext:UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImplExtensionServiceBinding">
+            <soap:address location="http://${fp.server.soaserverhostname}:${fp.server.soaserverport}/MirrorServlet/mirror" />
+        </port>
+   </service> 
+   <plnk:partnerLinkType name="UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImplExtensionService">
+      <plnk:role name="UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImplExtensionServiceProvider">
+         <plnk:portType name="commsadjext:UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImplExtensionService" />
+      </plnk:role>
+   </plnk:partnerLinkType>
+</definitions>

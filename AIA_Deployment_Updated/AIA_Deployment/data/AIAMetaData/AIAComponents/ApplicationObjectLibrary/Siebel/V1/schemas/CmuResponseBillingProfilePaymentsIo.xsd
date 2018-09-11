@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siebel.com/xml/CMU%20Response%20Billing%20Profile%20Payments%20IO" xmlns:xsdLocal="http://www.siebel.com/xml/CMU%20Response%20Billing%20Profile%20Payments%20IO" attributeFormDefault="unqualified" elementFormDefault="qualified">
+	<xsd:annotation>
+		<xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="ListOfCmuResponseBillingProfilePaymentsIo" type="xsdLocal:ListOfCmuResponseBillingProfilePaymentsIo" />
+	<xsd:complexType name="ListOfCmuResponseBillingProfilePaymentsIoTopElmt">
+		<xsd:sequence>
+			<xsd:element name="ListOfCmuResponseBillingProfilePaymentsIo" type="xsdLocal:ListOfCmuResponseBillingProfilePaymentsIo" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfCmuResponseBillingProfilePaymentsIo">
+		<xsd:sequence>
+			<xsd:element name="CmuBillingProfilePaymentsVbc" type="xsdLocal:CmuBillingProfilePaymentsVbc" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CmuBillingProfilePaymentsVbc">
+		<xsd:sequence>
+			<xsd:element name="Account" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="AccountId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Allocated" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="BillingProfile" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="BillingProfileId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="BillingProfilePaymentId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Comments" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ConfirmationNumber" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CurrencyCode" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="PaymentAmount" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="PaymentDate" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="PaymentMethod" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="PaymentNumber" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Unallocated" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ServiceAccountId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

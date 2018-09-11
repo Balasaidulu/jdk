@@ -1,0 +1,38 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/item/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/item/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="PublishOpAttributeGroups" sdoJava:package="oracle.apps.ego.item.service" sdoJava:instanceClass="oracle.apps.ego.item.service.PublishOpAttributeGroups">
+        <xsd:annotation>
+            <xsd:documentation>Publish Op Attribute Groups</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="MainCharacteristics" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ItemCatalog" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="InventoryCharacteristics" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PhysicalCharacteristics" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="BillsOfMaterialCharacteristics" type="xsd:string" minOccurs="0"
+                         nillable="true"/>
+                    <xsd:element name="WorkInProcessCharacteristics" type="xsd:string" minOccurs="0"
+                         nillable="true"/>
+                    <xsd:element name="CostingCharacteristics" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ProcessingLeadTimeCharacteristics" type="xsd:string" minOccurs="0"
+                         nillable="true"/>
+                    <xsd:element name="PlanningCharacteristics" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PurchasingCharacteristics" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ReceivingCharacteristics" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="OrderManagementCharacteristics" type="xsd:string" minOccurs="0"
+                         nillable="true"/>
+                    <xsd:element name="InvoicingCharacteristics" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="WebOptionsCharacteristics" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ServiceCharacteristics" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AssetCharacteristics" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ProcessMfgCharacteristics" type="xsd:string" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="publishOpAttributeGroups" type="PublishOpAttributeGroups" nillable="true"/>
+</xsd:schema>

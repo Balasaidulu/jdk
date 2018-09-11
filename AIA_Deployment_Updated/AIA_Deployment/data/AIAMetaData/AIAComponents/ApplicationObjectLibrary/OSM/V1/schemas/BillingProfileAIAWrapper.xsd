@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+        targetNamespace="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:BillingProfileQuery"
+        xmlns:ad="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:AddressQuery"
+        xmlns:ct="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:ContactQuery"
+        xmlns:am="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:BillingProfileQuery"
+        xmlns:pm="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:PaymentMethodQuery"
+        xmlns:ex="OracleComms_OSM_CommonDataDictionary/4.0"
+        xmlns:ord="http://xmlns.oracle.com/communications/ordermanagement">
+  <import namespace="OracleComms_OSM_CommonDataDictionary/4.0" schemaLocation="ExtensionsAIAWrapper.xsd"/>
+  <import namespace="http://xmlns.oracle.com/communications/ordermanagement"
+          schemaLocation="EntityManagementWS.xsd"/>
+  <import namespace="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:AddressQuery"
+          schemaLocation="AddressAIAWrapper.xsd"/>
+  <import namespace="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:ContactQuery"
+          schemaLocation="ContactAIAWrapper.xsd"/>
+  <import namespace="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:PaymentMethodQuery"
+          schemaLocation="PaymentMethodAIAWrapper.xsd"/>
+  <complexType name="BillingProfileType">
+    <complexContent>
+      <extension base="ord:CommonFieldsType">
+        <sequence>
+          <element name="billDayOfMonth" type="integer"/>
+          <element name="collections" type="string" minOccurs="0"/>
+          <element name="collectionsExempt" type="string" minOccurs="0"/>
+          <element name="BillingProfileExtensions" type="ex:BillingProfileExtensionsType"/>
+          <element name="primaryPaymentMethod" type="pm:PaymentMethodType" minOccurs="0" maxOccurs="1"/>
+          <element name="account" type="am:AccountType" minOccurs="1"/>
+          <element name="address" type="ad:AddressType" minOccurs="1"/>
+          <element name="contact" type="ct:ContactType" minOccurs="1"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="AccountType">
+    <sequence>
+      <element name="id" type="long"/>
+    </sequence>
+  </complexType>
+</schema>

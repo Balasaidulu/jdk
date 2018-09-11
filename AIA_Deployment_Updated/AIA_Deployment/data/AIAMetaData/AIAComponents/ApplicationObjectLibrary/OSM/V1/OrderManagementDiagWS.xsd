@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://xmlns.oracle.com/communications/ordermanagement" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:osm="http://xmlns.oracle.com/communications/ordermanagement" xmlns:tns="http://xmlns.oracle.com/communications/ordermanagement">
+	<xsd:include schemaLocation="OrderManagementProcessFlowTypes.xsd"/>
+	<xsd:element name="GetCompensationPlan" type="tns:GetCompensationPlanRequestType"/>
+	<xsd:element name="GetCompensationPlanResponse" type="tns:GetCompensationPlanResponseType"/>
+	<xsd:complexType name="GetCompensationPlanResponseType">
+		<xsd:annotation>
+			<xsd:documentation>
+					Represents the state of order compensation processing. 
+					Includes compensation	items and their dependencies in process flow.
+				</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="OrderId" type="osm:OrderIdType" />
+			<xsd:element name="CompensationId" type="osm:EntityIdType">
+				<xsd:annotation>
+					<xsd:documentation>
+							id of compensation.
+						</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CompensationType" type="tns:OrderCompensationType"/>
+			<xsd:element name="ActiveItem" type="tns:CompensationItemType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>
+							compensation item that no other compensation
+							item is waiting for to complete before
+							starting their compensations
+
+
+						</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PendingItem" type="tns:PendingCompensationItemType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="FlowItemHistory" type="tns:FlowItemHistoryType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation/>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="GetCompensationPlanRequestType">
+		<xsd:sequence>
+			<xsd:element name="OrderId" type="osm:OrderIdType" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="FlowItemIdentityType">
+		<xsd:annotation>
+			<xsd:documentation>
+        		Includes elements that identify FlowItem.
+        	</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Id" type="osm:EntityIdType">
+				<xsd:annotation>
+					<xsd:documentation>
+                        		Uniquely identifies workItem
+                        	</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TaskName" type="osm:EntityNameType">
+				<xsd:annotation>
+					<xsd:documentation>
+                        		Process flow task associated with order
+                        		WorkItem.
+                        	</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="CompensationDependencyLocationType">
+		<xsd:annotation>
+			<xsd:documentation>
+						Determines location of dependency item in process flow relative to compensation item.
+					</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="before">
+				<xsd:annotation>
+					<xsd:documentation>
+								Dependency item is located before the compenstion item in process flow.
+							</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="after">
+				<xsd:annotation>
+					<xsd:documentation>
+								Dependency item is located after the compenstion item in process flow.
+							</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CompensationWorkItemType">
+		<xsd:annotation>
+			<xsd:documentation>
+						Defines relationship of compensation dependency item to workitem that caused its creation.
+					</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="self">
+				<xsd:annotation>
+					<xsd:documentation>
+								Compensation dependency item is the compensation workItem.
+							</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="descendant">
+				<xsd:annotation>
+					<xsd:documentation>
+								Compensation work item is the descendant of compensation dependency item.
+							</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="CompensationItemDependencyType">
+		<xsd:annotation>
+			<xsd:documentation>
+        		Represents compensation that must complete before compensationItem can start his own compensation.
+        	</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="TaskName" type="tns:EntityNameType"/>
+			<xsd:element name="ExecutionMode" type="osm:ExecutionModeType"/>
+			<xsd:element name="PositionedInFlow" type="tns:CompensationDependencyLocationType"/>
+			<xsd:element name="CompenationWorkItem" type="tns:CompensationWorkItemType"/>
+			<xsd:element name="FlowItemId" type="osm:EntityIdType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CompensationItemType">
+		<xsd:annotation>
+			<xsd:documentation>
+        		Represents FlowItem in in compensation plan.
+        	</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="TaskName" type="tns:EntityNameType"/>
+			<xsd:element name="ExecutionMode" type="osm:ExecutionModeType"/>
+			<xsd:element name="CompenationWorkItem" type="tns:CompensationWorkItemType"/>
+			<xsd:element name="FlowItemId" type="tns:EntityIdType"/>
+			<xsd:element name="Fallout" type="tns:FalloutItemPropertiesType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PendingCompensationItemType">
+		<xsd:annotation>
+			<xsd:documentation>
+        		Represents item in compensation plan that is waiting for
+        		some other compensation item to complete before it can
+        		start own compensation.
+        	</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="tns:CompensationItemType">
+				<xsd:sequence>
+					<xsd:element name="WaitsFor" type="tns:CompensationItemDependencyType" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>
+        				Item that has to complete its compensation
+        				before current item is allowed to start its
+        				compensation
+        			</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

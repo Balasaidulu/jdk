@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchemainstance"
+            xmlns="http://xmlns.oracle.com/apps/ego/extfwk/service/out"
+            targetNamespace="http://xmlns.oracle.com/apps/ego/extfwk/service/out"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ <!-- $Header: aiapip/apps/fp/components/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PIM/V1/schemas/ListOfValueSet.xsd /main/2 2012/12/17 05:37:44 sduggine Exp $  -->
+ <xsd:complexType name="ValuesetType">
+  <xsd:annotation>
+   <xsd:documentation>Valueset SDO</xsd:documentation>
+  </xsd:annotation>
+  <xsd:sequence>
+   <xsd:element minOccurs="0" name="ValueSetId" nillable="true"
+                type="xsd:decimal"/>
+   <xsd:element minOccurs="0" name="ValueSetName" nillable="true"
+                type="xsd:string"/>
+   <xsd:element minOccurs="0" name="Description" nillable="true"
+                type="xsd:string"/>
+   <xsd:element minOccurs="0" name="DataType" nillable="true"
+                type="xsd:string"/>
+   <xsd:element minOccurs="0" name="MaximumSize" nillable="true"
+                type="xsd:decimal"/>
+   <xsd:element minOccurs="0" name="ValidationType" nillable="true"
+                type="xsd:string"/>
+   <xsd:element minOccurs="0" name="MinimumValue" nillable="true"
+                type="xsd:string"/>
+   <xsd:element minOccurs="0" name="MaximumValue" nillable="true"
+                type="xsd:string"/>
+   <xsd:element minOccurs="0" name="ListType" nillable="true"
+                type="xsd:string"/>
+   <xsd:element minOccurs="0" name="ParentValueSetId" nillable="true"
+                type="xsd:decimal"/>
+   <xsd:element minOccurs="0" name="ParentValueSetName" nillable="true"
+                type="xsd:string"/>
+   <xsd:element minOccurs="0" maxOccurs="unbounded" name="ValuesetValue"
+                nillable="true" type="ValuesetValueType"/>
+   <xsd:element minOccurs="0" maxOccurs="unbounded" name="ValuesetVersion"
+                nillable="true" type="ValuesetVersionType"/>
+   <xsd:element name="TableInfo" type="TableInfoType" minOccurs="0"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="ValuesetValueType">
+  <xsd:annotation>
+   <xsd:documentation>Valueset Values SDO</xsd:documentation>
+  </xsd:annotation>
+  <xsd:sequence>
+   <xsd:element minOccurs="0" name="FlexValueId" nillable="true"
+                type="xsd:decimal"/>
+   <xsd:element minOccurs="0" name="Sequence" nillable="true"
+                type="xsd:decimal"/>
+   <xsd:element minOccurs="0" name="InternalName" nillable="true"
+                type="xsd:string"/>
+   <xsd:element minOccurs="0" name="EnabledCode" nillable="true"
+                type="xsd:string"/>
+   <xsd:element minOccurs="0" name="StartDate" nillable="true"
+                type="xsd:string"/>
+   <xsd:element minOccurs="0" name="EndDate" nillable="true"
+                type="xsd:string"/>
+   <xsd:element maxOccurs="unbounded" name="TranslatableAttributes"
+                type="VSValueTransAttrType"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="VSValueTransAttrType">
+  <xsd:sequence>
+   <xsd:element name="Language" type="xsd:string"/>
+   <xsd:element minOccurs="0" name="DisplayName" nillable="true"
+                type="xsd:string"/>
+   <xsd:element minOccurs="0" name="Description" nillable="true"
+                type="xsd:string"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="ValuesetVersionType">
+  <xsd:annotation>
+   <xsd:documentation>Valueset Version</xsd:documentation>
+  </xsd:annotation>
+  <xsd:sequence>
+   <xsd:element minOccurs="0" name="VersionSeqId" nillable="true"
+                type="xsd:decimal"/>
+   <xsd:element minOccurs="0" name="Description" nillable="true"
+                type="xsd:string"/>
+   <xsd:element minOccurs="0" name="startActiveDate" nillable="true"
+                type="xsd:dateTime"/>
+   <xsd:element minOccurs="0" name="endActiveDate" nillable="true"
+                type="xsd:dateTime"/>
+   <xsd:element minOccurs="0" maxOccurs="unbounded" name="VersionedVSValue"
+                nillable="true" type="VersionedVSValueType"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="VersionedVSValueType">
+  <xsd:annotation>
+   <xsd:documentation>Versioned VSValue SDO</xsd:documentation>
+  </xsd:annotation>
+  <xsd:sequence>
+   <xsd:element minOccurs="0" name="FlexValueId" nillable="true"
+                type="xsd:decimal"/>
+   <xsd:element minOccurs="0" name="Sequence" nillable="true"
+                type="xsd:decimal"/>
+   <xsd:element minOccurs="0" name="InternalName" nillable="true"
+                type="xsd:string"/>
+   <xsd:element maxOccurs="unbounded" name="TranslatableAttributes"
+                type="VVSValue_TranslAttrs"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="VVSValue_TranslAttrs">
+  <xsd:sequence>
+   <xsd:element name="Language" type="xsd:string"/>
+   <xsd:element minOccurs="0" name="DisplayName" nillable="true"
+                type="xsd:string"/>
+   <xsd:element minOccurs="0" name="Description" nillable="true"
+                type="xsd:string"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="StatusType">
+  <xsd:annotation>
+   <xsd:documentation>Status</xsd:documentation>
+  </xsd:annotation>
+  <xsd:sequence>
+   <xsd:element minOccurs="0" maxOccurs="unbounded" name="Error" nillable="true"
+                type="ErrorType"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="ErrorType">
+  <xsd:annotation>
+   <xsd:documentation>Errors</xsd:documentation>
+  </xsd:annotation>
+  <xsd:sequence>
+   <xsd:element minOccurs="0" name="Code" nillable="true" type="xsd:string"/>
+   <xsd:element minOccurs="0" name="Message" nillable="true" type="xsd:string"/>
+   <xsd:element name="InputIdentifier" type="InputIdentifierType"
+                minOccurs="0"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="ListOfVSType">
+  <xsd:annotation>
+   <xsd:documentation>List Of Value Sets in output payload</xsd:documentation>
+  </xsd:annotation>
+  <xsd:sequence>
+   <xsd:element minOccurs="0" maxOccurs="unbounded" name="Valueset"
+                nillable="true" type="ValuesetType"/>
+   <xsd:element name="Status" type="StatusType" minOccurs="0"/>
+   <xsd:element name="AdditionalInfo" type="AddlInfoType" minOccurs="0"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="AddlInfoType">
+  <xsd:sequence>
+   <xsd:element name="SessionId" type="xsd:integer"/>
+   <xsd:element name="EntityCount" type="xsd:integer"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="InputIdentifierType">
+  <xsd:sequence>
+   <xsd:element name="Parameter" type="ParameterType" minOccurs="0"
+                maxOccurs="unbounded"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="ParameterType">
+  <xsd:sequence>
+   <xsd:element name="Name" type="xsd:string"/>
+   <xsd:element name="Value" type="xsd:string"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="TableInfoType">
+  <xsd:sequence>
+   <xsd:element name="AppName" type="xsd:string"/>
+   <xsd:element name="AppId" type="xsd:decimal"/>
+   <xsd:element name="TableName" type="xsd:string"/>
+   <xsd:element name="WhereClause" type="xsd:string"/>
+   <xsd:element name="ValueColumn" type="ValueColType"/>
+   <xsd:element name="IDColumn" type="IDColType"/>
+   <xsd:element name="MeaningColumn" type="MeaningColType"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="ValueColType">
+  <xsd:sequence>
+   <xsd:element name="Name" type="xsd:string"/>
+   <xsd:element name="Type" type="xsd:string"/>
+   <xsd:element name="Size" type="xsd:decimal"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="IDColType">
+  <xsd:sequence>
+   <xsd:element name="Name" type="xsd:string"/>
+   <xsd:element name="Type" type="xsd:string"/>
+   <xsd:element name="Size" type="xsd:decimal"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="MeaningColType">
+  <xsd:sequence>
+   <xsd:element name="Name" type="xsd:string"/>
+   <xsd:element name="Type" type="xsd:string"/>
+   <xsd:element name="Size" type="xsd:decimal"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:element name="ListOfValueSets" type="ListOfVSType" nillable="true"/>
+</xsd:schema>

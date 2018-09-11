@@ -1,0 +1,22 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/pubfwk/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/pubfwk/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="ReturnStatus.xsd"/>
+    <xsd:include schemaLocation="TargetSystem.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="ListofTargetSystems" sdoJava:package="oracle.apps.ego.pubfwk.service" sdoJava:instanceClass="oracle.apps.ego.pubfwk.service.ListofTargetSystems">
+        <xsd:annotation>
+            <xsd:documentation>This dataobject is the return parameter of method getBatchSystems. It has two attributes:</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="TargetSystem" type="TargetSystem" minOccurs="0" maxOccurs="unbounded"
+                         nillable="true"/>
+                    <xsd:element name="ReturnStatus" type="ReturnStatus" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="listofTargetSystems" type="ListofTargetSystems" nillable="true"/>
+</xsd:schema>

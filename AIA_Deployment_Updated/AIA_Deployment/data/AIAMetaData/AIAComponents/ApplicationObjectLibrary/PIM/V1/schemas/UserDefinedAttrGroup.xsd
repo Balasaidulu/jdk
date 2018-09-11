@@ -1,0 +1,30 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/extfwk/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/extfwk/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="UserDefinedAttribute.xsd"/>
+    <xsd:include schemaLocation="UserDefAttrGrpBusEntity.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="UserDefinedAttrGroup" sdoJava:package="oracle.apps.ego.extfwk.service" sdoJava:instanceClass="oracle.apps.ego.extfwk.service.UserDefinedAttrGroup">
+        <xsd:annotation>
+            <xsd:documentation>Service DataObject for Attribute Group</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="AttrGroupName" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ApplicationId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AttrGroupType" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AttrGroupDispName" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Description" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="MultiRowMeaning" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AttrGroupId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="UserDefAttrGrpBusEntity" type="UserDefAttrGrpBusEntity" minOccurs="0"
+                         maxOccurs="unbounded" nillable="true"/>
+                    <xsd:element name="UserDefinedAttribute" type="UserDefinedAttribute" minOccurs="0"
+                         maxOccurs="unbounded" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="userDefinedAttrGroup" type="UserDefinedAttrGroup" nillable="true"/>
+</xsd:schema>

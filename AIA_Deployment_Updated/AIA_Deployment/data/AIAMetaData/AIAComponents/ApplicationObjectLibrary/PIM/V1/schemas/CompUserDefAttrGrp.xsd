@@ -1,0 +1,23 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/itemcatalog/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/itemcatalog/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="CompUserDefAttrValue.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="CompUserDefAttrGrp" sdoJava:package="oracle.apps.ego.itemcatalog.service" sdoJava:instanceClass="oracle.apps.ego.itemcatalog.service.CompUserDefAttrGrp">
+        <xsd:annotation>
+            <xsd:documentation>Service data object of the user defined attribute group associated to the given component</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="ExtensionId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AttributegroupId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AttributegroupName" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="CompUserDefAttrValue" type="CompUserDefAttrValue" minOccurs="0"
+                         maxOccurs="unbounded" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="compUserDefAttrGrp" type="CompUserDefAttrGrp" nillable="true"/>
+</xsd:schema>

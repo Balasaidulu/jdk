@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<definitions name="QueryProductClassAndAttributesSCECommsReqABCSImplExtension1"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/SCE/Industry/Comms/QueryProductClassAndAttributesSCECommsReqABCSImplExtension/V1"
+	     
+             xmlns:commsspecificationlist="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Specification/V1"
+             xmlns:specificationebs="http://xmlns.oracle.com/EnterpriseServices/Core/Specification/V1"
+             xmlns:commsclassificationlist="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Classification/V1"
+	     xmlns:classificationebs="http://xmlns.oracle.com/EnterpriseServices/Core/Classification/V1"
+	     xmlns:classificationebsfault="http://xmlns.oracle.com/EnterpriseServices/Core/Classification/V1"
+             xmlns:commsspecificationvslist="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SpecificationValueSet/V1"
+	     xmlns:specificationvsebs="http://xmlns.oracle.com/EnterpriseServices/Core/SpecificationValueSet/V1"
+	     xmlns:specificationvslistebsfault="http://xmlns.oracle.com/EnterpriseServices/Core/SpecificationValueSet/V1"
+	     xmlns:sceqryprodabo="http://www.sce.com/QueryProductClassAndAttributesRespABM"
+             xmlns:abcsimplsceqryprodext="http://xmlns.oracle.com/ABCSImpl/SCE/Industry/Comms/QueryProductClassAndAttributesSCECommsReqABCSImplExtension/V1"
+	     
+	     
+	     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V2"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+   <documentation>
+      <svcdoc:Service>
+         <svcdoc:Description>This service contains intercepting operations that
+                             would be used by the participating application</svcdoc:Description>
+         <svcdoc:TargetServiceType>ABCSExtension</svcdoc:TargetServiceType>
+         <svcdoc:DisplayName>QueryProductClassAndAttributesSCECommsReqABCSImpl Requester ABCS Extension
+                          Implementation Interface</svcdoc:DisplayName>
+			<svcdoc:ServiceObjectName>QueryProductClassAndAttributes</svcdoc:ServiceObjectName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:Version>1.0</svcdoc:Version>
+			<svcdoc:ImplementationTechnology><!-- PLACEHOLDER--></svcdoc:ImplementationTechnology>
+			<svcdoc:ProductFamily>SCE</svcdoc:ProductFamily>
+			<svcdoc:ProductPillar>SCE</svcdoc:ProductPillar>
+			<svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+      </svcdoc:Service>
+   </documentation>
+   
+   <import namespace="http://xmlns.oracle.com/EnterpriseServices/Core/Classification/V1" location="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseBusinessServiceLibrary/Industry/Communications/EBO/Classification/V1/CommunicationsClassificationEBSV1.wsdl"/>
+   <import namespace="http://xmlns.oracle.com/EnterpriseServices/Core/Specification/V1" location="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseBusinessServiceLibrary/Industry/Communications/EBO/Specification/V1/CommunicationsSpecificationEBSV1.wsdl"/>
+   <import namespace="http://xmlns.oracle.com/EnterpriseServices/Core/SpecificationValueSet/V1" location="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseBusinessServiceLibrary/Industry/Communications/EBO/SpecificationValueSet/V1/CommunicationsSpecificationValueSetEBSV1.wsdl"/>
+   
+   <types>
+      <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/SCE/Industry/Comms/QueryProductClassAndAttributesSCECommsReqABCSImplExtension/V1"
+                  elementFormDefault="qualified">
+         <xsd:import namespace="http://www.sce.com/QueryProductClassAndAttributesRespABM" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/SCE/V1/schemas/ProductClassAndAttributesABM.xsd"/>
+		 <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+         
+      </xsd:schema>
+   </types>
+  
+  <message name="PostXformQueryClassificationListResponeEBMtoProductClassAndAttributesResponseABMMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostXformABMtoEBMABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+	<part name="QueryProductClassAndAttributesABM"
+      		    element="sceqryprodabo:QueryProductClassAndAttributesRespABM"/>
+   </message>
+	<message name="PreInvokeEBSQueryClassificationListReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QueryClassificationListEBM"
+            element="commsclassificationlist:QueryClassificationListEBM"/>
+   </message>
+
+	<message name="PostInvokeEBSQueryClassificationListReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QueryClassificationListResponseEBM"
+            element="commsclassificationlist:QueryClassificationListResponseEBM"/>
+	</message>
+    
+    
+    
+     <message name="PreXformQueryClassificationListResponseEBMtoQuerySpecificationValueSetListEBMMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreXformEBMtoEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QueryClassificationListResponseEBM"
+            element="commsclassificationlist:QueryClassificationListResponseEBM"/>
+   </message>
+   
+   <message name="PreXformQueryClassificationListResponseEBMtoQuerySpecificationListEBMMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreXformEBMtoEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QueryClassificationListResponseEBM"
+            element="commsclassificationlist:QueryClassificationListResponseEBM"/>
+   </message>
+  
+   
+	<message name="PreInvokeEBSQuerySpecificationListReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QuerySpecificationListEBM"
+            element="commsspecificationlist:QuerySpecificationListEBM"/>
+   </message>
+
+	<message name="PostInvokeEBSQuerySpecificationListReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QuerySpecificationListResponseEBM"
+            element="commsspecificationlist:QuerySpecificationListResponseEBM"/>
+	</message>
+   
+   
+  
+	<message name="PreInvokeEBSQuerySpecificationValueSetListReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QuerySpecificationValueSetListEBM"
+            element="commsspecificationvslist:QuerySpecificationValueSetListEBM"/>
+   </message>
+
+	<message name="PostInvokeEBSQuerySpecificationValueSetListReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QuerySpecificationValueSetListResponseEBM"
+            element="commsspecificationvslist:QuerySpecificationValueSetListResponseEBM"/>
+	</message>
+	
+	
+   
+   <message name="FaultMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used for propagating Error
+                                Context and Error Message</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="AIAFault" element="corecom:Fault"/>
+   </message>
+   
+   <portType name="QueryProductClassAndAttributesSCECommsReqABCSImplExtensionService">
+      <documentation>
+         <svcdoc:Interface>
+            <svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+            <svcdoc:DisplayName>ProcessSalesOrderSiebelReqABCSImplV2ExtensionService</svcdoc:DisplayName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         </svcdoc:Interface>
+      </documentation>
+     
+	
+	 <operation name="PreInvokeEBSQueryClassificationListEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an QueryClassificationListEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsceqryprodext:PreInvokeEBSQueryClassificationListReqMsg"/>
+         <output message="abcsimplsceqryprodext:PreInvokeEBSQueryClassificationListReqMsg"/>
+         <fault name="fault" message="abcsimplsceqryprodext:FaultMessage"/>
+      </operation>
+	<operation name="PostInvokeEBSQueryClassificationListEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostInvokeEBS an QueryClassificationListResponseEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsceqryprodext:PostInvokeEBSQueryClassificationListReqMsg"/>
+         <output message="abcsimplsceqryprodext:PostInvokeEBSQueryClassificationListReqMsg"/>
+         <fault name="fault" message="abcsimplsceqryprodext:FaultMessage"/>
+      </operation>
+      <operation name="PostXformQueryClassificationListResponeEBMtoProductClassAndAttributesResponseABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostXformABMtoEBM an QueryProductClassAndAttributesRespABM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformABMtoEBMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsceqryprodext:PostXformQueryClassificationListResponeEBMtoProductClassAndAttributesResponseABMMsg"/>
+         <output message="abcsimplsceqryprodext:PostXformQueryClassificationListResponeEBMtoProductClassAndAttributesResponseABMMsg"/>
+         <fault name="fault" message="abcsimplsceqryprodext:FaultMessage"/>
+      </operation>
+      
+      <operation name="PreXformQueryClassificationListResponseEBMtoQuerySpecificationListEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformQueryClassficationListEBMtoQuerySpecificationListEBM an QueryClassficationListEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformQueryClassficationListEBMtoQuerySpecificationListEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsceqryprodext:PreXformQueryClassificationListResponseEBMtoQuerySpecificationListEBMMsg"/>
+         <output message="abcsimplsceqryprodext:PreXformQueryClassificationListResponseEBMtoQuerySpecificationListEBMMsg"/>
+         <fault name="fault" message="abcsimplsceqryprodext:FaultMessage"/>
+      </operation>
+	  
+	  
+	    <operation name="PreXformQueryClassificationListResponseEBMtoQuerySpecificationValueSetListEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformQueryClassficationListEBMtoQuerySpecificationListEBM an QueryClassficationListEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformQueryClassficationListEBMtoQuerySpecificationListEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsceqryprodext:PreXformQueryClassificationListResponseEBMtoQuerySpecificationValueSetListEBMMsg"/>
+         <output message="abcsimplsceqryprodext:PreXformQueryClassificationListResponseEBMtoQuerySpecificationValueSetListEBMMsg"/>
+         <fault name="fault" message="abcsimplsceqryprodext:FaultMessage"/>
+      </operation>
+	
+	 <operation name="PreInvokeEBSQuerySpecificationListEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an QuerySpecificationListEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsceqryprodext:PreInvokeEBSQuerySpecificationListReqMsg"/>
+         <output message="abcsimplsceqryprodext:PreInvokeEBSQuerySpecificationListReqMsg"/>
+         <fault name="fault" message="abcsimplsceqryprodext:FaultMessage"/>
+      </operation>
+	<operation name="PostInvokeEBSQuerySpecificationListEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an QuerySpecificationListResponseEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsceqryprodext:PostInvokeEBSQuerySpecificationListReqMsg"/>
+         <output message="abcsimplsceqryprodext:PostInvokeEBSQuerySpecificationListReqMsg"/>
+         <fault name="fault" message="abcsimplsceqryprodext:FaultMessage"/>
+      </operation>
+	  
+	  
+	
+	 <operation name="PreInvokeEBSQuerySpecificationValueSetListEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an QuerySpecificationValueSetListEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsceqryprodext:PreInvokeEBSQuerySpecificationValueSetListReqMsg"/>
+         <output message="abcsimplsceqryprodext:PreInvokeEBSQuerySpecificationValueSetListReqMsg"/>
+         <fault name="fault" message="abcsimplsceqryprodext:FaultMessage"/>
+      </operation>
+	<operation name="PostInvokeEBSQuerySpecificationValueSetListEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostInvokeEBS an QuerySpecificationValueSetListResponseEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplsceqryprodext:PostInvokeEBSQuerySpecificationValueSetListReqMsg"/>
+         <output message="abcsimplsceqryprodext:PostInvokeEBSQuerySpecificationValueSetListReqMsg"/>
+         <fault name="fault" message="abcsimplsceqryprodext:FaultMessage"/>
+      </operation>
+      
+   </portType>
+   
+    <binding name="QueryProductClassAndAttributesSCECommsReqABCSImplExtensionServiceBinding" type="abcsimplsceqryprodext:QueryProductClassAndAttributesSCECommsReqABCSImplExtensionService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="PreInvokeEBSQueryClassificationListEBM">
+            <soap:operation style="document" soapAction="PreInvokeEBSQueryClassificationListEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+        <operation name="PostInvokeEBSQueryClassificationListEBM">
+            <soap:operation style="document" soapAction="PostInvokeEBSQueryClassificationListEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		 <operation name="PreXformQueryClassificationListResponseEBMtoQuerySpecificationListEBM">
+            <soap:operation style="document" soapAction="PreXformQueryClassificationListResponseEBMtoQuerySpecificationListEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		 <operation name="PreXformQueryClassificationListResponseEBMtoQuerySpecificationValueSetListEBM">
+            <soap:operation style="document" soapAction="PreXformQueryClassificationListResponseEBMtoQuerySpecificationValueSetListEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		<operation name="PreInvokeEBSQuerySpecificationListEBM">
+            <soap:operation style="document" soapAction="PreInvokeEBSQuerySpecificationListEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+        <operation name="PostInvokeEBSQuerySpecificationListEBM">
+            <soap:operation style="document" soapAction="PostInvokeEBSQuerySpecificationListEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		 <operation name="PreInvokeEBSQuerySpecificationValueSetListEBM">
+            <soap:operation style="document" soapAction="PreInvokeEBSQuerySpecificationValueSetListEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		 <operation name="PostInvokeEBSQuerySpecificationValueSetListEBM">
+            <soap:operation style="document" soapAction="PostInvokeEBSQuerySpecificationValueSetListEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		<operation name="PostXformQueryClassificationListResponeEBMtoProductClassAndAttributesResponseABM">
+            <soap:operation style="document" soapAction="PostXformQueryClassificationListResponeEBMtoProductClassAndAttributesResponseABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+    </binding>  
+   <service name="QueryProductClassAndAttributesSCECommsReqABCSImplExtension">
+        <port name="QueryProductClassAndAttributesSCECommsReqABCSImplExtensionServicePort" binding="abcsimplsceqryprodext:QueryProductClassAndAttributesSCECommsReqABCSImplExtensionServiceBinding">
+            <soap:address location="http://${fp.server.soaserverhostname}:${fp.server.soaserverport}/MirrorServlet/mirror" />
+        </port>
+   </service>
+   
+   
+   
+   <plnk:partnerLinkType name="QueryProductClassAndAttributesSCECommsReqABCSImplExtensionService">
+      <plnk:role name="QueryProductClassAndAttributesSCECommsReqABCSImplExtensionServiceProvider">
+         <plnk:portType name="abcsimplsceqryprodext:QueryProductClassAndAttributesSCECommsReqABCSImplExtensionService"/>
+      </plnk:role>
+   </plnk:partnerLinkType>
+</definitions>

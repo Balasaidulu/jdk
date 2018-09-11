@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created By: Ankur Singhal  --><!-- Date Created: 05-25-2007     -->
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" 
+xmlns:abcssiebeluu="http://xmlns.oracle.com/ABCS/Siebel/Industry/Communications/UnbilledUsageSiebelCommsReqABCS/V1" 
+xmlns:uureqabo="http://www.siebel.com/xml/CMU%20Request%20Billing%20Profile%20IO" 
+xmlns:uuresabo="http://www.siebel.com/xml/CMU%20Response%20Unbilled%20Usage%20IO" 
+xmlns:uuedreqabo="http://www.siebel.com/xml/CMU%20Request%20Unbilled%20Details%20IO" 
+xmlns:uuedresabo="http://www.siebel.com/xml/CMU%20Response%20Unbilled%20Details%20IO" 
+xmlns:uuedsreqabo="http://www.siebel.com/xml/CMU%20Request%20Unbilled%20Details%20Search%20IO" 
+xmlns:uurbreqabo="http://www.siebel.com/xml/CMU%20Request%20Unbilled%20Balance%20Details%20IO" 
+xmlns:uurbresabo="http://www.siebel.com/xml/CMU%20Response%20Unbilled%20Balance%20Details%20IO" 
+xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" 
+xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+xmlns:siebelfault="http://www.siebel.com/xml/SWIFault/V0" 
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+name="UnbilledUsageSiebelCommsReqABCS" 
+targetNamespace="http://xmlns.oracle.com/ABCS/Siebel/Industry/Communications/UnbilledUsageSiebelCommsReqABCS/V1">
+
+ <documentation>
+    <svcdoc:Service>
+       <svcdoc:Description>This service contains operations that would be used by the participating application to interact with the external systems </svcdoc:Description>
+       <svcdoc:ServiceType>RequestorABCSImplementation</svcdoc:ServiceType>
+       <svcdoc:DisplayName>Unbilled Usage Siebel Requestor ABCS Interface</svcdoc:DisplayName>
+       <svcdoc:EBOName>ServiceUsageEBO</svcdoc:EBOName>
+       <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+       <svcdoc:Version>1.0</svcdoc:Version>
+       <svcdoc:ProductFamily>CRM</svcdoc:ProductFamily>
+       <svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+       <svcdoc:ProductCode>CMU</svcdoc:ProductCode>
+       <svcdoc:ImplementationTechnology>ESB</svcdoc:ImplementationTechnology>
+    </svcdoc:Service>
+ </documentation>
+ 
+ 
+  <types>
+    <documentation>
+    	<svcdoc:Schema>
+    		<svcdoc:SchemaReferenced>CmuRequestBillingProfileIo.xsd</svcdoc:SchemaReferenced>
+                <svcdoc:SchemaReferenced>CmuResponseUnbilledUsageIo.xsd</svcdoc:SchemaReferenced>                
+                <svcdoc:SchemaReferenced>CmuRequestUnbilledDetailsIo.xsd</svcdoc:SchemaReferenced>
+                <svcdoc:SchemaReferenced>CmuResponseUnbilledDetailsIo.xsd</svcdoc:SchemaReferenced>
+		<svcdoc:SchemaReferenced>CmuRequestUnbilledDetailsSearchIo.xsd</svcdoc:SchemaReferenced>
+		<svcdoc:SchemaReferenced>CmuRequestUnbilledBalanceDetailsIo.xsd</svcdoc:SchemaReferenced>
+		<svcdoc:SchemaReferenced>CmuResponseUnbilledBalanceDetailsIo.xsd</svcdoc:SchemaReferenced>
+		<svcdoc:SchemaReferenced>Meta.xsd</svcdoc:SchemaReferenced>
+   	</svcdoc:Schema>
+    </documentation>  
+    
+    <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCS/Siebel/Industry/Communications/UnbilledUsageSiebelCommsReqABCS/V1" elementFormDefault="qualified">
+      <xsd:import namespace="http://www.siebel.com/xml/CMU%20Request%20Billing%20Profile%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestBillingProfileIo.xsd" />
+      <xsd:import namespace="http://www.siebel.com/xml/CMU%20Response%20Unbilled%20Usage%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuResponseUnbilledUsageIo.xsd" />                  
+      <xsd:import namespace="http://www.siebel.com/xml/CMU%20Request%20Unbilled%20Details%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestUnbilledDetailsIo.xsd" />
+      <xsd:import namespace="http://www.siebel.com/xml/CMU%20Response%20Unbilled%20Details%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuResponseUnbilledDetailsIo.xsd" />
+      <xsd:import namespace="http://www.siebel.com/xml/CMU%20Request%20Unbilled%20Details%20Search%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestUnbilledDetailsSearchIo.xsd" />
+      <xsd:import namespace="http://www.siebel.com/xml/CMU%20Request%20Unbilled%20Balance%20Details%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestUnbilledBalanceDetailsIo.xsd" />
+     <xsd:import namespace="http://www.siebel.com/xml/CMU%20Response%20Unbilled%20Balance%20Details%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuResponseUnbilledBalanceDetailsIo.xsd" />
+       <xsd:import namespace="http://www.siebel.com/xml/SWIFault/V0" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/Fault.xsd" />
+	   <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd" />
+    </xsd:schema>
+  </types>
+
+  
+  
+  <message name="QueryUnbilledUsageReqMsg">
+    <documentation>
+    	<svcdoc:Message>
+   		<svcdoc:Description>This message will contain the Unbilled Usage request attributes</svcdoc:Description>
+   	</svcdoc:Message>
+    </documentation>  
+    <part name="ListOfCmuRequestBillingProfileIo" element="uureqabo:ListOfCmuRequestBillingProfileIo" />
+  </message>
+  
+  <message name="QueryUnbilledUsageRespMsg">
+    <documentation>
+    	<svcdoc:Message>
+   		<svcdoc:Description>This message will contain the Unbilled Usage response attributes </svcdoc:Description>
+   	</svcdoc:Message>
+    </documentation>  
+    <part name="ListOfCmuResponseUnbilledUsageIo" element="uuresabo:ListOfCmuResponseUnbilledUsageIo" />
+  </message>
+  
+  <message name="QueryEventDetailsReqMsg">
+    <documentation>
+    	<svcdoc:Message>
+   		<svcdoc:Description>This message will contain the Unbilled Usage event details request attributes </svcdoc:Description>
+   	</svcdoc:Message>
+    </documentation>  
+    <part name="ListOfCmuRequestUnbilledDetailsIo" element="uuedreqabo:ListOfCmuRequestUnbilledDetailsIo" />
+  </message>
+  
+  <message name="QueryEventDetailsRespMsg">
+    <documentation>
+    	<svcdoc:Message>
+   		<svcdoc:Description>This message will contain the Unbilled Usage event details response attributes</svcdoc:Description>
+   	</svcdoc:Message>
+    </documentation>  
+    <part name="ListOfCmuResponseUnbilledDetailsIo" element="uuedresabo:ListOfCmuResponseUnbilledDetailsIo" />
+  </message>
+
+  <message name="SearchEventDetailsReqMsg">
+    <documentation>
+    	<svcdoc:Message>
+   		<svcdoc:Description>This message will contain the Search Unbilled Usage event details request attributes</svcdoc:Description>
+   	</svcdoc:Message>
+    </documentation>  
+    <part name="ListOfCmuRequestUnbilledDetailsSearchIo" element="uuedsreqabo:ListOfCmuRequestUnbilledDetailsSearchIo" />
+  </message>
+  
+   <message name="SearchEventDetailsRespMsg">
+    <documentation>
+    	<svcdoc:Message>
+   		<svcdoc:Description>This message will contain the Search Unbilled Usage event details response attributes</svcdoc:Description>
+   	</svcdoc:Message>
+    </documentation>  
+    <part name="ListOfCmuResponseUnbilledDetailsIo" element="uuedresabo:ListOfCmuResponseUnbilledDetailsIo" />
+  </message>
+
+  <message name="QueryResourceBalanceReqMsg">
+    <documentation>
+    	<svcdoc:Message>
+   		<svcdoc:Description>This message will contain the Query Unbilled Usage Resource Balance request attributes</svcdoc:Description>
+   	</svcdoc:Message>
+    </documentation>  
+    <part name="ListOfCmuRequestUnbilledBalanceDetailsIo" element="uurbreqabo:ListOfCmuRequestUnbilledBalanceDetailsIo" />
+  </message>
+  
+  <message name="QueryResourceBalanceRespMsg">
+    <documentation>
+    	<svcdoc:Message>
+   		<svcdoc:Description>This message will contain the Query Unbilled Usage Resource Balance response attributes </svcdoc:Description>
+   	</svcdoc:Message>
+    </documentation>  
+    <part name="ListOfCmuResponseUnbilledBalanceDetailsIo" element="uurbresabo:ListOfCmuResponseUnbilledBalanceDetailsIo" />
+  </message>
+   
+  <message name="SiebelFaultMsg">
+   <documentation>
+    <svcdoc:Message>
+     <svcdoc:Description>This message is used for propagating Error Context and
+                        Error Message</svcdoc:Description>
+    </svcdoc:Message>
+   </documentation>
+   <part name="Fault" element="siebelfault:Fault" />
+ </message>
+
+  <message name="FaultMsg">
+    <documentation>
+    	<svcdoc:Message>
+   		<svcdoc:Description>This message will contain the Fault Message </svcdoc:Description>
+   	</svcdoc:Message>
+    </documentation>  
+    <part name="Fault" element="corecom:Fault" />
+  </message>
+
+  <portType name="UnbilledUsageSiebelCommsReqABCS">
+      <documentation>
+         <svcdoc:Interface>
+    		<svcdoc:Description>This ABCS Interface contains operations that route the input messages to the appropriate ABCS Implementation services</svcdoc:Description>
+    		<svcdoc:DisplayName>Unbilled Usage Siebel ABCS Requestor Interface</svcdoc:DisplayName>
+    		<svcdoc:LifecycleStatus>active</svcdoc:LifecycleStatus>
+         </svcdoc:Interface>
+       </documentation>
+       
+    <operation name="QueryUnbilledUsage">
+       <documentation>
+          <svcdoc:Operation>
+    		<svcdoc:Description>This operation routes to the QueryUnbilledUsage operation of the QueryUnbilledUsageSiebelABCSImpl service</svcdoc:Description>
+    		<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+    		<svcdoc:DisplayName>Query Unbilled Usage</svcdoc:DisplayName>
+    		<svcdoc:Status>Active</svcdoc:Status>
+            <svcdoc:Scope>Public</svcdoc:Scope>
+          </svcdoc:Operation>
+       </documentation>
+
+      <input message="abcssiebeluu:QueryUnbilledUsageReqMsg" />
+      <output message="abcssiebeluu:QueryUnbilledUsageRespMsg" />
+      <fault name="fault" message="abcssiebeluu:SiebelFaultMsg" />
+    </operation>
+    
+    <operation name="QueryEventDetails">
+       <documentation>
+          <svcdoc:Operation>
+    		<svcdoc:Description>This operation routes to the QueryUnbilledUsageEventDetails operation of the QueryUnbilledUsageEventDetailsSiebelABCSImpl service</svcdoc:Description>
+    		<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+    		<svcdoc:DisplayName>Query Unbilled Usage Event Details</svcdoc:DisplayName>
+    		<svcdoc:LifecycleStatus>active</svcdoc:LifecycleStatus>
+            <svcdoc:Scope>Public</svcdoc:Scope>
+          </svcdoc:Operation>
+       </documentation>
+      <input message="abcssiebeluu:QueryEventDetailsReqMsg" />
+      <output message="abcssiebeluu:QueryEventDetailsRespMsg" />
+      <fault name="fault" message="abcssiebeluu:SiebelFaultMsg" />
+    </operation>
+    
+    <operation name="SearchEventDetails">
+           <documentation>
+          <svcdoc:Operation>
+    		<svcdoc:Description>This operation routes to the SearchUnbilledUsageEventDetails operation of the SearchUnbilledUsageEventDetailsSiebelABCSImpl service.</svcdoc:Description>
+    		<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+    		<svcdoc:DisplayName>Search Unbilled Usage Event Details</svcdoc:DisplayName>
+    		<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Scope>Public</svcdoc:Scope>
+          </svcdoc:Operation>
+       </documentation>
+      <input message="abcssiebeluu:SearchEventDetailsReqMsg" />
+      <output message="abcssiebeluu:SearchEventDetailsRespMsg" />
+      <fault name="fault" message="abcssiebeluu:SiebelFaultMsg" />
+    </operation>
+    
+    <operation name="QueryResourceBalance">
+           <documentation>
+          <svcdoc:Operation>
+    		<svcdoc:Description>This operation routes to the QueryUnbilledUsageResourceBalance operation of the QueryUnbilledUsageResourceBalanceSiebelABCSImpl service</svcdoc:Description>
+    		<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+    		<svcdoc:DisplayName>Query Unbilled Usage Resource Balance</svcdoc:DisplayName>
+    		<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Scope>Public</svcdoc:Scope>
+          </svcdoc:Operation>
+       </documentation>
+      <input message="abcssiebeluu:QueryResourceBalanceReqMsg" />
+      <output message="abcssiebeluu:QueryResourceBalanceRespMsg" />
+      <fault name="fault" message="abcssiebeluu:SiebelFaultMsg" />
+    </operation>
+
+  </portType>
+  
+</definitions>

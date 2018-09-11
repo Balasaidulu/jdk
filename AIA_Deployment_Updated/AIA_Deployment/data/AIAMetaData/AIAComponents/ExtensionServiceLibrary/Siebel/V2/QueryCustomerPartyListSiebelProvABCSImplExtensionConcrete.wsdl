@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<definitions name="QueryCustomerPartyListSiebelProvABCSImplExtension"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/QueryCustomerPartyListSiebelProvABCSImplExtension/V1"
+             xmlns:tns="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/QueryCustomerPartyListSiebelProvABCSImplExtension/V1"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:custebizabcsext="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/QueryCustomerPartyListSiebelProvABCSImplExtension/V1"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:seblcustpartyabo="http://siebel.com/asi/V0"
+             xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+             xmlns:custebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1">
+ <import namespace="http://siebel.com/asi/V0"
+         location="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/wsdls/SWICustomerPartyServices.wsdl"/>
+             
+ <!-- Type Definitions -->
+ <types>
+  <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/QueryCustomerPartyListSiebelProvABCSImplExtension/V1"
+              elementFormDefault="qualified">
+   <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+               schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/CustomerParty/V2/CustomerPartyEBM.xsd"/>
+   <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+               schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+  </xsd:schema>
+ </types>
+ <!-- Message Definitions -->
+ <message name="PreXformEBMToABMCustomerPartyEBOMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message is used as a payload for the
+                        PreXformEBMToABMEBM operation</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="QueryCustomerPartyListEBM"
+        element="custebo:QueryCustomerPartyListEBM"/>
+ </message>
+ <message name="PostXformABMToEBMCustomerPartyEBOMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message is used as a payload for the
+                        PostXformABMToEBMEBM operation</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="QueryCustomerPartyListResponseEBM"
+        element="custebo:QueryCustomerPartyListResponseEBM"/>
+ </message>
+ <message name="PreInvokeSWICustServiceSWICustomerPartyIOMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message is used as a payload for the
+                        PreInvokeEbizAdapterABM operation</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="QuerySWICustomerPartyIOABM"
+        element="seblcustpartyabo:SWICustomerPartyQueryByExample_Input"/>
+ </message>
+ <message name="PostInvokeSWICustServiceSWICustomerPartyIOMsg">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message is used as a payload for the
+                        PostInvokeEbizAdapterABM operation</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="QuerySWICustomerPartyIORespABM"
+        element="seblcustpartyabo:SWICustomerPartyQueryByExample_Output"/>
+ </message>
+ <message name="FaultMessage">
+  <documentation>
+   <svcdoc:Message>
+    <svcdoc:Description>This message is used for propagating Error Context and
+                        Error Message</svcdoc:Description>
+   </svcdoc:Message>
+  </documentation>
+  <part name="AIAFault" element="corecom:Fault"/>
+ </message>
+ <!-- PortType Definitions -->
+ <portType name="QueryCustomerPartyListSiebelProvABCSImplExtension">
+  <documentation>
+   <svcdoc:Interface>
+    <svcdoc:Description>This interface contains operations that can act upon the
+                        ABO / EBO object</svcdoc:Description>
+    <svcdoc:DisplayName>QueryCustomerPartyListSiebelProvABCSImplExtension</svcdoc:DisplayName>
+    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+   </svcdoc:Interface>
+  </documentation>
+  <operation name="PreXformEBMtoABMEBM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to process the EBM before the
+                         step XformEBMToABM</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>PreXformEBMtoABMEBM</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="custebizabcsext:PreXformEBMToABMCustomerPartyEBOMsg"/>
+   <output message="custebizabcsext:PreXformEBMToABMCustomerPartyEBOMsg"/>
+   <fault name="fault" message="custebizabcsext:FaultMessage"/>
+  </operation>
+  <operation name="PostXformABMtoEBMEBM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to process the ResponseEBM after
+                         the step XformABMtoEBM</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>PostXformABMtoEBMABM</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="custebizabcsext:PostXformABMToEBMCustomerPartyEBOMsg"/>
+   <output message="custebizabcsext:PostXformABMToEBMCustomerPartyEBOMsg"/>
+   <fault name="fault" message="custebizabcsext:FaultMessage"/>
+  </operation>
+  <operation name="PreInvokeSWICustServiceABM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to process the ABM before
+                         invoking the Ebiz Adapter</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>PreInvokeEbizAdapterABM</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="custebizabcsext:PreInvokeSWICustServiceSWICustomerPartyIOMsg"/>
+   <output message="custebizabcsext:PreInvokeSWICustServiceSWICustomerPartyIOMsg"/>
+   <fault name="fault" message="custebizabcsext:FaultMessage"/>
+  </operation>
+  <operation name="PostInvokeSWICustServiceABM">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to process the ResponseABM after
+                         invoking the Ebiz Adapter</svcdoc:Description>
+     <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+     <svcdoc:DisplayName>PostInvokeEbizAdapterABM</svcdoc:DisplayName>
+     <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+     <svcdoc:Scope>Public</svcdoc:Scope>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="custebizabcsext:PostInvokeSWICustServiceSWICustomerPartyIOMsg"/>
+   <output message="custebizabcsext:PostInvokeSWICustServiceSWICustomerPartyIOMsg"/>
+   <fault name="fault" message="custebizabcsext:FaultMessage"/>
+  </operation>
+ </portType>
+ <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PARTNER LINK TYPE DEFINITION
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
+ <plnk:partnerLinkType name="QueryCustomerPartyListSiebelProvABCSImplExtension">
+  <plnk:role name="QueryCustomerPartyListSiebelProvABCSImplExtensionProvider">
+   <plnk:portType name="custebizabcsext:QueryCustomerPartyListSiebelProvABCSImplExtension"/>
+  </plnk:role>
+ </plnk:partnerLinkType>
+ <binding name="QueryCustomerPartyListSiebelProvABCSImplExtensionBinding"
+          type="custebizabcsext:QueryCustomerPartyListSiebelProvABCSImplExtension">
+  <soap:binding style="document"
+                transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="PreXformEBMtoABMEBM">
+   <soap:operation style="document" soapAction="mirror"/>
+   <input>
+    <soap:body use="literal"/>
+   </input>
+   <output>
+    <soap:body use="literal"/>
+   </output>
+   <fault name="fault">
+    <soap:fault name="fault" use="literal" encodingStyle=""/>
+   </fault>
+  </operation>
+  <operation name="PostXformABMtoEBMEBM">
+   <soap:operation style="document" soapAction="mirror"/>
+   <input>
+    <soap:body use="literal"/>
+   </input>
+   <output>
+    <soap:body use="literal"/>
+   </output>
+   <fault name="fault">
+    <soap:fault name="fault" use="literal" encodingStyle=""/>
+   </fault>
+  </operation>
+  <operation name="PreInvokeSWICustServiceABM">
+   <soap:operation style="document" soapAction="mirror"/>
+   <input>
+    <soap:body use="literal"/>
+   </input>
+   <output>
+    <soap:body use="literal"/>
+   </output>
+   <fault name="fault">
+    <soap:fault name="fault" use="literal" encodingStyle=""/>
+   </fault>
+  </operation>
+  <operation name="PostInvokeSWICustServiceABM">
+   <soap:operation style="document" soapAction="mirror"/>
+   <input>
+    <soap:body use="literal"/>
+   </input>
+   <output>
+    <soap:body use="literal"/>
+   </output>
+   <fault name="fault">
+    <soap:fault name="fault" use="literal" encodingStyle=""/>
+   </fault>
+  </operation>
+ </binding>
+ <service name="mirrorAnyService">
+  <port name="QueryCustomerPartyListSiebelProvABCSImplPort"
+        binding="custebizabcsext:QueryCustomerPartyListSiebelProvABCSImplExtensionBinding">
+   <soap:address location="http://ap6035fems.us.oracle.com:7857/MirrorServlet/mirror"/>
+  </port>
+ </service>
+</definitions>

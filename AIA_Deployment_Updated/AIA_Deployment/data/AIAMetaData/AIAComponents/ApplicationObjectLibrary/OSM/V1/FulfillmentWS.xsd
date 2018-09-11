@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://xmlns.oracle.com/communications/ordermanagement/FulfillmentWS" xmlns:tns="http://xmlns.oracle.com/communications/ordermanagement/FulfillmentWS" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:element name="SuspendFulfillmentOrder">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="FulfillmentOrderKey" type="xsd:string"/>
+				<xsd:element name="TargetSystemId" type="xsd:string"/>
+				<xsd:element name="OriginatingSystemId" type="xsd:string"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="UpdateFulfillmentOrder" type="tns:FulfillmentOrderRequestType"/>
+	<xsd:element name="GetFulfillmentOrder" type="tns:GetFulfillmentOrderType"/>
+	<xsd:element name="ReceiveFulfillmentOrderUpdate">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="FulfillmentOrderKey" type="xsd:string"/>
+				<xsd:element name="TargetSystemId" type="xsd:string"/>
+				<xsd:element name="OriginatingSystemId" type="xsd:string"/>
+				<xsd:element name="Namespace" type="xsd:anyURI"/>
+				<xsd:element name="Type" type="tns:SimpleType"/>
+				<xsd:element name="Name" type="xsd:NCName"/>
+				<xsd:element name="Data" type="tns:DataType" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SuspendFulfillmentOrderResponse" type="tns:FulfillmentOrderResponseType"/>
+	<xsd:element name="UpdateFulfillmentOrderResponse" type="tns:FulfillmentOrderResponseType"/>
+	<xsd:element name="GetFulfillmentOrderResponse" type="tns:FulfillmentOrderResponseType"/>
+	<xsd:element name="CreateFulfillmentOrder" type="tns:FulfillmentOrderRequestType"/>
+	<xsd:element name="CreateFulfillmentOrderResponse" type="tns:FulfillmentOrderResponseType"/>
+	<xsd:complexType name="SuspendFulfillmentOrderRequestType">
+		<xsd:sequence>
+			<xsd:element name="FulfillmentOrderKey" type="xsd:string"/>
+			<xsd:element name="LineKey" type="xsd:string" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="FulfillmentOrderRequestType">
+		<xsd:sequence>
+			<xsd:element name="FulfillmentOrderKey" type="xsd:string"/>
+			<xsd:element name="Priority" type="xsd:int" minOccurs="0"/>
+			<xsd:element name="TargetSystemId" type="xsd:string"/>
+			<xsd:element name="OriginatingSystemId" type="xsd:string"/>
+			<xsd:element name="Data" type="tns:DataType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DataType">
+		<xsd:sequence>
+			<xsd:any  processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="CancelFulfillmentOrder">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="FulfillmentOrderKey" type="xsd:string"/>
+				<xsd:element name="TargetSystemId" type="xsd:string"/>
+				<xsd:element name="OriginatingSystemId" type="xsd:string"/>
+				<xsd:element name="Rollback" type="xsd:boolean"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CancelFulfillmentOrderResponse" type="tns:FulfillmentOrderResponseType"/>
+	<xsd:element name="ResumeFulfillmentOrder">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="FulfillmentOrderKey" type="xsd:string"/>
+				<xsd:element name="TargetSystemId" type="xsd:string"/>
+				<xsd:element name="OriginatingSystemId" type="xsd:string"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ResumeFulfillmentOrderResponse" type="tns:FulfillmentOrderResponseType"/>
+	<xsd:complexType name="FulfillmentOrderResponseType">
+		<xsd:sequence>
+			<xsd:element name="FulfillmentOrderKey" type="xsd:string"/>
+			<xsd:element name="TargetSystemId" type="xsd:string"/>
+			<xsd:element name="OriginatingSystemId" type="xsd:string"/>
+			<xsd:element name="Data" type="tns:DataType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="GetFulfillmentOrderType">
+		<xsd:sequence>
+			<xsd:element name="FulfillmentOrderKey" type="xsd:string"/>
+			<xsd:element name="TargetSystemId" type="xsd:string"/>
+			<xsd:element name="OriginatingSystemId" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="SimpleType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Data"/>
+			<xsd:enumeration value="Fault"/>
+			<xsd:enumeration value="Signal"/>
+			<xsd:enumeration value="Milestone"/>
+			<xsd:enumeration value="LifecycleState"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

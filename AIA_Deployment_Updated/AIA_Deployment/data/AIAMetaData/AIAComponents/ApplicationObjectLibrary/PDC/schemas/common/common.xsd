@@ -1,0 +1,1230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:cmn="http://xmlns.oracle.com/communications/platform/model/Common"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jxb="http://java.sun.com/xml/ns/jaxb" jxb:version="1.0"
+           elementFormDefault="unqualified" attributeFormDefault="unqualified"
+           xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+           jaxb:extensionBindingPrefixes="xjc"
+           targetNamespace="http://xmlns.oracle.com/communications/platform/model/Common">
+    <xs:annotation>
+        <xs:appinfo>
+            <jaxb:globalBindings generateIsSetMethod="true">
+                <xjc:serializable uid="12343"/>
+            </jaxb:globalBindings>
+            <jxb:schemaBindings>
+                <jxb:package name="oracle.communications.brm.pdc.server.common.jaxb"/>
+                <jxb:nameXmlTransform>
+                    <jxb:typeName suffix="JXB"/>
+                </jxb:nameXmlTransform>
+            </jxb:schemaBindings>
+        </xs:appinfo>
+    </xs:annotation>
+    <!-- _____________________________________________________________-->
+    <!--                     AAlterationDependency                    -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AAlterationDependency" abstract="true">
+        <xs:annotation>
+            <xs:documentation>An AlterationDependency object.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:APricingObject">
+                <xs:sequence>
+                    <xs:element name="dependentOfferingName" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>The name of the dependent AlterationOffering.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     AConfigurationObject                     -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AConfigurationObject" abstract="true">
+        <xs:annotation>
+            <xs:documentation>A ConfigurationObject.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:ExternalIDedObject">
+                <xs:sequence>
+                    <xs:element name="priceListName" type="xs:string"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _______________________________________________________________-->
+    <!--             ADateRange                                         -->
+    <!-- _______________________________________________________________-->
+    <xs:complexType name="ADateRange" abstract="true">
+        <xs:annotation>
+            <xs:documentation>An abstract base class that Absolute and Reletive ranges are derived.</xs:documentation>
+        </xs:annotation>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     RelativeDateRange                        -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="RelativeDateRange" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A RelativeDateRange.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:ADateRange">
+                <xs:sequence>
+                    <xs:element name="startOffset" type="xs:integer"/>
+                    <xs:element name="startUnit" type="cmn:UnitType"/>
+                    <xs:element name="endOffset" type="xs:integer"/>
+                    <xs:element name="endUnit" type="cmn:UnitType"/>
+                    <xs:element name="base" type="cmn:BaseType"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     AbsoluteDateRange                        -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AbsoluteDateRange" abstract="false">
+        <xs:annotation>
+            <xs:documentation>An AbsoluteDateRange.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:ADateRange">
+                <xs:sequence>
+                    <xs:element name="timeRange" type="xs:string"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     APriceEventType                          -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="APriceEventType" abstract="true">
+        <xs:annotation>
+            <xs:documentation>A PriceEventType abstract class.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="eventName" type="xs:string"/>
+            <xs:element name="validIfCancelled" type="xs:boolean"/>
+            <xs:element name="validIfInactive" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                       APricingObject                         -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="APricingObject" abstract="true">
+        <xs:annotation>
+            <xs:documentation>A Base Class for reusable PricingObjectsJXB.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:ExternalIDedObject">
+                <xs:sequence>
+                    <xs:element name="currentStateName" type="xs:string" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>The name of current state of the PricingObject.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="changeSetName" type="xs:string" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>The name of the Change set of the PricingObject.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="publishSchemas" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>Publish schemas of the PricingObject.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="pricingProfileName" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>The name of PricingProfile of the PricingObject.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="priceListName" type="xs:string" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>The name of PriceList of the PricingObject.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     APopModel                                -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="APopModel" abstract="true">
+        <xs:annotation>
+            <xs:documentation>An AProdOfferPriceModel.</xs:documentation>
+        </xs:annotation>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     AProductOffering                         -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="AProductOffering" abstract="true">
+        <xs:annotation>
+            <xs:documentation>An AProductOffering abstract class.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:APricingObject">
+                <xs:sequence>
+                    <xs:element name="timeRange" type="xs:string"/>
+                    <xs:choice id="assignedTo" minOccurs="0" maxOccurs="1">
+                        <xs:element name="productSpecName" type="xs:string"/>
+                        <xs:element name="customerSpecName" type="xs:string"/>
+                    </xs:choice>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     ARatePlanGroup                           -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ARatePlanGroup" abstract="true">
+        <xs:annotation>
+            <xs:documentation>A RatePlanGroup abstract class.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:NamedObject">
+                <xs:sequence>
+                    <xs:element name="entityId" type="xs:long"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     ATransition                              -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ATransition" abstract="true">
+        <xs:annotation>
+            <xs:documentation>A Transition object.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:APricingObject">
+                <xs:sequence>
+                    <xs:element name="active" type="xs:boolean" default="true"/>
+                    <xs:element name="timeRange" type="xs:string" default="0/INF"/>
+                    <xs:element name="waivePurchaseFee" type="xs:boolean" default="false"/>
+                    <xs:element name="waiveCancelFee" type="xs:boolean" default="false"/>
+                    <xs:element name="customerSpecName" type="xs:string" minOccurs="0"/>
+                    <xs:element name="productSpecName" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     VersionedObject                          -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="VersionedObject" abstract="true">
+        <xs:annotation>
+            <xs:documentation>An object has a name and a description field.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:ExternalIDedObject">
+                <xs:sequence>
+                    <xs:element name="version" type="xs:long" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>The version of the PricingObject.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     ExternalIDedObject                       -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ExternalIDedObject" abstract="true">
+        <xs:annotation>
+            <xs:documentation>An object has a name and a description field.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:InternalIDedObject">
+                <xs:attribute name="externalID" use="optional" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>The external ID of this object. Used to create the cross references in case of
+                                          migration.</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     InternalIDedObject                              -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="InternalIDedObject" abstract="true">
+        <xs:annotation>
+            <xs:documentation>An object has a name and a description field.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="cmn:MutableNamedObject">
+                <xs:sequence>
+                    <xs:element name="internalId" type="xs:string" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>The internal ID of the PricingObject.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     NamedObject                              -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="NamedObject" abstract="true">
+        <xs:annotation>
+            <xs:documentation>An object has a name and a description field.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     MutableNamedObject                       -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="MutableNamedObject" abstract="true">
+        <xs:annotation>
+            <xs:documentation>An object has a name, an optional newName and a description field.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="newName" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>New name for the Named objects.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     TimePeriod                               -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="TimePeriod" abstract="true">
+        <xs:annotation>
+            <xs:documentation>A time period defined by start time and end time.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="start" type="xs:dateTime"/>
+            <xs:element name="end" type="xs:dateTime"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     MinimumRumQuantityRule                   -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="MinimumRumQuantityRule" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A minimum quantity rule for associated RumConfiguration used in ApplicableRumSetRPEBranch.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="minQuantity" type="xs:double"/>
+            <xs:element name="minQuantityUnit" type="cmn:RumQuantityUnit"/>
+            <xs:element name="incrementQuantity" type="xs:double"/>
+            <xs:element name="incrementQuantityUnit" type="cmn:RumQuantityUnit"/>
+            <xs:element name="roundingMode" type="cmn:RoundingMode">
+                <xs:annotation>
+                    <xs:documentation>Specify how RUM quantity is rounded.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="applicableRumName" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                     Validity                                 -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="Validity" abstract="false">
+        <xs:annotation>
+            <xs:documentation>A validity object to define offset, unit and validity modes.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="offset" type="xs:integer" minOccurs="0"/>
+            <xs:element name="unit" type="cmn:ValidityOffsetUnit" minOccurs="0"/>
+            <xs:element name="mode" type="cmn:ValidityMode" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  ApplicableChargeAndQuantity                 -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="ApplicableChargeAndQuantity">
+        <xs:annotation>
+            <xs:documentation>Allowed types for the ApplicableChargeAndQuantity.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ORIGINAL_CHARGE"/>
+            <xs:enumeration value="REMAINING_CHARGE"/>
+            <xs:enumeration value="UNUSED_CHARGE_QUANTITY"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  ApplicableQuantity                          -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="ApplicableQuantity">
+        <xs:annotation>
+            <xs:documentation>Applicable quantity types.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ORIGINAL"/>
+            <xs:enumeration value="REMAINING"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  ApplyAlteration                             -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="AlterationRecipientType">
+        <xs:annotation>
+            <xs:documentation>Applicable quantity types.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="USER"/>
+            <xs:enumeration value="PAYER"/>
+            <xs:enumeration value="BOTH"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  AttributeType                               -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="AttributeType">
+        <xs:annotation>
+            <xs:documentation>Allowed types for the Attributes.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="LONG"/>
+            <xs:enumeration value="STRING"/>
+            <xs:enumeration value="DATE"/>
+            <xs:enumeration value="DECIMAL"/>
+            <xs:enumeration value="STRUCT"/>
+            <xs:enumeration value="ARRAY"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  BaseType                                    -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="BaseType">
+        <xs:annotation>
+            <xs:documentation>Base type.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="PRODUCT_PURCHASE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  BestPricingMode                             -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="BestPricingMode">
+        <xs:annotation>
+            <xs:documentation>Best pricing modes.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="FULL_RERATE"/>
+            <xs:enumeration value="ONE_TIME_ADJUST"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  CapabilityConstraintType                    -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="CapabilityConstraintType">
+        <xs:annotation>
+            <xs:documentation>Allowed types for the PricingCapabilityConstraint.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="EXCLUSIVE"/>
+            <xs:enumeration value="DEPENDENT"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  ConfigObjectType                            -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="ConfigObjectType">
+        <xs:annotation>
+            <xs:documentation>All supported configuration object types.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ZONE_MAP"/>
+            <xs:enumeration value="STANDARD_ZONE_MODEL"/>
+            <xs:enumeration value="GEO_ZONE_MODEL"/>
+            <xs:enumeration value="EVENT_ATTRIBUTE_SPEC"/>
+            <xs:enumeration value="PRODUCT_ATTRIBUTE_SPEC"/>
+            <xs:enumeration value="CUSTOMER_ATTRIBUTE_SPEC"/>
+            <xs:enumeration value="RUM_CONFIGURATION"/>
+            <xs:enumeration value="NAMED_RESULT"/>
+            <xs:enumeration value="EVENT_PRODUCT_MAP"/>
+            <xs:enumeration value="BALANCE_ELEMENT"/>
+            <xs:enumeration value="GLID"/>
+            <xs:enumeration value="TAX_CODE"/>
+            <xs:enumeration value="TAX_SUPPLIER"/>
+            <xs:enumeration value="PROVISIONING_TAG"/>
+            <xs:enumeration value="ZONE_RESULT_CONFIGURATION"/>
+            <xs:enumeration value="HOLIDAY_CALENDAR"/>
+            <xs:enumeration value="PROFILE_ATTRIBUTE_SPEC"/>
+            <xs:enumeration value="CUSTOM_ANALYZER_RULE"/>
+            <xs:enumeration value="ALL"/>
+            <xs:enumeration value="NONE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  DependencyType                              -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="DependencyType">
+        <xs:annotation>
+            <xs:documentation>Dependency types.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="PREREQUISITE"/>
+            <xs:enumeration value="EXCLUSION"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  DistributionMethod                          -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="DistributionMethod">
+        <xs:annotation>
+            <xs:documentation>Distribution methods.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NONE"/>
+            <!-- <xs:enumeration value="UP_FRONT"/> -->
+            <xs:enumeration value="FROM_BAL_IMPACT"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  EndValidityMode                             -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="EndValidityMode">
+        <xs:annotation>
+            <xs:documentation>Increment rounding modes.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NEVER"/>
+            <xs:enumeration value="ABSOLUTE"/>
+            <xs:enumeration value="RELATIVE_TO_START"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  FieldKind                                   -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="FieldKind">
+        <xs:annotation>
+            <xs:documentation>Allowed types for the FieldExpression.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="PRODUCT_SPEC_FIELD"/>
+            <xs:enumeration value="EVENT_SPEC_FIELD"/>
+            <xs:enumeration value="CUSTOMER_SPEC_FIELD"/>
+            <xs:enumeration value="PROFILE_SPEC_FIELD"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  IncrementRounding                           -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="IncrementRounding">
+        <xs:annotation>
+            <xs:documentation>Increment rounding modes.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="UP"/>
+            <xs:enumeration value="DOWN"/>
+            <xs:enumeration value="NONE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  OfferType                                   -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="OfferType">
+        <xs:annotation>
+            <xs:documentation>Allowed types for the Offering.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ITEM"/>
+            <xs:enumeration value="SUBSCRIPTION"/>
+            <xs:enumeration value="SYSTEM"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  OffsetUnit                                  -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="OffsetUnit">
+        <xs:annotation>
+            <xs:documentation>Offset units.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SECOND"/>
+            <xs:enumeration value="MINUTE"/>
+            <xs:enumeration value="HOUR"/>
+            <xs:enumeration value="DAY"/>
+            <xs:enumeration value="MONTH"/>
+            <xs:enumeration value="ACCOUNTING_CYCLE"/>
+            <xs:enumeration value="BILLING_CYCLE"/>
+            <xs:enumeration value="BEGIN_OF_DAY"/>
+            <xs:enumeration value="EVENT_CYCLE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  Bundle Validity OffsetUnit                  -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="ValidityOffsetUnit">
+        <xs:annotation>
+            <xs:documentation>Offset units.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SECOND"/>
+            <xs:enumeration value="MINUTE"/>
+            <xs:enumeration value="HOUR"/>
+            <xs:enumeration value="DAY"/>
+            <xs:enumeration value="MONTH"/>
+            <xs:enumeration value="CYCLE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  Operator                                    -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="Operator">
+        <xs:annotation>
+            <xs:documentation>Operators.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="EQUAL_TO"/>
+            <xs:enumeration value="NOT_EQUAL_TO"/>
+            <xs:enumeration value="GREATER_THAN"/>
+            <xs:enumeration value="GREATER_THAN_EQUAL"/>
+            <xs:enumeration value="LESS_THAN"/>
+            <xs:enumeration value="LESS_THAN_EQUAL"/>
+            <xs:enumeration value="IN_LIST"/>
+            <xs:enumeration value="REGEX"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  PriceListType                               -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="PriceListType">
+        <xs:annotation>
+            <xs:documentation>Allowed types for the PriceList.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SHARED"/>
+            <xs:enumeration value="PRIVATE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  PricingObjectType                           -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="PricingObjectType">
+        <xs:annotation>
+            <xs:documentation>All the pricing object types</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ALTERATION_RATE_PLAN"/>
+            <xs:enumeration value="CHARGE_RATE_PLAN"/>
+            <xs:enumeration value="DISTRIBUTION_RATE_PLAN"/>
+            <xs:enumeration value="ROLLOVER_RATE_PLAN"/>
+            <xs:enumeration value="ALTERATION_RATE_PLAN_SELECTOR"/>
+            <xs:enumeration value="CHARGE_RATE_PLAN_SELECTOR"/>
+            <xs:enumeration value="PRICE_MODEL"/>
+            <xs:enumeration value="PRICE_MODEL_SELECTOR"/>
+            <xs:enumeration value="HOLIDAY_CALENDAR"/>
+            <xs:enumeration value="TIME_MODEL"/>
+            <xs:enumeration value="TRIGGER_SPEC"/>
+            <xs:enumeration value="CHARGE_SELECTOR_SPEC"/>
+            <xs:enumeration value="CHARGE_OFFERING"/>
+            <xs:enumeration value="ALTERATION_OFFERING"/>
+            <xs:enumeration value="DISTRIBUTION_OFFERING"/>
+            <xs:enumeration value="PACKAGE_OBJ"/>
+            <xs:enumeration value="PACKAGE_LIST"/>
+            <xs:enumeration value="ALTERATION_EXCLUSION"/>
+            <xs:enumeration value="PACKAGE_EXCLUSION"/>
+            <xs:enumeration value="PACKAGE_TRANSITION"/>
+            <xs:enumeration value="BUNDLE_TRANSITION"/>
+            <xs:enumeration value="BEST_PRICING"/>
+            <xs:enumeration value="REPLACEMENT_POP_MODEL"/>
+            <xs:enumeration value="BUNDLED_PRODUCT_OFFERING"/>
+            <xs:enumeration value="BUNDLE_DEPENDENCY"/>
+            <xs:enumeration value="APN_MAP"/>
+            <xs:enumeration value="USC_MAP"/>
+            <xs:enumeration value="ALL"/>
+            <xs:enumeration value="NONE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  PricingProfileType                          -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="PricingProfileType">
+        <xs:annotation>
+            <xs:documentation>Allowed types for the PricingProfile.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="RATING"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  PricingTypeValues                           -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="PricingTypeValues">
+        <xs:annotation>
+            <xs:documentation>Allowed types for the PricingTypeValues.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="USAGE_CHARGE"/>
+            <xs:enumeration value="DISCOUNT"/>
+            <xs:enumeration value="RECURRING_DISCOUNT"/>
+            <xs:enumeration value="CHARGE_SHARE"/>
+            <!--xs:enumeration value="ROLLOVER"/>
+            <xs:enumeration value="FOLD"/>
+            <xs:enumeration value="RECURRING_CHARGE"/>
+            <xs:enumeration value="ONETIME_CHARGE"/>
+            <xs:enumeration value="BUNDLE"/-->
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  ProcessingStage                             -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="ProcessingStage">
+        <xs:annotation>
+            <xs:documentation>Allowed stages for the ProcessingStage.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CHARGING"/>
+            <xs:enumeration value="ALTERATION"/>
+            <xs:enumeration value="TAXATION"/>
+            <xs:enumeration value="AR"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  ProrationValue                              -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="ProrationValue">
+        <xs:annotation>
+            <xs:documentation>Allowed Proration values.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NO_CHARGE"/>
+            <xs:enumeration value="FULL_CHARGE"/>
+            <xs:enumeration value="PRORATE_CHARGE"/>
+            <xs:enumeration value="NOT_APPLICABLE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  AlterationProrationValue                    -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="AlterationProrationValue">
+        <xs:annotation>
+            <xs:documentation>Allowed Alteration Proration values.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NO_DISCOUNT"/>
+            <xs:enumeration value="FULL_DISCOUNT"/>
+            <xs:enumeration value="PRORATE_DISCOUNT"/>
+            <xs:enumeration value="NOT_APPLICABLE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  SupplierType                                -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="SupplierType">
+        <xs:annotation>
+            <xs:documentation>Denotes whether a targeted supplier is either WHOLESALE or RETAIL.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="WHOLESALE"/>
+            <xs:enumeration value="RETAIL"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  ReplacementType                             -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="ReplacementType">
+        <xs:annotation>
+            <xs:documentation>Product offering replacement types.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="PERCENTAGE"/>
+            <xs:enumeration value="ABSOLUTE_VALUE"/>
+            <xs:enumeration value="REPLACEMENT_VALUE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  RoundingMode                                -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="RoundingMode">
+        <xs:annotation>
+            <xs:documentation>Allowed modes for the RoundingMode.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NEAREST"/>
+            <xs:enumeration value="UP"/>
+            <xs:enumeration value="DOWN"/>
+            <xs:enumeration value="EVEN"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  RUMRounding                                -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="RUMRounding">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="HALF_DOWN"/>
+            <xs:enumeration value="HALF_UP"/>
+            <xs:enumeration value="ROUND_UP"/>
+            <xs:enumeration value="ROUND_DOWN"/>
+            <xs:enumeration value="NONE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  RumType                                     -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="RumType">
+        <xs:annotation>
+            <xs:documentation>Allowed types for the PriceList.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="WHOLE"/>
+            <xs:enumeration value="PARTIAL"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  StartValidityMode                           -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="StartValidityMode">
+        <xs:annotation>
+            <xs:documentation>Start validity modes.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="FOREVER"/>
+            <xs:enumeration value="IMMEDIATE"/>
+            <xs:enumeration value="ABSOLUTE"/>
+            <xs:enumeration value="RELATIVE"/>
+            <xs:enumeration value="FIRST_USAGE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  AAStereoType                                -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="AAStereoType">
+        <xs:annotation>
+            <xs:documentation>Stereo types for attribute analyzer rate plan elements.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ATTRIBUTE_ANALYZER_MODEL"/>
+            <xs:enumeration value="CHARGE_RATE_PLAN_SELECTOR"/>
+            <xs:enumeration value="ALTERATION_RATE_PLAN_SELECTOR"/>
+            <xs:enumeration value="PRICE_MODEL_SELECTOR"/>
+            <xs:enumeration value="USC_MAP"/>
+            <xs:enumeration value="APN_MAP"/>
+            <xs:enumeration value="GENERIC_SELECTOR"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  TaxTime                                     -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="TaxTime">
+        <xs:annotation>
+            <xs:documentation>Increment rounding modes.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NONE"/>
+            <xs:enumeration value="TAX_INCLUDED"/>
+            <xs:enumeration value="EVENT_TIME"/>
+            <xs:enumeration value="BILLING_TIME"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  ConsumptionRuleType                         -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="ConsumptionRuleType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="EARLIEST_START"/>
+            <xs:enumeration value="LATEST_START"/>
+            <xs:enumeration value="EARLIEST_EXPIRATION"/>
+            <xs:enumeration value="LATEST_EXPIRATION"/>
+            <xs:enumeration value="EARLIEST_START_LATEST_EXPIRATION"/>
+            <xs:enumeration value="EARLIEST_START_EARLIEST_EXPIRATION"/>
+            <xs:enumeration value="LATEST_START_LATEST_EXPIRATION"/>
+            <xs:enumeration value="LATEST_START_EARLIEST_EXPIRATION"/>
+            <xs:enumeration value="EARLIEST_EXPIRATION_EARLIEST_START"/>
+            <xs:enumeration value="EARLIEST_EXPIRATION_LATEST_START"/>
+            <xs:enumeration value="LATEST_EXPIRATION_EARLIEST_START"/>
+            <xs:enumeration value="LATEST_EXPIRATION_LATEST_START"/>
+            <xs:enumeration value="NONE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  TimeZoneMode                                -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="TimeZoneMode">
+        <xs:annotation>
+            <xs:documentation>Allowed modes for the TimeZone.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="EVENT"/>
+            <xs:enumeration value="ACCOUNT"/>
+            <xs:enumeration value="SERVER"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  TODMode                                     -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="TODMode">
+        <xs:annotation>
+            <xs:documentation>Allowed types for the time of day mode.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="START_TIME"/>
+            <xs:enumeration value="END_TIME"/>
+            <xs:enumeration value="TIMED"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  TriggerOperator                             -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="TriggerOperator">
+        <xs:annotation>
+            <xs:documentation>Allowed operators for the TriggerExpressions.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="GREATER_THAN"/>
+            <xs:enumeration value="GREATER_THAN_EQ"/>
+            <xs:enumeration value="LESS_THAN"/>
+            <xs:enumeration value="LESS_THAN_EQ"/>
+            <xs:enumeration value="EQUAL_TO"/>
+            <xs:enumeration value="NOT_EQUAL_TO"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  UnitOfMeasure                               -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="UnitOfMeasure">
+        <xs:annotation>
+            <xs:documentation>Unit of measure.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SECONDS"/>
+            <xs:enumeration value="MINUTES"/>
+            <xs:enumeration value="HOURS"/>
+            <xs:enumeration value="DAYS"/>
+            <xs:enumeration value="BYTES"/>
+            <xs:enumeration value="KBYTES"/>
+            <xs:enumeration value="MBYTES"/>
+            <xs:enumeration value="GBYTES"/>
+            <xs:enumeration value="NONE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  RolloverUnitOfMeasure                               -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="RolloverUnitOfMeasure">
+        <xs:annotation>
+            <xs:documentation>Unit of measure for Rollover</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="DAYS"/>
+            <xs:enumeration value="MONTHS"/>
+            <xs:enumeration value="YEARS"/>
+            <xs:enumeration value="WEEKS"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  UnitType                                    -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="UnitType">
+        <xs:annotation>
+            <xs:documentation>Allowed units.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SECONDS"/>
+            <xs:enumeration value="MINUTES"/>
+            <xs:enumeration value="HOURS"/>
+            <xs:enumeration value="DAYS"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  UsageQuantity                                    -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="ApplicableQuantityTreatment">
+        <xs:annotation>
+            <xs:documentation>Tells how to treat ApplicableQuantity</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ISOLATED"/>
+            <xs:enumeration value="CONTINUOUS"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  ValidityMode                                -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="ValidityMode">
+        <xs:annotation>
+            <xs:documentation>Allowed modes for the Validity.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NOW_TO_NEVER"/>
+            <xs:enumeration value="RELATIVE"/>
+            <xs:enumeration value="FIRST_USAGE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  Visibility                                  -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="Visibility">
+        <xs:annotation>
+            <xs:documentation>Allowed types for the Visibility.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="PURE"/>
+            <xs:enumeration value="ENHANCED"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  Unit                                        -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="Unit">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NONE"/>
+            <xs:enumeration value="SECOND"/>
+            <xs:enumeration value="MINUTE"/>
+            <xs:enumeration value="DAY"/>
+            <xs:enumeration value="BYTE"/>
+            <xs:enumeration value="KILOBYTE"/>
+            <xs:enumeration value="MEGABYTE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  RumQuantityUnit                             -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="RumQuantityUnit">
+        <xs:annotation>
+            <xs:documentation>This RumQuantityUnit is used in ApplicableRUMSetRPEBranch for minQuantity and
+                              incrementQuantity</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NONE"/>
+            <xs:enumeration value="SECOND"/>
+            <xs:enumeration value="MINUTE"/>
+            <xs:enumeration value="HOUR"/>
+            <xs:enumeration value="DAY"/>
+            <xs:enumeration value="MONTH"/>
+            <xs:enumeration value="BYTE"/>
+            <xs:enumeration value="KILOBYTE"/>
+            <xs:enumeration value="MEGABYTE"/>
+            <xs:enumeration value="GIGABYTE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  EventType                                   -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="EventType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="BASE"/>
+            <xs:enumeration value="ONE_TIME"/>
+            <xs:enumeration value="RECURRING"/>
+            <xs:enumeration value="FOLD"/>
+            <xs:enumeration value="ROLLOVER"/>
+            <xs:enumeration value="REMITTANCE"/>
+            <xs:enumeration value="BILL_TIME_DISCOUNT"/>
+            <xs:enumeration value="SESSION_USAGE"/>
+            <xs:enumeration value="ACTIVITY_USAGE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  SupportedConfigObject                       -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="SupportedConfigObject">
+        <xs:annotation>
+            <xs:documentation>Maps between PDC configuration parameters and target engine configuration parameters.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="targetEngineProfileName" type="xs:string" minOccurs="0"/>
+            <xs:element name="configObjectId" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>The internal id of the ConfigObject.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="configObjectName" type="xs:string"/>
+            <xs:element name="configObjectType" type="cmn:ConfigObjectType"/>
+            <xs:element name="configParamMaps" type="cmn:ConfigParamMap" minOccurs="1" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- _____________________________________________________________-->
+    <!--                  ConfigParamMap                              -->
+    <!-- _____________________________________________________________-->
+    <xs:complexType name="ConfigParamMap">
+        <xs:annotation>
+            <xs:documentation>Maps between PDC configuration parameters and target engine configuration parameters.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="paramNameBPA" type="xs:string"/>
+            <xs:element name="paramNameTarget" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="CustomizeType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="OPTIONAL"/>
+            <xs:enumeration value="PROHIBITED"/>
+            <xs:enumeration value="REQUIRED"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                     ZoneResultConfigType                     -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="ZoneResultConfigType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="BASE_RESULT"/>
+            <xs:enumeration value="DERIVED_RESULT"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                     MonthOfYearEnum                          -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="MonthOfYearEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="JAN"/>
+            <xs:enumeration value="FEB"/>
+            <xs:enumeration value="MAR"/>
+            <xs:enumeration value="APR"/>
+            <xs:enumeration value="MAY"/>
+            <xs:enumeration value="JUN"/>
+            <xs:enumeration value="JUL"/>
+            <xs:enumeration value="AUG"/>
+            <xs:enumeration value="SEP"/>
+            <xs:enumeration value="OCT"/>
+            <xs:enumeration value="NOV"/>
+            <xs:enumeration value="DEC"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                     DayOfWeekEnum                            -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="DayOfWeekEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="MONDAY"/>
+            <xs:enumeration value="TUESDAY"/>
+            <xs:enumeration value="WEDNESDAY"/>
+            <xs:enumeration value="THURSDAY"/>
+            <xs:enumeration value="FRIDAY"/>
+            <xs:enumeration value="SATURDAY"/>
+            <xs:enumeration value="SUNDAY"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                     PriceType                                -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="PriceType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="GRANT"/>
+            <xs:enumeration value="CONSUMPTION"/>
+            <xs:enumeration value="AGGREGATION"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                     CustomRuleType                           -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="CustomRuleType">
+        <xs:annotation>
+            <xs:documentation>Allowed types for the custom rules.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="PRE_DEFINED"/>
+            <xs:enumeration value="USER_DEFINED"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  Recurring Unit Type                          -->
+    <!-- ____________________________________________________________ _-->
+    <xs:simpleType name="RecurringUnitType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="MONTHS"/>
+            <xs:enumeration value="DAYS"/>
+            <xs:enumeration value="WEEKS"/>
+            <xs:enumeration value="YEARS"/>
+            <xs:enumeration value="NONE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  Operator                                    -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="RumOperator">
+        <xs:annotation>
+            <xs:documentation>Operators.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ADD"/>
+            <xs:enumeration value="SUBTRACT"/>
+            <xs:enumeration value="DIVIDE"/>
+            <xs:enumeration value="MULTIPLY"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  ArithmeticOperator                          -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="ArithmeticOperator">
+        <xs:annotation>
+            <xs:documentation>Arithmetic Operators.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ADD"/>
+            <xs:enumeration value="SUBTRACT"/>
+            <xs:enumeration value="DIVIDE"/>
+            <xs:enumeration value="MULTIPLY"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  PermittedType                               -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="PermittedType">
+        <xs:annotation>
+            <xs:documentation>PermittedType.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="PRODUCT"/>
+            <xs:enumeration value="CUSTOMER"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  LogicalOperator                             -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="LogicalOperator">
+        <xs:annotation>
+            <xs:documentation>Logical Operators supported in PDC Expressions.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="AND"/>
+            <xs:enumeration value="OR"/>
+            <xs:enumeration value="NOT"/>
+            <xs:enumeration value="NONE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- _____________________________________________________________-->
+    <!--                  CRExpressionOperator                        -->
+    <!-- _____________________________________________________________-->
+    <xs:simpleType name="CRExpressionOperator">
+        <xs:annotation>
+            <xs:documentation>Custom Rule Expression Operators supported in PDC Expressions.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="AND"/>
+            <xs:enumeration value="OR"/>
+            <xs:enumeration value="NOT"/>
+            <xs:enumeration value="EQUAL_TO"/>
+            <xs:enumeration value="NOT_EQUAL_TO"/>
+            <xs:enumeration value="GREATER_THAN"/>
+            <xs:enumeration value="GREATER_THAN_EQUAL"/>
+            <xs:enumeration value="LESS_THAN"/>
+            <xs:enumeration value="LESS_THAN_EQUAL"/>
+            <xs:enumeration value="IN_LIST"/>
+            <xs:enumeration value="REGEX"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

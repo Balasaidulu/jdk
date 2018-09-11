@@ -1,0 +1,145 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/pubfwk/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/pubfwk/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:oans2="http://xmlns.oracle.com/svc/expression"
+     xmlns:oans3="http://xmlns.oracle.com/svc/description" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="PublicationServiceRoot.xsd"/>
+    <xsd:include schemaLocation="DetUpStatusResultFilter.xsd"/>
+    <xsd:include schemaLocation="BatchFilter.xsd"/>
+    <xsd:include schemaLocation="EntityStatusFilter.xsd"/>
+    <xsd:include schemaLocation="UpdateStatusResultFilter.xsd"/>
+    <xsd:include schemaLocation="SystemStatusFilter.xsd"/>
+    <xsd:include schemaLocation="SystemEntityFilter.xsd"/>
+    <xsd:include schemaLocation="ListofDetUpStatusResultFilter.xsd"/>
+    <xsd:include schemaLocation="TargetSystemFilter.xsd"/>
+    <xsd:include schemaLocation="BatchSystemFilter.xsd"/>
+    <xsd:include schemaLocation="BatchEntityStatusFilter.xsd"/>
+    <xsd:include schemaLocation="ListofTargetSystemsFilter.xsd"/>
+    <xsd:include schemaLocation="PublicationStatusFilter.xsd"/>
+    <xsd:include schemaLocation="TargetSystem.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc/description" schemaLocation="AttributeDescription.xsd"/>
+    <xsd:include schemaLocation="EntityStatus.xsd"/>
+    <xsd:include schemaLocation="BatchEntityStatus.xsd"/>
+    <xsd:include schemaLocation="SystemStatus.xsd"/>
+    <xsd:include schemaLocation="DetUpStatusResult.xsd"/>
+    <xsd:include schemaLocation="SystemEntity.xsd"/>
+    <xsd:include schemaLocation="ListofDetUpStatusResults.xsd"/>
+    <xsd:include schemaLocation="Batch.xsd"/>
+    <xsd:include schemaLocation="ListofTargetSystems.xsd"/>
+    <xsd:include schemaLocation="UpdateStatusResult.xsd"/>
+    <xsd:include schemaLocation="PublicationStatus.xsd"/>
+    <xsd:include schemaLocation="Message.xsd"/>
+    <xsd:include schemaLocation="ReturnStatus.xsd"/>
+    <xsd:include schemaLocation="BatchSystem.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc/expression" schemaLocation="Expression.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc/expression" schemaLocation="ConjunctionOperatorDomain.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc/expression" schemaLocation="ExpressionFilter.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc/expression" schemaLocation="ExpressionOperatorFilter.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc/expression" schemaLocation="ExpressionOperator.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc/expression" schemaLocation="ExpressionAttributeFilter.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc/expression" schemaLocation="ExpressionAttribute.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc/expression" schemaLocation="MultiValueExpression.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc/expression" schemaLocation="ValueExpression.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc/expression" schemaLocation="ChildExpression.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc/expression" schemaLocation="AttributeExpression.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="Filter.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObjectQualifiedNameFilter.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObjectQualifiedName.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DomainValueSetNameDomainFilter.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DomainValueSetNameDomain.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="BaseDataSourceNameDomainFilter.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="BaseDataSourceNameDomain.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="ContextModeDomainFilter.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="ContextModeDomain.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="PartialAttributesModeFilter.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="PartialAttributesMode.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="MethodNameFilter.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="MethodName.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="TransactionModeFilter.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="TransactionMode.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="ChildAttributeNameFilter.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="ChildAttributeName.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="KeySetDataObjectFilter.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="KeySetDataObject.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="KeySetNameFilter.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="KeySetName.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="ProcessControlReturnMode.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="ProcessControlExceptionReturnMode.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="ProcessControlPropertyFilter.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="ProcessControlProperty.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObjectAttributeFilter.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObjectAttribute.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="SortAttributeNameFilter.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="SortAttributeName.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="QueryControl.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="ProcessControl.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataCriteria.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="ServiceMessage.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="MethodResponse.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="BatchResponse.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="MethodRequestListParameter.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="MethodRequest.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="BatchRequest.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="SortAttribute.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="KeySets.xsd"/>
+    <xsd:complexType name="PublicationService_UpdatePublicationStatus">
+        <xsd:annotation>
+            <xsd:documentation>This method is to update the publication Status of edge systmes in PIM application.
+It can be called in two modes.
+Mode =1 refers to Batch-System mode,publication statuses for different systems in a batch.
+Mode =2 referes to Batch-Entity-System modem, publication statuses for list of entities under
+a list of systems for a Batch.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="statusInputParams" type="PublicationStatus" minOccurs="0" nillable="true"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PublicationService_UpdatePublicationStatus" type="PublicationService_UpdatePublicationStatus"/>
+    <xsd:complexType name="PublicationService_UpdatePublicationStatus_Response">
+        <xsd:annotation>
+            <xsd:documentation>This method is to update the publication Status of edge systmes in PIM application.
+It can be called in two modes.
+Mode =1 refers to Batch-System mode,publication statuses for different systems in a batch.
+Mode =2 referes to Batch-Entity-System modem, publication statuses for list of entities under
+a list of systems for a Batch.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="updateStatusResult" type="UpdateStatusResult" minOccurs="0" nillable="true"/>
+            <xsd:element name="Message" type="oans1:ServiceMessage" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="ErrorMessage" type="oans1:ServiceMessage" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PublicationService_UpdatePublicationStatus_Response" type="PublicationService_UpdatePublicationStatus_Response"/>
+    <xsd:complexType name="PublicationService_GetBatchSystems">
+        <xsd:annotation>
+            <xsd:documentation>This gets the Target Systems associated to a batch.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="batchAndLang" type="Batch" minOccurs="0" nillable="true"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PublicationService_GetBatchSystems" type="PublicationService_GetBatchSystems"/>
+    <xsd:complexType name="PublicationService_GetBatchSystems_Response">
+        <xsd:annotation>
+            <xsd:documentation>This gets the Target Systems associated to a batch.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="listofTargetSystems" type="ListofTargetSystems" minOccurs="0" nillable="true"/>
+            <xsd:element name="Message" type="oans1:ServiceMessage" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="ErrorMessage" type="oans1:ServiceMessage" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PublicationService_GetBatchSystems_Response" type="PublicationService_GetBatchSystems_Response"/>
+    <xsd:complexType name="PublicationService_InvokeServiceBatch">
+        <xsd:sequence>
+            <xsd:element name="request" type="oans1:BatchRequest" minOccurs="0" nillable="true"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PublicationService_InvokeServiceBatch" type="PublicationService_InvokeServiceBatch"/>
+    <xsd:complexType name="PublicationService_InvokeServiceBatch_Response">
+        <xsd:sequence>
+            <xsd:element name="batchResponse" type="oans1:BatchResponse" minOccurs="0" nillable="true"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PublicationService_InvokeServiceBatch_Response" type="PublicationService_InvokeServiceBatch_Response"/>
+</xsd:schema>

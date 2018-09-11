@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="ProcessInstalledProductSpecialRatingSetListSiebelCommsReqABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/ProcessInstalledProductSpecialRatingSetListSiebelCommsReqABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:sbldataabo="http://www.siebel.com/xml/SWISpecialRatingListIO"
+     xmlns:sbldataabcs="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/ProcessInstalledProductSpecialRatingSetListSiebelCommsReqABCSImpl/V1"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1.0"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>Siebel Requestor ABCS Implementation for Friends and Family Update</svcdoc:Description>
+            <svcdoc:ServiceType>RequesterABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>ProcessInstalledProductSpecialRatingSetListSiebelCommsReqABCSImpl Requester ABCS
+                          Implementation Interface</svcdoc:DisplayName>
+            <svcdoc:ServiceObjectName>ProcessInstalledProductSpecialRatingSetList</svcdoc:ServiceObjectName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:EBOName>InstalledProductEBO</svcdoc:EBOName>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>CRM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.siebel.com/xml/SWISpecialRatingListIO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWISpecialRatingListIO.xsd"/>
+           <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+        </schema>
+    </types>
+    <message name="ProcessInstalledProductSpecialRatingSetListReqMsg">
+        <part name="ProcessInstalledProductSpecialRatingSetList" element="sbldataabo:ListOfSWISpecialRatingListIO"/>
+    </message>
+    <portType name="ProcessInstalledProductSpecialRatingSetListSiebelCommsReqABCSImplService">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This interface contains operations that can act upon
+                            the object</svcdoc:Description>
+                <svcdoc:DisplayName>Process InstalledProductSpecialRatingSetList Siebel Requestor ABCS Implementation</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="ProcessInstalledProductSpecialRatingSetList">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Process an InstalledProductSpecialRatingSetList
+                              object</svcdoc:Description>
+                    <svcdoc:MEP>FireAndForget</svcdoc:MEP>
+                    <svcdoc:DisplayName>ProcessInstalledProductSpecialRatingSetList</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="sbldataabcs:ProcessInstalledProductSpecialRatingSetListReqMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="ProcessInstalledProductSpecialRatingSetListSiebelCommsReqABCSImpl">
+        <plnk:role name="ProcessInstalledProductSpecialRatingSetListSiebelCommsReqABCSImplProvider">
+            <plnk:portType name="sbldataabcs:ProcessInstalledProductSpecialRatingSetListSiebelCommsReqABCSImplService"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

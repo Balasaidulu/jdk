@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="SearchPaymentSiebelCommsReqABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/SearchPaymentSiebelCommsReqABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:commssrchpymt="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:siebelfault="http://www.siebel.com/xml/SWIFault/V0"
+     xmlns:bpelcom="http://schemas.oracle.com/service/bpel/common"
+     xmlns:abcsimplsiebelpymtrespabo="http://www.siebel.com/xml/CMU%20Response%20Billing%20Profile%20Payments%20IO"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:abcsimplsiebelpymtreqabo="http://www.siebel.com/xml/CMU%20Request%20Billing%20Profile%20Payments%20Search%20IO"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:abcsimplsiebelpymtreqabcs="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/SearchPaymentSiebelCommsReqABCSImpl/V1"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service contains operations that would be used to search for the Payment records for an account in the billing system based on a search criteria</svcdoc:Description>
+            <svcdoc:ServiceType>RequesterABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>SearchPaymentSiebelCommsReqABCSImpl Requester ABCS
+                          Implementation Interface</svcdoc:DisplayName>
+            <svcdoc:EBOName>ReceivedPaymentEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>CRM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>CMU</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.siebel.com/xml/CMU%20Request%20Billing%20Profile%20Payments%20Search%20IO"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestBillingProfilePaymentsSearchIo.xsd"/>
+            <import namespace="http://www.siebel.com/xml/CMU%20Response%20Billing%20Profile%20Payments%20IO"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuResponseBillingProfilePaymentsIo.xsd"/>
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+            <xsd:import namespace="http://www.siebel.com/xml/SWIFault/V0" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/Fault.xsd"/>
+            <import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </schema>
+    </types>
+    <message name="SearchPaymentReqMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used as a payload to Search Payment operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="SearchPayment" element="abcsimplsiebelpymtreqabo:ListOfCmuRequestBillingProfilePaymentsSearchIo"/>
+    </message>
+    <message name="SearchPaymentRespMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for sending response by Search Payment operation</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="SearchPaymentResponse" element="abcsimplsiebelpymtrespabo:ListOfCmuResponseBillingProfilePaymentsIo"/>
+    </message>
+    <message name="SiebelFaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error Context and
+                        Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="Fault" element="siebelfault:Fault"/>
+    </message>
+    <message name="SearchPaymentFaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error Context and
+                        Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="SearchPaymentFault" element="commssrchpymt:Fault"/>
+    </message>
+    <portType name="SearchPaymentSiebelCommsReqABCSImpl">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This interface contains operations that can act upon
+                            the object</svcdoc:Description>
+                <svcdoc:DisplayName>Search Payment Siebel Requestor ABCS Implementation</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="SearchPayment">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Search an Payment
+                              object</svcdoc:Description>
+                    <svcdoc:MEP>SyncReqResp</svcdoc:MEP>
+                    <svcdoc:DisplayName>SearchPayment</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="abcsimplsiebelpymtreqabcs:SearchPaymentReqMsg"/>
+            <output message="abcsimplsiebelpymtreqabcs:SearchPaymentRespMsg"/>
+            <fault name="fault" message="abcsimplsiebelpymtreqabcs:SiebelFaultMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="SearchPaymentSiebelCommsReqABCSImpl">
+        <plnk:role name="SearchPaymentSiebelCommsReqABCSImplProvider">
+            <plnk:portType name="abcsimplsiebelpymtreqabcs:SearchPaymentSiebelCommsReqABCSImpl"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

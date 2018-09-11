@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:recPymtAbo="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" xmlns:brmpymtserv="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" xmlns:recpymtfault="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess" xmlns:abcsimplrpprovebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ReceivedPayment/V1" xmlns:abcsimplrpprovext="http://xmlns.oracle.com/ABCSImpl/BRM/CreateReceivedPaymentBRMCommsProvABCSImplExtension/V1" xmlns:recpayment="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ReceivedPayment/V1" xmlns:recpaymentebs="http://xmlns.oracle.com/EnterpriseServices/Core/ReceivedPayment/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="CreateReceivedPaymentBRMCommsProvABCSImplExtension1" targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/CreateReceivedPaymentBRMCommsProvABCSImplExtension/V1">
+   <documentation>
+      <svcdoc:Service>
+         <svcdoc:Description>This service contains intercepting operations that
+                             would be used by the participating application</svcdoc:Description>
+         <svcdoc:ServiceType>ABCSExtension</svcdoc:ServiceType>
+         <svcdoc:DisplayName>CreateReceivedPaymentBRMCommsProvABCSImpl/V1 Requester ABCS Extension
+                          Implementation Interface</svcdoc:DisplayName>
+			<svcdoc:ServiceObjectName>CreateReceivedPayment</svcdoc:ServiceObjectName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:Version>1.0</svcdoc:Version>
+			<svcdoc:ImplementationTechnology><!-- PLACEHOLDER--></svcdoc:ImplementationTechnology>
+			<svcdoc:ProductFamily>BRM</svcdoc:ProductFamily>
+			<svcdoc:ProductPillar>BRM</svcdoc:ProductPillar>
+			<svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+      </svcdoc:Service>
+   </documentation>
+   <types>
+      <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/CreateReceivedPaymentBRMCommsProvABCSImplExtension/V1" elementFormDefault="qualified">
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ReceivedPayment/V1" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/ReceivedPayment/V1/ReceivedPaymentEBM.xsd" />
+         <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_PYMT_COLLECT.xsd" />
+	 <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd" />
+      </xsd:schema>
+   </types>
+   <message name="PreXformEBMtoABMReceivedPaymentMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreXformEBMtoABMABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="CreateReceivedPaymentEBM" element="abcsimplrpprovebo:CreateReceivedPaymentEBM" />
+   </message>
+  <message name="PostXformEBMtoABMReceivedPaymentMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostXformEBMtoABMABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+	<part name="CreateReceivedPaymentResponseEBM" element="recpayment:CreateReceivedPaymentResponseEBM" />
+   </message>
+	<message name="PreInvokeABSCreatePCM_OP_PYMT_COLLECTReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_PYMT_COLLECT_inputFlist" element="brmpymtserv:PCM_OP_PYMT_COLLECT_inputFlist" />
+   </message>
+
+	<message name="PostInvokeABSCreatePCM_OP_PYMT_COLLECTReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_PYMT_COLLECT_outputFlist" element="brmpymtserv:PCM_OP_PYMT_COLLECT_outputFlist" />
+	</message>
+   
+   <message name="FaultMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used for propagating Error
+                                Context and Error Message</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="AIAFault" element="corecom:Fault" />
+   </message>
+   <portType name="CreateReceivedPaymentBRMCommsProvABCSImplExtensionService">
+      <documentation>
+         <svcdoc:Interface>
+            <svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+            <svcdoc:DisplayName>ProcessSalesOrderSiebelProvABCSImplV2ExtensionService</svcdoc:DisplayName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         </svcdoc:Interface>
+      </documentation>
+      <operation name="PreXformEBMtoABMReceivedPaymentEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformEBMtoABM an ListOfSWIOrderIO object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformEBMtoABMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplrpprovext:PreXformEBMtoABMReceivedPaymentMsg" />
+         <output message="abcsimplrpprovext:PreXformEBMtoABMReceivedPaymentMsg" />
+         <fault name="fault" message="abcsimplrpprovext:FaultMessage" />
+      </operation>
+	<operation name="PostXformEBMtoABMReceivedPaymentEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformEBMtoABM an ListOfSWIOrderIO object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformEBMtoABMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplrpprovext:PostXformEBMtoABMReceivedPaymentMsg" />
+         <output message="abcsimplrpprovext:PostXformEBMtoABMReceivedPaymentMsg" />
+         <fault name="fault" message="abcsimplrpprovext:FaultMessage" />
+      </operation>
+	 <operation name="PreInvokeABSPCM_OP_PYMT_COLLECTABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ProcessSalesOrderEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplrpprovext:PreInvokeABSCreatePCM_OP_PYMT_COLLECTReqMsg" />
+         <output message="abcsimplrpprovext:PreInvokeABSCreatePCM_OP_PYMT_COLLECTReqMsg" />
+         <fault name="fault" message="abcsimplrpprovext:FaultMessage" />
+      </operation>
+	<operation name="PostInvokeABSPCM_OP_PYMT_COLLECTABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ProcessSalesOrderEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="abcsimplrpprovext:PostInvokeABSCreatePCM_OP_PYMT_COLLECTReqMsg" />
+         <output message="abcsimplrpprovext:PostInvokeABSCreatePCM_OP_PYMT_COLLECTReqMsg" />
+         <fault name="fault" message="abcsimplrpprovext:FaultMessage" />
+      </operation>
+   </portType>
+     <binding name="CreateReceivedPaymentBRMCommsProvABCSImplExtensionServiceBinding" type="abcsimplrpprovext:CreateReceivedPaymentBRMCommsProvABCSImplExtensionService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="PreXformEBMtoABMReceivedPaymentEBM">
+            <soap:operation style="document" soapAction="PreXformEBMtoABMReceivedPaymentEBM"  />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+        <operation name="PostXformEBMtoABMReceivedPaymentEBM">
+            <soap:operation style="document" soapAction="PostXformEBMtoABMReceivedPaymentEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		 <operation name="PreInvokeABSPCM_OP_PYMT_COLLECTABM">
+            <soap:operation style="document" soapAction="PreInvokeABSPCM_OP_PYMT_COLLECTABM"  />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+        <operation name="PostInvokeABSPCM_OP_PYMT_COLLECTABM">
+            <soap:operation style="document" soapAction="PostInvokeABSPCM_OP_PYMT_COLLECTABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+    </binding>  
+	
+   <service name="CreateReceivedPaymentBRMCommsProvABCSImplExtension">
+        <port name="CreateReceivedPaymentBRMCommsProvABCSImplExtensionServicePort" binding="abcsimplrpprovext:CreateReceivedPaymentBRMCommsProvABCSImplExtensionServiceBinding">
+            <soap:address location="http://${fp.server.soaserverhostname}:${fp.server.soaserverport}/MirrorServlet/mirror" />
+        </port>
+   </service>
+   
+   <plnk:partnerLinkType name="CreateReceivedPaymentBRMCommsProvABCSImplExtensionService">
+      <plnk:role name="CreateReceivedPaymentBRMCommsProvABCSImplExtensionServiceProvider">
+         <plnk:portType name="abcsimplrpprovext:CreateReceivedPaymentBRMCommsProvABCSImplExtensionService" />
+      </plnk:role>
+   </plnk:partnerLinkType>
+</definitions>

@@ -1,0 +1,48 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/svc"
+     xmlns="http://xmlns.oracle.com/svc" xmlns:sdoJava="commonj.sdo/java" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="MethodRequest.xsd"/>
+    <xsd:include schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="BatchRequest" sdoJava:package="oracle.svc" sdoJava:instanceClass="oracle.svc.BatchRequest">
+        <xsd:annotation>
+            <xsd:documentation>Represents a bundle of method invocation requests to be
+performed on a {@link Service Service} in one round-trip.
+&lt;p&gt;
+&lt;b&gt;Example&lt;/b&gt;:
+&lt;code&gt;
+&lt;pre&gt;
+ 
+  DataObjectFactory fac = ...
+  BatchRequest batch = fac.createDataObject(BatchRequest.QUALIFIED_NAME);
+  
+  //Add a method Request
+  List processDataListParams = ArrayList(4);
+  processDataListParams.add(dataSource);
+  processDataListParams.add(operation);
+  processDataListParams.add(processControl);
+  processDataListParams.add(dataList);
+  batch.addMethodRequest(&quot;MyRequest1&quot;, &quot;processDataList&quot;, processDataListParams);
+  
+  //Add a method Request
+  List myMethodParams = ArrayList(1);
+  myMethodParams.add(&quot;Hello&quot;);
+  batch.addMethodRequest(&quot;MyRequest2&quot;, &quot;myMethod&quot;, myMethodParams);
+  batch.setTransactionMode(transactionMode);
+  svc.invokeServiceBatch(batch);
+&lt;/pre&gt;
+&lt;/code&gt;
+ @see Service
+ @see BatchResponse
+ @see MethodRequest</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="DataObject">
+                <xsd:sequence>
+                    <xsd:element name="TransactionMode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="MethodRequest" type="MethodRequest" minOccurs="0" maxOccurs="unbounded"
+                         nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="batchRequest" type="BatchRequest" nillable="true"/>
+</xsd:schema>

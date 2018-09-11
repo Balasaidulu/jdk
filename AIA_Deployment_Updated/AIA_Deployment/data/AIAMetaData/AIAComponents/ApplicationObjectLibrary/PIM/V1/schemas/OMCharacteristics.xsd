@@ -1,0 +1,43 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/item/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/item/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="OMCharacteristics" sdoJava:package="oracle.apps.ego.item.service" sdoJava:instanceClass="oracle.apps.ego.item.service.OMCharacteristics">
+        <xsd:annotation>
+            <xsd:documentation>Order Management Characteristics</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="CustomerOrderFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="CustomerOrderEnabledFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ShippableItemFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="InternalOrderFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="InternalOrderEnabledFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="SoTransactionsFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PickComponentsFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ReplenishToOrderFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ShipModelCompleteFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AtpFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AtpRuleId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AtpComponentsFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PickingRuleId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DefaultShippingOrg" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DefaultSoSourceType" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ChargePeriodicityCode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ReturnableFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ReturnInspectionRequirement" type="xsd:decimal" minOccurs="0"
+                         nillable="true"/>
+                    <xsd:element name="FinancingAllowedFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="OverShipmentTolerance" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="UnderShipmentTolerance" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="OverReturnTolerance" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="UnderReturnTolerance" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="VolDiscountExemptFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="CouponExemptFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="oMCharacteristics" type="OMCharacteristics" nillable="true"/>
+</xsd:schema>

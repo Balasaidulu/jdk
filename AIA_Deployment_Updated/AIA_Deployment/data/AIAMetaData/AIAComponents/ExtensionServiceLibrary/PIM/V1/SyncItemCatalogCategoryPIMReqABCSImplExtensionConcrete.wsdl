@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:SyncICC="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ClassificationScheme/V1" xmlns:classificationschemeebs="http://xmlns.oracle.com/EnterpriseServices/Core/ClassificationScheme/V1" xmlns:appsabo="http://xmlns.oracle.com/xdb/APPS" xmlns:appsext="http://xmlns.oracle.com/ABCSImpl/PIM/SyncItemCatalogCategoryPIMCoreReqABCSImplExtension/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pimxsd="http://xmlns.oracle.com/ItemCatalogCategorySvc" xmlns:vsebs="http://xmlns.oracle.com/EnterpriseServices/Core/SpecificationValueSet/V1" xmlns:vsebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SpecificationValueSet/V1" xmlns:pubsvc="http://xmlns.oracle.com/apps/ego/pubfwk/service" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="SyncItemCatalogCategoryPIMReqABCSImplExtension1" targetNamespace="http://xmlns.oracle.com/ABCSImpl/PIM/SyncItemCatalogCategoryPIMCoreReqABCSImplExtension/V1">
+   <documentation>
+      <svcdoc:Service>
+         <svcdoc:Description>This service contains intercepting operations that
+                             would be used by the participating application</svcdoc:Description>
+         <svcdoc:TargetServiceType>ABCSExtension</svcdoc:TargetServiceType>
+         <svcdoc:DisplayName>SyncItemCatalogCategoryPIMReqABCSImpl Requester
+                             ABCS Extension Implementation Interface</svcdoc:DisplayName>
+         <svcdoc:ServiceObjectName>SyncItemCatalogCategory</svcdoc:ServiceObjectName>
+         <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         <svcdoc:Version>1.0</svcdoc:Version>
+         <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+         <svcdoc:ProductFamily>ERP</svcdoc:ProductFamily>
+         <svcdoc:ProductPillar>MDMPRODUCT</svcdoc:ProductPillar>
+         <svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+      </svcdoc:Service>
+   </documentation>
+   <types>
+      <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/PIM/SyncItemCatalogCategoryPIMCoreReqABCSImplExtension/V1" elementFormDefault="qualified">
+         <xsd:import namespace="http://xmlns.oracle.com/xdb/APPS" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PIM/V1/schemas/APPS_WF_EVENT_T.xsd" />
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ClassificationScheme/V1" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/ClassificationScheme/V1/ClassificationSchemeEBM.xsd" />
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd" />
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SpecificationValueSet/V1" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/SpecificationValueSet/V1/SpecificationValueSetEBM.xsd" />
+         <xsd:import namespace="http://xmlns.oracle.com/ItemCatalogCategorySvc" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PIM/V1/schemas/ItemCatalogCategorySvc.xsd" />
+         <xsd:import namespace="http://xmlns.oracle.com/apps/ego/pubfwk/service" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PIM/V1/schemas/PublicationService.xsd" />
+      </xsd:schema>
+   </types>
+   <message name="PreXformABMtoEBMItemCatalogCategoryABM">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to
+                                PreXformABMtoEBMItemCatalogCategoryABM
+                                operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PreXformABMtoEBMItemCatalogCategoryABM" element="pimxsd:IccQueryIn" />
+   </message>
+   <message name="PreProcessABM">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to
+                                PreProcessABM
+                                operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="SyncItemCatalogCategoryABMRespMsg" element="pimxsd:IccQueryOut" />
+   </message>
+   <message name="PostProcessABM">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to
+                                PostProcessABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PostProcessABM" element="pubsvc:PublicationService_UpdatePublicationStatus" />
+   </message>
+   <message name="ClassificationSchemePreProcessEBM">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to
+                                ClassificationSchemePreProcessEBM
+                                operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="ClassificationSchemePreProcessEBM" element="SyncICC:SyncClassificationSchemeListEBM" />
+   </message>
+   <message name="SpecificationValueSetPreProcessEBM">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to
+                                SpecificationValueSetPreProcessEBM
+                                operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="SpecificationValueSetPreProcessEBM" element="vsebo:SyncSpecificationValueSetListEBM" />
+   </message>
+   
+      <message name="PostProcessEBM">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to
+                                PostProcessEBM
+                                operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PostProcessEBM" element="SyncICC:SyncClassificationSchemeListResponseEBM" />
+   </message>
+   <message name="FaultMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used for propagating Error
+                                Context and Error Message</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="AIAFault" element="corecom:Fault" />
+   </message>
+   <portType name="SyncItemCatalogCategoryPIMReqABCSImplExtensionService">
+      <documentation>
+         <svcdoc:Interface>
+            <svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+            <svcdoc:DisplayName>SyncItemCatalogCategoryPIMReqABCSImplExtensionService</svcdoc:DisplayName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         </svcdoc:Interface>
+      </documentation>
+      <operation name="PreProcessABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreProcessABM an
+                                   ListOfICCs</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreProcessABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="appsext:PreProcessABM" />
+         <output message="appsext:PreProcessABM" />
+         <fault name="fault" message="appsext:FaultMessage" />
+      </operation>
+      <operation name="PostProcessABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostProcessABM an
+                                   ListOfICCs</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PostProcessABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="appsext:PostProcessABM" />
+         <output message="appsext:PostProcessABM" />
+         <fault name="fault" message="appsext:FaultMessage" />
+      </operation>
+     <operation name="ClassificationSchemePreProcessEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to ClassificationSchemePreProcessEBM an
+                                   ListOfICCs</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>ClassificationSchemePreProcessEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="appsext:ClassificationSchemePreProcessEBM" />
+         <output message="appsext:ClassificationSchemePreProcessEBM" />
+         <fault name="fault" message="appsext:FaultMessage" />
+      </operation>
+      <operation name="SpecificationValueSetPreProcessEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to SpecificationValueSetPreProcessEBM an
+                                   SpecificationValueSetEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>SpecificationValueSetPreProcessEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="appsext:SpecificationValueSetPreProcessEBM" />
+         <output message="appsext:SpecificationValueSetPreProcessEBM" />
+         <fault name="fault" message="appsext:FaultMessage" />
+      </operation>
+      <operation name="PostProcessEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostProcessEBM an
+                                   PostProcessEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeSpecificationValueSetEBSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="appsext:PostProcessEBM" />
+         <output message="appsext:PostProcessEBM" />
+         <fault name="fault" message="appsext:FaultMessage" />
+      </operation>
+            <operation name="PreXformABMtoEBMItemCatalogCategoryABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PostInvokeClassificationSchemeEBS an
+                                   PreXformABMtoEBMItemCatalogCategoryABM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformABMtoEBMItemCatalogCategoryABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="appsext:PreXformABMtoEBMItemCatalogCategoryABM" />
+         <output message="appsext:PreXformABMtoEBMItemCatalogCategoryABM" />
+         <fault name="fault" message="appsext:FaultMessage" />
+      </operation>
+   </portType>
+
+   <plnk:partnerLinkType name="SyncItemCatalogCategoryPIMReqABCSImplExtensionService">
+      <plnk:role name="SyncItemCatalogCategoryPIMReqABCSImplExtensionServiceProvider">
+         <plnk:portType name="appsext:SyncItemCatalogCategoryPIMReqABCSImplExtensionService" />
+      </plnk:role>
+   </plnk:partnerLinkType>
+   <binding name="SyncItemCatalogCategoryPIMReqABCSImplExtensionService_Binding" type="appsext:SyncItemCatalogCategoryPIMReqABCSImplExtensionService">
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+      <operation name="PreProcessABM">
+         <soap:operation soapAction="mirror" style="document" />
+         <input>
+            <soap:body use="literal" />
+         </input>
+         <output>
+            <soap:body use="literal" />
+         </output>
+      </operation>
+      <operation name="PostProcessABM">
+         <soap:operation soapAction="mirror" style="document" />
+         <input>
+            <soap:body use="literal" />
+         </input>
+         <output>
+            <soap:body use="literal" />
+         </output>
+      </operation>
+     <operation name="ClassificationSchemePreProcessEBM">
+         <soap:operation soapAction="mirror" style="document" />
+         <input>
+            <soap:body use="literal" />
+         </input>
+         <output>
+            <soap:body use="literal" />
+         </output>
+      </operation>
+      <operation name="SpecificationValueSetPreProcessEBM">
+         <soap:operation soapAction="mirror" style="document" />
+         <input>
+            <soap:body use="literal" />
+         </input>
+         <output>
+            <soap:body use="literal" />
+         </output>
+      </operation>
+      <operation name="PostProcessEBM">
+         <soap:operation soapAction="mirror" style="document" />
+         <input>
+            <soap:body use="literal" />
+         </input>
+         <output>
+            <soap:body use="literal" />
+         </output>
+      </operation>
+      <operation name="PreXformABMtoEBMItemCatalogCategoryABM">
+         <soap:operation soapAction="mirror" style="document" />
+         <input>
+            <soap:body use="literal" />
+         </input>
+         <output>
+            <soap:body use="literal" />
+         </output>
+      </operation>
+   </binding>
+   <service name="mirrorAnyService">
+      <port name="SyncItemCatalogCategoryPIMReqABCSImplExtensionService" binding="appsext:SyncItemCatalogCategoryPIMReqABCSImplExtensionService_Binding">
+         <soap:address location="http://sdc60008sems.us.oracle.com:8037/MirrorServlet/mirror" />
+      </port>
+   </service>
+   </definitions>

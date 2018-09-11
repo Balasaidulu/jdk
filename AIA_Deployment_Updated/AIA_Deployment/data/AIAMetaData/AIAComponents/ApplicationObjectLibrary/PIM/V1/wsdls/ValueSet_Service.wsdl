@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="ValuesetService"
+     targetNamespace="http://service.extfwk.ego.apps.oracle/"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:tns="http://service.extfwk.ego.apps.oracle/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+     xmlns:tns0="http://xmlns.oracle.com/ValuesetService"
+    >
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/ValuesetService" schemaLocation="../schemas/ValueSet_Service.xsd"/>
+        </schema>
+    </types>
+    <message name="getValueSetDetails">
+        <part name="parameters" element="tns0:ValuesetQueryIn"/>
+    </message>
+    <message name="getValueSetDetailsResponse">
+        <part name="parameters" element="tns0:ValuesetQueryOut"/>
+    </message>
+    <portType name="ValueSetService">
+        <operation name="getValueSetDetails">
+            <input message="tns:getValueSetDetails"/>
+            <output message="tns:getValueSetDetailsResponse"/>
+        </operation>
+    </portType>
+    <binding name="ValueSetServicePortBinding" type="tns:ValueSetService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="getValueSetDetails">
+            <soap:operation soapAction="http://service.extfwk.ego.apps.oracle//getValueSetDetails"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="ValueSetService">
+        <port name="ValueSetServicePort" binding="tns:ValueSetServicePortBinding">
+            <soap:address location="http://set.at.runtime"/>
+        </port>
+    </service>
+</definitions>

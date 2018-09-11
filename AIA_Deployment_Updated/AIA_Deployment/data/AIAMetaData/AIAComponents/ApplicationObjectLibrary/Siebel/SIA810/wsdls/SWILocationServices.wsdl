@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsdLocal1="http://www.siebel.com/xml/SWIFMLocationIO" targetNamespace="http://siebel.com/asi/V0" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://siebel.com/asi/V0">
+		<types>
+			<xsd:schema elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="http://siebel.com/asi/V0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://www.siebel.com/xml/SWIFMLocationIO" schemaLocation="../schemas/SWIFMLocationIO.xsd" />
+					<xsd:element name="SWILocationSynchronize_Input">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element ref="xsdLocal1:ListOfSwifmlocationio" />
+								<xsd:element name="StatusObject" minOccurs="0" type="xsd:string" />
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="SWILocationSynchronize_Output">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element ref="xsdLocal1:ListOfSwifmlocationio" />
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="SWILocationQuery_Input">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="PrimaryRowId" type="xsd:string" />
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="SWILocationQuery_Output">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element ref="xsdLocal1:ListOfSwifmlocationio" />
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+			</xsd:schema>
+		</types>
+		<message name="SWILocationSynchronize_Input">
+			<part name="SWILocationSynchronize_Input" element="tns:SWILocationSynchronize_Input" />
+		</message>
+		<message name="SWILocationSynchronize_Output">
+			<part name="SWILocationSynchronize_Output" element="tns:SWILocationSynchronize_Output" />
+		</message>
+		<message name="SWILocationQuery_Input">
+			<part name="SWILocationQuery_Input" element="tns:SWILocationQuery_Input" />
+		</message>
+		<message name="SWILocationQuery_Output">
+			<part name="SWILocationQuery_Output" element="tns:SWILocationQuery_Output" />
+		</message>
+		<portType name="SWI_spcLocation_spcServices">
+			<operation name="SWILocationSynchronize">
+				<input message="tns:SWILocationSynchronize_Input" />
+				<output message="tns:SWILocationSynchronize_Output" />
+			</operation>
+			<operation name="SWILocationQuery">
+				<input message="tns:SWILocationQuery_Input" />
+				<output message="tns:SWILocationQuery_Output" />
+			</operation>
+		</portType>
+		<binding name="SWI_spcLocation_spcServices" type="tns:SWI_spcLocation_spcServices">
+			<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+				<operation name="SWILocationSynchronize">
+					<soap:operation soapAction="document/http://siebel.com/asi/V0:SWILocationSynchronize" />
+					<input>
+						<soap:body use="literal" />
+					</input>
+					<output>
+						<soap:body use="literal" />
+					</output>
+				</operation>
+				<operation name="SWILocationQuery">
+					<soap:operation soapAction="document/http://siebel.com/asi/V0:SWILocationQuery" />
+					<input>
+						<soap:body use="literal" />
+					</input>
+					<output>
+						<soap:body use="literal" />
+					</output>
+				</operation>
+		</binding>
+		<service name="SWILocationServices">
+			<port binding="tns:SWI_spcLocation_spcServices" name="SWI_spcLocation_spcServices">
+				<soap:address location="http://set.at.runtime" />
+			</port>
+		</service>
+	</definitions>

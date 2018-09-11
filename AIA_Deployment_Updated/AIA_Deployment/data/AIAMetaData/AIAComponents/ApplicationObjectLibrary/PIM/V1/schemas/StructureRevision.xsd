@@ -1,0 +1,53 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/bom/structure/service"
+     xmlns="http://xmlns.oracle.com/apps/bom/structure/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="StructureRevision" sdoJava:package="oracle.apps.bom.structure.service" sdoJava:instanceClass="oracle.apps.bom.structure.service.StructureRevision">
+        <xsd:annotation>
+            <xsd:documentation>StructureRevision</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="RevisionId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Revision" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="RevisionLabel" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="RevisionReason" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ChangeNotice" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="EcnInitiationDate" type="xsd:dateTime" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ImplementationDate" type="xsd:dateTime" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ImplementedSerialNumber" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Description" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="LifecycleId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="CurrentPhaseId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ObjectVersionNumber" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="LastUpdateDate" type="xsd:dateTime" minOccurs="0" nillable="true"/>
+                    <xsd:element name="LastUpdatedBy" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="CreationDate" type="xsd:dateTime" minOccurs="0" nillable="true"/>
+                    <xsd:element name="CreatedBy" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="LastUpdateLogin" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="EffectivityDate" type="xsd:dateTime" minOccurs="0" nillable="true"/>
+                    <xsd:element name="RevisedItemSequenceId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AttributeCategory" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute1" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute2" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute3" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute4" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute5" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute6" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute7" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute8" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute9" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute10" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute11" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute12" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute13" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute14" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Attribute15" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="Publish" type="xsd:string" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="structureRevision" type="StructureRevision" nillable="true"/>
+</xsd:schema>

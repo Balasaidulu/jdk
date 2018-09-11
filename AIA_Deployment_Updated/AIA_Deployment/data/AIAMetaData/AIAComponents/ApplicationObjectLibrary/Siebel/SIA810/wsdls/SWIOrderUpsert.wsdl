@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://siebel.com/asi/" targetNamespace="http://siebel.com/asi/">
+	<types>
+		<xsd:schema elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="http://siebel.com/asi/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsdLocal1="http://siebel.com/OrderManagement/Order/Data">
+			<xsd:import namespace="http://siebel.com/OrderManagement/Order/Data" schemaLocation="../schemas/SWIOrderIO.xsd"/>
+			<xsd:element name="SBLOrderUpsert_Input">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Process_spcInstance_spcId" type="xsd:string"/>
+						<xsd:element name="Object_spcId" type="xsd:string"/>
+						<xsd:element name="Siebel_spcOperation_spcObject_spcId" type="xsd:string"/>
+						<xsd:element name="StatusObject" type="xsd:string"/>
+						<xsd:element ref="xsdLocal1:ListOfSWIOrderIO"/>
+						<xsd:element name="Error_spcCode" type="xsd:string"/>
+						<xsd:element name="Error_spcMessage" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SBLOrderUpsert_Output">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Error_spcCode" type="xsd:string"/>
+						<xsd:element name="Error_spcMessage" type="xsd:string"/>
+						<xsd:element name="Object_spcId" type="xsd:string"/>
+						<xsd:element name="Process_spcInstance_spcId" type="xsd:string"/>
+						<xsd:element name="Siebel_spcOperation_spcObject_spcId" type="xsd:string"/>
+						<xsd:element ref="xsdLocal1:ListOfSWIOrderIO"/>
+						<xsd:element name="StatusObject" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</types>
+	<message name="SBLOrderUpsert_Input">
+		<part name="SBLOrderUpsert_Input" element="tns:SBLOrderUpsert_Input"/>
+	</message>
+	<message name="SBLOrderUpsert_Output">
+		<part name="SBLOrderUpsert_Output" element="tns:SBLOrderUpsert_Output"/>
+	</message>
+	<portType name="SWIOrderUpsert">
+		<operation name="SBLOrderUpsert">
+			<input message="tns:SBLOrderUpsert_Input"/>
+			<output message="tns:SBLOrderUpsert_Output"/>
+		</operation>
+	</portType>
+	<binding name="SWIOrderUpsert" type="tns:SWIOrderUpsert">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="SBLOrderUpsert">
+			<soap:operation soapAction="document/http://siebel.com/asi/:SBLOrderUpsert"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="SWIOrderUpsert">
+		<port name="SWIOrderUpsert" binding="tns:SWIOrderUpsert">
+			<soap:address location="http://set.at.runtime"/>
+		</port>
+	</service>
+</definitions>

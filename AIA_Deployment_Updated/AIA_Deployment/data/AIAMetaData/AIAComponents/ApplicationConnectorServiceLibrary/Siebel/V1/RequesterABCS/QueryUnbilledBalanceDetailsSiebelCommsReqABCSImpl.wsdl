@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="QueryUnbilledBalanceDetailsSiebelCommsReqABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryUnbilledBalanceDetailsSiebelCommsReqABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:siebelfault="http://www.siebel.com/xml/SWIFault/V0"
+     xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:abcsimplsiebelunbillbaldetreqabcs="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryUnbilledBalanceDetailsSiebelCommsReqABCSImpl/V1"
+     xmlns:abcsimplsiebelunbillbaldetrespabo="http://www.siebel.com/xml/CMU%20Response%20Unbilled%20Balance%20Details%20IO"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:bpelcommon="http://schemas.oracle.com/service/bpel/common"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:abcsimplsiebelunbillbaldetreqabo="http://www.siebel.com/xml/CMU%20Request%20Unbilled%20Balance%20Details%20IO"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service contains Siebel ABCS implementation of Query Unbilled Balance Details operation</svcdoc:Description>
+            <svcdoc:ServiceType>RequesterABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>Query Unbilled Balance Details Siebel Requestor ABCS Implememntation</svcdoc:DisplayName>
+            <svcdoc:EBOName>ServiceUsageEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>CRM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.siebel.com/xml/CMU%20Request%20Unbilled%20Balance%20Details%20IO"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuRequestUnbilledBalanceDetailsIo.xsd"/>
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+            <import namespace="http://www.siebel.com/xml/CMU%20Response%20Unbilled%20Balance%20Details%20IO"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CmuResponseUnbilledBalanceDetailsIo.xsd"/>
+            <import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+            <xsd:import namespace="http://www.siebel.com/xml/SWIFault/V0" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/Fault.xsd"/>
+        </schema>
+    </types>
+    <message name="QueryUnbilledBalanceDetailsReqMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message will contain the Unbilled Balance Details request attributes</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="QueryUnbilledBalanceDetails" element="abcsimplsiebelunbillbaldetreqabo:ListOfCmuRequestUnbilledBalanceDetailsIo"/>
+    </message>
+    <message name="QueryUnbilledBalanceDetailsRespMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message will contain the Unbilled Balance Details response attributes</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="QueryUnbilledBalanceDetailsResponse" element="abcsimplsiebelunbillbaldetrespabo:ListOfCmuResponseUnbilledBalanceDetailsIo"/>
+    </message>
+    <message name="SiebelFaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="Fault" element="siebelfault:Fault"/>
+    </message>
+    <message name="QueryUnbilledBalanceDetailsFaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="QueryUnbilledBalanceDetailsFault" element="corecom:Fault"/>
+    </message>
+    <portType name="QueryUnbilledBalanceDetailsSiebelCommsReqABCSImpl">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This Service Contains Query Unbilled Balance Details Siebel Requestor ABCS Implementation</svcdoc:Description>
+                <svcdoc:DisplayName>Query Unbilled Balance Details Siebel Requestor ABCS Implementation</svcdoc:DisplayName>
+                <svcdoc:Status>Active</svcdoc:Status>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="QueryUnbilledBalanceDetails">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Query On Unbilled Balance Details</svcdoc:Description>
+                    <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+                    <svcdoc:DisplayName>Query Unbilled Balance Details</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="abcsimplsiebelunbillbaldetreqabcs:QueryUnbilledBalanceDetailsReqMsg"/>
+            <output message="abcsimplsiebelunbillbaldetreqabcs:QueryUnbilledBalanceDetailsRespMsg"/>
+            <fault name="fault" message="abcsimplsiebelunbillbaldetreqabcs:SiebelFaultMsg"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="QueryUnbilledBalanceDetailsSiebelCommsReqABCSImpl">
+        <plnk:role name="QueryUnbilledBalanceDetailsSiebelCommsReqABCSImplProvider">
+            <plnk:portType name="abcsimplsiebelunbillbaldetreqabcs:QueryUnbilledBalanceDetailsSiebelCommsReqABCSImpl"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

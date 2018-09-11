@@ -1,0 +1,62 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/item/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/item/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="InventoryCharacteristics" sdoJava:package="oracle.apps.ego.item.service" sdoJava:instanceClass="oracle.apps.ego.item.service.InventoryCharacteristics">
+        <xsd:annotation>
+            <xsd:documentation>Inventory Characteristics</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="InventoryItemFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="StockEnabledFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="MtlTransactionsEnabledFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="RevisionQtyControlCode" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ReservableType" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="CheckShortagesFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ShelfLifeCode" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ShelfLifeDays" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="RetestInterval" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ExpirationActionInterval" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ExpirationActionCode" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="CycleCountEnabledFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="NegativeMeasurementError" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="PositiveMeasurementError" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="LotControlCode" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AutoLotAlphaPrefix" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="StartAutoLotNumber" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="MaturityDays" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="HoldDays" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="SerialNumberControlCode" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="AutoSerialAlphaPrefix" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="StartAutoSerialNumber" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="GradeControlFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DefaultGrade" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="LocationControlCode" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="RestrictSubinventoriesCode" type="xsd:decimal" minOccurs="0"
+                         nillable="true"/>
+                    <xsd:element name="RestrictLocatorsCode" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DefaultMaterialStatusId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="LotStatusEnabled" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DefaultLotStatusId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="SerialStatusEnabled" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="DefaultSerialStatusId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ChildLotFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ParentChildGenerationFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ChildLotPrefix" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ChildLotStartingNumber" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="ChildLotValidationFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="CopyLotAttributeFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="LotSplitEnabled" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="LotMergeEnabled" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="LotTranslateEnabled" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="LotSubstitutionEnabled" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="LotDivisibleFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                    <xsd:element name="BulkPickedFlag" type="xsd:string" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="inventoryCharacteristics" type="InventoryCharacteristics" nillable="true"/>
+</xsd:schema>

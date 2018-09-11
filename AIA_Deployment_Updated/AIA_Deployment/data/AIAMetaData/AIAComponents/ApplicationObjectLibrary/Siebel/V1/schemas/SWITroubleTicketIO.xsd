@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xsd:schema xmlns:xsdLocal="http://www.siebel.com/xml/SWITroubleTicketIO" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.siebel.com/xml/SWITroubleTicketIO" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:annotation>
+    <xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation>
+  </xsd:annotation>
+  <xsd:element name="ListOfSWITroubleTicketIO" type="xsdLocal:ListOfSWITroubleTicketIO" />
+  <xsd:complexType name="ListOfSWITroubleTicketIOTopElmt">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="ListOfSWITroubleTicketIO" type="xsdLocal:ListOfSWITroubleTicketIO" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ListOfSWITroubleTicketIO">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="TroubleTicket" type="xsdLocal:TroubleTicket" />
+    </xsd:sequence>
+    <xsd:attribute name="Language" type="xsd:string" />
+    <xsd:attribute name="Locale" type="xsd:string" />
+    <xsd:attribute name="MessageId" type="xsd:string" />
+    <xsd:attribute name="EnterpriseServerName" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="TroubleTicket">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Abstract" type="xsdLocal:string100" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="AccountId" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Area" type="xsdLocal:string30" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ClosedDate" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ConflictId" type="xsdLocal:string30" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Created" type="xsdLocal:string30" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="CreatedBy" type="xsdLocal:string30" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Description" type="xsdLocal:string2000" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Id" type="xsdLocal:string15" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="JobCardinality" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="JobId" type="xsdLocal:string15" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="JobType" type="xsdLocal:string30" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ModId" type="xsdLocal:string30" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Name" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="OpenedDate" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Priority" type="xsdLocal:string30" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ProductId" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="SRType" type="xsdLocal:string30" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Severity" type="xsdLocal:string30" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Status" type="xsdLocal:string30" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Sub-Area" type="xsdLocal:string30" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="SymptomDiscoveredDateTime" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Updated" type="xsdLocal:string30" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="UpdatedBy" type="xsdLocal:string30" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ListOfSWIOrderFailure" type="xsdLocal:ListOfSWIOrderFailure" />
+    </xsd:sequence>
+    <xsd:attribute name="operation" type="xsd:string" />
+    <xsd:attribute name="searchspec" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="ListOfSWIOrderFailure">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="SWIOrderFailure" type="xsdLocal:SWIOrderFailure" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SWIOrderFailure">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="ApplicationErrorCode" type="xsdLocal:string100" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Area" type="xsdLocal:string30" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="CommonOrderId" type="xsdLocal:string100" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="CommonOrderItemId" type="xsdLocal:string100" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ConflictId" type="xsdLocal:string30" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Created" type="xsdLocal:string30" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="CreatedBy" type="xsdLocal:string30" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="FailureInformation" type="xsdLocal:string2000" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="FailureSystemCode" type="xsdLocal:string30" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="FulfillmentSystemTransactionId" type="xsdLocal:string100" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="GlobalErrorCode" type="xsdLocal:string30" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Id" type="xsdLocal:string30" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ModId" type="xsdLocal:string30" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="OrderId" type="xsdLocal:string15" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="OrderLineItemId" type="xsdLocal:string15" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Priority" type="xsdLocal:string30" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="RetryCount" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ServiceOfFailure" type="xsdLocal:string200" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Severity" type="xsdLocal:string30" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Sub-Area" type="xsdLocal:string30" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="TimeOfFirstFailure" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Updated" type="xsdLocal:string30" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="UpdatedBy" type="xsdLocal:string30" />
+    </xsd:sequence>
+    <xsd:attribute name="operation" type="xsd:string" />
+    <xsd:attribute name="searchspec" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:simpleType name="string2000">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="2000" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string200">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="200" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string15">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="15" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string30">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="30" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string100">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="100" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

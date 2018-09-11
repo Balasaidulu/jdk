@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 rel. 2 sp2 (http://www.altova.com) by Arindam (Oracle) -->
+<!-- Created by Arindam Kesh -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:sce="http://www.sce.com/QueryProductClassAndAttributesRespABM" targetNamespace="http://www.sce.com/QueryProductClassAndAttributesRespABM" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:element name="QueryProductClassAndAttributesRespABM" type="sce:QueryProductClassAndAttributesRespABMType">
+		<xsd:annotation>
+			<xsd:documentation>QueryProductClassAndAttributes Response ABM identifies all the parameters of Product Class Definition, Attribute Definition and Value Set</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="QueryProductClassAndAttributesRespABMType">
+		<xsd:sequence>
+			<xsd:element name="ListOfProductClass" type="sce:ListOfProductClassType"/>
+			<xsd:element name="ListOfAttributeDef" type="sce:ListOfAttributeDefType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfProductClassType">
+		<xsd:sequence>
+			<xsd:element name="ProductClassDef" type="sce:ProductClassDefType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfAttributeDefType">
+		<xsd:sequence>
+			<xsd:element name="AttributeDef" type="sce:AttributeDefAndValueSetType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfAttributeRefType">
+		<xsd:sequence>
+			<xsd:element name="AttributeRef" type="sce:AttributeRefType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AttributeRefType">
+		<xsd:sequence>
+			<xsd:element name="AttributeDefinitionId" type="xsd:string"/>
+			<xsd:element name="ObjectNumber" type="xsd:string"/>
+			<xsd:element name="AssociationName" type="xsd:string"/>
+			<xsd:element name="DefaultValue" type="xsd:string"/>
+			<xsd:element name="Description" type="xsd:string"/>
+			<xsd:element name="ReadOnlyFlag" type="xsd:string"/>
+			<xsd:element name="RejectedValue" type="xsd:string"/>
+			<xsd:element name="RequiredFlag" type="xsd:string"/>
+			<xsd:element name="UnitOfMeasure" type="xsd:string"/>
+			<xsd:element name="Version" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ProductClassDefType">
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:string"/>
+			<xsd:element name="Name" type="xsd:string"/>
+			<xsd:element name="DisplayName" type="xsd:string"/>
+			<xsd:element name="Description" type="xsd:string"/>
+			<xsd:element name="ObjectNumber" type="xsd:string"/>
+			<xsd:element name="Version" type="xsd:string"/>
+			<xsd:element name="ParentClassName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ListOfAttributeRef" type="sce:ListOfAttributeRefType"/>
+		</xsd:sequence>
+		<xsd:attribute name="LanguageCode" type="xsd:string" use="optional"/>
+		<xsd:attribute name="LanguageLocaleCode" type="xsd:string" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="AttributeDefAndValueSetType">
+		<xsd:sequence>
+			<xsd:element name="AttributeDefinitionId" type="xsd:string"/>
+			<xsd:element name="AttributeDefinitionName" type="xsd:string"/>
+			<xsd:element name="DataType" type="xsd:string"/>
+			<xsd:element name="UnitOfMeasure" type="xsd:string"/>
+			<xsd:element name="Description" type="xsd:string"/>
+			<xsd:element name="DomainType" type="xsd:string"/>
+			<xsd:element name="ObjectNumber" type="xsd:string"/>
+			<xsd:element name="ValueSet" type="sce:ValueSetType"/>
+		</xsd:sequence>
+		<xsd:attribute name="LanguageCode" type="xsd:string" use="optional"/>
+		<xsd:attribute name="LanguageLocaleCode" type="xsd:string" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="ValueSetType">
+		<xsd:sequence>
+			<xsd:element name="Value" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

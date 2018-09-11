@@ -1,0 +1,528 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema targetNamespace="http://xmlns.oracle.com/communications/ordermanagement" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:osm="http://xmlns.oracle.com/communications/ordermanagement" xmlns:acc="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:AccountQuery">
+   <xsd:include schemaLocation="commonWS.xsd"/>
+   <xsd:import namespace="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:AccountQuery" schemaLocation="AccountAIAWrapper.xsd"/>
+   <xsd:element name="CreateEntities" type="osm:CreateEntityBulkRequestType"/>
+   <xsd:complexType name="CreateEntityBulkRequestType">
+      <xsd:sequence>
+         <xsd:element name="transactionScope" type="osm:TransactionScopeType" default="Entity"/>
+         <xsd:element name="transactionHeader" type="osm:TransactionHeaderType" minOccurs="0"/>
+         <xsd:element name="items" type="osm:CreateEntityRequestType" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:simpleType name="TransactionScopeType">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="Request"/>
+         <xsd:enumeration value="Entity"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:complexType name="TransactionHeaderType">
+      <xsd:sequence>
+         <xsd:element name="EntityType" type="xsd:normalizedString" minOccurs="1"/>
+         <xsd:element name="TransactionStatus" type="osm:TransactionStatusType" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="TransactionId" type="xsd:normalizedString" minOccurs="1"/>
+         <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="CreateEntitiesResponse" type="osm:CreateEntityBulkResponseType"/>
+   <xsd:complexType name="CreateEntityBulkResponseType">
+      <xsd:sequence>
+         <xsd:element name="responses" type="osm:CreateEntityResponseType" minOccurs="1" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="CreateEntity" type="osm:CreateEntityRequestType"/>
+   <xsd:complexType name="CreateEntityRequestType">
+      <xsd:sequence>
+         <xsd:element name="Reason" type="xsd:normalizedString" minOccurs="0"/>
+         <xsd:element name="Name" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ExternalId" type="osm:EntityNumberType" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="Type" type="xsd:normalizedString" minOccurs="1"/>
+         <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="CreateEntityResponse" type="osm:CreateEntityResponseType"/>
+   <xsd:element name="UpdateEntities" type="osm:UpdateEntityBulkRequestType"/>
+   <xsd:complexType name="UpdateEntityBulkRequestType">
+      <xsd:sequence>
+         <xsd:element name="TransactionScope" type="osm:TransactionScopeType" default="Entity"/>
+         <xsd:element name="transactionHeader" type="osm:TransactionHeaderType" minOccurs="0"/>
+         <xsd:element name="items" type="osm:UpdateEntityRequestType" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="UpdateEntitiesResponse" type="osm:UpdateEntityBulkResponseType"/>
+   <xsd:complexType name="UpdateEntityBulkResponseType">
+      <xsd:sequence>
+         <xsd:element name="responses" type="osm:UpdateEntityResponseType" minOccurs="1" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="UpdateEntity" type="osm:UpdateEntityRequestType"/>
+   <xsd:complexType name="UpdateEntityRequestType">
+      <xsd:sequence>
+         <xsd:element name="Reason" type="xsd:normalizedString" minOccurs="0"/>
+         <xsd:element name="State" type="osm:EntityNameType" minOccurs="0" maxOccurs="1"/>
+         <xsd:choice>
+            <xsd:element name="Id" type="osm:EntityIdType"/>
+            <xsd:element name="ExternalId" type="osm:EntityNumberType"/>
+         </xsd:choice>
+         <xsd:element name="Type" type="xsd:normalizedString" minOccurs="1"/>
+         <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax">
+            <xsd:annotation>
+               <xsd:documentation> Allows the user to update the entity by supplying a complete entity. 
+                        The existing entity will then be updated (elements added, changed or deleted as 
+                        necessary) to match the supplied entity.
+                    </xsd:documentation>
+            </xsd:annotation>
+         </xsd:any>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="UpdateEntityResponse" type="osm:UpdateEntityResponseType"/>
+   <xsd:element name="DeleteEntity" type="osm:DeleteEntityRequestType"/>
+   <xsd:complexType name="DeleteEntityRequestType">
+      <xsd:sequence>
+         <xsd:choice>
+            <xsd:element name="Id" type="osm:EntityIdType"/>
+            <xsd:element name="ExternalId" type="osm:EntityNumberType"/>
+         </xsd:choice>
+         <xsd:element name="Type" type="xsd:normalizedString" minOccurs="1"/>
+         <xsd:element name="Reason" type="xsd:normalizedString" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="DeleteEntityResponse" type="osm:DeleteEntityResponseType"/>
+   <xsd:element name="DeleteEntities" type="osm:DeleteEntityBulkRequestType"/>
+   <xsd:complexType name="DeleteEntityBulkRequestType">
+      <xsd:sequence>
+         <xsd:element name="TransactionScope" type="osm:TransactionScopeType"/>
+         <xsd:element name="Type" type="xsd:normalizedString" minOccurs="1"/>
+         <xsd:sequence>
+            <xsd:choice maxOccurs="unbounded">
+               <xsd:element name="Id" type="osm:EntityIdType"/>
+               <xsd:element name="ExternalId" type="osm:EntityNumberType"/>
+            </xsd:choice>
+         </xsd:sequence>
+         <xsd:element name="Reason" type="xsd:normalizedString" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="DeleteEntitiesResponse" type="osm:DeleteEntityBulkResponseType"/>
+   <xsd:complexType name="DeleteEntityBulkResponseType">
+      <xsd:sequence>
+         <xsd:element name="Entity" type="osm:DeleteEntityResponseType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="GetEntity" type="osm:GetEntityRequestType"/>
+   <xsd:complexType name="GetEntityRequestType">
+      <xsd:sequence>
+         <xsd:element name="Type" type="xsd:normalizedString" minOccurs="1"/>
+         <xsd:choice>
+            <xsd:element name="Id" type="osm:EntityIdType"/>
+            <xsd:element name="ExternalId" type="osm:EntityNumberType"/>
+         </xsd:choice>
+         <xsd:element name="View" type="osm:EntityNameType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation> The name of the view that is used to determine the entity detail 
+                        data that is returned. This is a "workgroup view" that must be associated with one 
+                        or more workgroups the requesting user is a member of for the definition of the 
+                        entity that is being retrieved.
+                    </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="GetEntityResponse" type="osm:GetEntityResponseType"/>
+   <xsd:complexType name="CreateEntityResponseType">
+      <xsd:sequence>
+         <xsd:element name="Id" type="osm:EntityIdType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation> The id of the entity. </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="ExternalId" type="osm:EntityNumberType" minOccurs="1" maxOccurs="1"/>
+         <xsd:element name="Type" type="xsd:normalizedString" minOccurs="0"/>
+         <xsd:element name="Name" type="xsd:string" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation> The entity name. </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="Version" type="xsd:int" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation> The entity version number. </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="State" type="osm:EntityNameType" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation> The current state of the entity. </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="CreatedDate" type="xsd:dateTime" maxOccurs="1" minOccurs="0"/>
+         <xsd:element name="ErrorDetail" type="osm:ErrorDetailType" minOccurs="0" maxOccurs="unbounded"/>
+         <xsd:element name="TransactionState" type="osm:TransactionStateType" nillable="false"/>
+         <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax">
+            <xsd:annotation>
+               <xsd:documentation> Contains the entity data based on the view provided on the request.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:any>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="UpdateEntityResponseType">
+      <xsd:sequence>
+         <xsd:element name="Id" type="osm:EntityIdType">
+            <xsd:annotation>
+               <xsd:documentation> The id of the entity. </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="ExternalId" type="osm:EntityNumberType" minOccurs="1" maxOccurs="1"/>
+         <xsd:element name="Type" type="xsd:normalizedString"/>
+         <xsd:element name="Name" type="xsd:string">
+            <xsd:annotation>
+               <xsd:documentation> The entity name. </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="Version" type="xsd:int">
+            <xsd:annotation>
+               <xsd:documentation> The entity version number. </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="State" type="osm:EntityNameType">
+            <xsd:annotation>
+               <xsd:documentation> The current state of the entity. </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="ErrorDetail" type="osm:ErrorDetailType" minOccurs="0" maxOccurs="unbounded"/>
+         <xsd:element name="TransactionState" type="osm:TransactionStateType" nillable="false"/>
+         <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax">
+            <xsd:annotation>
+               <xsd:documentation> Contains the entity data based on the view provided on the request.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:any>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="DeleteEntityResponseType">
+      <xsd:sequence>
+         <xsd:element name="Id" type="osm:EntityIdType"/>
+         <xsd:element name="ExternalId" type="osm:EntityNumberType" minOccurs="1" maxOccurs="1"/>
+         <xsd:element name="Type" type="xsd:normalizedString"/>
+         <xsd:element name="TransactionState" type="osm:TransactionStateType" nillable="false"/>
+         <xsd:element name="ErrorDetail" type="osm:ErrorDetailType" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="ErrorDetailType">
+      <xsd:sequence>
+         <xsd:element name="FailureCode" type="xsd:string">
+            <xsd:annotation>
+               <xsd:documentation>
+                        Application error code.
+                    </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="FailureMessage" type="xsd:string">
+            <xsd:annotation>
+               <xsd:documentation>
+                        Detailed error message.
+                    </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:group name="EntityResponseType">
+      <xsd:sequence>
+         <xsd:element name="Id" type="osm:EntityIdType" minOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation> The id of the entity. </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="ExternalId" type="osm:EntityNumberType" minOccurs="1" maxOccurs="1"/>
+         <xsd:element name="Name" type="xsd:string" minOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation> The entity name. </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="Version" type="xsd:int" minOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation> The entity version number. </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="State" type="osm:EntityNameType" minOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation> The current state of the entity. </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="CreatedDate" type="xsd:dateTime" maxOccurs="1" minOccurs="1"/>
+      </xsd:sequence>
+   </xsd:group>
+   <xsd:complexType name="GetEntityResponseType">
+      <xsd:sequence>
+         <xsd:group ref="osm:EntityResponseType"/>
+         <xsd:element name="Type" type="xsd:normalizedString"/>
+         <xsd:element name="ErrorDetail" type="osm:ErrorDetailType" minOccurs="0" maxOccurs="unbounded"/>
+         <xsd:element name="Link" type="osm:HrefLinkType" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+         <xsd:element name="TransactionState" type="osm:TransactionStateType" nillable="false"/>
+         <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax">
+            <xsd:annotation>
+               <xsd:documentation> Contains the entity data based on the view provided on the request.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:any>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="FindEntity" type="osm:FindEntityRequestType">
+      <xsd:annotation>
+         <xsd:documentation> FindEntity is used to find a set of entities that match the select clause. The Select element is used to
+                specify what information is to be returned in the results. Results can contain entity properties belong to a view. The
+                calling user must belong to a role with permissions for the view. If the user does not have the view permission, no view
+                data is returned.
+            </xsd:documentation>
+      </xsd:annotation>
+   </xsd:element>
+   <xsd:complexType name="FindEntityRequestType">
+      <xsd:sequence>
+         <xsd:element name="CorrelationId" type="xsd:string"/>
+         <xsd:element name="Type" type="xsd:normalizedString"/>
+         <xsd:element name="ViewBy" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation> Use the specified set of views to filter entity data in the result set. For each entity in
+                        the result
+                        set, do the following 1. Check each view in the provided sequence to determine if the workgroup
+                        has view permissions
+                        for the entity result. This view refers to the workgroup view association on the
+                        entityDefinition. 2. When a view
+                        permission is available, apply the view to the entity result
+                    </xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+               <xsd:sequence>
+                  <xsd:element name="View" type="osm:EntityNameType" minOccurs="0" maxOccurs="unbounded">
+                     <xsd:annotation>
+                        <xsd:documentation> Specifies a view that will be used to retrieve entity data details. The system
+                                    will use
+                                    the first view specified that is valid for each returned entity. If no view is valid
+                                    for a given entity
+                                    then no entity data details are returned.
+                                </xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="Expand" minOccurs="0" maxOccurs="unbounded">
+                     <xsd:complexType>
+                        <xsd:sequence>
+                           <xsd:element name="Name" type="xsd:normalizedString" minOccurs="1">
+                              <xsd:annotation>
+                                 <xsd:documentation>
+                                                The component name denotes that name of the relationship of an entity that has to be returned along
+                                                with the entity that matches the query criteria.
+                                            </xsd:documentation>
+                              </xsd:annotation>
+                           </xsd:element>
+                           <xsd:element name="Recursive" type="xsd:boolean" minOccurs="0" default="false">
+                              <xsd:annotation>
+                                 <xsd:documentation>
+                                                This element defines if the relationships in the related entity had to be expanded or not.  Unless spefified in the request it will not be expanded.
+                                            </xsd:documentation>
+                              </xsd:annotation>
+                           </xsd:element>
+                           <xsd:element name="Value" type="xsd:long" minOccurs="0" maxOccurs="unbounded">
+                              <xsd:annotation>
+                                 <xsd:documentation>
+                                                If the relationship is not one to one, then This parameter denotes the sub set of ids that are to be returned.
+                                                If this value is not present in the request that denotes that all the related entities of have to be returned.
+                                            </xsd:documentation>
+                              </xsd:annotation>
+                           </xsd:element>
+                        </xsd:sequence>
+                     </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="Hierarchy" type="xsd:boolean" minOccurs="0">
+                     <xsd:annotation>
+                        <xsd:documentation> Boolean indicating if the account hierarchy has to be returned.
+                                </xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+         <xsd:element name="SelectBy" maxOccurs="1" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation> Specify the selector criteria to choose which entities should be returned in the result set.
+                        Selector criteria can be wildcarded. An entity is only returned in the result set if all SelectBy criteria
+                        are met.
+                    </xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+               <xsd:annotation>
+                  <xsd:documentation>Specifies a set of criteria used to filter the result set of entities returned by the
+                            FindEntity
+                            operation.
+                        </xsd:documentation>
+               </xsd:annotation>
+               <xsd:sequence>
+                  <xsd:element name="Id" type="osm:EntityIdType" minOccurs="0"/>
+                  <xsd:element name="ExternalId" type="osm:EntityNumberType" minOccurs="0"/>
+                  <xsd:element name="State" type="osm:EntityNameType" minOccurs="0" maxOccurs="unbounded"/>
+                  <xsd:element name="Name" type="xsd:string" minOccurs="0"/>
+                  <xsd:element name="Version" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+                  <xsd:element name="CreatedDate" type="osm:DateRangeType" minOccurs="0"/>
+                  <xsd:element name="QueryField" minOccurs="0" maxOccurs="unbounded">
+                     <xsd:annotation>
+                        <xsd:documentation> Entity properties specified as filter criteria. </xsd:documentation>
+                     </xsd:annotation>
+                     <xsd:complexType>
+                        <xsd:annotation>
+                           <xsd:documentation>Allows entities to be retrieved by their property values.</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:sequence>
+                           <xsd:element name="Name" type="xsd:normalizedString">
+                              <xsd:annotation>
+                                 <xsd:documentation>Specifies that path that indicates the field that is being used as a
+                                                filter.
+                                                Properties are specified by their mnemonic path as defined in the entity
+                                                data template.
+                                            </xsd:documentation>
+                              </xsd:annotation>
+                           </xsd:element>
+                           <xsd:choice>
+                              <xsd:element name="EqualTo" type="xsd:string">
+                                 <xsd:annotation>
+                                    <xsd:documentation>If an entity has a value for the specified field equal to the
+                                                    provided
+                                                    value then the filter criteria is satisfied. The EqualTo value may
+                                                    include wildcard
+                                                    characters (*, ?) for many (but not all) data types. Use of
+                                                    wildcards automatically makes
+                                                    this element behave consistent with a 'like"
+                                                    operation.
+                                                </xsd:documentation>
+                                 </xsd:annotation>
+                              </xsd:element>
+                              <xsd:sequence>
+                                 <xsd:element name="From" type="xsd:string">
+                                    <xsd:annotation>
+                                       <xsd:documentation>If an entity has a value for the specified field within the
+                                                        provide
+                                                        all header fields support range operations.
+                                                    </xsd:documentation>
+                                    </xsd:annotation>
+                                 </xsd:element>
+                                 <xsd:element name="To" type="xsd:string"/>
+                              </xsd:sequence>
+                              <xsd:element name="InList">
+                                 <xsd:annotation>
+                                    <xsd:documentation>If an order has a value for the specified field that is one of the provided values then the filter criteria is satisfied. </xsd:documentation>
+                                 </xsd:annotation>
+                                 <xsd:complexType>
+                                    <xsd:sequence>
+                                       <xsd:element name="Value" type="xsd:string" maxOccurs="unbounded"/>
+                                    </xsd:sequence>
+                                 </xsd:complexType>
+                              </xsd:element>
+                           </xsd:choice>
+                        </xsd:sequence>
+                     </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="MaxEntities" type="xsd:positiveInteger" maxOccurs="1" minOccurs="0">
+                     <xsd:annotation>
+                        <xsd:documentation>The maximum number of entities matching the SelectBy parameters that will be
+                                    returned on
+                                    the response.
+                                </xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+         <xsd:element name="OrderBy" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation>Sort the set of results by the following sequence of data fields. The sort entity is applied
+                        in the
+                        sequence specified in the FindEntity request.
+                    </xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+               <xsd:sequence>
+                  <xsd:element name="EntityField" maxOccurs="unbounded">
+                     <xsd:complexType>
+                        <xsd:sequence>
+                           <xsd:element name="SortBy" minOccurs="0">
+                              <xsd:simpleType>
+                                 <xsd:restriction base="xsd:string">
+                                    <xsd:enumeration value="Ascending"/>
+                                    <xsd:enumeration value="Descending"/>
+                                 </xsd:restriction>
+                              </xsd:simpleType>
+                           </xsd:element>
+                           <xsd:element name="Header">
+                              <xsd:simpleType>
+                                 <xsd:restriction base="xsd:string">
+                                    <xsd:enumeration value="CreatedDate"/>
+                                    <xsd:enumeration value="Id"/>
+                                    <xsd:enumeration value="ExternalId"/>
+                                 </xsd:restriction>
+                              </xsd:simpleType>
+                           </xsd:element>
+                        </xsd:sequence>
+                     </xsd:complexType>
+                  </xsd:element>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="FindEntityResponse" type="osm:FindEntityResponseType">
+      <xsd:annotation>
+         <xsd:documentation>Results that satisfy the selector conditions from a FindEntity request.</xsd:documentation>
+      </xsd:annotation>
+   </xsd:element>
+   <xsd:complexType name="FindEntityResponseType">
+      <xsd:annotation>
+         <xsd:documentation>Results that satisfy the selector conditions from a FindEntity request.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="CorrelationId" type="xsd:string"/>
+         <xsd:element name="MessageId" type="xsd:string"/>
+         <xsd:element name="Type" type="xsd:normalizedString"/>
+         <xsd:element name="ErrorDetail" type="osm:ErrorDetailType" minOccurs="0" maxOccurs="unbounded"/>
+         <xsd:element name="TransactionState" type="osm:TransactionStateType" nillable="false"/>
+         <xsd:element name="Item" type="acc:AccountType" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="FindEntityItemResponseType">
+      <xsd:sequence>
+         <xsd:element name="Link" type="osm:HrefLinkType" minOccurs="0" maxOccurs="unbounded"/>
+         <xsd:group ref="osm:EntityResponseType"/>
+         <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax">
+            <xsd:annotation>
+               <xsd:documentation> Contains the entity data based on the view provided on the request.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:any>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:simpleType name="TransactionStateType">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="S"/>
+         <xsd:enumeration value="F"/>
+         <xsd:enumeration value="W"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="TransactionStatusType">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="IN_PROGRESS"/>
+         <xsd:enumeration value="COMPLETE"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:complexType name="EntityLinksType">
+      <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+         <xsd:element name="Link" type="osm:HrefLinkType"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="HrefLinkType">
+      <xsd:sequence>
+         <xsd:element name="rel" type="xsd:normalizedString" minOccurs="1" maxOccurs="1"/>
+         <xsd:element name="href" type="xsd:normalizedString" minOccurs="1" maxOccurs="1"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="CommonFieldsType">
+    <xsd:sequence>
+      <xsd:element name="Id" type="xsd:long"/>
+      <xsd:element name="CreatedDate" type="xsd:dateTime"/>
+      <xsd:element name="ExternalId" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Name" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="State" type="xsd:string"/>
+      <xsd:element name="Type" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="ProcessSalesOrderFulfillmentSiebelCommsReqABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/ProcessSalesOrderFulfillmentSiebelCommsReqABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+	 xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:ordfail="http://xmlns.oracle.com/EnterpriseObjects/Industry/Communications/OrderFailureData/V1"
+     xmlns:sordabo="http://siebel.com/OrderManagement/Order/Data"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:client="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/ProcessSalesOrderFulfillmentSiebelCommsReqABCSImpl/V1"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>This service is invoked when an order is
+                                submitted in the Siebel Application. This
+                                service is the Siebel ABCS implementation, which
+                                converts the Siebel ABM into the Order EBM
+                                before invoking the SalesOrderOrchestrationEBS</svcdoc:Description>
+            <svcdoc:ServiceType>RequesterABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>ProcessFulfillmentOrderSiebelCommsReq ABCS
+                                Implementation Interface</svcdoc:DisplayName>
+            <svcdoc:ABOName>SalesOrder</svcdoc:ABOName>
+            <svcdoc:EBOName>SalesOrderEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>CRM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>CMU</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://siebel.com/OrderManagement/Order/Data" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWIOrderIO.xsd"/>
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Industry/Communications/OrderFailureData/V1"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/PIPS/Communications/Schemas/OrderFailureData.xsd"/>
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+            <xsd:import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+			<xsd:import namespace="http://siebel.com/webservices" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/schemas/SiebelWSHeader.xsd"/>
+        </schema>
+    </types>
+    <message name="ProcessSalesOrderFulfillmentSiebelCommsReqABCSImplRequestMessage">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for recieving the Order
+                                    Message from the invoking service</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="payload" element="sordabo:ListOfSWIOrderIO"/>
+    </message>
+	<message name="AIAFaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error
+                                    Context and Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="AIAFault" element="corecom:Fault"/>
+    </message>
+    <portType name="ProcessSalesOrderFulfillmentSiebelCommsReqABCSImpl">
+        <documentation>
+            <svcdoc:Interface>
+                <svcdoc:Description>This interface contains operations that are
+                                    used to process a Siebel Order</svcdoc:Description>
+                <svcdoc:DisplayName>Sales Order Interface</svcdoc:DisplayName>
+                <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            </svcdoc:Interface>
+        </documentation>
+        <operation name="initiate">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to submit a sales
+                                        order from Siebel</svcdoc:Description>
+                    <svcdoc:MEP>FireAndForget</svcdoc:MEP>
+                    <svcdoc:DisplayName>Submit SalesOrder</svcdoc:DisplayName>
+                    <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+                    <svcdoc:Scope>Public</svcdoc:Scope>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="client:ProcessSalesOrderFulfillmentSiebelCommsReqABCSImplRequestMessage"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="ProcessSalesOrderFulfillmentSiebelCommsReqABCSImpl">
+        <plnk:role name="ProcessSalesOrderFulfillmentSiebelCommsReqABCSImplProvider">
+            <plnk:portType name="client:ProcessSalesOrderFulfillmentSiebelCommsReqABCSImpl"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

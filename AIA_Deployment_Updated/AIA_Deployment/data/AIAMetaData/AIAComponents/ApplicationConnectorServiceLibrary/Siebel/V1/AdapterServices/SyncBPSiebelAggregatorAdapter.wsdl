@@ -1,0 +1,25 @@
+<?binding.jca SyncBPSiebelAggregatorAdapter_db.jca?>
+<definitions name="SyncBPSiebelAggregatorAdapter" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SyncBPSiebelAggregatorAdapter/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/AIA_SCHEMA_TOKEN/AIA_AGGREGATOR_PUB/SIEBEL_AGGREGATE_BP/" xmlns:hdr="http://xmlns.oracle.com/pcbpel/adapter/db/" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/SyncBPSiebelAggregatorAdapter/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="SyncBPSiebelAggregatorAdapter_plt">
+        <plt:role name="SyncBPSiebelAggregatorAdapter_role">
+            <plt:portType name="tns:SyncBPSiebelAggregatorAdapter_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/AIA_SCHEMA_TOKEN/AIA_AGGREGATOR_PUB/SIEBEL_AGGREGATE_BP/" schemaLocation="../../../../ApplicationObjectLibrary/Siebel/V1/schemas/AIA_AIA_AGGREGATOR_PUB_SIEBEL_AGGREGATE_BP.xsd"/>
+        </schema>
+    </types>
+    <message name="args_in_msg">
+        <part name="InputParameters" element="db:InputParameters"/>
+    </message>
+    <message name="args_out_msg">
+        <part name="OutputParameters" element="db:OutputParameters"/>
+    </message>
+    <portType name="SyncBPSiebelAggregatorAdapter_ptt">
+        <operation name="SyncBPSiebelAggregatorAdapter">
+            <input message="tns:args_in_msg"/>
+            <output message="tns:args_out_msg"/>
+        </operation>
+    </portType>
+</definitions>

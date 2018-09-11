@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions name="ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl" targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl/V1" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:commspricelistebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/PriceList/V2" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V2" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:abcsimplsiebelpricelist="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pns1="http://xmlns.oracle.com/ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl/correlationset" xmlns:itemcompositionebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ItemComposition/V1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+<documentation>
+<svcdoc:Service>
+<svcdoc:Description>This service contains operations that would be used to Sync the Pricelists of the Products to Siebel from BRM</svcdoc:Description>
+<svcdoc:ServiceType>ProviderABCSImplementation</svcdoc:ServiceType>
+<svcdoc:DisplayName>ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl Provider ABCS
+                          Implementation Interface</svcdoc:DisplayName>
+<svcdoc:ServiceObjectName>ProductOptimizedSyncPriceListList</svcdoc:ServiceObjectName>
+<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+<svcdoc:Version>1.0</svcdoc:Version>
+<svcdoc:EBOName>PriceListEBO</svcdoc:EBOName>
+<svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+<svcdoc:ProductFamily>CRM</svcdoc:ProductFamily>
+<svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+<svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+</svcdoc:Service>
+</documentation>
+<import namespace="http://xmlns.oracle.com/ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl/correlationset" location="ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl_Properties.wsdl"/>
+<import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+<types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+<import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/PriceList/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/PriceList/V2/PriceListEBM.xsd"/>
+<import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ItemComposition/V1" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/ItemComposition/V1/ItemCompositionEBM.xsd"/>
+<import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+<import namespace="http://siebel.com/webservices" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/schemas/SiebelWSHeader.xsd"/>
+</schema>
+</types>
+<message name="ProductOptimizedSyncPriceListListReqMsg">
+<part name="SyncPriceListListEBM" element="commspricelistebo:SyncPriceListListEBM"/>
+</message>
+<message name="SyncItemCompositionListRespMsg">
+<part name="SyncItemCompositionListResponseEBM" element="itemcompositionebo:SyncItemCompositionListResponseEBM"/>
+</message>
+<message name="ProductOptimizedSyncPriceListListRespMsg">
+<part name="SyncPriceListListResponseEBM" element="commspricelistebo:SyncPriceListListResponseEBM"/>
+</message>
+
+<message name="FaultMessage">
+<documentation>
+<svcdoc:Message>
+<svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+</svcdoc:Message>
+</documentation>
+<part name="AIAFault" element="corecom:Fault"/>
+</message>
+
+<portType name="ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl">
+<documentation>
+<svcdoc:Interface>
+<svcdoc:Description>This interface contains operations that can act upon
+                            the object</svcdoc:Description>
+<svcdoc:DisplayName>ProductOptimizedSync PriceListList Siebel Requestor ABCS Implementation</svcdoc:DisplayName>
+<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+</svcdoc:Interface>
+</documentation>
+<operation name="SyncPriceListList">
+<documentation>
+<svcdoc:Operation>
+<svcdoc:Description>This operation is used to ProductOptimizedSync an PriceListList
+                              object</svcdoc:Description>
+<svcdoc:MEP>FireAndForget</svcdoc:MEP>
+<svcdoc:DisplayName>ProductOptimizedSyncPriceListList</svcdoc:DisplayName>
+<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+<svcdoc:Scope>Public</svcdoc:Scope>
+</svcdoc:Operation>
+</documentation>
+<input message="abcsimplsiebelpricelist:ProductOptimizedSyncPriceListListReqMsg"/>
+</operation>
+<operation name="SyncItemCompositionListResponse">
+<documentation>
+<svcdoc:Operation>
+<svcdoc:Description>This operation is used to Sync an PriceListList
+                              object</svcdoc:Description>
+<svcdoc:MEP>FireAndForget</svcdoc:MEP>
+<svcdoc:DisplayName>SyncPriceListList</svcdoc:DisplayName>
+<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+<svcdoc:Scope>Public</svcdoc:Scope>
+</svcdoc:Operation>
+</documentation>
+<input message="abcsimplsiebelpricelist:SyncItemCompositionListRespMsg"/>
+</operation>
+</portType>
+<plnk:partnerLinkType name="ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl">
+<plnk:role name="ProductOptimizedSyncPriceListListSiebelCommsProvABCSImplProvider">
+<plnk:portType name="abcsimplsiebelpricelist:ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl"/>
+</plnk:role>
+</plnk:partnerLinkType>
+<bpws:propertyAlias xmlns:itemcomposition="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ItemComposition/V1" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" propertyName="pns1:SyncItemCompositionListEBM_prop" messageType="abcsimplsiebelpricelist:SyncItemCompositionListRespMsg" part="SyncItemCompositionListResponseEBM" query="/itemcomposition:SyncItemCompositionListResponseEBM/corecom:EBMHeader/corecom:RequestEBMID"/>
+<bpws:propertyAlias xmlns:ns2="http://xmlns.oracle.com/EnterpriseServices/Core/ItemComposition/V1" xmlns:itemcomposition="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ItemComposition/V1" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" propertyName="pns1:SyncItemCompositionListEBM_prop" messageType="ns2:SyncItemCompositionListReqMsg" part="SyncItemCompositionListEBM" query="/itemcomposition:SyncItemCompositionListEBM/corecom:EBMHeader/corecom:EBMID"/>
+</definitions>

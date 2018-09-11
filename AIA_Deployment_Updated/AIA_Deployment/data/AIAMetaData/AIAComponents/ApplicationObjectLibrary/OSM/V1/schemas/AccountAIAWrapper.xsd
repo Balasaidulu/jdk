@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+        targetNamespace="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:AccountQuery"
+        xmlns:ord="http://xmlns.oracle.com/communications/ordermanagement"
+        xmlns:ad="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:AddressQuery"
+        xmlns:ct="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:ContactQuery"
+        xmlns:bp="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:BillingProfileQuery"
+        xmlns:am="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:AccountQuery"
+        xmlns:ex="OracleComms_OSM_CommonDataDictionary/4.0">
+  <import namespace="OracleComms_OSM_CommonDataDictionary/4.0" schemaLocation="ExtensionsAIAWrapper.xsd"/>
+  <import namespace="http://xmlns.oracle.com/communications/ordermanagement"
+          schemaLocation="EntityManagementWS.xsd"/>
+  <import namespace="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:AddressQuery"
+          schemaLocation="AddressAIAWrapper.xsd"/>
+  <import namespace="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:BillingProfileQuery"
+          schemaLocation="BillingProfileAIAWrapper.xsd"/>
+  <import namespace="urn:oracle:names:ordermanagement:cartridge:OracleComms_OSM_Account_Solution:1.0.0.0.0:view:ContactQuery"
+          schemaLocation="ContactAIAWrapper.xsd"/>
+  <complexType name="AccountType">
+    <complexContent>
+      <extension base="ord:CommonFieldsType">
+        <sequence>
+          <element name="accountNumber" type="string"/>
+          <element name="organization" type="string" minOccurs="0"/>
+          <element name="companyName" type="string" minOccurs="0"/>
+          <element name="parentAccount" type="am:IdentificationType" minOccurs="0"/>
+          <element name="primaryBillingProfile" type="am:IdentificationType" minOccurs="0"/>
+          <element name="priceList" type="string"/>
+          <element name="AccountExtensions" type="ex:AccountExtensionsType"/>
+          <element name="companyName" type="string"/>
+          <element name="rootAccount" type="am:IdentificationType"/>
+          <element name="primaryAddress" type="ad:AddressType" minOccurs="0"/>
+          <element name="primaryBillingProfile" type="am:IdentificationType" minOccurs="0"/>
+          <element name="primaryContact" type="ct:ContactType" minOccurs="0"/>
+          <element name="billingProfile" type="bp:BillingProfileType" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="IdentificationType">
+    <sequence>
+      <element name="id" type="long"/>
+    </sequence>
+  </complexType>
+</schema>

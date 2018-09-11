@@ -1,0 +1,56 @@
+<definitions name="ItemService" targetNamespace="http://service.item.ego.apps.oracle/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.item.ego.apps.oracle/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+   <types>
+      <xsd:schema>
+         <xsd:import namespace="http://xmlns.oracle.com/apps/ego/item/service" schemaLocation="../schemas/ItemService.xsd"/>
+      </xsd:schema>
+      
+   </types>
+   <message name="getStructureDetails">
+      <part name="StructureQueryIn" element="ns1:StructureQueryIn" xmlns:ns1="http://xmlns.oracle.com/apps/ego/item/service"/>
+   </message>
+   <message name="getStructureDetailsResponse">
+      <part name="StructureQueryOut" element="ns2:StructureQueryOut" xmlns:ns2="http://xmlns.oracle.com/apps/ego/item/service"/>
+   </message>
+   <message name="GetItemInformation">
+      <part name="ItemQueryIn" element="ns3:ItemQueryIn" xmlns:ns3="http://xmlns.oracle.com/apps/ego/item/service"/>
+   </message>
+   <message name="GetItemInformationResponse">
+      <part name="ItemQueryOut" element="ns4:ItemQueryOut" xmlns:ns4="http://xmlns.oracle.com/apps/ego/item/service"/>
+   </message>
+   <portType name="ItemService">
+         <operation name="getStructureDetails">
+	 <input message="tns:getStructureDetails"/>
+	 <output message="tns:getStructureDetailsResponse"/>
+	 </operation>
+	 <operation name="GetItemInformation">
+	 <input message="tns:GetItemInformation"/>
+	 <output message="tns:GetItemInformationResponse"/>
+	 </operation>
+	 </portType>
+   <binding name="ItemServicePortBinding" type="tns:ItemService">
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>      
+      <operation name="getStructureDetails">
+         <soap:operation soapAction=""/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+      <operation name="GetItemInformation">
+         <soap:operation soapAction=""/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+   </binding>
+   <service name="ItemService">
+      <port name="ItemServicePort" binding="tns:ItemServicePortBinding">
+         <soap:address location="http://10.210.23.56:7001/WebServices-Item-context-root/ItemServicePort"/>
+      </port>
+   </service>
+</definitions>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd1="http://www.siebel.com/xml/SWISIAAdjustmentIO"
+             targetNamespace="http://siebel.com/asi/"
+             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:tns="http://siebel.com/asi/">
+  <types>   
+    <xsd:schema elementFormDefault="qualified"
+                attributeFormDefault="unqualified"
+                targetNamespace="http://siebel.com/asi/"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://www.siebel.com/xml/SWISIAAdjustmentIO" schemaLocation="../schemas/SWISIAAdjustmentIO.xsd"></xsd:import>
+      <xsd:element name="SWIAdjustmentStatusUpdate_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Process_spcInstance_spcId" type="xsd:string"></xsd:element>
+            <xsd:element name="Object_spcId" type="xsd:string"></xsd:element>
+            <xsd:element name="Siebel_spcOperation_spcObject_spcId"
+                         type="xsd:string"></xsd:element>
+            <xsd:element ref="xsd1:ListOfSwisiaadjustmentio"></xsd:element>
+            <xsd:element name="Error_spcCode" type="xsd:string"></xsd:element>
+            <xsd:element name="Error_spcMessage" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SWIAdjustmentStatusUpdate_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Error_spcCode" type="xsd:string"></xsd:element>
+            <xsd:element name="Error_spcMessage" type="xsd:string"></xsd:element>
+            <xsd:element name="Object_spcId" type="xsd:string"></xsd:element>
+            <xsd:element name="Process_spcInstance_spcId" type="xsd:string"></xsd:element>
+            <xsd:element name="Siebel_spcOperation_spcObject_spcId"
+                         type="xsd:string"></xsd:element>
+            <xsd:element ref="xsd1:ListOfSwisiaadjustmentio"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="SWIAdjustmentStatusUpdate_Input">
+    <part name="SWIAdjustmentStatusUpdate_Input"
+          element="tns:SWIAdjustmentStatusUpdate_Input"></part>
+  </message>
+  <message name="SWIAdjustmentStatusUpdate_Output">
+    <part name="SWIAdjustmentStatusUpdate_Output"
+          element="tns:SWIAdjustmentStatusUpdate_Output"></part>
+  </message>
+  <portType name="SWIAdjustmentStatusUpdate">
+    <operation name="SWIAdjustmentStatusUpdate">
+      <input message="tns:SWIAdjustmentStatusUpdate_Input"></input>
+      <output message="tns:SWIAdjustmentStatusUpdate_Output"></output>
+    </operation>
+  </portType>
+  <binding name="SWIAdjustmentStatusUpdate"
+           type="tns:SWIAdjustmentStatusUpdate">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"
+                  style="document"></soap:binding>
+    <operation name="SWIAdjustmentStatusUpdate">
+      <soap:operation soapAction="document/http://siebel.com/asi/:SWIAdjustmentStatusUpdate"></soap:operation>
+      <input>
+        <soap:body use="literal"></soap:body>
+      </input>
+      <output>
+        <soap:body use="literal"></soap:body>
+      </output>
+    </operation>
+  </binding>
+  <service name="SWIAdjustmentStatusUpdate">
+    <port binding="tns:SWIAdjustmentStatusUpdate"
+          name="SWIAdjustmentStatusUpdate">
+      <soap:address location="http://set.at.runtime"></soap:address>
+    </port>
+  </service>
+</definitions>

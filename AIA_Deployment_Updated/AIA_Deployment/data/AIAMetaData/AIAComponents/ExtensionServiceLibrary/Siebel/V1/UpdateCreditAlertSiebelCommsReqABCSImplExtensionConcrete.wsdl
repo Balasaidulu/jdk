@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:commscralert="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CreditAlert/V1" xmlns:creditalert="http://xmlns.oracle.com/EnterpriseServices/Core/CreditAlert/V1" xmlns:sbldataabo="http://www.siebel.com/xml/SWICUTCreditManagementIO" xmlns:sbldataext="http://xmlns.oracle.com/ABCSImpl/Siebel/UpdateCreditAlertSiebelCommsReqABCSImplExtension/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="UpdateCreditAlertSiebelCommsReqABCSImplExtension1" targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/UpdateCreditAlertSiebelCommsReqABCSImplExtension/V1">
+   <documentation>
+      <svcdoc:Service>
+         <svcdoc:Description>This service contains intercepting operations that
+                             would be used by the participating application</svcdoc:Description>
+         <svcdoc:ServiceType>RequesterABCSExtension</svcdoc:ServiceType>
+         <svcdoc:DisplayName>UpdateCreditAlertSiebelCommsReqABCSImpl Requester ABCS Extension
+                          Implementation Interface</svcdoc:DisplayName>
+			<svcdoc:ServiceObjectName>UpdateCreditAlert</svcdoc:ServiceObjectName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:Version>1.0</svcdoc:Version>
+			<svcdoc:ImplementationTechnology><!-- PLACEHOLDER--></svcdoc:ImplementationTechnology>
+			<svcdoc:ProductFamily>CRM</svcdoc:ProductFamily>
+			<svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+			<svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+      </svcdoc:Service>
+   </documentation>
+   <types>
+      <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/UpdateCreditAlertSiebelCommsReqABCSImplExtension/V1" elementFormDefault="qualified">
+         <xsd:import namespace="http://www.siebel.com/xml/SWICUTCreditManagementIO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWICUTCreditManagementIO.xsd" />
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CreditAlert/V1" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/CreditAlert/V1/CreditAlertEBM.xsd" /> 
+	
+	<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd" />
+      </xsd:schema>
+   </types>
+   <message name="PreXformABMtoEBMCreditAlertMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreXformABMtoEBMABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="UpdateCreditAlertABM" element="sbldataabo:ListOfSWICUTCreditManagementIO" />
+   </message>
+	<message name="PreInvokeEBSUpdateCreditAlertReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="UpdateCreditAlertListEBM" element="commscralert:UpdateCreditAlertListEBM" />
+   </message>
+
+   
+   <message name="FaultMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used for propagating Error
+                                Context and Error Message</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="AIAFault" element="corecom:Fault" />
+   </message>
+   <portType name="UpdateCreditAlertSiebelCommsReqABCSImplV1ExtensionService">
+      <documentation>
+         <svcdoc:Interface>
+            <svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+            <svcdoc:DisplayName>ProcessSalesOrderSiebelReqABCSImplV2ExtensionService</svcdoc:DisplayName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         </svcdoc:Interface>
+      </documentation>
+      <operation name="PreXformABMtoEBMCreditAlertABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformABMtoEBM an ListOfSWIOrderIO object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformABMtoEBMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="sbldataext:PreXformABMtoEBMCreditAlertMsg" />
+         <output message="sbldataext:PreXformABMtoEBMCreditAlertMsg" />
+         <fault name="fault" message="sbldataext:FaultMessage" />
+      </operation>
+	 <operation name="PreInvokeEBSCreditAlertEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ProcessSalesOrderEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="sbldataext:PreInvokeEBSUpdateCreditAlertReqMsg" />
+         <output message="sbldataext:PreInvokeEBSUpdateCreditAlertReqMsg" />
+         <fault name="fault" message="sbldataext:FaultMessage" />
+      </operation>
+   </portType>
+   <binding name="UpdateCreditAlertSiebelCommsReqABCSImplV1ExtensionServiceBinding"
+            type="sbldataext:UpdateCreditAlertSiebelCommsReqABCSImplV1ExtensionService">                      
+      <soap:binding style="document"
+                    transport="http://schemas.xmlsoap.org/soap/http"/>
+      <operation name="PreXformABMtoEBMCreditAlertABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformABMtoEBM an
+                                   ListOfSWIOrderIO object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformABMtoEBMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="sbldataext:PreXformABMtoEBMCreditAlertMsg"/>
+         <output message="sbldataext:PreXformABMtoEBMCreditAlertMsg"/>
+         <fault name="fault" message="sbldataext:FaultMessage"/>
+      </operation>
+      <operation name="PreInvokeEBSCreditAlertEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an
+                                   CreditAlertEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="sbldataext:PreInvokeEBSUpdateCreditAlertReqMsg"/>
+         <output message="sbldataext:PreInvokeEBSUpdateCreditAlertReqMsg"/>
+         <fault name="fault" message="sbldataext:FaultMessage"/>
+      </operation>
+   </binding>
+   <service name="UpdateCreditAlertSiebelCommsReqABCSImplV1Extension">
+      <port name="UpdateCreditAlertSiebelCommsReqABCSImplV1ExtensionServicePort"
+            binding="sbldataext:UpdateCreditAlertSiebelCommsReqABCSImplV1ExtensionServiceBinding">
+         <soap:address location="http://${fp.server.soaserverhostname}:${fp.server.soaserverport}/MirrorServlet/mirror"/>
+      </port>
+   </service>
+   <plnk:partnerLinkType name="UpdateCreditAlertSiebelCommsReqABCSImplV1ExtensionService">
+      <plnk:role name="UpdateCreditAlertSiebelCommsReqABCSImplV1ExtensionServiceProvider">
+         <plnk:portType name="sbldataext:UpdateCreditAlertSiebelCommsReqABCSImplV1ExtensionService"/>
+      </plnk:role>
+   </plnk:partnerLinkType>
+</definitions>

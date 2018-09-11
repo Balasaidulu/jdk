@@ -1,0 +1,1280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+** Oracle Corporation  **
+** This is an Entity EBS, BASED ON CRUD OPERATIONS **
+** We always include the wsdl,xsd, soap, our documentation, and Core Common namespaces. Always the same prefixes. **
+** Need to define namespaces for EBO and EBS, and always use these same prefixes - ebo and ebs. **
+** Need to define the target namespace equal to the EBS namespace. Also define a name, in the form of - name+EBS. **
+ 
+ Copyright (c) 2007, 2010, Oracle and/or its affiliates. All rights reserved. 
+ 
+    WSDL File Name 
+   Name: \\EnterpriseBusinessServiceLibrary\Core\EBO\PriceList\V2\PriceListEBS.wsdl 
+ 
+-->
+ 
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:ebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/PriceList/V2" xmlns:ebs="http://xmlns.oracle.com/EnterpriseServices/Core/PriceList/V2" name="PriceListEBS" targetNamespace="http://xmlns.oracle.com/EnterpriseServices/Core/PriceList/V2">
+
+	<documentation>
+
+
+		<svcdoc:Service>
+
+
+			<svcdoc:Description>PriceList Enterprise Business Service</svcdoc:Description>
+
+
+			<svcdoc:ServiceType>EnterpriseBusinessService</svcdoc:ServiceType>
+
+
+			<svcdoc:DisplayName>PriceListEBS</svcdoc:DisplayName>
+
+
+			<svcdoc:Version>2.00</svcdoc:Version>
+
+
+			<svcdoc:EBOName>PriceListEBO</svcdoc:EBOName>
+
+
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+			<svcdoc:ImplementationTechnology>ESB</svcdoc:ImplementationTechnology>
+
+
+		</svcdoc:Service>
+
+
+	</documentation>
+
+
+	<types>
+
+
+	<xsd:schema targetNamespace="http://xmlns.oracle.com/EnterpriseServices/PriceList/V2" elementFormDefault="qualified">
+
+
+		<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/PriceList/V2" schemaLocation="../../../../../EnterpriseObjectLibrary/Core/EBO/PriceList/V2/PriceListEBM.xsd"/>
+
+
+		<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../../../EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+
+
+	</xsd:schema>
+
+
+	</types>
+
+
+	<message name="FaultMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="AIAFault" element="corecom:Fault"/>
+
+
+	</message>
+
+
+	<message name="CreatePriceListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the CreatePriceList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="CreatePriceListEBM" element="ebo:CreatePriceListEBM"/>
+
+
+	</message>
+
+
+	<message name="CreatePriceListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the CreatePriceList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="CreatePriceListResponseEBM" element="ebo:CreatePriceListResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="CreatePriceListListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the CreatePriceListList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="CreatePriceListListEBM" element="ebo:CreatePriceListListEBM"/>
+
+
+	</message>
+
+
+	<message name="CreatePriceListListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the CreatePriceListList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="CreatePriceListListResponseEBM" element="ebo:CreatePriceListListResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="DeletePriceListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the DeletePriceList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="DeletePriceListEBM" element="ebo:DeletePriceListEBM"/>
+
+
+	</message>
+
+
+	<message name="DeletePriceListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the DeletePriceList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="DeletePriceListResponseEBM" element="ebo:DeletePriceListResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="DeletePriceListListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the DeletePriceListList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="DeletePriceListListEBM" element="ebo:DeletePriceListListEBM"/>
+
+
+	</message>
+
+
+	<message name="DeletePriceListListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the DeletePriceListList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="DeletePriceListListResponseEBM" element="ebo:DeletePriceListListResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="QueryPriceListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the QueryPriceList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="QueryPriceListEBM" element="ebo:QueryPriceListEBM"/>
+
+
+	</message>
+
+
+	<message name="QueryPriceListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the QueryPriceList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="QueryPriceListResponseEBM" element="ebo:QueryPriceListResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="QueryPriceListListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the QueryPriceListList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="QueryPriceListListEBM" element="ebo:QueryPriceListListEBM"/>
+
+
+	</message>
+
+
+	<message name="QueryPriceListListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the QueryPriceListList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="QueryPriceListListResponseEBM" element="ebo:QueryPriceListListResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="SyncPriceListListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the SyncPriceListList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="SyncPriceListListEBM" element="ebo:SyncPriceListListEBM"/>
+
+
+	</message>
+
+
+	<message name="SyncPriceListListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the SyncPriceListList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="SyncPriceListListResponseEBM" element="ebo:SyncPriceListListResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="UpdatePriceListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the UpdatePriceList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="UpdatePriceListEBM" element="ebo:UpdatePriceListEBM"/>
+
+
+	</message>
+
+
+	<message name="UpdatePriceListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the UpdatePriceList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="UpdatePriceListResponseEBM" element="ebo:UpdatePriceListResponseEBM"/>
+
+
+	</message>
+
+
+	<message name="UpdatePriceListListReqMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the request payload to the UpdatePriceListList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="UpdatePriceListListEBM" element="ebo:UpdatePriceListListEBM"/>
+
+
+	</message>
+
+
+	<message name="UpdatePriceListListRespMsg">
+
+
+		<documentation>
+
+
+			<svcdoc:Message>
+
+
+				<svcdoc:Description>This message is used as the response payload to the UpdatePriceListList operation</svcdoc:Description>
+
+
+			</svcdoc:Message>
+
+
+		</documentation>
+
+
+		<part name="UpdatePriceListListResponseEBM" element="ebo:UpdatePriceListListResponseEBM"/>
+
+
+	</message>
+
+
+	<portType name="PriceListEBS">
+
+
+		<documentation>
+
+
+			<svcdoc:Interface>
+
+
+				<svcdoc:Description>This interface contains operations for the Request-Response and Request-Only patterns</svcdoc:Description>
+
+
+				<svcdoc:DisplayName>RequestPriceList EBS Interface</svcdoc:DisplayName>
+
+
+				<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+			</svcdoc:Interface>
+
+
+		</documentation>
+
+
+		<!-- operation support for CreatePriceList -->
+
+
+		<operation name="CreatePriceList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Create a PriceList EBO.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>CreatePriceList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:CreatePriceListReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for CreatePriceListList -->
+
+
+		<operation name="CreatePriceListList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Create multiple PriceList EBOs.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>CreatePriceListList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:CreatePriceListListReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for DeletePriceList -->
+
+
+		<operation name="DeletePriceList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Delete a PriceList EBO.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>DeletePriceList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:DeletePriceListReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for DeletePriceListList -->
+
+
+		<operation name="DeletePriceListList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Delete multiple PriceList EBOs.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>DeletePriceListList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:DeletePriceListListReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for QueryPriceList -->
+
+
+		<operation name="QueryPriceList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Query a PriceList EBO.</svcdoc:Description>
+
+
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>QueryPriceList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:QueryPriceListReqMsg"/>
+
+
+			<output message="ebs:QueryPriceListRespMsg"/>
+
+
+			<fault name= "fault"  message="ebs:FaultMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for QueryPriceListList -->
+
+
+		<operation name="QueryPriceListList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Query multiple PriceList EBOs.</svcdoc:Description>
+
+
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>QueryPriceListList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:QueryPriceListListReqMsg"/>
+
+
+			<output message="ebs:QueryPriceListListRespMsg"/>
+
+
+			<fault name= "fault"  message="ebs:FaultMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for SyncPriceListList -->
+
+
+		<operation name="SyncPriceListList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Sync multiple PriceList EBOs.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>SyncPriceListList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:SyncPriceListListReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for UpdatePriceList -->
+
+
+		<operation name="UpdatePriceList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Update a PriceList EBO.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>UpdatePriceList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:UpdatePriceListReqMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for UpdatePriceListList -->
+
+
+		<operation name="UpdatePriceListList">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This operation is used to Update multiple PriceList EBOs.</svcdoc:Description>
+
+
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>UpdatePriceListList</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:UpdatePriceListListReqMsg"/>
+
+
+		</operation>
+
+
+	</portType>
+
+
+	<portType name="PriceListEBSResponse">
+
+
+		<documentation>
+
+
+			<svcdoc:Interface>
+
+
+				<svcdoc:Description>This interface contains operations for the ResponsePriceList EBS</svcdoc:Description>
+
+
+				<svcdoc:DisplayName>ResponsePriceList EBS Interface</svcdoc:DisplayName>
+
+
+				<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+			</svcdoc:Interface>
+
+
+		</documentation>
+
+
+		<!-- operation support for CreatePriceList response -->
+
+
+		<operation name="CreatePriceListResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the CreatePriceList Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>CreatePriceListResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>PriceListEBS</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>CreatePriceListResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>CreatePriceListRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:CreatePriceListRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for CreatePriceListListResponse -->
+
+
+		<operation name="CreatePriceListListResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the CreatePriceList Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>CreatePriceListListResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>PriceListEBS</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>CreatePriceListResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>CreatePriceListListRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:CreatePriceListListRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for DeletePriceList response -->
+
+
+		<operation name="DeletePriceListResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the DeletePriceList Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>DeletePriceListResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>PriceListEBS</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>DeletePriceListResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>DeletePriceListRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:DeletePriceListRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for DeletePriceListListResponse -->
+
+
+		<operation name="DeletePriceListListResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the DeletePriceList Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>DeletePriceListListResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>PriceListEBS</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>DeletePriceListResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>DeletePriceListListRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:DeletePriceListListRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for SyncPriceListListResponse -->
+
+
+		<operation name="SyncPriceListListResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the SyncPriceList Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>SyncPriceListListResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>PriceListEBS</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>SyncPriceListResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>SyncPriceListListRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:SyncPriceListListRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for UpdatePriceList response -->
+
+
+		<operation name="UpdatePriceListResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the UpdatePriceList Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>UpdatePriceListResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>PriceListEBS</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>UpdatePriceListResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>UpdatePriceListRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:UpdatePriceListRespMsg"/>
+
+
+		</operation>
+
+
+		<!-- operation support for UpdatePriceListListResponse -->
+
+
+		<operation name="UpdatePriceListListResponse">
+
+
+			<documentation>
+
+
+				<svcdoc:Operation>
+
+
+					<svcdoc:Description>This callback operation will be used to provide the UpdatePriceList Response.</svcdoc:Description>
+
+
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+
+
+					<svcdoc:DisplayName>UpdatePriceListListResponse</svcdoc:DisplayName>
+
+
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+
+
+					<svcdoc:Scope>Public</svcdoc:Scope>
+
+
+					<svcdoc:InitiatorService>PriceListEBS</svcdoc:InitiatorService>
+
+
+					<svcdoc:InitiatorInterface>UpdatePriceListResponseEBM</svcdoc:InitiatorInterface>
+
+
+					<svcdoc:InitiatorOperation>UpdatePriceListListRequest</svcdoc:InitiatorOperation>
+
+
+				</svcdoc:Operation>
+
+
+			</documentation>
+
+
+			<input message="ebs:UpdatePriceListListRespMsg"/>
+
+
+		</operation>
+
+
+	</portType>
+
+
+</definitions>
+
+

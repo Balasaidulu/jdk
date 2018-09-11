@@ -1,0 +1,64 @@
+<definitions
+     name="ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducer"
+     targetNamespace="http://xmlns.oracle.com/ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducer"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:ns1="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SalesOrder/V2"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:ns3="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+     xmlns:ns2="http://schemas.xmlsoap.org/soap/envelope/"
+     xmlns:client="http://xmlns.oracle.com/ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducer"
+    >
+    <import namespace="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess" location="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/wsdls/AIAAsyncErrorHandlingBPELProcess.wsdl"/>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SalesOrder/V2"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:ns3="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+             xmlns:ns2="http://schemas.xmlsoap.org/soap/envelope/" xmlns:client="http://xmlns.oracle.com/ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducer">
+            <import namespace="http://xmlns.oracle.com/ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducer"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/OSM/V1/ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducer.xsd"/>
+        </schema>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SalesOrder/V2"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:ns3="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+             xmlns:ns2="http://schemas.xmlsoap.org/soap/envelope/" xmlns:client="http://xmlns.oracle.com/ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducer">
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SalesOrder/V2"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/SalesOrder/V2/SalesOrderEBM.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SalesOrder/V2"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:ns3="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+             xmlns:ns2="http://schemas.xmlsoap.org/soap/envelope/" xmlns:client="http://xmlns.oracle.com/ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducer">
+            <xsd:import namespace="http://schemas.xmlsoap.org/soap/envelope/" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/soapEnvelope.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SalesOrder/V2"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:ns3="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+             xmlns:ns2="http://schemas.xmlsoap.org/soap/envelope/" xmlns:client="http://xmlns.oracle.com/ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducer">
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducerResponseMessage">
+        <part name="payload" element="client:ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducerProcessResponse"/>
+    </message>
+    <message name="ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducerRequestMessage">
+        <part name="ProcessSalesOrderFulfillmentEBM" element="ns1:ProcessSalesOrderFulfillmentEBM"/>
+    </message>
+    <message name="AIAFault_MsgType">
+        <part name="AIAFault_Msg" element="ns3:Fault"/>
+    </message>
+    <portType name="ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducerCallback">
+        <operation name="onResult">
+            <input message="client:ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducerResponseMessage"/>
+        </operation>
+    </portType>
+    <portType name="ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducer">
+        <operation name="ProcessSalesOrderFulfillment">
+            <input message="client:ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducerRequestMessage"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducer">
+        <plnk:role name="ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducerProvider">
+            <plnk:portType name="client:ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducer"/>
+        </plnk:role>
+        <plnk:role name="ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducerRequester">
+            <plnk:portType name="client:ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducerCallback"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<xsd:schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified"
+	xmlns="http://xmlns.oracle.com/EnterpriseObjects/Industry/Communications/OptimizedSalesOrder/V1"
+	targetNamespace="http://xmlns.oracle.com/EnterpriseObjects/Industry/Communications/OptimizedSalesOrder/V1"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="SalesOrder" type="SalesOrderType"/>	
+	<xsd:complexType name="SalesOrderType">
+		<xsd:annotation>
+			<xsd:documentation>This section holds SalesOrder Header and Line level elements.</xsd:documentation> 
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Header" type="HeaderType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Line" type="LineType" minOccurs="1" maxOccurs="unbounded"/>					
+		</xsd:sequence>					
+	</xsd:complexType>	
+	<xsd:complexType name="HeaderType">
+		<xsd:sequence>
+			<xsd:element name="Number" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Id" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Revision" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CreatedTime" type="xsd:dateTime" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipReqTime" type="xsd:dateTime" minOccurs="0" maxOccurs="1"/>			
+			<xsd:element name="Type" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Priority" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="FulfillmentMode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Status" type="xsd:string" minOccurs="0" maxOccurs="1"/>			
+			<xsd:element name="AcctType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PriceListName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CurrencyCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>			
+			<xsd:element name="OrgId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipToParty" type="PartyType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OwnerParty" type="OwnerPartyType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToParty" type="BillToPartyType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceParty" type="PartyType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="XAGroup" type="XAGroupType" minOccurs="0" maxOccurs="unbounded"/>							
+		</xsd:sequence>	
+		<xsd:attribute name="sourceSystemId" type="xsd:string"/>	
+		<xsd:attribute name="messageId" type="xsd:string"/>						
+	</xsd:complexType>	
+	<xsd:complexType name="LineType">
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Quantity" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAction" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServicePoint" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CurrencyCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Milestone" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ParentId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RootId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Status" type="xsd:string" minOccurs="0" maxOccurs="1"/>								
+			<xsd:element name="PriceListName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AssetId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ProdPromInstanceId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RootProdPromInstanceId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DueTime" type="xsd:dateTime" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PurchaseTime" type="xsd:dateTime" minOccurs="0" maxOccurs="1"/>			
+			<xsd:element name="EffectiveStart" type="xsd:dateTime" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="EffectiveEnd" type="xsd:dateTime" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RelatedAssetId" type="xsd:string" minOccurs="0" maxOccurs="1"/>	
+			<xsd:element name="Product" type="ProductType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Charge" type="ChargeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ShipToParty" type="PartyType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OwnerParty" type="OwnerPartyType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToParty" type="BillToPartyType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceParty" type="PartyType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="XAGroup" type="XAGroupType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="PriorLine" type="PriorLineType" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="lineNumber" type="xsd:string"/>
+	</xsd:complexType>	
+	<xsd:complexType name="PriorLineType">
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Quantity" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="EffectiveStart" type="xsd:dateTime" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="EffectiveEnd" type="xsd:dateTime" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServicePoint" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ProdPromInstanceId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RootProdPromInstanceId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Charge" type="ChargeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="OwnerParty" type="OwnerPartyType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceParty" type="PartyType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToParty" type="BillToPartyType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="XAGroup" type="XAGroupType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>						
+	</xsd:complexType>
+	<xsd:complexType name="ProductType">
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Name" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillingServiceType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillingType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="FulfillmentItemCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceIndicator" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Type" type="xsd:string" minOccurs="0" maxOccurs="1"/>			
+			<xsd:element name="NetworkIndicator" type="xsd:string" minOccurs="0" maxOccurs="1"/>			
+			<xsd:element name="XAGroup" type="XAGroupType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BillToPartyType">
+		<xsd:sequence>
+			<xsd:element name="BillingProfileId" type="xsd:string" minOccurs="0" maxOccurs="1"/>				
+			<xsd:element name="Acct" type="AcctType" minOccurs="0" maxOccurs="1"/>				
+			<xsd:element name="Contact" type="ContactType" minOccurs="0" maxOccurs="1"/>
+		    <xsd:element name="AddressId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="OwnerPartyType">
+		<xsd:sequence>						
+			<xsd:element name="Acct" type="AcctType" minOccurs="0" maxOccurs="1"/>				
+			<xsd:element name="Contact" type="ContactType" minOccurs="0" maxOccurs="1"/>
+		    <xsd:element name="AddressId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PartyType">
+		<xsd:sequence>			
+			<xsd:element name="Acct" type="AcctType" minOccurs="0" maxOccurs="1"/>				
+			<xsd:element name="Contact" type="ContactType" minOccurs="0" maxOccurs="1"/>					
+			<xsd:element name="Address" type="AddressType" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>	
+	<xsd:complexType name="AddressType">
+		<xsd:sequence>			
+			<xsd:element name="Id" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Line1" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Line2" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Line3" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Line4" type="xsd:string" minOccurs="0" maxOccurs="1"/>			
+			<xsd:element name="City" type="xsd:string" minOccurs="0" maxOccurs="1"/>			
+			<xsd:element name="County" type="xsd:string" minOccurs="0" maxOccurs="1"/>			
+			<xsd:element name="State" type="xsd:string" minOccurs="0" maxOccurs="1"/>													
+			<xsd:element name="Country" type="xsd:string" minOccurs="0" maxOccurs="1"/>							
+			<xsd:element name="PostalCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>										
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AcctType">
+		<xsd:sequence>			
+			<xsd:element name="AcctId" type="xsd:string" minOccurs="0" maxOccurs="1"/>				
+			<xsd:element name="AcctNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>				
+			<xsd:element name="AcctName" type="xsd:string" minOccurs="0" maxOccurs="1"/>				
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ContactType">
+		<xsd:sequence>			
+			<xsd:element name="ContactId" type="xsd:string" minOccurs="0" maxOccurs="1"/>				
+			<xsd:element name="ContactName" type="xsd:string" minOccurs="0" maxOccurs="1"/>				
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ChargeType">
+		<xsd:sequence>			
+			<xsd:element name="PriceType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ListPrice" type="xsd:decimal" minOccurs="0" maxOccurs="1"/>				
+			<xsd:element name="NetPrice" type="xsd:decimal" minOccurs="0" maxOccurs="1"/>				
+			<xsd:element name="DiscountAmount" type="xsd:decimal" minOccurs="0" maxOccurs="1"/>				
+			<xsd:element name="DiscountPercent" type="xsd:decimal" minOccurs="0" maxOccurs="1"/>															
+			<xsd:element name="PricingCommitType" type="xsd:string" minOccurs="0" maxOccurs="1"/>				
+			<xsd:element name="DynamicDiscountMethod" type="xsd:string" minOccurs="0" maxOccurs="1"/>						
+		</xsd:sequence>
+	</xsd:complexType>	
+	<xsd:complexType name="XAGroupType">
+		<xsd:sequence>
+			<xsd:element name="Name" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="XA" type="XAType" minOccurs="0" maxOccurs="unbounded"/>			
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="XAType">
+		<xsd:annotation>
+			<xsd:documentation>This section holds Extensible Attribute elements.</xsd:documentation> 
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Action" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Name" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Value" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="UOM" type="xsd:string" minOccurs="0" maxOccurs="1"/>			
+		</xsd:sequence>
+	</xsd:complexType>	
+	<xsd:element name="Fault" type="FaultType"/>
+	<xsd:element name="SalesOrderResponse" type="ResponseType"/>
+	<xsd:complexType name="FaultType">
+		<xsd:sequence>
+			<xsd:element name="FaultNotification" type="FaultNotificationType" minOccurs="0" maxOccurs="unbounded"/>		
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="FaultNotificationType">
+		<xsd:sequence>
+			<xsd:element name="OrderID" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ReportingDateTime" type="xsd:dateTime" minOccurs="0"/>
+			<xsd:element name="CorrectiveAction" type="xsd:normalizedString" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="FaultMessage" type="FaultMessageType" minOccurs="0"/>
+			<xsd:element name="FaultingService" type="FaultingServiceType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="FaultMessageType">
+		<xsd:sequence>
+			<xsd:element name="Code" type="xsd:normalizedString" minOccurs="0"/>
+			<xsd:element name="Text" type="xsd:normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Severity" type="xsd:normalizedString" minOccurs="0"/>
+			<xsd:element name="Stack" type="xsd:normalizedString" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ApplicationFaultData" type="xsd:anyType" minOccurs="0"/>			
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="FaultingServiceType">
+		<xsd:sequence>			
+			<xsd:element name="ID" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ImplementationCode" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="InstanceID" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ExecutionContextID" type="xsd:string" minOccurs="0"/>							
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ResponseType">
+		<xsd:sequence>
+			<xsd:element name="SuccessNotification" type="xsd:string" minOccurs="0" maxOccurs="1"/>		
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

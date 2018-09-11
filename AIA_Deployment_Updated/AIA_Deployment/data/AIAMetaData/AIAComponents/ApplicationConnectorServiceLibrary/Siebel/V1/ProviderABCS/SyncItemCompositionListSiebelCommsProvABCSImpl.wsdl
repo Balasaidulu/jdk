@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions name="SyncItemCompositionListSiebelCommsProvABCSImpl" targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/SyncItemCompositionListSiebelCommsProvABCSImpl/V1" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:coreitemcompositionebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ItemComposition/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:abcsimplsiebelitem="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/SyncItemCompositionListSiebelCommsProvABCSImpl/V1">
+<documentation>
+<svcdoc:Service>
+<svcdoc:Description>This service contains operations that would be used to Sync the Products to Siebel from BRM</svcdoc:Description>
+<svcdoc:ServiceType>ProviderABCSImplementation</svcdoc:ServiceType>
+<svcdoc:DisplayName>SyncItemCompositionListSiebelCoreProvABCSImpl/V2 Requester ABCS
+                          Implementation Interface</svcdoc:DisplayName>
+<svcdoc:ServiceObjectName>SyncItemCompositionList</svcdoc:ServiceObjectName>
+<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+<svcdoc:Version>1.0</svcdoc:Version>
+<svcdoc:EBOName>ItemCompositionEBO</svcdoc:EBOName>
+<svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+<svcdoc:ProductFamily>CRM</svcdoc:ProductFamily>
+<svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+<svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+</svcdoc:Service>
+</documentation>
+<import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+<types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+<import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ItemComposition/V1" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/ItemComposition/V1/ItemCompositionEBM.xsd"/>
+<import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+<import namespace="http://siebel.com/webservices" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/schemas/SiebelWSHeader.xsd"/>
+</schema>
+</types>
+<message name="SyncItemCompositionListReqMsg">
+<part name="SyncItemCompositionListEBM" element="coreitemcompositionebo:SyncItemCompositionListEBM"/>
+</message>
+<message name="SyncItemCompositionListRespMsg">
+<part name="SyncItemCompositionListResponseEBM" element="coreitemcompositionebo:SyncItemCompositionListResponseEBM"/>
+</message>
+<message name="FaultMessage">
+<documentation>
+<svcdoc:Message>
+<svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+</svcdoc:Message>
+</documentation>
+<part name="AIAFault" element="corecom:Fault"/>
+</message>
+<portType name="SyncItemCompositionListSiebelCommsProvABCSImpl">
+<documentation>
+<svcdoc:Interface>
+<svcdoc:Description>This interface contains operations that can act upon
+                            the object</svcdoc:Description>
+<svcdoc:DisplayName>Sync ItemCompositionList Siebel Requestor ABCS Implementation</svcdoc:DisplayName>
+<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+</svcdoc:Interface>
+</documentation>
+<operation name="SyncItemCompositionList">
+<documentation>
+<svcdoc:Operation>
+<svcdoc:Description>This operation is used to Sync an ItemCompositionList
+                              object</svcdoc:Description>
+<svcdoc:MEP>FireAndForget</svcdoc:MEP>
+<svcdoc:DisplayName>SyncItemCompositionList</svcdoc:DisplayName>
+<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+<svcdoc:Scope>Public</svcdoc:Scope>
+</svcdoc:Operation>
+</documentation>
+<input message="abcsimplsiebelitem:SyncItemCompositionListReqMsg"/>
+</operation>
+</portType>
+<plnk:partnerLinkType name="SyncItemCompositionListSiebelCommsProvABCSImpl">
+<plnk:role name="SyncItemCompositionListSiebelCommsProvABCSImplProvider">
+<plnk:portType name="abcsimplsiebelitem:SyncItemCompositionListSiebelCommsProvABCSImpl"/>
+</plnk:role>
+</plnk:partnerLinkType>
+</definitions>

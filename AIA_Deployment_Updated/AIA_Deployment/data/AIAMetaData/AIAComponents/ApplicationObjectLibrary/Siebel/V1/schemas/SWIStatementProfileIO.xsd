@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- edited with XMLSpy v2008 sp1 (http://www.altova.com) by Ashish K Singh (Oracle India Pvt Ltd) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.siebel.com/xml/SWIStatementProfileIO"
+            xmlns:xsdLocal="http://www.siebel.com/xml/SWIStatementProfileIO"
+            attributeFormDefault="unqualified" elementFormDefault="qualified">
+ <xsd:annotation>
+  <xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights
+                     reserved. Siebel XSD Generation</xsd:documentation>
+ </xsd:annotation>
+ <xsd:element name="ListOfSwistatementprofileio"
+              type="xsdLocal:ListOfSwistatementprofileio"/>
+ <xsd:complexType name="ListOfSwistatementprofileioTopElmt">
+  <xsd:sequence>
+   <xsd:element name="ListOfSwistatementprofileio"
+                type="xsdLocal:ListOfSwistatementprofileio" minOccurs="1"
+                maxOccurs="1"/>
+  </xsd:sequence>
+  <xsd:attribute name="Language" type="xsd:string"/>
+  <xsd:attribute name="Locale" type="xsd:string"/>
+  <xsd:attribute name="MessageId" type="xsd:string"/>
+  <xsd:attribute name="EnterpriseServerName" type="xsd:string"/>
+ </xsd:complexType>
+ <xsd:complexType name="ListOfSwistatementprofileio">
+  <xsd:sequence>
+   <xsd:element name="ComStatementProfile" type="xsdLocal:ComStatementProfile"
+                minOccurs="0" maxOccurs="unbounded"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="ComStatementProfile">
+  <xsd:sequence>
+   <xsd:element name="ContactFirstName" type="xsd:string" minOccurs="0"
+                maxOccurs="1"/>
+   <xsd:element name="ContactLastName" type="xsd:string" minOccurs="1"
+                maxOccurs="1"/>
+   <xsd:element name="StreetAddress" type="xsd:string" minOccurs="1"
+                maxOccurs="1"/>
+   <xsd:element name="EmailBillTo" type="xsd:string" minOccurs="0"
+                maxOccurs="1"/>
+   <xsd:element name="LanguageCode" type="xsd:string" minOccurs="0"
+                maxOccurs="1"/>
+   <xsd:element name="ContactId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+   <xsd:element name="MediaType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+   <xsd:element name="BillType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+   <xsd:element name="ExtraCopies" type="xsd:string" minOccurs="0"
+                maxOccurs="1"/>
+   <xsd:element name="ContactFaxPhone" type="xsd:string" minOccurs="0"
+                maxOccurs="1"/>
+   <xsd:element name="ContactWorkPhone" type="xsd:string" minOccurs="0"
+                maxOccurs="1"/>
+   <xsd:element name="StatementProfileId" type="xsd:string" minOccurs="0"
+                maxOccurs="1"/>
+   <xsd:element name="AddressId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+   <xsd:element name="AccountId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   <xsd:element name="StatementFlag" type="xsd:string" minOccurs="0"
+                maxOccurs="1"/>
+   <xsd:element name="City" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+   <xsd:element name="State" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+   <xsd:element name="Country" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+   <xsd:element name="Zipcode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+  </xsd:sequence>
+ </xsd:complexType>
+</xsd:schema>

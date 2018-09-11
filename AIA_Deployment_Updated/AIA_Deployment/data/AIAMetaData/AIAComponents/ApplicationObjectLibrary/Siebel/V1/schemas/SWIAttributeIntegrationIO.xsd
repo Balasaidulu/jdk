@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siebel.com/xml/SWIAttributeIntegerationIO" xmlns:xsdLocal="http://www.siebel.com/xml/SWIAttributeIntegerationIO" attributeFormDefault="unqualified" elementFormDefault="qualified">
+    <xsd:annotation>
+        <xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation>
+    </xsd:annotation>
+    <xsd:element name="ListOfSwiAttributeIntegerationIO" type="xsdLocal:ListOfSwiAttributeIntegerationIO" />
+    <xsd:complexType name="ListOfSwiAttributeIntegerationIOTopElmt">
+        <xsd:sequence>
+            <xsd:element name="ListOfSwiAttributeIntegerationIO" type="xsdLocal:ListOfSwiAttributeIntegerationIO" minOccurs="1" maxOccurs="1" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ListOfSwiAttributeIntegerationIO">
+        <xsd:sequence>
+            <xsd:element name="SwiAttributeIntegrationVbc" type="xsdLocal:SwiAttributeIntegrationVbc" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+        <xsd:attribute name="Language" type="xsd:string" />
+        <xsd:attribute name="Locale" type="xsd:string" />
+        <xsd:attribute name="MessageId" type="xsd:string" />
+        <xsd:attribute name="EnterpriseServerName" type="xsd:string" />
+    </xsd:complexType>
+    <xsd:complexType name="SwiAttributeIntegrationVbc">
+        <xsd:sequence>
+            <xsd:element name="Id" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="OverrideLockedFlag" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="WorkspaceId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="WorkspaceName" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="WorkspaceReleaseFlag" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="WorkspaceReuseFlag" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="ReleaseDate" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="ActiveWorkspaceFlag" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="ListOfSwiAttributeVodVbc" type="xsdLocal:ListOfSwiAttributeVodVbc" minOccurs="0" maxOccurs="1" />
+        </xsd:sequence>
+        <xsd:attribute name="operation" type="xsd:string" />
+        <xsd:attribute name="searchspec" type="xsd:string" />
+    </xsd:complexType>
+    <xsd:complexType name="ListOfSwiAttributeVodVbc">
+        <xsd:sequence>
+            <xsd:element name="SwiAttributeVodVbc" type="xsdLocal:SwiAttributeVodVbc" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="SwiAttributeVodVbc">
+        <xsd:sequence>
+            <xsd:element name="Description" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="Id" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="IntegerationId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="ObjectNumber" type="xsd:string" minOccurs="1" maxOccurs="1" />
+            <xsd:element name="AttributeName" type="xsd:string" minOccurs="1" maxOccurs="1" />
+            <xsd:element name="ReleasedFlag" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="ReleasDate" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="ListOfSwiIssAttributeDefinitionLangVbc" type="xsdLocal:ListOfSwiIssAttributeDefinitionLangVbc" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="ListOfSwiAttributeDetailsVbc" type="xsdLocal:ListOfSwiAttributeDetailsVbc" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="ListOfSwiAttributeValuesVbc" type="xsdLocal:ListOfSwiAttributeValuesVbc" minOccurs="0" maxOccurs="1" />
+        </xsd:sequence>
+        <xsd:attribute name="operation" type="xsd:string" />
+        <xsd:attribute name="searchspec" type="xsd:string" />
+        <xsd:attribute name="AttributeId" type="xsd:string" />
+    </xsd:complexType>
+    <xsd:complexType name="ListOfSwiIssAttributeDefinitionLangVbc">
+        <xsd:sequence>
+            <xsd:element name="SwiIssAttributeDefinitionLangVbc" type="xsdLocal:SwiIssAttributeDefinitionLangVbc" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="SwiIssAttributeDefinitionLangVbc">
+        <xsd:sequence>
+            <xsd:element name="Description" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="Id" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="LangCode" type="xsd:string" minOccurs="1" maxOccurs="1" />
+            <xsd:element name="LangName" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="DisplayName" type="xsd:string" minOccurs="1" maxOccurs="1" />
+        </xsd:sequence>
+        <xsd:attribute name="operation" type="xsd:string" />
+        <xsd:attribute name="searchspec" type="xsd:string" />
+    </xsd:complexType>
+    <xsd:complexType name="ListOfSwiAttributeDetailsVbc">
+        <xsd:sequence>
+            <xsd:element name="SwiAttributeDetailsVbc" type="xsdLocal:SwiAttributeDetailsVbc" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="SwiAttributeDetailsVbc">
+        <xsd:sequence>
+            <xsd:element name="DataType" type="xsd:string" minOccurs="1" maxOccurs="1" />
+            <xsd:element name="DomainType" type="xsd:string" minOccurs="1" maxOccurs="1" />
+            <xsd:element name="Id" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="MaximumValue" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="MinimumValue" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="AttributeId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="UnitofMeasure" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="AttributeObjectNumber" type="xsd:string" minOccurs="0" maxOccurs="1" />
+        </xsd:sequence>
+        <xsd:attribute name="operation" type="xsd:string" />
+        <xsd:attribute name="searchspec" type="xsd:string" />
+    </xsd:complexType>
+    <xsd:complexType name="ListOfSwiAttributeValuesVbc">
+        <xsd:sequence>
+            <xsd:element name="SwiAttributeValuesVbc" type="xsdLocal:SwiAttributeValuesVbc" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="SwiAttributeValuesVbc">
+        <xsd:sequence>
+            <xsd:element name="Id" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="AttributeId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="Sequence" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="Value" type="xsd:string" minOccurs="1" maxOccurs="1" />
+            <xsd:element name="AttributeObjectNumber" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="ListOfSwiIssAttributeValuesLangVbc" type="xsdLocal:ListOfSwiIssAttributeValuesLangVbc" minOccurs="0" maxOccurs="1" />
+        </xsd:sequence>
+        <xsd:attribute name="operation" type="xsd:string" />
+        <xsd:attribute name="searchspec" type="xsd:string" />
+    </xsd:complexType>
+    <xsd:complexType name="ListOfSwiIssAttributeValuesLangVbc">
+        <xsd:sequence>
+            <xsd:element name="SwiIssAttributeValuesLangVbc" type="xsdLocal:SwiIssAttributeValuesLangVbc" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="SwiIssAttributeValuesLangVbc">
+        <xsd:sequence>
+            <xsd:element name="DisplayName" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="Id" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="LangCode" type="xsd:string" minOccurs="1" maxOccurs="1" />
+            <xsd:element name="LangName" type="xsd:string" minOccurs="0" maxOccurs="1" />
+        </xsd:sequence>
+        <xsd:attribute name="operation" type="xsd:string" />
+        <xsd:attribute name="searchspec" type="xsd:string" />
+    </xsd:complexType>
+    <xsd:simpleType name="string30">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="30" />
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

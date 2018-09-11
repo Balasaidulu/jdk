@@ -1,0 +1,29 @@
+<xsd:schema  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        targetNamespace="http://xmlns.oracle.com/ValuesetService"
+	xmlns:vsin="http://xmlns.oracle.com/apps/ego/extfwk/service/in"
+        xmlns:vsout="http://xmlns.oracle.com/apps/ego/extfwk/service/out"
+        xmlns:tns="http://xmlns.oracle.com/ValuesetService"
+	xmlns:fnd="http://xmlns.oracle.com/FndSecurity"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        
+ <xsd:import namespace="http://xmlns.oracle.com/apps/ego/extfwk/service/in" schemaLocation="ValuesetQueryParam.xsd"/>
+ <xsd:import schemaLocation="ListOfValueSet.xsd" namespace="http://xmlns.oracle.com/apps/ego/extfwk/service/out"/>
+  <xsd:import schemaLocation="FndSecurity.xsd" namespace="http://xmlns.oracle.com/FndSecurity"/>
+
+   <xsd:complexType name="GetVSReqType">
+        <xsd:sequence>
+            <xsd:element name="ValuesetQueryParam" type="vsin:VsQueryParamType" minOccurs="0"   nillable="true"/>
+            <xsd:element name="FndSecurity" type="fnd:fnd_security" minOccurs="0"   nillable="true"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="GetVSRespType">
+        <xsd:sequence>
+            <xsd:element name="ListOfValueSets" type="vsout:ListOfVSType" minOccurs="0"   nillable="true"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+                    <xsd:element name="ValuesetQueryIn" type="tns:GetVSReqType" nillable="true"/>
+                    <xsd:element name="ValuesetQueryOut" type="tns:GetVSRespType" nillable="true"/>
+    
+</xsd:schema>

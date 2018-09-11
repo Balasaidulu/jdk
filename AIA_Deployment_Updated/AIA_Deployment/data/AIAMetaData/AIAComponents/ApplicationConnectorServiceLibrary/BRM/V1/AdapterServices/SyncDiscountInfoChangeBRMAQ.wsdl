@@ -1,0 +1,22 @@
+<?binding.jca SyncDiscountInfoChangeBRMAQ_aq.jca?>
+<definitions name="SyncDiscountInfoChangeBRMAQ" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/aq/SyncDiscountInfoChangeBRMAQ/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:hdr="http://xmlns.oracle.com/pcbpel/adapter/aq/inbound/" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/aq/SyncDiscountInfoChangeBRMAQ/" xmlns:obj1="http://xmlns.oracle.com/xdb/BRM_CAPS_USERNAME" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="Dequeue_plt">
+        <plt:role name="Dequeue_role">
+            <plt:portType name="tns:Dequeue_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <import namespace="http://xmlns.oracle.com/pcbpel/adapter/aq/inbound/" location="aqAdapterInboundHeader.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/xdb/BRM_CAPS_USERNAME" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/BRM/V1/AdapterServices/PIN_EVENT_TY.xsd"/>
+        </schema>
+    </types>
+    <message name="PIN_EVENT_TY_msg">
+        <part name="PIN_EVENT_TY" element="obj1:PIN_EVENT_TY"/>
+    </message>
+    <portType name="Dequeue_ptt">
+        <operation name="Dequeue">
+            <input message="tns:PIN_EVENT_TY_msg"/>
+        </operation>
+    </portType>
+</definitions>

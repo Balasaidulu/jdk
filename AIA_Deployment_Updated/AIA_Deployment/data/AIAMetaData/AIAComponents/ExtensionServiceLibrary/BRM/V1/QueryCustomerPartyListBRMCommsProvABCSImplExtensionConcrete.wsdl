@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:brmAccBalGrpAbo="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" xmlns:brmAccBalGrpApp="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" xmlns:brmAccBalGrpFault="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:commsCustPartyListebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2" xmlns:commsCustPartyListext="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryCustomerPartyListBRMCommsProvABCSImplExtension/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="QueryCustomerPartyListBRMCommsProvABCSImplExtension" xmlns:tns="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryCustomerPartyListBRMCommsProvABCSImplExtension/V1" targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryCustomerPartyListBRMCommsProvABCSImplExtension/V1">
+   <documentation>
+      <svcdoc:Service>
+         <svcdoc:Description>This service contains intercepting operations that
+                             would be used by the participating application</svcdoc:Description>
+         <svcdoc:ServiceType>ABCSExtension</svcdoc:ServiceType>
+         <svcdoc:DisplayName>QueryCustomerPartyListBRMCommsProvABCSImpl/V1 Provider ABCS Extension
+                          Implementation Interface</svcdoc:DisplayName>
+			<svcdoc:ServiceObjectName>QueryCustomerPartyList</svcdoc:ServiceObjectName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:Version>1.0</svcdoc:Version>
+			<svcdoc:ImplementationTechnology><!-- PLACEHOLDER--></svcdoc:ImplementationTechnology>
+			<svcdoc:ProductFamily>BRM</svcdoc:ProductFamily>
+			<svcdoc:ProductPillar>BRM</svcdoc:ProductPillar>
+			<svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+      </svcdoc:Service>
+   </documentation>
+   <types>
+      <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryCustomerPartyListBRMCommsProvABCSImplExtension/V1" elementFormDefault="qualified">
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/CustomerParty/V2/CustomerPartyEBM.xsd" />
+         <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_BAL_GET_BALANCES.xsd" />
+         <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVC.xsd" />
+         <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_BAL_GET_ACCT_BILLINFO.xsd" />
+        <xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_AR_GET_ACCT_BAL_SUMMARY.xsd" />
+	 <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd" />
+      </xsd:schema>
+   </types>
+   <message name="PreXformEBMtoABMCustomerPartyListMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreXformEBMtoABMABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="QueryCustomerPartyListEBM" element="commsCustPartyListebo:QueryCustomerPartyListEBM" />
+   </message>
+  <message name="PostXformEBMtoABMCustomerPartyListMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostXformEBMtoABMABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+	<part name="QueryCustomerPartyListEBM" element="commsCustPartyListebo:QueryCustomerPartyListResponseEBM" />
+   </message>
+    
+    <message name="PreInvokeABSQueryPCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVCReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVC_inputFlist" element="brmAccBalGrpApp:PCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVC_inputFlist" />
+   </message>
+
+    <message name="PostInvokeABSQueryPCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVCRespMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVC_outputFlist" element="brmAccBalGrpApp:PCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVC_outputFlist" />
+	</message>
+        
+
+    <message name="PreInvokeABSPCM_OP_AR_GET_ACCT_BAL_SUMMARY_InputVariable">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_AR_GET_ACCT_BAL_SUMMARY_inputFlist" element="brmAccBalGrpApp:PCM_OP_AR_GET_ACCT_BAL_SUMMARY_inputFlist" />
+   </message>
+
+    <message name="PostInvokeABSPCM_OP_AR_GET_ACCT_BAL_SUMMARY_OutputVariable">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_AR_GET_ACCT_BAL_SUMMARY_outputFlist" element="brmAccBalGrpApp:PCM_OP_AR_GET_ACCT_BAL_SUMMARY_outputFlist" />
+	</message>   
+
+    <message name="PreInvokeABSPCM_OP_BAL_GET_BALANCES_InputVariable">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_BAL_GET_BALANCES_inputFlist" element="brmAccBalGrpApp:PCM_OP_BAL_GET_BALANCES_inputFlist" />
+   </message>
+
+    <message name="PostInvokeABSPCM_OP_BAL_GET_BALANCES_OutputVariable">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_BAL_GET_BALANCES_outputFlist" element="brmAccBalGrpApp:PCM_OP_BAL_GET_BALANCES_outputFlist" />
+	</message>   
+
+<message name="PreInvokeABSPCM_OP_BAL_GET_ACCT_BILLINFO_InputVariable">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_BAL_GET_ACCT_BILLINFO_inputFlist" element="brmAccBalGrpApp:PCM_OP_BAL_GET_ACCT_BILLINFO_inputFlist" />
+	</message>
+
+ <message name="PostInvokeABSPCM_OP_BAL_GET_ACCT_BILLINFO_OutputVariable">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PostInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_BAL_GET_ACCT_BILLINFO_outputFlist" element="brmAccBalGrpApp:PCM_OP_BAL_GET_ACCT_BILLINFO_outputFlist" />
+	</message>
+    <message name="PreInvokeABSPCM_OP_BAL_GET_BALANCES_InputVariable">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="PCM_OP_BAL_GET_BALANCES_inputFlist" element="brmAccBalGrpApp:PCM_OP_BAL_GET_BALANCES_inputFlist" />
+   </message>
+
+   	
+   
+   <message name="FaultMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used for propagating Error
+                                Context and Error Message</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="AIAFault" element="corecom:Fault" />
+   </message>
+   
+   
+   
+   
+   <portType name="QueryCustomerPartyListBRMCommsProvABCSImplExtensionService">
+      <documentation>
+         <svcdoc:Interface>
+            <svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+            <svcdoc:DisplayName>ProcessSalesOrderSiebelProvABCSImplV2ExtensionService</svcdoc:DisplayName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         </svcdoc:Interface>
+      </documentation>
+      <operation name="PreXformEBMtoABMCustomerPartyListEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformEBMtoABM an ListOfSWIOrderIO object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformEBMtoABMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsCustPartyListext:PreXformEBMtoABMCustomerPartyListMsg" />
+         <output message="commsCustPartyListext:PreXformEBMtoABMCustomerPartyListMsg" />
+         <fault name="fault" message="commsCustPartyListext:FaultMessage" />
+      </operation>
+	<operation name="PostXformEBMtoABMCustomerPartyListEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformEBMtoABM an ListOfSWIOrderIO object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformEBMtoABMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsCustPartyListext:PostXformEBMtoABMCustomerPartyListMsg" />
+         <output message="commsCustPartyListext:PostXformEBMtoABMCustomerPartyListMsg" />
+         <fault name="fault" message="commsCustPartyListext:FaultMessage" />
+      </operation>
+	  
+	  
+	 <operation name="PreInvokeABSPCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVCABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ProcessSalesOrderEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsCustPartyListext:PreInvokeABSQueryPCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVCReqMsg" />
+         <output message="commsCustPartyListext:PreInvokeABSQueryPCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVCReqMsg" />
+         <fault name="fault" message="commsCustPartyListext:FaultMessage" />
+      </operation>
+	<operation name="PostInvokeABSPCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVCABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ProcessSalesOrderEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsCustPartyListext:PostInvokeABSQueryPCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVCRespMsg" />
+         <output message="commsCustPartyListext:PostInvokeABSQueryPCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVCRespMsg" />
+         <fault name="fault" message="commsCustPartyListext:FaultMessage" />
+      </operation>
+	  
+	  	 <operation name="PreInvokeABSPCM_OP_AR_GET_ACCT_BAL_SUMMARYABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ProcessSalesOrderEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsCustPartyListext:PreInvokeABSPCM_OP_AR_GET_ACCT_BAL_SUMMARY_InputVariable" />
+         <output message="commsCustPartyListext:PreInvokeABSPCM_OP_AR_GET_ACCT_BAL_SUMMARY_InputVariable" />
+         <fault name="fault" message="commsCustPartyListext:FaultMessage" />
+      </operation>
+	<operation name="PostInvokeABSPCM_OP_AR_GET_ACCT_BAL_SUMMARYABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ProcessSalesOrderEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsCustPartyListext:PostInvokeABSPCM_OP_AR_GET_ACCT_BAL_SUMMARY_OutputVariable" />
+         <output message="commsCustPartyListext:PostInvokeABSPCM_OP_AR_GET_ACCT_BAL_SUMMARY_OutputVariable" />
+         <fault name="fault" message="commsCustPartyListext:FaultMessage" />
+      </operation>
+
+	  <operation name="PreInvokeABSPCM_OP_BAL_GET_ACCT_BILLINFOABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ProcessSalesOrderEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsCustPartyListext:PreInvokeABSPCM_OP_BAL_GET_ACCT_BILLINFO_InputVariable" />
+         <output message="commsCustPartyListext:PreInvokeABSPCM_OP_BAL_GET_ACCT_BILLINFO_InputVariable" />
+         <fault name="fault" message="commsCustPartyListext:FaultMessage" />
+      </operation>
+	<operation name="PostInvokeABSPCM_OP_BAL_GET_ACCT_BILLINFOABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ProcessSalesOrderEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsCustPartyListext:PostInvokeABSPCM_OP_BAL_GET_ACCT_BILLINFO_OutputVariable" />
+         <output message="commsCustPartyListext:PostInvokeABSPCM_OP_BAL_GET_ACCT_BILLINFO_OutputVariable" />
+         <fault name="fault" message="commsCustPartyListext:FaultMessage" />
+      </operation> 
+	 
+	  
+	  	 <operation name="PreInvokeABSPCM_OP_BAL_GET_BALANCESABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ProcessSalesOrderEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsCustPartyListext:PreInvokeABSPCM_OP_BAL_GET_BALANCES_InputVariable" />
+         <output message="commsCustPartyListext:PreInvokeABSPCM_OP_BAL_GET_BALANCES_InputVariable" />
+         <fault name="fault" message="commsCustPartyListext:FaultMessage" />
+      </operation>
+	<operation name="PostInvokeABSPCM_OP_BAL_GET_BALANCESABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ProcessSalesOrderEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSEBM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="commsCustPartyListext:PostInvokeABSPCM_OP_BAL_GET_BALANCES_OutputVariable" />
+         <output message="commsCustPartyListext:PostInvokeABSPCM_OP_BAL_GET_BALANCES_OutputVariable" />
+         <fault name="fault" message="commsCustPartyListext:FaultMessage" />
+      </operation>
+	  
+   </portType>
+   
+   <binding name="QueryCustomerPartyListBRMCommsProvABCSImplExtensionServiceBinding" type="tns:QueryCustomerPartyListBRMCommsProvABCSImplExtensionService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="PreXformEBMtoABMCustomerPartyListEBM">
+            <soap:operation style="document" soapAction="PreXformEBMtoABMCustomerPartyListEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		<operation name="PostXformEBMtoABMCustomerPartyListEBM">
+            <soap:operation style="document" soapAction="PostXformEBMtoABMCustomerPartyListEBM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+        <operation name="PreInvokeABSPCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVCABM">
+            <soap:operation style="document" soapAction="PreInvokeABSPCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVCABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+	    <operation name="PostInvokeABSPCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVCABM">
+		
+            <soap:operation style="document" soapAction="PostInvokeABSPCM_OP_BAL_GET_ACCT_BAL_GRP_AND_SVCABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		
+        <operation name="PreInvokeABSPCM_OP_AR_GET_ACCT_BAL_SUMMARYABM">
+            <soap:operation style="document" soapAction="PreInvokeABSPCM_OP_AR_GET_ACCT_BAL_SUMMARYABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+		<operation name="PostInvokeABSPCM_OP_AR_GET_ACCT_BAL_SUMMARYABM">
+            <soap:operation style="document" soapAction="PostInvokeABSPCM_OP_AR_GET_ACCT_BAL_SUMMARYABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+       
+  	 <operation name="PreInvokeABSPCM_OP_BAL_GET_ACCT_BILLINFOABM">
+         <soap:operation style="document" soapAction="PreInvokeABSPCM_OP_BAL_GET_ACCT_BILLINFOABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+	<operation name="PostInvokeABSPCM_OP_BAL_GET_ACCT_BILLINFOABM">
+         <soap:operation style="document" soapAction="PostInvokeABSPCM_OP_BAL_GET_ACCT_BILLINFOABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+	   <operation name="PreInvokeABSPCM_OP_BAL_GET_BALANCESABM">
+            <soap:operation style="document" soapAction="PreInvokeABSPCM_OP_BAL_GET_BALANCESABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+	    <operation name="PostInvokeABSPCM_OP_BAL_GET_BALANCESABM">
+		<soap:operation style="document" soapAction="PostInvokeABSPCM_OP_BAL_GET_BALANCESABM" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="fault">
+                <soap:fault name="fault" use="literal" encodingStyle="" />
+            </fault>
+        </operation>
+    </binding>
+   <service name="QueryCustomerPartyListBRMCommsProvABCSImplExtension">
+        <port name="QueryCustomerPartyListBRMCommsProvABCSImplExtensionServicePort" binding="tns:QueryCustomerPartyListBRMCommsProvABCSImplExtensionServiceBinding">
+            <soap:address location="http://${fp.server.soaserverhostname}:${fp.server.soaserverport}/MirrorServlet/mirror" />
+        </port>
+   </service>
+   
+   <plnk:partnerLinkType name="QueryCustomerPartyListBRMCommsProvABCSImplExtensionService">
+      <plnk:role name="QueryCustomerPartyListBRMCommsProvABCSImplExtensionServiceProvider">
+         <plnk:portType name="commsCustPartyListext:QueryCustomerPartyListBRMCommsProvABCSImplExtensionService" />
+      </plnk:role>
+   </plnk:partnerLinkType>
+</definitions>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsdLocal1="http://www.siebel.com/xml/SWIAssetManagementIO" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://siebel.com/asi/" targetNamespace="http://siebel.com/asi/">
+	<types>
+		<xsd:schema elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="http://siebel.com/asi/">
+			<xsd:import namespace="http://www.siebel.com/xml/SWIAssetManagementIO" schemaLocation="../schemas/SWIAssetManagementIO.xsd" />
+			<xsd:element name="SWIAssetManagementSynchronize_Input">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="xsdLocal1:ListOfSWIAssetManagementIO" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SWIAssetManagementSynchronize_Output">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="xsdLocal1:ListOfSWIAssetManagementIO" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SWIAssetManagementUpdate_Input">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="xsdLocal1:ListOfSWIAssetManagementIO" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SWIAssetManagementUpdate_Output">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="xsdLocal1:ListOfSWIAssetManagementIO" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SWIAssetManagementInsert_Input">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="xsdLocal1:ListOfSWIAssetManagementIO" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SWIAssetManagementInsert_Output">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="xsdLocal1:ListOfSWIAssetManagementIO" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</types>
+	<message name="SWIAssetManagementSynchronize_Input">
+		<part name="SWIAssetManagementSynchronize_Input" element="tns:SWIAssetManagementSynchronize_Input" />
+	</message>
+	<message name="SWIAssetManagementSynchronize_Output">
+		<part name="SWIAssetManagementSynchronize_Output" element="tns:SWIAssetManagementSynchronize_Output" />
+	</message>
+	<message name="SWIAssetManagementUpdate_Input">
+		<part name="SWIAssetManagementUpdate_Input" element="tns:SWIAssetManagementUpdate_Input" />
+	</message>
+	<message name="SWIAssetManagementUpdate_Output">
+		<part name="SWIAssetManagementUpdate_Output" element="tns:SWIAssetManagementUpdate_Output" />
+	</message>
+	<message name="SWIAssetManagementInsert_Input">
+		<part name="SWIAssetManagementInsert_Input" element="tns:SWIAssetManagementInsert_Input" />
+	</message>
+	<message name="SWIAssetManagementInsert_Output">
+		<part name="SWIAssetManagementInsert_Output" element="tns:SWIAssetManagementInsert_Output" />
+	</message>
+	<portType name="SWIAssetManagement">
+		<operation name="SWIAssetManagementSynchronize">
+			<input message="tns:SWIAssetManagementSynchronize_Input" />
+			<output message="tns:SWIAssetManagementSynchronize_Output" />
+		</operation>
+		<operation name="SWIAssetManagementUpdate">
+			<input message="tns:SWIAssetManagementUpdate_Input" />
+			<output message="tns:SWIAssetManagementUpdate_Output" />
+		</operation>
+		<operation name="SWIAssetManagementInsert">
+			<input message="tns:SWIAssetManagementInsert_Input" />
+			<output message="tns:SWIAssetManagementInsert_Output" />
+		</operation>
+	</portType>
+	<binding name="SWIAssetManagement" type="tns:SWIAssetManagement">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+		<operation name="SWIAssetManagementSynchronize">
+			<soap:operation soapAction="document/http://siebel.com/asi/:SWIAssetManagementSynchronize" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="SWIAssetManagementUpdate">
+			<soap:operation soapAction="document/http://siebel.com/asi/:SWIAssetManagementUpdate" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="SWIAssetManagementInsert">
+			<soap:operation soapAction="document/http://siebel.com/asi/:SWIAssetManagementInsert" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+	</binding>
+	<service name="SWIAssetManagement">
+		<port binding="tns:SWIAssetManagement" name="SWIAssetManagement">
+			<soap:address location="http://set.at.runtime" />
+		</port>
+	</service>
+</definitions>

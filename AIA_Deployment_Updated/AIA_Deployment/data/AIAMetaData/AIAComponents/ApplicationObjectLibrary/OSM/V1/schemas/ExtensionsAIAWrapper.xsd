@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="OracleComms_OSM_CommonDataDictionary/4.0" xmlns:am="OracleComms_OSM_CommonDataDictionary/4.0">
+   <complexType name="AddressGenericType">
+      <sequence>
+         <element name="city" type="string"/>
+         <element name="country" type="string"/>
+         <element name="lineOne" type="string"/>
+         <element name="lineTwo" type="string" minOccurs="0"/>
+         <element name="state" type="string"/>
+         <element name="postalCode" type="string"/>
+      </sequence>
+   </complexType>
+   <complexType name="BillingProfileExtensionsType">
+      <sequence>
+         <element name="billFrequency" type="string"/>
+         <element name="billMedia" type="string"/>
+         <element name="billType" type="string"/>
+         <element name="language" type="string" minOccurs="0"/>
+         <element name="currency" type="string"/>
+      </sequence>
+   </complexType>
+   <complexType name="PaymentMethodExtensionsType">
+      <sequence>
+         <element name="paymentMethod" type="string" minOccurs="0" maxOccurs="1"/>
+      </sequence>
+   </complexType>
+   <complexType name="AccountExtensionsType">
+      <sequence>
+         <element name="accountType" type="string"/>
+         <element name="currency" type="string" minOccurs="0"/>
+         <element name="secondaryCurrency" type="string" minOccurs="0"/>
+         <element name="customerStanding" type="string" minOccurs="0"/>
+         <element name="customerValue" type="string" minOccurs="0"/>
+         <element name="accountClass" type="string"/>
+      </sequence>
+   </complexType>
+</schema>

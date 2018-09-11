@@ -1,0 +1,23 @@
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://xmlns.oracle.com/apps/ego/pubfwk/service"
+     xmlns="http://xmlns.oracle.com/apps/ego/pubfwk/service" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:oans1="http://xmlns.oracle.com/svc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="BatchEntityStatus.xsd"/>
+    <xsd:include schemaLocation="BatchSystem.xsd"/>
+    <xsd:import namespace="http://xmlns.oracle.com/svc" schemaLocation="DataObject.xsd"/>
+    <xsd:complexType name="PublicationStatus" sdoJava:package="oracle.apps.ego.pubfwk.service" sdoJava:instanceClass="oracle.apps.ego.pubfwk.service.PublicationStatus">
+        <xsd:annotation>
+            <xsd:documentation>This SVO has information related to mode ie. Batch-System or Batch-Entity-System and the
+publication status</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="oans1:DataObject">
+                <xsd:sequence>
+                    <xsd:element name="Mode" type="xsd:decimal" minOccurs="0" nillable="true"/>
+                    <xsd:element name="BatchStatus" type="BatchSystem" minOccurs="0" nillable="true"/>
+                    <xsd:element name="BatchEntityStatus" type="BatchEntityStatus" minOccurs="0" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="publicationStatus" type="PublicationStatus" nillable="true"/>
+</xsd:schema>
